@@ -29,6 +29,16 @@ func TestCSSParseStyleSheetIgnoresBracesInsideStrings(t *testing.T) {
 	}
 }
 
+func TestCSSParseStyleSheetIgnoresBracesInsideFunctions(t *testing.T) {
+	rules := ParseStyleSheet(`.first { background: url(data:image/svg+xml,<svg>{}</svg>); color: red; } .second { color: blue; }`)
+	if len(rules) != 2 {
+		t.Fatalf("parsed rules = %d, want 2", len(rules))
+	}
+	if len(rules[0].Declarations) != 2 || rules[0].Declarations[1].Value != "red" {
+		t.Fatalf("first rule declarations = %#v", rules[0].Declarations)
+	}
+}
+
 func TestCSSParseStyleSheet(t *testing.T) {
 	css := `
         body { color: red; }
