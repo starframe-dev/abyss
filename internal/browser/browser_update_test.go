@@ -6,16 +6,27 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/starframe-dev/abyss/internal/js"
 )
 
-func TestModel_ClosingTabCancelsLoad(t *testing.T) {
+func TestModel_ClosingTabCancelsLoadAndOwnedJSContext(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	m := New()
 	m.Tabs = []Tab{{ID: 1, Mode: ModeLoading, cancelLoad: cancel}, {ID: 2, Mode: ModeView}}
 	m.ActiveTab = 0
 	m.Mode = ModeView
+	jsContext := js.NewContext()
+	js.SetCurrentContext(jsContext, "https://loading.test")
+	jsLifecycleMu.Lock()
+	jsRuntimeTabID = 1
+	jsLifecycleMu.Unlock()
+	t.Cleanup(closeJSCContext)
+
 	m.Update(tea.KeyMsg{Type: tea.KeyRunes, Runes: []rune{'w'}})
 	assert.Error(t, ctx.Err())
+	current, _ := js.GetCurrentContext()
+	assert.Nil(t, current, "closing the owner tab must release its JS context")
 }
 
 func TestModel_CanSwitchTabsWhileLoading(t *testing.T) {
