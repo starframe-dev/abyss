@@ -306,6 +306,11 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 			return 2
 		}
 	}
+	if box.Node.Type == dom.ElementNode && box.Node.TagName == "textarea" && strings.TrimSpace(strings.Join(textParts, "")) == "" {
+		// An empty textarea still occupies one line so it stays visible.
+		box.Content.Height = 2
+		return 2
+	}
 	if len(textParts) == 0 {
 		return 0
 	}
