@@ -1,11 +1,11 @@
 # Abyss
 
-TUI browser that renders web pages as **ASCII color art**.
+TUI browser that renders a supported subset of web pages as **ANSI color art**.
 
-Unlike text-based browsers (Lynx, w3m), Abyss has a real **CSS layout engine**:
-it computes flexbox/grid/absolute positioning, draws backgrounds, borders, and border-radius
-into an 800px pixel framebuffer, then converts pixels into colored block characters (█▄▀)
-with ANSI truecolor escape codes.
+Abyss has a custom HTML/CSS layout engine (not a full browser implementation): it computes
+basic block, Flexbox, Grid, and absolute positioning, draws backgrounds and borders into a
+bounded pixel framebuffer, then converts pixels into colored block characters (█▄▀) with
+ANSI truecolor escape codes.
 
 ## Architecture
 
@@ -34,6 +34,12 @@ go build -o abyss .
 ./abyss
 ```
 
+For a non-interactive ANSI dump:
+
+```bash
+go run . --headless-dump /tmp/page.ansi --url https://example.com --width 120
+```
+
 ## Controls
 
 | Key | Action |
@@ -43,14 +49,18 @@ go build -o abyss .
 | `↑/↓` `PgUp/PgDn` | Scroll page |
 | `q` / `Ctrl+C` | Quit |
 
-## Supported CSS
+## Supported CSS (subset)
 
 - **Display**: `block`, `inline`, `flex`, `grid`, `none`
 - **Position**: `static`, `relative`, `absolute`
 - **Box Model**: `width`, `height`, `margin`, `padding`, `border`
-- **Visual**: `background-color`, `color`, `border-radius`, `z-index`, `overflow`
-- **Flexbox**: `flex-direction`, `justify-content`, `align-items`, `flex-grow`
-- **Grid**: `grid-template-columns`, `grid-template-rows`, `gap`
+- **Visual**: `background-color`, inherited `color`, `border-radius`, `z-index`, `overflow`
+- **Flexbox**: basic row/column direction, grow/shrink, and justify-content distribution
+- **Grid**: bounded `px`, percentage, `fr`, and repeat tracks; basic gaps
+
+This is intentionally a subset; Grid `fr` row distribution needs a definite container
+height, while auto-height rows use content sizes. Intrinsic sizing, browser-default styles
+and complex CSS are not fully implemented.
 
 ## Project Structure
 
@@ -65,7 +75,7 @@ go build -o abyss .
 │   ├── fetcher/     # HTTP page loading
 │   └── browser/     # Bubble Tea TUI
 ├── main.go
-└── specs/SPEC.md
+└── SPEC.md
 ```
 
 ## Testing
@@ -82,9 +92,15 @@ Real PTY-based tests using [cue-tty](https://github.com/starframe-dev/cue-tty):
 go test ./internal/browser -run TestAbyss_E2E -v
 ```
 
-Tests verify:
+Tests use deterministic local HTTP fixtures rather than relying on live websites. They verify:
 - Initial address bar render
-- Loading `example.com` and showing "Example Domain"
-- Scrolling
-- Error page for invalid URL
-- Clean exit via `q`
+- Page loading and block stacking
+- Large viewport / truecolor output
+- Error page and clean exit via `q`
+
+## Resource limits and known limitations
+
+Network responses, DOM size/depth, CSS tracks, image dimensions/cache, and page resource
+counts are bounded. JavaScript executes through JavaScriptCore; currently its context is
+shared across tabs, and synchronous scripts cannot be safely preempted. Do not use Abyss
+for untrusted sites if a non-terminating script could block the process.
