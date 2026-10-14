@@ -16,11 +16,15 @@ func layoutGrid(box *LayoutBox, contentWidth float64) float64 {
 	}
 	rows := style.GridTemplateRows
 	if len(rows) == 0 {
-		rows = []css.Length{css.Px(100)}
+		rows = []css.Length{css.Auto()}
+	}
+	rowCanGrow := make([]bool, len(rows))
+	for i, row := range rows {
+		rowCanGrow[i] = row.IsAuto || row.IsFraction || (row.IsPercent && style.Height.IsAuto)
 	}
 	rows = resolveGridFractionalRows(rows, style.Height.Resolve(contentWidth), gap)
 	colWidths := resolveGridColumnWidths(columns, contentWidth, gap)
-	rowHeights := placeGridChildren(box, columns, rows, colWidths, gap, contentWidth)
+	rowHeights := placeGridChildrenWithTrackSizing(box, columns, rows, rowCanGrow, colWidths, gap, contentWidth)
 	return sumRowHeights(rowHeights, gap)
 }
 
@@ -96,12 +100,25 @@ func resolveGridFractionalRows(rows []css.Length, availableHeight, gap float64) 
 }
 
 func placeGridChildren(box *LayoutBox, columns, rows []css.Length, colWidths []float64, gap, contentWidth float64) []float64 {
+	rowCanGrow := make([]bool, len(rows))
+	for i, row := range rows {
+		rowCanGrow[i] = row.IsAuto || row.IsFraction
+	}
+	return placeGridChildrenWithTrackSizing(box, columns, rows, rowCanGrow, colWidths, gap, contentWidth)
+}
+
+func placeGridChildrenWithTrackSizing(box *LayoutBox, columns, rows []css.Length, rowCanGrow []bool, colWidths []float64, gap, contentWidth float64) []float64 {
 	numCols := len(columns)
 	rowHeights := make([]float64, 0, (len(box.Children)+numCols-1)/numCols)
 	for i, child := range box.Children {
 		col, row := i%numCols, i/numCols
 		for len(rowHeights) <= row {
-			rowHeights = append(rowHeights, rows[len(rowHeights)%len(rows)].Resolve(contentWidth))
+			track := len(rowHeights)
+			var initialHeight float64
+			if track < len(rows) {
+				initialHeight = rows[track].Resolve(contentWidth)
+			}
+			rowHeights = append(rowHeights, initialHeight)
 		}
 		x := gridOffsetX(box.Content.X, colWidths, gap, col)
 		y := gridOffsetY(box.Content.Y, rowHeights, gap, row)
@@ -109,7 +126,8 @@ func placeGridChildren(box *LayoutBox, columns, rows []css.Length, colWidths []f
 		child.Style.Width = css.Px(colWidths[col])
 		layoutBox(child, colWidths[col], x, y, false)
 		child.Style.Width = origWidth
-		if child.Margin.Height > rowHeights[row] {
+		canGrow := row >= len(rowCanGrow) || rowCanGrow[row]
+		if canGrow && child.Margin.Height > rowHeights[row] {
 			rowHeights[row] = child.Margin.Height
 		}
 	}
