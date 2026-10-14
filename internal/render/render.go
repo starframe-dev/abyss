@@ -120,6 +120,15 @@ func drawBox(fb *framebuffer.Framebuffer, box *layout.LayoutBox) {
 			style.BorderRadiusBottomLeft.Resolve(box.Border.Width),
 			style.BackgroundColor,
 		)
+	} else if box.Node != nil && box.Node.TagName == "input" && box.Border.Height > 0 {
+		// Text fields need a visible surface even when empty, otherwise the
+		// search box disappears from the page.
+		fb.DrawRoundedRect(
+			box.Border.X, box.Border.Y,
+			box.Border.Width, box.Border.Height,
+			2, 2, 2, 2,
+			css.RGB(241, 243, 244),
+		)
 	} else if box.Node != nil && box.Node.TagName == "img" {
 		if cells := quantizeImageBox(box); cells != nil {
 			drawAsciiCells(fb, box, cells)
