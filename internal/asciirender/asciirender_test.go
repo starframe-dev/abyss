@@ -56,6 +56,28 @@ func newGradientImage(w, h int) *image.RGBA {
 	return img
 }
 
+type countingImage struct {
+	bounds image.Rectangle
+	reads  int
+}
+
+func (img *countingImage) ColorModel() color.Model { return color.RGBAModel }
+func (img *countingImage) Bounds() image.Rectangle { return img.bounds }
+func (img *countingImage) At(x, y int) color.Color {
+	img.reads++
+	return color.Black
+}
+
+func TestQuantizeRejectsOversizedSourceBeforeSampling(t *testing.T) {
+	img := &countingImage{bounds: image.Rect(0, 0, MaxImageWidth, MaxImagePixels/MaxImageWidth+1)}
+	if grid := Quantize(img, Options{Columns: 60}); grid != nil {
+		t.Fatalf("oversized source produced grid with %d rows", len(grid))
+	}
+	if img.reads != 0 {
+		t.Fatalf("oversized source sampled %d pixels before rejection", img.reads)
+	}
+}
+
 func TestQuantizeBoundsOutputGrid(t *testing.T) {
 	grid := Quantize(newSolidImage(1, 1, color.White), Options{Columns: MaxOutputColumns + 100, Rows: MaxOutputCells})
 	if len(grid) != MaxOutputCells/MaxOutputColumns {

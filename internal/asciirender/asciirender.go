@@ -71,7 +71,7 @@ func Quantize(img image.Image, opts Options) [][]Cell {
 	srcBounds := img.Bounds()
 	srcW := srcBounds.Dx()
 	srcH := srcBounds.Dy()
-	if srcW <= 0 || srcH <= 0 {
+	if !imageDimensionsAllowed(srcW, srcH) {
 		return nil
 	}
 
