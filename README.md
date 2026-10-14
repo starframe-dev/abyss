@@ -104,6 +104,7 @@ Tests use deterministic local HTTP fixtures rather than relying on live websites
 ## Resource limits and known limitations
 
 Network responses, DOM size/depth, CSS tracks, image dimensions/cache, and page resource
-counts are bounded. JavaScript executes through JavaScriptCore; currently its context is
-shared across tabs, and synchronous scripts cannot be safely preempted. Do not use Abyss
-for untrusted sites if a non-terminating script could block the process.
+counts are bounded. Each tab retains its own JavaScriptCore context and DOM/event/timer
+bridge state; JavaScript execution is serialized across tabs. Synchronous scripts cannot
+be safely preempted, so a non-terminating script can still block the process and other tabs.
+Do not use Abyss for untrusted sites if that risk is unacceptable.

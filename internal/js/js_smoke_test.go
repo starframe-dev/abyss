@@ -77,6 +77,41 @@ func TestCloseCurrentContextReleasesPageState(t *testing.T) {
 	}
 }
 
+func TestCapturedRuntimesKeepContextsAndDOMStateIsolated(t *testing.T) {
+	CloseCurrentContext()
+	t.Cleanup(CloseCurrentContext)
+
+	docOne := dom.Parse(`<div id="one">first</div>`)
+	ctxOne := NewContext()
+	SetCurrentContext(ctxOne, "https://one.test")
+	InitDOM(docOne)
+	SetDirty()
+	runtimeOne := CaptureRuntime()
+
+	docTwo := dom.Parse(`<div id="two">second</div>`)
+	ctxTwo := NewContext()
+	SetCurrentContext(ctxTwo, "https://two.test")
+	InitDOM(docTwo)
+	runtimeTwo := CaptureRuntime()
+
+	ActivateRuntime(runtimeOne)
+	gotContext, gotURL := GetCurrentContext()
+	if gotContext != ctxOne || gotURL != "https://one.test" || GetFinalDOM() != docOne || !IsDirty() {
+		t.Fatal("first runtime did not restore its independent context and DOM state")
+	}
+	runtimeOne = CaptureRuntime()
+
+	ActivateRuntime(runtimeTwo)
+	gotContext, gotURL = GetCurrentContext()
+	if gotContext != ctxTwo || gotURL != "https://two.test" || GetFinalDOM() != docTwo || IsDirty() {
+		t.Fatal("second runtime inherited state from the first runtime")
+	}
+	runtimeTwo = CaptureRuntime()
+
+	CloseRuntime(runtimeOne)
+	CloseRuntime(runtimeTwo)
+}
+
 func TestDOMMutationRejectsAncestorCycles(t *testing.T) {
 	doc := dom.Parse(`<div id="parent"><section id="child"></section></div>`)
 	InitDOM(doc)

@@ -1,6 +1,7 @@
 package browser
 
 import (
+	"context"
 	"encoding/base64"
 	"fmt"
 	"image"
@@ -12,6 +13,7 @@ import (
 	"sync"
 	"sync/atomic"
 	"testing"
+	"time"
 
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/js"
@@ -23,13 +25,24 @@ func TestCloseJSCContextForTabOnlyClosesOwner(t *testing.T) {
 	js.SetCurrentContext(ctx, "https://owner.test")
 	jsLifecycleMu.Lock()
 	jsRuntimeTabID = 17
+	jsRuntimeActive = true
 	jsLifecycleMu.Unlock()
 	t.Cleanup(closeJSCContext)
 
 	closeJSCContextForTab(18)
-	if got, _ := js.GetCurrentContext(); got != ctx {
-		t.Fatal("closing another tab destroyed the current JSC context")
+	if _, ok := jsRuntimes[17]; !ok {
+		t.Fatal("closing another tab discarded the suspended runtime")
 	}
+	jsLifecycleMu.Lock()
+	if !activateJSCContextForTabLocked(17) {
+		jsLifecycleMu.Unlock()
+		t.Fatal("could not restore the other tab's runtime")
+	}
+	if got, _ := js.GetCurrentContext(); got != ctx {
+		jsLifecycleMu.Unlock()
+		t.Fatal("restored runtime belongs to a different context")
+	}
+	jsLifecycleMu.Unlock()
 
 	closeJSCContextForTab(17)
 	if got, _ := js.GetCurrentContext(); got != nil {
@@ -37,6 +50,65 @@ func TestCloseJSCContextForTabOnlyClosesOwner(t *testing.T) {
 	}
 	if jsRuntimeTabID != 0 {
 		t.Fatalf("runtime owner = %d, want 0", jsRuntimeTabID)
+	}
+}
+
+func TestLoadPageKeepsJSCContextsPerTab(t *testing.T) {
+	closeJSCContext()
+	t.Cleanup(closeJSCContext)
+	newFixture := func(text string) *httptest.Server {
+		return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+			_, _ = fmt.Fprintf(w, `<html><body><p>%s</p><script>setTimeout(function(){document.body.setAttribute('data-fired','%s')},1)</script></body></html>`, text, text)
+		}))
+	}
+	serverOne := newFixture("one")
+	defer serverOne.Close()
+	serverTwo := newFixture("two")
+	defer serverTwo.Close()
+
+	for i, fixture := range []struct {
+		url string
+		id  uint64
+	}{{serverOne.URL, 101}, {serverTwo.URL, 202}} {
+		msg := loadPageForTab(context.Background(), fixture.url, 80, fixture.id)()
+		if _, ok := msg.(PageLoadedMsg); !ok {
+			t.Fatalf("tab %d load returned %T, want PageLoadedMsg", i, msg)
+		}
+	}
+	time.Sleep(10 * time.Millisecond)
+	if !processJSTimers(101, serverOne.URL) || !processJSTimers(202, serverTwo.URL) {
+		t.Fatal("per-tab timers did not execute and mark their DOMs dirty")
+	}
+
+	jsLifecycleMu.Lock()
+	defer jsLifecycleMu.Unlock()
+	if !activateJSCContextForTabLocked(101) {
+		t.Fatal("first tab JSC runtime missing")
+	}
+	contextOne, urlOne := js.GetCurrentContext()
+	docOne := js.GetFinalDOM()
+	textOne := docOne.QuerySelector("p").TextContent()
+	captureActiveJSCContextForTabLocked(101)
+
+	if !activateJSCContextForTabLocked(202) {
+		t.Fatal("second tab JSC runtime missing")
+	}
+	contextTwo, urlTwo := js.GetCurrentContext()
+	docTwo := js.GetFinalDOM()
+	textTwo := docTwo.QuerySelector("p").TextContent()
+	captureActiveJSCContextForTabLocked(202)
+
+	if contextOne == contextTwo || urlOne != serverOne.URL || urlTwo != serverTwo.URL {
+		t.Fatalf("tab runtimes not isolated: ctx same=%v urls=(%q,%q)", contextOne == contextTwo, urlOne, urlTwo)
+	}
+	if docOne == docTwo || textOne != "one" || textTwo != "two" {
+		t.Fatalf("tab DOMs crossed: first=(%p,%q) second=(%p,%q)", docOne, textOne, docTwo, textTwo)
+	}
+	if got := docOne.QuerySelector("body").GetAttr("data-fired"); got != "one" {
+		t.Fatalf("tab one timer state = %q, want one", got)
+	}
+	if got := docTwo.QuerySelector("body").GetAttr("data-fired"); got != "two" {
+		t.Fatalf("tab two timer state = %q, want two", got)
 	}
 }
 

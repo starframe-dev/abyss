@@ -32,6 +32,8 @@ const (
 var (
 	jsLifecycleMu   sync.Mutex
 	jsRuntimeTabID  uint64
+	jsRuntimeActive bool
+	jsRuntimes      = make(map[uint64]*js.Runtime)
 	imageCacheMu    sync.RWMutex
 	imageCache      = make(map[string]image.Image)
 	imageCacheOrder []string
@@ -251,27 +253,90 @@ func fetchImagesContext(ctx context.Context, doc *dom.Node, baseURL string) {
 func closeJSCContext() {
 	jsLifecycleMu.Lock()
 	defer jsLifecycleMu.Unlock()
-	js.CloseCurrentContext()
+	if context, _ := js.GetCurrentContext(); context != nil {
+		js.CloseCurrentContext()
+	}
 	jsRuntimeTabID = 0
+	jsRuntimeActive = false
+	for tabID, runtime := range jsRuntimes {
+		delete(jsRuntimes, tabID)
+		js.CloseRuntime(runtime)
+	}
+}
+
+func suspendActiveJSCContextLocked() {
+	context, _ := js.GetCurrentContext()
+	if context == nil {
+		return
+	}
+	jsRuntimes[jsRuntimeTabID] = js.CaptureRuntime()
+	jsRuntimeTabID = 0
+	jsRuntimeActive = false
+}
+
+func activateJSCContextForTabLocked(tabID uint64) bool {
+	if jsRuntimeActive && jsRuntimeTabID == tabID {
+		if context, _ := js.GetCurrentContext(); context != nil {
+			return true
+		}
+	}
+	suspendActiveJSCContextLocked()
+	runtime, ok := jsRuntimes[tabID]
+	if !ok || runtime == nil {
+		return false
+	}
+	delete(jsRuntimes, tabID)
+	js.ActivateRuntime(runtime)
+	context, _ := js.GetCurrentContext()
+	if context == nil {
+		js.CloseCurrentContext()
+		return false
+	}
+	jsRuntimeTabID = tabID
+	jsRuntimeActive = true
+	return true
+}
+
+func captureActiveJSCContextForTabLocked(tabID uint64) {
+	if !jsRuntimeActive || jsRuntimeTabID != tabID {
+		return
+	}
+	jsRuntimes[tabID] = js.CaptureRuntime()
+	jsRuntimeTabID = 0
+	jsRuntimeActive = false
 }
 
 func closeJSCContextForTab(tabID uint64) {
 	jsLifecycleMu.Lock()
 	defer jsLifecycleMu.Unlock()
-	if tabID == 0 || jsRuntimeTabID != tabID {
-		return
+	closeJSCContextForTabLocked(tabID)
+}
+
+func closeJSCContextForTabLocked(tabID uint64) {
+	if jsRuntimeActive && jsRuntimeTabID == tabID {
+		js.CloseCurrentContext()
+		jsRuntimeTabID = 0
+		jsRuntimeActive = false
+	} else {
+		suspendActiveJSCContextLocked()
 	}
-	js.CloseCurrentContext()
-	jsRuntimeTabID = 0
+	if runtime, ok := jsRuntimes[tabID]; ok {
+		delete(jsRuntimes, tabID)
+		js.CloseRuntime(runtime)
+	}
 }
 
 func processJSTimers(expectedTabID uint64, expectedURL string) (dirty bool) {
 	jsLifecycleMu.Lock()
 	defer jsLifecycleMu.Unlock()
-	if context, currentURL := js.GetCurrentContext(); context != nil && jsRuntimeTabID == expectedTabID && currentURL == expectedURL {
+	if !activateJSCContextForTabLocked(expectedTabID) {
+		return false
+	}
+	if context, currentURL := js.GetCurrentContext(); context != nil && currentURL == expectedURL {
 		js.ProcessTimers()
 		dirty = js.IsDirty()
 	}
+	captureActiveJSCContextForTabLocked(expectedTabID)
 	return dirty
 }
 
@@ -318,14 +383,18 @@ func loadPageForTab(ctx context.Context, pageURL string, viewportWidth int, tabI
 			jsLifecycleMu.Unlock()
 			return PageErrorMsg{Err: err}
 		}
+		suspendActiveJSCContextLocked()
+		closeJSCContextForTabLocked(tabID)
 		js.CloseCurrentContext()
-		jsRuntimeTabID = tabID
 		context := js.NewContext()
 		js.SetCurrentContext(context, pageURL)
 		js.InitDOM(doc)
+		jsRuntimeTabID = tabID
+		jsRuntimeActive = true
 		if err := context.RegisterBridgeFunctions(); err != nil {
 			js.CloseCurrentContext()
 			jsRuntimeTabID = 0
+			jsRuntimeActive = false
 			jsLifecycleMu.Unlock()
 			return PageErrorMsg{Err: fmt.Errorf("js bridge init: %w", err)}
 		}
@@ -333,6 +402,7 @@ func loadPageForTab(ctx context.Context, pageURL string, viewportWidth int, tabI
 		if _, err := context.Evaluate(js.DOMAPIScript()); err != nil {
 			js.CloseCurrentContext()
 			jsRuntimeTabID = 0
+			jsRuntimeActive = false
 			jsLifecycleMu.Unlock()
 			return PageErrorMsg{Err: fmt.Errorf("js dom api error: %w", err)}
 		}
@@ -344,29 +414,34 @@ func loadPageForTab(ctx context.Context, pageURL string, viewportWidth int, tabI
 		_ = js.ExecuteScriptsContext(ctx, context, doc, pageURL)
 		_, _ = context.Evaluate(`if(document.dispatchEvent){var ev={type:'DOMContentLoaded',defaultPrevented:false,_propagationStopped:false,preventDefault:function(){this.defaultPrevented=true;},stopPropagation:function(){this._propagationStopped=true;}};document.dispatchEvent(ev);}`)
 		finalDOM := js.GetFinalDOM()
+		jsRuntimes[tabID] = js.CaptureRuntime()
+		jsRuntimeTabID = 0
+		jsRuntimeActive = false
 		jsLifecycleMu.Unlock()
 		if err := ctx.Err(); err != nil {
 			jsLifecycleMu.Lock()
-			current, _ := js.GetCurrentContext()
-			if current == context {
-				js.CloseCurrentContext()
-				jsRuntimeTabID = 0
-			}
+			closeJSCContextForTabLocked(tabID)
 			jsLifecycleMu.Unlock()
 			return PageErrorMsg{Err: err}
 		}
 		externalCSS := fetchExternalCSSContext(ctx, finalDOM, pageURL)
 		fetchImagesContext(ctx, finalDOM, pageURL)
 		if err := ctx.Err(); err != nil {
+			jsLifecycleMu.Lock()
+			closeJSCContextForTabLocked(tabID)
+			jsLifecycleMu.Unlock()
 			return PageErrorMsg{Err: err}
 		}
 		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(viewportWidth))
 		box := layout.Build(finalDOM, styles, float64(viewportWidth))
 		jsLifecycleMu.Lock()
-		current, currentURL := js.GetCurrentContext()
-		if current == context && jsRuntimeTabID == tabID && currentURL == pageURL {
-			js.SetComputedStyles(styles)
-			js.SetLayoutBoxes(buildLayoutBoxMap(box))
+		if activateJSCContextForTabLocked(tabID) {
+			current, currentURL := js.GetCurrentContext()
+			if current == context && currentURL == pageURL {
+				js.SetComputedStyles(styles)
+				js.SetLayoutBoxes(buildLayoutBoxMap(box))
+			}
+			captureActiveJSCContextForTabLocked(tabID)
 		}
 		jsLifecycleMu.Unlock()
 		fb := render.Render(box, viewportWidth)
@@ -384,8 +459,12 @@ func reRenderCmd(viewportWidth int, zoomFactor float64, tabID, requestID uint64,
 	return func() tea.Msg {
 		jsLifecycleMu.Lock()
 		defer jsLifecycleMu.Unlock()
+		if !activateJSCContextForTabLocked(tabID) {
+			return nil
+		}
+		defer captureActiveJSCContextForTabLocked(tabID)
 		context, currentURL := js.GetCurrentContext()
-		if context == nil || jsRuntimeTabID != tabID || currentURL != pageURL {
+		if context == nil || currentURL != pageURL {
 			return nil
 		}
 		js.MarkClean()

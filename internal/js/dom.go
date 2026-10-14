@@ -21,6 +21,24 @@ type Rect struct {
 	X, Y, Width, Height float64
 }
 
+// Runtime stores one page's JavaScriptCore context and its bridge state while
+// that page is inactive. The browser serializes activation with its lifecycle lock.
+type Runtime struct {
+	context      *Context
+	url          string
+	nodeNextID   NodeID
+	nodes        map[NodeID]*dom.Node
+	nodeIDs      map[*dom.Node]NodeID
+	rootDoc      *dom.Node
+	computed     map[*dom.Node]css.ComputedStyle
+	layout       map[*dom.Node]Rect
+	eventListen  map[NodeID]map[string][]C.JSObjectRef
+	eventContext C.JSGlobalContextRef
+	dirty        bool
+	timers       []timer
+	nextTimerID  int
+}
+
 var (
 	nodeMu     sync.Mutex
 	nodeNextID NodeID
@@ -82,6 +100,109 @@ func GetCurrentContext() (*Context, string) {
 	currentCtxMu.Lock()
 	defer currentCtxMu.Unlock()
 	return currentCtx, currentURL
+}
+
+// CaptureRuntime detaches the current page context and all state used by its
+// DOM bridge. Callers must serialize this operation with JavaScript execution.
+func CaptureRuntime() *Runtime {
+	runtime := &Runtime{}
+
+	currentCtxMu.Lock()
+	runtime.context, runtime.url = currentCtx, currentURL
+	currentCtx, currentURL = nil, ""
+	currentCtxMu.Unlock()
+
+	eventMu.Lock()
+	runtime.eventListen, runtime.eventContext = eventListeners, eventCtx
+	eventListeners, eventCtx = map[NodeID]map[string][]C.JSObjectRef{}, nil
+	eventMu.Unlock()
+
+	timerMu.Lock()
+	runtime.timers, runtime.nextTimerID = timers, nextTimerID
+	timers, nextTimerID = nil, 0
+	timerMu.Unlock()
+
+	computedStylesMu.Lock()
+	runtime.computed = computedStyles
+	computedStyles = nil
+	computedStylesMu.Unlock()
+
+	layoutBoxesMu.Lock()
+	runtime.layout = layoutBoxes
+	layoutBoxes = nil
+	layoutBoxesMu.Unlock()
+
+	nodeMu.Lock()
+	runtime.nodeNextID, runtime.nodes, runtime.nodeIDs, runtime.rootDoc = nodeNextID, nodes, nodeIDs, rootDoc
+	nodeNextID, nodes, nodeIDs, rootDoc = 0, map[NodeID]*dom.Node{}, map[*dom.Node]NodeID{}, nil
+	nodeMu.Unlock()
+
+	dirtyMu.Lock()
+	runtime.dirty = dirty
+	dirty = false
+	dirtyMu.Unlock()
+
+	return runtime
+}
+
+// ActivateRuntime restores a previously captured page. The caller must ensure
+// no other page runtime is active and must serialize bridge execution.
+func ActivateRuntime(runtime *Runtime) {
+	if runtime == nil {
+		return
+	}
+	currentCtxMu.Lock()
+	currentCtx, currentURL = runtime.context, runtime.url
+	runtime.context, runtime.url = nil, ""
+	currentCtxMu.Unlock()
+
+	eventMu.Lock()
+	eventListeners, eventCtx = runtime.eventListen, runtime.eventContext
+	runtime.eventListen, runtime.eventContext = nil, nil
+	if eventListeners == nil {
+		eventListeners = map[NodeID]map[string][]C.JSObjectRef{}
+	}
+	eventMu.Unlock()
+
+	timerMu.Lock()
+	timers, nextTimerID = runtime.timers, runtime.nextTimerID
+	runtime.timers, runtime.nextTimerID = nil, 0
+	timerMu.Unlock()
+
+	computedStylesMu.Lock()
+	computedStyles = runtime.computed
+	runtime.computed = nil
+	computedStylesMu.Unlock()
+
+	layoutBoxesMu.Lock()
+	layoutBoxes = runtime.layout
+	runtime.layout = nil
+	layoutBoxesMu.Unlock()
+
+	nodeMu.Lock()
+	nodeNextID, nodes, nodeIDs, rootDoc = runtime.nodeNextID, runtime.nodes, runtime.nodeIDs, runtime.rootDoc
+	runtime.nodeNextID, runtime.nodes, runtime.nodeIDs, runtime.rootDoc = 0, nil, nil, nil
+	if nodes == nil {
+		nodes = map[NodeID]*dom.Node{}
+	}
+	if nodeIDs == nil {
+		nodeIDs = map[*dom.Node]NodeID{}
+	}
+	nodeMu.Unlock()
+
+	dirtyMu.Lock()
+	dirty = runtime.dirty
+	runtime.dirty = false
+	dirtyMu.Unlock()
+}
+
+// CloseRuntime releases a detached page runtime and its protected callbacks.
+func CloseRuntime(runtime *Runtime) {
+	if runtime == nil {
+		return
+	}
+	ActivateRuntime(runtime)
+	CloseCurrentContext()
 }
 
 // CloseCurrentContext closes the active JSC context.

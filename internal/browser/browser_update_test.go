@@ -20,6 +20,7 @@ func TestModel_ClosingTabCancelsLoadAndOwnedJSContext(t *testing.T) {
 	js.SetCurrentContext(jsContext, "https://loading.test")
 	jsLifecycleMu.Lock()
 	jsRuntimeTabID = 1
+	jsRuntimeActive = true
 	jsLifecycleMu.Unlock()
 	t.Cleanup(closeJSCContext)
 
