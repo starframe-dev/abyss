@@ -254,6 +254,22 @@ func TestFlexColumnJustifyContentDistributesFreeSpace(t *testing.T) {
 	}
 }
 
+func TestFlexColumnGrowConsumesAvailableHeight(t *testing.T) {
+	doc := dom.Parse(`<div style="display:flex;flex-direction:column;width:100px;height:100px"><section style="height:10px;flex-grow:1"></section><section style="height:10px"></section></div>`)
+	box := Build(doc, css.Compute(doc), 100)
+	container := findTag(box, "div")
+	if container == nil || len(container.Children) != 2 {
+		t.Fatal("expected two column flex items")
+	}
+	first, second := container.Children[0], container.Children[1]
+	if got := first.Content.Height; got != 90 {
+		t.Fatalf("grown first item height = %v, want 90", got)
+	}
+	if got := second.Content.Y - first.Content.Y; got != 90 {
+		t.Fatalf("second item offset = %v, want 90", got)
+	}
+}
+
 func TestFlexColumnDirection(t *testing.T) {
 	html := `<div style="display: flex; flex-direction: column; width: 300px;">
         <div style="height: 100px;"></div>

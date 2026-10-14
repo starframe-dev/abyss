@@ -49,11 +49,31 @@ func layoutFlexColumn(box *LayoutBox, contentWidth float64) float64 {
 		return contentHeight
 	}
 	remaining := max(0, box.Style.Height.Resolve(contentWidth)-contentHeight)
-	offset, extraGap := flexJustification(box.Style.JustifyContent, remaining, len(box.Children), 0)
+	var totalGrow float64
+	for _, child := range box.Children {
+		totalGrow += child.Style.FlexGrow
+	}
+	growth := make([]float64, len(box.Children))
+	if totalGrow > 0 && remaining > 0 {
+		for i, child := range box.Children {
+			growth[i] = remaining * child.Style.FlexGrow / totalGrow
+			heights[i] += growth[i]
+		}
+		contentHeight += remaining
+		remaining = 0
+	}
+	offset, extraGap := flexJustification(box.Style.JustifyContent, remaining, len(box.Children), totalGrow)
 	gap += extraGap
 	pos := offset
 	for i, child := range box.Children {
-		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+pos, false)
+		if growth[i] > 0 {
+			originalHeight := child.Style.Height
+			child.Style.Height = css.Px(child.Content.Height + growth[i])
+			layoutBox(child, contentWidth, box.Content.X, box.Content.Y+pos, false)
+			child.Style.Height = originalHeight
+		} else {
+			layoutBox(child, contentWidth, box.Content.X, box.Content.Y+pos, false)
+		}
 		pos += heights[i] + gap
 	}
 	return contentHeight
