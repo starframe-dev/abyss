@@ -241,6 +241,19 @@ func TestFlexColumnAutoChildrenFillContainerWidth(t *testing.T) {
 	assert.Equal(t, 300.0, child.Content.Width)
 }
 
+func TestFlexColumnJustifyContentDistributesFreeSpace(t *testing.T) {
+	doc := dom.Parse(`<div style="display:flex;flex-direction:column;justify-content:space-between;width:100px;height:100px"><section style="height:10px"></section><section style="height:10px"></section></div>`)
+	box := Build(doc, css.Compute(doc), 100)
+	container := findTag(box, "div")
+	if container == nil || len(container.Children) != 2 {
+		t.Fatal("expected two column flex items")
+	}
+	first, second := container.Children[0], container.Children[1]
+	if got := second.Content.Y - first.Content.Y; got != 90 {
+		t.Fatalf("space-between column distance = %v, want 90", got)
+	}
+}
+
 func TestFlexColumnDirection(t *testing.T) {
 	html := `<div style="display: flex; flex-direction: column; width: 300px;">
         <div style="height: 100px;"></div>

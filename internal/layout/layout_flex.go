@@ -14,6 +14,9 @@ func layoutFlex(box *LayoutBox, contentWidth float64) float64 {
 	if numChildren == 0 {
 		return 0
 	}
+	if flexDir == css.FlexDirectionColumn {
+		return layoutFlexColumn(box, contentWidth)
+	}
 	totalGap := gap * float64(numChildren-1)
 
 	availableSpace := flexAvailableSpace(flexDir, contentWidth, totalGap)
@@ -28,6 +31,32 @@ func layoutFlex(box *LayoutBox, contentWidth float64) float64 {
 	}
 
 	return flexContainerSize(box, flexDir, pos, gap)
+}
+
+func layoutFlexColumn(box *LayoutBox, contentWidth float64) float64 {
+	gap := box.Style.Gap.Resolve(contentWidth)
+	heights := make([]float64, len(box.Children))
+	var contentHeight float64
+	for i, child := range box.Children {
+		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+contentHeight, false)
+		heights[i] = child.Margin.Height
+		contentHeight += heights[i]
+		if i > 0 {
+			contentHeight += gap
+		}
+	}
+	if box.Style.Height.IsAuto {
+		return contentHeight
+	}
+	remaining := max(0, box.Style.Height.Resolve(contentWidth)-contentHeight)
+	offset, extraGap := flexJustification(box.Style.JustifyContent, remaining, len(box.Children), 0)
+	gap += extraGap
+	pos := offset
+	for i, child := range box.Children {
+		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+pos, false)
+		pos += heights[i] + gap
+	}
+	return contentHeight
 }
 
 func flexJustification(justify css.JustifyContent, remaining float64, children int, totalGrow float64) (offset, extraGap float64) {
