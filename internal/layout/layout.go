@@ -74,9 +74,21 @@ func buildNode(node *dom.Node, styles map[*dom.Node]css.ComputedStyle) *LayoutBo
 		Children: []*LayoutBox{},
 	}
 
+	hasElementChild := false
+	for _, child := range node.Children {
+		if child.Type == dom.ElementNode {
+			hasElementChild = true
+			break
+		}
+	}
+
 	for _, child := range node.Children {
 		if child.Type == dom.TextNode {
-			// Inline text — will be handled during layout
+			// Text next to element children needs its own anonymous inline box,
+			// otherwise it is dropped. Text-only containers are handled by layoutInlineFlow.
+			if hasElementChild && strings.TrimSpace(child.Text) != "" {
+				box.Children = append(box.Children, anonymousTextBox(box, child))
+			}
 			continue
 		}
 		childBox := buildNode(child, styles)
@@ -87,6 +99,24 @@ func buildNode(node *dom.Node, styles map[*dom.Node]css.ComputedStyle) *LayoutBo
 	}
 
 	return box
+}
+
+// anonymousTextBox wraps a text node in a box that inherits the parent's text
+// styling but none of its box model, so it does not repeat padding or borders.
+func anonymousTextBox(parent *LayoutBox, text *dom.Node) *LayoutBox {
+	def := css.Default()
+	style := parent.Style
+	style.Display = css.DisplayInline
+	style.Width = def.Width
+	style.Height = def.Height
+	style.Margin = def.Margin
+	style.Padding = def.Padding
+	style.BorderTop = def.BorderTop
+	style.BorderRight = def.BorderRight
+	style.BorderBottom = def.BorderBottom
+	style.BorderLeft = def.BorderLeft
+	style.BackgroundColor = def.BackgroundColor
+	return &LayoutBox{Node: text, Style: style, Children: []*LayoutBox{}, Parent: parent}
 }
 
 // Layout computes the geometry of the layout tree.
@@ -262,6 +292,15 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 	}
 
 	textParts := collectInlineText(box.Node)
+	if box.Node.Type == dom.TextNode {
+		textParts = []string{strings.TrimSpace(box.Node.Text)}
+	}
+	if box.Node.Type == dom.ElementNode && box.Node.TagName == "input" {
+		if strings.EqualFold(strings.TrimSpace(box.Node.GetAttr("type")), "hidden") {
+			return 0
+		}
+		textParts = []string{inputLabel(box.Node)}
+	}
 	if len(textParts) == 0 {
 		return 0
 	}
@@ -276,6 +315,16 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 	lines := wordWrap(words, box, contentWidth)
 	box.TextLines = lines
 	return float64(len(lines)) * 2.0
+}
+
+// inputLabel returns the text shown for a form input: its value, falling back to placeholder or title.
+func inputLabel(n *dom.Node) string {
+	for _, attr := range []string{"value", "placeholder", "title"} {
+		if v := strings.TrimSpace(n.GetAttr(attr)); v != "" {
+			return v
+		}
+	}
+	return ""
 }
 
 func inStyleOrScript(n *dom.Node) bool {
