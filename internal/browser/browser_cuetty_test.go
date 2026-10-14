@@ -71,9 +71,8 @@ func submitFixtureURL(page *cue.Page, pageURL string) error {
 			if strings.TrimSpace(screen) == "" {
 				continue
 			}
-			if !strings.Contains(screen, "Abyss >") {
-				return fmt.Errorf("unexpected screen after URL submission: %q", screen)
-			}
+			// PTY redraws can expose partial/blank frames between the address
+			// view and the loading view. Keep polling until a stable state appears.
 		}
 	}
 	return fmt.Errorf("address did not begin loading after retry: %q", screen)

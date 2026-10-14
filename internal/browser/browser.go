@@ -265,6 +265,7 @@ func (m *Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, tea.Quit
 
 	case tea.WindowSizeMsg:
+		previousWidth := m.Width
 		m.Width = msg.Width
 		m.Height = msg.Height
 		m.Address.Width = msg.Width - 4
@@ -272,6 +273,11 @@ func (m *Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.Viewport.Height = msg.Height - 4
 		if m.Mode == ModeView {
 			m.Viewport.SetContent(strings.Join(m.ASCIILines(), "\n"))
+			if previousWidth != msg.Width {
+				if cmd := m.activeRenderCmd(); cmd != nil {
+					cmds = append(cmds, cmd)
+				}
+			}
 		}
 
 	case tea.KeyMsg:

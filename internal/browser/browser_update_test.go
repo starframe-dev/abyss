@@ -283,7 +283,6 @@ func TestModel_Update_Width(t *testing.T) {
 	m.Mode = ModeAddress
 	m.ActiveTab = 0
 
-	// WindowSizeMsg is not currently handled; verify Update is safe.
 	updated, _ := m.Update(tea.WindowSizeMsg{Width: 800, Height: 600})
 	assert.NotNil(t, updated)
 }
@@ -293,9 +292,10 @@ func TestModel_Update_View_Width(t *testing.T) {
 	m.Mode = ModeView
 	m.ActiveTab = 0
 
-	// WindowSizeMsg is not currently handled; verify Update is safe.
-	updated, _ := m.Update(tea.WindowSizeMsg{Width: 800, Height: 600})
+	updated, cmd := m.Update(tea.WindowSizeMsg{Width: 800, Height: 600})
 	assert.NotNil(t, updated)
+	assert.NotNil(t, cmd, "width changes should trigger a fresh layout/render")
+	assert.Equal(t, 800, m.Width)
 }
 
 func TestModel_Update_TickMsg(t *testing.T) {
@@ -350,10 +350,9 @@ func TestModel_Update_Resize(t *testing.T) {
 	m.Mode = ModeView
 	m.ActiveTab = 0
 
-	// WindowSizeMsg is not currently handled by Update; verify the call
-	// is safe (no panic) and the model returns the expected interface.
-	updated, _ := m.Update(tea.WindowSizeMsg{Width: 400, Height: 300})
+	updated, cmd := m.Update(tea.WindowSizeMsg{Width: 400, Height: 300})
 	assert.NotNil(t, updated)
+	assert.NotNil(t, cmd, "resize should request a fresh layout/render")
 }
 
 func TestModel_Update_Quit_With_Q(t *testing.T) {
