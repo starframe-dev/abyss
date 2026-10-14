@@ -174,8 +174,9 @@ func quantizeImageBox(box *layout.LayoutBox) [][]asciirender.Cell {
 	if widthCells < 1 {
 		widthCells = 1
 	}
-	rows := len(box.TextLines)
-	heightCells := rows / 2
+	// Use the laid-out box height, not the alt-text placeholder: a one-line
+	// placeholder would squash the picture into a single terminal row.
+	heightCells := int(box.Content.Height) / 2
 	if heightCells < 1 {
 		heightCells = 1
 	}
