@@ -9,5 +9,10 @@ cuetty-artifacts/
 coverage.out
 integration-coverage.out
 
+# generated dependencies and analysis reports
+node_modules/
+.graphloom/report-*.dsl.json
+.graphloom/report-*.html
+
 # secrets
 .lore/**/.env
