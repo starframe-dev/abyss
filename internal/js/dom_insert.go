@@ -193,8 +193,14 @@ func InsertAdjacentHTML(nodeID NodeID, position, html string) {
 
 	nodeMu.Lock()
 	defer nodeMu.Unlock()
-	for _, newNode := range newNodes {
-		assignIDsToNew(newNode)
+	switch position {
+	case "beforebegin", "afterend":
+		if n.Parent == nil {
+			return
+		}
+	case "afterbegin", "beforeend":
+	default:
+		return
 	}
 
 	switch position {
@@ -212,6 +218,9 @@ func InsertAdjacentHTML(nodeID NodeID, position, html string) {
 		n.Children = append(n.Children, newNodes...)
 	case "afterend":
 		insertSiblingNodes(n, newNodes, true)
+	}
+	for _, newNode := range newNodes {
+		assignIDsToNew(newNode)
 	}
 
 	// Invalidate CSS cache

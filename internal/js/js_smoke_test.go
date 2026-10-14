@@ -493,6 +493,10 @@ func TestInsertAdjacentHTMLParsesUnwrappedTextAndElements(t *testing.T) {
 	if root.QuerySelector("fragment") != nil {
 		t.Fatal("synthetic fragment wrapper leaked into DOM")
 	}
+	InsertAdjacentHTML(getNodeID(root), "unsupported", `<b id="not-inserted"></b>`)
+	if getElementByID("not-inserted") != nil {
+		t.Fatal("unsupported insertion position registered detached nodes")
+	}
 }
 
 // TestMoveAllChildren covers moveAllChildren helper.
