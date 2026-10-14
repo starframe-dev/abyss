@@ -1,0 +1,218 @@
+{
+  "title": "Анализ страницы Habr.com",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main_entry",
+      "kind": "action",
+      "label": "Главная функция",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 12,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основная функция для анализа HTML страницы Habr.com",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "fetch_html",
+      "kind": "call",
+      "label": "Загрузить HTML",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 15,
+        "end_line": 19
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Запросить HTML-контент с habr.com через fetcher.Fetch",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "handle_fetch_error",
+      "kind": "decision",
+      "label": "Обработка ошибки загрузки",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 16,
+        "end_line": 19
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Проверить наличие ошибки при загрузке HTML",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse_html",
+      "kind": "call",
+      "label": "Парсинг HTML",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 21,
+        "end_line": 21
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Разобрать HTML-документ с помощью dom.Parse",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "extract_stylesheets",
+      "kind": "action",
+      "label": "Извлечь внешние стили",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 24,
+        "end_line": 32
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Найти все теги link с rel=stylesheet и вывести их ссылки",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "extract_inline_styles",
+      "kind": "action",
+      "label": "Извлечь встроенные стили",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 34,
+        "end_line": 43
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Найти все теги style и вывести их содержимое",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "count_tags",
+      "kind": "action",
+      "label": "Подсчитать теги",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 46,
+        "end_line": 62
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Пройти по всем элементам и подсчитать уникальные теги",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "extract_body_text",
+      "kind": "action",
+      "label": "Извлечь текст body",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 65,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Получить текстовое содержимое тега body",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main_entry",
+      "to": "fetch_html",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "fetch_html",
+      "to": "handle_fetch_error",
+      "label": "проверяет ошибку",
+      "status": "inferred"
+    },
+    {
+      "from": "handle_fetch_error",
+      "to": "parse_html",
+      "label": "если успешно",
+      "status": "inferred"
+    },
+    {
+      "from": "parse_html",
+      "to": "extract_stylesheets",
+      "label": "извлекает",
+      "status": "inferred"
+    },
+    {
+      "from": "extract_stylesheets",
+      "to": "extract_inline_styles",
+      "label": "затем",
+      "status": "inferred"
+    },
+    {
+      "from": "extract_inline_styles",
+      "to": "count_tags",
+      "label": "затем",
+      "status": "inferred"
+    },
+    {
+      "from": "count_tags",
+      "to": "extract_body_text",
+      "label": "затем",
+      "status": "inferred"
+    }
+  ]
+}

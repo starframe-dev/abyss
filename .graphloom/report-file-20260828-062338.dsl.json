@@ -1,0 +1,2126 @@
+{
+  "title": "internal/browser/browser_update.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/browser/browser_update.go",
+      "kind": "group",
+      "label": "browser_update.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser_update.go",
+        "start_line": 1,
+        "end_line": 169
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/browser/browser_update.go:Update:15623787",
+          "kind": "group",
+          "label": "Функция Update",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_update.go",
+            "start_line": 13,
+            "end_line": 169
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.Update",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/browser/browser_update.go:15623873",
+              "kind": "action",
+              "label": "type switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_update.go",
+                "start_line": 89,
+                "end_line": 89
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/browser/browser_update.go:15623904",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_update.go",
+                    "start_line": 24,
+                    "end_line": 24
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/browser/browser_update.go:15624141",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 23,
+                        "end_line": 25
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "m.Mode == ModeView",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_update.go:ASCIILines:15624212",
+                          "kind": "call",
+                          "label": "Вызов ASCIILines",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 24,
+                            "end_line": 24
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+                          "summary": "→ github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+                              "file": "internal/browser/browser.go",
+                              "label": "→ ASCIILines in internal/browser/browser.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_update.go:15624250",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_update.go",
+                    "start_line": 80,
+                    "end_line": 80
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "switch:internal/browser/browser_update.go:15624275",
+                      "kind": "action",
+                      "label": "switch",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 30,
+                        "end_line": 30
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "case:internal/browser/browser_update.go:15624305",
+                          "kind": "action",
+                          "label": "case",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 30,
+                            "end_line": 30
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/browser/browser_update.go:saveSession:15624332",
+                              "kind": "call",
+                              "label": "Вызов saveSession",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 30,
+                                "end_line": 30
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/browser.saveSession",
+                              "summary": "→ github.com/starframe/abyss/internal/browser.saveSession",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/browser.saveSession",
+                                  "file": "internal/browser/browser.go",
+                                  "label": "→ saveSession in internal/browser/browser.go"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "call:internal/browser/browser_update.go:CloseCurrentContext:15624364",
+                              "kind": "call",
+                              "label": "Вызов CloseCurrentContext",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 31,
+                                "end_line": 31
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                              "summary": "→ github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                  "file": "internal/js/dom_events.go",
+                                  "label": "→ CloseCurrentContext in internal/js/dom_events.go"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "return:internal/browser/browser_update.go:15624401",
+                              "kind": "output",
+                              "label": "Вернуть",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 32,
+                                "end_line": 32
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "switch:internal/browser/browser_update.go:15624439",
+                      "kind": "action",
+                      "label": "switch",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 85,
+                        "end_line": 85
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "case:internal/browser/browser_update.go:15624463",
+                          "kind": "action",
+                          "label": "case",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 48,
+                            "end_line": 48
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "switch:internal/browser/browser_update.go:15624493",
+                              "kind": "action",
+                              "label": "switch",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 46,
+                                "end_line": 46
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15624527",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 46,
+                                    "end_line": 46
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "if:internal/browser/browser_update.go:15624598",
+                                      "kind": "decision",
+                                      "label": "Условие",
+                                      "layer": "flow",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 40,
+                                        "end_line": 42
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": "url == \"\"",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [
+                                        {
+                                          "id": "return:internal/browser/browser_update.go:15624633",
+                                          "kind": "output",
+                                          "label": "Вернуть",
+                                          "layer": "data",
+                                          "source": {
+                                            "file": "internal/browser/browser_update.go",
+                                            "start_line": 41,
+                                            "end_line": 41
+                                          },
+                                          "element_type": null,
+                                          "symbol": null,
+                                          "summary": null,
+                                          "tests": null,
+                                          "confidence": null,
+                                          "children": [],
+                                          "branches": [],
+                                          "data_in": [],
+                                          "data_out": [],
+                                          "effects": [],
+                                          "cross_refs": []
+                                        }
+                                      ],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    },
+                                    {
+                                      "id": "if:internal/browser/browser_update.go:15624681",
+                                      "kind": "decision",
+                                      "label": "Условие",
+                                      "layer": "flow",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 43,
+                                        "end_line": 45
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": "!strings.HasPrefix(url, \"http://\") && !strings.HasPrefix(url, \"https://\")",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveActiveTab:15624837",
+                                      "kind": "call",
+                                      "label": "Вызов saveActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 46,
+                                        "end_line": 46
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15625068",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 52,
+                                        "end_line": 52
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15625113",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 54,
+                                    "end_line": 54
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveSession:15625139",
+                                      "kind": "call",
+                                      "label": "Вызов saveSession",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 54,
+                                        "end_line": 54
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.saveSession",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.saveSession",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.saveSession",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveSession in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:CloseCurrentContext:15625175",
+                                      "kind": "call",
+                                      "label": "Вызов CloseCurrentContext",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 55,
+                                        "end_line": 55
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                      "summary": "→ github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                          "file": "internal/js/dom_events.go",
+                                          "label": "→ CloseCurrentContext in internal/js/dom_events.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15625216",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 56,
+                                        "end_line": 56
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            },
+                            {
+                              "id": "return:internal/browser/browser_update.go:15625340",
+                              "kind": "output",
+                              "label": "Вернуть",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 60,
+                                "end_line": 60
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "case:internal/browser/browser_update.go:15625363",
+                          "kind": "action",
+                          "label": "case",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 93,
+                            "end_line": 93
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "switch:internal/browser/browser_update.go:15625390",
+                              "kind": "action",
+                              "label": "switch",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 93,
+                                "end_line": 93
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15625424",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 65,
+                                    "end_line": 65
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveActiveTab:15625455",
+                                      "kind": "call",
+                                      "label": "Вызов saveActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 65,
+                                        "end_line": 65
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15625560",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 68,
+                                        "end_line": 68
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15625598",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 70,
+                                    "end_line": 70
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15625624",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 70,
+                                        "end_line": 70
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15625683",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 72,
+                                    "end_line": 72
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:ZoomFactor:15625752",
+                                      "kind": "call",
+                                      "label": "Вызов ZoomFactor",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 72,
+                                        "end_line": 72
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ ZoomFactor in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15625788",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 73,
+                                        "end_line": 73
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15625847",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 75,
+                                    "end_line": 75
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:ZoomFactor:15625916",
+                                      "kind": "call",
+                                      "label": "Вызов ZoomFactor",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 75,
+                                        "end_line": 75
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ ZoomFactor in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15625952",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 76,
+                                        "end_line": 76
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15626011",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 76,
+                                    "end_line": 76
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:OffsetX:15626068",
+                                      "kind": "call",
+                                      "label": "Вызов OffsetX",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 78,
+                                        "end_line": 78
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ OffsetX in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15626096",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 78,
+                                    "end_line": 78
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:OffsetX:15626147",
+                                      "kind": "call",
+                                      "label": "Вызов OffsetX",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 80,
+                                        "end_line": 80
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ OffsetX in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15626176",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 85,
+                                    "end_line": 85
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveActiveTab:15626229",
+                                      "kind": "call",
+                                      "label": "Вызов saveActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 83,
+                                        "end_line": 83
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15626525",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 90,
+                                        "end_line": 90
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15626563",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 97,
+                                    "end_line": 97
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "if:internal/browser/browser_update.go:15626618",
+                                      "kind": "decision",
+                                      "label": "Условие",
+                                      "layer": "flow",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 93,
+                                        "end_line": 96
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": "len(m.Tabs) <= 1",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    },
+                                    {
+                                      "id": "if:internal/browser/browser_update.go:15626829",
+                                      "kind": "decision",
+                                      "label": "Условие",
+                                      "layer": "flow",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 98,
+                                        "end_line": 100
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": "m.ActiveTab >= len(m.Tabs)",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:restoreActiveTab:15626945",
+                                      "kind": "call",
+                                      "label": "Вызов restoreActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 101,
+                                        "end_line": 101
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ restoreActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15626982",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 102,
+                                        "end_line": 102
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15627008",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 105,
+                                    "end_line": 105
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveActiveTab:15627064",
+                                      "kind": "call",
+                                      "label": "Вызов saveActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 105,
+                                        "end_line": 105
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:restoreActiveTab:15627160",
+                                      "kind": "call",
+                                      "label": "Вызов restoreActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 107,
+                                        "end_line": 107
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ restoreActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15627197",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 108,
+                                        "end_line": 108
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15627223",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 111,
+                                    "end_line": 111
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveActiveTab:15627289",
+                                      "kind": "call",
+                                      "label": "Вызов saveActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 111,
+                                        "end_line": 111
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:restoreActiveTab:15627399",
+                                      "kind": "call",
+                                      "label": "Вызов restoreActiveTab",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 113,
+                                        "end_line": 113
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ restoreActiveTab in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15627436",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 114,
+                                        "end_line": 114
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15627462",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 116,
+                                    "end_line": 116
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveSession:15627488",
+                                      "kind": "call",
+                                      "label": "Вызов saveSession",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 116,
+                                        "end_line": 116
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.saveSession",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.saveSession",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.saveSession",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveSession in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:CloseCurrentContext:15627524",
+                                      "kind": "call",
+                                      "label": "Вызов CloseCurrentContext",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 117,
+                                        "end_line": 117
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                      "summary": "→ github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                          "file": "internal/js/dom_events.go",
+                                          "label": "→ CloseCurrentContext in internal/js/dom_events.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15627565",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 118,
+                                        "end_line": 118
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15627596",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 121,
+                                    "end_line": 121
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15627710",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 122,
+                                        "end_line": 122
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "case:internal/browser/browser_update.go:15627747",
+                          "kind": "action",
+                          "label": "case",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 129,
+                            "end_line": 129
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "switch:internal/browser/browser_update.go:15627775",
+                              "kind": "action",
+                              "label": "switch",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 129,
+                                "end_line": 129
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15627809",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 129,
+                                    "end_line": 129
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15627911",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 130,
+                                        "end_line": 130
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "case:internal/browser/browser_update.go:15627949",
+                                  "kind": "action",
+                                  "label": "case",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_update.go",
+                                    "start_line": 132,
+                                    "end_line": 132
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:saveSession:15627975",
+                                      "kind": "call",
+                                      "label": "Вызов saveSession",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 132,
+                                        "end_line": 132
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/browser.saveSession",
+                                      "summary": "→ github.com/starframe/abyss/internal/browser.saveSession",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/browser.saveSession",
+                                          "file": "internal/browser/browser.go",
+                                          "label": "→ saveSession in internal/browser/browser.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "call:internal/browser/browser_update.go:CloseCurrentContext:15628011",
+                                      "kind": "call",
+                                      "label": "Вызов CloseCurrentContext",
+                                      "layer": "calls",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 133,
+                                        "end_line": 133
+                                      },
+                                      "element_type": null,
+                                      "symbol": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                      "summary": "→ github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": [
+                                        {
+                                          "id": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+                                          "file": "internal/js/dom_events.go",
+                                          "label": "→ CloseCurrentContext in internal/js/dom_events.go"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "return:internal/browser/browser_update.go:15628052",
+                                      "kind": "output",
+                                      "label": "Вернуть",
+                                      "layer": "data",
+                                      "source": {
+                                        "file": "internal/browser/browser_update.go",
+                                        "start_line": 134,
+                                        "end_line": 134
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": null,
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_update.go:15628100",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_update.go",
+                    "start_line": 144,
+                    "end_line": 144
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/browser/browser_update.go:15628173",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 140,
+                        "end_line": 143
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "m.Mode == ModeLoading",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_update.go:tickCmd:15628232",
+                          "kind": "call",
+                          "label": "Вызов tickCmd",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 141,
+                            "end_line": 141
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.tickCmd",
+                          "summary": "→ github.com/starframe/abyss/internal/browser.tickCmd",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.tickCmd",
+                              "file": "internal/browser/browser.go",
+                              "label": "→ tickCmd in internal/browser/browser.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_update.go:15628279",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 144,
+                        "end_line": 149
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "jsc != nil",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_update.go:GetCurrentContext:15628292",
+                          "kind": "call",
+                          "label": "Вызов GetCurrentContext",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 144,
+                            "end_line": 144
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/js.GetCurrentContext",
+                          "summary": "→ github.com/starframe/abyss/internal/js.GetCurrentContext",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/js.GetCurrentContext",
+                              "file": "internal/js/dom_events.go",
+                              "label": "→ GetCurrentContext in internal/js/dom_events.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "call:internal/browser/browser_update.go:ProcessTimers:15628341",
+                          "kind": "call",
+                          "label": "Вызов ProcessTimers",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 145,
+                            "end_line": 145
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/js.ProcessTimers",
+                          "summary": "→ github.com/starframe/abyss/internal/js.ProcessTimers",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/js.ProcessTimers",
+                              "file": "internal/js/dom_script.go",
+                              "label": "→ ProcessTimers in internal/js/dom_script.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "if:internal/browser/browser_update.go:15628372",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_update.go",
+                            "start_line": 146,
+                            "end_line": 148
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "js.IsDirty()",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/browser/browser_update.go:ZoomFactor:15628447",
+                              "kind": "call",
+                              "label": "Вызов ZoomFactor",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 147,
+                                "end_line": 147
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                              "summary": "→ github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                  "file": "internal/browser/browser.go",
+                                  "label": "→ ZoomFactor in internal/browser/browser.go"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "call:internal/browser/browser_update.go:reRenderCmd:15628426",
+                              "kind": "call",
+                              "label": "Вызов reRenderCmd",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser_update.go",
+                                "start_line": 147,
+                                "end_line": 147
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                              "summary": "→ github.com/starframe/abyss/internal/browser.reRenderCmd",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                                  "file": "internal/browser/browser_page.go",
+                                  "label": "→ reRenderCmd in internal/browser/browser_page.go"
+                                }
+                              ]
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "call:internal/browser/browser_update.go:tickCmd:15628516",
+                      "kind": "call",
+                      "label": "Вызов tickCmd",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 150,
+                        "end_line": 150
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.tickCmd",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.tickCmd",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.tickCmd",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ tickCmd in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_update.go:15628532",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_update.go",
+                    "start_line": 156,
+                    "end_line": 156
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser_update.go:tickCmd:15628846",
+                      "kind": "call",
+                      "label": "Вызов tickCmd",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_update.go",
+                        "start_line": 160,
+                        "end_line": 160
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.tickCmd",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.tickCmd",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.tickCmd",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ tickCmd in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_update.go:15628862",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_update.go",
+                    "start_line": 164,
+                    "end_line": 164
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser_update.go:15628988",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_update.go",
+                "start_line": 168,
+                "end_line": 168
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

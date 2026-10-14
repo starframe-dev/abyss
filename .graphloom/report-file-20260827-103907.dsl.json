@@ -1,0 +1,1973 @@
+{
+  "title": "internal/js/dom_query.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/dom_query.go",
+      "kind": "group",
+      "label": "Файл dom_query.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom_query.go",
+        "start_line": 1,
+        "end_line": 239
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Внутренний модуль для DOM-запросов",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/dom_query.go:getParentNode:15449941",
+          "kind": "group",
+          "label": "Функция getParentNode",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 10,
+            "end_line": 19
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getParentNode",
+          "summary": "Получить родительский узел",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15450055",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 15,
+                "end_line": 17
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15450072",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 16,
+                    "end_line": 16
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15450093",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 18,
+                "end_line": 18
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getParentNodeJS",
+              "file": "internal/js/dom.go",
+              "label": "← getParentNodeJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:getChildren:15450159",
+          "kind": "group",
+          "label": "Функция getChildren",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 22,
+            "end_line": 31
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getChildren",
+          "summary": "Получить дочерние узлы",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15450273",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 27,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15450290",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 28,
+                    "end_line": 28
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15450311",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 30,
+                "end_line": 30
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getChildrenJS",
+              "file": "internal/js/dom.go",
+              "label": "← getChildrenJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:getElementsByTagName:15450402",
+          "kind": "group",
+          "label": "Функция getElementsByTagName",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 34,
+            "end_line": 46
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getElementsByTagName",
+          "summary": "Получить элементы по имени тега",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/dom_query.go:15450573",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 40,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебрать все узлы",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15450607",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 41,
+                    "end_line": 43
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка типа и имени тега",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15450738",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 45,
+                "end_line": 45
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementsByTagNameJS",
+              "file": "internal/js/dom.go",
+              "label": "← getElementsByTagNameJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:getElementsByClassName:15450829",
+          "kind": "group",
+          "label": "Функция getElementsByClassName",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 49,
+            "end_line": 69
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getElementsByClassName",
+          "summary": "Получить элементы по классу",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/dom_query.go:15450965",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 54,
+                "end_line": 67
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебрать все узлы",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15450999",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 55,
+                    "end_line": 66
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка типа узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_query.go:GetAttr:15451049",
+                      "kind": "call",
+                      "label": "Вызов GetAttr",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 56,
+                        "end_line": 56
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+                      "summary": "Получить атрибут класса",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+                          "file": "internal/dom/dom.go",
+                          "label": "→ GetAttr in internal/dom/dom.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "if:internal/js/dom_query.go:15451080",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 57,
+                        "end_line": 65
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверка на пустой класс",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "loop:internal/js/dom_query.go:15451158",
+                          "kind": "loop",
+                          "label": "Цикл",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/js/dom_query.go",
+                            "start_line": 59,
+                            "end_line": 64
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Перебрать классы",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "if:internal/js/dom_query.go:15451206",
+                              "kind": "decision",
+                              "label": "Условие",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/js/dom_query.go",
+                                "start_line": 60,
+                                "end_line": 63
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Сравнение класса",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15451381",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 68,
+                "end_line": 68
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementsByClassNameJS",
+              "file": "internal/js/dom.go",
+              "label": "← getElementsByClassNameJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:querySelector:15451488",
+          "kind": "group",
+          "label": "Функция querySelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 72,
+            "end_line": 82
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.querySelector",
+          "summary": "Найти первый элемент по селектору",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15451627",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 77,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15451656",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 78,
+                    "end_line": 78
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15451678",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 81,
+                "end_line": 81
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorJS",
+              "file": "internal/js/dom.go",
+              "label": "← querySelectorJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:querySelectorAll:15451802",
+          "kind": "group",
+          "label": "Функция querySelectorAll",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 85,
+            "end_line": 95
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.querySelectorAll",
+          "summary": "Найти все элементы по селектору",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15451946",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 90,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15451975",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 91,
+                    "end_line": 91
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15451997",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 94,
+                "end_line": 94
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorAllJS",
+              "file": "internal/js/dom.go",
+              "label": "← querySelectorAllJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:matches:15452080",
+          "kind": "group",
+          "label": "Функция matches",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 98,
+            "end_line": 106
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.matches",
+          "summary": "Проверить соответствие селектору",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15452201",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 102,
+                "end_line": 104
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15452230",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 103,
+                    "end_line": 103
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15452253",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 105,
+                "end_line": 105
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.matchesJS",
+              "file": "internal/js/dom.go",
+              "label": "← matchesJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:closest:15452346",
+          "kind": "group",
+          "label": "Функция closest",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 109,
+            "end_line": 117
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.closest",
+          "summary": "Найти ближайшего предка по селектору",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15452472",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 113,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15452501",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 114,
+                    "end_line": 114
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15452522",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 116,
+                "end_line": 116
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.closestJS",
+              "file": "internal/js/dom.go",
+              "label": "← closestJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:cloneNode:15452608",
+          "kind": "group",
+          "label": "Функция cloneNode",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 120,
+            "end_line": 141
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.cloneNode",
+          "summary": "Клонировать узел",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15452730",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 124,
+                "end_line": 126
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15452759",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 125,
+                    "end_line": 125
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom_query.go:Clone:15452790",
+              "kind": "call",
+              "label": "Вызов Clone",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 128,
+                "end_line": 128
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.Clone",
+              "summary": "Создать клон узла",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.Clone",
+                  "file": "internal/dom/dom.go",
+                  "label": "→ Clone in internal/dom/dom.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/js/dom_query.go:15452808",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 129,
+                "end_line": 131
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на nil клон",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15452834",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 130,
+                    "end_line": 130
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15452997",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 140,
+                "end_line": 140
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.cloneNodeJS",
+              "file": "internal/js/dom.go",
+              "label": "← cloneNodeJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:contains:15453082",
+          "kind": "group",
+          "label": "Функция contains",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 144,
+            "end_line": 161
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.contains",
+          "summary": "Проверить вложенность узла",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15453133",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 145,
+                "end_line": 147
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на совпадение ID",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15453166",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 146,
+                    "end_line": 146
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_query.go:15453293",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 152,
+                "end_line": 154
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибки или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15453351",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 153,
+                    "end_line": 153
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_query.go:15453374",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 155,
+                "end_line": 159
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Подниматься по родителям",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15453431",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 156,
+                    "end_line": 158
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на совпадение родителя",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_query.go:15453462",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 157,
+                        "end_line": 157
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15453494",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 160,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.containsJS",
+              "file": "internal/js/dom.go",
+              "label": "← containsJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:previousElementSibling:15453590",
+          "kind": "group",
+          "label": "Функция previousElementSibling",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 164,
+            "end_line": 184
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.previousElementSibling",
+          "summary": "Получить предыдущий элемент-сестру",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15453714",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 168,
+                "end_line": 170
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15453762",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 169,
+                    "end_line": 169
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_query.go:15453825",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 173,
+                "end_line": 182
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебрать предыдущих сестёр",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15453918",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 175,
+                    "end_line": 178
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на совпадение узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/js/dom_query.go:15453998",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 179,
+                    "end_line": 181
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на найденный элемент",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_query.go:15454054",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 180,
+                        "end_line": 180
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15454087",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 183,
+                "end_line": 183
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.previousElementSiblingJS",
+              "file": "internal/js/dom.go",
+              "label": "← previousElementSiblingJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:nextElementSibling:15454173",
+          "kind": "group",
+          "label": "Функция nextElementSibling",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 187,
+            "end_line": 206
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.nextElementSibling",
+          "summary": "Получить следующий элемент-сестру",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15454293",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 191,
+                "end_line": 193
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15454341",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 192,
+                    "end_line": 192
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_query.go:15454404",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 196,
+                "end_line": 204
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебрать следующих сестёр",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15454452",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 197,
+                    "end_line": 200
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на совпадение узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/js/dom_query.go:15454532",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 201,
+                    "end_line": 203
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на найденный элемент",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_query.go:15454588",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 202,
+                        "end_line": 202
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15454621",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 205,
+                "end_line": 205
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.nextElementSiblingJS",
+              "file": "internal/js/dom.go",
+              "label": "← nextElementSiblingJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:firstElementChild:15454705",
+          "kind": "group",
+          "label": "Функция firstElementChild",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 209,
+            "end_line": 222
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.firstElementChild",
+          "summary": "Получить первого дочернего элемента",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15454824",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 213,
+                "end_line": 215
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15454853",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 214,
+                    "end_line": 214
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_query.go:15454874",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 216,
+                "end_line": 220
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебрать дочерние узлы",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15454917",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 217,
+                    "end_line": 219
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на элемент-дочерний",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_query.go:15454964",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 218,
+                        "end_line": 218
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15454997",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 221,
+                "end_line": 221
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.firstElementChildJS",
+              "file": "internal/js/dom.go",
+              "label": "← firstElementChildJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_query.go:lastElementChild:15455079",
+          "kind": "group",
+          "label": "Функция lastElementChild",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_query.go",
+            "start_line": 225,
+            "end_line": 239
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.lastElementChild",
+          "summary": "Получить последнего дочернего элемента",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_query.go:15455197",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 229,
+                "end_line": 231
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_query.go:15455226",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 230,
+                    "end_line": 230
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_query.go:15455247",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 232,
+                "end_line": 237
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебрать дочерние узлы",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_query.go:15455330",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_query.go",
+                    "start_line": 234,
+                    "end_line": 236
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на элемент-дочерний",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_query.go:15455377",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_query.go",
+                        "start_line": 235,
+                        "end_line": 235
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_query.go:15455410",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_query.go",
+                "start_line": 238,
+                "end_line": 238
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.lastElementChildJS",
+              "file": "internal/js/dom.go",
+              "label": "← lastElementChildJS in internal/js/dom.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

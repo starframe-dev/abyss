@@ -1,0 +1,3830 @@
+{
+  "title": "internal/browser/browser.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/browser/browser.go",
+      "kind": "group",
+      "label": "Файл пакета браузера",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 1,
+        "end_line": 255
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основной файл пакета, реализующий TUI-браузер с использованием Bubble Tea.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/browser/browser.go:Mode:15609647",
+          "kind": "group",
+          "label": "Тип режима интерфейса",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 17,
+            "end_line": 17
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определяет перечисление констант для различных состояний отображения в браузере.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeAddress:15609666",
+          "kind": "state",
+          "label": "Режим ввода адреса",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 20,
+            "end_line": 20
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeAddress",
+          "summary": "Первый режим, когда пользователь вводит URL-адрес в строке ввода.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeLoading:15609691",
+          "kind": "state",
+          "label": "Режим загрузки",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 21,
+            "end_line": 21
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeLoading",
+          "summary": "Временный режим, показывающий индикатор загрузки страницы.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeView:15609704",
+          "kind": "state",
+          "label": "Режим просмотра",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 22,
+            "end_line": 22
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeView",
+          "summary": "Основной режим отображения загруженного контента страницы.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeError:15609714",
+          "kind": "state",
+          "label": "Режим ошибки",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 23,
+            "end_line": 23
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeError",
+          "summary": "Режим отображения сообщений об ошибках при загрузке страницы.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:Tab:15609781",
+          "kind": "group",
+          "label": "Структура вкладки браузера",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 27,
+            "end_line": 35
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Tab",
+          "summary": "Хранит состояние отдельной вкладки: URL, режим, содержимое и параметры отображения.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:Model:15610010",
+          "kind": "group",
+          "label": "Модель браузера",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 38,
+            "end_line": 47
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model",
+          "summary": "Основная структура Bubble Tea, содержащая состояние всего интерфейса браузера.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:pageLoadedMsg:15610309",
+          "kind": "group",
+          "label": "Сообщение о загрузке страницы",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 50,
+            "end_line": 54
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.pageLoadedMsg",
+          "summary": "Сообщение, отправляемое после успешной загрузки контента страницы.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:pageErrorMsg:15610430",
+          "kind": "group",
+          "label": "Сообщение об ошибке загрузки",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 57,
+            "end_line": 59
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.pageErrorMsg",
+          "summary": "Сообщение, отправляемое при неудачной попытке загрузки страницы.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:tickMsg:15610541",
+          "kind": "group",
+          "label": "Сообщение таймера",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 62,
+            "end_line": 62
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.tickMsg",
+          "summary": "Периодическое сообщение для проверки и обновления DOM-элементов.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:tickCmd:15610618",
+          "kind": "group",
+          "label": "Команда таймера",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 65,
+            "end_line": 69
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.tickCmd",
+          "summary": "Возвращает команду, которая ожидает следующего интервала таймера для обновлений.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser.go:15610644",
+              "kind": "output",
+              "label": "Возврат команды таймера",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 66,
+                "end_line": 68
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает команду, которая возвращает сообщение таймера через 500 миллисекунд.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15610644"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Init",
+              "file": "internal/browser/browser.go",
+              "label": "← Init in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "variable:internal/browser/browser.go:sessionFile:15610806",
+          "kind": "state",
+          "label": "Путь к файлу сессии",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 72,
+            "end_line": 72
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.sessionFile",
+          "summary": "Хранит путь к файлу для сохранения и восстановления состояния вкладок.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:sessionData:15610933",
+          "kind": "group",
+          "label": "Структура данных сессии",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 75,
+            "end_line": 77
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.sessionData",
+          "summary": "Хранит список URL-адресов для восстановления вкладок из файла сессии.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:saveSession:15611050",
+          "kind": "group",
+          "label": "Сохранение сессии",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 80,
+            "end_line": 103
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.saveSession",
+          "summary": "Записывает текущие URL-адреса вкладок в файл сессии для последующего восстановления.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15611082",
+              "kind": "decision",
+              "label": "Проверка пустых вкладок",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 81,
+                "end_line": 83
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, есть ли хотя бы одна вкладка перед сохранением сессии.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15611082"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15611104",
+                  "kind": "output",
+                  "label": "Ранний возврат при пустых вкладках",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 82,
+                    "end_line": 82
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает из функции, если список вкладок пуст и сохранять нечего.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15611104"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611115",
+              "kind": "action",
+              "label": "Инициализация списка URL",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 81,
+                "end_line": 81
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт пустой слайс для хранения URL-адресов вкладок.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611115"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/browser/browser.go:15611134",
+              "kind": "loop",
+              "label": "Цикл по вкладкам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 85,
+                "end_line": 89
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает все вкладки для сбора их URL-адресов.",
+              "coverage_ids": [
+                "loop:internal/browser/browser.go:15611134"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/browser/browser.go:15611161",
+                  "kind": "decision",
+                  "label": "Проверка URL вкладки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 86,
+                    "end_line": 88
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, содержит ли вкладка непустой URL-адрес.",
+                  "coverage_ids": [
+                    "if:internal/browser/browser.go:15611161"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser.go:15611181",
+                      "kind": "action",
+                      "label": "Добавление URL в список",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 87,
+                        "end_line": 87
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Добавляет URL-адрес владки в список для сохранения.",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser.go:15611181"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15611216",
+              "kind": "decision",
+              "label": "Проверка пустого списка URL",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 90,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, есть ли хотя бы один URL для сохранения.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15611216"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15611238",
+                  "kind": "output",
+                  "label": "Ранний возврат при пустом списке",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 91,
+                    "end_line": 91
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает, если собранный список URL-адресов пуст.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15611238"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611249",
+              "kind": "action",
+              "label": "Создание структуры сессии",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 94,
+                "end_line": 94
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт структуру сессии с собранными URL-адресами.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611249"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611282",
+              "kind": "action",
+              "label": "Получение директории файла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 94,
+                "end_line": 94
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Извлекает директорию пути к файлу сессии для создания директории.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611282"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15611316",
+              "kind": "decision",
+              "label": "Проверка ошибки создания директории",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 95,
+                "end_line": 97
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, успешно ли была создана директория файла.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15611316"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15611319",
+                  "kind": "action",
+                  "label": "Создание директории файла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 95,
+                    "end_line": 95
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Создаёт директорию файла сессии, если она не существует.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15611319"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15611365",
+                  "kind": "output",
+                  "label": "Ранний возврат при ошибке директории",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 96,
+                    "end_line": 96
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает при ошибке создания директории файла сессии.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15611365"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611376",
+              "kind": "action",
+              "label": "Сериализация данных сессии",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 98,
+                "end_line": 98
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Преобразует структуру сессии в JSON-байты для записи в файл.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611376"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15611406",
+              "kind": "decision",
+              "label": "Проверка ошибки сериализации",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 99,
+                "end_line": 101
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, успешно ли была сериализована структура сессии.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15611406"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15611424",
+                  "kind": "output",
+                  "label": "Ранний возврат при ошибке сериализации",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 100,
+                    "end_line": 100
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает при ошибке сериализации данных сессии.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15611424"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611435",
+              "kind": "action",
+              "label": "Запись файла сессии",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 102,
+                "end_line": 102
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Записывает сериализованные данные сессии в файл с правами 0644.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611435"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:loadSession:15611539",
+          "kind": "group",
+          "label": "Загрузка сессии",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 106,
+            "end_line": 116
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.loadSession",
+          "summary": "Читает файл сессии и возвращает сохранённые URL-адреса вкладок.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/browser/browser.go:15611570",
+              "kind": "action",
+              "label": "Чтение файла сессии",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 107,
+                "end_line": 107
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Читает содержимое файла сессии из указанной директории.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611570"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15611606",
+              "kind": "decision",
+              "label": "Проверка ошибки чтения файла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 108,
+                "end_line": 110
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, успешно ли был прочитан файл сессии.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15611606"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15611624",
+                  "kind": "output",
+                  "label": "Ранний возврат при ошибке чтения",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 109,
+                    "end_line": 109
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает nil при ошибке чтения файла сессии.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15611624"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611639",
+              "kind": "action",
+              "label": "Декларация структуры сессии",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 112,
+                "end_line": 112
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт переменную для хранения данных сессии из файла.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611639"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15611661",
+              "kind": "decision",
+              "label": "Проверка ошибки десериализации",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 112,
+                "end_line": 114
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, успешно ли была десериализована структура сессии.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15611661"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15611664",
+                  "kind": "action",
+                  "label": "Десериализация данных сессии",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 112,
+                    "end_line": 112
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Преобразует JSON-байты в структуру сессии для извлечения URL-адресов.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15611664"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15611712",
+                  "kind": "output",
+                  "label": "Ранний возврат при ошибке десериализации",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 113,
+                    "end_line": 113
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает nil при ошибке десериализации данных сессии.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15611712"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15611727",
+              "kind": "output",
+              "label": "Возврат URL-адресов сессии",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 115,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает список URL-адресов из десериализованной структуры сессии.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15611727"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.New",
+              "file": "internal/browser/browser.go",
+              "label": "← New in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:New:15611783",
+          "kind": "group",
+          "label": "Создание новой модели браузера",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 119,
+            "end_line": 148
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.New",
+          "summary": "Инициализирует новую модель браузера с настройками по умолчанию и восстановлением сессии.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/browser/browser.go:15611803",
+              "kind": "action",
+              "label": "Создание строки ввода",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 120,
+                "end_line": 120
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт новую строку ввода для ввода URL-адресов.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611803"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611826",
+              "kind": "action",
+              "label": "Настройка плейсхолдера строки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 120,
+                "end_line": 120
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает текст плейсхолдера для строки ввода URL-адресов.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611826"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611859",
+              "kind": "action",
+              "label": "Фокусировка строки ввода",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 122,
+                "end_line": 122
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Фокусирует строку ввода, чтобы пользователь мог сразу вводить URL.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611859"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611871",
+              "kind": "action",
+              "label": "Настройка ширины строки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 122,
+                "end_line": 122
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает ширину строки ввода в 50 символов.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611871"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611887",
+              "kind": "action",
+              "label": "Создание компонента просмотра",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 125,
+                "end_line": 125
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт новый компонент просмотра с размерами 80x24 символов.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611887"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15611916",
+              "kind": "action",
+              "label": "Инициализация модели браузера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 127,
+                "end_line": 135
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт структуру модели браузера с начальными значениями по умолчанию.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15611916"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612156",
+              "kind": "action",
+              "label": "Присваивание списка URL",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 138,
+                "end_line": 138
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Присваивает полученный список URL адресов локальной переменной для дальнейшей обработки.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612156"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:loadSession:15612164",
+                  "kind": "call",
+                  "label": "Загрузка сессии",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 106,
+                    "end_line": 116
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.loadSession",
+                  "summary": "Вызывает функцию loadSession для получения списка URL адресов из сохранённой сессии.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.loadSession",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ loadSession in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15612179",
+              "kind": "decision",
+              "label": "Проверка наличия URL",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 139,
+                "end_line": 145
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, содержит ли список URL адреса, и если да, выполняет инициализацию вкладок.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15612179"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15612200",
+                  "kind": "action",
+                  "label": "Очистка вкладок",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 139,
+                    "end_line": 139
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обнуляет массив вкладок перед добавлением новых адресов из сессии.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15612200"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/browser/browser.go:15612215",
+                  "kind": "loop",
+                  "label": "Итерация по URL адресам",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 141,
+                    "end_line": 143
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Перебирает каждый URL из загруженного списка сессии для создания новых вкладок.",
+                  "coverage_ids": [
+                    "loop:internal/browser/browser.go:15612215"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser.go:15612243",
+                      "kind": "action",
+                      "label": "Добавление вкладки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 142,
+                        "end_line": 142
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Добавляет новую вкладку в массив с указанным URL адресом и режимом просмотра.",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser.go:15612243"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/browser/browser.go:15612305",
+                  "kind": "action",
+                  "label": "Установка активной вкладки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 144,
+                    "end_line": 144
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Устанавливает индекс последней добавленной вкладки как текущей активной вкладки.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15612305"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15612340",
+              "kind": "output",
+              "label": "Возврат модели",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 147,
+                "end_line": 147
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает обновлённую модель после инициализации вкладок из сессии.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15612340"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss.main",
+              "file": "main.go",
+              "label": "← main in main.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:Init:15612382",
+          "kind": "group",
+          "label": "Инициализация модели",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 151,
+            "end_line": 153
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.Init",
+          "summary": "Реализует метод Init для запуска пакетной команды с миганием курсора и таймером.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser.go:15612415",
+              "kind": "output",
+              "label": "Команда пакетной инициализации",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 152,
+                "end_line": 152
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает пакетную команду, объединяющую мигание текстового поля и таймер.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15612415"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:active:15612518",
+          "kind": "group",
+          "label": "Получение активной вкладки",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 156,
+            "end_line": 161
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+          "summary": "Возвращает указатель на текущую активную вкладку или nil если вкладки не существует.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15612551",
+              "kind": "decision",
+              "label": "Проверка валидности индекса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 157,
+                "end_line": 159
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, находится ли индекс активной вкладки в допустимых пределах массива.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15612551"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15612604",
+                  "kind": "output",
+                  "label": "Возврат nil",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 158,
+                    "end_line": 158
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает nil когда индекс активной вкладки выходит за границы массива.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15612604"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15612619",
+              "kind": "output",
+              "label": "Возврат активной вкладки",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 160,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает указатель на активную вкладку по её индексу в массиве.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15612619"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+              "file": "internal/browser/browser.go",
+              "label": "← ANSILines in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+              "file": "internal/browser/browser.go",
+              "label": "← ASCIILines in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Err",
+              "file": "internal/browser/browser.go",
+              "label": "← Err in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+              "file": "internal/browser/browser.go",
+              "label": "← OffsetX in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser.go",
+              "label": "← Update in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser.go",
+              "label": "← Update in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+              "file": "internal/browser/browser.go",
+              "label": "← ZoomFactor in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← restoreActiveTab in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:saveActiveTab:15612718",
+          "kind": "group",
+          "label": "Сохранение состояния активной вкладки",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 164,
+            "end_line": 175
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+          "summary": "Сохраняет текущее состояние просмотра в активную вкладку для последующего восстановления.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/browser/browser.go:15612753",
+              "kind": "action",
+              "label": "Присваивание ссылки на вкладку",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 165,
+                "end_line": 165
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612753"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15612758",
+                  "kind": "call",
+                  "label": "Получение активной вкладки",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 156,
+                    "end_line": 161
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15612770",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 166,
+                "end_line": 168
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, завершает выполнение.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15612770"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15612786",
+                  "kind": "output",
+                  "label": "Ранний возврат",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 167,
+                    "end_line": 167
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает функцию без сохранения состояния если активная вкладка не существует.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15612786"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612797",
+              "kind": "action",
+              "label": "Сохранение URL адреса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 169,
+                "end_line": 169
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет текущий URL адрес в активную вкладку из модели.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612797"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612824",
+              "kind": "action",
+              "label": "Сохранение режима просмотра",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 169,
+                "end_line": 169
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет текущий режим просмотра в активную вкладку из модели.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612824"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612841",
+              "kind": "action",
+              "label": "Сохранение ANSI строк",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 171,
+                "end_line": 171
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет строки с ANSI кодами из модели в активную вкладку.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612841"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:ANSILines:15612855",
+                  "kind": "call",
+                  "label": "Получение ANSI строк",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 222,
+                    "end_line": 227
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                  "summary": "Вызывает метод ANSILines для получения строк с ANSI кодами из модели.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ ANSILines in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612870",
+              "kind": "action",
+              "label": "Сохранение ASCII строк",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 172,
+                "end_line": 172
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет ASCII строки из модели в активную вкладку.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612870"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:ASCIILines:15612885",
+                  "kind": "call",
+                  "label": "Получение ASCII строк",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 229,
+                    "end_line": 234
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+                  "summary": "Вызывает метод ASCIILines для получения ASCII строк из модели.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ ASCIILines in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612901",
+              "kind": "action",
+              "label": "Сохранение коэффициента зума",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 173,
+                "end_line": 173
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет коэффициент масштабирования из модели в активную вкладку.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612901"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:ZoomFactor:15612916",
+                  "kind": "call",
+                  "label": "Получение коэффициента зума",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 236,
+                    "end_line": 241
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                  "summary": "Вызывает метод ZoomFactor для получения текущего коэффициента масштабирования.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ ZoomFactor in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15612932",
+              "kind": "action",
+              "label": "Сохранение смещения по X",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 174,
+                "end_line": 174
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет горизонтальное смещение из модели в активную вкладку.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15612932"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:OffsetX:15612944",
+                  "kind": "call",
+                  "label": "Получение смещения по X",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 243,
+                    "end_line": 248
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                  "summary": "Вызывает метод OffsetX для получения горизонтального смещения просмотра.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ OffsetX in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:restoreActiveTab:15613020",
+          "kind": "group",
+          "label": "Восстановление состояния активной вкладки",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 178,
+            "end_line": 187
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+          "summary": "Восстанавливает состояние просмотра из сохранённых данных активной вкладки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/browser/browser.go:15613058",
+              "kind": "action",
+              "label": "Присваивание ссылки на вкладку",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 179,
+                "end_line": 179
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15613058"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15613063",
+                  "kind": "call",
+                  "label": "Получение активной вкладки",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 156,
+                    "end_line": 161
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15613075",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 180,
+                "end_line": 182
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, завершает выполнение.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15613075"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15613091",
+                  "kind": "output",
+                  "label": "Ранний возврат",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 181,
+                    "end_line": 181
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает функцию без восстановления состояния если активная вкладка не существует.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15613091"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15613102",
+              "kind": "action",
+              "label": "Восстановление режима просмотра",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 184,
+                "end_line": 184
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Восстанавливает режим просмотра из сохранённых данных активной вкладки.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15613102"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15613119",
+              "kind": "action",
+              "label": "Восстановление URL адреса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 184,
+                "end_line": 184
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Восстанавливает URL адрес из активной вкладки в адресное поле модели.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15613119"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15613146",
+              "kind": "action",
+              "label": "Восстановление контента просмотра",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 185,
+                "end_line": 185
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Восстанавливает содержимое просмотра из ASCII строк активной вкладки.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15613146"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser.go:15613203",
+              "kind": "action",
+              "label": "Переход наверх просмотра",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 186,
+                "end_line": 186
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перемещает просмотр наверх после восстановления содержимого.",
+              "coverage_ids": [
+                "statement:internal/browser/browser.go:15613203"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:Update:15613259",
+          "kind": "group",
+          "label": "Обработка сообщений обновления",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 190,
+            "end_line": 219
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.Update",
+          "summary": "Реализует метод Update для обработки входящих сообщений и обновления состояния модели.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/browser/browser.go:15613319",
+              "kind": "action",
+              "label": "Внешний свитч по типу сообщения",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 204,
+                "end_line": 204
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переключает обработку по типу сообщения: клавиатурные события, загрузка страницы или ошибки.",
+              "coverage_ids": [
+                "switch:internal/browser/browser.go:15613319"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15613326",
+                  "kind": "action",
+                  "label": "Свитч по типу сообщения",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 193,
+                    "end_line": 193
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет переключение по типу входящего сообщения для обработки разных событий.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15613326"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser.go:15613347",
+                  "kind": "action",
+                  "label": "Обработка клавиатурных событий",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 193,
+                    "end_line": 193
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обрабатывает сообщения о нажатии клавиш для управления приложением.",
+                  "coverage_ids": [
+                    "case:internal/browser/browser.go:15613347"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "switch:internal/browser/browser.go:15613366",
+                      "kind": "action",
+                      "label": "Внутренний свитч по клавише",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 193,
+                        "end_line": 193
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Переключает обработку по нажатой клавише внутри клавиатурных событий.",
+                      "coverage_ids": [
+                        "switch:internal/browser/browser.go:15613366"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "case:internal/browser/browser.go:15613390",
+                          "kind": "action",
+                          "label": "Обработка клавиш выхода",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 193,
+                            "end_line": 193
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Обрабатывает нажатие Ctrl+C или Q для завершения работы приложения.",
+                          "coverage_ids": [
+                            "case:internal/browser/browser.go:15613390"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "return:internal/browser/browser.go:15613413",
+                              "kind": "output",
+                              "label": "Завершение приложения",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/browser/browser.go",
+                                "start_line": 195,
+                                "end_line": 195
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Возвращает модель и команду завершения приложения при нажатии клавиш выхода.",
+                              "coverage_ids": [
+                                "return:internal/browser/browser.go:15613413"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "case:internal/browser/browser.go:15613434",
+                          "kind": "action",
+                          "label": "Обработка клавиш навигации",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 193,
+                            "end_line": 193
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Обрабатывает нажатие Tab или Shift+Tab для переключения между вкладками.",
+                          "coverage_ids": [
+                            "case:internal/browser/browser.go:15613434"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "return:internal/browser/browser.go:15613462",
+                              "kind": "output",
+                              "label": "Возврат без изменений",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/browser/browser.go",
+                                "start_line": 197,
+                                "end_line": 197
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Возвращает модель без команды при переключении вкладок клавишами.",
+                              "coverage_ids": [
+                                "return:internal/browser/browser.go:15613462"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser.go:15613481",
+                  "kind": "action",
+                  "label": "Обработка загруженной страницы",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 200,
+                    "end_line": 200
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обрабатывает сообщение о успешной загрузке страницы и обновляет её содержимое.",
+                  "coverage_ids": [
+                    "case:internal/browser/browser.go:15613481"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/browser/browser.go:15613503",
+                      "kind": "decision",
+                      "label": "Проверка существования вкладки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 200,
+                        "end_line": 203
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, существует ли активная вкладка, и если нет, пропускает обновление.",
+                      "coverage_ids": [
+                        "if:internal/browser/browser.go:15613503"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser.go:15613506",
+                          "kind": "action",
+                          "label": "Присваивание ссылки на вкладку",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 200,
+                            "end_line": 200
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser.go:15613506"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/browser/browser.go:active:15613511",
+                              "kind": "call",
+                              "label": "Получение активной вкладки",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser.go",
+                                "start_line": 156,
+                                "end_line": 161
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                              "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                              "coverage_ids": [],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                                  "file": "internal/browser/browser.go",
+                                  "label": "→ active in internal/browser/browser.go"
+                                }
+                              ]
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/browser/browser.go:15613537",
+                          "kind": "action",
+                          "label": "Сохранение ANSI строк",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 200,
+                            "end_line": 200
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Сохраняет полученные ANSI строки из сообщения в активную вкладку.",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser.go:15613537"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/browser/browser.go:15613563",
+                          "kind": "action",
+                          "label": "Сохранение ASCII строк",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 200,
+                            "end_line": 200
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Сохраняет полученные ASCII строки из сообщения в активную вкладку.",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser.go:15613563"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser.go:15613594",
+                      "kind": "action",
+                      "label": "Сохранение содержимого страницы",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 204,
+                        "end_line": 204
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Сохраняет содержимое загруженной страницы в поле модели.",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser.go:15613594"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser.go:15613648",
+                      "kind": "action",
+                      "label": "Установка режима просмотра",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 204,
+                        "end_line": 204
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Устанавливает режим просмотра для отображения загруженной страницы.",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser.go:15613648"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "return:internal/browser/browser.go:15613668",
+                      "kind": "output",
+                      "label": "Возврат модели",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 206,
+                        "end_line": 206
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает обновлённую модель после обработки загруженной страницы.",
+                      "coverage_ids": [
+                        "return:internal/browser/browser.go:15613668"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser.go:15613683",
+                  "kind": "action",
+                  "label": "Обработка ошибки загрузки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 208,
+                    "end_line": 208
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обрабатывает сообщение об ошибке при загрузке страницы.",
+                  "coverage_ids": [
+                    "case:internal/browser/browser.go:15613683"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/browser/browser.go:15613704",
+                      "kind": "decision",
+                      "label": "Проверка существования вкладки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 208,
+                        "end_line": 211
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, существует ли активная вкладка, и если нет, пропускает обновление.",
+                      "coverage_ids": [
+                        "if:internal/browser/browser.go:15613704"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser.go:15613707",
+                          "kind": "action",
+                          "label": "Присваивание ссылки на вкладку",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 208,
+                            "end_line": 208
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser.go:15613707"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/browser/browser.go:active:15613712",
+                              "kind": "call",
+                              "label": "Получение активной вкладки",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser.go",
+                                "start_line": 156,
+                                "end_line": 161
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                              "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                              "coverage_ids": [],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                                  "file": "internal/browser/browser.go",
+                                  "label": "→ active in internal/browser/browser.go"
+                                }
+                              ]
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/browser/browser.go:15613738",
+                          "kind": "action",
+                          "label": "Сохранение ошибки",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 208,
+                            "end_line": 208
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Сохраняет ошибку загрузки в активную вкладку.",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser.go:15613738"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/browser/browser.go:15613757",
+                          "kind": "action",
+                          "label": "Установка режима ошибки",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser.go",
+                            "start_line": 208,
+                            "end_line": 208
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Устанавливает режим отображения ошибки в активной вкладке.",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser.go:15613757"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser.go:15613782",
+                      "kind": "action",
+                      "label": "Установка режима ошибки модели",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 208,
+                        "end_line": 208
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Устанавливает глобальный режим отображения ошибки в модели.",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser.go:15613782"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "return:internal/browser/browser.go:15613803",
+                      "kind": "output",
+                      "label": "Возврат модели",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 213,
+                        "end_line": 213
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает модель с установленным режимом отображения ошибки.",
+                      "coverage_ids": [
+                        "return:internal/browser/browser.go:15613803"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser.go:15613818",
+                  "kind": "action",
+                  "label": "Обработка таймера",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 214,
+                    "end_line": 216
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обрабатывает периодическое сообщение таймера для обновления DOM.",
+                  "coverage_ids": [
+                    "case:internal/browser/browser.go:15613818"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/browser/browser.go:15613876",
+                      "kind": "output",
+                      "label": "Возврат модели",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 216,
+                        "end_line": 216
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает модель без изменений при обработке сообщения таймера.",
+                      "coverage_ids": [
+                        "return:internal/browser/browser.go:15613876"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15613894",
+              "kind": "output",
+              "label": "Возврат по умолчанию",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 218,
+                "end_line": 218
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает модель без изменений для неизвестных типов сообщений.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15613894"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:ANSILines:15613973",
+          "kind": "group",
+          "label": "Получение ANSI строк",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 222,
+            "end_line": 227
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+          "summary": "Реализует метод для получения строк с ANSI кодами из активной вкладки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15614012",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 223,
+                "end_line": 225
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, возвращает nil.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15614012"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15614015",
+                  "kind": "action",
+                  "label": "Присваивание ссылки на вкладку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 223,
+                    "end_line": 223
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15614015"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser.go:active:15614020",
+                      "kind": "call",
+                      "label": "Получение активной вкладки",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 156,
+                        "end_line": 161
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ active in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15614045",
+                  "kind": "output",
+                  "label": "Возврат ANSI строк",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 224,
+                    "end_line": 224
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает строки с ANSI кодами из активной вкладки.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15614045"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15614068",
+              "kind": "output",
+              "label": "Возврат nil",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 226,
+                "end_line": 226
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает nil когда активная вкладка не существует.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15614068"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:ASCIILines:15614082",
+          "kind": "group",
+          "label": "Получение ASCII строк",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 229,
+            "end_line": 234
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+          "summary": "Реализует метод для получения ASCII строк из активной вкладки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15614122",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 230,
+                "end_line": 232
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, возвращает nil.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15614122"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15614125",
+                  "kind": "action",
+                  "label": "Присваивание ссылки на вкладку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 230,
+                    "end_line": 230
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15614125"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser.go:active:15614130",
+                      "kind": "call",
+                      "label": "Получение активной вкладки",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 156,
+                        "end_line": 161
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ active in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15614155",
+                  "kind": "output",
+                  "label": "Возврат ASCII строк",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 231,
+                    "end_line": 231
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает ASCII строки из активной вкладки.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15614155"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15614179",
+              "kind": "output",
+              "label": "Возврат nil",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 233,
+                "end_line": 233
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает nil когда активная вкладка не существует.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15614179"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:ZoomFactor:15614193",
+          "kind": "group",
+          "label": "Получение коэффициента зума",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 236,
+            "end_line": 241
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+          "summary": "Реализует метод для получения коэффициента масштабирования из активной вкладки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15614232",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 237,
+                "end_line": 239
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, возвращает значение по умолчанию.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15614232"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15614235",
+                  "kind": "action",
+                  "label": "Присваивание ссылки на вкладку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 237,
+                    "end_line": 237
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15614235"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser.go:active:15614240",
+                      "kind": "call",
+                      "label": "Получение активной вкладки",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 156,
+                        "end_line": 161
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ active in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15614265",
+                  "kind": "output",
+                  "label": "Возврат коэффициента зума",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 238,
+                    "end_line": 238
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает коэффициент масштабирования из активной вкладки.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15614265"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15614289",
+              "kind": "output",
+              "label": "Возврат значения по умолчанию",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 240,
+                "end_line": 240
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает значение 1.0 когда активная вкладка не существует.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15614289"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:OffsetX:15614303",
+          "kind": "group",
+          "label": "Получение смещения по X",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 243,
+            "end_line": 248
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+          "summary": "Реализует метод для получения горизонтального смещения из активной вкладки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15614335",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 244,
+                "end_line": 246
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, возвращает значение по умолчанию.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15614335"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15614338",
+                  "kind": "action",
+                  "label": "Присваивание ссылки на вкладку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 244,
+                    "end_line": 244
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15614338"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser.go:active:15614343",
+                      "kind": "call",
+                      "label": "Получение активной вкладки",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 156,
+                        "end_line": 161
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ active in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15614368",
+                  "kind": "output",
+                  "label": "Возврат смещения по X",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 245,
+                    "end_line": 245
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает горизонтальное смещение из активной вкладки.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15614368"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15614389",
+              "kind": "output",
+              "label": "Возврат значения по умолчанию",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 247,
+                "end_line": 247
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает значение 0 когда активная вкладка не существует.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15614389"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:Err:15614401",
+          "kind": "group",
+          "label": "Получение ошибки",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 250,
+            "end_line": 255
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.Err",
+          "summary": "Реализует метод для получения ошибки из активной вкладки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15614431",
+              "kind": "decision",
+              "label": "Проверка существования вкладки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 251,
+                "end_line": 253
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, существует ли активная вкладка, и если нет, возвращает nil.",
+              "coverage_ids": [
+                "if:internal/browser/browser.go:15614431"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser.go:15614434",
+                  "kind": "action",
+                  "label": "Присваивание ссылки на вкладку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 251,
+                    "end_line": 251
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присваивает полученную ссылку на активную вкладку локальной переменной.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser.go:15614434"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser.go:active:15614439",
+                      "kind": "call",
+                      "label": "Получение активной вкладки",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser.go",
+                        "start_line": 156,
+                        "end_line": 161
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "summary": "Вызывает метод active для получения ссылки на текущую активную вкладку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ active in internal/browser/browser.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15614464",
+                  "kind": "output",
+                  "label": "Возврат ошибки",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 252,
+                    "end_line": 252
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает ошибку из активной вкладки.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser.go:15614464"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15614481",
+              "kind": "output",
+              "label": "Возврат nil",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 254,
+                "end_line": 254
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает nil когда активная вкладка не существует.",
+              "coverage_ids": [
+                "return:internal/browser/browser.go:15614481"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

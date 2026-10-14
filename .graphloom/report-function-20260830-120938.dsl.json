@@ -1,0 +1,56 @@
+{
+  "title": "internal/browser/browser.go — Init",
+  "level": "function",
+  "nodes": [
+    {
+      "id": "func:internal/browser/browser.go:Init:15622016",
+      "kind": "group",
+      "label": "Инициализация модели TUI",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 151,
+        "end_line": 153
+      },
+      "element_type": null,
+      "symbol": "github.com/starframe/abyss/internal/browser.Model.Init",
+      "summary": "Функция возвращает пакет команд для запуска текстового интерфейса, включая мигание курсора и периодический тик.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "return:internal/browser/browser.go:15622049",
+          "kind": "output",
+          "label": "Возврат пакета команд",
+          "layer": "data",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 152,
+            "end_line": 152
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Возвращает команду пакета tea.Batch, содержащую мигание текстового ввода и периодический тик для обновления интерфейса.",
+          "coverage_ids": [
+            "return:internal/browser/browser.go:15622049"
+          ],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

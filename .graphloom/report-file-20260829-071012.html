@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Graphloom</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #09090b; color: #e4e4e7; font: 14px/1.5 system-ui, sans-serif; overflow: hidden; }
+  #bar { position: fixed; top: 0; left: 0; right: 0; min-height: 36px; padding: 4px 10px; background: rgba(9,9,11,.94);
+         border-bottom: 1px solid #27272a; display: flex; gap: 8px; align-items: center; z-index: 5; }
+  #bar h1 { font-size: 14px; font-weight: 600; white-space: nowrap; }
+  #bar .crumb { min-width: 0; flex: 1; font-size: 12px; color: #a1a1aa; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #layers { display: flex; flex: 0 0 auto; gap: 7px; align-items: center; }
+  .lchk { font-size: 11px; color: #a1a1aa; display: flex; gap: 3px; align-items: center; cursor: pointer; white-space: nowrap; }
+  #search { flex: 0 0 150px; background: #18181b; border: 1px solid #3f3f46; border-radius: 6px; color: #e4e4e7;
+            padding: 4px 8px; font-size: 12px; width: 150px; }
+  .nav, .tool { background: #27272a; border: 1px solid #3f3f46; color: #e4e4e7; border-radius: 6px;
+         cursor: pointer; font-size: 12px; }
+  .nav { padding: 4px 9px; }
+  .nav:disabled, .tool:disabled { opacity: .4; cursor: default; }
+  .tool { width: 28px; height: 26px; display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+  .tool:hover:not(:disabled), .nav:hover:not(:disabled) { background: #3f3f46; }
+  .tool svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8;
+              stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+  #stage { position: fixed; inset: 0; top: 36px; overflow: auto; padding: 0; background: #0b0d12; }
+  #stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22;
+                  background-image: linear-gradient(#202533 1px, transparent 1px), linear-gradient(90deg, #202533 1px, transparent 1px);
+                  background-size: 32px 32px; }
+  svg { display: block; position: relative; z-index: 1; overflow: visible; }
+  .scope-region { pointer-events: none; }
+  .scope-region rect { stroke-width: 1.2; }
+  .scope-region.dim { opacity: .14; }
+  .node { cursor: pointer; }
+  .collapse-toggle { cursor: pointer; }
+  .collapse-toggle text { pointer-events: none; }
+  .collapse-toggle:hover rect { filter: brightness(1.25); }
+  .node rect { transition: filter .15s, stroke-width .15s; }
+  .node:hover rect { filter: brightness(1.18); }
+  .node.root rect { stroke-width: 2.5; }
+  .node.dim, .edge.dim { opacity: .14; }
+  .edge { stroke: #4b5563; stroke-width: 1.25; fill: none; opacity: .9; }
+  .edge.inferred { stroke-dasharray: 5 4; }
+  .elabel-bg { fill: #09090b; stroke: #27272a; stroke-width: 1; }
+  .elabel { font-size: 10px; fill: #a1a1aa; }
+  .nlabel { font-size: 11px; fill: #f4f4f5; font-weight: 500; }
+  .nsummary { font-size: 9px; fill: #71717a; }
+  .nkind { font-size: 11px; }
+  .hit { stroke: #facc15; stroke-width: 2.5; }
+  #sidebar { position: fixed; top: 36px; right: 0; bottom: 0; width: 380px; background: #18181b;
+             border-left: 1px solid #27272a; padding: 16px; overflow: auto; display: none; z-index: 6; }
+  #sidebar h2 { font-size: 16px; margin-bottom: 2px; padding-right: 20px; }
+  #sidebar .meta { font-size: 12px; color: #a1a1aa; margin-bottom: 10px; }
+  #close { position: absolute; top: 10px; right: 12px; cursor: pointer; color: #71717a;
+           background: none; border: none; font-size: 16px; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; margin-right: 4px; }
+  .chip.on { background: #064e3b; color: #6ee7b7; }
+  .chip.off { background: #27272a; color: #71717a; }
+  pre.code { margin-top: 12px; background: #09090b; border: 1px solid #27272a; border-radius: 8px;
+             padding: 10px; font: 11px/1.6 ui-monospace, monospace; overflow: auto; }
+  pre.code .ln { color: #52525b; display: inline-block; width: 34px; user-select: none; }
+  pre.code .hl { background: #27272a; display: block; }
+  .expand { margin-top: 10px; background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+            padding: 5px 12px; cursor: pointer; font-size: 12px; }
+  .expand { margin-top: 10px; background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+            padding: 5px 12px; cursor: pointer; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <h1>Graphloom</h1>
+  <button class="nav" id="back">←</button>
+  <button class="nav" id="fwd">→</button>
+  <span class="crumb" id="crumb"></span>
+  <span id="layers"></span>
+  <input id="search" placeholder="Поиск…" />
+</div>
+<div id="stage"><svg id="svg"></svg></div>
+<div id="sidebar">
+  <button id="close" aria-label="Закрыть">×</button>
+  <h2 id="s-title"></h2>
+  <div class="meta" id="s-meta"></div>
+  <div id="s-tests"></div>
+  <p id="s-summary" style="margin-top:8px;font-size:13px"></p>
+  <div id="s-refs" style="margin-top:10px;font-size:12px"></div>
+  <div id="s-extra"></div>
+  <pre class="code" id="s-code" style="display:none"></pre>
+</div>
+<script>
+const viz = {"title":"internal/browser/browser.go","level":"file","nodes":[{"id":"file:internal/browser/browser.go","kind":"group","label":"Файл пакета браузера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":1,"end_line":255},"element_type":null,"symbol":null,"summary":"Основной файл пакета, реализующий TUI-браузер с использованием Bubble Tea.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"type:internal/browser/browser.go:Mode:15609647","kind":"group","label":"Тип режима интерфейса","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":17,"end_line":17},"element_type":null,"symbol":null,"summary":"Определяет перечисление констант для различных состояний отображения в браузере.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"variable:internal/browser/browser.go:ModeAddress:15609666","kind":"state","label":"Режим ввода адреса","layer":"state","source":{"file":"internal/browser/browser.go","start_line":20,"end_line":20},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.ModeAddress","summary":"Первый режим, когда пользователь вводит URL-адрес в строке ввода.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"variable:internal/browser/browser.go:ModeLoading:15609691","kind":"state","label":"Режим загрузки","layer":"state","source":{"file":"internal/browser/browser.go","start_line":21,"end_line":21},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.ModeLoading","summary":"Временный режим, показывающий индикатор загрузки страницы.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"variable:internal/browser/browser.go:ModeView:15609704","kind":"state","label":"Режим просмотра","layer":"state","source":{"file":"internal/browser/browser.go","start_line":22,"end_line":22},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.ModeView","summary":"Основной режим отображения загруженного контента страницы.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"variable:internal/browser/browser.go:ModeError:15609714","kind":"state","label":"Режим ошибки","layer":"state","source":{"file":"internal/browser/browser.go","start_line":23,"end_line":23},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.ModeError","summary":"Режим отображения сообщений об ошибках при загрузке страницы.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"type:internal/browser/browser.go:Tab:15609781","kind":"group","label":"Структура вкладки браузера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":27,"end_line":35},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Tab","summary":"Хранит состояние отдельной вкладки: URL, режим, содержимое и параметры отображения.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"type:internal/browser/browser.go:Model:15610010","kind":"group","label":"Модель браузера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":38,"end_line":47},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model","summary":"Основная структура Bubble Tea, содержащая состояние всего интерфейса браузера.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"type:internal/browser/browser.go:pageLoadedMsg:15610309","kind":"group","label":"Сообщение о загрузке страницы","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":50,"end_line":54},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.pageLoadedMsg","summary":"Сообщение, отправляемое после успешной загрузки контента страницы.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"type:internal/browser/browser.go:pageErrorMsg:15610430","kind":"group","label":"Сообщение об ошибке загрузки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":57,"end_line":59},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.pageErrorMsg","summary":"Сообщение, отправляемое при неудачной попытке загрузки страницы.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"type:internal/browser/browser.go:tickMsg:15610541","kind":"group","label":"Сообщение таймера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":62,"end_line":62},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.tickMsg","summary":"Периодическое сообщение для проверки и обновления DOM-элементов.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:tickCmd:15610618","kind":"group","label":"Команда таймера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":65,"end_line":69},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.tickCmd","summary":"Возвращает команду, которая ожидает следующего интервала таймера для обновлений.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15610644","kind":"output","label":"Возврат команды таймера","layer":"data","source":{"file":"internal/browser/browser.go","start_line":66,"end_line":68},"element_type":null,"symbol":null,"summary":"Возвращает команду, которая возвращает сообщение таймера через 500 миллисекунд.","coverage_ids":["return:internal/browser/browser.go:15610644"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.Init","file":"internal/browser/browser.go","label":"← Init in internal/browser/browser.go"}]},{"id":"variable:internal/browser/browser.go:sessionFile:15610806","kind":"state","label":"Путь к файлу сессии","layer":"state","source":{"file":"internal/browser/browser.go","start_line":72,"end_line":72},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.sessionFile","summary":"Хранит путь к файлу для сохранения и восстановления состояния вкладок.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"type:internal/browser/browser.go:sessionData:15610933","kind":"group","label":"Структура данных сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":75,"end_line":77},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.sessionData","summary":"Хранит список URL-адресов для восстановления вкладок из файла сессии.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:saveSession:15611050","kind":"group","label":"Сохранение сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":80,"end_line":103},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.saveSession","summary":"Записывает текущие URL-адреса вкладок в файл сессии для последующего восстановления.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15611082","kind":"decision","label":"Проверка пустых вкладок","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":81,"end_line":83},"element_type":null,"symbol":null,"summary":"Проверяет, есть ли хотя бы одна вкладка перед сохранением сессии.","coverage_ids":["if:internal/browser/browser.go:15611082"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15611104","kind":"output","label":"Ранний возврат при пустых вкладках","layer":"data","source":{"file":"internal/browser/browser.go","start_line":82,"end_line":82},"element_type":null,"symbol":null,"summary":"Возвращает из функции, если список вкладок пуст и сохранять нечего.","coverage_ids":["return:internal/browser/browser.go:15611104"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611115","kind":"action","label":"Инициализация списка URL","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":81,"end_line":81},"element_type":null,"symbol":null,"summary":"Создаёт пустой слайс для хранения URL-адресов вкладок.","coverage_ids":["statement:internal/browser/browser.go:15611115"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"loop:internal/browser/browser.go:15611134","kind":"loop","label":"Цикл по вкладкам","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":85,"end_line":89},"element_type":null,"symbol":null,"summary":"Перебирает все вкладки для сбора их URL-адресов.","coverage_ids":["loop:internal/browser/browser.go:15611134"],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15611161","kind":"decision","label":"Проверка URL вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":86,"end_line":88},"element_type":null,"symbol":null,"summary":"Проверяет, содержит ли вкладка непустой URL-адрес.","coverage_ids":["if:internal/browser/browser.go:15611161"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15611181","kind":"action","label":"Добавление URL в список","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":87,"end_line":87},"element_type":null,"symbol":null,"summary":"Добавляет URL-адрес владки в список для сохранения.","coverage_ids":["statement:internal/browser/browser.go:15611181"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15611216","kind":"decision","label":"Проверка пустого списка URL","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":90,"end_line":92},"element_type":null,"symbol":null,"summary":"Проверяет, есть ли хотя бы один URL для сохранения.","coverage_ids":["if:internal/browser/browser.go:15611216"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15611238","kind":"output","label":"Ранний возврат при пустом списке","layer":"data","source":{"file":"internal/browser/browser.go","start_line":91,"end_line":91},"element_type":null,"symbol":null,"summary":"Возвращает, если собранный список URL-адресов пуст.","coverage_ids":["return:internal/browser/browser.go:15611238"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611249","kind":"action","label":"Создание структуры сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":94,"end_line":94},"element_type":null,"symbol":null,"summary":"Создаёт структуру сессии с собранными URL-адресами.","coverage_ids":["statement:internal/browser/browser.go:15611249"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611282","kind":"action","label":"Получение директории файла","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":94,"end_line":94},"element_type":null,"symbol":null,"summary":"Извлекает директорию пути к файлу сессии для создания директории.","coverage_ids":["statement:internal/browser/browser.go:15611282"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15611316","kind":"decision","label":"Проверка ошибки создания директории","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":95,"end_line":97},"element_type":null,"symbol":null,"summary":"Проверяет, успешно ли была создана директория файла.","coverage_ids":["if:internal/browser/browser.go:15611316"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15611319","kind":"action","label":"Создание директории файла","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":95,"end_line":95},"element_type":null,"symbol":null,"summary":"Создаёт директорию файла сессии, если она не существует.","coverage_ids":["statement:internal/browser/browser.go:15611319"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15611365","kind":"output","label":"Ранний возврат при ошибке директории","layer":"data","source":{"file":"internal/browser/browser.go","start_line":96,"end_line":96},"element_type":null,"symbol":null,"summary":"Возвращает при ошибке создания директории файла сессии.","coverage_ids":["return:internal/browser/browser.go:15611365"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611376","kind":"action","label":"Сериализация данных сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":98,"end_line":98},"element_type":null,"symbol":null,"summary":"Преобразует структуру сессии в JSON-байты для записи в файл.","coverage_ids":["statement:internal/browser/browser.go:15611376"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15611406","kind":"decision","label":"Проверка ошибки сериализации","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":99,"end_line":101},"element_type":null,"symbol":null,"summary":"Проверяет, успешно ли была сериализована структура сессии.","coverage_ids":["if:internal/browser/browser.go:15611406"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15611424","kind":"output","label":"Ранний возврат при ошибке сериализации","layer":"data","source":{"file":"internal/browser/browser.go","start_line":100,"end_line":100},"element_type":null,"symbol":null,"summary":"Возвращает при ошибке сериализации данных сессии.","coverage_ids":["return:internal/browser/browser.go:15611424"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611435","kind":"action","label":"Запись файла сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":102,"end_line":102},"element_type":null,"symbol":null,"summary":"Записывает сериализованные данные сессии в файл с правами 0644.","coverage_ids":["statement:internal/browser/browser.go:15611435"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:loadSession:15611539","kind":"group","label":"Загрузка сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":106,"end_line":116},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.loadSession","summary":"Читает файл сессии и возвращает сохранённые URL-адреса вкладок.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15611570","kind":"action","label":"Чтение файла сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":107,"end_line":107},"element_type":null,"symbol":null,"summary":"Читает содержимое файла сессии из указанной директории.","coverage_ids":["statement:internal/browser/browser.go:15611570"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15611606","kind":"decision","label":"Проверка ошибки чтения файла","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":108,"end_line":110},"element_type":null,"symbol":null,"summary":"Проверяет, успешно ли был прочитан файл сессии.","coverage_ids":["if:internal/browser/browser.go:15611606"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15611624","kind":"output","label":"Ранний возврат при ошибке чтения","layer":"data","source":{"file":"internal/browser/browser.go","start_line":109,"end_line":109},"element_type":null,"symbol":null,"summary":"Возвращает nil при ошибке чтения файла сессии.","coverage_ids":["return:internal/browser/browser.go:15611624"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611639","kind":"action","label":"Декларация структуры сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":112,"end_line":112},"element_type":null,"symbol":null,"summary":"Создаёт переменную для хранения данных сессии из файла.","coverage_ids":["statement:internal/browser/browser.go:15611639"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15611661","kind":"decision","label":"Проверка ошибки десериализации","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":112,"end_line":114},"element_type":null,"symbol":null,"summary":"Проверяет, успешно ли была десериализована структура сессии.","coverage_ids":["if:internal/browser/browser.go:15611661"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15611664","kind":"action","label":"Десериализация данных сессии","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":112,"end_line":112},"element_type":null,"symbol":null,"summary":"Преобразует JSON-байты в структуру сессии для извлечения URL-адресов.","coverage_ids":["statement:internal/browser/browser.go:15611664"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15611712","kind":"output","label":"Ранний возврат при ошибке десериализации","layer":"data","source":{"file":"internal/browser/browser.go","start_line":113,"end_line":113},"element_type":null,"symbol":null,"summary":"Возвращает nil при ошибке десериализации данных сессии.","coverage_ids":["return:internal/browser/browser.go:15611712"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15611727","kind":"output","label":"Возврат URL-адресов сессии","layer":"data","source":{"file":"internal/browser/browser.go","start_line":115,"end_line":115},"element_type":null,"symbol":null,"summary":"Возвращает список URL-адресов из десериализованной структуры сессии.","coverage_ids":["return:internal/browser/browser.go:15611727"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.New","file":"internal/browser/browser.go","label":"← New in internal/browser/browser.go"}]},{"id":"func:internal/browser/browser.go:New:15611783","kind":"group","label":"Создание новой модели браузера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":119,"end_line":148},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.New","summary":"Инициализирует новую модель браузера с настройками по умолчанию и восстановлением сессии.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15611803","kind":"action","label":"Создание строки ввода","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":120,"end_line":120},"element_type":null,"symbol":null,"summary":"Создаёт новую строку ввода для ввода URL-адресов.","coverage_ids":["statement:internal/browser/browser.go:15611803"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611826","kind":"action","label":"Настройка плейсхолдера строки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":120,"end_line":120},"element_type":null,"symbol":null,"summary":"Устанавливает текст плейсхолдера для строки ввода URL-адресов.","coverage_ids":["statement:internal/browser/browser.go:15611826"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611859","kind":"action","label":"Фокусировка строки ввода","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":122,"end_line":122},"element_type":null,"symbol":null,"summary":"Фокусирует строку ввода, чтобы пользователь мог сразу вводить URL.","coverage_ids":["statement:internal/browser/browser.go:15611859"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611871","kind":"action","label":"Настройка ширины строки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":122,"end_line":122},"element_type":null,"symbol":null,"summary":"Устанавливает ширину строки ввода в 50 символов.","coverage_ids":["statement:internal/browser/browser.go:15611871"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611887","kind":"action","label":"Создание компонента просмотра","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":125,"end_line":125},"element_type":null,"symbol":null,"summary":"Создаёт новый компонент просмотра с размерами 80x24 символов.","coverage_ids":["statement:internal/browser/browser.go:15611887"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15611916","kind":"action","label":"Инициализация модели браузера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":127,"end_line":135},"element_type":null,"symbol":null,"summary":"Создаёт структуру модели браузера с начальными значениями по умолчанию.","coverage_ids":["statement:internal/browser/browser.go:15611916"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612156","kind":"action","label":"Присваивание списка URL","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":138,"end_line":138},"element_type":null,"symbol":null,"summary":"Присваивает полученный список URL адресов локальной переменной для дальнейшей обработки.","coverage_ids":["statement:internal/browser/browser.go:15612156"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:loadSession:15612164","kind":"call","label":"Загрузка сессии","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":106,"end_line":116},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.loadSession","summary":"Вызывает функцию loadSession для получения списка URL адресов из сохранённой сессии.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.loadSession","file":"internal/browser/browser.go","label":"→ loadSession in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15612179","kind":"decision","label":"Проверка наличия URL","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":139,"end_line":145},"element_type":null,"symbol":null,"summary":"Проверяет, содержит ли список URL адреса, и если да, выполняет инициализацию вкладок.","coverage_ids":["if:internal/browser/browser.go:15612179"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15612200","kind":"action","label":"Очистка вкладок","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":139,"end_line":139},"element_type":null,"symbol":null,"summary":"Обнуляет массив вкладок перед добавлением новых адресов из сессии.","coverage_ids":["statement:internal/browser/browser.go:15612200"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"loop:internal/browser/browser.go:15612215","kind":"loop","label":"Итерация по URL адресам","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":141,"end_line":143},"element_type":null,"symbol":null,"summary":"Перебирает каждый URL из загруженного списка сессии для создания новых вкладок.","coverage_ids":["loop:internal/browser/browser.go:15612215"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15612243","kind":"action","label":"Добавление вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":142,"end_line":142},"element_type":null,"symbol":null,"summary":"Добавляет новую вкладку в массив с указанным URL адресом и режимом просмотра.","coverage_ids":["statement:internal/browser/browser.go:15612243"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612305","kind":"action","label":"Установка активной вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":144,"end_line":144},"element_type":null,"symbol":null,"summary":"Устанавливает индекс последней добавленной вкладки как текущей активной вкладки.","coverage_ids":["statement:internal/browser/browser.go:15612305"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15612340","kind":"output","label":"Возврат модели","layer":"data","source":{"file":"internal/browser/browser.go","start_line":147,"end_line":147},"element_type":null,"symbol":null,"summary":"Возвращает обновлённую модель после инициализации вкладок из сессии.","coverage_ids":["return:internal/browser/browser.go:15612340"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss.main","file":"main.go","label":"← main in main.go"}]},{"id":"func:internal/browser/browser.go:Init:15612382","kind":"group","label":"Инициализация модели","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":151,"end_line":153},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.Init","summary":"Реализует метод Init для запуска пакетной команды с миганием курсора и таймером.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15612415","kind":"output","label":"Команда пакетной инициализации","layer":"data","source":{"file":"internal/browser/browser.go","start_line":152,"end_line":152},"element_type":null,"symbol":null,"summary":"Возвращает пакетную команду, объединяющую мигание текстового поля и таймер.","coverage_ids":["return:internal/browser/browser.go:15612415"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:active:15612518","kind":"group","label":"Получение активной вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Возвращает указатель на текущую активную вкладку или nil если вкладки не существует.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15612551","kind":"decision","label":"Проверка валидности индекса","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":157,"end_line":159},"element_type":null,"symbol":null,"summary":"Проверяет, находится ли индекс активной вкладки в допустимых пределах массива.","coverage_ids":["if:internal/browser/browser.go:15612551"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15612604","kind":"output","label":"Возврат nil","layer":"data","source":{"file":"internal/browser/browser.go","start_line":158,"end_line":158},"element_type":null,"symbol":null,"summary":"Возвращает nil когда индекс активной вкладки выходит за границы массива.","coverage_ids":["return:internal/browser/browser.go:15612604"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15612619","kind":"output","label":"Возврат активной вкладки","layer":"data","source":{"file":"internal/browser/browser.go","start_line":160,"end_line":160},"element_type":null,"symbol":null,"summary":"Возвращает указатель на активную вкладку по её индексу в массиве.","coverage_ids":["return:internal/browser/browser.go:15612619"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.ANSILines","file":"internal/browser/browser.go","label":"← ANSILines in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.ASCIILines","file":"internal/browser/browser.go","label":"← ASCIILines in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.Err","file":"internal/browser/browser.go","label":"← Err in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.OffsetX","file":"internal/browser/browser.go","label":"← OffsetX in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.Update","file":"internal/browser/browser.go","label":"← Update in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.Update","file":"internal/browser/browser.go","label":"← Update in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.ZoomFactor","file":"internal/browser/browser.go","label":"← ZoomFactor in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.restoreActiveTab","file":"internal/browser/browser.go","label":"← restoreActiveTab in internal/browser/browser.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.saveActiveTab","file":"internal/browser/browser.go","label":"← saveActiveTab in internal/browser/browser.go"}]},{"id":"func:internal/browser/browser.go:saveActiveTab:15612718","kind":"group","label":"Сохранение состояния активной вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":164,"end_line":175},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.saveActiveTab","summary":"Сохраняет текущее состояние просмотра в активную вкладку для последующего восстановления.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15612753","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":165,"end_line":165},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15612753"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15612758","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15612770","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":166,"end_line":168},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, завершает выполнение.","coverage_ids":["if:internal/browser/browser.go:15612770"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15612786","kind":"output","label":"Ранний возврат","layer":"data","source":{"file":"internal/browser/browser.go","start_line":167,"end_line":167},"element_type":null,"symbol":null,"summary":"Завершает функцию без сохранения состояния если активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15612786"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612797","kind":"action","label":"Сохранение URL адреса","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":169,"end_line":169},"element_type":null,"symbol":null,"summary":"Сохраняет текущий URL адрес в активную вкладку из модели.","coverage_ids":["statement:internal/browser/browser.go:15612797"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612824","kind":"action","label":"Сохранение режима просмотра","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":169,"end_line":169},"element_type":null,"symbol":null,"summary":"Сохраняет текущий режим просмотра в активную вкладку из модели.","coverage_ids":["statement:internal/browser/browser.go:15612824"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612841","kind":"action","label":"Сохранение ANSI строк","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":171,"end_line":171},"element_type":null,"symbol":null,"summary":"Сохраняет строки с ANSI кодами из модели в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15612841"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:ANSILines:15612855","kind":"call","label":"Получение ANSI строк","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":222,"end_line":227},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.ANSILines","summary":"Вызывает метод ANSILines для получения строк с ANSI кодами из модели.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.ANSILines","file":"internal/browser/browser.go","label":"→ ANSILines in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612870","kind":"action","label":"Сохранение ASCII строк","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":172,"end_line":172},"element_type":null,"symbol":null,"summary":"Сохраняет ASCII строки из модели в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15612870"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:ASCIILines:15612885","kind":"call","label":"Получение ASCII строк","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":229,"end_line":234},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.ASCIILines","summary":"Вызывает метод ASCIILines для получения ASCII строк из модели.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.ASCIILines","file":"internal/browser/browser.go","label":"→ ASCIILines in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612901","kind":"action","label":"Сохранение коэффициента зума","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":173,"end_line":173},"element_type":null,"symbol":null,"summary":"Сохраняет коэффициент масштабирования из модели в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15612901"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:ZoomFactor:15612916","kind":"call","label":"Получение коэффициента зума","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":236,"end_line":241},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.ZoomFactor","summary":"Вызывает метод ZoomFactor для получения текущего коэффициента масштабирования.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.ZoomFactor","file":"internal/browser/browser.go","label":"→ ZoomFactor in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15612932","kind":"action","label":"Сохранение смещения по X","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":174,"end_line":174},"element_type":null,"symbol":null,"summary":"Сохраняет горизонтальное смещение из модели в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15612932"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:OffsetX:15612944","kind":"call","label":"Получение смещения по X","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":243,"end_line":248},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.OffsetX","summary":"Вызывает метод OffsetX для получения горизонтального смещения просмотра.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.OffsetX","file":"internal/browser/browser.go","label":"→ OffsetX in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:restoreActiveTab:15613020","kind":"group","label":"Восстановление состояния активной вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":178,"end_line":187},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.restoreActiveTab","summary":"Восстанавливает состояние просмотра из сохранённых данных активной вкладки.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15613058","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":179,"end_line":179},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15613058"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15613063","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/browser/browser.go:15613075","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":180,"end_line":182},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, завершает выполнение.","coverage_ids":["if:internal/browser/browser.go:15613075"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15613091","kind":"output","label":"Ранний возврат","layer":"data","source":{"file":"internal/browser/browser.go","start_line":181,"end_line":181},"element_type":null,"symbol":null,"summary":"Завершает функцию без восстановления состояния если активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15613091"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613102","kind":"action","label":"Восстановление режима просмотра","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":184,"end_line":184},"element_type":null,"symbol":null,"summary":"Восстанавливает режим просмотра из сохранённых данных активной вкладки.","coverage_ids":["statement:internal/browser/browser.go:15613102"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613119","kind":"action","label":"Восстановление URL адреса","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":184,"end_line":184},"element_type":null,"symbol":null,"summary":"Восстанавливает URL адрес из активной вкладки в адресное поле модели.","coverage_ids":["statement:internal/browser/browser.go:15613119"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613146","kind":"action","label":"Восстановление контента просмотра","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":185,"end_line":185},"element_type":null,"symbol":null,"summary":"Восстанавливает содержимое просмотра из ASCII строк активной вкладки.","coverage_ids":["statement:internal/browser/browser.go:15613146"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613203","kind":"action","label":"Переход наверх просмотра","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":186,"end_line":186},"element_type":null,"symbol":null,"summary":"Перемещает просмотр наверх после восстановления содержимого.","coverage_ids":["statement:internal/browser/browser.go:15613203"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:Update:15613259","kind":"group","label":"Обработка сообщений обновления","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":190,"end_line":219},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.Update","summary":"Реализует метод Update для обработки входящих сообщений и обновления состояния модели.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"switch:internal/browser/browser.go:15613319","kind":"action","label":"Внешний свитч по типу сообщения","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":204,"end_line":204},"element_type":null,"symbol":null,"summary":"Переключает обработку по типу сообщения: клавиатурные события, загрузка страницы или ошибки.","coverage_ids":["switch:internal/browser/browser.go:15613319"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15613326","kind":"action","label":"Свитч по типу сообщения","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":193,"end_line":193},"element_type":null,"symbol":null,"summary":"Выполняет переключение по типу входящего сообщения для обработки разных событий.","coverage_ids":["statement:internal/browser/browser.go:15613326"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"case:internal/browser/browser.go:15613347","kind":"action","label":"Обработка клавиатурных событий","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":193,"end_line":193},"element_type":null,"symbol":null,"summary":"Обрабатывает сообщения о нажатии клавиш для управления приложением.","coverage_ids":["case:internal/browser/browser.go:15613347"],"tests":null,"confidence":null,"children":[{"id":"switch:internal/browser/browser.go:15613366","kind":"action","label":"Внутренний свитч по клавише","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":193,"end_line":193},"element_type":null,"symbol":null,"summary":"Переключает обработку по нажатой клавише внутри клавиатурных событий.","coverage_ids":["switch:internal/browser/browser.go:15613366"],"tests":null,"confidence":null,"children":[{"id":"case:internal/browser/browser.go:15613390","kind":"action","label":"Обработка клавиш выхода","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":193,"end_line":193},"element_type":null,"symbol":null,"summary":"Обрабатывает нажатие Ctrl+C или Q для завершения работы приложения.","coverage_ids":["case:internal/browser/browser.go:15613390"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15613413","kind":"output","label":"Завершение приложения","layer":"data","source":{"file":"internal/browser/browser.go","start_line":195,"end_line":195},"element_type":null,"symbol":null,"summary":"Возвращает модель и команду завершения приложения при нажатии клавиш выхода.","coverage_ids":["return:internal/browser/browser.go:15613413"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"case:internal/browser/browser.go:15613434","kind":"action","label":"Обработка клавиш навигации","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":193,"end_line":193},"element_type":null,"symbol":null,"summary":"Обрабатывает нажатие Tab или Shift+Tab для переключения между вкладками.","coverage_ids":["case:internal/browser/browser.go:15613434"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15613462","kind":"output","label":"Возврат без изменений","layer":"data","source":{"file":"internal/browser/browser.go","start_line":197,"end_line":197},"element_type":null,"symbol":null,"summary":"Возвращает модель без команды при переключении вкладок клавишами.","coverage_ids":["return:internal/browser/browser.go:15613462"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"case:internal/browser/browser.go:15613481","kind":"action","label":"Обработка загруженной страницы","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":200,"end_line":200},"element_type":null,"symbol":null,"summary":"Обрабатывает сообщение о успешной загрузке страницы и обновляет её содержимое.","coverage_ids":["case:internal/browser/browser.go:15613481"],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15613503","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":200,"end_line":203},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, пропускает обновление.","coverage_ids":["if:internal/browser/browser.go:15613503"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15613506","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":200,"end_line":200},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15613506"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15613511","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613537","kind":"action","label":"Сохранение ANSI строк","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":200,"end_line":200},"element_type":null,"symbol":null,"summary":"Сохраняет полученные ANSI строки из сообщения в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15613537"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613563","kind":"action","label":"Сохранение ASCII строк","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":200,"end_line":200},"element_type":null,"symbol":null,"summary":"Сохраняет полученные ASCII строки из сообщения в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15613563"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613594","kind":"action","label":"Сохранение содержимого страницы","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":204,"end_line":204},"element_type":null,"symbol":null,"summary":"Сохраняет содержимое загруженной страницы в поле модели.","coverage_ids":["statement:internal/browser/browser.go:15613594"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613648","kind":"action","label":"Установка режима просмотра","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":204,"end_line":204},"element_type":null,"symbol":null,"summary":"Устанавливает режим просмотра для отображения загруженной страницы.","coverage_ids":["statement:internal/browser/browser.go:15613648"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15613668","kind":"output","label":"Возврат модели","layer":"data","source":{"file":"internal/browser/browser.go","start_line":206,"end_line":206},"element_type":null,"symbol":null,"summary":"Возвращает обновлённую модель после обработки загруженной страницы.","coverage_ids":["return:internal/browser/browser.go:15613668"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"case:internal/browser/browser.go:15613683","kind":"action","label":"Обработка ошибки загрузки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":208,"end_line":208},"element_type":null,"symbol":null,"summary":"Обрабатывает сообщение об ошибке при загрузке страницы.","coverage_ids":["case:internal/browser/browser.go:15613683"],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15613704","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":208,"end_line":211},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, пропускает обновление.","coverage_ids":["if:internal/browser/browser.go:15613704"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15613707","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":208,"end_line":208},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15613707"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15613712","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613738","kind":"action","label":"Сохранение ошибки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":208,"end_line":208},"element_type":null,"symbol":null,"summary":"Сохраняет ошибку загрузки в активную вкладку.","coverage_ids":["statement:internal/browser/browser.go:15613738"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613757","kind":"action","label":"Установка режима ошибки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":208,"end_line":208},"element_type":null,"symbol":null,"summary":"Устанавливает режим отображения ошибки в активной вкладке.","coverage_ids":["statement:internal/browser/browser.go:15613757"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/browser/browser.go:15613782","kind":"action","label":"Установка режима ошибки модели","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":208,"end_line":208},"element_type":null,"symbol":null,"summary":"Устанавливает глобальный режим отображения ошибки в модели.","coverage_ids":["statement:internal/browser/browser.go:15613782"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15613803","kind":"output","label":"Возврат модели","layer":"data","source":{"file":"internal/browser/browser.go","start_line":213,"end_line":213},"element_type":null,"symbol":null,"summary":"Возвращает модель с установленным режимом отображения ошибки.","coverage_ids":["return:internal/browser/browser.go:15613803"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"case:internal/browser/browser.go:15613818","kind":"action","label":"Обработка таймера","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":214,"end_line":216},"element_type":null,"symbol":null,"summary":"Обрабатывает периодическое сообщение таймера для обновления DOM.","coverage_ids":["case:internal/browser/browser.go:15613818"],"tests":null,"confidence":null,"children":[{"id":"return:internal/browser/browser.go:15613876","kind":"output","label":"Возврат модели","layer":"data","source":{"file":"internal/browser/browser.go","start_line":216,"end_line":216},"element_type":null,"symbol":null,"summary":"Возвращает модель без изменений при обработке сообщения таймера.","coverage_ids":["return:internal/browser/browser.go:15613876"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15613894","kind":"output","label":"Возврат по умолчанию","layer":"data","source":{"file":"internal/browser/browser.go","start_line":218,"end_line":218},"element_type":null,"symbol":null,"summary":"Возвращает модель без изменений для неизвестных типов сообщений.","coverage_ids":["return:internal/browser/browser.go:15613894"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"func:internal/browser/browser.go:ANSILines:15613973","kind":"group","label":"Получение ANSI строк","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":222,"end_line":227},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.ANSILines","summary":"Реализует метод для получения строк с ANSI кодами из активной вкладки.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15614012","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":223,"end_line":225},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, возвращает nil.","coverage_ids":["if:internal/browser/browser.go:15614012"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15614015","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":223,"end_line":223},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15614015"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15614020","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614045","kind":"output","label":"Возврат ANSI строк","layer":"data","source":{"file":"internal/browser/browser.go","start_line":224,"end_line":224},"element_type":null,"symbol":null,"summary":"Возвращает строки с ANSI кодами из активной вкладки.","coverage_ids":["return:internal/browser/browser.go:15614045"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614068","kind":"output","label":"Возврат nil","layer":"data","source":{"file":"internal/browser/browser.go","start_line":226,"end_line":226},"element_type":null,"symbol":null,"summary":"Возвращает nil когда активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15614068"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.View","file":"internal/browser/browser_view.go","label":"← View in internal/browser/browser_view.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.saveActiveTab","file":"internal/browser/browser.go","label":"← saveActiveTab in internal/browser/browser.go"}]},{"id":"func:internal/browser/browser.go:ASCIILines:15614082","kind":"group","label":"Получение ASCII строк","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":229,"end_line":234},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.ASCIILines","summary":"Реализует метод для получения ASCII строк из активной вкладки.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15614122","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":230,"end_line":232},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, возвращает nil.","coverage_ids":["if:internal/browser/browser.go:15614122"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15614125","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":230,"end_line":230},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15614125"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15614130","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614155","kind":"output","label":"Возврат ASCII строк","layer":"data","source":{"file":"internal/browser/browser.go","start_line":231,"end_line":231},"element_type":null,"symbol":null,"summary":"Возвращает ASCII строки из активной вкладки.","coverage_ids":["return:internal/browser/browser.go:15614155"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614179","kind":"output","label":"Возврат nil","layer":"data","source":{"file":"internal/browser/browser.go","start_line":233,"end_line":233},"element_type":null,"symbol":null,"summary":"Возвращает nil когда активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15614179"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.saveActiveTab","file":"internal/browser/browser.go","label":"← saveActiveTab in internal/browser/browser.go"}]},{"id":"func:internal/browser/browser.go:ZoomFactor:15614193","kind":"group","label":"Получение коэффициента зума","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":236,"end_line":241},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.ZoomFactor","summary":"Реализует метод для получения коэффициента масштабирования из активной вкладки.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15614232","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":237,"end_line":239},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, возвращает значение по умолчанию.","coverage_ids":["if:internal/browser/browser.go:15614232"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15614235","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":237,"end_line":237},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15614235"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15614240","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614265","kind":"output","label":"Возврат коэффициента зума","layer":"data","source":{"file":"internal/browser/browser.go","start_line":238,"end_line":238},"element_type":null,"symbol":null,"summary":"Возвращает коэффициент масштабирования из активной вкладки.","coverage_ids":["return:internal/browser/browser.go:15614265"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614289","kind":"output","label":"Возврат значения по умолчанию","layer":"data","source":{"file":"internal/browser/browser.go","start_line":240,"end_line":240},"element_type":null,"symbol":null,"summary":"Возвращает значение 1.0 когда активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15614289"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.View","file":"internal/browser/browser_view.go","label":"← View in internal/browser/browser_view.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.View","file":"internal/browser/browser_view.go","label":"← View in internal/browser/browser_view.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.saveActiveTab","file":"internal/browser/browser.go","label":"← saveActiveTab in internal/browser/browser.go"}]},{"id":"func:internal/browser/browser.go:OffsetX:15614303","kind":"group","label":"Получение смещения по X","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":243,"end_line":248},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.OffsetX","summary":"Реализует метод для получения горизонтального смещения из активной вкладки.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15614335","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":244,"end_line":246},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, возвращает значение по умолчанию.","coverage_ids":["if:internal/browser/browser.go:15614335"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15614338","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":244,"end_line":244},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15614338"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15614343","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614368","kind":"output","label":"Возврат смещения по X","layer":"data","source":{"file":"internal/browser/browser.go","start_line":245,"end_line":245},"element_type":null,"symbol":null,"summary":"Возвращает горизонтальное смещение из активной вкладки.","coverage_ids":["return:internal/browser/browser.go:15614368"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614389","kind":"output","label":"Возврат значения по умолчанию","layer":"data","source":{"file":"internal/browser/browser.go","start_line":247,"end_line":247},"element_type":null,"symbol":null,"summary":"Возвращает значение 0 когда активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15614389"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.View","file":"internal/browser/browser_view.go","label":"← View in internal/browser/browser_view.go"},{"id":"github.com/starframe/abyss/internal/browser.Model.saveActiveTab","file":"internal/browser/browser.go","label":"← saveActiveTab in internal/browser/browser.go"}]},{"id":"func:internal/browser/browser.go:Err:15614401","kind":"group","label":"Получение ошибки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":250,"end_line":255},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.Err","summary":"Реализует метод для получения ошибки из активной вкладки.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"if:internal/browser/browser.go:15614431","kind":"decision","label":"Проверка существования вкладки","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":251,"end_line":253},"element_type":null,"symbol":null,"summary":"Проверяет, существует ли активная вкладка, и если нет, возвращает nil.","coverage_ids":["if:internal/browser/browser.go:15614431"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/browser/browser.go:15614434","kind":"action","label":"Присваивание ссылки на вкладку","layer":"flow","source":{"file":"internal/browser/browser.go","start_line":251,"end_line":251},"element_type":null,"symbol":null,"summary":"Присваивает полученную ссылку на активную вкладку локальной переменной.","coverage_ids":["statement:internal/browser/browser.go:15614434"],"tests":null,"confidence":null,"children":[{"id":"call:internal/browser/browser.go:active:15614439","kind":"call","label":"Получение активной вкладки","layer":"calls","source":{"file":"internal/browser/browser.go","start_line":156,"end_line":161},"element_type":null,"symbol":"github.com/starframe/abyss/internal/browser.Model.active","summary":"Вызывает метод active для получения ссылки на текущую активную вкладку.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.active","file":"internal/browser/browser.go","label":"→ active in internal/browser/browser.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614464","kind":"output","label":"Возврат ошибки","layer":"data","source":{"file":"internal/browser/browser.go","start_line":252,"end_line":252},"element_type":null,"symbol":null,"summary":"Возвращает ошибку из активной вкладки.","coverage_ids":["return:internal/browser/browser.go:15614464"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/browser/browser.go:15614481","kind":"output","label":"Возврат nil","layer":"data","source":{"file":"internal/browser/browser.go","start_line":254,"end_line":254},"element_type":null,"symbol":null,"summary":"Возвращает nil когда активная вкладка не существует.","coverage_ids":["return:internal/browser/browser.go:15614481"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/browser.Model.View","file":"internal/browser/browser_view.go","label":"← View in internal/browser/browser_view.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"edges":[]};
+const palette = [{"type":"service","label":"Сервис","color":"#3b82f6","icon":"Settings2","description":"Самостоятельный сервис или приложение"},{"type":"database","label":"База данных","color":"#10b981","icon":"Database","description":"Хранилище данных, слой доступа к БД"},{"type":"module","label":"Модуль","color":"#a78bfa","icon":"Box","description":"Внутренний модуль или пакет"},{"type":"library","label":"Библиотека","color":"#f59e0b","icon":"Library","description":"Переиспользуемая библиотека"},{"type":"entrypoint","label":"Точка входа","color":"#ef4444","icon":"Rocket","description":"main / CLI / server entrypoint"}];
+const sources = {"internal/browser/browser.go":"// Package browser implements the TUI using Bubble Tea.\npackage browser\n\nimport (\n\t\"encoding/json\"\n\t\"os\"\n\t\"path/filepath\"\n\t\"strings\"\n\t\"time\"\n\n\t\"github.com/charmbracelet/bubbles/textinput\"\n\t\"github.com/charmbracelet/bubbles/viewport\"\n\ttea \"github.com/charmbracelet/bubbletea\"\n)\n\n// Mode represents the current UI mode.\ntype Mode int\n\nconst (\n\tModeAddress Mode = iota\n\tModeLoading\n\tModeView\n\tModeError\n)\n\n// Tab stores the state of a single browser tab.\ntype Tab struct {\n\tURL           string\n\tMode          Mode\n\tANSILines     []string\n\tASCIILines    []string\n\tErr           error\n\tZoomFactor    float64\n\tOffsetX       int\n}\n\n// Model is the main Bubble Tea model for the browser.\ntype Model struct {\n\tMode               Mode\n\tAddress            textinput.Model\n\tViewport           viewport.Model\n\tTabs               []Tab\n\tActiveTab          int\n\tWidth              int\n\tHeight             int\n\tloadedPageContent  string\n}\n\n// pageLoadedMsg is sent when a page finishes loading.\ntype pageLoadedMsg struct {\n\tLines []string\n\tANSI  []string\n\tURL   string\n}\n\n// pageErrorMsg is sent when loading fails.\ntype pageErrorMsg struct {\n\tErr error\n}\n\n// tickMsg is sent periodically to check for timer-based DOM updates.\ntype tickMsg struct{}\n\n// tickCmd returns a command that waits for the next tick.\nfunc tickCmd() tea.Cmd {\n\treturn tea.Tick(500*time.Millisecond, func(time.Time) tea.Msg {\n\t\treturn tickMsg{}\n\t})\n}\n\n// sessionFile is the path to the session file for tab restoration.\nvar sessionFile = filepath.Join(os.Getenv(\"HOME\"), \".abyss\", \"session.json\")\n\n// sessionData stores URLs for tab restoration.\ntype sessionData struct {\n\tURLs []string `json:\"urls\"`\n}\n\n// saveSession writes the current tab URLs to the session file.\nfunc saveSession(tabs []Tab) {\n\tif len(tabs) == 0 {\n\t\treturn\n\t}\n\tvar urls []string\n\tfor _, t := range tabs {\n\t\tif t.URL != \"\" {\n\t\t\turls = append(urls, t.URL)\n\t\t}\n\t}\n\tif len(urls) == 0 {\n\t\treturn\n\t}\n\tdata := sessionData{URLs: urls}\n\tdir := filepath.Dir(sessionFile)\n\tif err := os.MkdirAll(dir, 0755); err != nil {\n\t\treturn\n\t}\n\tb, err := json.Marshal(data)\n\tif err != nil {\n\t\treturn\n\t}\n\tos.WriteFile(sessionFile, b, 0644)\n}\n\n// loadSession reads the session file and returns the saved URLs.\nfunc loadSession() []string {\n\tb, err := os.ReadFile(sessionFile)\n\tif err != nil {\n\t\treturn nil\n\t}\n\tvar data sessionData\n\tif err := json.Unmarshal(b, &data); err != nil {\n\t\treturn nil\n\t}\n\treturn data.URLs\n}\n\n// New creates a new browser model.\nfunc New() Model {\n\tti := textinput.New()\n\tti.Placeholder = \"Enter URL...\"\n\tti.Focus()\n\tti.Width = 50\n\n\tvp := viewport.New(80, 24)\n\n\tm := Model{\n\t\tMode:      ModeAddress,\n\t\tAddress:   ti,\n\t\tViewport:  vp,\n\t\tTabs:      []Tab{{Mode: ModeAddress}},\n\t\tActiveTab: 0,\n\t\tWidth:     80,\n\t\tHeight:    24,\n\t}\n\n\t// Restore session: show saved URLs in tab bar, don't fill address bar\n\turls := loadSession()\n\tif len(urls) > 0 {\n\t\tm.Tabs = nil\n\t\tfor _, u := range urls {\n\t\t\tm.Tabs = append(m.Tabs, Tab{URL: u, Mode: ModeAddress})\n\t\t}\n\t\tm.ActiveTab = len(m.Tabs) - 1\n\t}\n\n\treturn m\n}\n\n// Init implements tea.Model.\nfunc (m Model) Init() tea.Cmd {\n\treturn tea.Batch(textinput.Blink, tickCmd())\n}\n\n// active returns a pointer to the current active tab.\nfunc (m *Model) active() *Tab {\n\tif m.ActiveTab < 0 || m.ActiveTab >= len(m.Tabs) {\n\t\treturn nil\n\t}\n\treturn &m.Tabs[m.ActiveTab]\n}\n\n// saveActiveTab copies the current view state into the active tab.\nfunc (m *Model) saveActiveTab() {\n\tt := m.active()\n\tif t == nil {\n\t\treturn\n\t}\n\tt.URL = m.Address.Value()\n\tt.Mode = m.Mode\n\tt.ANSILines = m.ANSILines()\n\tt.ASCIILines = m.ASCIILines()\n\tt.ZoomFactor = m.ZoomFactor()\n\tt.OffsetX = m.OffsetX()\n}\n\n// restoreActiveTab restores view state from the active tab.\nfunc (m *Model) restoreActiveTab() {\n\tt := m.active()\n\tif t == nil {\n\t\treturn\n\t}\n\tm.Mode = t.Mode\n\tm.Address.SetValue(t.URL)\n\tm.Viewport.SetContent(strings.Join(t.ASCIILines, \"\\n\"))\n\tm.Viewport.GotoTop()\n}\n\n// Update implements tea.Model.\nfunc (m *Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {\n\tswitch msg := msg.(type) {\n\tcase tea.KeyMsg:\n\t\tswitch msg.String() {\n\t\tcase \"ctrl+c\", \"q\":\n\t\t\treturn m, tea.Quit\n\t\tcase \"tab\", \"shift+tab\":\n\t\t\treturn m, nil\n\t\t}\n\tcase pageLoadedMsg:\n\t\tif t := m.active(); t != nil {\n\t\t\tt.ANSILines = msg.ANSI\n\t\t\tt.ASCIILines = msg.Lines\n\t\t}\n\t\tm.loadedPageContent = strings.Join(msg.Lines, \"\\n\")\n\t\tm.Mode = ModeView\n\t\treturn m, nil\n\tcase pageErrorMsg:\n\t\tif t := m.active(); t != nil {\n\t\t\tt.Err = msg.Err\n\t\t\tt.Mode = ModeError\n\t\t}\n\t\tm.Mode = ModeError\n\t\treturn m, nil\n\tcase tickMsg:\n\t\t// DOM updates handled by periodic tick\n\t\treturn m, nil\n\t}\n\treturn m, nil\n}\n\n// Helper methods to access tab state through the active tab.\nfunc (m Model) ANSILines() []string {\n\tif t := m.active(); t != nil {\n\t\treturn t.ANSILines\n\t}\n\treturn nil\n}\n\nfunc (m Model) ASCIILines() []string {\n\tif t := m.active(); t != nil {\n\t\treturn t.ASCIILines\n\t}\n\treturn nil\n}\n\nfunc (m Model) ZoomFactor() float64 {\n\tif t := m.active(); t != nil {\n\t\treturn t.ZoomFactor\n\t}\n\treturn 1.0\n}\n\nfunc (m Model) OffsetX() int {\n\tif t := m.active(); t != nil {\n\t\treturn t.OffsetX\n\t}\n\treturn 0\n}\n\nfunc (m Model) Err() error {\n\tif t := m.active(); t != nil {\n\t\treturn t.Err\n\t}\n\treturn nil\n}\n"};
+
+const KIND_STYLE = {
+  action:   { color: "#3b82f6", icon: "Play" },
+  decision: { color: "#f59e0b", icon: "GitBranch" },
+  call:     { color: "#8b5cf6", icon: "Code2" },
+  input:    { color: "#06b6d4", icon: "ArrowDownToLine" },
+  output:   { color: "#10b981", icon: "ArrowUpFromLine" },
+  state:    { color: "#eab308", icon: "CircleDot" },
+  storage:  { color: "#14b8a6", icon: "Database" },
+  external: { color: "#f97316", icon: "Globe" },
+  loop:     { color: "#84cc16", icon: "RefreshCw" },
+  error:    { color: "#ef4444", icon: "CircleAlert" },
+  async:    { color: "#ec4899", icon: "Zap" },
+  group:    { color: "#71717a", icon: "Layers3" }
+};
+const ICON_PATHS = {
+  Settings2: '<path d="M20 7h-9M14 17H4M17 3v8M7 13v8M20 17h-3M7 7H4"/><circle cx="14" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+  Database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>',
+  Box: '<path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',
+  Library: '<path d="m16 6 4 2v12l-4-2V6ZM4 4l4-1v13l-4 1V4ZM12 3l4 3v12l-4-3V3Z"/>',
+  Rocket: '<path d="M4.5 16.5c-1.5 1.3-2 3.5-2 3.5s2.2-.5 3.5-2c.7-.7.9-1.7.3-2.3s-1.1-.5-1.8.2Z"/><path d="m9 15-3-3 8-8c2-2 5-2 6-1-1 1-1 4-3 6l-8 8Z"/><path d="M14 6 8 4 4 8l6 2M18 10l2 6-4 4-2-6"/>',
+  Play: '<path d="m6 3 14 9-14 9V3Z"/>',
+  GitBranch: '<circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3M6 9a6 6 0 0 1 6-6h3"/>',
+  Code2: '<path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>',
+  ArrowDownToLine: '<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
+  ArrowUpFromLine: '<path d="M12 17V5M7 10l5-5 5 5M5 21h14"/>',
+  CircleDot: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
+  Globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',
+  RefreshCw: '<path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/>',
+  CircleAlert: '<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>',
+  Zap: '<path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/>',
+  Layers3: '<path d="m12 2 8 4-8 4-8-4 8-4Z"/><path d="m4 12 8 4 8-4M4 18l8 4 8-4"/>'
+};
+const paletteStyle = {};
+palette.forEach(p => { paletteStyle[p.type] = p; });
+const styleOf = n => (n.element_type && paletteStyle[n.element_type])
+  ? { color: paletteStyle[n.element_type].color, icon: paletteStyle[n.element_type].icon }
+  : KIND_STYLE[n.kind] || KIND_STYLE.action;
+
+const LAYERS = ["flow", "calls", "data", "state", "effects"];
+const activeLayers = new Set(LAYERS);
+const layersBox = document.getElementById("layers");
+LAYERS.forEach(l => {
+  const label = document.createElement("label");
+  label.className = "lchk";
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.checked = true;
+  cb.addEventListener("change", () => {
+    cb.checked ? activeLayers.add(l) : activeLayers.delete(l);
+    render();
+  });
+  label.appendChild(cb);
+  label.appendChild(document.createTextNode(l));
+  layersBox.appendChild(label);
+});
+
+let views = [{ title: viz.title, nodes: viz.nodes, edges: viz.edges }];
+let cursor = 0;
+const current = () => views[cursor];
+
+document.getElementById("back").addEventListener("click", () => { if (cursor > 0) { cursor--; render(); } });
+document.getElementById("fwd").addEventListener("click", () => { if (cursor < views.length - 1) { cursor++; render(); } });
+
+function openView(title, nodes, edges) {
+  views = views.slice(0, cursor + 1);
+  views.push({ title, nodes, edges });
+  cursor++;
+  render();
+}
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+function textWidth(text, font) {
+  ctx.font = font;
+  return ctx.measureText(text).width;
+}
+
+function wrapText(text, maxW, font) {
+  const words = (text || "").split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = "";
+  words.forEach(w => {
+    const test = line ? line + " " + w : w;
+    if (textWidth(test, font) <= maxW) {
+      line = test;
+    } else {
+      if (line) lines.push(line);
+      line = w;
+    }
+  });
+  if (line) lines.push(line);
+  return lines.length ? lines : [text || ""];
+}
+
+function nodeMetrics(n) {
+  const s = styleOf(n);
+  const labelFont = "500 11px system-ui, sans-serif";
+  const summaryFont = "9px system-ui, sans-serif";
+  const maxTextW = n.kind === "decision" ? 200 : 220;
+  const labelLines = wrapText(n.label, maxTextW, labelFont);
+  const summaryLines = n.summary ? wrapText(n.summary, maxTextW, summaryFont) : [];
+  const labelW = Math.max(...labelLines.map(l => textWidth(l, labelFont)), 0);
+  const summaryW = Math.max(...summaryLines.map(l => textWidth(l, summaryFont)), 0);
+  const hasIcon = true;
+  const innerW = Math.max(labelW, summaryW) + (hasIcon ? 32 : 0);
+  const minW = n.kind === "decision" ? 168 : 140;
+  const maxW = n.kind === "decision" ? 280 : 300;
+  const width = Math.max(minW, Math.min(maxW, innerW + 24));
+  const lineH = 13;
+  const labelH = 11 + (labelLines.length - 1) * lineH;
+  const summaryH = summaryLines.length ? 4 + summaryLines.length * lineH : 0;
+  const height = 22 + labelH + summaryH;
+  return { width, height, labelLines, summaryLines, labelH, summaryH, hasIcon, color: s.color, icon: s.icon };
+}
+
+function sequentialize(arcs, visible, level) {
+  if (level !== "file" && level !== "function") return arcs;
+  const lineOf = id => {
+    const n = visible.find(x => x.id === id);
+    return n && n.source ? n.source.start_line : 0;
+  };
+  const out = {};
+  arcs.forEach(a => { (out[a.from] = out[a.from] || []).push(a); });
+  const keep = new Set();
+  const add = [];
+  Object.keys(out).forEach(src => {
+    const srcNode = visible.find(x => x.id === src);
+    if (!srcNode || srcNode.kind === "decision") return;
+    const outs = out[src]
+      .filter(a => visible.find(x => x.id === a.to))
+      .slice()
+      .sort((a, b) => lineOf(a.to) - lineOf(b.to));
+    if (outs.length < 2) return;
+    keep.add(`${outs[0].from}→${outs[0].to}`);
+    for (let i = 1; i < outs.length; i++) {
+      add.push({ from: outs[i - 1].to, to: outs[i].to, label: outs[i].label });
+    }
+  });
+  return arcs.filter(a => {
+    const srcNode = visible.find(x => x.id === a.from);
+    if (srcNode && srcNode.kind === "decision") return true;
+    if (!out[a.from] || out[a.from].length < 2) return true;
+    return keep.has(`${a.from}→${a.to}`);
+  }).concat(add);
+}
+
+function layeredLayout(nodes, edges) {
+  const visible = nodes.filter(n => activeLayers.has(n.layer));
+  const ids = new Set(visible.map(n => n.id));
+  let arcs = edges.filter(e => ids.has(e.from) && ids.has(e.to)).map(e => ({ ...e }));
+  visible.forEach(n => {
+    if (n.kind === "decision" && n.branches) {
+      n.branches.forEach(b => {
+        if (ids.has(b.target)) arcs.push({ from: n.id, to: b.target, label: b.condition });
+      });
+    }
+  });
+  arcs = sequentialize(arcs, visible, viz.level);
+
+  const layer = {};
+  visible.forEach(n => layer[n.id] = 0);
+  for (let i = 0; i < visible.length; i++) {
+    arcs.forEach(a => { if (layer[a.to] <= layer[a.from]) layer[a.to] = layer[a.from] + 1; });
+  }
+
+  const metrics = {};
+  visible.forEach(n => metrics[n.id] = nodeMetrics(n));
+
+  const groups = new Map();
+  visible.forEach(n => {
+    const l = layer[n.id];
+    if (!groups.has(l)) groups.set(l, []);
+    groups.get(l).push(n);
+  });
+
+  const preds = {};
+  arcs.forEach(a => { (preds[a.to] = preds[a.to] || []).push(a.from); });
+
+  const sortedLayers = [...groups.keys()].sort((a, b) => a - b);
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    group.forEach(n => {
+      const ps = (preds[n.id] || []).filter(p => metrics[p]._pos);
+      n._bary = ps.length ? ps.reduce((s, p) => s + metrics[p]._pos.x + metrics[p].width / 2, 0) / ps.length : Infinity;
+    });
+    group.sort((a, b) => (a._bary - b._bary) || a.id.localeCompare(b.id));
+    let x = 40;
+    group.forEach(n => {
+      metrics[n.id]._pos = { x, y: 0 };
+      x += metrics[n.id].width + 40;
+    });
+  });
+
+  let maxLayerWidth = 0;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const last = group[group.length - 1];
+    const w = metrics[last.id]._pos.x + metrics[last.id].width;
+    if (w > maxLayerWidth) maxLayerWidth = w;
+  });
+
+  let y = 40;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const maxH = Math.max(...group.map(n => metrics[n.id].height));
+    group.forEach(n => { metrics[n.id]._pos.y = y + (maxH - metrics[n.id].height) / 2; });
+    const layerW = Math.max(...group.map(n => metrics[n.id]._pos.x + metrics[n.id].width));
+    const offset = (maxLayerWidth - layerW) / 2;
+    group.forEach(n => { metrics[n.id]._pos.x += Math.max(0, offset); });
+    y += maxH + 70;
+  });
+
+  return { visible, arcs, metrics };
+}
+
+function treeLayout(nodes, sourceEdges) {
+  const root = nodes[0];
+  if (!root) return { visible: [], arcs: [], metrics: {}, regions: [] };
+
+  const parentById = {};
+  const nodeById = {};
+  function index(node, parentId = null) {
+    nodeById[node.id] = node;
+    if (parentId) parentById[node.id] = parentId;
+    (node.children || []).forEach(child => index(child, node.id));
+  }
+  index(root);
+
+  function filter(node) {
+    const children = collapsedNodes.has(node.id)
+      ? []
+      : (node.children || [])
+        .filter(c => activeLayers.has(c.layer))
+        .map(filter);
+    return { node, children };
+  }
+  const tree = filter(root);
+  const flat = [];
+
+  function collect(t, depth) {
+    t.depth = depth;
+    flat.push(t.node);
+    t.children.forEach(child => collect(child, depth + 1));
+  }
+  collect(tree, 0);
+  const visibleIds = new Set(flat.map(node => node.id));
+
+  const metrics = {};
+  let y = 40;
+  flat.forEach(node => {
+    const metric = nodeMetrics(node);
+    const depth = findTreeDepth(tree, node.id);
+    metric._pos = { x: 40 + depth * TREE_INDENT, y };
+    node._metrics = metric;
+    metrics[node.id] = metric;
+    y += metric.height + TREE_GAP_Y;
+  });
+
+  const regions = [];
+  function bounds(t) {
+    const metric = metrics[t.node.id];
+    const pos = metric._pos;
+    let left = pos.x - TREE_REGION_PADDING;
+    let top = pos.y - TREE_REGION_PADDING;
+    let right = pos.x + metric.width + TREE_REGION_PADDING;
+    let bottom = pos.y + metric.height + TREE_REGION_PADDING;
+    let nodeIds = [t.node.id];
+
+    t.children.forEach(child => {
+      const childBounds = bounds(child);
+      left = Math.min(left, childBounds.left - TREE_REGION_NESTING_GAP);
+      top = Math.min(top, childBounds.top - TREE_REGION_NESTING_GAP);
+      right = Math.max(right, childBounds.right + TREE_REGION_NESTING_GAP);
+      bottom = Math.max(bottom, childBounds.bottom + TREE_REGION_NESTING_GAP);
+      nodeIds = nodeIds.concat(childBounds.nodeIds);
+    });
+
+    if (t.children.length) {
+      regions.push({
+        id: t.node.id,
+        depth: t.depth,
+        x: left,
+        y: top,
+        width: right - left,
+        height: bottom - top,
+        color: metric.color,
+        nodeIds
+      });
+    }
+    return { left, top, right, bottom, nodeIds };
+  }
+  bounds(tree);
+  regions.sort((a, b) => a.depth - b.depth);
+
+  const edges = [];
+  function addStructuralEdges(t) {
+    t.children.forEach(child => {
+      edges.push({ from: t.node.id, to: child.node.id, label: null, status: null });
+      addStructuralEdges(child);
+    });
+  }
+  addStructuralEdges(tree);
+
+  function visibleAncestor(id) {
+    let currentId = id;
+    while (currentId && !visibleIds.has(currentId)) {
+      const parentId = parentById[currentId];
+      if (!parentId) return null;
+      currentId = parentId;
+    }
+    return currentId || null;
+  }
+  const seen = new Set(edges.map(edge => `${edge.from}→${edge.to}`));
+  (sourceEdges || []).forEach(edge => {
+    const from = visibleAncestor(edge.from);
+    const to = visibleAncestor(edge.to);
+    if (!from || !to || from === to) return;
+    const key = `${from}→${to}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    edges.push({ from, to, label: edge.label, status: edge.status });
+  });
+
+  return { visible: flat, arcs: edges, metrics, regions };
+}
+
+function findTreeDepth(tree, nodeId) {
+  if (tree.node.id === nodeId) return tree.depth;
+  for (const child of tree.children) {
+    const depth = findTreeDepth(child, nodeId);
+    if (depth >= 0) return depth;
+  }
+  return -1;
+}
+
+function isTreeView(view) {
+  return view.nodes.length === 1 && view.edges.length === 0 && view.nodes[0].children && view.nodes[0].children.length > 0;
+}
+
+const NS = "http://www.w3.org/2000/svg";
+const TREE_INDENT = 44;
+const TREE_REGION_PADDING = 18;
+const TREE_REGION_NESTING_GAP = 10;
+const TREE_GAP_Y = 28;
+const collapsedNodes = new Set();
+let query = "";
+
+function render() {
+  const view = current();
+  document.getElementById("crumb").textContent = view.title;
+  document.getElementById("back").disabled = cursor === 0;
+  document.getElementById("fwd").disabled = cursor === views.length - 1;
+
+  const isTree = isTreeView(view);
+  const layout = isTree
+    ? treeLayout(view.nodes, view.edges)
+    : layeredLayout(view.nodes, view.edges);
+  const { visible, arcs, metrics, regions = [] } = layout;
+
+  const svg = document.getElementById("svg");
+  svg.innerHTML = "";
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  visible.forEach(n => {
+    const m = metrics[n.id];
+    minX = Math.min(minX, m._pos.x);
+    minY = Math.min(minY, m._pos.y);
+    maxX = Math.max(maxX, m._pos.x + m.width);
+    maxY = Math.max(maxY, m._pos.y + m.height);
+  });
+  regions.forEach(region => {
+    minX = Math.min(minX, region.x);
+    minY = Math.min(minY, region.y);
+    maxX = Math.max(maxX, region.x + region.width);
+    maxY = Math.max(maxY, region.y + region.height);
+  });
+  const stageWidth = visible.length ? Math.max(maxX + 40, 1) : 1;
+  const stageHeight = visible.length ? Math.max(maxY + 40, 1) : 1;
+  svg.setAttribute("width", stageWidth);
+  svg.setAttribute("height", stageHeight);
+  svg.setAttribute("viewBox", `0 0 ${stageWidth} ${stageHeight}`);
+
+  const defs = document.createElementNS(NS, "defs");
+  defs.innerHTML = '<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/></marker>';
+  svg.appendChild(defs);
+  const scene = document.createElementNS(NS, "g");
+  scene.setAttribute("id", "scene");
+  svg.appendChild(scene);
+
+  const matches = q => n => q && (n.label.toLowerCase().includes(q) || n.id.toLowerCase().includes(q));
+  const isHit = matches(query);
+
+  const regionLayer = document.createElementNS(NS, "g");
+  regionLayer.setAttribute("id", "scope-regions");
+  regions.forEach(region => {
+    const group = document.createElementNS(NS, "g");
+    group.setAttribute("class", "scope-region");
+    if (query && !region.nodeIds.some(id => isHit(visible.find(n => n.id === id)))) group.classList.add("dim");
+    const rect = document.createElementNS(NS, "rect");
+    rect.setAttribute("x", region.x);
+    rect.setAttribute("y", region.y);
+    rect.setAttribute("width", region.width);
+    rect.setAttribute("height", region.height);
+    rect.setAttribute("rx", 16);
+    rect.setAttribute("fill", region.color);
+    rect.setAttribute("fill-opacity", "0.055");
+    rect.setAttribute("stroke", region.color);
+    rect.setAttribute("stroke-opacity", "0.42");
+    group.appendChild(rect);
+    regionLayer.appendChild(group);
+  });
+  scene.appendChild(regionLayer);
+
+  arcs.forEach(a => {
+    const m1 = metrics[a.from], m2 = metrics[a.to];
+    const p1 = m1._pos, p2 = m2._pos;
+    const sx = p1.x + m1.width / 2;
+    const sy = p1.y + m1.height;
+    const tx = p2.x + m2.width / 2;
+    const ty = p2.y;
+    const dy = Math.max(ty - sy, 30);
+    const c1y = sy + dy * 0.45;
+    const c2y = ty - dy * 0.45;
+    const d = `M ${sx} ${sy} C ${sx} ${c1y}, ${tx} ${c2y}, ${tx} ${ty}`;
+
+    const line = document.createElementNS(NS, "path");
+    line.setAttribute("d", d);
+    const status = a.status || view.edges.find(e => e.from === a.from && e.to === a.to);
+    line.setAttribute("class", "edge" + (status && status.status === "inferred" ? " inferred" : ""));
+    line.setAttribute("marker-end", "url(#arr)");
+    if (query && !(isHit(visible.find(n => n.id === a.from)) && isHit(visible.find(n => n.id === a.to)))) line.classList.add("dim");
+    scene.appendChild(line);
+
+    if (a.label) {
+      const len = line.getTotalLength();
+      const pt = line.getPointAtLength(len / 2);
+      const lw = textWidth(a.label, "10px system-ui, sans-serif") + 12;
+      const bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("class", "elabel-bg");
+      bg.setAttribute("x", pt.x - lw / 2);
+      bg.setAttribute("y", pt.y - 10);
+      bg.setAttribute("width", lw);
+      bg.setAttribute("height", 20);
+      bg.setAttribute("rx", 6);
+      scene.appendChild(bg);
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "elabel");
+      t.setAttribute("x", pt.x);
+      t.setAttribute("y", pt.y + 3);
+      t.setAttribute("text-anchor", "middle");
+      t.textContent = a.label;
+      scene.appendChild(t);
+    }
+  });
+
+  visible.forEach(n => {
+    const p = metrics[n.id]._pos;
+    const m = metrics[n.id];
+    const s = styleOf(n);
+    const g = document.createElementNS(NS, "g");
+    const classes = ["node", n.kind];
+    if (n.id === view.nodes[0]?.id) classes.push("root");
+    if (query && !isHit(n)) classes.push("dim");
+    g.setAttribute("class", classes.join(" "));
+    const shape = document.createElementNS(NS, "rect");
+    shape.setAttribute("x", p.x); shape.setAttribute("y", p.y);
+    shape.setAttribute("width", m.width); shape.setAttribute("height", m.height);
+    shape.setAttribute("rx", 12);
+    const fill = n.kind === "group"
+      ? "#181b2b"
+      : n.kind === "decision"
+        ? "#241d0c"
+        : n.kind === "loop"
+          ? "#1c1f2e"
+          : "#14171f";
+    shape.setAttribute("fill", fill);
+    shape.setAttribute("stroke", s.color);
+    shape.setAttribute("stroke-opacity", n.kind === "group" ? "0.95" : "0.78");
+    shape.setAttribute("stroke-width", n.id === view.nodes[0]?.id ? 2.5 : 1.8);
+    if (query && isHit(n)) shape.setAttribute("class", "hit");
+    g.appendChild(shape);
+
+    if ((n.kind === "group" || n.kind === "function") && n.children && n.children.length) {
+      const toggle = document.createElementNS(NS, "g");
+      toggle.setAttribute("class", "collapse-toggle");
+      toggle.setAttribute("role", "button");
+      toggle.setAttribute("aria-label", collapsedNodes.has(n.id) ? "Развернуть" : "Свернуть");
+      toggle.addEventListener("click", event => {
+        event.stopPropagation();
+        collapsedNodes.has(n.id) ? collapsedNodes.delete(n.id) : collapsedNodes.add(n.id);
+        render();
+      });
+      const toggleShape = document.createElementNS(NS, "rect");
+      toggleShape.setAttribute("x", p.x + m.width - 24);
+      toggleShape.setAttribute("y", p.y + 6);
+      toggleShape.setAttribute("width", 16);
+      toggleShape.setAttribute("height", 16);
+      toggleShape.setAttribute("rx", 5);
+      toggleShape.setAttribute("fill", "#252a3d");
+      toggleShape.setAttribute("stroke", s.color);
+      toggleShape.setAttribute("stroke-opacity", "0.55");
+      toggle.appendChild(toggleShape);
+      const toggleLabel = document.createElementNS(NS, "text");
+      toggleLabel.setAttribute("x", p.x + m.width - 16);
+      toggleLabel.setAttribute("y", p.y + 18);
+      toggleLabel.setAttribute("text-anchor", "middle");
+      toggleLabel.setAttribute("fill", "#cbd0ff");
+      toggleLabel.setAttribute("font-size", "13");
+      toggleLabel.textContent = collapsedNodes.has(n.id) ? "+" : "−";
+      toggle.appendChild(toggleLabel);
+      g.appendChild(toggle);
+    }
+
+    if (m.hasIcon) {
+      const icon = document.createElementNS(NS, "g");
+      icon.setAttribute("transform", `translate(${p.x + 18} ${p.y + m.height/2 - 7}) scale(.55)`);
+      icon.setAttribute("fill", "none");
+      icon.setAttribute("stroke", s.color);
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("stroke-linecap", "round");
+      icon.setAttribute("stroke-linejoin", "round");
+      icon.innerHTML = ICON_PATHS[s.icon] || ICON_PATHS.Box;
+      g.appendChild(icon);
+    }
+
+    const textX = m.hasIcon ? p.x + 38 : p.x + 12;
+    const labelMaxW = m.width - (m.hasIcon ? 48 : 22);
+    const labelLines = wrapText(n.label, labelMaxW, "500 11px system-ui, sans-serif");
+    labelLines.forEach((ln, i) => {
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "nlabel");
+      t.setAttribute("x", textX);
+      t.setAttribute("y", p.y + 17 + i * 13);
+      t.textContent = ln;
+      g.appendChild(t);
+    });
+
+    if (n.summary) {
+      const summaryLines = wrapText(n.summary, labelMaxW, "9px system-ui, sans-serif");
+      summaryLines.forEach((ln, i) => {
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("class", "nsummary");
+        t.setAttribute("x", textX);
+        t.setAttribute("y", p.y + 19 + labelLines.length * 13 + 4 + i * 13);
+        t.textContent = ln;
+        g.appendChild(t);
+      });
+    }
+
+    if (n.tests) {
+      ["unit", "integration", "e2e"].forEach((k, i) => {
+        const dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", p.x + m.width - 12 - i * 10); dot.setAttribute("cy", p.y + 11);
+        dot.setAttribute("r", 3.5);
+        dot.setAttribute("fill", n.tests[k] ? ["#34d399", "#60a5fa", "#f472b6"][i] : "#3f3f46");
+        g.appendChild(dot);
+      });
+    }
+
+    g.addEventListener("click", event => {
+      if (event.metaKey) {
+        if (n.children && n.children.length) {
+          document.getElementById("sidebar").style.display = "none";
+          openView(n.label, n.children, []);
+        } else if (n.symbol) {
+          document.getElementById("sidebar").style.display = "none";
+          window.parent.postMessage({ type: "graphloom:navigate", symbolId: n.symbol }, "*");
+        }
+        return;
+      }
+      showSidebar(n);
+    });
+    scene.appendChild(g);
+  });
+}
+
+function showSidebar(n) {
+  const s = styleOf(n);
+  document.getElementById("s-title").textContent = n.label;
+  document.getElementById("s-meta").textContent =
+    s.icon + " " + n.kind + (n.element_type ? " · " + n.element_type : "") +
+    (n.confidence != null ? " · confidence " + n.confidence.toFixed(2) : "");
+  document.getElementById("s-tests").innerHTML = n.tests
+    ? ["unit", "integration", "e2e"].map(k =>
+        '<span class="chip ' + (n.tests[k] ? "on" : "off") + '">' + k + "</span>").join("")
+    : "";
+  document.getElementById("s-summary").textContent = n.summary || "";
+
+  const extra = document.getElementById("s-extra");
+  extra.innerHTML = "";
+
+  const refs = document.getElementById("s-refs");
+  refs.innerHTML = "";
+  if (n.cross_refs && n.cross_refs.length) {
+    const title = document.createElement("div");
+    title.className = "meta";
+    title.textContent = "Связи:";
+    refs.appendChild(title);
+    const list = document.createElement("div");
+    for (const ref of n.cross_refs) {
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = ref.label;
+      a.style.display = "block";
+      a.style.color = "#60a5fa";
+      a.style.marginTop = "4px";
+      a.style.textDecoration = "none";
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.parent.postMessage({ type: "graphloom:navigate", symbolId: ref.id, file: ref.file }, "*");
+      });
+      list.appendChild(a);
+    }
+    refs.appendChild(list);
+  }
+
+  if (n.kind === "call" && n.children && n.children.length) {
+    const btn = document.createElement("button");
+    btn.className = "expand";
+    btn.textContent = "Раскрыть flow";
+    btn.addEventListener("click", () => {
+      document.getElementById("sidebar").style.display = "none";
+      openView(n.label, n.children, []);
+    });
+    extra.appendChild(btn);
+  }
+
+  const code = document.getElementById("s-code");
+  if (n.source && sources[n.source.file]) {
+    const lines = sources[n.source.file].split("\n");
+    const from = Math.max(1, n.source.start_line - 2);
+    const to = Math.min(lines.length, n.source.end_line + 2);
+    let html = "";
+    for (let i = from; i <= to; i++) {
+      const esc = lines[i - 1].replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      const body = '<span class="ln">' + i + "</span>" + esc;
+      html += i >= n.source.start_line && i <= n.source.end_line
+        ? '<span class="hl">' + body + "</span>" : body + "\n";
+    }
+    code.innerHTML = html;
+    code.style.display = "block";
+  } else {
+    code.style.display = "none";
+  }
+  document.getElementById("sidebar").style.display = "block";
+}
+
+document.getElementById("close").addEventListener("click", () => {
+  document.getElementById("sidebar").style.display = "none";
+});
+document.getElementById("search").addEventListener("input", ev => {
+  query = ev.target.value.trim().toLowerCase();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

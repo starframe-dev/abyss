@@ -1,0 +1,4198 @@
+{
+  "title": "internal/ascii/ascii.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/ascii/ascii.go",
+      "kind": "group",
+      "label": "Файл пакета ascii",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 1,
+        "end_line": 239
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Этот файл содержит пакет для преобразования framebuffer в ANSI-цветное искусство для терминала.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/ascii/ascii.go:Cell:12297214",
+          "kind": "group",
+          "label": "Структура Cell",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 13,
+            "end_line": 17
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.Cell",
+          "summary": "Эта структура представляет одну терминальную ячейку с символом и цветами фона/переднего плана.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:Render:12297410",
+          "kind": "group",
+          "label": "Функция Render",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 21,
+            "end_line": 38
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+          "summary": "Эта функция преобразует дерево макета в строки обычного текста для заданного размера области просмотра.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/ascii/ascii.go:12297509",
+              "kind": "decision",
+              "label": "Проверка валидности framebuffer",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 22,
+                "end_line": 24
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что framebuffer не nil и имеет ненулевую ширину.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12297509"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12297549",
+                  "kind": "output",
+                  "label": "Возврат пустой строки",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 23,
+                    "end_line": 23
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает пустой массив строк при невалидном framebuffer.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12297549"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12297580",
+              "kind": "action",
+              "label": "Расчёт количества строк",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 31,
+                "end_line": 31
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение вычисляет количество строк как высоту framebuffer, делённую на 2.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12297580"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/ascii/ascii.go:12297609",
+              "kind": "decision",
+              "label": "Проверка нечётной высоты",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 27,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что высота framebuffer нечётная для коррекции расчёта строк.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12297609"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12297639",
+                  "kind": "action",
+                  "label": "Увеличение количества строк",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 31,
+                    "end_line": 31
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение увеличивает количество строк на 1 при нечётной высоте framebuffer.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12297639"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12297660",
+              "kind": "action",
+              "label": "Вызов makeGrid в Render",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 31,
+                "end_line": 31
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение вызывает функцию создания сетки для построения терминального вывода.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12297660"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/ascii/ascii.go:makeGrid:12297668",
+                  "kind": "call",
+                  "label": "Вызов makeGrid",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 58,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.makeGrid",
+                  "summary": "Этот вызов создаёт двумерную сетку ячеек на основе framebuffer и количества строк.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ makeGrid in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12297715",
+              "kind": "action",
+              "label": "Вызов overlayText в Render",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 34,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение вызывает функцию наложения текста на сетку перед возвратом результата.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12297715"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/ascii/ascii.go:overlayText:12297715",
+                  "kind": "call",
+                  "label": "Вызов overlayText",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 194,
+                    "end_line": 229
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.overlayText",
+                  "summary": "Этот вызов накладывает текстовый оверлей на сетку ячеек.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.overlayText",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ overlayText in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12297784",
+              "kind": "output",
+              "label": "Возврат результата Render",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 37,
+                "end_line": 37
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает результат функции renderPlain для совместимости с E2E тестами.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12297784"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.RenderPlain",
+              "file": "internal/ascii/ascii.go",
+              "label": "← RenderPlain in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:RenderANSI:12297892",
+          "kind": "group",
+          "label": "Функция RenderANSI",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 41,
+            "end_line": 56
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.RenderANSI",
+          "summary": "Эта функция возвращает строки ANSI-цвета для отображения в терминале.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/ascii/ascii.go:12297995",
+              "kind": "decision",
+              "label": "Проверка валидности framebuffer в RenderANSI",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 42,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что framebuffer не nil и имеет ненулевую ширину.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12297995"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12298035",
+                  "kind": "output",
+                  "label": "Возврат пустой строки в RenderANSI",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 43,
+                    "end_line": 43
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает пустой массив строк при невалидном framebuffer.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12298035"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12298066",
+              "kind": "action",
+              "label": "Расчёт количества строк в RenderANSI",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 51,
+                "end_line": 51
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение вычисляет количество строк как высоту framebuffer, делённую на 2.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12298066"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/ascii/ascii.go:12298095",
+              "kind": "decision",
+              "label": "Проверка нечётной высоты в RenderANSI",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 47,
+                "end_line": 49
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что высота framebuffer нечётная для коррекции расчёта строк.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12298095"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12298125",
+                  "kind": "action",
+                  "label": "Увеличение количества строк в RenderANSI",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 51,
+                    "end_line": 51
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение увеличивает количество строк на 1 при нечётной высоте framebuffer.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12298125"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12298146",
+              "kind": "action",
+              "label": "Вызов makeGrid в RenderANSI",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 51,
+                "end_line": 51
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение вызывает функцию создания сетки для построения терминального вывода.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12298146"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/ascii/ascii.go:makeGrid:12298154",
+                  "kind": "call",
+                  "label": "Вызов makeGrid в RenderANSI",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 58,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.makeGrid",
+                  "summary": "Этот вызов создаёт двумерную сетку ячеек на основе framebuffer и количества строк.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ makeGrid in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12298181",
+              "kind": "action",
+              "label": "Вызов overlayText в RenderANSI",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 53,
+                "end_line": 53
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение вызывает функцию наложения текста на сетку перед возвратом результата.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12298181"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/ascii/ascii.go:overlayText:12298181",
+                  "kind": "call",
+                  "label": "Вызов overlayText в RenderANSI",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 194,
+                    "end_line": 229
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.overlayText",
+                  "summary": "Этот вызов накладывает текстовый оверлей на сетку ячеек.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.overlayText",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ overlayText in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12298210",
+              "kind": "output",
+              "label": "Возврат результата RenderANSI",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 55,
+                "end_line": 55
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает результат функции renderANSI для терминального вывода.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12298210"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:makeGrid:12298252",
+          "kind": "group",
+          "label": "Функция makeGrid",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 58,
+            "end_line": 70
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.makeGrid",
+          "summary": "Эта функция создаёт двумерную сетку ячеек на основе framebuffer и количества строк.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/ascii/ascii.go:12298323",
+              "kind": "action",
+              "label": "Инициализация сетки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 59,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение создаёт двумерный массив для хранения сетки ячеек.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12298323"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/ascii/ascii.go:12298359",
+              "kind": "loop",
+              "label": "Внешний цикл по строкам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 60,
+                "end_line": 68
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Этот цикл перебирает все строки сетки для заполнения ячеек.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12298359"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12298363",
+                  "kind": "action",
+                  "label": "Начало цикла по строкам",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 59,
+                    "end_line": 59
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение начинает цикл для перебора всех строк сетки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12298363"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12298388",
+                  "kind": "action",
+                  "label": "Начало цикла по строкам (повтор)",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 59,
+                    "end_line": 59
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение является частью цикла для перебора всех строк сетки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12298388"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12298404",
+                  "kind": "action",
+                  "label": "Создание строки сетки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 61,
+                    "end_line": 61
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение создаёт массив ячеек для каждой строки сетки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12298404"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/ascii/ascii.go:12298447",
+                  "kind": "loop",
+                  "label": "Внутренний цикл по столбцам",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 62,
+                    "end_line": 67
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Этот цикл перебирает все столбцы в каждой строке для заполнения ячеек.",
+                  "coverage_ids": [
+                    "loop:internal/ascii/ascii.go:12298447"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12298451",
+                      "kind": "action",
+                      "label": "Начало цикла по столбцам",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 61,
+                        "end_line": 61
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение начинает цикл для перебора всех столбцов в строке.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12298451"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12298477",
+                      "kind": "action",
+                      "label": "Начало цикла по столбцам (повтор)",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 61,
+                        "end_line": 61
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение является частью цикла для перебора всех столбцов в строке.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12298477"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12298497",
+                      "kind": "action",
+                      "label": "Получение верхней ячейки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 63,
+                        "end_line": 63
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение получает данные из верхней половины framebuffer для текущей позиции.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12298497"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/ascii/ascii.go:Get:12298504",
+                          "kind": "call",
+                          "label": "Вызов Get для верхней ячейки",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 63,
+                            "end_line": 63
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+                          "summary": "Этот вызов получает данные из верхней половины framebuffer для текущей позиции.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+                              "file": "internal/framebuffer/framebuffer.go",
+                              "label": "→ Get in internal/framebuffer/framebuffer.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12298535",
+                      "kind": "action",
+                      "label": "Получение нижней ячейки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 64,
+                        "end_line": 64
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение получает данные из нижней половины framebuffer для текущей позиции.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12298535"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/ascii/ascii.go:Get:12298545",
+                          "kind": "call",
+                          "label": "Вызов Get для нижней ячейки",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 64,
+                            "end_line": 64
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+                          "summary": "Этот вызов получает данные из нижней половины framebuffer для текущей позиции.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+                              "file": "internal/framebuffer/framebuffer.go",
+                              "label": "→ Get in internal/framebuffer/framebuffer.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12298578",
+                      "kind": "action",
+                      "label": "Вызов chooseChar в цикле",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 65,
+                        "end_line": 65
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение вызывает функцию выбора символа для заполнения ячейки сетки.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12298578"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/ascii/ascii.go:chooseChar:12298594",
+                          "kind": "call",
+                          "label": "Вызов chooseChar",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 77,
+                            "end_line": 88
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/ascii.chooseChar",
+                          "summary": "Этот вызов выбирает символ и цвета для ячейки на основе верхней и нижней частей framebuffer.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+                              "file": "internal/ascii/ascii.go",
+                              "label": "→ chooseChar in internal/ascii/ascii.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12298630",
+                      "kind": "action",
+                      "label": "Заполнение ячейки сетки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 65,
+                        "end_line": 65
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение заполняет ячейку сетки выбранным символом и цветами.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12298630"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12298711",
+              "kind": "output",
+              "label": "Возврат сетки",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 69,
+                "end_line": 69
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает заполненную сетку ячеек из функции makeGrid.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12298711"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.Render",
+              "file": "internal/ascii/ascii.go",
+              "label": "← Render in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.RenderANSI",
+              "file": "internal/ascii/ascii.go",
+              "label": "← RenderANSI in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:RenderPlain:12298798",
+          "kind": "group",
+          "label": "Функция RenderPlain",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 73,
+            "end_line": 75
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.RenderPlain",
+          "summary": "Эта функция возвращает строки обычного текста без ANSI-кодов для E2E тестов.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/ascii/ascii.go:12298902",
+              "kind": "output",
+              "label": "Возврат результата RenderPlain",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 74,
+                "end_line": 74
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает результат функции Render для совместимости с E2E тестами.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12298902"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:chooseChar:12298944",
+          "kind": "group",
+          "label": "Функция chooseChar",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 77,
+            "end_line": 88
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.chooseChar",
+          "summary": "Эта функция выбирает символ и цвета для ячейки на основе верхней и нижней частей framebuffer.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/ascii/ascii.go:12299020",
+              "kind": "decision",
+              "label": "Проверка прозрачности цветов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 78,
+                "end_line": 80
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что оба цвета прозрачны для возврата пробела.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12299020"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12299061",
+                  "kind": "output",
+                  "label": "Возврат пробела при прозрачности",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 79,
+                    "end_line": 79
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает пробел и прозрачные цвета при отсутствии заданных цветов.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12299061"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12299196",
+              "kind": "action",
+              "label": "Установка прозрачного цвета fg",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 82,
+                "end_line": 82
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение устанавливает прозрачный цвет для использования в качестве цвета переднего плана.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12299196"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/ascii/ascii.go:Transparent:12299202",
+                  "kind": "call",
+                  "label": "Вызов Transparent для fg",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 82,
+                    "end_line": 82
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.Transparent",
+                  "summary": "Этот вызов получает прозрачный цвет для использования в качестве цвета переднего плана.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.Transparent",
+                      "file": "internal/css/computed_values.go",
+                      "label": "→ Transparent in internal/css/computed_values.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/ascii/ascii.go:12299224",
+              "kind": "decision",
+              "label": "Проверка заданного верхнего цвета",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 83,
+                "end_line": 86
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что верхний цвет задан для использования в качестве фона.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12299224"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12299247",
+                  "kind": "action",
+                  "label": "Установка верхнего цвета как фона",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 82,
+                    "end_line": 82
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение использует верхний цвет в качестве фона ячейки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12299247"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/ascii/ascii.go:12299265",
+                  "kind": "output",
+                  "label": "Возврат пробела с верхним цветом",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 85,
+                    "end_line": 85
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает пробел и цвета при заданном верхнем цвете.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12299265"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12299294",
+              "kind": "output",
+              "label": "Возврат пробела с нижним цветом",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 87,
+                "end_line": 87
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает пробел и цвета при заданном нижнем цвете.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12299294"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+              "file": "internal/ascii/ascii.go",
+              "label": "← makeGrid in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:colorsEqual:12299320",
+          "kind": "group",
+          "label": "Функция colorsEqual",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 90,
+            "end_line": 92
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.colorsEqual",
+          "summary": "Эта функция сравнивает два цвета на равенство всех компонентов.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/ascii/ascii.go:12299364",
+              "kind": "output",
+              "label": "Возврат результата сравнения цветов",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 91,
+                "end_line": 91
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает результат сравнения двух цветов на равенство.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12299364"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:renderANSI:12299435",
+          "kind": "group",
+          "label": "Функция renderANSI",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 94,
+            "end_line": 137
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.renderANSI",
+          "summary": "Эта функция преобразует сетку ячеек в строки ANSI-кодов для терминала.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/ascii/ascii.go:12299495",
+              "kind": "action",
+              "label": "Инициализация строк",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 98,
+                "end_line": 98
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это утверждение создаёт массив для хранения результирующих строк ANSI.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12299495"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/ascii/ascii.go:12299518",
+              "kind": "loop",
+              "label": "Цикл по строкам сетки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 96,
+                "end_line": 135
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Этот цикл перебирает все строки сетки для построения ANSI-выхода.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12299518"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12299553",
+                  "kind": "action",
+                  "label": "Инициализация строкового буфера",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 98,
+                    "end_line": 98
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение создаёт строковый буфер для сборки ANSI-кодов строки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12299553"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12299583",
+                  "kind": "action",
+                  "label": "Установка предыдущего цвета переднего плана",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 98,
+                    "end_line": 98
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение устанавливает прозрачный цвет как предыдущий цвет переднего плана.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12299583"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/ascii/ascii.go:Transparent:12299593",
+                      "kind": "call",
+                      "label": "Вызов Transparent для lastFG",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 98,
+                        "end_line": 98
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.Transparent",
+                      "summary": "Этот вызов получает прозрачный цвет для использования как предыдущего цвета переднего плана.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.Transparent",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ Transparent in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12299619",
+                  "kind": "action",
+                  "label": "Установка предыдущего цвета фона",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 99,
+                    "end_line": 99
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение устанавливает прозрачный цвет как предыдущий цвет фона.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12299619"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/ascii/ascii.go:Transparent:12299629",
+                      "kind": "call",
+                      "label": "Вызов Transparent для lastBG",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 99,
+                        "end_line": 99
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.Transparent",
+                      "summary": "Этот вызов получает прозрачный цвет для использования как предыдущего цвета фона.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.Transparent",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ Transparent in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12299655",
+                  "kind": "action",
+                  "label": "Инициализация счётчика видимости",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 99,
+                    "end_line": 99
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это утверждение инициализирует счётчик видимых символов для текущей строки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12299655"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/ascii/ascii.go:12299682",
+                  "kind": "loop",
+                  "label": "Цикл по ячейкам строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 102,
+                    "end_line": 123
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Этот цикл перебирает все ячейки в строке для построения ANSI-выхода.",
+                  "coverage_ids": [
+                    "loop:internal/ascii/ascii.go:12299682"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/ascii/ascii.go:12299721",
+                      "kind": "decision",
+                      "label": "Проверка лимита ширины",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 103,
+                        "end_line": 105
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это условие проверяет, что достигнут лимит ширины области просмотра.",
+                      "coverage_ids": [
+                        "if:internal/ascii/ascii.go:12299721"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12299767",
+                          "kind": "action",
+                          "label": "Прерывание цикла при лимите",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 107,
+                            "end_line": 107
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Это утверждение прерывает цикл при достижении лимита ширины области просмотра.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12299767"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12299800",
+                      "kind": "action",
+                      "label": "Вызов ansiColor в цикле",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 107,
+                        "end_line": 107
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение вызывает функцию генерации ANSI-кодов для текущей ячейки.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12299800"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/ascii/ascii.go:ansiColor:12299807",
+                          "kind": "call",
+                          "label": "Вызов ansiColor",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 161,
+                            "end_line": 178
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/ascii.ansiColor",
+                          "summary": "Этот вызов генерирует ANSI-коды для изменения цвета ячейки.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+                              "file": "internal/ascii/ascii.go",
+                              "label": "→ ansiColor in internal/ascii/ascii.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/ascii/ascii.go:12299863",
+                      "kind": "decision",
+                      "label": "Проверка изменения цвета",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 108,
+                        "end_line": 112
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это условие проверяет, что цвет ячейки отличается от предыдущего.",
+                      "coverage_ids": [
+                        "if:internal/ascii/ascii.go:12299863"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12299894",
+                          "kind": "action",
+                          "label": "Запись ANSI-кодов",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 109,
+                            "end_line": 109
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Это утверждение записывает ANSI-коды в строковый буфер строки.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12299894"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12299929",
+                          "kind": "action",
+                          "label": "Обновление предыдущего цвета переднего плана",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 109,
+                            "end_line": 109
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Это утверждение обновляет предыдущий цвет переднего плана текущей ячейкой.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12299929"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12299962",
+                          "kind": "action",
+                          "label": "Обновление предыдущего цвета фона",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 109,
+                            "end_line": 109
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Это утверждение обновляет предыдущий цвет фона текущей ячейкой.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12299962"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12300053",
+                      "kind": "action",
+                      "label": "Инициализация символа ячейки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 115,
+                        "end_line": 115
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение инициализирует переменную для хранения символа ячейки.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12300053"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/ascii/ascii.go:12300077",
+                      "kind": "decision",
+                      "label": "Проверка нулевого символа",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 116,
+                        "end_line": 120
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это условие проверяет, что символ ячейки равен нулю (прозрачный).",
+                      "coverage_ids": [
+                        "if:internal/ascii/ascii.go:12300077"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12300113",
+                          "kind": "action",
+                          "label": "Установка пробела как символа",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 121,
+                            "end_line": 121
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Это утверждение устанавливает пробел как символ для прозрачной ячейки.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12300113"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "else:internal/ascii/ascii.go:12300141",
+                          "kind": "decision",
+                          "label": "Ветка else для символа",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 118,
+                            "end_line": 120
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Эта ветка обрабатывает ячейки с заданным символом.",
+                          "coverage_ids": [
+                            "else:internal/ascii/ascii.go:12300141"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "statement:internal/ascii/ascii.go:12300159",
+                              "kind": "action",
+                              "label": "Установка символа ячейки",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/ascii/ascii.go",
+                                "start_line": 121,
+                                "end_line": 121
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Это утверждение устанавливает символ ячейки из её поля Char.",
+                              "coverage_ids": [
+                                "statement:internal/ascii/ascii.go:12300159"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12300200",
+                      "kind": "action",
+                      "label": "Запись символа в буфер",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 121,
+                        "end_line": 121
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение записывает символ ячейки в строковый буфер строки.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12300200"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12300228",
+                      "kind": "action",
+                      "label": "Увеличение счётчика видимости",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 121,
+                        "end_line": 121
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение увеличивает счётчик видимых символов для текущей строки.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12300228"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/ascii/ascii.go:12300311",
+                  "kind": "loop",
+                  "label": "Цикл заполнения пробелами",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 126,
+                    "end_line": 129
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Этот цикл заполняет оставшиеся позиции пробелами до ширины области просмотра.",
+                  "coverage_ids": [
+                    "loop:internal/ascii/ascii.go:12300311"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12300353",
+                      "kind": "action",
+                      "label": "Запись пробела в буфер",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 127,
+                        "end_line": 127
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение записывает пробел в строковый буфер строки.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12300353"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12300382",
+                      "kind": "action",
+                      "label": "Увеличение счётчика заполнения",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 127,
+                        "end_line": 127
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Это утверждение увеличивает счётчик видимых символов при заполнении пробелами.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12300382"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12300448",
+                  "kind": "action",
+                  "label": "Завершение вывода ANSI-кодов сброса",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 132,
+                    "end_line": 132
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Записывает в строитель буфера код сброса всех атрибутов терминала перед добавлением строки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12300448"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12300482",
+                  "kind": "action",
+                  "label": "Добавление строки в результат",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 134,
+                    "end_line": 134
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присоединяет сформированную строку буфера к массиву результатов для возврата.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12300482"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12300526",
+              "kind": "output",
+              "label": "Возврат массива строк",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 136,
+                "end_line": 136
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает завершённый массив строк с отрисованным текстом.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12300526"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.RenderANSI",
+              "file": "internal/ascii/ascii.go",
+              "label": "← RenderANSI in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:renderPlain:12300542",
+          "kind": "group",
+          "label": "Функция отрисовки простого текста",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 139,
+            "end_line": 159
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.renderPlain",
+          "summary": "Конвертирует двумерную сетку ячеек в массив строк для отображения без цветовых атрибутов.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/ascii/ascii.go:12300603",
+              "kind": "action",
+              "label": "Инициализация массива строк",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 145,
+                "end_line": 145
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт пустой слайс строк для накопления результата отрисовки сетки.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12300603"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/ascii/ascii.go:12300626",
+              "kind": "loop",
+              "label": "Цикл по строкам сетки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 141,
+                "end_line": 157
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает каждую строку двумерного массива ячеек для последовательной отрисовки.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12300626"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12300661",
+                  "kind": "action",
+                  "label": "Создание строителя буфера",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 145,
+                    "end_line": 145
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Инициализирует строитель для формирования строки из символов текущей ячейки сетки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12300661"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/ascii/ascii.go:12300691",
+                  "kind": "loop",
+                  "label": "Цикл по ячейкам строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 143,
+                    "end_line": 149
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Перебирает каждый символ в строке сетки для добавления в строитель буфера.",
+                  "coverage_ids": [
+                    "loop:internal/ascii/ascii.go:12300691"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/ascii/ascii.go:12300730",
+                      "kind": "decision",
+                      "label": "Проверка прозрачного символа",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 144,
+                        "end_line": 148
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Определяет, является ли текущая ячейка прозрачной (пустой) для выбора пробела.",
+                      "coverage_ids": [
+                        "if:internal/ascii/ascii.go:12300730"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12300766",
+                          "kind": "action",
+                          "label": "Запись пробела в буфер",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 145,
+                            "end_line": 145
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Добавляет символ пробела в строитель буфера для прозрачных ячеек сетки.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12300766"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "else:internal/ascii/ascii.go:12300802",
+                          "kind": "decision",
+                          "label": "Обработка видимого символа",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 146,
+                            "end_line": 148
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Исполняется при наличии видимого символа в ячейке для его записи в буфер.",
+                          "coverage_ids": [
+                            "else:internal/ascii/ascii.go:12300802"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "statement:internal/ascii/ascii.go:12300820",
+                              "kind": "action",
+                              "label": "Запись символа ячейки",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/ascii/ascii.go",
+                                "start_line": 147,
+                                "end_line": 147
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Добавляет символ из ячейки сетки в строитель буфера для отображения.",
+                              "coverage_ids": [
+                                "statement:internal/ascii/ascii.go:12300820"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12300875",
+                  "kind": "action",
+                  "label": "Получение строки из буфера",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 150,
+                    "end_line": 150
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Преобразует содержимое строителя буфера в строку для дальнейшей обработки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12300875"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12300985",
+                  "kind": "action",
+                  "label": "Преобразование в слайс рун",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 153,
+                    "end_line": 153
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Конвертирует строку в слайс рун для корректного подсчёта символов с учётом многобайтовых.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12300985"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/ascii/ascii.go:12301012",
+                  "kind": "decision",
+                  "label": "Проверка превышения ширины",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 153,
+                    "end_line": 155
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Определяет, превышает ли количество символов строки заданную максимальную ширину.",
+                  "coverage_ids": [
+                    "if:internal/ascii/ascii.go:12301012"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12301051",
+                      "kind": "action",
+                      "label": "Обрезка строки по символам",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 153,
+                        "end_line": 153
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Обрезает слайс рун до максимальной ширины, игнорируя байтовую длину.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12301051"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12301094",
+                  "kind": "action",
+                  "label": "Добавление строки в результат",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 156,
+                    "end_line": 156
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присоединяет обработанную строку к массиву результатов для возврата.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12301094"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12301141",
+              "kind": "output",
+              "label": "Возврат массива строк",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 158,
+                "end_line": 158
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает функцию renderPlain и возвращает массив отрисованных строк.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12301141"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.Render",
+              "file": "internal/ascii/ascii.go",
+              "label": "← Render in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:ansiColor:12301157",
+          "kind": "group",
+          "label": "Функция генерации ANSI-кодов цвета",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 161,
+            "end_line": 178
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.ansiColor",
+          "summary": "Создаёт ANSI-последовательность для установки foreground и background цветов.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/ascii/ascii.go:12301262",
+              "kind": "decision",
+              "label": "Проверка отсутствия изменений цвета",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 163,
+                "end_line": 165
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает пустую строку, если foreground и background цвета не изменились.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12301262"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12301326",
+                  "kind": "output",
+                  "label": "Возврат пустой строки",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 164,
+                    "end_line": 164
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает пустую строку при отсутствии изменений цветовых атрибутов.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12301326"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12301406",
+              "kind": "action",
+              "label": "Инициализация слайса частей",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 169,
+                "end_line": 169
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт пустой слайс строк для накопления ANSI-кодов цветов.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12301406"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/ascii/ascii.go:12301429",
+              "kind": "decision",
+              "label": "Проверка установленного foreground цвета",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 168,
+                "end_line": 170
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет, установлен ли foreground цвет для генерации соответствующего ANSI-кода.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12301429"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12301451",
+                  "kind": "action",
+                  "label": "Формирование кода foreground цвета",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 169,
+                    "end_line": 169
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Создаёт ANSI-код для установки foreground цвета в формате 38;2;R;G;B.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12301451"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/ascii/ascii.go:itoa:12301481",
+                      "kind": "call",
+                      "label": "Преобразование красного канала в строку",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 180,
+                        "end_line": 192
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+                      "summary": "Вызывает функцию itoa для конвертации значения красного канала в строку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.itoa",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ itoa in internal/ascii/ascii.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/ascii/ascii.go:itoa:12301501",
+                      "kind": "call",
+                      "label": "Преобразование зелёного канала в строку",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 180,
+                        "end_line": 192
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+                      "summary": "Вызывает функцию itoa для конвертации значения зелёного канала в строку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.itoa",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ itoa in internal/ascii/ascii.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/ascii/ascii.go:itoa:12301521",
+                      "kind": "call",
+                      "label": "Преобразования синего канала в строку",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 180,
+                        "end_line": 192
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+                      "summary": "Вызывает функцию itoa для конвертации значения синего канала в строку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.itoa",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ itoa in internal/ascii/ascii.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/ascii/ascii.go:12301548",
+              "kind": "decision",
+              "label": "Проверка установленного background цвета",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 171,
+                "end_line": 173
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет, установлен ли background цвет для генерации соответствующего ANSI-кода.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12301548"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12301570",
+                  "kind": "action",
+                  "label": "Формирование кода background цвета",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 172,
+                    "end_line": 172
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Создаёт ANSI-код для установки background цвета в формате 48;2;R;G;B.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12301570"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/ascii/ascii.go:itoa:12301600",
+                      "kind": "call",
+                      "label": "Преобразование красного канала background в строку",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 180,
+                        "end_line": 192
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+                      "summary": "Вызывает функцию itoa для конвертации значения красного канала background в строку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.itoa",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ itoa in internal/ascii/ascii.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/ascii/ascii.go:itoa:12301620",
+                      "kind": "call",
+                      "label": "Преобразование зелёного канала background в строку",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 180,
+                        "end_line": 192
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+                      "summary": "Вызывает функцию itoa для конвертации значения зелёного канала background в строку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.itoa",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ itoa in internal/ascii/ascii.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/ascii/ascii.go:itoa:12301640",
+                      "kind": "call",
+                      "label": "Преобразование синего канала background в строку",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 180,
+                        "end_line": 192
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+                      "summary": "Вызывает функцию itoa для конвертации значения синего канала background в строку.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.itoa",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ itoa in internal/ascii/ascii.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/ascii/ascii.go:12301667",
+              "kind": "decision",
+              "label": "Проверка пустого слайса частей",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 174,
+                "end_line": 176
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет, не содержит ли слайс частей кодов цветов для возврата пустой строки.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12301667"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12301696",
+                  "kind": "output",
+                  "label": "Возврат пустой строки",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 175,
+                    "end_line": 175
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает пустую строку при отсутствии foreground и background кодов.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12301696"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12301716",
+              "kind": "output",
+              "label": "Возврат ANSI-последовательности",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 177,
+                "end_line": 177
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает сформированную ANSI-строку с кодом сброса и настройкой цветов.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12301716"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.renderANSI",
+              "file": "internal/ascii/ascii.go",
+              "label": "← renderANSI in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:itoa:12301774",
+          "kind": "group",
+          "label": "Функция конвертации int в строку",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 180,
+            "end_line": 192
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.itoa",
+          "summary": "Преобразует целое число в строковое представление без использования стандартной библиотеки.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/ascii/ascii.go:12301804",
+              "kind": "decision",
+              "label": "Проверка нулевого значения",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 181,
+                "end_line": 183
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет, равен ли входной параметр нулю для немедленного возврата строки \"0\".",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12301804"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12301824",
+                  "kind": "output",
+                  "label": "Возврат строки нуль",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 182,
+                    "end_line": 182
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает строку \"0\" для нулевого входного значения.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12301824"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12301845",
+              "kind": "action",
+              "label": "Инициализация буфера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 185,
+                "end_line": 185
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт фиксированный буфер из 20 байтов для хранения числовой строки.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12301845"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12301866",
+              "kind": "action",
+              "label": "Установка указателя на конец буфера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 185,
+                "end_line": 185
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализирует индекс указывающий на последнюю доступную позицию в буфере.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12301866"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/ascii/ascii.go:12301884",
+              "kind": "loop",
+              "label": "Цикл конвертации числа в строку",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 186,
+                "end_line": 190
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает цифры числа справа налево для заполнения буфера в обратном порядке.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12301884"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12301904",
+                  "kind": "action",
+                  "label": "Уменьшение указателя буфера",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 188,
+                    "end_line": 188
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Сдвигает указатель на одну позицию влево для записи следующей цифры.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12301904"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12301916",
+                  "kind": "action",
+                  "label": "Запись цифры в буфер",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 188,
+                    "end_line": 188
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Записывает символ цифры в буфер, преобразуя остаток от деления на 10.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12301916"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12301950",
+                  "kind": "action",
+                  "label": "Деление числа на 10",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 188,
+                    "end_line": 188
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Уменьшает число в 10 раз для обработки следующей цифры.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12301950"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/ascii/ascii.go:12301968",
+              "kind": "output",
+              "label": "Возврат строки из буфера",
+              "layer": "data",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 191,
+                "end_line": 191
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает строку из буфера начиная с первой записанной позиции.",
+              "coverage_ids": [
+                "return:internal/ascii/ascii.go:12301968"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.ansiColor",
+              "file": "internal/ascii/ascii.go",
+              "label": "← ansiColor in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:overlayText:12301994",
+          "kind": "group",
+          "label": "Функция наложения текста на сетку",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 194,
+            "end_line": 229
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.overlayText",
+          "summary": "Наносит текст из layout-объекта на двумерную сетку ячеек с сохранением фона.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/ascii/ascii.go:12302056",
+              "kind": "decision",
+              "label": "Проверка nil layout-объекта",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 195,
+                "end_line": 197
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает из функции, если переданный layout-объект равен nil.",
+              "coverage_ids": [
+                "if:internal/ascii/ascii.go:12302056"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/ascii/ascii.go:12302081",
+                  "kind": "output",
+                  "label": "Ранний возврат функции",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 196,
+                    "end_line": 196
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает функцию overlayText без выполнения при nil layout-объекте.",
+                  "coverage_ids": [
+                    "return:internal/ascii/ascii.go:12302081"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12302099",
+              "kind": "action",
+              "label": "Инициализация слайса текстовых строк",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 201,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт пустой слайс для хранения текстовых строк из layout-объекта.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12302099"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12302135",
+              "kind": "action",
+              "label": "Инициализация слайса цветов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 201,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт пустой слайс для хранения цветовых атрибутов текстовых строк.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12302135"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/ascii/ascii.go:12302166",
+              "kind": "action",
+              "label": "Выполнение вызова collectTextLines",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 201,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняет вызов функции collectTextLines для сбора текстовых строк и цветов.",
+              "coverage_ids": [
+                "statement:internal/ascii/ascii.go:12302166"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/ascii/ascii.go:collectTextLines:12302166",
+                  "kind": "call",
+                  "label": "Вызов функции сбора текстовых строк",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 231,
+                    "end_line": 239
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.collectTextLines",
+                  "summary": "Вызывает рекурсивную функцию для сбора всех текстовых строк из layout-дерева.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.collectTextLines",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ collectTextLines in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/ascii/ascii.go:12302219",
+              "kind": "loop",
+              "label": "Цикл по текстовым строкам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 203,
+                "end_line": 228
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает каждую текстовую строку для нанесения на соответствующие ячейки сетки.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12302219"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12302258",
+                  "kind": "action",
+                  "label": "Получение цвета текстовой строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 206,
+                    "end_line": 206
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Извлекает цвет из слайса цветов по текущему индексу текстовой строки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12302258"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/ascii/ascii.go:12302289",
+                  "kind": "decision",
+                  "label": "Проверка отсутствия установленного цвета",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 205,
+                    "end_line": 207
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Определяет, установлен ли цвет для текстовой строки для установки по умолчанию.",
+                  "coverage_ids": [
+                    "if:internal/ascii/ascii.go:12302289"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12302319",
+                      "kind": "action",
+                      "label": "Присвоение цвета по умолчанию",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 206,
+                        "end_line": 206
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Устанавливает цвет в значение RGB(30, 30, 30) при отсутствии установленного цвета.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12302319"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/ascii/ascii.go:RGB:12302327",
+                          "kind": "call",
+                          "label": "Создание цвета по умолчанию",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 206,
+                            "end_line": 206
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.RGB",
+                          "summary": "Вызывает функцию RGB для создания серого цвета (30, 30, 30) по умолчанию.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.RGB",
+                              "file": "internal/css/computed_values.go",
+                              "label": "→ RGB in internal/css/computed_values.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12302366",
+                  "kind": "action",
+                  "label": "Расчёт строки сетки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 209,
+                    "end_line": 209
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Конвертирует координату Y текстовой строки в индекс строки сетки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12302366"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/ascii/ascii.go:12302395",
+                  "kind": "decision",
+                  "label": "Проверка границ строки сетки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 210,
+                    "end_line": 212
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, находится ли расчётная строка сетки в допустимых пределах.",
+                  "coverage_ids": [
+                    "if:internal/ascii/ascii.go:12302395"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12302440",
+                      "kind": "action",
+                      "label": "Пропуск при некорректной строке",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 210,
+                        "end_line": 210
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Пропускает текущую итерацию при выходе за границы сетки по строке.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12302440"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12302468",
+                  "kind": "action",
+                  "label": "Расчёт столбца сетки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 214,
+                    "end_line": 214
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Конвертирует координату X текстовой строки в индекс столбца сетки.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12302468"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/ascii/ascii.go:12302493",
+                  "kind": "decision",
+                  "label": "Проверка отрицательного столбца",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 215,
+                    "end_line": 217
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Определяет, отрицателен ли индекс столбца для коррекции до нуля.",
+                  "coverage_ids": [
+                    "if:internal/ascii/ascii.go:12302493"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12302518",
+                      "kind": "action",
+                      "label": "Коррекция отрицательного столбца",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 214,
+                        "end_line": 214
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Устанавливает индекс столбца в ноль при отрицательном значении.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12302518"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/ascii/ascii.go:12302545",
+                  "kind": "loop",
+                  "label": "Цикл по символам текстовой строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 219,
+                    "end_line": 227
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Перебирает каждый символ текстовой строки для нанесения на ячейки сетки.",
+                  "coverage_ids": [
+                    "loop:internal/ascii/ascii.go:12302545"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12302586",
+                      "kind": "action",
+                      "label": "Расчёт индекса ячейки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 221,
+                        "end_line": 221
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Вычисляет индекс ячейки сетки, прибавляя текущий символ к столбцу.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12302586"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/ascii/ascii.go:12302611",
+                      "kind": "decision",
+                      "label": "Проверка границ столбца",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 221,
+                        "end_line": 223
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, не выходит ли индекс ячейки за пределы ширины строки сетки.",
+                      "coverage_ids": [
+                        "if:internal/ascii/ascii.go:12302611"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/ascii/ascii.go:12302652",
+                          "kind": "action",
+                          "label": "Прерывание цикла при выходе за границы",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/ascii/ascii.go",
+                            "start_line": 221,
+                            "end_line": 221
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Прерывает цикл нанесения текста при выходе за границы сетки по столбцу.",
+                          "coverage_ids": [
+                            "statement:internal/ascii/ascii.go:12302652"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12302769",
+                      "kind": "action",
+                      "label": "Сохранение фона ячейки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 226,
+                        "end_line": 226
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Извлекает исходный background цвет ячейки сетки для сохранения при наложении текста.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12302769"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/ascii/ascii.go:12302807",
+                      "kind": "action",
+                      "label": "Обновление ячейки сетки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 226,
+                        "end_line": 226
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Записывает символ текста в ячейку сетки с сохранением оригинального фона и новым foreground цветом.",
+                      "coverage_ids": [
+                        "statement:internal/ascii/ascii.go:12302807"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.Render",
+              "file": "internal/ascii/ascii.go",
+              "label": "← Render in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.RenderANSI",
+              "file": "internal/ascii/ascii.go",
+              "label": "← RenderANSI in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/ascii/ascii.go:collectTextLines:12302885",
+          "kind": "group",
+          "label": "Функция сбора текстовых строк из дерева",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 231,
+            "end_line": 239
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/ascii.collectTextLines",
+          "summary": "Рекурсивно собирает все текстовые строки и их цвета из layout-дерева.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/ascii/ascii.go:12302983",
+              "kind": "loop",
+              "label": "Цикл по текстовым строкам контейнера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 232,
+                "end_line": 235
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает текстовые строки текущего layout-объекта для добавления в слайсы.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12302983"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12303026",
+                  "kind": "action",
+                  "label": "Добавление текстовой строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 233,
+                    "end_line": 233
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присоединяет текстовую строку к слайсу текстовых строк.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12303026"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/ascii/ascii.go:12303062",
+                  "kind": "action",
+                  "label": "Добавление цвета текстовой строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 234,
+                    "end_line": 234
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присоединяет цвет из стиля layout-объекта к слайсу цветов.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12303062"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/ascii/ascii.go:12303115",
+              "kind": "loop",
+              "label": "Цикл по дочерним элементам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 236,
+                "end_line": 238
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает дочерние layout-объекты для рекурсивного сбора их текстовых строк.",
+              "coverage_ids": [
+                "loop:internal/ascii/ascii.go:12303115"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/ascii/ascii.go:12303160",
+                  "kind": "action",
+                  "label": "Выполнение рекурсивного вызова",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/ascii/ascii.go",
+                    "start_line": 237,
+                    "end_line": 237
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет рекурсивный вызов collectTextLines для обработки дочерних элементов.",
+                  "coverage_ids": [
+                    "statement:internal/ascii/ascii.go:12303160"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/ascii/ascii.go:collectTextLines:12303160",
+                      "kind": "call",
+                      "label": "Рекурсивный вызов collectTextLines",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/ascii/ascii.go",
+                        "start_line": 231,
+                        "end_line": 239
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.collectTextLines",
+                      "summary": "Вызывает collectTextLines для дочернего layout-объекта для сбора его текста.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.collectTextLines",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ collectTextLines in internal/ascii/ascii.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.collectTextLines",
+              "file": "internal/ascii/ascii.go",
+              "label": "← collectTextLines in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.overlayText",
+              "file": "internal/ascii/ascii.go",
+              "label": "← overlayText in internal/ascii/ascii.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

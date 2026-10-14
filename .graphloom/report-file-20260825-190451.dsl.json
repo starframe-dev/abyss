@@ -1,0 +1,257 @@
+{
+  "title": "Fetcher Package - HTTP Download Logic",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "package-fetcher",
+      "kind": "group",
+      "label": "Fetcher пакет",
+      "layer": "flow",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 1,
+        "end_line": 5
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "default-client",
+      "kind": "state",
+      "label": "Общий HTTP клиент",
+      "layer": "state",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 12,
+        "end_line": 14
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "fetch-action",
+      "kind": "action",
+      "label": "Загрузить страницу по URL",
+      "layer": "flow",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 17,
+        "end_line": 42
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "create-request",
+      "kind": "call",
+      "label": "Создать HTTP запрос",
+      "layer": "calls",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 18,
+        "end_line": 18
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "set-headers",
+      "kind": "call",
+      "label": "Установить заголовки запроса",
+      "layer": "calls",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 22,
+        "end_line": 24
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "execute-request",
+      "kind": "call",
+      "label": "Выполнить HTTP запрос",
+      "layer": "calls",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 26,
+        "end_line": 26
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "read-response-body",
+      "kind": "call",
+      "label": "Прочитать тело ответа",
+      "layer": "calls",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 33,
+        "end_line": 33
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "return-result",
+      "kind": "output",
+      "label": "Вернуть содержимое страницы",
+      "layer": "flow",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 36,
+        "end_line": 36
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error-handling",
+      "kind": "error",
+      "label": "Обработка ошибок",
+      "layer": "effects",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 19,
+        "end_line": 41
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "package-fetcher",
+      "to": "default-client",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "default-client",
+      "to": "fetch-action",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "fetch-action",
+      "to": "create-request",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "create-request",
+      "to": "set-headers",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "set-headers",
+      "to": "execute-request",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "execute-request",
+      "to": "read-response-body",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "read-response-body",
+      "to": "return-result",
+      "label": null,
+      "status": null
+    },
+    {
+      "from": "create-request",
+      "to": "error-handling",
+      "label": "при ошибке создания",
+      "status": null
+    },
+    {
+      "from": "execute-request",
+      "to": "error-handling",
+      "label": "при ошибке выполнения",
+      "status": null
+    },
+    {
+      "from": "read-response-body",
+      "to": "error-handling",
+      "label": "при ошибке чтения",
+      "status": null
+    }
+  ]
+}

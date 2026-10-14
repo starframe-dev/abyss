@@ -1,0 +1,638 @@
+{
+  "files": {
+    "cmd/analyze_habr/main.go": {
+      "hash": "8be7fedd54c89d94344302240f0f05e3e74bf5d8aceecd4d27bfdf656bb66d3b",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-063112.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-063112.dsl.json",
+      "error": null
+    },
+    "cmd/analyze_habr/main_test.go": {
+      "hash": "c347da0290a6b74cf5196e18f7c1bad8a94d22d9950bbaeb3b1e5cfa01698abe",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/analyze_habr/main_test.go' references unknown file 'cmd/analyze_habr/main_test.go'"
+    },
+    "cmd/cuetty_full_test/main.go": {
+      "hash": "81de5070fe0f1089d891af2f0d75c2848575adca45f8031ae1e2a5ee2b5ae16f",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-063624.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-063624.dsl.json",
+      "error": null
+    },
+    "cmd/cuetty_full_test/main_test.go": {
+      "hash": "58c57f0cebce2053b73066bd2861dca802ddcb0d9b8e1d9eefee8e9d8b0db0b5",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/cuetty_full_test/main_test.go' references unknown file 'cmd/cuetty_full_test/main_test.go'"
+    },
+    "cmd/cuetty_test/main.go": {
+      "hash": "965db893ad4902a1184915f3558bb2b051b17b467a41bde779fa724a713dafa6",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-063817.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-063817.dsl.json",
+      "error": null
+    },
+    "cmd/cuetty_test/main_test.go": {
+      "hash": "8a41b01a37d28fa1510fb43e0ef8e0326833841ad0eae262f99cae52e3e6b9ac",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/cuetty_test/main_test.go' references unknown file 'cmd/cuetty_test/main_test.go'"
+    },
+    "cmd/debug_ansi/main.go": {
+      "hash": "5b66cc4f26c5e5b17068a262f65df55ef97fdf03dd2bb68f370e51156c997f95",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-064034.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-064034.dsl.json",
+      "error": null
+    },
+    "cmd/debug_ansi/main_test.go": {
+      "hash": "47696b25624f4fc9bd3818d2289768524513da948881eb6fd22ee97e045580b2",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/debug_ansi/main_test.go' references unknown file 'cmd/debug_ansi/main_test.go'"
+    },
+    "cmd/debug_render/main.go": {
+      "hash": "c73def33a07c11631fa1c35718916290eea623fa7789f817bc5d005d7aac76e6",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-064554.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-064554.dsl.json",
+      "error": null
+    },
+    "cmd/debug_render/main_test.go": {
+      "hash": "1261da08fb92e584cbd24366329941f1626e2ce7c17f0663fddfb44ab05022a6",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/debug_render/main_test.go' references unknown file 'cmd/debug_render/main_test.go'"
+    },
+    "cmd/external_test/main.go": {
+      "hash": "0855adee9fadd19f5f77b93d6a9d91d7293441e9b20691b7f4c65b0a316beab9",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-065003.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-065003.dsl.json",
+      "error": null
+    },
+    "cmd/external_test/main_test.go": {
+      "hash": "581ad303173075d71c5ec3a044bab90745b4713a9324ce52846c8deb6a6c3453",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/external_test/main_test.go' references unknown file 'cmd/external_test/main_test.go'"
+    },
+    "cmd/manual/main.go": {
+      "hash": "cdc214b5837a7291553f995c5f80ce2081e1c3d0d9065e508340e50066835486",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-065357.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-065357.dsl.json",
+      "error": null
+    },
+    "cmd/manual/main_test.go": {
+      "hash": "b5dca7f1519445a97ce4f9c82ba4c343c554bc317b3902524d6c28c9e2c07026",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/manual/main_test.go' references unknown file 'cmd/manual/main_test.go'"
+    },
+    "cmd/test_real/main.go": {
+      "hash": "1569dbb327ffcf1edae5366d19372eaac3ea346936969572c9bf3825c51c6a54",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-065841.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-065841.dsl.json",
+      "error": null
+    },
+    "cmd/test_real/main_test.go": {
+      "hash": "162c7b9001b248e26f5f8e0e5366f023f5fad81a70e1a8f397aa89924035a8db",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:cmd/test_real/main_test.go' references unknown file 'cmd/test_real/main_test.go'"
+    },
+    "internal/ascii/ascii.go": {
+      "hash": "f19fcdfb56fc8d2adfd7d5cfc2f9225226d550e247f11117d4cf4c69cadd2980",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-070708.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-070708.dsl.json",
+      "error": null
+    },
+    "internal/ascii/ascii_color_test.go": {
+      "hash": "e3b7edb7ba20c470583ee1a12394342eae14143523494079f10b37ddbda96c6c",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/ascii/ascii_color_test.go' references unknown file 'internal/ascii/ascii_color_test.go'"
+    },
+    "internal/browser/browser.go": {
+      "hash": "cc803839fd995d6a06f761af0f4d0d2e9b5dae1df6f4c3f21a1f3de979fd3a83",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-071012.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-071012.dsl.json",
+      "error": null
+    },
+    "internal/browser/browser_cuetty_test.go": {
+      "hash": "c598f90ee3902d6ebbb1da76a7679a20d6c4f8985ec45fcfa57376a571576a8e",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/browser/browser_cuetty_test.go' references unknown file 'internal/browser/browser_cuetty_test.go'"
+    },
+    "internal/browser/browser_layout.go": {
+      "hash": "8d280d2e4f71ff4104c2a9bbbf1d79e725a1d36ebfa55b09a0e38ec91be15433",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-101823.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-101823.dsl.json",
+      "error": null
+    },
+    "internal/browser/browser_layout_test.go": {
+      "hash": "4bd5ea3fe7363587d8e6dc5f6c344d9a9d3105b66104a019720ae369e9ecc577",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/browser/browser_layout_test.go' references unknown file 'internal/browser/browser_layout_test.go'"
+    },
+    "internal/browser/browser_page.go": {
+      "hash": "fe5199c1ec24b7970df81e5881f78b62815f02bf5a81b8daaed9e41e3b97fd1f",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-101929.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-101929.dsl.json",
+      "error": null
+    },
+    "internal/browser/browser_page_test.go": {
+      "hash": "707f96bbadeda35b819b883eb32dcd56a0685a0c8a8bfb0549d3672a675149e9",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/browser/browser_page_test.go' references unknown file 'internal/browser/browser_page_test.go'"
+    },
+    "internal/browser/browser_test.go": {
+      "hash": "abc6eb781ac9426b777f6218a52ada5bd6376eab0180e1ee7020268fd64a617b",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/browser/browser_test.go' references unknown file 'internal/browser/browser_test.go'"
+    },
+    "internal/browser/browser_update_test.go": {
+      "hash": "48ac11f195e126e7305ac1174e1623023b064ff1785b8c72bf067bbc9053ea73",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/browser/browser_update_test.go' references unknown file 'internal/browser/browser_update_test.go'"
+    },
+    "internal/browser/browser_view.go": {
+      "hash": "29cb2880969cb6616fa4150717cf0d801f4a1976725acc26276178b217c6289a",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-072229.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-072229.dsl.json",
+      "error": null
+    },
+    "internal/browser/browser_view_test.go": {
+      "hash": "cbe10d96f4b2bc62870e821eaa6cb3b7f4bf13a360897c246051dac3da834220",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/browser/browser_view_test.go' references unknown file 'internal/browser/browser_view_test.go'"
+    },
+    "internal/css/computed.go": {
+      "hash": "4ac11b3890324f4f3f4fe893ea4b41c8a3c19642b02f83444b0014325afa5f81",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "strict labeling failed for lines 1-128: LLM omitted required coverage item 'file:internal/css/computed.go'"
+    },
+    "internal/css/computed_test.go": {
+      "hash": "d4f7a369aa2ac90046902aed7530fac58fe22de937bfdc4e8f6e315d541fe23b",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/css/computed_test.go' references unknown file 'internal/css/computed_test.go'"
+    },
+    "internal/css/computed_values.go": {
+      "hash": "c0593363c895f703338f9d34434cbecc6c0f0411235f831eff7663cdff55a087",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-104038.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-104038.dsl.json",
+      "error": null
+    },
+    "internal/css/computed_values_test.go": {
+      "hash": "6c574a62916e9cf80cf11b0a3f97bd00dd83c2817b8d27bf28829d73d1db332f",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/css/computed_values_test.go' references unknown file 'internal/css/computed_values_test.go'"
+    },
+    "internal/css/css_test.go": {
+      "hash": "0e396e80140ee3f671bbfe3bad38929d274ca848f6aac0dcf5e126a97950d160",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/css/css_test.go' references unknown file 'internal/css/css_test.go'"
+    },
+    "internal/css/parser.go": {
+      "hash": "67ca7f64ea4a9abb69ff54729acf5f51ec0afc31aa7f5ecb96df89e7f9398697",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "strict labeling failed for lines 129-256: invalid labels JSON"
+    },
+    "internal/css/parser_test.go": {
+      "hash": "b38abe2ac8825f8e5ebbfa6b4df962daead8a658740c08712323bc700dcd8603",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/css/parser_test.go' references unknown file 'internal/css/parser_test.go'"
+    },
+    "internal/css/types_test.go": {
+      "hash": "599695dc0de89f6d2049685f36bd8e07e0e2fab27ab7947329cf8beac4056d4d",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/css/types_test.go' references unknown file 'internal/css/types_test.go'"
+    },
+    "internal/dom/dom.go": {
+      "hash": "778c6a8bdfa85dac5d874302ec18451239e0189317d00095e0effc5bdab21142",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-080156.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-080156.dsl.json",
+      "error": null
+    },
+    "internal/dom/dom_test.go": {
+      "hash": "b100dd7594cc87ece1df16a506f165b9344815452f3cd8d03a272aae0faa0fe9",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/dom/dom_test.go' references unknown file 'internal/dom/dom_test.go'"
+    },
+    "internal/dom/selector.go": {
+      "hash": "350aeeefcf460748e1599bacaa4fd14cd6e93c39e4926caab3106e547372711f",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "strict labeling failed for lines 257-384: invalid labels JSON"
+    },
+    "internal/dom/selector_match.go": {
+      "hash": "f401103d203904364a3d019a260f699da5e22c7c2c96ead6157623583d2cc705",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "strict labeling failed for lines 1-128: invalid labels JSON"
+    },
+    "internal/dom/selector_match_test.go": {
+      "hash": "a308498ac5b90966ad5694faa060e9029e475b353aee63a3ee7fdde618c42c67",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/dom/selector_match_test.go' references unknown file 'internal/dom/selector_match_test.go'"
+    },
+    "internal/dom/selector_nth.go": {
+      "hash": "f3df8c33bc3828449ad6271807d6a04beb4e8f8ade3ae495bf82d6d9d83b89af",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-082011.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-082011.dsl.json",
+      "error": null
+    },
+    "internal/dom/selector_nth_test.go": {
+      "hash": "8857d9cce2e4081c0f19edffcdc6b655129171117c3bdc82e480250b86d76465",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/dom/selector_nth_test.go' references unknown file 'internal/dom/selector_nth_test.go'"
+    },
+    "internal/dom/selector_test.go": {
+      "hash": "0fe487066b4bc7a134220d78acd3532d0e61c67c609ad8bfe85d445979f6b3a9",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/dom/selector_test.go' references unknown file 'internal/dom/selector_test.go'"
+    },
+    "internal/fetcher/fetcher.go": {
+      "hash": "81aae0d62232f8d9e10c3871b25bd833d0e451ca4b8d078e2e9602ef865989c0",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-082434.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-082434.dsl.json",
+      "error": null
+    },
+    "internal/fetcher/fetcher_test.go": {
+      "hash": "ed4b306ce596aa59df9c8e65a1be320c5a84d83986075a6c795a366fad819f30",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/fetcher/fetcher_test.go' references unknown file 'internal/fetcher/fetcher_test.go'"
+    },
+    "internal/framebuffer/framebuffer.go": {
+      "hash": "b996de85fd33910f1684bc77b30bf013120c61253671a93fb8be4efea3d99d42",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-082703.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-082703.dsl.json",
+      "error": null
+    },
+    "internal/framebuffer/framebuffer_test.go": {
+      "hash": "9614e5d4a863964ce4fc2abbf2bbd3f3907d1e4e4b015cd3b099e1e3bd26d8cc",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/framebuffer/framebuffer_test.go' references unknown file 'internal/framebuffer/framebuffer_test.go'"
+    },
+    "internal/js/bridge.go": {
+      "hash": "ffba7c66b7a5aeda5883e87a8a59acf5c47f7cd9fd48724c916eb8f752b5f840",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/bridge.go' references unknown file 'internal/js/bridge.go'"
+    },
+    "internal/js/bridge_dom.go": {
+      "hash": "46135c15362067aef7422e6ed3e824270b793d63df78ab921ad28f8839378f5c",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-084044.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-084044.dsl.json",
+      "error": null
+    },
+    "internal/js/bridge_events.go": {
+      "hash": "10b278ef94b550bd41971193d616cb95312fc9f21a0f14819884e296076beaad",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/bridge_events.go' references unknown file 'internal/js/bridge_events.go'"
+    },
+    "internal/js/bridge_events_test.go": {
+      "hash": "e49b2707f8bdb2bb769a72af3a7aa52d495c0271f1d408cb16a54ed02be6258c",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/bridge_events_test.go' references unknown file 'internal/js/bridge_events_test.go'"
+    },
+    "internal/js/bridge_query.go": {
+      "hash": "5554c21f8753a94d935e733fded28adcf6b28b38344c952c4560e115ba6e9420",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/bridge_query.go' references unknown file 'internal/js/bridge_query.go'"
+    },
+    "internal/js/bridge_style.go": {
+      "hash": "8d5f8353abbf1014fa9b7f4341cf7c04642a9ef0f0b2da608a5345b452513436",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/bridge_style.go' references unknown file 'internal/js/bridge_style.go'"
+    },
+    "internal/js/bridge_style_test.go": {
+      "hash": "b053719780cca84f110cc9ee867362f156c231f24184e37851c8877d8c772fae",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/bridge_style_test.go' references unknown file 'internal/js/bridge_style_test.go'"
+    },
+    "internal/js/dom.go": {
+      "hash": "7f6fde4eb3bfac0b9b9335f4d46a86c4bf798cad06e70381cc6dd06b92056a09",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-090702.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-090702.dsl.json",
+      "error": null
+    },
+    "internal/js/dom_api.go": {
+      "hash": "491760c23a91dbd36b977d5df51c99263c4d8789e6f69dccf5babfa53b7bccb9",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-111218.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-111218.dsl.json",
+      "error": "internal/js/dom_api.go:7: undefined: dom; internal/js/dom_api.go:12: undefined: dom; internal/js/dom_api.go:17: undefined: dom; internal/js/dom_api.go:22: undefined: dom; internal/js/dom_api.go:27: undefined: dom; internal/js/dom_api.go:67: undefined: strings; internal/js/dom_api.go:103: undefined: strings; internal/js/dom_api.go:105: undefined: dom; internal/js/dom_api.go:113: undefined: dom; internal/js/dom_api.go:118: undefined: dom; internal/js/dom_api.go:123: undefined: dom; internal/js/dom_api.go:130: undefined: dom; internal/js/dom_api.go:151: undefined: dom; internal/js/dom_api.go:151: undefined: dom; internal/js/dom_api.go:154: undefined: dom; internal/js/dom_api.go:162: undefined: dom; internal/js/dom_api.go:186: undefined: dom; internal/js/dom_api.go:199: undefined: dom; internal/js/dom_api.go:207: undefined: dom; internal/js/dom_api.go:215: undefined: dom; internal/js/dom_api.go:223: undefined: dom; internal/js/dom_api.go:231: undefined: dom; internal/js/dom_api.go:238: undefined: querySelectorNode; internal/js/dom_api.go:242: undefined: dom; internal/js/dom_api.go:249: undefined: querySelectorAllNodes; internal/js/dom_api.go:253: undefined: C; internal/js/dom_api.go:256: undefined: listeners; internal/js/dom_api.go:257: undefined: C; internal/js/dom_api.go:257: undefined: listeners; internal/js/dom_api.go:259: undefined: listeners; internal/js/dom_api.go:260: undefined: C; internal/js/dom_api.go:260: undefined: listeners; internal/js/dom_api.go:262: undefined: listeners; internal/js/dom_api.go:262: undefined: listeners; internal/js/dom_api.go:266: undefined: C; internal/js/dom_api.go:269: undefined: listeners; internal/js/dom_api.go:272: undefined: listeners; internal/js/dom_api.go:275: undefined: listeners; internal/js/dom_api.go:275: undefined: listeners; internal/js/dom_api.go:275: undefined: listeners; internal/js/dom_api.go:279: undefined: C; internal/js/dom_api.go:279: undefined: C; internal/js/dom_api.go:279: undefined: C; internal/js/dom_api.go:296: undefined: selectorMatch; internal/js/dom_api.go:300: undefined: dom; internal/js/dom_api.go:307: undefined: selectorMatch; internal/js/dom_api.go:318: \tother declaration of closest; internal/js/dom_api.go:318: undefined: dom; internal/js/dom_api.go:318: undefined: dom; internal/js/dom_api.go:319: undefined: selectorMatch; internal/js/dom_api.go:329: undefined: dom; internal/js/dom_api.go:330: undefined: dom; internal/js/dom_api.go:333: undefined: strings; internal/js/dom_api.go:354: \tother declaration of InitDOM; internal/js/dom_api.go:354: undefined: dom; internal/js/dom_api.go:359: undefined: dom; internal/js/dom_api.go:363: undefined: dom"
+    },
+    "internal/js/dom_events.go": {
+      "hash": "d007dd05f330588efa13eda58ea0d194fe2541bb4fcf2d93700ffd686fede5ab",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-091947.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-091947.dsl.json",
+      "error": null
+    },
+    "internal/js/dom_events_test.go": {
+      "hash": "368dd3d8d719e00390eef684b88d8265172cedda57c45bc055a25a2363974a41",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_events_test.go' references unknown file 'internal/js/dom_events_test.go'"
+    },
+    "internal/js/dom_insert.go": {
+      "hash": "cdb3a17d4cb3e774105d298e7438fcafee285887b05b560fa931496ac486d78a",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_insert.go' references unknown file 'internal/js/dom_insert.go'"
+    },
+    "internal/js/dom_insert_test.go": {
+      "hash": "c4700c86352200acc9d62af8ad518d9ee508b04d97b11968076c35546fc741ea",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_insert_test.go' references unknown file 'internal/js/dom_insert_test.go'"
+    },
+    "internal/js/dom_query.go": {
+      "hash": "baab2dec267baf51106f093e17cb6eedfac930357d76512f65c6d1c379781b52",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-093731.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-093731.dsl.json",
+      "error": null
+    },
+    "internal/js/dom_query_test.go": {
+      "hash": "ab2c4e738189048338d2a650d751859d647580e16982dbff522fdc8f1d9636f4",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_query_test.go' references unknown file 'internal/js/dom_query_test.go'"
+    },
+    "internal/js/dom_script.go": {
+      "hash": "2db5383ab2109123a2f8d642e49c2e60b34a33cd8e5e68b4bea6c2c7be296a97",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-094419.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-094419.dsl.json",
+      "error": null
+    },
+    "internal/js/dom_script_test.go": {
+      "hash": "a369c9e479c2a4a7706963fed6d397388a2f1fa3c1a47d24ca83d4b87d8674f8",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_script_test.go' references unknown file 'internal/js/dom_script_test.go'"
+    },
+    "internal/js/dom_serialize.go": {
+      "hash": "88d2872a9056796141e98597ecc84397e986404b581d910a1c59b6094783f301",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-095041.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-095041.dsl.json",
+      "error": null
+    },
+    "internal/js/dom_style.go": {
+      "hash": "29953939cd2da1cac28524ab023769b83de703c0237b09a3802c254979e03a4b",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_style.go' references unknown file 'internal/js/dom_style.go'"
+    },
+    "internal/js/dom_test.go": {
+      "hash": "1f7e3ba0faa1e0a22c3276a87fa809c800efcdb399a8925a58c3b3f5cf196241",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/dom_test.go' references unknown file 'internal/js/dom_test.go'"
+    },
+    "internal/js/domapi.go": {
+      "hash": "aa61722b5d2baf5cb64c15cf3b5a7c94784b63327f8605d601ef07a8d2921b4c",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-095718.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-095718.dsl.json",
+      "error": null
+    },
+    "internal/js/domapi_embed.go": {
+      "hash": "84993f694ab39e780f0360b386e010a2df275547bc4ac92612b27f7817729097",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-095927.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260829-095927.dsl.json",
+      "error": null
+    },
+    "internal/js/js.go": {
+      "hash": "f883a8446f2eae9e8b765ad3d1ce1a7567097a8631c799999e776172ee7f1cab",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/js.go' references unknown file 'internal/js/js.go'"
+    },
+    "internal/js/js_dom_test.go": {
+      "hash": "9f3a3601db8435a29cadfa0ed93561f4ec083feafe88c395ae4fb7c5819aaef1",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/js_dom_test.go' references unknown file 'internal/js/js_dom_test.go'"
+    },
+    "internal/js/js_test.go": {
+      "hash": "cc06d5b148cc53acaccb6ef7df96b086e4c8c41554148ba8e9ff074462656021",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/js_test.go' references unknown file 'internal/js/js_test.go'"
+    },
+    "internal/js/jsc_test.go": {
+      "hash": "8f1e39f8e5067cdba37c697d16fc34b0625b3662a488e6bf0f667bdf393e7265",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/js/jsc_test.go' references unknown file 'internal/js/jsc_test.go'"
+    },
+    "internal/layout/layout.go": {
+      "hash": "470e10f48cb952f8e239de1c777fa9847d8676448c24fc4a23e1d45d45feec64",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-112644.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-112644.dsl.json",
+      "error": null
+    },
+    "internal/layout/layout_flex.go": {
+      "hash": "c6ee33bc70c43e294a69b8edca95a095e4f876af4aa33e0c642e767c34debd15",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-112810.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-112810.dsl.json",
+      "error": null
+    },
+    "internal/layout/layout_flex_test.go": {
+      "hash": "693724fb3ad0f5c7cfa09905bdafcdcc4d4b39e4f60592a608be3c83c7c3d1db",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/layout/layout_flex_test.go' references unknown file 'internal/layout/layout_flex_test.go'"
+    },
+    "internal/layout/layout_grid.go": {
+      "hash": "21d38463f030ad6777ad72e58da143cbf1ca3a002fcae3c1e222e7d9a266291a",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-113208.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-113208.dsl.json",
+      "error": null
+    },
+    "internal/layout/layout_grid_test.go": {
+      "hash": "385ad9e539490395da650d437700840fca3413bd9a71583cd7d49011b2e872e4",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/layout/layout_grid_test.go' references unknown file 'internal/layout/layout_grid_test.go'"
+    },
+    "internal/layout/layout_test.go": {
+      "hash": "940f053d12132c58f7bc8820d4d490b559ecac300465c2e828b6f8234b068b91",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/layout/layout_test.go' references unknown file 'internal/layout/layout_test.go'"
+    },
+    "internal/render/render.go": {
+      "hash": "0fdb498ef20f5292fdaddf4051aec0e37838f89c48a29d9808431c7b25e0be54",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-113754.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-113754.dsl.json",
+      "error": null
+    },
+    "internal/render/render_test.go": {
+      "hash": "90281bf31a3ea5c10daffa9a26d9c8c7295e302c971674705be634e18424a49b",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/render/render_test.go' references unknown file 'internal/render/render_test.go'"
+    },
+    "internal/renderer/renderer.go": {
+      "hash": "ed7d92e038abcc42307a6e29031bf8b45e95c0a2b693ed1ddc544cdecf6df7d8",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/renderer/renderer.go' references unknown file 'internal/renderer/renderer.go'"
+    },
+    "internal/renderer/renderer_test.go": {
+      "hash": "2c88566e2280985752971867d4d3b1884fa9dbd03f7664d3112c8fb0b92ae35d",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:internal/renderer/renderer_test.go' references unknown file 'internal/renderer/renderer_test.go'"
+    },
+    "main.go": {
+      "hash": "bb241bb5cc122ef681aabd79695bc191c7e93241aeb867fc704f347a39cb2ba0",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-113844.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-file-20260830-113844.dsl.json",
+      "error": null
+    },
+    "main_test.go": {
+      "hash": "5eda7c60b0e40acf74758739f3f50777b105205ba810069dfcb793164afb2600",
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956",
+      "report_path": "",
+      "dsl_path": "",
+      "error": "node 'file:main_test.go' references unknown file 'main_test.go'"
+    }
+  },
+  "functions": {
+    "github.com/starframe/abyss/internal/ascii.RenderANSI": {
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956-f19fcdfb56fc8d2adfd7d5cfc2f9225226d550e247f11117d4cf4c69cadd2980-github.com/starframe/abyss/internal/ascii.RenderANSI",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260830-120143.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260830-120143.dsl.json"
+    },
+    "github.com/starframe/abyss/internal/browser.Model.Init": {
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956-cc803839fd995d6a06f761af0f4d0d2e9b5dae1df6f4c3f21a1f3de979fd3a83-github.com/starframe/abyss/internal/browser.Model.Init",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260830-120938.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260830-120938.dsl.json"
+    },
+    "github.com/starframe/abyss/internal/browser.New": {
+      "cache_key": "38b7cdfbdcabc5d6ab2d97dcb3606d64d56ede5d493521feae1ea4af778a9956-cc803839fd995d6a06f761af0f4d0d2e9b5dae1df6f4c3f21a1f3de979fd3a83-github.com/starframe/abyss/internal/browser.New",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260830-122015.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260830-122015.dsl.json"
+    },
+    "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive": {
+      "cache_key": "d0f6b2a88386b705489b1c21fac6dbd07ba9a236a59879c6202f5d3a61e38c2d-a7c6b743b62ea20664fe922c4bf54d67f0d575320b32af4945200e8185a15ecb-github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260828-173721.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260828-173721.dsl.json"
+    },
+    "github.com/starframe/abyss/internal/browser.loadSession": {
+      "cache_key": "d0f6b2a88386b705489b1c21fac6dbd07ba9a236a59879c6202f5d3a61e38c2d-814841fb148013b6a0f892a418f639ab17496bd5cd47fd76fe65ade62e04936b-github.com/starframe/abyss/internal/browser.loadSession",
+      "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260828-093634.html",
+      "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-function-20260828-093634.dsl.json"
+    }
+  },
+  "project": {
+    "cache_key": "d0f6b2a88386b705489b1c21fac6dbd07ba9a236a59879c6202f5d3a61e38c2d-8dd9e8b5cd51e68a8b57167e6a32db78825e632a65b61318a055af79e8d42fcc",
+    "report_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-project-20260828-061803.html",
+    "dsl_path": "/Users/a/Space/Projects/Starframe/abyss/.graphloom/report-project-20260828-061803.dsl.json"
+  }
+}

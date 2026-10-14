@@ -1,0 +1,303 @@
+{
+  "title": "internal/fetcher/fetcher.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/fetcher/fetcher.go",
+      "kind": "group",
+      "label": "fetcher.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 1,
+        "end_line": 42
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/fetcher/fetcher.go:DefaultClient:15455618",
+          "kind": "state",
+          "label": "Переменная DefaultClient",
+          "layer": "state",
+          "source": {
+            "file": "internal/fetcher/fetcher.go",
+            "start_line": 12,
+            "end_line": 14
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/fetcher.DefaultClient",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/fetcher/fetcher.go:Fetch:15455745",
+          "kind": "group",
+          "label": "Функция Fetch",
+          "layer": "flow",
+          "source": {
+            "file": "internal/fetcher/fetcher.go",
+            "start_line": 17,
+            "end_line": 42
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/fetcher.Fetch",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/fetcher/fetcher.go:15455839",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 19,
+                "end_line": 21
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15455863",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 20,
+                    "end_line": 20
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/fetcher/fetcher.go:15456283",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 27,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15456307",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 28,
+                    "end_line": 28
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/fetcher/fetcher.go:15456394",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 32,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "resp.StatusCode != http.StatusOK",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15456440",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 33,
+                    "end_line": 33
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/fetcher/fetcher.go:15456546",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 37,
+                "end_line": 39
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15456570",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 38,
+                    "end_line": 38
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/fetcher/fetcher.go:15456640",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 41,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+              "file": "cmd/analyze_habr/main.go",
+              "label": "← main in cmd/analyze_habr/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser.go",
+              "label": "← loadPage in internal/browser/browser.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

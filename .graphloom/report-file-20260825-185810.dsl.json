@@ -1,0 +1,647 @@
+{
+  "title": "Вычисление вычисляемых CSS стилей",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "compute-entry",
+      "kind": "action",
+      "label": "Вычисление стилей документа",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 21,
+        "end_line": 23
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вычисляет вычисляемые стили для всех узлов документа с использованием кэша",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "compute-external",
+      "kind": "action",
+      "label": "Вычисление стилей с внешним CSS",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 26,
+        "end_line": 28
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вычисляет стили с дополнительными внешними CSS строками",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "compute-extra",
+      "kind": "action",
+      "label": "Основное вычисление стилей",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 30,
+        "end_line": 63
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основная функция вычисления стилей с поддержкой кэширования",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "cache-var",
+      "kind": "storage",
+      "label": "Глобальный кэш стилей",
+      "layer": "state",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 13,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Глобальная переменная для хранения кэша вычисленных стилей",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "invalidate-cache",
+      "kind": "action",
+      "label": "Очистка кэша стилей",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 67,
+        "end_line": 72
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Очищает кэш вычисленных стилей при изменении DOM",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "compute-node",
+      "kind": "action",
+      "label": "Вычисление стилей узла",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 74,
+        "end_line": 125
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Рекурсивно вычисляет стили для узла и его потомков",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "match-selector",
+      "kind": "decision",
+      "label": "Сопоставление селектора",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 127,
+        "end_line": 156
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Проверяет соответствие узла CSS селектору",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "apply-decl",
+      "kind": "action",
+      "label": "Применение декларации стиля",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 158,
+        "end_line": 274
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Применяет CSS декларацию к вычисляемому стилю",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-group",
+      "kind": "group",
+      "label": "Функции парсинга CSS значений",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 276,
+        "end_line": 565
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Группа функций для парсинга различных CSS свойств",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-display",
+      "kind": "action",
+      "label": "Парсинг display",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 276,
+        "end_line": 290
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значение свойства display",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-position",
+      "kind": "action",
+      "label": "Парсинг position",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 292,
+        "end_line": 302
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значение свойства position",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-overflow",
+      "kind": "action",
+      "label": "Парсинг overflow",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 304,
+        "end_line": 312
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значение свойства overflow",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-length",
+      "kind": "action",
+      "label": "Парсинг длины",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 314,
+        "end_line": 342
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значения длины (px, %, rem, em, fr, auto)",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-box-model",
+      "kind": "action",
+      "label": "Парсинг box-model",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 344,
+        "end_line": 368
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значения box-model (margin, padding)",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-border",
+      "kind": "action",
+      "label": "Парсинг border",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 370,
+        "end_line": 392
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значения border (ширина, цвет, стиль)",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-border-width",
+      "kind": "action",
+      "label": "Парсинг ширины border",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 394,
+        "end_line": 397
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значение ширины border",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-border-style",
+      "kind": "action",
+      "label": "Парсинг стиля border",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 399,
+        "end_line": 407
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значение стиля border",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-color",
+      "kind": "action",
+      "label": "Парсинг цвета",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 409,
+        "end_line": 459
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит значения цвета (имена, hex, rgb)",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-flex",
+      "kind": "action",
+      "label": "Парсинг flex/grid свойств",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 471,
+        "end_line": 509
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит свойства flex-direction, justify-content, align-items",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse-length-list",
+      "kind": "action",
+      "label": "Парсинг списка длин",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 511,
+        "end_line": 560
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсит списки длин (grid-template-columns/rows)",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "is-number",
+      "kind": "action",
+      "label": "Проверка числа",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 562,
+        "end_line": 565
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Проверяет, является ли строка числом",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "compute-entry",
+      "to": "compute-extra",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "compute-external",
+      "to": "compute-extra",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "compute-extra",
+      "to": "cache-var",
+      "label": "использует",
+      "status": "inferred"
+    },
+    {
+      "from": "compute-extra",
+      "to": "compute-node",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "compute-node",
+      "to": "match-selector",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "compute-node",
+      "to": "apply-decl",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-display",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-position",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-overflow",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-length",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-box-model",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-border",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-color",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-flex",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "apply-decl",
+      "to": "parse-length-list",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-border",
+      "to": "parse-color",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-border",
+      "to": "parse-border-width",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-border",
+      "to": "parse-border-style",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-length",
+      "to": "parse-box-model",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-length-list",
+      "to": "parse-length",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "invalidate-cache",
+      "to": "cache-var",
+      "label": "очищает",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-display",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-position",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-overflow",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-length",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-box-model",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-border",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-color",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-flex",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-length-list",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-border-width",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "parse-border-style",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    },
+    {
+      "from": "is-number",
+      "to": "parse-group",
+      "label": "входит в группу",
+      "status": "inferred"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "title": "Анализ страницы Habr.com",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main_entry",
+      "kind": "action",
+      "label": "Запуск анализа",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 12,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "fetch_html",
+      "kind": "call",
+      "label": "Загрузить HTML с Habr",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 15,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse_html",
+      "kind": "call",
+      "label": "Разобрать HTML документ",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 20,
+        "end_line": 20
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "extract_stylesheets",
+      "kind": "call",
+      "label": "Извлечь внешние стили",
+      "layer": "data",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 23,
+        "end_line": 30
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "extract_inline_styles",
+      "kind": "call",
+      "label": "Извлечь встроенные стили",
+      "layer": "data",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 33,
+        "end_line": 42
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "walk_tags",
+      "kind": "call",
+      "label": "Пройти по всем HTML элементам",
+      "layer": "data",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 45,
+        "end_line": 58
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "extract_body_text",
+      "kind": "call",
+      "label": "Извлечь текст body",
+      "layer": "data",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 61,
+        "end_line": 70
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error_handling",
+      "kind": "decision",
+      "label": "Обработка ошибки загрузки",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/analyze_habr/main.go",
+        "start_line": 16,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main_entry",
+      "to": "fetch_html",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "fetch_html",
+      "to": "error_handling",
+      "label": "Ошибка",
+      "status": "inferred"
+    },
+    {
+      "from": "fetch_html",
+      "to": "parse_html",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "parse_html",
+      "to": "extract_stylesheets",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "parse_html",
+      "to": "extract_inline_styles",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "parse_html",
+      "to": "walk_tags",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "parse_html",
+      "to": "extract_body_text",
+      "label": null,
+      "status": "inferred"
+    }
+  ]
+}

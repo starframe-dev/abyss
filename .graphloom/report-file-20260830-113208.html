@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Graphloom</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #09090b; color: #e4e4e7; font: 14px/1.5 system-ui, sans-serif; overflow: hidden; }
+  #bar { position: fixed; top: 0; left: 0; right: 0; min-height: 36px; padding: 4px 10px; background: rgba(9,9,11,.94);
+         border-bottom: 1px solid #27272a; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; align-content: center; z-index: 5; }
+  #file-description { display: none; flex: 0 0 100%; min-width: 0; padding: 2px 4px 3px; color: #a1a1aa; font-size: 11px; line-height: 1.35; }
+  #file-description strong { color: #f4f4f5; font-weight: 600; }
+  #file-description span { margin-left: 8px; color: #71717a; }
+  #bar h1 { font-size: 14px; font-weight: 600; white-space: nowrap; }
+  #bar .crumb { min-width: 0; flex: 1; font-size: 12px; color: #a1a1aa; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #layers { display: flex; flex: 0 0 auto; gap: 7px; align-items: center; }
+  .lchk { font-size: 11px; color: #a1a1aa; display: flex; gap: 3px; align-items: center; cursor: pointer; white-space: nowrap; }
+  #search { flex: 0 0 150px; background: #18181b; border: 1px solid #3f3f46; border-radius: 6px; color: #e4e4e7;
+            padding: 4px 8px; font-size: 12px; width: 150px; }
+  .nav, .tool { background: #27272a; border: 1px solid #3f3f46; color: #e4e4e7; border-radius: 6px;
+         cursor: pointer; font-size: 12px; }
+  .nav { padding: 4px 9px; }
+  .nav:disabled, .tool:disabled { opacity: .4; cursor: default; }
+  .tool { width: 28px; height: 26px; display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+  .tool:hover:not(:disabled), .nav:hover:not(:disabled) { background: #3f3f46; }
+  .tool svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8;
+              stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+  #stage { position: fixed; inset: 0; top: 36px; overflow: auto; padding: 0; background: #0b0d12; }
+  #stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22;
+                  background-image: linear-gradient(#202533 1px, transparent 1px), linear-gradient(90deg, #202533 1px, transparent 1px);
+                  background-size: 32px 32px; }
+  svg { display: block; position: relative; z-index: 1; overflow: visible; }
+  .scope-region { pointer-events: none; }
+  .scope-region rect { stroke-width: 1.2; }
+  .scope-region.dim { opacity: .14; }
+  .node { cursor: pointer; }
+  .collapse-toggle { cursor: pointer; }
+  .collapse-toggle text { pointer-events: none; }
+  .collapse-toggle:hover rect { filter: brightness(1.25); }
+  .node rect { transition: filter .15s, stroke-width .15s; }
+  .node:hover rect { filter: brightness(1.18); }
+  .node.root rect { stroke-width: 2.5; }
+  .node.dim, .edge.dim { opacity: .14; }
+  .edge { stroke: #4b5563; stroke-width: 1.25; fill: none; opacity: .9; }
+  .edge.inferred { stroke-dasharray: 5 4; }
+  .elabel-bg { fill: #09090b; stroke: #27272a; stroke-width: 1; }
+  .elabel { font-size: 10px; fill: #a1a1aa; }
+  .nlabel { font-size: 11px; fill: #f4f4f5; font-weight: 500; }
+  .nsummary { font-size: 9px; fill: #71717a; }
+  .nkind { font-size: 11px; }
+  .hit { stroke: #facc15; stroke-width: 2.5; }
+  #sidebar { position: fixed; top: 36px; right: 0; bottom: 0; width: 380px; background: #18181b;
+             border-left: 1px solid #27272a; padding: 16px; overflow: auto; display: none; z-index: 6; }
+  #sidebar h2 { font-size: 16px; margin-bottom: 2px; padding-right: 20px; }
+  #sidebar .meta { font-size: 12px; color: #a1a1aa; margin-bottom: 10px; }
+  #close { position: absolute; top: 10px; right: 12px; cursor: pointer; color: #71717a;
+           background: none; border: none; font-size: 16px; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; margin-right: 4px; }
+  .chip.on { background: #064e3b; color: #6ee7b7; }
+  .chip.off { background: #27272a; color: #71717a; }
+  pre.code { margin-top: 12px; background: #09090b; border: 1px solid #27272a; border-radius: 8px;
+             padding: 10px; font: 11px/1.6 ui-monospace, monospace; overflow: auto; }
+  pre.code .ln { color: #52525b; display: inline-block; width: 34px; user-select: none; }
+  pre.code .hl { background: #27272a; display: block; }
+  .expand { margin-top: 10px; background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+            padding: 5px 12px; cursor: pointer; font-size: 12px; }
+  .expand { margin-top: 10px; background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+            padding: 5px 12px; cursor: pointer; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <h1>Graphloom</h1>
+  <button class="nav" id="back">←</button>
+  <button class="nav" id="fwd">→</button>
+  <span class="crumb" id="crumb"></span>
+  <span id="layers"></span>
+  <input id="search" placeholder="Поиск…" />
+  <div id="file-description"><strong id="file-label"></strong><span id="file-summary"></span></div>
+</div>
+<div id="stage"><svg id="svg"></svg></div>
+<div id="sidebar">
+  <button id="close" aria-label="Закрыть">×</button>
+  <h2 id="s-title"></h2>
+  <div class="meta" id="s-meta"></div>
+  <div id="s-tests"></div>
+  <p id="s-summary" style="margin-top:8px;font-size:13px"></p>
+  <div id="s-refs" style="margin-top:10px;font-size:12px"></div>
+  <div id="s-extra"></div>
+  <pre class="code" id="s-code" style="display:none"></pre>
+</div>
+<script>
+const viz = {"title":"internal/layout/layout_grid.go","level":"file","nodes":[{"id":"file:internal/layout/layout_grid.go","kind":"group","label":"Файл layout_grid.go","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":1,"end_line":111},"element_type":null,"symbol":null,"summary":"Файл пакета layout содержит функции для вычисления позиций и размеров элементов сетки CSS.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"func:internal/layout/layout_grid.go:layoutGrid:12255714","kind":"group","label":"Функция layoutGrid","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":8,"end_line":24},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.layoutGrid","summary":"Вычисляет общую высоту сетки, распределяя детей по колонкам и строкам.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12255782","kind":"action","label":"Получение стиля контейнера","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":10,"end_line":10},"element_type":null,"symbol":null,"summary":"Извлекает объект стиля из переданного LayoutBox для доступа к параметрам сетки.","coverage_ids":["statement:internal/layout/layout_grid.go:12255782","statement:internal/layout/layout_grid.go:12255805"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:Resolve:12255812","kind":"call","label":"Вычисление отступа сетки","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":10,"end_line":10},"element_type":null,"symbol":"github.com/starframe/abyss/internal/css.Length.Resolve","summary":"Вызывает Resolve для получения значения отступа (gap) из стиля.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/css.Length.Resolve","file":"internal/css/computed_values.go","label":"→ Resolve in internal/css/computed_values.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12255849","kind":"action","label":"Получение колонок сетки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":13,"end_line":13},"element_type":null,"symbol":null,"summary":"Извлекает массив шаблона колонок из стиля контейнера.","coverage_ids":["statement:internal/layout/layout_grid.go:12255849","if:internal/layout/layout_grid.go:12255890"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12255921","kind":"action","label":"Присваивание колонок","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":14,"end_line":14},"element_type":null,"symbol":null,"summary":"Заменяет пустой массив колонок на созданный массив с одной колонкой.","coverage_ids":["statement:internal/layout/layout_grid.go:12255921"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:Px:12255944","kind":"call","label":"Создание колонки на всю ширину","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":14,"end_line":14},"element_type":null,"symbol":"github.com/starframe/abyss/internal/css.Px","summary":"Создаёт одну колонку с шириной, равной содержимому, если колонок не определено.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/css.Px","file":"internal/css/computed_values.go","label":"→ Px in internal/css/computed_values.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12255976","kind":"action","label":"Получение строк сетки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":17,"end_line":17},"element_type":null,"symbol":null,"summary":"Извлекает массив шаблона строк из стиля контейнера.","coverage_ids":["statement:internal/layout/layout_grid.go:12255976","if:internal/layout/layout_grid.go:12256011"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12256039","kind":"action","label":"Присваивание строк","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":18,"end_line":18},"element_type":null,"symbol":null,"summary":"Заменяет пустой массив строк на созданный массив с одной строкой.","coverage_ids":["statement:internal/layout/layout_grid.go:12256039"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:Px:12256059","kind":"call","label":"Создание строки по умолчанию","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":18,"end_line":18},"element_type":null,"symbol":"github.com/starframe/abyss/internal/css.Px","summary":"Создаёт одну строку с высотой 100px, если строки не определены.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/css.Px","file":"internal/css/computed_values.go","label":"→ Px in internal/css/computed_values.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12256083","kind":"action","label":"Присваивание ширины колонок","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":21,"end_line":21},"element_type":null,"symbol":null,"summary":"Присваивает результат вычисления ширины колонок переменной colWidths.","coverage_ids":["statement:internal/layout/layout_grid.go:12256083","statement:internal/layout/layout_grid.go:12256152"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:resolveGridColumnWidths:12256096","kind":"call","label":"Вызов resolveGridColumnWidths","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":26,"end_line":56},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.resolveGridColumnWidths","summary":"Вызывает функцию для вычисления ширины каждой колонки сетки.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.resolveGridColumnWidths","file":"internal/layout/layout_grid.go","label":"→ resolveGridColumnWidths in internal/layout/layout_grid.go"}]},{"id":"call:internal/layout/layout_grid.go:placeGridChildren:12256166","kind":"call","label":"Вызов placeGridChildren","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":58,"end_line":84},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.placeGridChildren","summary":"Вызывает функцию для размещения детей сетки в вычисленных позициях.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.placeGridChildren","file":"internal/layout/layout_grid.go","label":"→ placeGridChildren in internal/layout/layout_grid.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/layout/layout_grid.go:12256238","kind":"output","label":"Возврат высоты сетки","layer":"data","source":{"file":"internal/layout/layout_grid.go","start_line":23,"end_line":23},"element_type":null,"symbol":null,"summary":"Возвращает общую высоту сетки, вычисленную функцией sumRowHeights.","coverage_ids":["return:internal/layout/layout_grid.go:12256238"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.layoutBox","file":"internal/layout/layout.go","label":"← layoutBox in internal/layout/layout.go"}]},{"id":"func:internal/layout/layout_grid.go:resolveGridColumnWidths:12256279","kind":"group","label":"Функция resolveGridColumnWidths","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":26,"end_line":56},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.resolveGridColumnWidths","summary":"Вычисляет ширину колонок сетки, обрабатывая проценты, фиксированные значения и fr-единицы.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12256373","kind":"action","label":"Инициализация массива ширины колонок","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":23,"end_line":23},"element_type":null,"symbol":null,"summary":"Создаёт пустой массив для хранения вычисленных ширины колонок.","coverage_ids":["statement:internal/layout/layout_grid.go:12256373","statement:internal/layout/layout_grid.go:12256401"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"loop:internal/layout/layout_grid.go:12256442","kind":"loop","label":"Цикл по колонкам","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":29,"end_line":46},"element_type":null,"symbol":null,"summary":"Итерируется по каждой колонке шаблона для обработки её типа ширины.","coverage_ids":["loop:internal/layout/layout_grid.go:12256442","statement:internal/layout/layout_grid.go:12256967"],"tests":null,"confidence":null,"children":[{"id":"if:internal/layout/layout_grid.go:12256480","kind":"decision","label":"Проверка процента","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":30,"end_line":42},"element_type":null,"symbol":null,"summary":"Проверяет, задана ли ширина колонки в процентах.","coverage_ids":["if:internal/layout/layout_grid.go:12256480"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12256511","kind":"action","label":"Присваивание процентной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":31,"end_line":31},"element_type":null,"symbol":null,"summary":"Присваивает вычисленную процентную ширину переменной w.","coverage_ids":["statement:internal/layout/layout_grid.go:12256511","statement:internal/layout/layout_grid.go:12256554"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:Resolve:12256516","kind":"call","label":"Вычисление процентной ширины","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":31,"end_line":31},"element_type":null,"symbol":"github.com/starframe/abyss/internal/css.Length.Resolve","summary":"Вызывает Resolve для получения пиксельной ширины из процентного значения.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/css.Length.Resolve","file":"internal/css/computed_values.go","label":"→ Resolve in internal/css/computed_values.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12256599","kind":"action","label":"Накопление фиксированной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":36,"end_line":36},"element_type":null,"symbol":null,"summary":"Добавляет процентную ширину к накопителю totalFixedWidth.","coverage_ids":["statement:internal/layout/layout_grid.go:12256599","else:internal/layout/layout_grid.go:12256635"],"tests":null,"confidence":null,"children":[{"id":"if:internal/layout/layout_grid.go:12256635","kind":"decision","label":"Проверка фиксированной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":34,"end_line":42},"element_type":null,"symbol":null,"summary":"Проверяет, не является ли ширина колонки auto.","coverage_ids":["if:internal/layout/layout_grid.go:12256635"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12256664","kind":"action","label":"Получение фиксированной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":36,"end_line":36},"element_type":null,"symbol":null,"summary":"Извлекает значение ширины в пикселях из колонки.","coverage_ids":["statement:internal/layout/layout_grid.go:12256664","statement:internal/layout/layout_grid.go:12256688"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12256733","kind":"action","label":"Накопление фиксированной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":40,"end_line":40},"element_type":null,"symbol":null,"summary":"Добавляет фиксированную ширину к накопителю totalFixedWidth.","coverage_ids":["statement:internal/layout/layout_grid.go:12256733","else:internal/layout/layout_grid.go:12256769"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12256835","kind":"action","label":"Добавление нулевой ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":40,"end_line":40},"element_type":null,"symbol":null,"summary":"Добавляет 0 в массив colWidths для fr-колонки.","coverage_ids":["statement:internal/layout/layout_grid.go:12256835","statement:internal/layout/layout_grid.go:12256880"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/layout/layout_grid.go:12257050","kind":"decision","label":"Проверка отрицательной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":47,"end_line":54},"element_type":null,"symbol":null,"summary":"Проверяет, не отрицательна ли оставшаяся ширина, и обнуляет её при необходимости.","coverage_ids":["if:internal/layout/layout_grid.go:12257050","loop:internal/layout/layout_grid.go:12257111"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12257082","kind":"action","label":"Обнуление отрицательной ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":46,"end_line":46},"element_type":null,"symbol":null,"summary":"Присваивает 0 оставшейся ширине, если она отрицательна.","coverage_ids":["statement:internal/layout/layout_grid.go:12257082"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/layout/layout_grid.go:12257149","kind":"decision","label":"Проверка авто-колонки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":51,"end_line":53},"element_type":null,"symbol":null,"summary":"Проверяет, является ли колонка auto и есть ли fr-единицы для распределения.","coverage_ids":["if:internal/layout/layout_grid.go:12257149"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12257192","kind":"action","label":"Распределение ширины на fr","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":52,"end_line":52},"element_type":null,"symbol":null,"summary":"Вычисляет ширину для auto-колонки, пропорционально её fr-значению.","coverage_ids":["statement:internal/layout/layout_grid.go:12257192"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/layout/layout_grid.go:12257261","kind":"output","label":"Возврат ширины колонок","layer":"data","source":{"file":"internal/layout/layout_grid.go","start_line":55,"end_line":55},"element_type":null,"symbol":null,"summary":"Возвращает массив вычисленных ширины для всех колонок сетки.","coverage_ids":["return:internal/layout/layout_grid.go:12257261"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.layoutGrid","file":"internal/layout/layout_grid.go","label":"← layoutGrid in internal/layout/layout_grid.go"}]},{"id":"func:internal/layout/layout_grid.go:placeGridChildren:12257281","kind":"group","label":"Функция placeGridChildren","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":58,"end_line":84},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.placeGridChildren","summary":"Распределяет детей сетки по колонкам и строкам, вычисляя их позиции.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12257412","kind":"action","label":"Получение количества колонок","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":59,"end_line":59},"element_type":null,"symbol":null,"summary":"Вычисляет количество колонок из длины массива шаблона колонок.","coverage_ids":["statement:internal/layout/layout_grid.go:12257412","statement:internal/layout/layout_grid.go:12257440"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"loop:internal/layout/layout_grid.go:12257469","kind":"loop","label":"Цикл по детям сетки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":61,"end_line":83},"element_type":null,"symbol":null,"summary":"Итерируется по каждому ребенку контейнера для расстановки в сетке.","coverage_ids":["loop:internal/layout/layout_grid.go:12257469","return:internal/layout/layout_grid.go:12258220"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12257514","kind":"action","label":"Вычисление колонки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":59,"end_line":59},"element_type":null,"symbol":null,"summary":"Вычисляет индекс колонки для текущего ребенка по модулю количества колонок.","coverage_ids":["statement:internal/layout/layout_grid.go:12257514","statement:internal/layout/layout_grid.go:12257541"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"loop:internal/layout/layout_grid.go:12257605","kind":"loop","label":"Цикл по строкам","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":66,"end_line":70},"element_type":null,"symbol":null,"summary":"Убедится, что массив высот строк достаточно длинен для текущей строки.","coverage_ids":["loop:internal/layout/layout_grid.go:12257605","statement:internal/layout/layout_grid.go:12257752"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12257646","kind":"action","label":"Присваивание высоты строки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":67,"end_line":67},"element_type":null,"symbol":null,"summary":"Присваивает вычисленную высоту в массив rowHeights.","coverage_ids":["statement:internal/layout/layout_grid.go:12257646"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:Resolve:12257678","kind":"call","label":"Вычисление высоты строки","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":67,"end_line":67},"element_type":null,"symbol":"github.com/starframe/abyss/internal/css.Length.Resolve","summary":"Вызывает Resolve для получения высоты строки из шаблона.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/css.Length.Resolve","file":"internal/css/computed_values.go","label":"→ Resolve in internal/css/computed_values.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"call:internal/layout/layout_grid.go:gridOffsetX:12257757","kind":"call","label":"Вызов gridOffsetX","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":86,"end_line":92},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.gridOffsetX","summary":"Вызывает функцию для вычисления X-координаты позиции элемента в сетке.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.gridOffsetX","file":"internal/layout/layout_grid.go","label":"→ gridOffsetX in internal/layout/layout_grid.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12257813","kind":"action","label":"Присваивание Y-координаты","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":71,"end_line":71},"element_type":null,"symbol":null,"summary":"Присваивает вычисленную Y-координату переменной y.","coverage_ids":["statement:internal/layout/layout_grid.go:12257813","statement:internal/layout/layout_grid.go:12257876"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:gridOffsetY:12257818","kind":"call","label":"Вызов gridOffsetY","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":94,"end_line":100},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.gridOffsetY","summary":"Вызывает функцию для вычисления Y-координаты позиции элемента в сетке.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.gridOffsetY","file":"internal/layout/layout_grid.go","label":"→ gridOffsetY in internal/layout/layout_grid.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12257915","kind":"action","label":"Присваивание ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":74,"end_line":74},"element_type":null,"symbol":null,"summary":"Присваивает вычисленную ширину стилю элемента.","coverage_ids":["statement:internal/layout/layout_grid.go:12257915","statement:internal/layout/layout_grid.go:12257966"],"tests":null,"confidence":null,"children":[{"id":"call:internal/layout/layout_grid.go:Px:12257935","kind":"call","label":"Создание ширины из colWidths","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":74,"end_line":74},"element_type":null,"symbol":"github.com/starframe/abyss/internal/css.Px","summary":"Создаёт CSS.Length с пиксельной шириной из массива colWidths.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/css.Px","file":"internal/css/computed_values.go","label":"→ Px in internal/css/computed_values.go"}]},{"id":"call:internal/layout/layout_grid.go:layoutBox:12257966","kind":"call","label":"Вызов layoutBox","layer":"calls","source":{"file":"internal/layout/layout_grid.go","start_line":75,"end_line":75},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.layoutBox","summary":"Вызывает функцию для расстановки элемента в вычисленной позиции.","coverage_ids":[],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.layoutBox","file":"internal/layout/layout.go","label":"→ layoutBox in internal/layout/layout.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12258020","kind":"action","label":"Восстановление ширины","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":75,"end_line":75},"element_type":null,"symbol":null,"summary":"Восстанавливает исходную ширину элемента после расстановки.","coverage_ids":["statement:internal/layout/layout_grid.go:12258020","if:internal/layout/layout_grid.go:12258107"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258162","kind":"action","label":"Обновление высоты строки","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":75,"end_line":75},"element_type":null,"symbol":null,"summary":"Обновляет высоту строки на высоту самого высокого элемента в ней.","coverage_ids":["statement:internal/layout/layout_grid.go:12258162"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.layoutGrid","file":"internal/layout/layout_grid.go","label":"← layoutGrid in internal/layout/layout_grid.go"}]},{"id":"func:internal/layout/layout_grid.go:gridOffsetX:12258241","kind":"group","label":"Функция gridOffsetX","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":86,"end_line":92},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.gridOffsetX","summary":"Вычисляет X-координату позиции элемента в сетке, учитывая отступы.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258329","kind":"action","label":"Инициализация X","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":87,"end_line":90},"element_type":null,"symbol":null,"summary":"Инициализирует переменную x базовой координатой.","coverage_ids":["statement:internal/layout/layout_grid.go:12258329","loop:internal/layout/layout_grid.go:12258343"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258347","kind":"action","label":"Инициализация цикла","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":88,"end_line":88},"element_type":null,"symbol":null,"summary":"Инициализирует цикл по колонкам для накопления смещения.","coverage_ids":["statement:internal/layout/layout_grid.go:12258347","statement:internal/layout/layout_grid.go:12258364"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12258378","kind":"action","label":"Накопление смещения X","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":89,"end_line":89},"element_type":null,"symbol":null,"summary":"Добавляет ширину колонки и отступ к текущей X-координате.","coverage_ids":["statement:internal/layout/layout_grid.go:12258378"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/layout/layout_grid.go:12258412","kind":"output","label":"Возврат X-координаты","layer":"data","source":{"file":"internal/layout/layout_grid.go","start_line":91,"end_line":91},"element_type":null,"symbol":null,"summary":"Возвращает вычисленную X-координату позиции элемента.","coverage_ids":["return:internal/layout/layout_grid.go:12258412"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.placeGridChildren","file":"internal/layout/layout_grid.go","label":"← placeGridChildren in internal/layout/layout_grid.go"}]},{"id":"func:internal/layout/layout_grid.go:gridOffsetY:12258424","kind":"group","label":"Функция gridOffsetY","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":94,"end_line":100},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.gridOffsetY","summary":"Вычисляет Y-координату позиции элемента в сетке, учитывая отступы.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258513","kind":"action","label":"Инициализация Y","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":95,"end_line":98},"element_type":null,"symbol":null,"summary":"Инициализирует переменную y базовой координатой.","coverage_ids":["statement:internal/layout/layout_grid.go:12258513","loop:internal/layout/layout_grid.go:12258527"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258531","kind":"action","label":"Инициализация цикла","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":96,"end_line":96},"element_type":null,"symbol":null,"summary":"Инициализирует цикл по строкам для накопления смещения.","coverage_ids":["statement:internal/layout/layout_grid.go:12258531","statement:internal/layout/layout_grid.go:12258548"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"statement:internal/layout/layout_grid.go:12258562","kind":"action","label":"Накопление смещения Y","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":97,"end_line":97},"element_type":null,"symbol":null,"summary":"Добавляет высоту строки и отступ к текущей Y-координате.","coverage_ids":["statement:internal/layout/layout_grid.go:12258562"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"return:internal/layout/layout_grid.go:12258597","kind":"output","label":"Возврат Y-координаты","layer":"data","source":{"file":"internal/layout/layout_grid.go","start_line":99,"end_line":99},"element_type":null,"symbol":null,"summary":"Возвращает вычисленную Y-координату позиции элемента.","coverage_ids":["return:internal/layout/layout_grid.go:12258597"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.placeGridChildren","file":"internal/layout/layout_grid.go","label":"← placeGridChildren in internal/layout/layout_grid.go"}]},{"id":"func:internal/layout/layout_grid.go:sumRowHeights:12258609","kind":"group","label":"Функция sumRowHeights","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":102,"end_line":111},"element_type":null,"symbol":"github.com/starframe/abyss/internal/layout.sumRowHeights","summary":"Вычисляет общую высоту сетки, суммируя высоты строк и отступы.","coverage_ids":[],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258677","kind":"action","label":"Инициализация высоты","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":107,"end_line":107},"element_type":null,"symbol":null,"summary":"Инициализирует переменную totalHeight нулём.","coverage_ids":["statement:internal/layout/layout_grid.go:12258677","loop:internal/layout/layout_grid.go:12258705"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258744","kind":"action","label":"Накопление высоты","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":107,"end_line":107},"element_type":null,"symbol":null,"summary":"Добавляет высоту строки и отступ к общей высоте.","coverage_ids":["statement:internal/layout/layout_grid.go:12258744"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]},{"id":"if:internal/layout/layout_grid.go:12258777","kind":"decision","label":"Проверка непустых строк","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":107,"end_line":110},"element_type":null,"symbol":null,"summary":"Проверяет, определены ли строки, чтобы корректно вычесть последний отступ.","coverage_ids":["if:internal/layout/layout_grid.go:12258777","return:internal/layout/layout_grid.go:12258839"],"tests":null,"confidence":null,"children":[{"id":"statement:internal/layout/layout_grid.go:12258810","kind":"action","label":"Вычитание отступа","layer":"flow","source":{"file":"internal/layout/layout_grid.go","start_line":107,"end_line":107},"element_type":null,"symbol":null,"summary":"Вычитает отступ из общей высоты, если строки определены.","coverage_ids":["statement:internal/layout/layout_grid.go:12258810"],"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[{"id":"github.com/starframe/abyss/internal/layout.layoutGrid","file":"internal/layout/layout_grid.go","label":"← layoutGrid in internal/layout/layout_grid.go"}]}],"branches":[],"data_in":[],"data_out":[],"effects":[],"cross_refs":[]}],"edges":[]};
+const palette = [{"type":"service","label":"Сервис","color":"#3b82f6","icon":"Settings2","description":"Самостоятельный сервис или приложение"},{"type":"database","label":"База данных","color":"#10b981","icon":"Database","description":"Хранилище данных, слой доступа к БД"},{"type":"module","label":"Модуль","color":"#a78bfa","icon":"Box","description":"Внутренний модуль или пакет"},{"type":"library","label":"Библиотека","color":"#f59e0b","icon":"Library","description":"Переиспользуемая библиотека"},{"type":"entrypoint","label":"Точка входа","color":"#ef4444","icon":"Rocket","description":"main / CLI / server entrypoint"}];
+const sources = {"internal/layout/layout_grid.go":"// Package layout computes positions and sizes of DOM nodes using CSS box model.\npackage layout\n\nimport (\n    \"github.com/starframe/abyss/internal/css\"\n)\n\nfunc layoutGrid(box *LayoutBox, contentWidth float64) float64 {\n    style := box.Style\n    gap := style.Gap.Resolve(contentWidth)\n\n    columns := style.GridTemplateColumns\n    if len(columns) == 0 {\n        columns = []css.Length{css.Px(contentWidth)}\n    }\n    rows := style.GridTemplateRows\n    if len(rows) == 0 {\n        rows = []css.Length{css.Px(100)}\n    }\n\n    colWidths := resolveGridColumnWidths(columns, contentWidth, gap)\n    rowHeights := placeGridChildren(box, columns, rows, colWidths, gap, contentWidth)\n    return sumRowHeights(rowHeights, gap)\n}\n\nfunc resolveGridColumnWidths(columns []css.Length, contentWidth, gap float64) []float64 {\n    var colWidths []float64\n    var totalFixedWidth, totalFr float64\n    for _, col := range columns {\n        if col.IsPercent {\n            w := col.Resolve(contentWidth)\n            colWidths = append(colWidths, w)\n            totalFixedWidth += w\n        } else if !col.IsAuto {\n            w := col.Px\n            colWidths = append(colWidths, w)\n            totalFixedWidth += w\n        } else {\n            // fr unit: treat as 1fr for simplicity\n            colWidths = append(colWidths, 0)\n            totalFr += col.Px\n        }\n    }\n\n    // Distribute remaining width to fr columns\n    remainingWidth := contentWidth - totalFixedWidth - gap*float64(len(columns)-1)\n    if remainingWidth < 0 {\n        remainingWidth = 0\n    }\n    for i, col := range columns {\n        if col.IsAuto && totalFr > 0 {\n            colWidths[i] = remainingWidth * col.Px / totalFr\n        }\n    }\n    return colWidths\n}\n\nfunc placeGridChildren(box *LayoutBox, columns, rows []css.Length, colWidths []float64, gap, contentWidth float64) []float64 {\n    numCols := len(columns)\n    var rowHeights []float64\n    for i, child := range box.Children {\n        col := i % numCols\n        row := i / numCols\n\n        // Ensure row height exists\n        for len(rowHeights) <= row {\n            rowHeights = append(rowHeights, rows[len(rowHeights)%len(rows)].Resolve(contentWidth))\n        }\n\n        x := gridOffsetX(box.Content.X, colWidths, gap, col)\n        y := gridOffsetY(box.Content.Y, rowHeights, gap, row)\n\n        origWidth := child.Style.Width\n        child.Style.Width = css.Px(colWidths[col])\n        layoutBox(child, colWidths[col], x, y, false)\n        child.Style.Width = origWidth\n\n        // Update row height if child is taller\n        if child.Margin.Height > rowHeights[row] {\n            rowHeights[row] = child.Margin.Height\n        }\n    }\n    return rowHeights\n}\n\nfunc gridOffsetX(base float64, colWidths []float64, gap float64, col int) float64 {\n    x := base\n    for c := 0; c < col; c++ {\n        x += colWidths[c] + gap\n    }\n    return x\n}\n\nfunc gridOffsetY(base float64, rowHeights []float64, gap float64, row int) float64 {\n    y := base\n    for r := 0; r < row; r++ {\n        y += rowHeights[r] + gap\n    }\n    return y\n}\n\nfunc sumRowHeights(rowHeights []float64, gap float64) float64 {\n    var totalHeight float64\n    for _, h := range rowHeights {\n        totalHeight += h + gap\n    }\n    if len(rowHeights) > 0 {\n        totalHeight -= gap\n    }\n    return totalHeight\n}\n"};
+
+const KIND_STYLE = {
+  action:   { color: "#3b82f6", icon: "Play" },
+  decision: { color: "#f59e0b", icon: "GitBranch" },
+  call:     { color: "#8b5cf6", icon: "Code2" },
+  input:    { color: "#06b6d4", icon: "ArrowDownToLine" },
+  output:   { color: "#10b981", icon: "ArrowUpFromLine" },
+  state:    { color: "#eab308", icon: "CircleDot" },
+  storage:  { color: "#14b8a6", icon: "Database" },
+  external: { color: "#f97316", icon: "Globe" },
+  loop:     { color: "#84cc16", icon: "RefreshCw" },
+  error:    { color: "#ef4444", icon: "CircleAlert" },
+  async:    { color: "#ec4899", icon: "Zap" },
+  group:    { color: "#71717a", icon: "Layers3" }
+};
+const ICON_PATHS = {
+  Settings2: '<path d="M20 7h-9M14 17H4M17 3v8M7 13v8M20 17h-3M7 7H4"/><circle cx="14" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+  Database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>',
+  Box: '<path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',
+  Library: '<path d="m16 6 4 2v12l-4-2V6ZM4 4l4-1v13l-4 1V4ZM12 3l4 3v12l-4-3V3Z"/>',
+  Rocket: '<path d="M4.5 16.5c-1.5 1.3-2 3.5-2 3.5s2.2-.5 3.5-2c.7-.7.9-1.7.3-2.3s-1.1-.5-1.8.2Z"/><path d="m9 15-3-3 8-8c2-2 5-2 6-1-1 1-1 4-3 6l-8 8Z"/><path d="M14 6 8 4 4 8l6 2M18 10l2 6-4 4-2-6"/>',
+  Play: '<path d="m6 3 14 9-14 9V3Z"/>',
+  GitBranch: '<circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3M6 9a6 6 0 0 1 6-6h3"/>',
+  Code2: '<path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>',
+  ArrowDownToLine: '<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
+  ArrowUpFromLine: '<path d="M12 17V5M7 10l5-5 5 5M5 21h14"/>',
+  CircleDot: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
+  Globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',
+  RefreshCw: '<path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/>',
+  CircleAlert: '<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>',
+  Zap: '<path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/>',
+  Layers3: '<path d="m12 2 8 4-8 4-8-4 8-4Z"/><path d="m4 12 8 4 8-4M4 18l8 4 8-4"/>'
+};
+const paletteStyle = {};
+palette.forEach(p => { paletteStyle[p.type] = p; });
+const styleOf = n => (n.element_type && paletteStyle[n.element_type])
+  ? { color: paletteStyle[n.element_type].color, icon: paletteStyle[n.element_type].icon }
+  : KIND_STYLE[n.kind] || KIND_STYLE.action;
+
+const LAYERS = ["flow", "calls", "data", "state", "effects"];
+const activeLayers = new Set(LAYERS);
+const layersBox = document.getElementById("layers");
+LAYERS.forEach(l => {
+  const label = document.createElement("label");
+  label.className = "lchk";
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.checked = true;
+  cb.addEventListener("change", () => {
+    cb.checked ? activeLayers.add(l) : activeLayers.delete(l);
+    render();
+  });
+  label.appendChild(cb);
+  label.appendChild(document.createTextNode(l));
+  layersBox.appendChild(label);
+});
+
+let views = [{ title: viz.title, nodes: viz.nodes, edges: viz.edges }];
+let cursor = 0;
+const current = () => views[cursor];
+
+document.getElementById("back").addEventListener("click", () => { if (cursor > 0) { cursor--; render(); } });
+document.getElementById("fwd").addEventListener("click", () => { if (cursor < views.length - 1) { cursor++; render(); } });
+
+function openView(title, nodes, edges) {
+  views = views.slice(0, cursor + 1);
+  views.push({ title, nodes, edges });
+  cursor++;
+  render();
+}
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+function textWidth(text, font) {
+  ctx.font = font;
+  return ctx.measureText(text).width;
+}
+
+function wrapText(text, maxW, font) {
+  const words = (text || "").split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = "";
+  words.forEach(w => {
+    const test = line ? line + " " + w : w;
+    if (textWidth(test, font) <= maxW) {
+      line = test;
+    } else {
+      if (line) lines.push(line);
+      line = w;
+    }
+  });
+  if (line) lines.push(line);
+  return lines.length ? lines : [text || ""];
+}
+
+function nodeMetrics(n) {
+  const s = styleOf(n);
+  const labelFont = "500 11px system-ui, sans-serif";
+  const summaryFont = "9px system-ui, sans-serif";
+  const maxTextW = n.kind === "decision" ? 200 : 220;
+  const labelLines = wrapText(n.label, maxTextW, labelFont);
+  const summaryLines = n.summary ? wrapText(n.summary, maxTextW, summaryFont) : [];
+  const labelW = Math.max(...labelLines.map(l => textWidth(l, labelFont)), 0);
+  const summaryW = Math.max(...summaryLines.map(l => textWidth(l, summaryFont)), 0);
+  const hasIcon = true;
+  const innerW = Math.max(labelW, summaryW) + (hasIcon ? 32 : 0);
+  const minW = n.kind === "decision" ? 168 : 140;
+  const maxW = n.kind === "decision" ? 280 : 300;
+  const width = Math.max(minW, Math.min(maxW, innerW + 24));
+  const lineH = 13;
+  const labelH = 11 + (labelLines.length - 1) * lineH;
+  const summaryH = summaryLines.length ? 4 + summaryLines.length * lineH : 0;
+  const height = 22 + labelH + summaryH;
+  return { width, height, labelLines, summaryLines, labelH, summaryH, hasIcon, color: s.color, icon: s.icon };
+}
+
+function sequentialize(arcs, visible, level) {
+  if (level !== "file" && level !== "function") return arcs;
+  const lineOf = id => {
+    const n = visible.find(x => x.id === id);
+    return n && n.source ? n.source.start_line : 0;
+  };
+  const out = {};
+  arcs.forEach(a => { (out[a.from] = out[a.from] || []).push(a); });
+  const keep = new Set();
+  const add = [];
+  Object.keys(out).forEach(src => {
+    const srcNode = visible.find(x => x.id === src);
+    if (!srcNode || srcNode.kind === "decision") return;
+    const outs = out[src]
+      .filter(a => visible.find(x => x.id === a.to))
+      .slice()
+      .sort((a, b) => lineOf(a.to) - lineOf(b.to));
+    if (outs.length < 2) return;
+    keep.add(`${outs[0].from}→${outs[0].to}`);
+    for (let i = 1; i < outs.length; i++) {
+      add.push({ from: outs[i - 1].to, to: outs[i].to, label: outs[i].label });
+    }
+  });
+  return arcs.filter(a => {
+    const srcNode = visible.find(x => x.id === a.from);
+    if (srcNode && srcNode.kind === "decision") return true;
+    if (!out[a.from] || out[a.from].length < 2) return true;
+    return keep.has(`${a.from}→${a.to}`);
+  }).concat(add);
+}
+
+function layeredLayout(nodes, edges) {
+  const visible = nodes.filter(n => activeLayers.has(n.layer));
+  const ids = new Set(visible.map(n => n.id));
+  let arcs = edges.filter(e => ids.has(e.from) && ids.has(e.to)).map(e => ({ ...e }));
+  visible.forEach(n => {
+    if (n.kind === "decision" && n.branches) {
+      n.branches.forEach(b => {
+        if (ids.has(b.target)) arcs.push({ from: n.id, to: b.target, label: b.condition });
+      });
+    }
+  });
+  arcs = sequentialize(arcs, visible, viz.level);
+
+  const layer = {};
+  visible.forEach(n => layer[n.id] = 0);
+  for (let i = 0; i < visible.length; i++) {
+    arcs.forEach(a => { if (layer[a.to] <= layer[a.from]) layer[a.to] = layer[a.from] + 1; });
+  }
+
+  const metrics = {};
+  visible.forEach(n => metrics[n.id] = nodeMetrics(n));
+
+  const groups = new Map();
+  visible.forEach(n => {
+    const l = layer[n.id];
+    if (!groups.has(l)) groups.set(l, []);
+    groups.get(l).push(n);
+  });
+
+  const preds = {};
+  arcs.forEach(a => { (preds[a.to] = preds[a.to] || []).push(a.from); });
+
+  const sortedLayers = [...groups.keys()].sort((a, b) => a - b);
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    group.forEach(n => {
+      const ps = (preds[n.id] || []).filter(p => metrics[p]._pos);
+      n._bary = ps.length ? ps.reduce((s, p) => s + metrics[p]._pos.x + metrics[p].width / 2, 0) / ps.length : Infinity;
+    });
+    group.sort((a, b) => (a._bary - b._bary) || a.id.localeCompare(b.id));
+    let x = 40;
+    group.forEach(n => {
+      metrics[n.id]._pos = { x, y: 0 };
+      x += metrics[n.id].width + 40;
+    });
+  });
+
+  let maxLayerWidth = 0;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const last = group[group.length - 1];
+    const w = metrics[last.id]._pos.x + metrics[last.id].width;
+    if (w > maxLayerWidth) maxLayerWidth = w;
+  });
+
+  let y = 40;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const maxH = Math.max(...group.map(n => metrics[n.id].height));
+    group.forEach(n => { metrics[n.id]._pos.y = y + (maxH - metrics[n.id].height) / 2; });
+    const layerW = Math.max(...group.map(n => metrics[n.id]._pos.x + metrics[n.id].width));
+    const offset = (maxLayerWidth - layerW) / 2;
+    group.forEach(n => { metrics[n.id]._pos.x += Math.max(0, offset); });
+    y += maxH + 70;
+  });
+
+  return { visible, arcs, metrics };
+}
+
+function treeLayout(nodes, sourceEdges) {
+  const root = nodes[0];
+  if (!root) return { visible: [], arcs: [], metrics: {}, regions: [], header: null };
+
+  const parentById = {};
+  function index(node, parentId = null) {
+    if (parentId) parentById[node.id] = parentId;
+    (node.children || []).forEach(child => index(child, node.id));
+  }
+  index(root);
+
+  const isFileRoot = root.kind === "group" && !root.symbol && root.id.startsWith("file:");
+  const header = isFileRoot
+    ? {
+        label: (root.label || root.source?.file || root.id).trim(),
+        summary: (root.summary || "").trim()
+      }
+    : null;
+
+  function filter(node) {
+    const children = collapsedNodes.has(node.id)
+      ? []
+      : (node.children || [])
+        .filter(c => activeLayers.has(c.layer))
+        .map(filter);
+    return { node, children };
+  }
+  const tree = isFileRoot
+    ? { node: null, depth: 0, children: (root.children || []).filter(c => activeLayers.has(c.layer)).map(filter) }
+    : filter(root);
+  const flat = [];
+
+  function collect(t, depth) {
+    t.depth = depth;
+    if (t.node) flat.push(t.node);
+    t.children.forEach(child => collect(child, depth + 1));
+  }
+  collect(tree, 0);
+  const visibleIds = new Set(flat.map(node => node.id));
+
+  const metrics = {};
+  let y = 40;
+  flat.forEach(node => {
+    const metric = nodeMetrics(node);
+    const depth = findTreeDepth(tree, node.id);
+    metric._pos = { x: 40 + depth * TREE_INDENT, y };
+    node._metrics = metric;
+    metrics[node.id] = metric;
+    y += metric.height + TREE_GAP_Y;
+  });
+
+  const regions = [];
+  function bounds(t) {
+    if (!t.node) {
+      let aggregate = null;
+      t.children.forEach(child => {
+        const childBounds = bounds(child);
+        if (!aggregate) aggregate = childBounds;
+        else {
+          aggregate.left = Math.min(aggregate.left, childBounds.left);
+          aggregate.top = Math.min(aggregate.top, childBounds.top);
+          aggregate.right = Math.max(aggregate.right, childBounds.right);
+          aggregate.bottom = Math.max(aggregate.bottom, childBounds.bottom);
+          aggregate.nodeIds = aggregate.nodeIds.concat(childBounds.nodeIds);
+        }
+      });
+      return aggregate || { left: 0, top: 0, right: 0, bottom: 0, nodeIds: [] };
+    }
+
+    const metric = metrics[t.node.id];
+    const pos = metric._pos;
+    let left = pos.x - TREE_REGION_PADDING;
+    let top = pos.y - TREE_REGION_PADDING;
+    let right = pos.x + metric.width + TREE_REGION_PADDING;
+    let bottom = pos.y + metric.height + TREE_REGION_PADDING;
+    let nodeIds = [t.node.id];
+
+    t.children.forEach(child => {
+      const childBounds = bounds(child);
+      left = Math.min(left, childBounds.left - TREE_REGION_NESTING_GAP);
+      top = Math.min(top, childBounds.top - TREE_REGION_NESTING_GAP);
+      right = Math.max(right, childBounds.right + TREE_REGION_NESTING_GAP);
+      bottom = Math.max(bottom, childBounds.bottom + TREE_REGION_NESTING_GAP);
+      nodeIds = nodeIds.concat(childBounds.nodeIds);
+    });
+
+    if (t.children.length) {
+      regions.push({
+        id: t.node.id,
+        depth: t.depth,
+        x: left,
+        y: top,
+        width: right - left,
+        height: bottom - top,
+        color: metric.color,
+        nodeIds
+      });
+    }
+    return { left, top, right, bottom, nodeIds };
+  }
+  bounds(tree);
+  regions.sort((a, b) => a.depth - b.depth);
+
+  const edges = [];
+  function addStructuralEdges(t) {
+    t.children.forEach(child => {
+      if (t.node) edges.push({ from: t.node.id, to: child.node.id, label: null, status: null });
+      addStructuralEdges(child);
+    });
+  }
+  addStructuralEdges(tree);
+
+  function visibleAncestor(id) {
+    let currentId = id;
+    while (currentId && !visibleIds.has(currentId)) {
+      const parentId = parentById[currentId];
+      if (!parentId) return null;
+      currentId = parentId;
+    }
+    return currentId || null;
+  }
+  const seen = new Set(edges.map(edge => `${edge.from}→${edge.to}`));
+  (sourceEdges || []).forEach(edge => {
+    const from = visibleAncestor(edge.from);
+    const to = visibleAncestor(edge.to);
+    if (!from || !to || from === to) return;
+    const key = `${from}→${to}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    edges.push({ from, to, label: edge.label, status: edge.status });
+  });
+
+  return { visible: flat, arcs: edges, metrics, regions, header };
+}
+
+function findTreeDepth(tree, nodeId) {
+  if (tree.node && tree.node.id === nodeId) return tree.depth;
+  for (const child of tree.children) {
+    const depth = findTreeDepth(child, nodeId);
+    if (depth >= 0) return depth;
+  }
+  return -1;
+}
+
+function isTreeView(view) {
+  return view.nodes.length === 1 && view.nodes[0].children && view.nodes[0].children.length > 0;
+}
+
+const NS = "http://www.w3.org/2000/svg";
+const TREE_INDENT = 44;
+const TREE_REGION_PADDING = 18;
+const TREE_REGION_NESTING_GAP = 10;
+const TREE_GAP_Y = 28;
+const collapsedNodes = new Set();
+let query = "";
+
+function render() {
+  const view = current();
+  document.getElementById("crumb").textContent = view.title;
+  document.getElementById("back").disabled = cursor === 0;
+  document.getElementById("fwd").disabled = cursor === views.length - 1;
+
+  const isTree = isTreeView(view);
+  const layout = isTree
+    ? treeLayout(view.nodes, view.edges)
+    : layeredLayout(view.nodes, view.edges);
+  const { visible, arcs, metrics, regions = [], header = null } = layout;
+  const fileDescription = document.getElementById("file-description");
+  const fileLabel = document.getElementById("file-label");
+  const fileSummary = document.getElementById("file-summary");
+  fileLabel.textContent = header ? header.label : "";
+  fileSummary.textContent = header ? header.summary : "";
+  fileSummary.style.display = header && header.summary ? "inline" : "none";
+  fileDescription.style.display = header ? "block" : "none";
+  const barHeight = document.getElementById("bar").getBoundingClientRect().height;
+  document.getElementById("stage").style.top = `${barHeight}px`;
+  document.getElementById("sidebar").style.top = `${barHeight}px`;
+
+  const svg = document.getElementById("svg");
+  svg.innerHTML = "";
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  visible.forEach(n => {
+    const m = metrics[n.id];
+    minX = Math.min(minX, m._pos.x);
+    minY = Math.min(minY, m._pos.y);
+    maxX = Math.max(maxX, m._pos.x + m.width);
+    maxY = Math.max(maxY, m._pos.y + m.height);
+  });
+  regions.forEach(region => {
+    minX = Math.min(minX, region.x);
+    minY = Math.min(minY, region.y);
+    maxX = Math.max(maxX, region.x + region.width);
+    maxY = Math.max(maxY, region.y + region.height);
+  });
+  const stageWidth = visible.length ? Math.max(maxX + 40, 1) : 1;
+  const stageHeight = visible.length ? Math.max(maxY + 40, 1) : 1;
+  svg.setAttribute("width", stageWidth);
+  svg.setAttribute("height", stageHeight);
+  svg.setAttribute("viewBox", `0 0 ${stageWidth} ${stageHeight}`);
+
+  const defs = document.createElementNS(NS, "defs");
+  defs.innerHTML = '<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/></marker>';
+  svg.appendChild(defs);
+  const scene = document.createElementNS(NS, "g");
+  scene.setAttribute("id", "scene");
+  svg.appendChild(scene);
+
+  const matches = q => n => q && (n.label.toLowerCase().includes(q) || n.id.toLowerCase().includes(q));
+  const isHit = matches(query);
+
+  const regionLayer = document.createElementNS(NS, "g");
+  regionLayer.setAttribute("id", "scope-regions");
+  regions.forEach(region => {
+    const group = document.createElementNS(NS, "g");
+    group.setAttribute("class", "scope-region");
+    if (query && !region.nodeIds.some(id => isHit(visible.find(n => n.id === id)))) group.classList.add("dim");
+    const rect = document.createElementNS(NS, "rect");
+    rect.setAttribute("x", region.x);
+    rect.setAttribute("y", region.y);
+    rect.setAttribute("width", region.width);
+    rect.setAttribute("height", region.height);
+    rect.setAttribute("rx", 16);
+    rect.setAttribute("fill", region.color);
+    rect.setAttribute("fill-opacity", "0.055");
+    rect.setAttribute("stroke", region.color);
+    rect.setAttribute("stroke-opacity", "0.42");
+    group.appendChild(rect);
+    regionLayer.appendChild(group);
+  });
+  scene.appendChild(regionLayer);
+
+  arcs.forEach(a => {
+    const m1 = metrics[a.from], m2 = metrics[a.to];
+    const p1 = m1._pos, p2 = m2._pos;
+    const sx = p1.x + m1.width / 2;
+    const sy = p1.y + m1.height;
+    const tx = p2.x + m2.width / 2;
+    const ty = p2.y;
+    const dy = Math.max(ty - sy, 30);
+    const c1y = sy + dy * 0.45;
+    const c2y = ty - dy * 0.45;
+    const d = `M ${sx} ${sy} C ${sx} ${c1y}, ${tx} ${c2y}, ${tx} ${ty}`;
+
+    const line = document.createElementNS(NS, "path");
+    line.setAttribute("d", d);
+    const status = a.status || view.edges.find(e => e.from === a.from && e.to === a.to);
+    const inferred = status === "inferred" || (status && status.status === "inferred");
+    line.setAttribute("class", "edge" + (inferred ? " inferred" : ""));
+    line.setAttribute("marker-end", "url(#arr)");
+    if (query && !(isHit(visible.find(n => n.id === a.from)) && isHit(visible.find(n => n.id === a.to)))) line.classList.add("dim");
+    scene.appendChild(line);
+
+    if (a.label) {
+      const len = line.getTotalLength();
+      const pt = line.getPointAtLength(len / 2);
+      const lw = textWidth(a.label, "10px system-ui, sans-serif") + 12;
+      const bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("class", "elabel-bg");
+      bg.setAttribute("x", pt.x - lw / 2);
+      bg.setAttribute("y", pt.y - 10);
+      bg.setAttribute("width", lw);
+      bg.setAttribute("height", 20);
+      bg.setAttribute("rx", 6);
+      scene.appendChild(bg);
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "elabel");
+      t.setAttribute("x", pt.x);
+      t.setAttribute("y", pt.y + 3);
+      t.setAttribute("text-anchor", "middle");
+      t.textContent = a.label;
+      scene.appendChild(t);
+    }
+  });
+
+  visible.forEach(n => {
+    const p = metrics[n.id]._pos;
+    const m = metrics[n.id];
+    const s = styleOf(n);
+    const g = document.createElementNS(NS, "g");
+    const classes = ["node", n.kind];
+    if (n.id === view.nodes[0]?.id) classes.push("root");
+    if (query && !isHit(n)) classes.push("dim");
+    g.setAttribute("class", classes.join(" "));
+    const shape = document.createElementNS(NS, "rect");
+    shape.setAttribute("x", p.x); shape.setAttribute("y", p.y);
+    shape.setAttribute("width", m.width); shape.setAttribute("height", m.height);
+    shape.setAttribute("rx", 12);
+    const fill = n.kind === "group"
+      ? "#181b2b"
+      : n.kind === "decision"
+        ? "#241d0c"
+        : n.kind === "loop"
+          ? "#1c1f2e"
+          : "#14171f";
+    shape.setAttribute("fill", fill);
+    shape.setAttribute("stroke", s.color);
+    shape.setAttribute("stroke-opacity", n.kind === "group" ? "0.95" : "0.78");
+    shape.setAttribute("stroke-width", n.id === view.nodes[0]?.id ? 2.5 : 1.8);
+    if (query && isHit(n)) shape.setAttribute("class", "hit");
+    g.appendChild(shape);
+
+    if ((n.kind === "group" || n.kind === "function") && n.children && n.children.length) {
+      const toggle = document.createElementNS(NS, "g");
+      toggle.setAttribute("class", "collapse-toggle");
+      toggle.setAttribute("role", "button");
+      toggle.setAttribute("aria-label", collapsedNodes.has(n.id) ? "Развернуть" : "Свернуть");
+      toggle.addEventListener("click", event => {
+        event.stopPropagation();
+        collapsedNodes.has(n.id) ? collapsedNodes.delete(n.id) : collapsedNodes.add(n.id);
+        render();
+      });
+      const toggleShape = document.createElementNS(NS, "rect");
+      toggleShape.setAttribute("x", p.x + m.width - 24);
+      toggleShape.setAttribute("y", p.y + 6);
+      toggleShape.setAttribute("width", 16);
+      toggleShape.setAttribute("height", 16);
+      toggleShape.setAttribute("rx", 5);
+      toggleShape.setAttribute("fill", "#252a3d");
+      toggleShape.setAttribute("stroke", s.color);
+      toggleShape.setAttribute("stroke-opacity", "0.55");
+      toggle.appendChild(toggleShape);
+      const toggleLabel = document.createElementNS(NS, "text");
+      toggleLabel.setAttribute("x", p.x + m.width - 16);
+      toggleLabel.setAttribute("y", p.y + 18);
+      toggleLabel.setAttribute("text-anchor", "middle");
+      toggleLabel.setAttribute("fill", "#cbd0ff");
+      toggleLabel.setAttribute("font-size", "13");
+      toggleLabel.textContent = collapsedNodes.has(n.id) ? "+" : "−";
+      toggle.appendChild(toggleLabel);
+      g.appendChild(toggle);
+    }
+
+    if (m.hasIcon) {
+      const icon = document.createElementNS(NS, "g");
+      icon.setAttribute("transform", `translate(${p.x + 18} ${p.y + m.height/2 - 7}) scale(.55)`);
+      icon.setAttribute("fill", "none");
+      icon.setAttribute("stroke", s.color);
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("stroke-linecap", "round");
+      icon.setAttribute("stroke-linejoin", "round");
+      icon.innerHTML = ICON_PATHS[s.icon] || ICON_PATHS.Box;
+      g.appendChild(icon);
+    }
+
+    const textX = m.hasIcon ? p.x + 38 : p.x + 12;
+    const labelMaxW = m.width - (m.hasIcon ? 48 : 22);
+    const labelLines = wrapText(n.label, labelMaxW, "500 11px system-ui, sans-serif");
+    labelLines.forEach((ln, i) => {
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "nlabel");
+      t.setAttribute("x", textX);
+      t.setAttribute("y", p.y + 17 + i * 13);
+      t.textContent = ln;
+      g.appendChild(t);
+    });
+
+    if (n.summary) {
+      const summaryLines = wrapText(n.summary, labelMaxW, "9px system-ui, sans-serif");
+      summaryLines.forEach((ln, i) => {
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("class", "nsummary");
+        t.setAttribute("x", textX);
+        t.setAttribute("y", p.y + 19 + labelLines.length * 13 + 4 + i * 13);
+        t.textContent = ln;
+        g.appendChild(t);
+      });
+    }
+
+    if (n.tests) {
+      ["unit", "integration", "e2e"].forEach((k, i) => {
+        const dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", p.x + m.width - 12 - i * 10); dot.setAttribute("cy", p.y + 11);
+        dot.setAttribute("r", 3.5);
+        dot.setAttribute("fill", n.tests[k] ? ["#34d399", "#60a5fa", "#f472b6"][i] : "#3f3f46");
+        g.appendChild(dot);
+      });
+    }
+
+    g.addEventListener("click", event => {
+      if (event.metaKey) {
+        if (n.children && n.children.length) {
+          document.getElementById("sidebar").style.display = "none";
+          openView(n.label, n.children, []);
+        } else if (n.symbol) {
+          document.getElementById("sidebar").style.display = "none";
+          window.parent.postMessage({ type: "graphloom:navigate", symbolId: n.symbol }, "*");
+        }
+        return;
+      }
+      showSidebar(n);
+    });
+    scene.appendChild(g);
+  });
+}
+
+function showSidebar(n) {
+  const s = styleOf(n);
+  document.getElementById("s-title").textContent = n.label;
+  document.getElementById("s-meta").textContent =
+    s.icon + " " + n.kind + (n.element_type ? " · " + n.element_type : "") +
+    (n.confidence != null ? " · confidence " + n.confidence.toFixed(2) : "");
+  document.getElementById("s-tests").innerHTML = n.tests
+    ? ["unit", "integration", "e2e"].map(k =>
+        '<span class="chip ' + (n.tests[k] ? "on" : "off") + '">' + k + "</span>").join("")
+    : "";
+  document.getElementById("s-summary").textContent = n.summary || "";
+
+  const extra = document.getElementById("s-extra");
+  extra.innerHTML = "";
+
+  const refs = document.getElementById("s-refs");
+  refs.innerHTML = "";
+  if (n.cross_refs && n.cross_refs.length) {
+    const title = document.createElement("div");
+    title.className = "meta";
+    title.textContent = "Связи:";
+    refs.appendChild(title);
+    const list = document.createElement("div");
+    for (const ref of n.cross_refs) {
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = ref.label;
+      a.style.display = "block";
+      a.style.color = "#60a5fa";
+      a.style.marginTop = "4px";
+      a.style.textDecoration = "none";
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.parent.postMessage({ type: "graphloom:navigate", symbolId: ref.id, file: ref.file }, "*");
+      });
+      list.appendChild(a);
+    }
+    refs.appendChild(list);
+  }
+
+  if (n.kind === "call" && n.children && n.children.length) {
+    const btn = document.createElement("button");
+    btn.className = "expand";
+    btn.textContent = "Раскрыть flow";
+    btn.addEventListener("click", () => {
+      document.getElementById("sidebar").style.display = "none";
+      openView(n.label, n.children, []);
+    });
+    extra.appendChild(btn);
+  }
+
+  const code = document.getElementById("s-code");
+  if (n.source && sources[n.source.file]) {
+    const lines = sources[n.source.file].split("\n");
+    const from = Math.max(1, n.source.start_line - 2);
+    const to = Math.min(lines.length, n.source.end_line + 2);
+    let html = "";
+    for (let i = from; i <= to; i++) {
+      const esc = lines[i - 1].replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      const body = '<span class="ln">' + i + "</span>" + esc;
+      html += i >= n.source.start_line && i <= n.source.end_line
+        ? '<span class="hl">' + body + "</span>" : body + "\n";
+    }
+    code.innerHTML = html;
+    code.style.display = "block";
+  } else {
+    code.style.display = "none";
+  }
+  document.getElementById("sidebar").style.display = "block";
+}
+
+document.getElementById("close").addEventListener("click", () => {
+  document.getElementById("sidebar").style.display = "none";
+});
+document.getElementById("search").addEventListener("input", ev => {
+  query = ev.target.value.trim().toLowerCase();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

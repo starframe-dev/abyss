@@ -1,0 +1,402 @@
+{
+  "title": "internal/browser/browser_layout.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/browser/browser_layout.go",
+      "kind": "group",
+      "label": "Файл пакета browser",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser_layout.go",
+        "start_line": 1,
+        "end_line": 28
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Этот файл содержит функции для построения карты абсолютных прямоугольников узлов DOM-дерева.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/browser/browser_layout.go:buildLayoutBoxMap:15614761",
+          "kind": "group",
+          "label": "Функция buildLayoutBoxMap",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_layout.go",
+            "start_line": 10,
+            "end_line": 14
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.buildLayoutBoxMap",
+          "summary": "Основная функция, которая проходит по дереву layout и создаёт карту сопоставления узлов к их абсолютным прямоугольникам.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/browser/browser_layout.go:15614836",
+              "kind": "action",
+              "label": "Инициализация карты",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 12,
+                "end_line": 12
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаётся пустая карта для хранения сопоставлений узлов к их прямоугольникам.",
+              "coverage_ids": [
+                "statement:internal/browser/browser_layout.go:15614836"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_layout.go:15614874",
+              "kind": "action",
+              "label": "Вызов рекурсивной функции",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 12,
+                "end_line": 12
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняется вызов функции buildLayoutBoxRecursive для обработки всей иерархии layout-элементов.",
+              "coverage_ids": [
+                "statement:internal/browser/browser_layout.go:15614874"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser_layout.go:buildLayoutBoxRecursive:15614874",
+                  "kind": "call",
+                  "label": "Вызов рекурсивной функции",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser_layout.go",
+                    "start_line": 16,
+                    "end_line": 28
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+                  "summary": "Вызывается вспомогательная рекурсивная функция для обработки корневой области layout с нулевыми смещениями.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+                      "file": "internal/browser/browser_layout.go",
+                      "label": "→ buildLayoutBoxRecursive in internal/browser/browser_layout.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser_layout.go:15614922",
+              "kind": "output",
+              "label": "Возврат результата",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 13,
+                "end_line": 13
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Функция возвращает заполненную карту с абсолютными прямоугольниками для всех узлов.",
+              "coverage_ids": [
+                "return:internal/browser/browser_layout.go:15614922"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser_layout.go:buildLayoutBoxRecursive:15614939",
+          "kind": "group",
+          "label": "Рекурсивная функция buildLayoutBoxRecursive",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_layout.go",
+            "start_line": 16,
+            "end_line": 28
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+          "summary": "Вспомогательная функция, которая рекурсивно обрабатывает каждый layout-элемент и вычисляет его абсолютные координаты.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser_layout.go:15615053",
+              "kind": "decision",
+              "label": "Проверка валидности узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 17,
+                "end_line": 19
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяется, не равен ли текущий layout-элемент или его узел nil, чтобы избежать обработки невалидных данных.",
+              "coverage_ids": [
+                "if:internal/browser/browser_layout.go:15615053"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser_layout.go:15615096",
+                  "kind": "output",
+                  "label": "Ранний возврат при ошибке",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser_layout.go",
+                    "start_line": 18,
+                    "end_line": 18
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "При обнаружении невалидного layout-элемента функция завершает выполнение без дальнейшей обработки.",
+                  "coverage_ids": [
+                    "return:internal/browser/browser_layout.go:15615096"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_layout.go:15615114",
+              "kind": "action",
+              "label": "Вычисление абсолютной X-координаты",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вычисляется абсолютная X-координата прямоугольника путём сложения координаты контента и смещения offsetX.",
+              "coverage_ids": [
+                "statement:internal/browser/browser_layout.go:15615114"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_layout.go:15615150",
+              "kind": "action",
+              "label": "Вычисление абсолютной Y-координаты",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вычисляется абсолютная Y-координата прямоугольника путём сложения координаты контента и смещения offsetY.",
+              "coverage_ids": [
+                "statement:internal/browser/browser_layout.go:15615150"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_layout.go:15615186",
+              "kind": "action",
+              "label": "Запись прямоугольника в карту",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "В карту result записывается прямоугольник для текущего узла с вычисленными абсолютными координатами и размерами.",
+              "coverage_ids": [
+                "statement:internal/browser/browser_layout.go:15615186"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/browser/browser_layout.go:15615290",
+              "kind": "loop",
+              "label": "Итерация по дочерним элементам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 25,
+                "end_line": 27
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл проходит по всем дочерним layout-элементам текущего узла для рекурсивной обработки их иерархии.",
+              "coverage_ids": [
+                "loop:internal/browser/browser_layout.go:15615290"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser_layout.go:15615335",
+                  "kind": "action",
+                  "label": "Рекурсивная обработка дочерних элементов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_layout.go",
+                    "start_line": 26,
+                    "end_line": 26
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняется рекурсивный вызов для обработки каждого дочернего layout-элемента с передачей вычисленных абсолютных координат.",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser_layout.go:15615335"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser_layout.go:buildLayoutBoxRecursive:15615335",
+                      "kind": "call",
+                      "label": "Рекурсивный вызов для дочернего элемента",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_layout.go",
+                        "start_line": 16,
+                        "end_line": 28
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+                      "summary": "Для каждого дочернего элемента вызывается та же рекурсивная функция с обновлёнными абсолютными координатами смещения.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+                          "file": "internal/browser/browser_layout.go",
+                          "label": "→ buildLayoutBoxRecursive in internal/browser/browser_layout.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxMap",
+              "file": "internal/browser/browser_layout.go",
+              "label": "← buildLayoutBoxMap in internal/browser/browser_layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+              "file": "internal/browser/browser_layout.go",
+              "label": "← buildLayoutBoxRecursive in internal/browser/browser_layout.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

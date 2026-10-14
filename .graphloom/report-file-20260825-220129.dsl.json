@@ -1,0 +1,245 @@
+{
+  "title": "cmd/manual/main.go - Тестовая страница с рендерингом",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main_group",
+      "kind": "group",
+      "label": "Основная функция",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 158,
+        "end_line": 241
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "create_html",
+      "kind": "action",
+      "label": "Создать тестовую HTML страницу",
+      "layer": "data",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 19,
+        "end_line": 156
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "write_file",
+      "kind": "action",
+      "label": "Записать файл в временную директорию",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 160,
+        "end_line": 160
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse_dom",
+      "kind": "action",
+      "label": "Парсить HTML документ",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 175,
+        "end_line": 176
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "init_js_context",
+      "kind": "action",
+      "label": "Инициализировать контекст JavaScript",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 178,
+        "end_line": 179
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "register_bridge",
+      "kind": "action",
+      "label": "Регистрировать функции моста",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 187,
+        "end_line": 189
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "execute_scripts",
+      "kind": "action",
+      "label": "Выполнять скрипты",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 195,
+        "end_line": 196
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_pipeline",
+      "kind": "action",
+      "label": "Рендеринг через CSS/Layout/Render",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 212,
+        "end_line": 215
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "output_display",
+      "kind": "action",
+      "label": "Вывод результатов",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 217,
+        "end_line": 235
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main_group",
+      "to": "create_html",
+      "label": "Использует константу",
+      "status": "inferred"
+    },
+    {
+      "from": "create_html",
+      "to": "write_file",
+      "label": "Записывает файл",
+      "status": "inferred"
+    },
+    {
+      "from": "write_file",
+      "to": "parse_dom",
+      "label": "Парсит HTML",
+      "status": "inferred"
+    },
+    {
+      "from": "parse_dom",
+      "to": "init_js_context",
+      "label": "Инициализирует JS",
+      "status": "inferred"
+    },
+    {
+      "from": "init_js_context",
+      "to": "register_bridge",
+      "label": "Регистрирует мост",
+      "status": "inferred"
+    },
+    {
+      "from": "register_bridge",
+      "to": "execute_scripts",
+      "label": "Выполняет скрипты",
+      "status": "inferred"
+    },
+    {
+      "from": "execute_scripts",
+      "to": "render_pipeline",
+      "label": "Рендерит через CSS/Layout",
+      "status": "inferred"
+    },
+    {
+      "from": "render_pipeline",
+      "to": "output_display",
+      "label": "Выводит результат",
+      "status": "inferred"
+    }
+  ]
+}

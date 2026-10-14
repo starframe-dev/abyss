@@ -1,0 +1,272 @@
+{
+  "title": "Framebuffer: Буфер пикселей для рендеринга",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "group_framebuffer",
+      "kind": "group",
+      "label": "Пакет framebuffer",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 1,
+        "end_line": 118
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "type_framebuffer",
+      "kind": "state",
+      "label": "Структура Framebuffer",
+      "layer": "state",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 11,
+        "end_line": 15
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "RGB буфер пикселей с шириной, высотой и массивом цветов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func_new",
+      "kind": "action",
+      "label": "Создать новый буфер",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 18,
+        "end_line": 24
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Инициализация нового буфера с заданными размерами",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_set",
+      "kind": "action",
+      "label": "Установить пиксель",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 27,
+        "end_line": 32
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Установка цвета пикселя по координатам x, y",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_get",
+      "kind": "action",
+      "label": "Получить пиксель",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 35,
+        "end_line": 40
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Чтение цвета пикселя по координатам x, y",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_clear",
+      "kind": "action",
+      "label": "Очистить буфер",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 43,
+        "end_line": 47
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Заполнение всего буфера цветом",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_fillrect",
+      "kind": "action",
+      "label": "Заполнить прямоугольник",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 50,
+        "end_line": 60
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Заполнение прямоугольной области цветом",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_drawborder",
+      "kind": "action",
+      "label": "Нарисовать рамку",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 63,
+        "end_line": 80
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Рисование рамок для области с разными цветами сторон",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_drawroundedrect",
+      "kind": "action",
+      "label": "Нарисовать скруглённый прямоугольник",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 83,
+        "end_line": 99
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Рисование прямоугольника со скруглёнными углами",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "method_clipcorner",
+      "kind": "action",
+      "label": "Обрезать угол",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 103,
+        "end_line": 118
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Скругление угла путём очистки внешних пикселей",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "func_new",
+      "to": "type_framebuffer",
+      "label": "возвращает",
+      "status": "inferred"
+    },
+    {
+      "from": "method_set",
+      "to": "type_framebuffer",
+      "label": "работает с",
+      "status": "inferred"
+    },
+    {
+      "from": "method_get",
+      "to": "type_framebuffer",
+      "label": "работает с",
+      "status": "inferred"
+    },
+    {
+      "from": "method_clear",
+      "to": "type_framebuffer",
+      "label": "работает с",
+      "status": "inferred"
+    },
+    {
+      "from": "method_fillrect",
+      "to": "method_set",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "method_drawborder",
+      "to": "method_fillrect",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "method_drawroundedrect",
+      "to": "method_fillrect",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "method_drawroundedrect",
+      "to": "method_clipcorner",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "method_clipcorner",
+      "to": "method_set",
+      "label": "вызывает",
+      "status": "inferred"
+    }
+  ]
+}

@@ -1,0 +1,2009 @@
+{
+  "title": "internal/css/parser.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/css/parser.go",
+      "kind": "group",
+      "label": "Файл parser.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/parser.go",
+        "start_line": 1,
+        "end_line": 275
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсер CSS-стилей",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/css/parser.go:Declaration:12101937",
+          "kind": "group",
+          "label": "Тип Declaration",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 10,
+            "end_line": 13
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Declaration",
+          "summary": "Представление CSS-декларации",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/parser.go:Rule:12102061",
+          "kind": "group",
+          "label": "Тип Rule",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 16,
+            "end_line": 19
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Rule",
+          "summary": "Представление CSS-правила",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/parser.go:ParseInline:12102193",
+          "kind": "group",
+          "label": "Функция ParseInline",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 22,
+            "end_line": 39
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.ParseInline",
+          "summary": "Парсить инлайн-стили",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/css/parser.go:splitBySemicolon:12102281",
+              "kind": "call",
+              "label": "Вызов splitBySemicolon",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 128,
+                "end_line": 149
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.splitBySemicolon",
+              "summary": "Разделить декларацию по точкам с запятой",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.splitBySemicolon",
+                  "file": "internal/css/parser.go",
+                  "label": "→ splitBySemicolon in internal/css/parser.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:internal/css/parser.go:12102309",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 25,
+                "end_line": 37
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по частям декларации",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12102385",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 27,
+                    "end_line": 29
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить пустую часть",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/css/parser.go:12102482",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 31,
+                    "end_line": 33
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить отсутствие двоеточия",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12102706",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 38,
+                "end_line": 38
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить парсинг",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:ParseStyleSheet:12102784",
+          "kind": "group",
+          "label": "Функция ParseStyleSheet",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 42,
+            "end_line": 75
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+          "summary": "Парсить таблицу стилей",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/css/parser.go:stripComments:12102857",
+              "kind": "call",
+              "label": "Вызов stripComments",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 77,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.stripComments",
+              "summary": "Удалить комментарии из CSS",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.stripComments",
+                  "file": "internal/css/parser.go",
+                  "label": "→ stripComments in internal/css/parser.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:internal/css/parser.go:12102881",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 46,
+                "end_line": 72
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по правилам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12102979",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 49,
+                    "end_line": 51
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить открывающую фигурную скобку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/css/parser.go:12103083",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 53,
+                    "end_line": 55
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерировать по символам",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/css/parser.go:findClosingBrace:12103230",
+                  "kind": "call",
+                  "label": "Вызов findClosingBrace",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 94,
+                    "end_line": 107
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.findClosingBrace",
+                  "summary": "Найти закрывающую фигурную скобку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.findClosingBrace",
+                      "file": "internal/css/parser.go",
+                      "label": "→ findClosingBrace in internal/css/parser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:internal/css/parser.go:12103267",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 59,
+                    "end_line": 61
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить отсутствие закрывающей скобки",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/css/parser.go:parseDeclarations:12103377",
+                  "kind": "call",
+                  "label": "Вызов parseDeclarations",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 109,
+                    "end_line": 126
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.parseDeclarations",
+                  "summary": "Парсить декларации внутри правила",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.parseDeclarations",
+                      "file": "internal/css/parser.go",
+                      "label": "→ parseDeclarations in internal/css/parser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12103568",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 74,
+                "end_line": 74
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить парсинг таблицы стилей",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+              "file": "internal/css/computed.go",
+              "label": "← computeWithExtra in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+              "file": "internal/css/computed.go",
+              "label": "← computeWithExtra in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:stripComments:12103584",
+          "kind": "group",
+          "label": "Функция stripComments",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 77,
+            "end_line": 92
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.stripComments",
+          "summary": "Удалить CSS-комментарии",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/css/parser.go:12103659",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 79,
+                "end_line": 90
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по символам CSS",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12103699",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 80,
+                    "end_line": 88
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить начало комментария",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "loop:internal/css/parser.go:12103814",
+                      "kind": "loop",
+                      "label": "Цикл",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 83,
+                        "end_line": 85
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Итерировать внутри комментария",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12104009",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 91,
+                "end_line": 91
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить удаление комментариев",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+              "file": "internal/css/parser.go",
+              "label": "← ParseStyleSheet in internal/css/parser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:findClosingBrace:12104035",
+          "kind": "group",
+          "label": "Функция findClosingBrace",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 94,
+            "end_line": 107
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.findClosingBrace",
+          "summary": "Найти закрывающую скобку правила",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/css/parser.go:12104103",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 96,
+                "end_line": 105
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по символам поиска скобки",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12104145",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 97,
+                    "end_line": 104
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить открывающую скобку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/css/parser.go:12104197",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 99,
+                        "end_line": 104
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Обработка не открывающей скобки",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/css/parser.go:12104197",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/css/parser.go",
+                            "start_line": 99,
+                            "end_line": 104
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Проверить закрывающую скобку",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "if:internal/css/parser.go:12104246",
+                              "kind": "decision",
+                              "label": "Условие",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/css/parser.go",
+                                "start_line": 101,
+                                "end_line": 103
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Проверить глубину вложенности",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/css/parser.go:12104278",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/css/parser.go",
+                                    "start_line": 102,
+                                    "end_line": 102
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "Вернуть индекс закрывающей скобки",
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12104321",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 106,
+                "end_line": 106
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить поиск закрывающей скобки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+              "file": "internal/css/parser.go",
+              "label": "← ParseStyleSheet in internal/css/parser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:parseDeclarations:12104334",
+          "kind": "group",
+          "label": "Функция parseDeclarations",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 109,
+            "end_line": 126
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.parseDeclarations",
+          "summary": "Парсить список CSS-деклараций",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/css/parser.go:splitBySemicolon:12104428",
+              "kind": "call",
+              "label": "Вызов splitBySemicolon",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 128,
+                "end_line": 149
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.splitBySemicolon",
+              "summary": "Разделить декларации по точкам с запятой",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.splitBySemicolon",
+                  "file": "internal/css/parser.go",
+                  "label": "→ splitBySemicolon in internal/css/parser.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:internal/css/parser.go:12104456",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 112,
+                "end_line": 124
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по декларациям",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12104532",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 114,
+                    "end_line": 116
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить пустую декларацию",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/css/parser.go:12104629",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 118,
+                    "end_line": 120
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить отсутствие двоеточия",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12104853",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 125,
+                "end_line": 125
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить парсинг деклараций",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+              "file": "internal/css/parser.go",
+              "label": "← ParseStyleSheet in internal/css/parser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:splitBySemicolon:12104869",
+          "kind": "group",
+          "label": "Функция splitBySemicolon",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 128,
+            "end_line": 149
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.splitBySemicolon",
+          "summary": "Разделить CSS по точкам с запятой",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/css/parser.go:12104991",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 132,
+                "end_line": 144
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по символам CSS",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12105048",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 134,
+                    "end_line": 142
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить открывающую скобку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/css/parser.go:12105103",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 136,
+                        "end_line": 142
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Обработка не открывающей скобки",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/css/parser.go:12105103",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/css/parser.go",
+                            "start_line": 136,
+                            "end_line": 142
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Проверить закрывающую скобку",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/css/parser.go:12105158",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/css/parser.go",
+                                "start_line": 138,
+                                "end_line": 142
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Обработка не закрывающей скобки",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "if:internal/css/parser.go:12105158",
+                                  "kind": "decision",
+                                  "label": "Условие",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/css/parser.go",
+                                    "start_line": 138,
+                                    "end_line": 142
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "Проверить точку с запятой",
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/parser.go:12105343",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 145,
+                "end_line": 147
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить наличие данных",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12105424",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 148,
+                "end_line": 148
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить разделение по точкам с запятой",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.ParseInline",
+              "file": "internal/css/parser.go",
+              "label": "← ParseInline in internal/css/parser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseDeclarations",
+              "file": "internal/css/parser.go",
+              "label": "← parseDeclarations in internal/css/parser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:Specificity:12105661",
+          "kind": "group",
+          "label": "Функция Specificity",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 155,
+            "end_line": 199
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Specificity",
+          "summary": "Вычислить специфичность селектора",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/css/parser.go:tokenizeSelector:12105825",
+              "kind": "call",
+              "label": "Вызов tokenizeSelector",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 222,
+                "end_line": 263
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.tokenizeSelector",
+              "summary": "Токенизировать CSS-селектор",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.tokenizeSelector",
+                  "file": "internal/css/parser.go",
+                  "label": "→ tokenizeSelector in internal/css/parser.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:internal/css/parser.go:12105856",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 161,
+                "end_line": 196
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по токенам селектора",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12105930",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 163,
+                    "end_line": 165
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить пустой или специальный токен",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/css/parser.go:12106209",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 170,
+                    "end_line": 177
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерировать по символам токена",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/parser.go:12106253",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 171,
+                        "end_line": 173
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить двоеточие в токене",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/css/parser.go:12106355",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 174,
+                        "end_line": 176
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить открывающую квадратную скобку",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/css/parser.go:splitByClassID:12106541",
+                  "kind": "call",
+                  "label": "Вызов splitByClassID",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 201,
+                    "end_line": 220
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.splitByClassID",
+                  "summary": "Разделить по идентификаторам классов",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.splitByClassID",
+                      "file": "internal/css/parser.go",
+                      "label": "→ splitByClassID in internal/css/parser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "loop:internal/css/parser.go:12106569",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 181,
+                    "end_line": 195
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерировать по частям селектора",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/parser.go:12106653",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 183,
+                        "end_line": 185
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить пустую часть",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/css/parser.go:12106720",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 186,
+                        "end_line": 188
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить префикс класса или идентификатора",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/css/parser.go:12106869",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 189,
+                        "end_line": 191
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить префикс псевдокласса",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/css/parser.go:12106954",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 192,
+                        "end_line": 194
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить валидность типа селектора",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12107040",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 198,
+                "end_line": 198
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить вычисление специфичности",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:splitByClassID:12107067",
+          "kind": "group",
+          "label": "Функция splitByClassID",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 201,
+            "end_line": 220
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.splitByClassID",
+          "summary": "Разделить селектор по классам и ID",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/css/parser.go:12107167",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 204,
+                "end_line": 215
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по символам селектора",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12107224",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 206,
+                    "end_line": 213
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить точку или решетку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/parser.go:12107264",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 207,
+                        "end_line": 210
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить наличие данных",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/parser.go:12107494",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 216,
+                "end_line": 218
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить наличие данных",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12107575",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 219,
+                "end_line": 219
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить разделение по классам",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Specificity",
+              "file": "internal/css/parser.go",
+              "label": "← Specificity in internal/css/parser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:tokenizeSelector:12107591",
+          "kind": "group",
+          "label": "Функция tokenizeSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 222,
+            "end_line": 263
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.tokenizeSelector",
+          "summary": "Токенизировать CSS-селектор",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/css/parser.go:12107725",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 226,
+                "end_line": 258
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по символам селектора",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12107796",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 228,
+                    "end_line": 232
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить открывающую квадратную скобку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/css/parser.go:12107914",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 233,
+                    "end_line": 237
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить закрывающую квадратную скобку",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/css/parser.go:12108033",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 238,
+                    "end_line": 241
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить состояние в квадратных скобках",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/css/parser.go:12108122",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 242,
+                    "end_line": 249
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить специальные селекторы",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/parser.go:12108175",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 243,
+                        "end_line": 246
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить наличие данных",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/css/parser.go:12108389",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 250,
+                    "end_line": 256
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить пробел",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/parser.go:12108416",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 251,
+                        "end_line": 254
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверить наличие данных",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/parser.go:12108614",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 259,
+                "end_line": 261
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить наличие данных",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12108697",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 262,
+                "end_line": 262
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить токенизацию селектора",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Specificity",
+              "file": "internal/css/parser.go",
+              "label": "← Specificity in internal/css/parser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.nodeMatchesSelector",
+              "file": "internal/css/computed.go",
+              "label": "← nodeMatchesSelector in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/parser.go:isValidTypeSelector:12108714",
+          "kind": "group",
+          "label": "Функция isValidTypeSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 265,
+            "end_line": 275
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.isValidTypeSelector",
+          "summary": "Проверить валидность типа селектора",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/parser.go:12108760",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 266,
+                "end_line": 268
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить пустую строку",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/parser.go:12108781",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 267,
+                    "end_line": 267
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить проверку типа селектора",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/css/parser.go:12108804",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 269,
+                "end_line": 273
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по символам типа",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/parser.go:12108834",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/parser.go",
+                    "start_line": 270,
+                    "end_line": 272
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить недопустимый символ",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/css/parser.go:12108896",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/css/parser.go",
+                        "start_line": 271,
+                        "end_line": 271
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Завершить проверку типа селектора",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/parser.go:12108929",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 274,
+                "end_line": 274
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить проверку типа селектора",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Specificity",
+              "file": "internal/css/parser.go",
+              "label": "← Specificity in internal/css/parser.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

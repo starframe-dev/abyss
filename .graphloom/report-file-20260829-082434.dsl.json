@@ -1,0 +1,383 @@
+{
+  "title": "internal/fetcher/fetcher.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/fetcher/fetcher.go",
+      "kind": "group",
+      "label": "Файл пакета fetcher",
+      "layer": "flow",
+      "source": {
+        "file": "internal/fetcher/fetcher.go",
+        "start_line": 1,
+        "end_line": 42
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Этот файл содержит код для загрузки веб-страниц через HTTP-запросы с обработкой ошибок и тайм-аутов.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/fetcher/fetcher.go:DefaultClient:15449069",
+          "kind": "state",
+          "label": "Глобальный HTTP-клиент",
+          "layer": "state",
+          "source": {
+            "file": "internal/fetcher/fetcher.go",
+            "start_line": 12,
+            "end_line": 14
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/fetcher.DefaultClient",
+          "summary": "Объявление общего HTTP-клиента с тайм-аутом в 10 секунд для всех запросов в пакете.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/fetcher/fetcher.go:Fetch:15449196",
+          "kind": "group",
+          "label": "Функция загрузки URL",
+          "layer": "flow",
+          "source": {
+            "file": "internal/fetcher/fetcher.go",
+            "start_line": 17,
+            "end_line": 42
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/fetcher.Fetch",
+          "summary": "Основная функция для получения содержимого веб-страницы по указанному URL и возврата строки с телом ответа.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/fetcher/fetcher.go:15449241",
+              "kind": "action",
+              "label": "Создание HTTP-запроса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 18,
+                "end_line": 18
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализация нового HTTP-запроса GET-метода к указанному URL без тела запроса.",
+              "coverage_ids": [
+                "statement:internal/fetcher/fetcher.go:15449241",
+                "if:internal/fetcher/fetcher.go:15449290"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15449314",
+                  "kind": "output",
+                  "label": "Возврат ошибки создания запроса",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 20,
+                    "end_line": 20
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат пустой строки и сформированной ошибки с причиной при неудаче создания HTTP-запроса.",
+                  "coverage_ids": [
+                    "return:internal/fetcher/fetcher.go:15449314"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/fetcher/fetcher.go:15449388",
+              "kind": "action",
+              "label": "Установка заголовка User-Agent",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 22,
+                "end_line": 22
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Установка заголовка User-Agent с информацией о браузере Safari для совместимости с веб-сайтами.",
+              "coverage_ids": [
+                "statement:internal/fetcher/fetcher.go:15449388",
+                "statement:internal/fetcher/fetcher.go:15449542"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/fetcher/fetcher.go:15449638",
+              "kind": "action",
+              "label": "Установка заголовка Accept-Language",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 24,
+                "end_line": 24
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Установка заголовка Accept-Language с английским языком как основным для локализации контента.",
+              "coverage_ids": [
+                "statement:internal/fetcher/fetcher.go:15449638"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/fetcher/fetcher.go:15449695",
+              "kind": "action",
+              "label": "Выполнение HTTP-запроса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Отправка подготовленного HTTP-запроса через глобальный клиент DefaultClient и получение ответа.",
+              "coverage_ids": [
+                "statement:internal/fetcher/fetcher.go:15449695",
+                "if:internal/fetcher/fetcher.go:15449734"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15449758",
+                  "kind": "output",
+                  "label": "Возврат ошибки выполнения запроса",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 28,
+                    "end_line": 28
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат пустой строки и сформированной ошибки с причиной при неудаче выполнения HTTP-запроса.",
+                  "coverage_ids": [
+                    "return:internal/fetcher/fetcher.go:15449758"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/fetcher/fetcher.go:15449816",
+              "kind": "action",
+              "label": "Закрытие тела ответа",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 30,
+                "end_line": 30
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Асинхронное закрытие тела HTTP-ответа после использования для освобождения ресурсов.",
+              "coverage_ids": [
+                "statement:internal/fetcher/fetcher.go:15449816"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/fetcher/fetcher.go:15449845",
+              "kind": "decision",
+              "label": "Проверка статуса ответа",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 32,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условная проверка статуса HTTP-ответа на успешный код 200 OK для корректной обработки ошибок.",
+              "coverage_ids": [
+                "if:internal/fetcher/fetcher.go:15449845",
+                "statement:internal/fetcher/fetcher.go:15449958"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15449891",
+                  "kind": "output",
+                  "label": "Возврат ошибки неверного статуса",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 33,
+                    "end_line": 33
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат пустой строки и сформированной ошибки с кодом статуса при неудачном HTTP-ответе.",
+                  "coverage_ids": [
+                    "return:internal/fetcher/fetcher.go:15449891"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/fetcher/fetcher.go:15449997",
+              "kind": "decision",
+              "label": "Проверка ошибки чтения тела",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 37,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условная проверка на наличие ошибки при чтении тела HTTP-ответа для немедленного возврата ошибки.",
+              "coverage_ids": [
+                "if:internal/fetcher/fetcher.go:15449997",
+                "return:internal/fetcher/fetcher.go:15450091"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/fetcher/fetcher.go:15450021",
+                  "kind": "output",
+                  "label": "Возврат ошибки чтения тела",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/fetcher/fetcher.go",
+                    "start_line": 38,
+                    "end_line": 38
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат пустой строки и сформированной ошибки с причиной при неудаче чтения тела ответа.",
+                  "coverage_ids": [
+                    "return:internal/fetcher/fetcher.go:15450021"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+              "file": "cmd/analyze_habr/main.go",
+              "label": "← main in cmd/analyze_habr/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

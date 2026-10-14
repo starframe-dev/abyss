@@ -1,0 +1,3163 @@
+{
+  "title": "internal/layout/layout.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/layout/layout.go",
+      "kind": "group",
+      "label": "layout.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 1,
+        "end_line": 346
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/layout/layout.go:ViewportWidth:12153181",
+          "kind": "state",
+          "label": "Переменная ViewportWidth",
+          "layer": "state",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 12,
+            "end_line": 12
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.ViewportWidth",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/layout/layout.go:Rect:12153262",
+          "kind": "group",
+          "label": "Тип Rect",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 15,
+            "end_line": 17
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.Rect",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/layout/layout.go:TextLine:12153362",
+          "kind": "group",
+          "label": "Тип TextLine",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 20,
+            "end_line": 23
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.TextLine",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/layout/layout.go:LayoutBox:12153459",
+          "kind": "group",
+          "label": "Тип LayoutBox",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 26,
+            "end_line": 36
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.LayoutBox",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/layout/layout.go:Build:12153831",
+          "kind": "group",
+          "label": "Функция Build",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 39,
+            "end_line": 45
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.Build",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/layout/layout.go:buildNode:12153942",
+              "kind": "call",
+              "label": "Вызов buildNode",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 47,
+                "end_line": 85
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.buildNode",
+              "summary": "→ github.com/starframe/abyss/internal/layout.buildNode",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.buildNode",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ buildNode in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/layout/layout.go:12153966",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 41,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "root != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/layout/layout.go:Layout:12153985",
+                  "kind": "call",
+                  "label": "Вызов Layout",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 88,
+                    "end_line": 90
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.Layout",
+                  "summary": "→ github.com/starframe/abyss/internal/layout.Layout",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.Layout",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ Layout in internal/layout/layout.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12154017",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 44,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser_page.go",
+              "label": "← loadPage in internal/browser/browser_page.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+              "file": "internal/browser/browser_page.go",
+              "label": "← reRenderCmd in internal/browser/browser_page.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:buildNode:12154032",
+          "kind": "group",
+          "label": "Функция buildNode",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 47,
+            "end_line": 85
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.buildNode",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/layout/layout.go:12154117",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 48,
+                "end_line": 50
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "node.Type == dom.TextNode",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12154150",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 49,
+                    "end_line": 49
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12154247",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 53,
+                "end_line": 55
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "node.Type == dom.ElementNode && (node.TagName == \"style\" || node.TagName == \"script\" || node.TagName == \"head\")",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12154366",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 54,
+                    "end_line": 54
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12154409",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 58,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "!ok",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/layout/layout.go:Default:12154428",
+                  "kind": "call",
+                  "label": "Вызов Default",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 59,
+                    "end_line": 59
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.Default",
+                  "summary": "→ github.com/starframe/abyss/internal/css.Default",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.Default",
+                      "file": "internal/css/types.go",
+                      "label": "→ Default in internal/css/types.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12154447",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 62,
+                "end_line": 64
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "style.Display == css.DisplayNone",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12154487",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 63,
+                    "end_line": 63
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/layout/layout.go:12154592",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 72,
+                "end_line": 82
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/layout/layout.go:12154632",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 73,
+                    "end_line": 76
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "child.Type == dom.TextNode",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/layout/layout.go:buildNode:12154746",
+                  "kind": "call",
+                  "label": "Вызов buildNode",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 47,
+                    "end_line": 85
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.buildNode",
+                  "summary": "→ github.com/starframe/abyss/internal/layout.buildNode",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.buildNode",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ buildNode in internal/layout/layout.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:internal/layout/layout.go:12154773",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 78,
+                    "end_line": 81
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "childBox != nil",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12154877",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 84,
+                "end_line": 84
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.Build",
+              "file": "internal/layout/layout.go",
+              "label": "← Build in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.buildNode",
+              "file": "internal/layout/layout.go",
+              "label": "← buildNode in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:Layout:12154943",
+          "kind": "group",
+          "label": "Функция Layout",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 88,
+            "end_line": 90
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.Layout",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/layout/layout.go:layoutBox:12154998",
+              "kind": "call",
+              "label": "Вызов layoutBox",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 92,
+                "end_line": 198
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "summary": "→ github.com/starframe/abyss/internal/layout.layoutBox",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ layoutBox in internal/layout/layout.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.Build",
+              "file": "internal/layout/layout.go",
+              "label": "← Build in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:layoutBox:12155044",
+          "kind": "group",
+          "label": "Функция layoutBox",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 92,
+            "end_line": 198
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.layoutBox",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/layout/layout.go:resolveWidth:12155181",
+              "kind": "call",
+              "label": "Вызов resolveWidth",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 200,
+                "end_line": 212
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.resolveWidth",
+              "summary": "→ github.com/starframe/abyss/internal/layout.resolveWidth",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ resolveWidth in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155255",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 99,
+                "end_line": 99
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155313",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 100,
+                "end_line": 100
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155370",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 101,
+                "end_line": 101
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155428",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 102,
+                "end_line": 102
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155488",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 103,
+                "end_line": 103
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155548",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 104,
+                "end_line": 104
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155607",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 105,
+                "end_line": 105
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12155667",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 106,
+                "end_line": 106
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/layout/layout.go:12155967",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 114,
+                "end_line": 116
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "contentWidth < 0",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12156287",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 126,
+                "end_line": 131
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "isRoot",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12156377",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 133,
+                "end_line": 154
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "style.Position == css.PositionAbsolute",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/layout/layout.go:findPositionedAncestor:12156465",
+                  "kind": "call",
+                  "label": "Вызов findPositionedAncestor",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 318,
+                    "end_line": 327
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.findPositionedAncestor",
+                  "summary": "→ github.com/starframe/abyss/internal/layout.findPositionedAncestor",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.findPositionedAncestor",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ findPositionedAncestor in internal/layout/layout.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:internal/layout/layout.go:12156495",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 136,
+                    "end_line": 153
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "ancestor != nil",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/layout/layout.go:12156575",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 138,
+                        "end_line": 140
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "!style.Top.IsAuto",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/layout/layout.go:Resolve:12156619",
+                          "kind": "call",
+                          "label": "Вызов Resolve",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 139,
+                            "end_line": 139
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                              "file": "internal/css/types.go",
+                              "label": "→ Resolve in internal/css/types.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/layout/layout.go:12156670",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 141,
+                        "end_line": 143
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "!style.Left.IsAuto",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/layout/layout.go:Resolve:12156715",
+                          "kind": "call",
+                          "label": "Вызов Resolve",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 142,
+                            "end_line": 142
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                              "file": "internal/css/types.go",
+                              "label": "→ Resolve in internal/css/types.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/layout/layout.go:12156766",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 144,
+                        "end_line": 146
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "!style.Right.IsAuto && style.Left.IsAuto",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/layout/layout.go:Resolve:12156866",
+                          "kind": "call",
+                          "label": "Вызов Resolve",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 145,
+                            "end_line": 145
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                              "file": "internal/css/types.go",
+                              "label": "→ Resolve in internal/css/types.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/layout/layout.go:12156918",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 147,
+                        "end_line": 150
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "!style.Bottom.IsAuto && style.Top.IsAuto",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/layout/layout.go:resolveHeight:12156984",
+                          "kind": "call",
+                          "label": "Вызов resolveHeight",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 214,
+                            "end_line": 219
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/layout.resolveHeight",
+                          "summary": "→ github.com/starframe/abyss/internal/layout.resolveHeight",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/layout.resolveHeight",
+                              "file": "internal/layout/layout.go",
+                              "label": "→ resolveHeight in internal/layout/layout.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "call:internal/layout/layout.go:Resolve:12157126",
+                          "kind": "call",
+                          "label": "Вызов Resolve",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 149,
+                            "end_line": 149
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                              "file": "internal/css/types.go",
+                              "label": "→ Resolve in internal/css/types.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/layout/layout.go:12157910",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 180,
+                "end_line": 180
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/layout/layout.go:12157934",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 178,
+                    "end_line": 178
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/layout/layout.go:layoutFlex:12157974",
+                      "kind": "call",
+                      "label": "Вызов layoutFlex",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 178,
+                        "end_line": 178
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/layout.layoutFlex",
+                      "summary": "→ github.com/starframe/abyss/internal/layout.layoutFlex",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+                          "file": "internal/layout/layout_flex.go",
+                          "label": "→ layoutFlex in internal/layout/layout_flex.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/layout/layout.go:12158005",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 178,
+                    "end_line": 178
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/layout/layout.go:layoutGrid:12158045",
+                      "kind": "call",
+                      "label": "Вызов layoutGrid",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 180,
+                        "end_line": 180
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                      "summary": "→ github.com/starframe/abyss/internal/layout.layoutGrid",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                          "file": "internal/layout/layout_grid.go",
+                          "label": "→ layoutGrid in internal/layout/layout_grid.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/layout/layout.go:12158076",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 180,
+                    "end_line": 180
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/layout/layout.go:layoutBlockFlow:12158117",
+                      "kind": "call",
+                      "label": "Вызов layoutBlockFlow",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 221,
+                        "end_line": 232
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/layout.layoutBlockFlow",
+                      "summary": "→ github.com/starframe/abyss/internal/layout.layoutBlockFlow",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/layout.layoutBlockFlow",
+                          "file": "internal/layout/layout.go",
+                          "label": "→ layoutBlockFlow in internal/layout/layout.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/layout/layout.go:12158153",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 185,
+                    "end_line": 185
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/layout/layout.go:layoutInlineFlow:12158199",
+                      "kind": "call",
+                      "label": "Вызов layoutInlineFlow",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 234,
+                        "end_line": 255
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+                      "summary": "→ github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+                          "file": "internal/layout/layout.go",
+                          "label": "→ layoutInlineFlow in internal/layout/layout.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12158284",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 190,
+                "end_line": 192
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "!style.Height.IsAuto",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/layout/layout.go:Resolve:12158321",
+                  "kind": "call",
+                  "label": "Вызов Resolve",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 191,
+                    "end_line": 191
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                      "file": "internal/css/types.go",
+                      "label": "→ Resolve in internal/css/types.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.Layout",
+              "file": "internal/layout/layout.go",
+              "label": "← Layout in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBlockFlow",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBlockFlow in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutFlexChild",
+              "file": "internal/layout/layout_flex.go",
+              "label": "← layoutFlexChild in internal/layout/layout_flex.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutFlexChild",
+              "file": "internal/layout/layout_flex.go",
+              "label": "← layoutFlexChild in internal/layout/layout_flex.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.placeGridChildren",
+              "file": "internal/layout/layout_grid.go",
+              "label": "← placeGridChildren in internal/layout/layout_grid.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:resolveWidth:12158584",
+          "kind": "group",
+          "label": "Функция resolveWidth",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 200,
+            "end_line": 212
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.resolveWidth",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/layout/layout.go:12158662",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 201,
+                "end_line": 203
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "!style.Width.IsAuto",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12158689",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 202,
+                    "end_line": 202
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12158795",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 205,
+                "end_line": 205
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/layout/layout.go:Resolve:12158853",
+              "kind": "call",
+              "label": "Вызов Resolve",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 206,
+                "end_line": 206
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": "→ github.com/starframe/abyss/internal/css.Length.Resolve",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+                  "file": "internal/css/types.go",
+                  "label": "→ Resolve in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/layout/layout.go:12158945",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 208,
+                "end_line": 210
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "w < 0",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12158968",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 211,
+                "end_line": 211
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:resolveHeight:12158980",
+          "kind": "group",
+          "label": "Функция resolveHeight",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 214,
+            "end_line": 219
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.resolveHeight",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/layout/layout.go:12159058",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 215,
+                "end_line": 217
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "!style.Height.IsAuto",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12159086",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 216,
+                    "end_line": 216
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12159133",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 218,
+                "end_line": 218
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:layoutBlockFlow:12159157",
+          "kind": "group",
+          "label": "Функция layoutBlockFlow",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 221,
+            "end_line": 232
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.layoutBlockFlow",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/layout/layout.go:12159242",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 223,
+                "end_line": 226
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/layout/layout.go:layoutBox:12159281",
+                  "kind": "call",
+                  "label": "Вызов layoutBox",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 92,
+                    "end_line": 198
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "summary": "→ github.com/starframe/abyss/internal/layout.layoutBox",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ layoutBox in internal/layout/layout.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12159431",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 228,
+                "end_line": 230
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "y == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12159445",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 229,
+                    "end_line": 229
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12159492",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 231,
+                "end_line": 231
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:layoutInlineFlow:12159504",
+          "kind": "group",
+          "label": "Функция layoutInlineFlow",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 234,
+            "end_line": 255
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/layout/layout.go:12159630",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 236,
+                "end_line": 238
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "inStyleOrScript(box.Node)",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12159663",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 237,
+                    "end_line": 237
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/layout/layout.go:collectInlineText:12159690",
+              "kind": "call",
+              "label": "Вызов collectInlineText",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 266,
+                "end_line": 287
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.collectInlineText",
+              "summary": "→ github.com/starframe/abyss/internal/layout.collectInlineText",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.collectInlineText",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ collectInlineText in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/layout/layout.go:12159719",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 241,
+                "end_line": 243
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(textParts) == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12159746",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 242,
+                    "end_line": 242
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12159906",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 248,
+                "end_line": 250
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(words) == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12159929",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 249,
+                    "end_line": 249
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/layout/layout.go:wordWrap:12159952",
+              "kind": "call",
+              "label": "Вызов wordWrap",
+              "layer": "calls",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 289,
+                "end_line": 316
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.wordWrap",
+              "summary": "→ github.com/starframe/abyss/internal/layout.wordWrap",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.wordWrap",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ wordWrap in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "return:internal/layout/layout.go:12160011",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 254,
+                "end_line": 254
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBlockFlow",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBlockFlow in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:inStyleOrScript:12160047",
+          "kind": "group",
+          "label": "Функция inStyleOrScript",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 257,
+            "end_line": 264
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.inStyleOrScript",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/layout/layout.go:12160089",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 258,
+                "end_line": 262
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/layout/layout.go:12160128",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 259,
+                    "end_line": 261
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "p.Type == dom.ElementNode && (p.TagName == \"style\" || p.TagName == \"script\")",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/layout/layout.go:12160213",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 260,
+                        "end_line": 260
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12160233",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 263,
+                "end_line": 263
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutInlineFlow in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:collectInlineText:12160249",
+          "kind": "group",
+          "label": "Функция collectInlineText",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 266,
+            "end_line": 287
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.collectInlineText",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/layout/layout.go:12160321",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 268,
+                "end_line": 285
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/layout/layout.go:12160358",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 269,
+                    "end_line": 272
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "child.Type == dom.ElementNode && (child.TagName == \"style\" || child.TagName == \"script\")",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/layout/layout.go:12160506",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 273,
+                    "end_line": 284
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "child.Type == dom.TextNode",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/layout/layout.go:12160582",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 275,
+                        "end_line": 277
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "text != \"\"",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "else:internal/layout/layout.go:12160652",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 278,
+                        "end_line": 284
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/layout/layout.go:12160652",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 278,
+                            "end_line": 284
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "child.Type == dom.ElementNode",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/layout/layout.go:collectVisibleText:12160771",
+                              "kind": "call",
+                              "label": "Вызов collectVisibleText",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/layout/layout.go",
+                                "start_line": 334,
+                                "end_line": 346
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/layout.collectVisibleText",
+                              "summary": "→ github.com/starframe/abyss/internal/layout.collectVisibleText",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/layout.collectVisibleText",
+                                  "file": "internal/layout/layout.go",
+                                  "label": "→ collectVisibleText in internal/layout/layout.go"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "if:internal/layout/layout.go:12160800",
+                              "kind": "decision",
+                              "label": "Условие",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/layout/layout.go",
+                                "start_line": 281,
+                                "end_line": 283
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "text != \"\"",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12160869",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 286,
+                "end_line": 286
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutInlineFlow in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:wordWrap:12160889",
+          "kind": "group",
+          "label": "Функция wordWrap",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 289,
+            "end_line": 316
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.wordWrap",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/layout/layout.go:12161113",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 295,
+                "end_line": 311
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/layout/layout.go:12161220",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 297,
+                    "end_line": 299
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "currentLine != \"\"",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/layout/layout.go:12161278",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 300,
+                    "end_line": 310
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "x+wordWidth > contentWidth && currentLine != \"\"",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/layout/layout.go:12161502",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 304,
+                        "end_line": 310
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/layout/layout.go:12161507",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/layout/layout.go",
+                            "start_line": 305,
+                            "end_line": 307
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "currentLine != \"\"",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12161607",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 312,
+                "end_line": 314
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "currentLine != \"\"",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12161756",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 315,
+                "end_line": 315
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutInlineFlow",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutInlineFlow in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:findPositionedAncestor:12161772",
+          "kind": "group",
+          "label": "Функция findPositionedAncestor",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 318,
+            "end_line": 327
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.findPositionedAncestor",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/layout/layout.go:12161853",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 320,
+                "end_line": 325
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/layout/layout.go:12161876",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 321,
+                    "end_line": 323
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "current.Style.Position == css.PositionRelative || current.Style.Position == css.PositionAbsolute",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/layout/layout.go:12161981",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/layout/layout.go",
+                        "start_line": 322,
+                        "end_line": 322
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12162031",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 326,
+                "end_line": 326
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/layout/layout.go:estimateTextWidth:12162045",
+          "kind": "group",
+          "label": "Функция estimateTextWidth",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 329,
+            "end_line": 331
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.estimateTextWidth",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/layout/layout.go:12162092",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 330,
+                "end_line": 330
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/layout/layout.go:collectVisibleText:12162257",
+          "kind": "group",
+          "label": "Функция collectVisibleText",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 334,
+            "end_line": 346
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/layout.collectVisibleText",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/layout/layout.go:12162304",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 335,
+                "end_line": 337
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "n.Type == dom.TextNode",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12162334",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 336,
+                    "end_line": 336
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/layout/layout.go:12162352",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 338,
+                "end_line": 340
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "n.Type == dom.ElementNode && (n.TagName == \"script\" || n.TagName == \"style\")",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/layout/layout.go:12162436",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 339,
+                    "end_line": 339
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/layout/layout.go:12162473",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 342,
+                "end_line": 344
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/layout/layout.go:collectVisibleText:12162524",
+                  "kind": "call",
+                  "label": "Вызов collectVisibleText",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/layout/layout.go",
+                    "start_line": 334,
+                    "end_line": 346
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.collectVisibleText",
+                  "summary": "→ github.com/starframe/abyss/internal/layout.collectVisibleText",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.collectVisibleText",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ collectVisibleText in internal/layout/layout.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/layout/layout.go:12162555",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 345,
+                "end_line": 345
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.collectInlineText",
+              "file": "internal/layout/layout.go",
+              "label": "← collectInlineText in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.collectVisibleText",
+              "file": "internal/layout/layout.go",
+              "label": "← collectVisibleText in internal/layout/layout.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

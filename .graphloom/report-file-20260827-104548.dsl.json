@@ -1,0 +1,120 @@
+{
+  "title": "internal/js/domapi_embed.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/domapi_embed.go",
+      "kind": "group",
+      "label": "domapi_embed.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/domapi_embed.go",
+        "start_line": 1,
+        "end_line": 25
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/js/domapi_embed.go:domapiJSSource:15470959",
+          "kind": "state",
+          "label": "Переменная domapiJSSource",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/domapi_embed.go",
+            "start_line": 9,
+            "end_line": 9
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.domapiJSSource",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/domapi_embed.go:init:15470982",
+          "kind": "group",
+          "label": "Функция init",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/domapi_embed.go",
+            "start_line": 11,
+            "end_line": 25
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.init",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/domapi_embed.go:15471214",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/domapi_embed.go",
+                "start_line": 17,
+                "end_line": 23
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/domapi_embed.go:15471350",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/domapi_embed.go",
+                    "start_line": 20,
+                    "end_line": 22
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "err != nil",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

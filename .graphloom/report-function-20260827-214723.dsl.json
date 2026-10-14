@@ -1,0 +1,184 @@
+{
+  "title": "internal/dom/dom.go — TextContent",
+  "level": "function",
+  "nodes": [
+    {
+      "id": "func:internal/dom/dom.go:TextContent:11874157",
+      "kind": "group",
+      "label": "Функция TextContent",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 286,
+        "end_line": 295
+      },
+      "element_type": null,
+      "symbol": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "if:internal/dom/dom.go:11874199",
+          "kind": "decision",
+          "label": "Условие",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/dom.go",
+            "start_line": 287,
+            "end_line": 289
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "n.Type == TextNode",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/dom/dom.go:11874231",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 288,
+                "end_line": 288
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "loop:internal/dom/dom.go:11874281",
+          "kind": "loop",
+          "label": "Цикл",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/dom.go",
+            "start_line": 291,
+            "end_line": 293
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/dom/dom.go:TextContent:11874338",
+              "kind": "call",
+              "label": "Вызов TextContent",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 286,
+                "end_line": 295
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+              "summary": "→ github.com/starframe/abyss/internal/dom.Node.TextContent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+                  "file": "internal/dom/dom.go",
+                  "label": "→ TextContent in internal/dom/dom.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "return:internal/dom/dom.go:11874369",
+          "kind": "output",
+          "label": "Вернуть",
+          "layer": "data",
+          "source": {
+            "file": "internal/dom/dom.go",
+            "start_line": 294,
+            "end_line": 294
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": [
+        {
+          "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+          "file": "cmd/analyze_habr/main.go",
+          "label": "← main in cmd/analyze_habr/main.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+          "file": "cmd/analyze_habr/main.go",
+          "label": "← main in cmd/analyze_habr/main.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+          "file": "cmd/analyze_habr/main.go",
+          "label": "← main in cmd/analyze_habr/main.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/cmd/manual.printHTMLBody",
+          "file": "cmd/manual/main.go",
+          "label": "← printHTMLBody in cmd/manual/main.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+          "file": "internal/css/computed.go",
+          "label": "← computeWithExtra in internal/css/computed.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+          "file": "internal/dom/dom.go",
+          "label": "← TextContent in internal/dom/dom.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+          "file": "internal/js/dom_style.go",
+          "label": "← ExecuteScripts in internal/js/dom_style.go"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

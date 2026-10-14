@@ -1,0 +1,461 @@
+{
+  "title": "ASCII-рендеринг framebuffer в ANSI-арт",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "group-main",
+      "kind": "group",
+      "label": "Основные функции рендеринга",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 19,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "Cell",
+      "kind": "state",
+      "label": "Структура Cell",
+      "layer": "state",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 13,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Представляет одну терминальную ячейку с символом и цветами",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "Render",
+      "kind": "action",
+      "label": "Рендерить framebuffer",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 19,
+        "end_line": 36
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основная функция рендеринга с проверкой nil и создания сетки",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "RenderANSI",
+      "kind": "action",
+      "label": "Рендерить ANSI-арт",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 39,
+        "end_line": 54
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Возвращает строки с ANSI-кодами для терминала",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "RenderPlain",
+      "kind": "action",
+      "label": "Рендерить простой текст",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 71,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Возвращает строки без ANSI-кодов для E2E тестов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "makeGrid",
+      "kind": "action",
+      "label": "Создать сетку",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 56,
+        "end_line": 68
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Создаёт двумерную сетку ячеек из framebuffer",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "chooseChar",
+      "kind": "action",
+      "label": "Выбрать символ",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 75,
+        "end_line": 86
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Выбирает символ и цвета на основе foreground/background",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "colorsEqual",
+      "kind": "action",
+      "label": "Сравнить цвета",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 88,
+        "end_line": 90
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Проверяет равенство двух цветов по всем компонентам",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "renderANSI",
+      "kind": "action",
+      "label": "Рендерить ANSI-строки",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 92,
+        "end_line": 135
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Генерирует строки с ANSI-кодами цвета для каждой ячейки",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "renderPlain",
+      "kind": "action",
+      "label": "Рендерить простые строки",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 137,
+        "end_line": 157
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Генерирует строки без ANSI-кодов с обрезкой по количеству символов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "ansiColor",
+      "kind": "action",
+      "label": "Сгенерировать ANSI-код цвета",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 159,
+        "end_line": 176
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Создаёт ANSI-последовательность для foreground и background цветов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "itoa",
+      "kind": "action",
+      "label": "Преобразовать int в строку",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 178,
+        "end_line": 190
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Конвертирует целое число в строковое представление",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "overlayText",
+      "kind": "action",
+      "label": "Наложить текст",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 192,
+        "end_line": 227
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Применяет текстовый оверлей из layout на сетку",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "collectTextLines",
+      "kind": "action",
+      "label": "Собрать строки текста",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 229,
+        "end_line": 237
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Рекурсивно собирает текстовые строки из layout box",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "external-css",
+      "kind": "external",
+      "label": "Библиотека CSS",
+      "layer": "calls",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 6,
+        "end_line": 6
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Внешняя зависимость для работы с цветами",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "external-framebuffer",
+      "kind": "external",
+      "label": "Framebuffer",
+      "layer": "calls",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 7,
+        "end_line": 7
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Внешняя зависимость для доступа к framebuffer",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "external-layout",
+      "kind": "external",
+      "label": "Layout",
+      "layer": "calls",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 8,
+        "end_line": 8
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Внешняя зависимость для layout box",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "Render",
+      "to": "makeGrid",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "Render",
+      "to": "overlayText",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "Render",
+      "to": "renderPlain",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "RenderANSI",
+      "to": "makeGrid",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "RenderANSI",
+      "to": "overlayText",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "RenderANSI",
+      "to": "renderANSI",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "RenderPlain",
+      "to": "Render",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "ansiColor",
+      "to": "colorsEqual",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "ansiColor",
+      "to": "itoa",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "overlayText",
+      "to": "collectTextLines",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "makeGrid",
+      "to": "chooseChar",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "Render",
+      "to": "Cell",
+      "label": "использует",
+      "status": "inferred"
+    },
+    {
+      "from": "RenderANSI",
+      "to": "renderANSI",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "renderANSI",
+      "to": "ansiColor",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "renderPlain",
+      "to": "renderANSI",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "overlayText",
+      "to": "collectTextLines",
+      "label": "вызывает",
+      "status": "inferred"
+    }
+  ]
+}

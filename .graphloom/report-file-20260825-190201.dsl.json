@@ -1,0 +1,569 @@
+{
+  "title": "DOM Parser Implementation",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "pkg-dom",
+      "kind": "group",
+      "label": "Пакет dom",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 1,
+        "end_line": 10
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "type-node",
+      "kind": "state",
+      "label": "Структура Node",
+      "layer": "state",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 22,
+        "end_line": 29
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "type-nodetype",
+      "kind": "state",
+      "label": "Тип NodeType",
+      "layer": "state",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 11,
+        "end_line": 13
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "const-nodetypes",
+      "kind": "state",
+      "label": "Константы типов узлов",
+      "layer": "state",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 14,
+        "end_line": 21
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "map-void-elements",
+      "kind": "storage",
+      "label": "Карта void элементов",
+      "layer": "data",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 34,
+        "end_line": 50
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-parse",
+      "kind": "action",
+      "label": "Функция Parse",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 53,
+        "end_line": 120
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-queryall",
+      "kind": "action",
+      "label": "Метод QueryAll",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 123,
+        "end_line": 125
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-queryselector",
+      "kind": "action",
+      "label": "Метод QuerySelector",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 128,
+        "end_line": 130
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-matches",
+      "kind": "action",
+      "label": "Метод Matches",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 133,
+        "end_line": 135
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-closest",
+      "kind": "action",
+      "label": "Метод Closest",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 138,
+        "end_line": 148
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-hasclass",
+      "kind": "action",
+      "label": "Функция hasClass",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 150,
+        "end_line": 158
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-getattr",
+      "kind": "action",
+      "label": "Метод GetAttr",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 161,
+        "end_line": 166
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-removechild",
+      "kind": "action",
+      "label": "Метод RemoveChild",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 169,
+        "end_line": 177
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-appendchild",
+      "kind": "action",
+      "label": "Метод AppendChild",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 180,
+        "end_line": 183
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-clone",
+      "kind": "action",
+      "label": "Метод Clone",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 186,
+        "end_line": 204
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-outerhtml",
+      "kind": "action",
+      "label": "Метод OuterHTML",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 207,
+        "end_line": 249
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-escapehtml",
+      "kind": "action",
+      "label": "Функция escapeHTML",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 251,
+        "end_line": 257
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-isvoidelement",
+      "kind": "action",
+      "label": "Функция isVoidElement",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 259,
+        "end_line": 266
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-findstyletags",
+      "kind": "action",
+      "label": "Метод FindStyleTags",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 269,
+        "end_line": 271
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-findlinkstylesheets",
+      "kind": "action",
+      "label": "Метод FindLinkStylesheets",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 274,
+        "end_line": 276
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "func-textcontent",
+      "kind": "action",
+      "label": "Метод TextContent",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 279,
+        "end_line": 288
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "pkg-dom",
+      "to": "type-nodetype",
+      "label": "Определение типа",
+      "status": "inferred"
+    },
+    {
+      "from": "type-nodetype",
+      "to": "const-nodetypes",
+      "label": "Константы",
+      "status": "inferred"
+    },
+    {
+      "from": "const-nodetypes",
+      "to": "type-node",
+      "label": "Структура узла",
+      "status": "inferred"
+    },
+    {
+      "from": "type-node",
+      "to": "map-void-elements",
+      "label": "Использует карту",
+      "status": "inferred"
+    },
+    {
+      "from": "map-void-elements",
+      "to": "func-parse",
+      "label": "Используется в парсере",
+      "status": "inferred"
+    },
+    {
+      "from": "func-parse",
+      "to": "func-queryall",
+      "label": "Использует QueryAll",
+      "status": "inferred"
+    },
+    {
+      "from": "func-parse",
+      "to": "func-queryselector",
+      "label": "Использует QuerySelector",
+      "status": "inferred"
+    },
+    {
+      "from": "func-parse",
+      "to": "func-matches",
+      "label": "Использует Matches",
+      "status": "inferred"
+    },
+    {
+      "from": "func-parse",
+      "to": "func-closest",
+      "label": "Использует Closest",
+      "status": "inferred"
+    },
+    {
+      "from": "func-closest",
+      "to": "func-matches",
+      "label": "Вызывает Matches",
+      "status": "inferred"
+    },
+    {
+      "from": "func-hasclass",
+      "to": "func-getattr",
+      "label": "Использует GetAttr",
+      "status": "inferred"
+    },
+    {
+      "from": "func-getattr",
+      "to": "type-node",
+      "label": "Работает с атрибутами",
+      "status": "inferred"
+    },
+    {
+      "from": "func-removechild",
+      "to": "type-node",
+      "label": "Манипулирует детьми",
+      "status": "inferred"
+    },
+    {
+      "from": "func-appendchild",
+      "to": "type-node",
+      "label": "Добавляет детей",
+      "status": "inferred"
+    },
+    {
+      "from": "func-clone",
+      "to": "type-node",
+      "label": "Копирует узел",
+      "status": "inferred"
+    },
+    {
+      "from": "func-outerhtml",
+      "to": "func-escapehtml",
+      "label": "Использует escapeHTML",
+      "status": "inferred"
+    },
+    {
+      "from": "func-outerhtml",
+      "to": "func-isvoidelement",
+      "label": "Проверяет void элементы",
+      "status": "inferred"
+    },
+    {
+      "from": "func-findstyletags",
+      "to": "func-queryall",
+      "label": "Вызывает QueryAll",
+      "status": "inferred"
+    },
+    {
+      "from": "func-findlinkstylesheets",
+      "to": "func-queryall",
+      "label": "Вызывает QueryAll",
+      "status": "inferred"
+    },
+    {
+      "from": "func-textcontent",
+      "to": "type-node",
+      "label": "Работает с текстом",
+      "status": "inferred"
+    }
+  ]
+}

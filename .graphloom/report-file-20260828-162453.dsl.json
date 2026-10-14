@@ -1,0 +1,701 @@
+{
+  "title": "internal/js/dom.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/dom.go",
+      "kind": "group",
+      "label": "dom.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 1,
+        "end_line": 84
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/dom.go:getComputedStyleJS:15482090",
+          "kind": "group",
+          "label": "Функция getComputedStyleJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 26,
+            "end_line": 35
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getComputedStyleJS",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom.go:15482239",
+              "kind": "decision",
+              "label": "if timer struct",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 27,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "timer struct",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15482260",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 28,
+                    "end_line": 28
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:jsToNodeID:15482292",
+              "kind": "call",
+              "label": "Вызов jsToNodeID",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 30,
+                "end_line": 30
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.jsToNodeID",
+              "summary": "→ github.com/starframe/abyss/internal/js.jsToNodeID",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.jsToNodeID",
+                  "file": "internal/js/bridge_dom.go",
+                  "label": "→ jsToNodeID in internal/js/bridge_dom.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/js/dom.go:15482318",
+              "kind": "decision",
+              "label": "if rval t",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 31,
+                "end_line": 33
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rval t",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15482332",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 32,
+                    "end_line": 32
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom.go:15482358",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 34,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom.go:getBoundingClientRectJS:15482389",
+          "kind": "group",
+          "label": "Функция getBoundingClientRectJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 37,
+            "end_line": 66
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom.go:15482543",
+              "kind": "decision",
+              "label": "if urrentCtx !=",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 38,
+                "end_line": 40
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "urrentCtx !=",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15482564",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 39,
+                    "end_line": 39
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:jsToNodeID:15482596",
+              "kind": "call",
+              "label": "Вызов jsToNodeID",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 41,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.jsToNodeID",
+              "summary": "→ github.com/starframe/abyss/internal/js.jsToNodeID",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.jsToNodeID",
+                  "file": "internal/js/bridge_dom.go",
+                  "label": "→ jsToNodeID in internal/js/bridge_dom.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/js/dom.go:15482622",
+              "kind": "decision",
+              "label": "if tx\n\tcu",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 42,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "tx\n\tcu",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15482636",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 43,
+                    "end_line": 43
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:getBoundingClientRect:15482670",
+              "kind": "call",
+              "label": "Вызов getBoundingClientRect",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 45,
+                "end_line": 45
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.getBoundingClientRect",
+              "summary": "→ github.com/starframe/abyss/internal/js.getBoundingClientRect",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getBoundingClientRect",
+                  "file": "internal/js/js.go",
+                  "label": "→ getBoundingClientRect in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484080",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 56,
+                "end_line": 56
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484101",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 57,
+                "end_line": 57
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484122",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 58,
+                "end_line": 58
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484151",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 59,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484182",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 60,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484205",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 61,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484229",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 62,
+                "end_line": 62
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom.go:setNum:15484267",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 63,
+                "end_line": 63
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js.setNum",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom.go:15484304",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 65,
+                "end_line": 65
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom.go:logJS:15484330",
+          "kind": "group",
+          "label": "Функция logJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 68,
+            "end_line": 84
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.logJS",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/dom.go:15484542",
+              "kind": "loop",
+              "label": "range func",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 71,
+                "end_line": 78
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "func",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:getArgString:15484581",
+                  "kind": "call",
+                  "label": "Вызов getArgString",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 72,
+                    "end_line": 72
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.getArgString",
+                  "summary": "→ github.com/starframe/abyss/internal/js.getArgString",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.getArgString",
+                      "file": "internal/js/bridge_dom.go",
+                      "label": "→ getArgString in internal/js/bridge_dom.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:internal/js/dom.go:15484606",
+                  "kind": "decision",
+                  "label": "if Mu.Lock()",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 73,
+                    "end_line": 77
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Mu.Lock()",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/js/dom.go:15484667",
+                      "kind": "decision",
+                      "label": "else",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom.go",
+                        "start_line": 75,
+                        "end_line": 77
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom.go:15485038",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 83,
+                "end_line": 83
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

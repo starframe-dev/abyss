@@ -1,0 +1,1992 @@
+{
+  "title": "internal/css/types.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/css/types.go",
+      "kind": "group",
+      "label": "Файл types.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/types.go",
+        "start_line": 1,
+        "end_line": 228
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Определения типов CSS для внутреннего использования",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/css/types.go:DisplayType:12096862",
+          "kind": "group",
+          "label": "Тип DisplayType",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 11,
+            "end_line": 11
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для свойства display в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:DisplayBlock:12096891",
+          "kind": "state",
+          "label": "Переменная DisplayBlock",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 14,
+            "end_line": 14
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.DisplayBlock",
+          "summary": "Значение display: block",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:DisplayInline:12096927",
+          "kind": "state",
+          "label": "Переменная DisplayInline",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 15,
+            "end_line": 15
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.DisplayInline",
+          "summary": "Значение display: inline",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:DisplayFlex:12096945",
+          "kind": "state",
+          "label": "Переменная DisplayFlex",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 16,
+            "end_line": 16
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.DisplayFlex",
+          "summary": "Значение display: flex",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:DisplayGrid:12096961",
+          "kind": "state",
+          "label": "Переменная DisplayGrid",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 17,
+            "end_line": 17
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.DisplayGrid",
+          "summary": "Значение display: grid",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:DisplayNone:12096977",
+          "kind": "state",
+          "label": "Переменная DisplayNone",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 18,
+            "end_line": 18
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.DisplayNone",
+          "summary": "Значение display: none",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:PositionType:12097051",
+          "kind": "group",
+          "label": "Тип PositionType",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 22,
+            "end_line": 22
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для свойства position в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:PositionStatic:12097081",
+          "kind": "state",
+          "label": "Переменная PositionStatic",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 25,
+            "end_line": 25
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.PositionStatic",
+          "summary": "Значение position: static",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:PositionRelative:12097120",
+          "kind": "state",
+          "label": "Переменная PositionRelative",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 26,
+            "end_line": 26
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.PositionRelative",
+          "summary": "Значение position: relative",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:PositionAbsolute:12097141",
+          "kind": "state",
+          "label": "Переменная PositionAbsolute",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 27,
+            "end_line": 27
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.PositionAbsolute",
+          "summary": "Значение position: absolute",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:OverflowType:12097220",
+          "kind": "group",
+          "label": "Тип OverflowType",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 31,
+            "end_line": 31
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для свойства overflow в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:OverflowVisible:12097250",
+          "kind": "state",
+          "label": "Переменная OverflowVisible",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 34,
+            "end_line": 34
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.OverflowVisible",
+          "summary": "Значение overflow: visible",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:OverflowHidden:12097290",
+          "kind": "state",
+          "label": "Переменная OverflowHidden",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 35,
+            "end_line": 35
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.OverflowHidden",
+          "summary": "Значение overflow: hidden",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:FlexDirection:12097357",
+          "kind": "group",
+          "label": "Тип FlexDirection",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 39,
+            "end_line": 39
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для свойства flex-direction в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:FlexDirectionRow:12097388",
+          "kind": "state",
+          "label": "Переменная FlexDirectionRow",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 42,
+            "end_line": 42
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.FlexDirectionRow",
+          "summary": "Значение flex-direction: row",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:FlexDirectionColumn:12097430",
+          "kind": "state",
+          "label": "Переменная FlexDirectionColumn",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 43,
+            "end_line": 43
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.FlexDirectionColumn",
+          "summary": "Значение flex-direction: column",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:JustifyContent:12097504",
+          "kind": "group",
+          "label": "Тип JustifyContent",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 47,
+            "end_line": 47
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для свойства justify-content в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:JustifyFlexStart:12097536",
+          "kind": "state",
+          "label": "Переменная JustifyFlexStart",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 50,
+            "end_line": 50
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.JustifyFlexStart",
+          "summary": "Значение justify-content: flex-start",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:JustifyCenter:12097579",
+          "kind": "state",
+          "label": "Переменная JustifyCenter",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 51,
+            "end_line": 51
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.JustifyCenter",
+          "summary": "Значение justify-content: center",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:JustifyFlexEnd:12097597",
+          "kind": "state",
+          "label": "Переменная JustifyFlexEnd",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 52,
+            "end_line": 52
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.JustifyFlexEnd",
+          "summary": "Значение justify-content: flex-end",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:JustifySpaceBetween:12097616",
+          "kind": "state",
+          "label": "Переменная JustifySpaceBetween",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 53,
+            "end_line": 53
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.JustifySpaceBetween",
+          "summary": "Значение justify-content: space-between",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:JustifySpaceAround:12097640",
+          "kind": "state",
+          "label": "Переменная JustifySpaceAround",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 54,
+            "end_line": 54
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.JustifySpaceAround",
+          "summary": "Значение justify-content: space-around",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:AlignItems:12097705",
+          "kind": "group",
+          "label": "Тип AlignItems",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 58,
+            "end_line": 58
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для свойства align-items в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:AlignFlexStart:12097733",
+          "kind": "state",
+          "label": "Переменная AlignFlexStart",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 61,
+            "end_line": 61
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.AlignFlexStart",
+          "summary": "Значение align-items: flex-start",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:AlignCenter:12097770",
+          "kind": "state",
+          "label": "Переменная AlignCenter",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 62,
+            "end_line": 62
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.AlignCenter",
+          "summary": "Значение align-items: center",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:AlignFlexEnd:12097786",
+          "kind": "state",
+          "label": "Переменная AlignFlexEnd",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 63,
+            "end_line": 63
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.AlignFlexEnd",
+          "summary": "Значение align-items: flex-end",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:AlignStretch:12097803",
+          "kind": "state",
+          "label": "Переменная AlignStretch",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 64,
+            "end_line": 64
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.AlignStretch",
+          "summary": "Значение align-items: stretch",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:Length:12097865",
+          "kind": "group",
+          "label": "Тип Length",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 68,
+            "end_line": 73
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Length",
+          "summary": "Определение типа для измерения длины в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/types.go:Auto:12097990",
+          "kind": "group",
+          "label": "Функция Auto",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 76,
+            "end_line": 76
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Auto",
+          "summary": "Создать значение auto для измерения",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12098011",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 76,
+                "end_line": 76
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Auto",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Default",
+              "file": "internal/css/types.go",
+              "label": "← Default in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Default",
+              "file": "internal/css/types.go",
+              "label": "← Default in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:Px:12098072",
+          "kind": "group",
+          "label": "Функция Px",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 79,
+            "end_line": 79
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Px",
+          "summary": "Создать значение в пикселях",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12098100",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 79,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Px",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Default",
+              "file": "internal/css/types.go",
+              "label": "← Default in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutFlex in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutGrid in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutGrid in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutGrid in internal/layout/layout.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:Percent:12098164",
+          "kind": "group",
+          "label": "Функция Percent",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 82,
+            "end_line": 82
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Percent",
+          "summary": "Создать значение в процентах",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12098197",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 82,
+                "end_line": 82
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Percent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseLength",
+              "file": "internal/css/computed.go",
+              "label": "← parseLength in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:Resolve:12098317",
+          "kind": "group",
+          "label": "Функция Resolve",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 85,
+            "end_line": 93
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+          "summary": "Разрешить значение измерения (auto, percent, пиксели)",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/types.go:12098368",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 86,
+                "end_line": 88
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить, является ли значение auto",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/types.go:12098390",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/types.go",
+                    "start_line": 87,
+                    "end_line": 87
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить функцию Resolve при auto",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/types.go:12098409",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 89,
+                "end_line": 91
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить, является ли значение процентом",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/types.go:12098434",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/types.go",
+                    "start_line": 90,
+                    "end_line": 90
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить функцию Resolve при проценте",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/types.go:12098473",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 92,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Resolve для пикселей",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutBox in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutFlex in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutFlex in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutFlex in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutGrid in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutGrid in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+              "file": "internal/layout/layout.go",
+              "label": "← layoutGrid in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.resolveHeight",
+              "file": "internal/layout/layout.go",
+              "label": "← resolveHeight in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+              "file": "internal/layout/layout.go",
+              "label": "← resolveWidth in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+              "file": "internal/layout/layout.go",
+              "label": "← resolveWidth in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+              "file": "internal/layout/layout.go",
+              "label": "← resolveWidth in internal/layout/layout.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/render.drawBox",
+              "file": "internal/render/render.go",
+              "label": "← drawBox in internal/render/render.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/render.drawBox",
+              "file": "internal/render/render.go",
+              "label": "← drawBox in internal/render/render.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/render.drawBox",
+              "file": "internal/render/render.go",
+              "label": "← drawBox in internal/render/render.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/render.drawBox",
+              "file": "internal/render/render.go",
+              "label": "← drawBox in internal/render/render.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:String:12098488",
+          "kind": "group",
+          "label": "Функция String",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 95,
+            "end_line": 103
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Length.String",
+          "summary": "Преобразовать значение измерения в строку",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/types.go:12098526",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 96,
+                "end_line": 98
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить, является ли значение auto",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/types.go:12098548",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/types.go",
+                    "start_line": 97,
+                    "end_line": 97
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить функцию String при auto",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/types.go:12098572",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 99,
+                "end_line": 101
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить, является ли значение процентом",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/types.go:12098597",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/types.go",
+                    "start_line": 100,
+                    "end_line": 100
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить функцию String при проценте",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/types.go:12098647",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 102,
+                "end_line": 102
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию String для пикселей",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+              "file": "internal/js/js.go",
+              "label": "← getComputedStyle in internal/js/js.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+              "file": "internal/js/js.go",
+              "label": "← getComputedStyle in internal/js/js.go"
+            }
+          ]
+        },
+        {
+          "id": "type:internal/css/types.go:Color:12098724",
+          "kind": "group",
+          "label": "Тип Color",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 106,
+            "end_line": 109
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Color",
+          "summary": "Определение типа для цвета в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/types.go:Transparent:12098821",
+          "kind": "group",
+          "label": "Функция Transparent",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 112,
+            "end_line": 112
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Transparent",
+          "summary": "Создать прозрачный цвет",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12098848",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 112,
+                "end_line": 112
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Transparent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+              "file": "internal/ascii/ascii.go",
+              "label": "← chooseChar in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+              "file": "internal/ascii/ascii.go",
+              "label": "← chooseChar in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+              "file": "internal/ascii/ascii.go",
+              "label": "← chooseChar in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.renderANSI",
+              "file": "internal/ascii/ascii.go",
+              "label": "← renderANSI in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.renderANSI",
+              "file": "internal/ascii/ascii.go",
+              "label": "← renderANSI in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Default",
+              "file": "internal/css/types.go",
+              "label": "← Default in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Hex",
+              "file": "internal/css/types.go",
+              "label": "← Hex in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← Get in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← clipCorner in internal/framebuffer/framebuffer.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:RGB:12098906",
+          "kind": "group",
+          "label": "Функция RGB",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 115,
+            "end_line": 115
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.RGB",
+          "summary": "Создать цвет в формате RGB",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12098938",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 115,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию RGB",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.overlayText",
+              "file": "internal/ascii/ascii.go",
+              "label": "← overlayText in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Default",
+              "file": "internal/css/types.go",
+              "label": "← Default in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Hex",
+              "file": "internal/css/types.go",
+              "label": "← Hex in internal/css/types.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/render.Render",
+              "file": "internal/render/render.go",
+              "label": "← Render in internal/render/render.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:Hex:12099040",
+          "kind": "group",
+          "label": "Функция Hex",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 118,
+            "end_line": 130
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Hex",
+          "summary": "Создать цвет из hex-кода",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/types.go:12099106",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 120,
+                "end_line": 122
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить длину hex-кода равна 3",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/types.go:12099196",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 123,
+                "end_line": 125
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить длину hex-кода не равна 6",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/types.go:12099221",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/types.go",
+                    "start_line": 124,
+                    "end_line": 124
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить функцию Hex при ошибке",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/types.go:12099387",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 129,
+                "end_line": 129
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Hex при успехе",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.parseColor",
+              "file": "internal/css/computed.go",
+              "label": "← parseColor in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/types.go:String:12099431",
+          "kind": "group",
+          "label": "Функция String",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 132,
+            "end_line": 137
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Color.String",
+          "summary": "Преобразовать цвет в строковое представление",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/types.go:12099468",
+              "kind": "decision",
+              "label": "Проверить условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 133,
+                "end_line": 135
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить, установлен ли цвет",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/types.go:12099490",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/types.go",
+                    "start_line": 134,
+                    "end_line": 134
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершить функцию String при незаданном цвете",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/types.go:12099521",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 136,
+                "end_line": 136
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию String при заданном цвете",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+              "file": "internal/js/js.go",
+              "label": "← getComputedStyle in internal/js/js.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+              "file": "internal/js/js.go",
+              "label": "← getComputedStyle in internal/js/js.go"
+            }
+          ]
+        },
+        {
+          "id": "type:internal/css/types.go:BorderStyle:12099624",
+          "kind": "group",
+          "label": "Тип BorderStyle",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 140,
+            "end_line": 140
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Определение типа для стиля границы в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:BorderNone:12099653",
+          "kind": "state",
+          "label": "Переменная BorderNone",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 143,
+            "end_line": 143
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.BorderNone",
+          "summary": "Значение border-style: none",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/css/types.go:BorderSolid:12099687",
+          "kind": "state",
+          "label": "Переменная BorderSolid",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 144,
+            "end_line": 144
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.BorderSolid",
+          "summary": "Значение border-style: solid",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:Border:12099742",
+          "kind": "group",
+          "label": "Тип Border",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 148,
+            "end_line": 152
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Border",
+          "summary": "Определение типа для границы в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:BoxModel:12099875",
+          "kind": "group",
+          "label": "Тип BoxModel",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 155,
+            "end_line": 157
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.BoxModel",
+          "summary": "Определение типа для box model в CSS",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/types.go:IsZero:12099978",
+          "kind": "group",
+          "label": "Функция IsZero",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 160,
+            "end_line": 164
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.BoxModel.IsZero",
+          "summary": "Проверить, равен ли box model нулю",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12100016",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 161,
+                "end_line": 163
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию IsZero",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/css/types.go:ComputedStyle:12100341",
+          "kind": "group",
+          "label": "Тип ComputedStyle",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 167,
+            "end_line": 209
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.ComputedStyle",
+          "summary": "Определение типа вычисленного стиля",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/types.go:Default:12101252",
+          "kind": "group",
+          "label": "Функция Default",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 212,
+            "end_line": 228
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Default",
+          "summary": "Создать объект по умолчанию для ComputedStyle",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/types.go:12101287",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 213,
+                "end_line": 227
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить функцию Default",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.buildNode",
+              "file": "internal/layout/layout.go",
+              "label": "← buildNode in internal/layout/layout.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

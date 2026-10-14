@@ -1,0 +1,1299 @@
+{
+  "title": "internal/js/dom_serialize.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/dom_serialize.go",
+      "kind": "group",
+      "label": "Файл dom_serialize.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom_serialize.go",
+        "start_line": 1,
+        "end_line": 169
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Модуль для сериализации DOM-узлов",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/dom_serialize.go:getInnerHTML:15466872",
+          "kind": "group",
+          "label": "Функция getInnerHTML",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 12,
+            "end_line": 25
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getInnerHTML",
+          "summary": "Получить внутреннее HTML содержимое узла",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_serialize.go:15466982",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 17,
+                "end_line": 19
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15466999",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 18,
+                    "end_line": 18
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_serialize.go:15467045",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 21,
+                "end_line": 23
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерация по дочерним узлам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom_serialize.go:serializeNode:15467088",
+                  "kind": "call",
+                  "label": "Вызов serializeNode",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 52,
+                    "end_line": 87
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.serializeNode",
+                  "summary": "Рекурсивная сериализация узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.serializeNode",
+                      "file": "internal/js/dom_serialize.go",
+                      "label": "→ serializeNode in internal/js/dom_serialize.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_serialize.go:15467123",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 24,
+                "end_line": 24
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getInnerHTMLJS",
+              "file": "internal/js/dom.go",
+              "label": "← getInnerHTMLJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_serialize.go:getTextContent:15467198",
+          "kind": "group",
+          "label": "Функция getTextContent",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 28,
+            "end_line": 37
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getTextContent",
+          "summary": "Получить текстовое содержимое узла",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_serialize.go:15467310",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 33,
+                "end_line": 35
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15467327",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 34,
+                    "end_line": 34
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_serialize.go:15467347",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 36,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getTextContentJS",
+              "file": "internal/js/dom.go",
+              "label": "← getTextContentJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_serialize.go:collectText:15467443",
+          "kind": "group",
+          "label": "Функция collectText",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 40,
+            "end_line": 49
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.collectText",
+          "summary": "Собрать текстовое содержимое",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_serialize.go:15467486",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 41,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка типа узла",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15467522",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 42,
+                    "end_line": 42
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_serialize.go:15467572",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 45,
+                "end_line": 47
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерация по дочерним узлам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom_serialize.go:collectText:15467629",
+                  "kind": "call",
+                  "label": "Вызов collectText",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 40,
+                    "end_line": 49
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.collectText",
+                  "summary": "Рекурсивный сбор текста",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.collectText",
+                      "file": "internal/js/dom_serialize.go",
+                      "label": "→ collectText in internal/js/dom_serialize.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_serialize.go:15467659",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 48,
+                "end_line": 48
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.collectText",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← collectText in internal/js/dom_serialize.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getTextContent",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← getTextContent in internal/js/dom_serialize.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_serialize.go:serializeNode:15467728",
+          "kind": "group",
+          "label": "Функция serializeNode",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 52,
+            "end_line": 87
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.serializeNode",
+          "summary": "Сериализовать DOM-узел в HTML",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/js/dom_serialize.go:15467786",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 68,
+                "end_line": 68
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Разветвление по типу узла",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/js/dom_serialize.go:15467806",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 55,
+                    "end_line": 55
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обработка текстового узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_serialize.go:escapeHTML:15467847",
+                      "kind": "call",
+                      "label": "Вызов escapeHTML",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_serialize.go",
+                        "start_line": 90,
+                        "end_line": 96
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.escapeHTML",
+                      "summary": "Эскапировать HTML-символы",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.escapeHTML",
+                          "file": "internal/js/dom_serialize.go",
+                          "label": "→ escapeHTML in internal/js/dom_serialize.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/dom_serialize.go:15467871",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 70,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Обработка элементов с дочерьми",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "loop:internal/js/dom_serialize.go:15468070",
+                      "kind": "loop",
+                      "label": "Цикл",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_serialize.go",
+                        "start_line": 61,
+                        "end_line": 63
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Итерация по атрибутам",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "loop:internal/js/dom_serialize.go:15468192",
+                      "kind": "loop",
+                      "label": "Цикл",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_serialize.go",
+                        "start_line": 65,
+                        "end_line": 74
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Итерация по дочерним узлам",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/js/dom_serialize.go:15468326",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/js/dom_serialize.go",
+                            "start_line": 69,
+                            "end_line": 73
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Проверка непустого значения",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/js/dom_serialize.go:escapeHTML:15468406",
+                              "kind": "call",
+                              "label": "Вызов escapeHTML",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/js/dom_serialize.go",
+                                "start_line": 90,
+                                "end_line": 96
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/js.escapeHTML",
+                              "summary": "Эскапировать атрибут",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/js.escapeHTML",
+                                  "file": "internal/js/dom_serialize.go",
+                                  "label": "→ escapeHTML in internal/js/dom_serialize.go"
+                                }
+                              ]
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/js/dom_serialize.go:15468489",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_serialize.go",
+                        "start_line": 75,
+                        "end_line": 78
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверка пустых элементов",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "return:internal/js/dom_serialize.go:15468587",
+                          "kind": "output",
+                          "label": "Вернуть",
+                          "layer": "data",
+                          "source": {
+                            "file": "internal/js/dom_serialize.go",
+                            "start_line": 77,
+                            "end_line": 77
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "loop:internal/js/dom_serialize.go:15468639",
+                      "kind": "loop",
+                      "label": "Цикл",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_serialize.go",
+                        "start_line": 80,
+                        "end_line": 82
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Итерация по дочерним элементам",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/js/dom_serialize.go:serializeNode:15468686",
+                          "kind": "call",
+                          "label": "Вызов serializeNode",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/js/dom_serialize.go",
+                            "start_line": 52,
+                            "end_line": 87
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/js.serializeNode",
+                          "summary": "Рекурсивная сериализация дочернего",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/js.serializeNode",
+                              "file": "internal/js/dom_serialize.go",
+                              "label": "→ serializeNode in internal/js/dom_serialize.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getInnerHTML",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← getInnerHTML in internal/js/dom_serialize.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.serializeNode",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← serializeNode in internal/js/dom_serialize.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_serialize.go:escapeHTML:15468864",
+          "kind": "group",
+          "label": "Функция escapeHTML",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 90,
+            "end_line": 96
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.escapeHTML",
+          "summary": "Эскапировать HTML-символы",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/dom_serialize.go:15469079",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 95,
+                "end_line": 95
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.serializeNode",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← serializeNode in internal/js/dom_serialize.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.serializeNode",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← serializeNode in internal/js/dom_serialize.go"
+            }
+          ]
+        },
+        {
+          "id": "variable:internal/js/dom_serialize.go:voidElements:15469159",
+          "kind": "state",
+          "label": "Переменная voidElements",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 99,
+            "end_line": 103
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.voidElements",
+          "summary": "Массив пустых элементов DOM",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom_serialize.go:outerHTMLString:15469462",
+          "kind": "group",
+          "label": "Функция outerHTMLString",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 106,
+            "end_line": 114
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.outerHTMLString",
+          "summary": "Получить полное HTML-представление узла",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_serialize.go:15469576",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 110,
+                "end_line": 112
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15469605",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 111,
+                    "end_line": 111
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_serialize.go:15469625",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 113,
+                "end_line": 113
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.outerHTMLJS",
+              "file": "internal/js/dom.go",
+              "label": "← outerHTMLJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_serialize.go:setOuterHTML:15469699",
+          "kind": "group",
+          "label": "Функция setOuterHTML",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_serialize.go",
+            "start_line": 117,
+            "end_line": 169
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.setOuterHTML",
+          "summary": "Установить outerHTML узлу",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_serialize.go:15469816",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 121,
+                "end_line": 123
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку или nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15469864",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 122,
+                    "end_line": 122
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom_serialize.go:Parse:15469917",
+              "kind": "call",
+              "label": "Вызов Parse",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 126,
+                "end_line": 126
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+              "summary": "Парсить HTML-строку",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Parse",
+                  "file": "internal/dom/dom.go",
+                  "label": "→ Parse in internal/dom/dom.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/js/dom_serialize.go:15469968",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 127,
+                "end_line": 129
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка фрагмента",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15469997",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 128,
+                    "end_line": 128
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_serialize.go:15470044",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 132,
+                "end_line": 136
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерация по дочерним узлам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_serialize.go:15470094",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 133,
+                    "end_line": 135
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка типа узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_serialize.go:15470196",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 137,
+                "end_line": 139
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка пустого списка",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15470228",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 138,
+                    "end_line": 138
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_serialize.go:15470338",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 146,
+                "end_line": 151
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Поиск узла в новых узлах",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_serialize.go:15470386",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 147,
+                    "end_line": 150
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка совпадения узла",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_serialize.go:15470460",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 152,
+                "end_line": 154
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка индекса",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_serialize.go:15470481",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_serialize.go",
+                    "start_line": 153,
+                    "end_line": 153
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_serialize.go:15470646",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 161,
+                "end_line": 163
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерация по новым узлам",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom_serialize.go:InvalidateCache:15470863",
+              "kind": "call",
+              "label": "Вызов InvalidateCache",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom_serialize.go",
+                "start_line": 168,
+                "end_line": 168
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.InvalidateCache",
+              "summary": "Очистить кэш стилей",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.InvalidateCache",
+                  "file": "internal/css/computed.go",
+                  "label": "→ InvalidateCache in internal/css/computed.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.setOuterHTMLJS",
+              "file": "internal/js/dom.go",
+              "label": "← setOuterHTMLJS in internal/js/dom.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

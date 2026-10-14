@@ -1,0 +1,218 @@
+{
+  "title": "main.go - TUI браузер Abyss",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main",
+      "kind": "action",
+      "label": "Главная функция",
+      "layer": "flow",
+      "source": {
+        "file": "main.go",
+        "start_line": 12,
+        "end_line": 21
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Запуск TUI браузера Abyss",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "new_program",
+      "kind": "call",
+      "label": "Создать программу Bubbletea",
+      "layer": "calls",
+      "source": {
+        "file": "main.go",
+        "start_line": 13,
+        "end_line": 13
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вызов tea.NewProgram()",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "browser_new",
+      "kind": "call",
+      "label": "Создать браузер",
+      "layer": "calls",
+      "source": {
+        "file": "main.go",
+        "start_line": 14,
+        "end_line": 14
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вызов browser.New()",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "with_alt_screen",
+      "kind": "call",
+      "label": "Включить альтернативный экран",
+      "layer": "calls",
+      "source": {
+        "file": "main.go",
+        "start_line": 15,
+        "end_line": 15
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Опция WithAltScreen()",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "program_run",
+      "kind": "call",
+      "label": "Запустить программу",
+      "layer": "calls",
+      "source": {
+        "file": "main.go",
+        "start_line": 18,
+        "end_line": 18
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вызов p.Run()",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error_handling",
+      "kind": "decision",
+      "label": "Обработка ошибки",
+      "layer": "flow",
+      "source": {
+        "file": "main.go",
+        "start_line": 17,
+        "end_line": 19
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Проверка результата выполнения программы",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "print_error",
+      "kind": "action",
+      "label": "Вывести ошибку",
+      "layer": "effects",
+      "source": {
+        "file": "main.go",
+        "start_line": 17,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вывод ошибки в stderr через fmt.Fprintf",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "exit_program",
+      "kind": "action",
+      "label": "Завершить программу",
+      "layer": "effects",
+      "source": {
+        "file": "main.go",
+        "start_line": 19,
+        "end_line": 19
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вызов os.Exit(1) при ошибке",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main",
+      "to": "new_program",
+      "label": "Создать программу",
+      "status": "inferred"
+    },
+    {
+      "from": "new_program",
+      "to": "browser_new",
+      "label": "Инициализировать браузер",
+      "status": "inferred"
+    },
+    {
+      "from": "new_program",
+      "to": "with_alt_screen",
+      "label": "Настроить экран",
+      "status": "inferred"
+    },
+    {
+      "from": "main",
+      "to": "program_run",
+      "label": "Запустить",
+      "status": "inferred"
+    },
+    {
+      "from": "program_run",
+      "to": "error_handling",
+      "label": "Проверить результат",
+      "status": "inferred"
+    },
+    {
+      "from": "error_handling",
+      "to": "print_error",
+      "label": "При ошибке вывести",
+      "status": "inferred"
+    },
+    {
+      "from": "error_handling",
+      "to": "exit_program",
+      "label": "При ошибке завершить",
+      "status": "inferred"
+    }
+  ]
+}

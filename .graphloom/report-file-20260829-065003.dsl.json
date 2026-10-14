@@ -1,0 +1,1243 @@
+{
+  "title": "cmd/external_test/main.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:cmd/external_test/main.go",
+      "kind": "group",
+      "label": "Файл cmd/external_test/main.go",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 1,
+        "end_line": 66
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Это главный файл пакета, содержащий импорты, константы, переменные и функцию main для запуска внешнего теста.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:cmd/external_test/main.go:viewportWidth:15599989",
+          "kind": "state",
+          "label": "Константа viewportWidth",
+          "layer": "state",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 18,
+            "end_line": 18
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.viewportWidth",
+          "summary": "Определяет ширину области просмотра в 800 пикселей для рендеринга.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:cmd/external_test/main.go:defaultClientTimeout:15600017",
+          "kind": "state",
+          "label": "Константа defaultClientTimeout",
+          "layer": "state",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 19,
+            "end_line": 19
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.defaultClientTimeout",
+          "summary": "Устанавливает тайм-аут для клиента по умолчанию в 10 секунд.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:cmd/external_test/main.go:defaultClient:15600064",
+          "kind": "state",
+          "label": "Переменная defaultClient",
+          "layer": "state",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 22,
+            "end_line": 22
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.defaultClient",
+          "summary": "Инициализирует переменную клиента по умолчанию из fetcher.DefaultClient.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:cmd/external_test/main.go:main:15600103",
+          "kind": "group",
+          "label": "Функция main",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 24,
+            "end_line": 66
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.main",
+          "summary": "Главная функция программы, которая загружает HTML, инициализирует DOM, выполняет скрипты и рендерит результат.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:cmd/external_test/main.go:15600118",
+              "kind": "action",
+              "label": "Объявление переменной url",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 27,
+                "end_line": 27
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет URL-адрес тестового внешнего HTML-файла для загрузки.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600118"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600173",
+              "kind": "action",
+              "label": "Обработка результата Fetch",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 27,
+                "end_line": 27
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Декларирует переменные html и err для хранения результата и ошибки запроса.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600173"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:Fetch:15600186",
+                  "kind": "call",
+                  "label": "Вызов Fetch",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 27,
+                    "end_line": 27
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/fetcher.Fetch",
+                  "summary": "Вызывает функцию fetcher.Fetch для получения HTML-контента по указанному URL.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/fetcher.Fetch",
+                      "file": "internal/fetcher/fetcher.go",
+                      "label": "→ Fetch in internal/fetcher/fetcher.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15600206",
+              "kind": "decision",
+              "label": "Проверка ошибки Fetch",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 28,
+                "end_line": 31
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет наличие ошибки при загрузке HTML и завершает программу при ошибке.",
+              "coverage_ids": [
+                "if:cmd/external_test/main.go:15600206"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/external_test/main.go:15600224",
+                  "kind": "action",
+                  "label": "Вывод ошибки Fetch",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 29,
+                    "end_line": 29
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит сообщение об ошибке загрузки на стандартный поток ошибок.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600224"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600275",
+                  "kind": "action",
+                  "label": "Выход при ошибке Fetch",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 30,
+                    "end_line": 30
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает программу с кодом выхода 1 при ошибке загрузки.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600275"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600291",
+              "kind": "action",
+              "label": "Обработка результата Parse",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 33,
+                "end_line": 33
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет парсинговое дерево DOM в переменную doc.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600291"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:Parse:15600298",
+                  "kind": "call",
+                  "label": "Вызов Parse",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 33,
+                    "end_line": 33
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+                  "summary": "Вызывает dom.Parse для парсинга HTML-контента в DOM-дерево.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.Parse",
+                      "file": "internal/dom/dom.go",
+                      "label": "→ Parse in internal/dom/dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600324",
+              "kind": "action",
+              "label": "Обработка результата NewContext",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 35,
+                "end_line": 35
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет созданный контекст JavaScript в переменную jsc.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600324"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:NewContext:15600331",
+                  "kind": "call",
+                  "label": "Вызов NewContext",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 35,
+                    "end_line": 35
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.NewContext",
+                  "summary": "Создаёт новый контекст JavaScript для выполнения скриптов.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.NewContext",
+                      "file": "internal/js/js.go",
+                      "label": "→ NewContext in internal/js/js.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600348",
+              "kind": "action",
+              "label": "Отложенное закрытие контекста",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 36,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Регистрирует отложенный вызов закрытия контекста после завершения функции.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600348"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15600368",
+              "kind": "decision",
+              "label": "Проверка ошибки регистрации моста",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 38,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет наличие ошибки при инициализации функций моста.",
+              "coverage_ids": [
+                "if:cmd/external_test/main.go:15600368"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/external_test/main.go:15600371",
+                  "kind": "action",
+                  "label": "Обработка результата регистрации моста",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 38,
+                    "end_line": 38
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет результат регистрации функций моста и сохраняет ошибку.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600371"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/external_test/main.go:RegisterBridgeFunctions:15600378",
+                      "kind": "call",
+                      "label": "Вызов RegisterBridgeFunctions",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/external_test/main.go",
+                        "start_line": 38,
+                        "end_line": 38
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                      "summary": "Регистрирует функции моста между JavaScript и Go в контексте.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                          "file": "internal/js/bridge_dom.go",
+                          "label": "→ RegisterBridgeFunctions in internal/js/bridge_dom.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600424",
+                  "kind": "action",
+                  "label": "Вывод ошибки регистрации моста",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 39,
+                    "end_line": 39
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит сообщение об ошибке инициализации моста на стандартный поток ошибок.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600424"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600481",
+                  "kind": "action",
+                  "label": "Выход при ошибке регистрации моста",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 40,
+                    "end_line": 40
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает программу с кодом выхода 1 при ошибке инициализации моста.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600481"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600497",
+              "kind": "action",
+              "label": "Выполнение инициализации DOM",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 43,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняет вызов функции инициализации DOM для подготовки структуры.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600497"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:InitDOM:15600497",
+                  "kind": "call",
+                  "label": "Вызов InitDOM",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 43,
+                    "end_line": 43
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+                  "summary": "Инициализирует DOM-структуру с использованием парсингового дерева.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.InitDOM",
+                      "file": "internal/js/dom_events.go",
+                      "label": "→ InitDOM in internal/js/dom_events.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15600515",
+              "kind": "decision",
+              "label": "Проверка ошибки выполнения DOM API",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 45,
+                "end_line": 48
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет наличие ошибки при выполнении скрипта DOM API.",
+              "coverage_ids": [
+                "if:cmd/external_test/main.go:15600515"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/external_test/main.go:15600518",
+                  "kind": "action",
+                  "label": "Обработка результата Evaluate",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 45,
+                    "end_line": 45
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет результат выполнения скрипта DOM API и сохраняет ошибку.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600518"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/external_test/main.go:DOMAPIScript:15600541",
+                      "kind": "call",
+                      "label": "Вызов DOMAPIScript",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/external_test/main.go",
+                        "start_line": 45,
+                        "end_line": 45
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                      "summary": "Получает скрипт API для работы с DOM в JavaScript.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                          "file": "internal/js/domapi.go",
+                          "label": "→ DOMAPIScript in internal/js/domapi.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:cmd/external_test/main.go:Evaluate:15600528",
+                      "kind": "call",
+                      "label": "Вызов Evaluate",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/external_test/main.go",
+                        "start_line": 45,
+                        "end_line": 45
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.Evaluate",
+                      "summary": "Выполняет скрипт DOM API в контексте JavaScript.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.Evaluate",
+                          "file": "internal/js/js.go",
+                          "label": "→ Evaluate in internal/js/js.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600576",
+                  "kind": "action",
+                  "label": "Вывод ошибки DOM API",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 46,
+                    "end_line": 46
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит сообщение об ошибке выполнения DOM API на стандартный поток ошибок.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600576"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600629",
+                  "kind": "action",
+                  "label": "Выход при ошибке DOM API",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 47,
+                    "end_line": 47
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает программу с кодом выхода 1 при ошибке выполнения DOM API.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600629"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15600645",
+              "kind": "decision",
+              "label": "Проверка ошибки выполнения скриптов",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 50,
+                "end_line": 53
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет наличие ошибки при выполнении пользовательских скриптов.",
+              "coverage_ids": [
+                "if:cmd/external_test/main.go:15600645"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/external_test/main.go:15600648",
+                  "kind": "action",
+                  "label": "Обработка результата ExecuteScripts",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 50,
+                    "end_line": 50
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет результат выполнения пользовательских скриптов и сохраняет ошибку.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600648"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/external_test/main.go:ExecuteScripts:15600655",
+                      "kind": "call",
+                      "label": "Вызов ExecuteScripts",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/external_test/main.go",
+                        "start_line": 50,
+                        "end_line": 50
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                      "summary": "Выполняет пользовательские JavaScript-скрипты в контексте.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                          "file": "internal/js/dom_style.go",
+                          "label": "→ ExecuteScripts in internal/js/dom_style.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600704",
+                  "kind": "action",
+                  "label": "Вывод ошибки выполнения скриптов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 51,
+                    "end_line": 51
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит сообщение об ошибке выполнения скриптов на стандартный поток ошибок.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600704"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/external_test/main.go:15600756",
+                  "kind": "action",
+                  "label": "Выход при ошибке выполнения скриптов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 52,
+                    "end_line": 52
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает программу с кодом выхода 1 при ошибке выполнения скриптов.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15600756"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600772",
+              "kind": "action",
+              "label": "Обработка результата GetFinalDOM",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 55,
+                "end_line": 55
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет финальное DOM-дерево в переменную finalDOM.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600772"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:GetFinalDOM:15600784",
+                  "kind": "call",
+                  "label": "Вызов GetFinalDOM",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 55,
+                    "end_line": 55
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                  "summary": "Получает финальное состояние DOM после выполнения всех скриптов.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                      "file": "internal/js/dom_style.go",
+                      "label": "→ GetFinalDOM in internal/js/dom_style.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600803",
+              "kind": "action",
+              "label": "Обработка результата Compute",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 57,
+                "end_line": 57
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет вычисленные стили в переменную styles.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600803"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:Compute:15600813",
+                  "kind": "call",
+                  "label": "Вызов Compute",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 57,
+                    "end_line": 57
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.Compute",
+                  "summary": "Вычисляет CSS-стили для финального DOM-дерева.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.Compute",
+                      "file": "internal/css/computed.go",
+                      "label": "→ Compute in internal/css/computed.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600836",
+              "kind": "action",
+              "label": "Обработка результата Build",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 58,
+                "end_line": 58
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет построенный макет в переменную box.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600836"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:Build:15600843",
+                  "kind": "call",
+                  "label": "Вызов Build",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 58,
+                    "end_line": 58
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.Build",
+                  "summary": "Строит макет страницы на основе DOM, стилей и ширины области просмотра.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.Build",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ Build in internal/layout/layout.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600890",
+              "kind": "action",
+              "label": "Обработка результата первого Render",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 59,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет рендеризированный буфер в переменную fb.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600890"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:Render:15600896",
+                  "kind": "call",
+                  "label": "Вызов Render (первый)",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 59,
+                    "end_line": 59
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/render.Render",
+                  "summary": "Рендерит макет в форматированный буфер для отображения.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/render.Render",
+                      "file": "internal/render/render.go",
+                      "label": "→ Render in internal/render/render.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15600931",
+              "kind": "action",
+              "label": "Обработка результата второго Render",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 60,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Сохраняет массив строк в переменную lines.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15600931"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:Render:15600940",
+                  "kind": "call",
+                  "label": "Вызов Render (второй)",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 60,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+                  "summary": "Преобразует буфер в строковые строки для ASCII-вывода.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.Render",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ Render in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:cmd/external_test/main.go:15600979",
+              "kind": "loop",
+              "label": "Цикл по строкам вывода",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 62,
+                "end_line": 64
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерируется по массиву строк для вывода каждой строки на экран.",
+              "coverage_ids": [
+                "loop:cmd/external_test/main.go:15600979"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/external_test/main.go:15601007",
+                  "kind": "action",
+                  "label": "Вывод строки в цикле",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 63,
+                    "end_line": 63
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит текущую строку на стандартный вывод.",
+                  "coverage_ids": [
+                    "statement:cmd/external_test/main.go:15601007"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/external_test/main.go:15601026",
+              "kind": "action",
+              "label": "Завершающий вывод",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 65,
+                "end_line": 65
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выводит маркер завершения выполнения программы.",
+              "coverage_ids": [
+                "statement:cmd/external_test/main.go:15601026"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,7 @@
+coverage:
+  unit_threshold: 70
+  integration_gap_threshold: 5
+  unit_path: coverage.out
+  integration_path: integration-coverage.out
+  unit_command: go test -coverprofile=coverage.out ./internal/...
+  integration_command: ""

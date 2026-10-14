@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Graphloom</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #09090b; color: #e4e4e7; font: 14px/1.5 system-ui, sans-serif; overflow: hidden; }
+  #bar { position: fixed; top: 0; left: 0; right: 0; min-height: 42px; padding: 6px 12px; background: rgba(9,9,11,.94);
+         border-bottom: 1px solid #27272a; display: flex; gap: 8px; align-items: center; z-index: 5; }
+  #bar h1 { font-size: 14px; font-weight: 600; white-space: nowrap; }
+  #bar .crumb { min-width: 0; flex: 1; font-size: 12px; color: #a1a1aa; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #layers { display: flex; flex: 0 0 auto; gap: 7px; align-items: center; }
+  .lchk { font-size: 11px; color: #a1a1aa; display: flex; gap: 3px; align-items: center; cursor: pointer; white-space: nowrap; }
+  #search { flex: 0 0 150px; background: #18181b; border: 1px solid #3f3f46; border-radius: 6px; color: #e4e4e7;
+            padding: 4px 8px; font-size: 12px; width: 150px; }
+  .nav { background: #27272a; border: none; color: #e4e4e7; border-radius: 6px; padding: 4px 9px;
+         cursor: pointer; font-size: 12px; }
+  .nav:disabled { opacity: .4; cursor: default; }
+  #stage { position: fixed; inset: 0; top: 42px; overflow: auto; padding: 24px 0 40px; }
+  svg { display: block; }
+  .node { cursor: pointer; }
+  .node rect, .node polygon { transition: filter .15s; }
+  .node:hover rect, .node:hover polygon { filter: brightness(1.25); }
+  .node.dim, .edge.dim { opacity: .12; }
+  .edge { stroke: #52525b; stroke-width: 1.5; fill: none; }
+  .edge.inferred { stroke-dasharray: 5 4; }
+  .elabel-bg { fill: #09090b; stroke: #27272a; stroke-width: 1; }
+  .elabel { font-size: 10px; fill: #a1a1aa; }
+  .nlabel { font-size: 12px; fill: #f4f4f5; font-weight: 500; }
+  .nsummary { font-size: 10px; fill: #71717a; }
+  .nkind { font-size: 11px; }
+  .hit { stroke: #facc15; stroke-width: 2.5; }
+  .step { fill: #27272a; stroke: #3f3f46; stroke-width: 1; }
+  .step-num { fill: #a1a1aa; font-size: 10px; font-weight: 600; }
+  #sidebar { position: fixed; top: 42px; right: 0; bottom: 0; width: 380px; background: #18181b;
+             border-left: 1px solid #27272a; padding: 16px; overflow: auto; display: none; z-index: 6; }
+  #sidebar h2 { font-size: 16px; margin-bottom: 2px; padding-right: 20px; }
+  #sidebar .meta { font-size: 12px; color: #a1a1aa; margin-bottom: 10px; }
+  #close { position: absolute; top: 10px; right: 12px; cursor: pointer; color: #71717a;
+           background: none; border: none; font-size: 16px; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; margin-right: 4px; }
+  .chip.on { background: #064e3b; color: #6ee7b7; }
+  .chip.off { background: #27272a; color: #71717a; }
+  pre.code { margin-top: 12px; background: #09090b; border: 1px solid #27272a; border-radius: 8px;
+             padding: 10px; font: 11px/1.6 ui-monospace, monospace; overflow: auto; }
+  pre.code .ln { color: #52525b; display: inline-block; width: 34px; user-select: none; }
+  pre.code .hl { background: #27272a; display: block; }
+  .expand { margin-top: 10px; background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+            padding: 5px 12px; cursor: pointer; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <h1>Graphloom</h1>
+  <button class="nav" id="back">←</button>
+  <button class="nav" id="fwd">→</button>
+  <span class="crumb" id="crumb"></span>
+  <span id="layers"></span>
+  <input id="search" placeholder="Поиск…" />
+</div>
+<div id="stage"><svg id="svg"></svg></div>
+<div id="sidebar">
+  <button id="close" aria-label="Закрыть">×</button>
+  <h2 id="s-title"></h2>
+  <div class="meta" id="s-meta"></div>
+  <div id="s-tests"></div>
+  <p id="s-summary" style="margin-top:8px;font-size:13px"></p>
+  <div id="s-extra"></div>
+  <pre class="code" id="s-code" style="display:none"></pre>
+</div>
+<script>
+const viz = {"title":"DOM API Implementation","level":"file","nodes":[{"id":"package-js","kind":"group","label":"Пакет и импорты","layer":"flow","source":{"file":"internal/js/dom.go","start_line":1,"end_line":30},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"global-state","kind":"state","label":"Глобальное состояние DOM","layer":"state","source":{"file":"internal/js/dom.go","start_line":32,"end_line":68},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"context-mgmt","kind":"action","label":"Управление контекстом JSC","layer":"flow","source":{"file":"internal/js/dom.go","start_line":70,"end_line":100},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"dirty-flag","kind":"state","label":"Флаг изменения DOM","layer":"state","source":{"file":"internal/js/dom.go","start_line":102,"end_line":118},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"dom-init","kind":"action","label":"Инициализация DOM","layer":"flow","source":{"file":"internal/js/dom.go","start_line":120,"end_line":143},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"node-creation","kind":"action","label":"Создание узлов DOM","layer":"flow","source":{"file":"internal/js/dom.go","start_line":145,"end_line":270},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"node-manipulation","kind":"action","label":"Манипуляции узлами DOM","layer":"flow","source":{"file":"internal/js/dom.go","start_line":272,"end_line":460},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"content-ops","kind":"action","label":"Работа с содержимым узлов","layer":"flow","source":{"file":"internal/js/dom.go","start_line":462,"end_line":500},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"query-ops","kind":"action","label":"Поиск элементов DOM","layer":"flow","source":{"file":"internal/js/dom.go","start_line":502,"end_line":574},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"event-system","kind":"action","label":"Система событий","layer":"flow","source":{"file":"internal/js/dom.go","start_line":576,"end_line":658},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"css-bridge","kind":"action","label":"Мост для CSS-стилей","layer":"flow","source":{"file":"internal/js/dom.go","start_line":660,"end_line":700},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"layout-bridge","kind":"action","label":"Мост для layout-информации","layer":"flow","source":{"file":"internal/js/dom.go","start_line":702,"end_line":730},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"insert-ops","kind":"action","label":"Вставка элементов DOM","layer":"flow","source":{"file":"internal/js/dom.go","start_line":732,"end_line":820},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"clone-node","kind":"action","label":"Клонирование узлов","layer":"flow","source":{"file":"internal/js/dom.go","start_line":822,"end_line":840},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"timer-system","kind":"action","label":"Система таймеров","layer":"flow","source":{"file":"internal/js/dom.go","start_line":842,"end_line":920},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"serialization","kind":"action","label":"Сериализация DOM в HTML","layer":"flow","source":{"file":"internal/js/dom.go","start_line":922,"end_line":980},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"js-bridge","kind":"action","label":"Мост для JS-объектов","layer":"flow","source":{"file":"internal/js/dom.go","start_line":982,"end_line":1050},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"script-execution","kind":"action","label":"Выполнение скриптов","layer":"flow","source":{"file":"internal/js/dom.go","start_line":1052,"end_line":1120},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]}],"edges":[{"from":"package-js","to":"global-state","label":"Инициализация","status":"inferred"},{"from":"global-state","to":"context-mgmt","label":"Управление контекстом","status":"inferred"},{"from":"context-mgmt","to":"dirty-flag","label":"Отслеживание изменений","status":"inferred"},{"from":"dirty-flag","to":"dom-init","label":"Инициализация","status":"inferred"},{"from":"dom-init","to":"node-creation","label":"Создание узлов","status":"inferred"},{"from":"node-creation","to":"node-manipulation","label":"Манипуляции","status":"inferred"},{"from":"node-manipulation","to":"content-ops","label":"Работа с контентом","status":"inferred"},{"from":"content-ops","to":"query-ops","label":"Поиск элементов","status":"inferred"},{"from":"query-ops","to":"event-system","label":"События","status":"inferred"},{"from":"event-system","to":"css-bridge","label":"CSS-стилизация","status":"inferred"},{"from":"css-bridge","to":"layout-bridge","label":"Layout-информация","status":"inferred"},{"from":"layout-bridge","to":"insert-ops","label":"Вставка элементов","status":"inferred"},{"from":"insert-ops","to":"clone-node","label":"Клонирование","status":"inferred"},{"from":"clone-node","to":"timer-system","label":"Таймеры","status":"inferred"},{"from":"timer-system","to":"serialization","label":"Сериализация","status":"inferred"},{"from":"serialization","to":"js-bridge","label":"JS-объекты","status":"inferred"},{"from":"js-bridge","to":"script-execution","label":"Выполнение скриптов","status":"inferred"}]};
+const palette = [{"type":"service","label":"Сервис","color":"#3b82f6","icon":"Settings2","description":"Самостоятельный сервис или приложение"},{"type":"database","label":"База данных","color":"#10b981","icon":"Database","description":"Хранилище данных, слой доступа к БД"},{"type":"module","label":"Модуль","color":"#a78bfa","icon":"Box","description":"Внутренний модуль или пакет"},{"type":"library","label":"Библиотека","color":"#f59e0b","icon":"Library","description":"Переиспользуемая библиотека"},{"type":"entrypoint","label":"Точка входа","color":"#ef4444","icon":"Rocket","description":"main / CLI / server entrypoint"}];
+const sources = {"internal/js/dom.go":"package js\n\n/*\n#include <JavaScriptCore/JavaScriptCore.h>\n\nextern void _protectValue(JSContextRef ctx, JSValueRef value);\nextern void _unprotectValue(JSContextRef ctx, JSValueRef value);\nextern JSValueRef _callAsFunction(JSContextRef ctx, JSObjectRef func, JSObjectRef thisObj, size_t argCount, const JSValueRef args[], JSValueRef* exception);\nextern JSValueRef _makeString(JSContextRef ctx, const char* value);\nextern JSValueRef _makeBoolean(JSContextRef ctx, bool value);\nextern JSValueRef _evaluate(JSContextRef ctx, const char* script, const char* sourceURL, JSValueRef* exception);\n*/\nimport \"C\"\nimport (\n\t\"fmt\"\n\t\"io\"\n\t\"net/http\"\n\t\"net/url\"\n\t\"sort\"\n\t\"strings\"\n\t\"sync\"\n\t\"time\"\n\t\"unsafe\"\n\n\t\"github.com/starframe/abyss/internal/css\"\n\t\"github.com/starframe/abyss/internal/dom\"\n)\n\n// NodeID is a unique identifier for a DOM node.\ntype NodeID int\n\nvar (\n\tnodeMu     sync.Mutex\n\tnodeNextID NodeID\n\tnodes      = map[NodeID]*dom.Node{}\n\trootDoc    *dom.Node\n\n\t// Computed styles for getComputedStyle bridge\n\tcomputedStyles   map[*dom.Node]css.ComputedStyle\n\tcomputedStylesMu sync.Mutex\n\n\t// Layout boxes for getBoundingClientRect bridge\n\tlayoutBoxes   map[*dom.Node]Rect\n\tlayoutBoxesMu sync.Mutex\n\n\t// Event listeners: nodeID -> eventType -> callbacks\n\teventMu       sync.Mutex\n\teventListeners = map[NodeID]map[string][]C.JSObjectRef{}\n\teventCtx      C.JSGlobalContextRef\n\n\t// Current JSC context and URL for live re-rendering\n\tcurrentCtxMu sync.Mutex\n\tcurrentCtx   *Context\n\tcurrentURL   string\n\n\t// Dirty flag: true when DOM was modified and re-render is needed\n\tdirtyMu sync.Mutex\n\tdirty   bool\n\n\t// Timers for setTimeout/setInterval\n\ttimerMu     sync.Mutex\n\ttimers      []timer\n\tnextTimerID int\n)\n\n// timer represents a scheduled callback.\ntype timer struct {\n\tID       int\n\tCallback C.JSObjectRef\n\tDeadline time.Time\n\tInterval time.Duration\n\tRepeat   bool\n}\n\n// SetCurrentContext stores the active JSC context and URL for live re-rendering.\nfunc SetCurrentContext(ctx *Context, url string) {\n\tcurrentCtxMu.Lock()\n\tdefer currentCtxMu.Unlock()\n\tif currentCtx != nil && currentCtx != ctx {\n\t\tcurrentCtx.Close()\n\t}\n\tcurrentCtx = ctx\n\tcurrentURL = url\n}\n\n// GetCurrentContext returns the active JSC context and URL.\nfunc GetCurrentContext() (*Context, string) {\n\tcurrentCtxMu.Lock()\n\tdefer currentCtxMu.Unlock()\n\treturn currentCtx, currentURL\n}\n\n// CloseCurrentContext closes the active JSC context.\nfunc CloseCurrentContext() {\n\tcurrentCtxMu.Lock()\n\tdefer currentCtxMu.Unlock()\n\tif currentCtx != nil {\n\t\tcurrentCtx.Close()\n\t\tcurrentCtx = nil\n\t\tcurrentURL = \"\"\n\t}\n}\n\n// SetDirty marks the DOM as modified so the browser can re-render.\nfunc SetDirty() {\n\tdirtyMu.Lock()\n\tdirty = true\n\tdirtyMu.Unlock()\n}\n\n// IsDirty reports whether the DOM has been modified since the last render.\nfunc IsDirty() bool {\n\tdirtyMu.Lock()\n\tdefer dirtyMu.Unlock()\n\treturn dirty\n}\n\n// MarkClean clears the dirty flag after a render.\nfunc MarkClean() {\n\tdirtyMu.Lock()\n\tdirty = false\n\tdirtyMu.Unlock()\n}\n\n// InitDOM initializes the DOM state with a parsed document.\nfunc InitDOM(doc *dom.Node) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tnodes = map[NodeID]*dom.Node{}\n\tnodeNextID = 1\n\trootDoc = doc\n\n\t// Assign IDs to all nodes\n\tassignIDs(doc)\n}\n\n// assignIDs recursively assigns IDs to all nodes.\nfunc assignIDs(n *dom.Node) {\n\tid := nodeNextID\n\tnodeNextID++\n\tnodes[id] = n\n\tfor _, child := range n.Children {\n\t\tassignIDs(child)\n\t}\n}\n\n// createElement creates a new element node.\nfunc createElement(tagName string) *dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn := &dom.Node{\n\t\tType:       dom.ElementNode,\n\t\tTagName:    strings.ToLower(tagName),\n\t\tAttributes: map[string]string{},\n\t\tChildren:   []*dom.Node{},\n\t}\n\n\tid := nodeNextID\n\tnodeNextID++\n\tnodes[id] = n\n\n\treturn n\n}\n\n// createTextNode creates a new text node.\nfunc createTextNode(text string) *dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn := &dom.Node{\n\t\tType: dom.TextNode,\n\t\tText: text,\n\t}\n\n\tid := nodeNextID\n\tnodeNextID++\n\tnodes[id] = n\n\n\treturn n\n}\n\n// createDocumentFragment creates a new document fragment node.\nfunc createDocumentFragment() *dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn := &dom.Node{\n\t\tType:       dom.DocumentFragmentNode,\n\t\tTagName:    \"#document-fragment\",\n\t\tAttributes: map[string]string{},\n\t\tChildren:   []*dom.Node{},\n\t}\n\n\tid := nodeNextID\n\tnodeNextID++\n\tnodes[id] = n\n\n\treturn n\n}\n\n// removeNodeFromParentLocked removes a node from its current parent.\n// Caller must hold nodeMu.\nfunc removeNodeFromParentLocked(child *dom.Node) {\n\tif child.Parent == nil {\n\t\treturn\n\t}\n\toldParent := child.Parent\n\tfor i, c := range oldParent.Children {\n\t\tif c == child {\n\t\t\toldParent.Children = append(oldParent.Children[:i], oldParent.Children[i+1:]...)\n\t\t\tbreak\n\t\t}\n\t}\n}\n\n// moveAllChildren moves all children from source to parent.\n// Caller must hold nodeMu.\nfunc moveAllChildren(parent, source *dom.Node) {\n\tchildren := make([]*dom.Node, len(source.Children))\n\tcopy(children, source.Children)\n\tfor _, child := range children {\n\t\tchild.Parent = nil\n\t\tchild.Parent = parent\n\t\tparent.Children = append(parent.Children, child)\n\t}\n\tsource.Children = nil\n}\n\n// appendChild adds a child to a parent node. Document fragments are unwrapped.\nfunc appendChild(parentID, childID NodeID) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tparent, ok := nodes[parentID]\n\tif !ok {\n\t\treturn\n\t}\n\tchild, ok := nodes[childID]\n\tif !ok {\n\t\treturn\n\t}\n\n\tif child.Type == dom.DocumentFragmentNode {\n\t\tmoveAllChildren(parent, child)\n\t\treturn\n\t}\n\n\tremoveNodeFromParentLocked(child)\n\tchild.Parent = parent\n\tparent.Children = append(parent.Children, child)\n}\n\n// setInnerHTML sets the inner HTML of a node.\nfunc setInnerHTML(id NodeID, html string) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tnode, ok := nodes[id]\n\tif !ok {\n\t\treturn\n\t}\n\n\t// Parse the HTML\n\tdoc := dom.Parse(html)\n\tchildren := doc.Children\n\n\t// Clear existing children\n\tfor _, child := range node.Children {\n\t\tchild.Parent = nil\n\t}\n\tnode.Children = nil\n\n\t// Add new children\n\tfor _, child := range children {\n\t\tchild.Parent = node\n\t\tnode.Children = append(node.Children, child)\n\t}\n\n\t// Assign IDs to new nodes\n\tassignIDsToNew(doc)\n}\n\n// assignIDsToNew assigns IDs to nodes that don't have one yet.\nfunc assignIDsToNew(n *dom.Node) {\n\t// Check if this node already has an ID\n\tfound := false\n\tfor _, existing := range nodes {\n\t\tif existing == n {\n\t\t\tfound = true\n\t\t\tbreak\n\t\t}\n\t}\n\tif !found {\n\t\tid := nodeNextID\n\t\tnodeNextID++\n\t\tnodes[id] = n\n\t}\n\n\tfor _, child := range n.Children {\n\t\tassignIDsToNew(child)\n\t}\n}\n\n// setAttribute sets an attribute on a node.\nfunc setAttribute(id NodeID, name, value string) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tnode, ok := nodes[id]\n\tif !ok {\n\t\treturn\n\t}\n\tif node.Attributes == nil {\n\t\tnode.Attributes = map[string]string{}\n\t}\n\tnode.Attributes[strings.ToLower(name)] = value\n}\n\n// setTextContent sets the text content of a node.\nfunc setTextContent(id NodeID, text string) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tnode, ok := nodes[id]\n\tif !ok {\n\t\treturn\n\t}\n\n\t// Clear existing children\n\tfor _, child := range node.Children {\n\t\tchild.Parent = nil\n\t}\n\tnode.Children = nil\n\n\t// Create a text node\n\ttn := &dom.Node{\n\t\tType:   dom.TextNode,\n\t\tText:   text,\n\t\tParent: node,\n\t}\n\tnode.Children = append(node.Children, tn)\n\n\ttnID := nodeNextID\n\tnodeNextID++\n\tnodes[tnID] = tn\n}\n\n// getBody returns the body element of the document.\nfunc getBody() *dom.Node {\n\tif rootDoc == nil {\n\t\treturn nil\n\t}\n\tfor _, child := range rootDoc.Children {\n\t\tif child.Type == dom.ElementNode && child.TagName == \"html\" {\n\t\t\tfor _, gc := range child.Children {\n\t\t\t\tif gc.Type == dom.ElementNode && gc.TagName == \"body\" {\n\t\t\t\t\treturn gc\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\treturn nil\n}\n\n// getNodeID returns the ID of a node.\nfunc getNodeID(n *dom.Node) NodeID {\n\tfor id, node := range nodes {\n\t\tif node == n {\n\t\t\treturn id\n\t\t}\n\t}\n\treturn -1\n}\n\n// getElementByID returns an element by its id attribute.\nfunc getElementByID(id string) *dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tfor _, n := range nodes {\n\t\tif n.Type == dom.ElementNode && n.GetAttr(\"id\") == id {\n\t\t\treturn n\n\t\t}\n\t}\n\treturn nil\n}\n\n// getAttribute returns an attribute value from a node.\nfunc getAttribute(id NodeID, name string) string {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[id]\n\tif !ok {\n\t\treturn \"\"\n\t}\n\treturn n.GetAttr(name)\n}\n\n// removeChild removes a child from a parent node.\nfunc removeChild(parentID, childID NodeID) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tparent, ok := nodes[parentID]\n\tif !ok {\n\t\treturn\n\t}\n\tchild, ok := nodes[childID]\n\tif !ok {\n\t\treturn\n\t}\n\n\tfor i, c := range parent.Children {\n\t\tif c == child {\n\t\t\tparent.Children = append(parent.Children[:i], parent.Children[i+1:]...)\n\t\t\tchild.Parent = nil\n\t\t\treturn\n\t\t}\n\t}\n}\n\n// getParentNode returns the parent of a node.\nfunc getParentNode(id NodeID) *dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[id]\n\tif !ok {\n\t\treturn nil\n\t}\n\treturn n.Parent\n}\n\n// getChildren returns the children of a node.\nfunc getChildren(id NodeID) []*dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[id]\n\tif !ok {\n\t\treturn nil\n\t}\n\treturn n.Children\n}\n\n// getInnerHTML returns the inner HTML of a node.\nfunc getInnerHTML(id NodeID) string {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[id]\n\tif !ok {\n\t\treturn \"\"\n\t}\n\tvar b strings.Builder\n\tfor _, child := range n.Children {\n\t\tserializeNode(&b, child)\n\t}\n\treturn b.String()\n}\n\n// getTextContent returns the text content of a node.\nfunc getTextContent(id NodeID) string {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[id]\n\tif !ok {\n\t\treturn \"\"\n\t}\n\treturn collectText(n)\n}\n\n// collectText recursively collects text from a node and its children.\nfunc collectText(n *dom.Node) string {\n\tif n.Type == dom.TextNode {\n\t\treturn n.Text\n\t}\n\tvar b strings.Builder\n\tfor _, child := range n.Children {\n\t\tb.WriteString(collectText(child))\n\t}\n\treturn b.String()\n}\n\n// serializeNode serializes a DOM node to HTML.\nfunc serializeNode(b *strings.Builder, n *dom.Node) {\n\tswitch n.Type {\n\tcase dom.TextNode:\n\t\tb.WriteString(escapeHTML(n.Text))\n\tcase dom.ElementNode:\n\t\tb.WriteString(\"<\")\n\t\tb.WriteString(n.TagName)\n\t\t// Sort attributes for deterministic output\n\t\tattrKeys := make([]string, 0, len(n.Attributes))\n\t\tfor k := range n.Attributes {\n\t\t\tattrKeys = append(attrKeys, k)\n\t\t}\n\t\tsort.Strings(attrKeys)\n\t\tfor _, k := range attrKeys {\n\t\t\tv := n.Attributes[k]\n\t\t\tb.WriteString(\" \")\n\t\t\tb.WriteString(k)\n\t\t\tif v != \"\" {\n\t\t\t\tb.WriteString(\"=\\\"\")\n\t\t\t\tb.WriteString(escapeHTML(v))\n\t\t\t\tb.WriteString(\"\\\"\")\n\t\t\t}\n\t\t}\n\t\tif len(n.Children) == 0 && voidElements[n.TagName] {\n\t\t\tb.WriteString(\" />\")\n\t\t\treturn\n\t\t}\n\t\tb.WriteString(\">\")\n\t\tfor _, child := range n.Children {\n\t\t\tserializeNode(b, child)\n\t\t}\n\t\tb.WriteString(\"<\/\")\n\t\tb.WriteString(n.TagName)\n\t\tb.WriteString(\">\")\n\t}\n}\n\n// escapeHTML escapes special HTML characters.\nfunc escapeHTML(s string) string {\n\ts = strings.ReplaceAll(s, \"&\", \"&amp;\")\n\ts = strings.ReplaceAll(s, \"<\", \"&lt;\")\n\ts = strings.ReplaceAll(s, \">\", \"&gt;\")\n\ts = strings.ReplaceAll(s, \"\\\"\", \"&quot;\")\n\treturn s\n}\n\n// voidElements are HTML elements that don't need closing tags.\nvar voidElements = map[string]bool{\n\t\"area\": true, \"base\": true, \"br\": true, \"col\": true, \"embed\": true,\n\t\"hr\": true, \"img\": true, \"input\": true, \"link\": true, \"meta\": true,\n\t\"param\": true, \"source\": true, \"track\": true, \"wbr\": true,\n}\n\n// getElementsByTagName returns all elements with the given tag name.\nfunc getElementsByTagName(tagName string) []*dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\ttagName = strings.ToLower(tagName)\n\tvar result []*dom.Node\n\tfor _, n := range nodes {\n\t\tif n.Type == dom.ElementNode && strings.ToLower(n.TagName) == tagName {\n\t\t\tresult = append(result, n)\n\t\t}\n\t}\n\treturn result\n}\n\n// getElementsByClassName returns all elements with the given class name.\nfunc getElementsByClassName(className string) []*dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tvar result []*dom.Node\n\tfor _, n := range nodes {\n\t\tif n.Type == dom.ElementNode {\n\t\t\tcls := n.GetAttr(\"class\")\n\t\t\tif cls != \"\" {\n\t\t\t\tclasses := strings.Fields(cls)\n\t\t\t\tfor _, c := range classes {\n\t\t\t\t\tif c == className {\n\t\t\t\t\t\tresult = append(result, n)\n\t\t\t\t\t\tbreak\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\treturn result\n}\n\n// querySelector returns the first element matching the CSS selector from the given node.\nfunc querySelector(nodeID NodeID, selector string) *dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[nodeID]\n\tif !ok || n == nil {\n\t\treturn nil\n\t}\n\n\treturn n.QuerySelector(selector)\n}\n\n// querySelectorAll returns all elements matching the CSS selector from the given node.\nfunc querySelectorAll(nodeID NodeID, selector string) []*dom.Node {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tn, ok := nodes[nodeID]\n\tif !ok || n == nil {\n\t\treturn nil\n\t}\n\n\treturn n.QueryAll(selector)\n}\n\n// InitEventSystem initializes the event system with a JSC context.\nfunc InitEventSystem(ctx C.JSGlobalContextRef) {\n\teventMu.Lock()\n\tdefer eventMu.Unlock()\n\teventCtx = ctx\n\teventListeners = map[NodeID]map[string][]C.JSObjectRef{}\n\n\ttimerMu.Lock()\n\ttimers = nil\n\tnextTimerID = 0\n\ttimerMu.Unlock()\n\n\tMarkClean()\n}\n\n// addEventListener registers a callback for an event on a node.\nfunc addEventListener(nodeID NodeID, eventType string, callback C.JSObjectRef) {\n\teventMu.Lock()\n\tdefer eventMu.Unlock()\n\n\tif eventListeners[nodeID] == nil {\n\t\teventListeners[nodeID] = map[string][]C.JSObjectRef{}\n\t}\n\teventListeners[nodeID][eventType] = append(eventListeners[nodeID][eventType], callback)\n\tC._protectValue(eventCtx, jsObjToVal(callback))\n}\n\n// removeEventListener removes a callback for an event on a node.\nfunc removeEventListener(nodeID NodeID, eventType string, callback C.JSObjectRef) {\n\teventMu.Lock()\n\tdefer eventMu.Unlock()\n\n\tbyType, ok := eventListeners[nodeID]\n\tif !ok {\n\t\treturn\n\t}\n\tcallbacks, ok := byType[eventType]\n\tif !ok {\n\t\treturn\n\t}\n\tfor i, cb := range callbacks {\n\t\tif cb == callback {\n\t\t\tbyType[eventType] = append(callbacks[:i], callbacks[i+1:]...)\n\t\t\tC._unprotectValue(eventCtx, jsObjToVal(cb))\n\t\t\tbreak\n\t\t}\n\t}\n}\n\n// dispatchEvent fires an event on a node, calling all registered listeners.\nfunc dispatchEvent(nodeID NodeID, eventType string) {\n\teventMu.Lock()\n\tbyType, ok := eventListeners[nodeID]\n\tif !ok {\n\t\teventMu.Unlock()\n\t\treturn\n\t}\n\tcallbacks, ok := byType[eventType]\n\tif !ok || len(callbacks) == 0 {\n\t\teventMu.Unlock()\n\t\treturn\n\t}\n\t// Copy callbacks to avoid holding lock during JS calls\n\tcbs := make([]C.JSObjectRef, len(callbacks))\n\tcopy(cbs, callbacks)\n\teventMu.Unlock()\n\n\t// Create event object\n\teventObj := makeEventObject(eventType)\n\n\tfor _, cb := range cbs {\n\t\tvar exc C.JSValueRef\n\t\tC._callAsFunction(eventCtx, cb, nil, 1, &eventObj, &exc)\n\n\t\t// Check if propagation was stopped\n\t\tpropName := C.JSStringCreateWithUTF8CString(C.CString(\"_propagationStopped\"))\n\t\tstoppedVal := C.JSObjectGetProperty(eventCtx, C.JSValueToObject(eventCtx, eventObj, nil), propName, nil)\n\t\tC.JSStringRelease(propName)\n\t\tif C.JSValueToBoolean(eventCtx, stoppedVal) {\n\t\t\tbreak\n\t\t}\n\t}\n}\n\n// makeEventObject creates a JS event object with the given type.\n// The event object has: type, defaultPrevented, preventDefault(), stopPropagation().\nfunc makeEventObject(eventType string) C.JSValueRef {\n\tctx := eventCtx\n\n\t// Create event object via JS evaluation for proper function support\n\tjs := `(function(type){\n\t\tvar e = {type:type, defaultPrevented:false, _propagationStopped:false};\n\t\te.preventDefault = function(){ e.defaultPrevented = true; };\n\t\te.stopPropagation = function(){ e._propagationStopped = true; };\n\t\treturn e;\n\t})(\"` + eventType + `\")`\n\n\tcjs := C.CString(js)\n\tdefer C.free(unsafe.Pointer(cjs))\n\n\tvar exc C.JSValueRef\n\tresult := C._evaluate(ctx, cjs, nil, &exc)\n\tif result == nil {\n\t\treturn C.JSValueMakeNull(ctx)\n\t}\n\treturn result\n}\n\n// SetComputedStyles stores the computed styles for getComputedStyle bridge.\nfunc SetComputedStyles(styles map[*dom.Node]css.ComputedStyle) {\n\tcomputedStylesMu.Lock()\n\tdefer computedStylesMu.Unlock()\n\tcomputedStyles = styles\n}\n\n// matches checks if a node matches a CSS selector.\nfunc matches(nodeID NodeID, selector string) bool {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn false\n\t}\n\treturn n.Matches(selector)\n}\n\n// closest returns the closest ancestor matching the selector.\nfunc closest(nodeID NodeID, selector string) *dom.Node {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn nil\n\t}\n\treturn n.Closest(selector)\n}\n\n// insertBefore inserts a new node before a reference node. Document fragments are unwrapped.\nfunc insertBefore(parentID, newNodeID, refNodeID NodeID) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tparent, ok := nodes[parentID]\n\tif !ok || parent == nil {\n\t\treturn\n\t}\n\tnewNode, ok := nodes[newNodeID]\n\tif !ok || newNode == nil {\n\t\treturn\n\t}\n\n\t// Find the reference node\n\tvar refNode *dom.Node\n\tif refNodeID >= 0 {\n\t\trefNode, _ = nodes[refNodeID]\n\t}\n\n\tif newNode.Type == dom.DocumentFragmentNode {\n\t\tinsertFragmentChildrenLocked(parent, newNode, refNode)\n\t\tcss.InvalidateCache()\n\t\treturn\n\t}\n\n\t// Remove newNode from its current parent if any\n\tif newNode.Parent != nil {\n\t\tnewNode.Parent.RemoveChild(newNode)\n\t}\n\n\t// Insert before refNode or append\n\tnewNode.Parent = parent\n\tif refNode != nil {\n\t\t// Find index of refNode in parent's children\n\t\tidx := -1\n\t\tfor i, child := range parent.Children {\n\t\t\tif child == refNode {\n\t\t\t\tidx = i\n\t\t\t\tbreak\n\t\t\t}\n\t\t}\n\t\tif idx >= 0 {\n\t\t\t// Insert at idx\n\t\t\tparent.Children = append(parent.Children[:idx], append([]*dom.Node{newNode}, parent.Children[idx:]...)...)\n\t\t} else {\n\t\t\tparent.Children = append(parent.Children, newNode)\n\t\t}\n\t} else {\n\t\tparent.Children = append(parent.Children, newNode)\n\t}\n\n\t// Invalidate CSS cache\n\tcss.InvalidateCache()\n}\n\n// insertFragmentChildrenLocked inserts all children of a fragment before refNode.\n// Caller must hold nodeMu.\nfunc insertFragmentChildrenLocked(parent, fragment, refNode *dom.Node) {\n\tchildren := make([]*dom.Node, len(fragment.Children))\n\tcopy(children, fragment.Children)\n\tif refNode != nil {\n\t\tidx := -1\n\t\tfor i, child := range parent.Children {\n\t\t\tif child == refNode {\n\t\t\t\tidx = i\n\t\t\t\tbreak\n\t\t\t}\n\t\t}\n\t\tif idx >= 0 {\n\t\t\tbefore := parent.Children[:idx]\n\t\t\tafter := parent.Children[idx:]\n\t\t\tfor _, child := range children {\n\t\t\t\tchild.Parent = parent\n\t\t\t}\n\t\t\tparent.Children = append(before, append(children, after...)...)\n\t\t\tfragment.Children = nil\n\t\t\treturn\n\t\t}\n\t}\n\tfor _, child := range children {\n\t\tchild.Parent = parent\n\t\tparent.Children = append(parent.Children, child)\n\t}\n\tfragment.Children = nil\n}\n\n// replaceChild replaces a child node with a new one. Document fragments are unwrapped.\nfunc replaceChild(parentID, newNodeID, oldNodeID NodeID) {\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tparent, ok := nodes[parentID]\n\tif !ok || parent == nil {\n\t\treturn\n\t}\n\tnewNode, ok := nodes[newNodeID]\n\tif !ok || newNode == nil {\n\t\treturn\n\t}\n\toldNode, ok := nodes[oldNodeID]\n\tif !ok || oldNode == nil {\n\t\treturn\n\t}\n\n\tif newNode.Type == dom.DocumentFragmentNode {\n\t\tidx := -1\n\t\tfor i, child := range parent.Children {\n\t\t\tif child == oldNode {\n\t\t\t\tidx = i\n\t\t\t\tbreak\n\t\t\t}\n\t\t}\n\t\tif idx < 0 {\n\t\t\treturn\n\t\t}\n\t\toldNode.Parent = nil\n\t\tchildren := make([]*dom.Node, len(newNode.Children))\n\t\tcopy(children, newNode.Children)\n\t\tfor _, child := range children {\n\t\t\tchild.Parent = parent\n\t\t}\n\t\tbefore := parent.Children[:idx]\n\t\tafter := parent.Children[idx+1:]\n\t\tparent.Children = append(before, append(children, after...)...)\n\t\tnewNode.Children = nil\n\t\tcss.InvalidateCache()\n\t\treturn\n\t}\n\n\t// Remove newNode from its current parent if any\n\tif newNode.Parent != nil {\n\t\tnewNode.Parent.RemoveChild(newNode)\n\t}\n\n\t// Find and replace oldNode\n\tfor i, child := range parent.Children {\n\t\tif child == oldNode {\n\t\t\tnewNode.Parent = parent\n\t\t\toldNode.Parent = nil\n\t\t\tparent.Children[i] = newNode\n\t\t\tbreak\n\t\t}\n\t}\n\n\t// Invalidate CSS cache\n\tcss.InvalidateCache()\n}\n\n// setTimeout registers a callback to be called after delayMs milliseconds.\nfunc setTimeout(callback C.JSObjectRef, delayMs int) int {\n\ttimerMu.Lock()\n\tdefer timerMu.Unlock()\n\n\tnextTimerID++\n\tid := nextTimerID\n\tC._protectValue(eventCtx, jsObjToVal(callback))\n\ttimers = append(timers, timer{\n\t\tID:       id,\n\t\tCallback: callback,\n\t\tDeadline: time.Now().Add(time.Duration(delayMs) * time.Millisecond),\n\t\tInterval: time.Duration(delayMs) * time.Millisecond,\n\t\tRepeat:   false,\n\t})\n\treturn id\n}\n\n// setInterval registers a callback to be called every delayMs milliseconds.\nfunc setInterval(callback C.JSObjectRef, delayMs int) int {\n\ttimerMu.Lock()\n\tdefer timerMu.Unlock()\n\n\tnextTimerID++\n\tid := nextTimerID\n\tC._protectValue(eventCtx, jsObjToVal(callback))\n\ttimers = append(timers, timer{\n\t\tID:       id,\n\t\tCallback: callback,\n\t\tDeadline: time.Now().Add(time.Duration(delayMs) * time.Millisecond),\n\t\tInterval: time.Duration(delayMs) * time.Millisecond,\n\t\tRepeat:   true,\n\t})\n\treturn id\n}\n\n// clearTimer removes a timer by ID.\nfunc clearTimer(id int) {\n\ttimerMu.Lock()\n\tdefer timerMu.Unlock()\n\n\tfor i, t := range timers {\n\t\tif t.ID == id {\n\t\t\tC._unprotectValue(eventCtx, jsObjToVal(t.Callback))\n\t\t\ttimers = append(timers[:i], timers[i+1:]...)\n\t\t\treturn\n\t\t}\n\t}\n}\n\n// ProcessTimers executes all ready timers. Must be called with current context active.\nfunc ProcessTimers() bool {\n\ttimerMu.Lock()\n\tnow := time.Now()\n\tvar ready []timer\n\tvar remaining []timer\n\tfor _, t := range timers {\n\t\tif now.After(t.Deadline) || now.Equal(t.Deadline) {\n\t\t\tready = append(ready, t)\n\t\t} else {\n\t\t\tremaining = append(remaining, t)\n\t\t}\n\t}\n\ttimers = remaining\n\ttimerMu.Unlock()\n\n\tif len(ready) == 0 {\n\t\treturn false\n\t}\n\n\texecuted := false\n\tfor _, t := range ready {\n\t\tvar exc C.JSValueRef\n\t\tC._callAsFunction(eventCtx, t.Callback, nil, 0, nil, &exc)\n\t\texecuted = true\n\t\tif t.Repeat {\n\t\t\tt.Deadline = now.Add(t.Interval)\n\t\t\ttimerMu.Lock()\n\t\t\ttimers = append(timers, t)\n\t\t\ttimerMu.Unlock()\n\t\t} else {\n\t\t\tC._unprotectValue(eventCtx, jsObjToVal(t.Callback))\n\t\t}\n\t}\n\treturn executed\n}\n\n// cloneNode creates a deep or shallow clone of a node.\nfunc cloneNode(nodeID NodeID, deep bool) *dom.Node {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn nil\n\t}\n\n\tclone := n.Clone(deep)\n\tif clone == nil {\n\t\treturn nil\n\t}\n\n\t// Register the clone in the node map\n\tnodeMu.Lock()\n\tid := nodeNextID\n\tnodeNextID++\n\tnodes[id] = clone\n\tnodeMu.Unlock()\n\n\treturn clone\n}\n\n// contains checks if a node contains another node (including self).\nfunc contains(parentID, childID NodeID) bool {\n\tif parentID == childID {\n\t\treturn true\n\t}\n\tnodeMu.Lock()\n\tparent, ok := nodes[parentID]\n\tchild, ok2 := nodes[childID]\n\tnodeMu.Unlock()\n\tif !ok || !ok2 || parent == nil || child == nil {\n\t\treturn false\n\t}\n\tfor cur := child; cur != nil; cur = cur.Parent {\n\t\tif cur == parent {\n\t\t\treturn true\n\t\t}\n\t}\n\treturn false\n}\n\n// previousElementSibling returns the previous sibling that is an element node.\nfunc previousElementSibling(nodeID NodeID) *dom.Node {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil || n.Parent == nil {\n\t\treturn nil\n\t}\n\tparent := n.Parent\n\tfound := false\n\tfor i := len(parent.Children) - 1; i >= 0; i-- {\n\t\tchild := parent.Children[i]\n\t\tif child == n {\n\t\t\tfound = true\n\t\t\tcontinue\n\t\t}\n\t\tif found && child.Type == dom.ElementNode {\n\t\t\treturn child\n\t\t}\n\t}\n\treturn nil\n}\n\n// nextElementSibling returns the next sibling that is an element node.\nfunc nextElementSibling(nodeID NodeID) *dom.Node {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil || n.Parent == nil {\n\t\treturn nil\n\t}\n\tparent := n.Parent\n\tfound := false\n\tfor _, child := range parent.Children {\n\t\tif child == n {\n\t\t\tfound = true\n\t\t\tcontinue\n\t\t}\n\t\tif found && child.Type == dom.ElementNode {\n\t\t\treturn child\n\t\t}\n\t}\n\treturn nil\n}\n\n// firstElementChild returns the first child that is an element node.\nfunc firstElementChild(nodeID NodeID) *dom.Node {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn nil\n\t}\n\tfor _, child := range n.Children {\n\t\tif child.Type == dom.ElementNode {\n\t\t\treturn child\n\t\t}\n\t}\n\treturn nil\n}\n\n// lastElementChild returns the last child that is an element node.\nfunc lastElementChild(nodeID NodeID) *dom.Node {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn nil\n\t}\n\tfor i := len(n.Children) - 1; i >= 0; i-- {\n\t\tchild := n.Children[i]\n\t\tif child.Type == dom.ElementNode {\n\t\t\treturn child\n\t\t}\n\t}\n\treturn nil\n}\n\n// insertAdjacentHTML parses HTML and inserts it at the specified position.\n// Positions: beforebegin, afterbegin, beforeend, afterend\nfunc insertAdjacentHTML(nodeID NodeID, position, html string) {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn\n\t}\n\n\t// Parse the HTML\n\tfragment := dom.Parse(\"<fragment>\" + html + \"<\/fragment>\")\n\tif fragment == nil {\n\t\treturn\n\t}\n\n\t// Get the children of the fragment wrapper\n\tvar newNodes []*dom.Node\n\tfor _, child := range fragment.Children {\n\t\tif child.Type == dom.ElementNode {\n\t\t\tnewNodes = append(newNodes, child)\n\t\t}\n\t}\n\tif len(newNodes) == 0 {\n\t\treturn\n\t}\n\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tswitch position {\n\tcase \"beforebegin\":\n\t\tif n.Parent != nil {\n\t\t\tparent := n.Parent\n\t\t\tidx := -1\n\t\t\tfor i, child := range parent.Children {\n\t\t\t\tif child == n {\n\t\t\t\t\tidx = i\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t}\n\t\t\tif idx >= 0 {\n\t\t\t\t// Insert before n\n\t\t\t\tbefore := parent.Children[:idx]\n\t\t\t\tafter := parent.Children[idx:]\n\t\t\t\tfor _, newNode := range newNodes {\n\t\t\t\t\tnewNode.Parent = parent\n\t\t\t\t}\n\t\t\t\tparent.Children = append(before, append(newNodes, after...)...)\n\t\t\t}\n\t\t}\n\n\tcase \"afterbegin\":\n\t\t// Insert as first children\n\t\tafter := n.Children\n\t\tfor _, newNode := range newNodes {\n\t\t\tnewNode.Parent = n\n\t\t}\n\t\tn.Children = append(newNodes, after...)\n\n\tcase \"beforeend\":\n\t\t// Append to children\n\t\tfor _, newNode := range newNodes {\n\t\t\tnewNode.Parent = n\n\t\t}\n\t\tn.Children = append(n.Children, newNodes...)\n\n\tcase \"afterend\":\n\t\tif n.Parent != nil {\n\t\t\tparent := n.Parent\n\t\t\tidx := -1\n\t\t\tfor i, child := range parent.Children {\n\t\t\t\tif child == n {\n\t\t\t\t\tidx = i\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t}\n\t\t\tif idx >= 0 {\n\t\t\t\t// Insert after n\n\t\t\t\tbefore := parent.Children[:idx+1]\n\t\t\t\tafter := parent.Children[idx+1:]\n\t\t\t\tfor _, newNode := range newNodes {\n\t\t\t\t\tnewNode.Parent = parent\n\t\t\t\t}\n\t\t\t\tparent.Children = append(before, append(newNodes, after...)...)\n\t\t\t}\n\t\t}\n\t}\n\n\t// Invalidate CSS cache\n\tcss.InvalidateCache()\n}\n\n// insertAdjacentText creates a text node and inserts it at the specified position.\nfunc insertAdjacentText(nodeID NodeID, position, text string) {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn\n\t}\n\n\ttextNode := &dom.Node{Type: dom.TextNode, Text: text}\n\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tswitch position {\n\tcase \"beforebegin\":\n\t\tif n.Parent != nil {\n\t\t\tparent := n.Parent\n\t\t\tidx := -1\n\t\t\tfor i, child := range parent.Children {\n\t\t\t\tif child == n {\n\t\t\t\t\tidx = i\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t}\n\t\t\tif idx >= 0 {\n\t\t\t\ttextNode.Parent = parent\n\t\t\t\tbefore := parent.Children[:idx]\n\t\t\t\tafter := parent.Children[idx:]\n\t\t\t\tparent.Children = append(before, append([]*dom.Node{textNode}, after...)...)\n\t\t\t}\n\t\t}\n\tcase \"afterbegin\":\n\t\ttextNode.Parent = n\n\t\tn.Children = append([]*dom.Node{textNode}, n.Children...)\n\tcase \"beforeend\":\n\t\ttextNode.Parent = n\n\t\tn.Children = append(n.Children, textNode)\n\tcase \"afterend\":\n\t\tif n.Parent != nil {\n\t\t\tparent := n.Parent\n\t\t\tidx := -1\n\t\t\tfor i, child := range parent.Children {\n\t\t\t\tif child == n {\n\t\t\t\t\tidx = i\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t}\n\t\t\tif idx >= 0 {\n\t\t\t\ttextNode.Parent = parent\n\t\t\t\tbefore := parent.Children[:idx+1]\n\t\t\t\tafter := parent.Children[idx+1:]\n\t\t\t\tparent.Children = append(before, append([]*dom.Node{textNode}, after...)...)\n\t\t\t}\n\t\t}\n\t}\n}\n\n// insertAdjacentElement inserts an existing element at the specified position.\nfunc insertAdjacentElement(nodeID, elemID NodeID, position string) {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\telem, ok2 := nodes[elemID]\n\tnodeMu.Unlock()\n\tif !ok || !ok2 || n == nil || elem == nil {\n\t\treturn\n\t}\n\n\t// Remove from current parent\n\tif elem.Parent != nil {\n\t\telem.Parent.RemoveChild(elem)\n\t}\n\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\tswitch position {\n\tcase \"beforebegin\":\n\t\tif n.Parent != nil {\n\t\t\tparent := n.Parent\n\t\t\tidx := -1\n\t\t\tfor i, child := range parent.Children {\n\t\t\t\tif child == n {\n\t\t\t\t\tidx = i\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t}\n\t\t\tif idx >= 0 {\n\t\t\t\telem.Parent = parent\n\t\t\t\tbefore := parent.Children[:idx]\n\t\t\t\tafter := parent.Children[idx:]\n\t\t\t\tparent.Children = append(before, append([]*dom.Node{elem}, after...)...)\n\t\t\t}\n\t\t}\n\tcase \"afterbegin\":\n\t\telem.Parent = n\n\t\tn.Children = append([]*dom.Node{elem}, n.Children...)\n\tcase \"beforeend\":\n\t\telem.Parent = n\n\t\tn.Children = append(n.Children, elem)\n\tcase \"afterend\":\n\t\tif n.Parent != nil {\n\t\t\tparent := n.Parent\n\t\t\tidx := -1\n\t\t\tfor i, child := range parent.Children {\n\t\t\t\tif child == n {\n\t\t\t\t\tidx = i\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t}\n\t\t\tif idx >= 0 {\n\t\t\t\telem.Parent = parent\n\t\t\t\tbefore := parent.Children[:idx+1]\n\t\t\t\tafter := parent.Children[idx+1:]\n\t\t\t\tparent.Children = append(before, append([]*dom.Node{elem}, after...)...)\n\t\t\t}\n\t\t}\n\t}\n\n\tcss.InvalidateCache()\n}\n\n// outerHTMLString returns the HTML serialization of a node.\nfunc outerHTMLString(nodeID NodeID) string {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn \"\"\n\t}\n\treturn n.OuterHTML()\n}\n\n// setOuterHTML replaces a node with parsed HTML.\nfunc setOuterHTML(nodeID NodeID, html string) {\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil || n.Parent == nil {\n\t\treturn\n\t}\n\n\tparent := n.Parent\n\tfragment := dom.Parse(\"<fragment>\" + html + \"<\/fragment>\")\n\tif fragment == nil {\n\t\treturn\n\t}\n\n\tvar newNodes []*dom.Node\n\tfor _, child := range fragment.Children {\n\t\tif child.Type == dom.ElementNode {\n\t\t\tnewNodes = append(newNodes, child)\n\t\t}\n\t}\n\tif len(newNodes) == 0 {\n\t\treturn\n\t}\n\n\tnodeMu.Lock()\n\tdefer nodeMu.Unlock()\n\n\t// Find index of n in parent\n\tidx := -1\n\tfor i, child := range parent.Children {\n\t\tif child == n {\n\t\t\tidx = i\n\t\t\tbreak\n\t\t}\n\t}\n\tif idx < 0 {\n\t\treturn\n\t}\n\n\t// Remove n\n\tn.Parent = nil\n\tparent.Children = append(parent.Children[:idx], parent.Children[idx+1:]...)\n\n\t// Insert new nodes at idx\n\tfor _, newNode := range newNodes {\n\t\tnewNode.Parent = parent\n\t}\n\tbefore := parent.Children[:idx]\n\tafter := parent.Children[idx:]\n\tparent.Children = append(before, append(newNodes, after...)...)\n\n\tcss.InvalidateCache()\n}\n\n// Rect represents a rectangle in the layout.\ntype Rect struct {\n\tX, Y, Width, Height float64\n}\n\n// SetLayoutBoxes stores the layout boxes for getBoundingClientRect.\nfunc SetLayoutBoxes(boxes map[*dom.Node]Rect) {\n\tlayoutBoxesMu.Lock()\n\tdefer layoutBoxesMu.Unlock()\n\tlayoutBoxes = boxes\n}\n\n// getBoundingClientRect returns the bounding rect of a node.\nfunc getBoundingClientRect(nodeID NodeID) Rect {\n\tlayoutBoxesMu.Lock()\n\tdefer layoutBoxesMu.Unlock()\n\n\tif layoutBoxes == nil {\n\t\treturn Rect{}\n\t}\n\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn Rect{}\n\t}\n\n\trect, ok := layoutBoxes[n]\n\tif !ok {\n\t\treturn Rect{}\n\t}\n\treturn rect\n}\n\n// getComputedStyle returns a JS object with computed CSS properties for a node.\nfunc getComputedStyle(nodeID NodeID) C.JSValueRef {\n\tcomputedStylesMu.Lock()\n\tdefer computedStylesMu.Unlock()\n\n\tif computedStyles == nil {\n\t\treturn C.JSValueMakeNull(eventCtx)\n\t}\n\n\tnodeMu.Lock()\n\tn, ok := nodes[nodeID]\n\tnodeMu.Unlock()\n\tif !ok || n == nil {\n\t\treturn C.JSValueMakeNull(eventCtx)\n\t}\n\n\tstyle, ok := computedStyles[n]\n\tif !ok {\n\t\treturn C.JSValueMakeNull(eventCtx)\n\t}\n\n\tctx := eventCtx\n\tobj := C.JSObjectMake(ctx, nil, nil)\n\n\t// Helper to set a string property\n\tsetStr := func(name, val string) {\n\t\tpn := C.JSStringCreateWithUTF8CString(C.CString(name))\n\t\tdefer C.JSStringRelease(pn)\n\t\tC.JSObjectSetProperty(ctx, obj, pn, C._makeString(ctx, C.CString(val)), C.kJSPropertyAttributeNone, nil)\n\t}\n\n\t// Helper to set a number property\n\tsetNum := func(name string, val float64) {\n\t\tpn := C.JSStringCreateWithUTF8CString(C.CString(name))\n\t\tdefer C.JSStringRelease(pn)\n\t\tC.JSObjectSetProperty(ctx, obj, pn, C.JSValueMakeNumber(ctx, C.double(val)), C.kJSPropertyAttributeNone, nil)\n\t}\n\n\t// Set display\n\tdisplayStr := \"block\"\n\tswitch style.Display {\n\tcase css.DisplayInline:\n\t\tdisplayStr = \"inline\"\n\tcase css.DisplayFlex:\n\t\tdisplayStr = \"flex\"\n\tcase css.DisplayGrid:\n\t\tdisplayStr = \"grid\"\n\tcase css.DisplayNone:\n\t\tdisplayStr = \"none\"\n\t}\n\tsetStr(\"display\", displayStr)\n\n\t// Set position\n\tposStr := \"static\"\n\tswitch style.Position {\n\tcase css.PositionRelative:\n\t\tposStr = \"relative\"\n\tcase css.PositionAbsolute:\n\t\tposStr = \"absolute\"\n\t}\n\tsetStr(\"position\", posStr)\n\n\t// Set overflow\n\toverflowStr := \"visible\"\n\tif style.Overflow == css.OverflowHidden {\n\t\toverflowStr = \"hidden\"\n\t}\n\tsetStr(\"overflow\", overflowStr)\n\n\t// Set width/height\n\tsetNum(\"width\", style.Width.Px)\n\tsetStr(\"widthUnit\", style.Width.String())\n\tsetNum(\"height\", style.Height.Px)\n\tsetStr(\"heightUnit\", style.Height.String())\n\n\t// Set colors\n\tsetStr(\"color\", style.Color.String())\n\tsetStr(\"backgroundColor\", style.BackgroundColor.String())\n\n\t// Set margins\n\tsetNum(\"marginTop\", style.Margin.Top.Px)\n\tsetNum(\"marginRight\", style.Margin.Right.Px)\n\tsetNum(\"marginBottom\", style.Margin.Bottom.Px)\n\tsetNum(\"marginLeft\", style.Margin.Left.Px)\n\n\t// Set paddings\n\tsetNum(\"paddingTop\", style.Padding.Top.Px)\n\tsetNum(\"paddingRight\", style.Padding.Right.Px)\n\tsetNum(\"paddingBottom\", style.Padding.Bottom.Px)\n\tsetNum(\"paddingLeft\", style.Padding.Left.Px)\n\n\t// Set borders\n\tsetNum(\"borderTopWidth\", style.BorderTop.Width)\n\tsetNum(\"borderRightWidth\", style.BorderRight.Width)\n\tsetNum(\"borderBottomWidth\", style.BorderBottom.Width)\n\tsetNum(\"borderLeftWidth\", style.BorderLeft.Width)\n\n\t// Set flex\n\tfdStr := \"row\"\n\tif style.FlexDirection == css.FlexDirectionColumn {\n\t\tfdStr = \"column\"\n\t}\n\tsetStr(\"flexDirection\", fdStr)\n\n\tjcStr := \"flex-start\"\n\tswitch style.JustifyContent {\n\tcase css.JustifyCenter:\n\t\tjcStr = \"center\"\n\tcase css.JustifyFlexEnd:\n\t\tjcStr = \"flex-end\"\n\tcase css.JustifySpaceBetween:\n\t\tjcStr = \"space-between\"\n\tcase css.JustifySpaceAround:\n\t\tjcStr = \"space-around\"\n\t}\n\tsetStr(\"justifyContent\", jcStr)\n\n\taiStr := \"stretch\"\n\tswitch style.AlignItems {\n\tcase css.AlignFlexStart:\n\t\taiStr = \"flex-start\"\n\tcase css.AlignCenter:\n\t\taiStr = \"center\"\n\tcase css.AlignFlexEnd:\n\t\taiStr = \"flex-end\"\n\t}\n\tsetStr(\"alignItems\", aiStr)\n\n\tsetNum(\"flexGrow\", style.FlexGrow)\n\tsetNum(\"flexShrink\", style.FlexShrink)\n\n\t// Set z-index\n\tsetNum(\"zIndex\", float64(style.ZIndex))\n\n\t// Set gap\n\tsetNum(\"gap\", style.Gap.Px)\n\n\treturn jsObjToVal(obj)\n}\n\n// nodeToJS creates a JS wrapper for a DOM node.\nfunc nodeToJS(ctx *Context, n *dom.Node) C.JSValueRef {\n\tid := getNodeID(n)\n\tif id < 0 {\n\t\treturn ctx.MakeNull()\n\t}\n\n\t// Create a JS object\n\tjsObj := C.JSObjectMake(ctx.ctx, nil, nil)\n\n\t// Set __go_id\n\tpropName := C.JSStringCreateWithUTF8CString(C.CString(\"__go_id\"))\n\tdefer C.JSStringRelease(propName)\n\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName, ctx.MakeNumber(float64(id)), C.kJSPropertyAttributeNone, nil)\n\n\t// Set nodeType\n\tpropName2 := C.JSStringCreateWithUTF8CString(C.CString(\"nodeType\"))\n\tdefer C.JSStringRelease(propName2)\n\tswitch n.Type {\n\tcase dom.ElementNode:\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName2, ctx.MakeNumber(1), C.kJSPropertyAttributeNone, nil)\n\tcase dom.TextNode:\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName2, ctx.MakeNumber(3), C.kJSPropertyAttributeNone, nil)\n\tcase dom.CommentNode:\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName2, ctx.MakeNumber(8), C.kJSPropertyAttributeNone, nil)\n\tcase dom.DocumentNode:\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName2, ctx.MakeNumber(9), C.kJSPropertyAttributeNone, nil)\n\tcase dom.DocumentFragmentNode:\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName2, ctx.MakeNumber(11), C.kJSPropertyAttributeNone, nil)\n\t}\n\n\t// Set tagName for elements\n\tif n.Type == dom.ElementNode {\n\t\tpropName3 := C.JSStringCreateWithUTF8CString(C.CString(\"tagName\"))\n\t\tdefer C.JSStringRelease(propName3)\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName3, ctx.MakeString(strings.ToUpper(n.TagName)), C.kJSPropertyAttributeNone, nil)\n\t}\n\n\t// Set textContent for text nodes\n\tif n.Type == dom.TextNode {\n\t\tpropName4 := C.JSStringCreateWithUTF8CString(C.CString(\"textContent\"))\n\t\tdefer C.JSStringRelease(propName4)\n\t\tC.JSObjectSetProperty(ctx.ctx, jsObj, propName4, ctx.MakeString(n.Text), C.kJSPropertyAttributeNone, nil)\n\t}\n\n\treturn jsObjToVal(jsObj)\n}\n\n// GetFinalDOM returns the final DOM tree after JS execution.\nfunc GetFinalDOM() *dom.Node {\n\treturn rootDoc\n}\n\n// ExecuteScripts executes all <script> tags in the document.\nfunc ExecuteScripts(ctx *Context, doc *dom.Node, baseURL string) error {\n\tscripts := doc.QueryAll(\"script\")\n\tfor _, script := range scripts {\n\t\tsrc := script.GetAttr(\"src\")\n\t\tif src != \"\" {\n\t\t\t// External script - fetch and evaluate\n\t\t\tcode, err := fetchScript(baseURL, src)\n\t\t\tif err != nil {\n\t\t\t\t// Silently skip - most pages have JS errors\n\t\t\t\tcontinue\n\t\t\t}\n\t\t\t_, err = ctx.Evaluate(code)\n\t\t\tif err != nil {\n\t\t\t\t// Silently skip - most pages have JS errors\n\t\t\t}\n\t\t\tcontinue\n\t\t}\n\t\t// Inline script\n\t\tcode := script.TextContent()\n\t\tif strings.TrimSpace(code) == \"\" {\n\t\t\tcontinue\n\t\t}\n\t\t_, err := ctx.Evaluate(code)\n\t\tif err != nil {\n\t\t\t// Silently skip - most pages have JS errors\n\t\t}\n\t}\n\treturn nil\n}\n\n// fetchScript fetches a script from the given URL, resolving relative URLs against the base.\nfunc fetchScript(baseURL, src string) (string, error) {\n\tbase, err := url.Parse(baseURL)\n\tif err != nil {\n\t\treturn \"\", fmt.Errorf(\"parse base URL %s: %w\", baseURL, err)\n\t}\n\tref, err := url.Parse(src)\n\tif err != nil {\n\t\treturn \"\", fmt.Errorf(\"parse script src %s: %w\", src, err)\n\t}\n\tresolved := base.ResolveReference(ref)\n\n\t// Use a short timeout for script fetching\n\tclient := &http.Client{Timeout: 3 * time.Second}\n\treq, reqErr := http.NewRequest(\"GET\", resolved.String(), nil)\n\tif reqErr != nil {\n\t\treturn \"\", reqErr\n\t}\n\treq.Header.Set(\"User-Agent\", \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15\")\n\tresp, respErr := client.Do(req)\n\tif respErr != nil {\n\t\treturn \"\", respErr\n\t}\n\tdefer resp.Body.Close()\n\tbody, readErr := io.ReadAll(resp.Body)\n\tif readErr != nil {\n\t\treturn \"\", readErr\n\t}\n\treturn string(body), nil\n}\n"};
+
+const KIND_STYLE = {
+  action:   { color: "#3b82f6", icon: "Play" },
+  decision: { color: "#f59e0b", icon: "GitBranch" },
+  call:     { color: "#8b5cf6", icon: "Code2" },
+  input:    { color: "#06b6d4", icon: "ArrowDownToLine" },
+  output:   { color: "#10b981", icon: "ArrowUpFromLine" },
+  state:    { color: "#eab308", icon: "CircleDot" },
+  storage:  { color: "#14b8a6", icon: "Database" },
+  external: { color: "#f97316", icon: "Globe" },
+  loop:     { color: "#84cc16", icon: "RefreshCw" },
+  error:    { color: "#ef4444", icon: "CircleAlert" },
+  async:    { color: "#ec4899", icon: "Zap" },
+  group:    { color: "#71717a", icon: "Layers3" }
+};
+const ICON_PATHS = {
+  Settings2: '<path d="M20 7h-9M14 17H4M17 3v8M7 13v8M20 17h-3M7 7H4"/><circle cx="14" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+  Database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>',
+  Box: '<path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',
+  Library: '<path d="m16 6 4 2v12l-4-2V6ZM4 4l4-1v13l-4 1V4ZM12 3l4 3v12l-4-3V3Z"/>',
+  Rocket: '<path d="M4.5 16.5c-1.5 1.3-2 3.5-2 3.5s2.2-.5 3.5-2c.7-.7.9-1.7.3-2.3s-1.1-.5-1.8.2Z"/><path d="m9 15-3-3 8-8c2-2 5-2 6-1-1 1-1 4-3 6l-8 8Z"/><path d="M14 6 8 4 4 8l6 2M18 10l2 6-4 4-2-6"/>',
+  Play: '<path d="m6 3 14 9-14 9V3Z"/>',
+  GitBranch: '<circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3M6 9a6 6 0 0 1 6-6h3"/>',
+  Code2: '<path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>',
+  ArrowDownToLine: '<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
+  ArrowUpFromLine: '<path d="M12 17V5M7 10l5-5 5 5M5 21h14"/>',
+  CircleDot: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
+  Globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',
+  RefreshCw: '<path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/>',
+  CircleAlert: '<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>',
+  Zap: '<path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/>',
+  Layers3: '<path d="m12 2 8 4-8 4-8-4 8-4Z"/><path d="m4 12 8 4 8-4M4 18l8 4 8-4"/>'
+};
+const paletteStyle = {};
+palette.forEach(p => { paletteStyle[p.type] = p; });
+const styleOf = n => (n.element_type && paletteStyle[n.element_type])
+  ? { color: paletteStyle[n.element_type].color, icon: paletteStyle[n.element_type].icon }
+  : KIND_STYLE[n.kind] || KIND_STYLE.action;
+
+const LAYERS = ["flow", "calls", "data", "state", "effects"];
+const activeLayers = new Set(LAYERS);
+const layersBox = document.getElementById("layers");
+LAYERS.forEach(l => {
+  const label = document.createElement("label");
+  label.className = "lchk";
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.checked = true;
+  cb.addEventListener("change", () => {
+    cb.checked ? activeLayers.add(l) : activeLayers.delete(l);
+    render();
+  });
+  label.appendChild(cb);
+  label.appendChild(document.createTextNode(l));
+  layersBox.appendChild(label);
+});
+
+let views = [{ title: viz.title, nodes: viz.nodes, edges: viz.edges }];
+let cursor = 0;
+const current = () => views[cursor];
+
+document.getElementById("back").addEventListener("click", () => { if (cursor > 0) { cursor--; render(); } });
+document.getElementById("fwd").addEventListener("click", () => { if (cursor < views.length - 1) { cursor++; render(); } });
+
+function openView(title, nodes, edges) {
+  views = views.slice(0, cursor + 1);
+  views.push({ title, nodes, edges });
+  cursor++;
+  render();
+}
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+function textWidth(text, font) {
+  ctx.font = font;
+  return ctx.measureText(text).width;
+}
+
+function wrapText(text, maxW, font) {
+  const words = (text || "").split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = "";
+  words.forEach(w => {
+    const test = line ? line + " " + w : w;
+    if (textWidth(test, font) <= maxW) {
+      line = test;
+    } else {
+      if (line) lines.push(line);
+      line = w;
+    }
+  });
+  if (line) lines.push(line);
+  return lines.length ? lines : [text || ""];
+}
+
+function nodeMetrics(n) {
+  const s = styleOf(n);
+  const isDecision = n.kind === "decision";
+  const labelFont = "500 12px system-ui, sans-serif";
+  const summaryFont = "10px system-ui, sans-serif";
+  const maxTextW = isDecision ? 200 : 240;
+  const labelLines = wrapText(n.label, maxTextW, labelFont);
+  const summaryLines = n.summary && !isDecision ? wrapText(n.summary, maxTextW, summaryFont) : [];
+  const labelW = Math.max(...labelLines.map(l => textWidth(l, labelFont)), 0);
+  const summaryW = Math.max(...summaryLines.map(l => textWidth(l, summaryFont)), 0);
+  const hasIcon = !isDecision;
+  const innerW = Math.max(labelW, summaryW) + (hasIcon ? 40 : 0);
+  const minW = isDecision ? 180 : 160;
+  const maxW = isDecision ? 260 : 320;
+  const width = Math.max(minW, Math.min(maxW, innerW + 32));
+  const lineH = 14;
+  const labelH = 12 + (labelLines.length - 1) * lineH;
+  const summaryH = summaryLines.length ? 6 + summaryLines.length * lineH : 0;
+  const height = 28 + labelH + summaryH;
+  return { width, height, labelLines, summaryLines, labelH, summaryH, isDecision, hasIcon, color: s.color, icon: s.icon };
+}
+
+function sequentialize(arcs, visible, level) {
+  if (level !== "file" && level !== "function") return arcs;
+  const lineOf = id => {
+    const n = visible.find(x => x.id === id);
+    return n && n.source ? n.source.start_line : 0;
+  };
+  const out = {};
+  arcs.forEach(a => {
+    (out[a.from] = out[a.from] || []).push(a);
+  });
+  const keep = new Set();
+  const add = [];
+  Object.keys(out).forEach(src => {
+    const srcNode = visible.find(x => x.id === src);
+    if (!srcNode || srcNode.kind === "decision") return;
+    const outs = out[src]
+      .filter(a => visible.find(x => x.id === a.to))
+      .slice()
+      .sort((a, b) => lineOf(a.to) - lineOf(b.to));
+    if (outs.length < 2) return;
+    keep.add(`${outs[0].from}→${outs[0].to}`);
+    for (let i = 1; i < outs.length; i++) {
+      add.push({ from: outs[i - 1].to, to: outs[i].to, label: outs[i].label });
+    }
+  });
+  return arcs.filter(a => {
+    const srcNode = visible.find(x => x.id === a.from);
+    if (srcNode && srcNode.kind === "decision") return true;
+    if (!out[a.from] || out[a.from].length < 2) return true;
+    return keep.has(`${a.from}→${a.to}`);
+  }).concat(add);
+}
+
+function layout(viewNodes, viewEdges) {
+  const visible = viewNodes.filter(n => activeLayers.has(n.layer));
+  const ids = new Set(visible.map(n => n.id));
+  let arcs = viewEdges.filter(e => ids.has(e.from) && ids.has(e.to)).map(e => ({ ...e }));
+  visible.forEach(n => {
+    if (n.kind === "decision" && n.branches) {
+      n.branches.forEach(b => {
+        if (ids.has(b.target)) arcs.push({ from: n.id, to: b.target, label: b.condition });
+      });
+    }
+  });
+  arcs = sequentialize(arcs, visible, viz.level);
+
+  const layer = {};
+  visible.forEach(n => layer[n.id] = 0);
+  for (let i = 0; i < visible.length; i++) {
+    arcs.forEach(a => { if (layer[a.to] <= layer[a.from]) layer[a.to] = layer[a.from] + 1; });
+  }
+
+  const metrics = {};
+  visible.forEach(n => metrics[n.id] = nodeMetrics(n));
+
+  const groups = new Map();
+  visible.forEach(n => {
+    const l = layer[n.id];
+    if (!groups.has(l)) groups.set(l, []);
+    groups.get(l).push(n);
+  });
+
+  const preds = {};
+  arcs.forEach(a => { (preds[a.to] = preds[a.to] || []).push(a.from); });
+
+  const sortedLayers = [...groups.keys()].sort((a, b) => a - b);
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    group.forEach(n => {
+      const ps = (preds[n.id] || []).filter(p => metrics[p]._pos);
+      n._bary = ps.length ? ps.reduce((s, p) => s + metrics[p]._pos.x + metrics[p].width / 2, 0) / ps.length : Infinity;
+    });
+    group.sort((a, b) => (a._bary - b._bary) || a.id.localeCompare(b.id));
+    let x = 40;
+    group.forEach(n => {
+      metrics[n.id]._pos = { x, y: 0 };
+      x += metrics[n.id].width + 40;
+    });
+  });
+
+  let maxLayerWidth = 0;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const last = group[group.length - 1];
+    const w = metrics[last.id]._pos.x + metrics[last.id].width;
+    if (w > maxLayerWidth) maxLayerWidth = w;
+  });
+
+  let y = 40;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const maxH = Math.max(...group.map(n => metrics[n.id].height));
+    group.forEach(n => { metrics[n.id]._pos.y = y + (maxH - metrics[n.id].height) / 2; });
+    const layerW = Math.max(...group.map(n => metrics[n.id]._pos.x + metrics[n.id].width));
+    const offset = (maxLayerWidth - layerW) / 2;
+    group.forEach(n => { metrics[n.id]._pos.x += Math.max(0, offset); });
+    y += maxH + 70;
+  });
+
+  visible.forEach(n => { n._shape = "process"; });
+
+  let step = 1;
+  sortedLayers.forEach(l => groups.get(l).forEach(n => { n._step = step++; }));
+
+  return { visible, arcs, metrics };
+}
+
+const NS = "http://www.w3.org/2000/svg";
+let query = "";
+
+function render() {
+  const view = current();
+  document.getElementById("crumb").textContent = view.title;
+  document.getElementById("back").disabled = cursor === 0;
+  document.getElementById("fwd").disabled = cursor === views.length - 1;
+
+  const { visible, arcs, metrics } = layout(view.nodes, view.edges);
+  const svg = document.getElementById("svg");
+  svg.innerHTML = "";
+  const stage = document.getElementById("stage");
+  let maxX = 0, maxY = 0;
+  visible.forEach(n => {
+    const m = metrics[n.id];
+    maxX = Math.max(maxX, m._pos.x + m.width + 40);
+    maxY = Math.max(maxY, m._pos.y + m.height + 40);
+  });
+  svg.setAttribute("width", Math.max(maxX, stage.clientWidth));
+  svg.setAttribute("height", Math.max(maxY, stage.clientHeight));
+
+  const defs = document.createElementNS(NS, "defs");
+  defs.innerHTML = '<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52525b"/></marker>';
+  svg.appendChild(defs);
+
+  const matches = q => n => q && (n.label.toLowerCase().includes(q) || n.id.toLowerCase().includes(q));
+  const isHit = matches(query);
+
+  arcs.forEach(a => {
+    const m1 = metrics[a.from], m2 = metrics[a.to];
+    const p1 = m1._pos, p2 = m2._pos;
+    const sx = p1.x + m1.width / 2;
+    const sy = p1.y + m1.height;
+    const tx = p2.x + m2.width / 2;
+    const ty = p2.y;
+    const dy = Math.max(ty - sy, 30);
+    const c1y = sy + dy * 0.45;
+    const c2y = ty - dy * 0.45;
+    const d = `M ${sx} ${sy} C ${sx} ${c1y}, ${tx} ${c2y}, ${tx} ${ty}`;
+
+    const line = document.createElementNS(NS, "path");
+    line.setAttribute("d", d);
+    const status = view.edges.find(e => e.from === a.from && e.to === a.to);
+    line.setAttribute("class", "edge" + (status && status.status === "inferred" ? " inferred" : ""));
+    line.setAttribute("marker-end", "url(#arr)");
+    if (query && !(isHit(visible.find(n => n.id === a.from)) && isHit(visible.find(n => n.id === a.to)))) line.classList.add("dim");
+    svg.appendChild(line);
+
+    if (a.label) {
+      const len = line.getTotalLength();
+      const pt = line.getPointAtLength(len / 2);
+      const lw = textWidth(a.label, "10px system-ui, sans-serif") + 12;
+      const bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("class", "elabel-bg");
+      bg.setAttribute("x", pt.x - lw / 2);
+      bg.setAttribute("y", pt.y - 10);
+      bg.setAttribute("width", lw);
+      bg.setAttribute("height", 20);
+      bg.setAttribute("rx", 6);
+      svg.appendChild(bg);
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "elabel");
+      t.setAttribute("x", pt.x);
+      t.setAttribute("y", pt.y + 3);
+      t.setAttribute("text-anchor", "middle");
+      t.textContent = a.label;
+      svg.appendChild(t);
+    }
+  });
+
+  visible.forEach(n => {
+    const p = metrics[n.id]._pos;
+    const m = metrics[n.id];
+    const s = styleOf(n);
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", "node" + (query && !isHit(n) ? " dim" : ""));
+    let shape;
+    shape = document.createElementNS(NS, "rect");
+    shape.setAttribute("x", p.x); shape.setAttribute("y", p.y);
+    shape.setAttribute("width", m.width); shape.setAttribute("height", m.height);
+    shape.setAttribute("rx", 12);
+    shape.setAttribute("fill", "#18181b");
+    shape.setAttribute("stroke", s.color);
+    shape.setAttribute("stroke-width", 2);
+    if (query && isHit(n)) shape.setAttribute("class", "hit");
+    g.appendChild(shape);
+
+    const badge = document.createElementNS(NS, "circle");
+    badge.setAttribute("class", "step");
+    badge.setAttribute("cx", p.x + 12); badge.setAttribute("cy", p.y + 12); badge.setAttribute("r", 8);
+    g.appendChild(badge);
+    const bnum = document.createElementNS(NS, "text");
+    bnum.setAttribute("class", "step-num");
+    bnum.setAttribute("x", p.x + 12); bnum.setAttribute("y", p.y + 15);
+    bnum.setAttribute("text-anchor", "middle");
+    bnum.textContent = n._step;
+    g.appendChild(bnum);
+
+    if (m.hasIcon) {
+      const icon = document.createElementNS(NS, "g");
+      icon.setAttribute("transform", `translate(${p.x + 22} ${p.y + m.height/2 - 8}) scale(.6)`);
+      icon.setAttribute("fill", "none");
+      icon.setAttribute("stroke", s.color);
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("stroke-linecap", "round");
+      icon.setAttribute("stroke-linejoin", "round");
+      icon.innerHTML = ICON_PATHS[s.icon] || ICON_PATHS.Box;
+      g.appendChild(icon);
+    }
+
+    const textX = m.hasIcon ? p.x + 46 : p.x + 16;
+    const labelMaxW = m.width - (m.hasIcon ? 56 : 26);
+    const labelLines = wrapText(n.label, labelMaxW, "500 12px system-ui, sans-serif");
+    labelLines.forEach((ln, i) => {
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "nlabel");
+      t.setAttribute("x", textX);
+      t.setAttribute("y", p.y + 22 + i * 14);
+      t.textContent = ln;
+      g.appendChild(t);
+    });
+
+    if (n.summary) {
+      const summaryLines = wrapText(n.summary, labelMaxW, "10px system-ui, sans-serif");
+      summaryLines.forEach((ln, i) => {
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("class", "nsummary");
+        t.setAttribute("x", textX);
+        t.setAttribute("y", p.y + 24 + labelLines.length * 14 + 6 + i * 14);
+        t.textContent = ln;
+        g.appendChild(t);
+      });
+    }
+
+    if (n.tests) {
+      ["unit", "integration", "e2e"].forEach((k, i) => {
+        const dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", p.x + m.width - 14 - i * 12); dot.setAttribute("cy", p.y + 14);
+        dot.setAttribute("r", 3.5);
+        dot.setAttribute("fill", n.tests[k] ? ["#34d399", "#60a5fa", "#f472b6"][i] : "#3f3f46");
+        g.appendChild(dot);
+      });
+    }
+
+    g.addEventListener("click", () => showSidebar(n));
+    svg.appendChild(g);
+  });
+}
+
+function showSidebar(n) {
+  const s = styleOf(n);
+  document.getElementById("s-title").textContent = n.label;
+  document.getElementById("s-meta").textContent =
+    s.icon + " " + n.kind + (n.element_type ? " · " + n.element_type : "") +
+    (n.confidence != null ? " · confidence " + n.confidence.toFixed(2) : "");
+  document.getElementById("s-tests").innerHTML = n.tests
+    ? ["unit", "integration", "e2e"].map(k =>
+        '<span class="chip ' + (n.tests[k] ? "on" : "off") + '">' + k + "</span>").join("")
+    : "";
+  document.getElementById("s-summary").textContent = n.summary || "";
+
+  const extra = document.getElementById("s-extra");
+  extra.innerHTML = "";
+  if (n.kind === "call" && n.children && n.children.length) {
+    const btn = document.createElement("button");
+    btn.className = "expand";
+    btn.textContent = "Раскрыть flow";
+    btn.addEventListener("click", () => {
+      document.getElementById("sidebar").style.display = "none";
+      openView(n.label, n.children, []);
+    });
+    extra.appendChild(btn);
+  }
+
+  const code = document.getElementById("s-code");
+  if (n.source && sources[n.source.file]) {
+    const lines = sources[n.source.file].split("\n");
+    const from = Math.max(1, n.source.start_line - 2);
+    const to = Math.min(lines.length, n.source.end_line + 2);
+    let html = "";
+    for (let i = from; i <= to; i++) {
+      const esc = lines[i - 1].replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      const body = '<span class="ln">' + i + "</span>" + esc;
+      html += i >= n.source.start_line && i <= n.source.end_line
+        ? '<span class="hl">' + body + "</span>" : body + "\n";
+    }
+    code.innerHTML = html;
+    code.style.display = "block";
+  } else {
+    code.style.display = "none";
+  }
+  document.getElementById("sidebar").style.display = "block";
+}
+
+document.getElementById("close").addEventListener("click", () => {
+  document.getElementById("sidebar").style.display = "none";
+});
+document.getElementById("search").addEventListener("input", ev => {
+  query = ev.target.value.trim().toLowerCase();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

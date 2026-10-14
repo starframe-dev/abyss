@@ -1,0 +1,476 @@
+{
+  "title": "Внутренняя система верстки layout",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "root_group",
+      "kind": "group",
+      "label": "Основная группа верстки",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 1,
+        "end_line": 504
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "viewport_width",
+      "kind": "input",
+      "label": "Ширина просмотра",
+      "layer": "data",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 12,
+        "end_line": 12
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "rect_type",
+      "kind": "state",
+      "label": "Тип прямоугольника",
+      "layer": "state",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 15,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "text_line_type",
+      "kind": "state",
+      "label": "Тип текстовой строки",
+      "layer": "state",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 20,
+        "end_line": 23
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_box_type",
+      "kind": "state",
+      "label": "Тип элемента верстки",
+      "layer": "state",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 26,
+        "end_line": 36
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "build_func",
+      "kind": "action",
+      "label": "Создать дерево верстки",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 39,
+        "end_line": 45
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "build_node_func",
+      "kind": "action",
+      "label": "Построить узел",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 47,
+        "end_line": 85
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_func",
+      "kind": "action",
+      "label": "Вычислить геометрию",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 88,
+        "end_line": 90
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_box_func",
+      "kind": "action",
+      "label": "Вычислить геометрию узла",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 92,
+        "end_line": 198
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "resolve_width_func",
+      "kind": "action",
+      "label": "Вычислить ширину",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 200,
+        "end_line": 212
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "resolve_height_func",
+      "kind": "action",
+      "label": "Вычислить высоту",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 214,
+        "end_line": 219
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_block_flow_func",
+      "kind": "action",
+      "label": "Расположить блочный поток",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 221,
+        "end_line": 232
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_inline_flow_func",
+      "kind": "action",
+      "label": "Расположить строчный поток",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 234,
+        "end_line": 307
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_flex_func",
+      "kind": "action",
+      "label": "Расположить flex-контейнер",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 309,
+        "end_line": 387
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_grid_func",
+      "kind": "action",
+      "label": "Расположить grid-контейнер",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 389,
+        "end_line": 474
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "find_positioned_ancestor_func",
+      "kind": "action",
+      "label": "Найти позиционированного предка",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 476,
+        "end_line": 485
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "estimate_text_width_func",
+      "kind": "action",
+      "label": "Оценить ширину текста",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 487,
+        "end_line": 489
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "collect_visible_text_func",
+      "kind": "action",
+      "label": "Собрать видимый текст",
+      "layer": "flow",
+      "source": {
+        "file": "internal/layout/layout.go",
+        "start_line": 492,
+        "end_line": 504
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "build_func",
+      "to": "build_node_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "build_func",
+      "to": "layout_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_func",
+      "to": "layout_box_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "resolve_width_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "resolve_height_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "layout_block_flow_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "layout_inline_flow_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "layout_flex_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "layout_grid_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_block_flow_func",
+      "to": "layout_box_func",
+      "label": "рекурсивно",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_block_flow_func",
+      "to": "layout_inline_flow_func",
+      "label": "по умолчанию",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_inline_flow_func",
+      "to": "collect_visible_text_func",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_flex_func",
+      "to": "layout_box_func",
+      "label": "рекурсивно",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_grid_func",
+      "to": "layout_box_func",
+      "label": "рекурсивно",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_box_func",
+      "to": "find_positioned_ancestor_func",
+      "label": "вызывает",
+      "status": "inferred"
+    }
+  ]
+}

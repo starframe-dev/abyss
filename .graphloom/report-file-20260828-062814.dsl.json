@@ -1,0 +1,1231 @@
+{
+  "title": "internal/js/bridge_dom.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/bridge_dom.go",
+      "kind": "group",
+      "label": "bridge_dom.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/bridge_dom.go",
+        "start_line": 1,
+        "end_line": 207
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/js/bridge_dom.go:LogWriter:15519939",
+          "kind": "state",
+          "label": "Переменная LogWriter",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 30,
+            "end_line": 30
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.LogWriter",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/js/bridge_dom.go:bridgeFunc:15520028",
+          "kind": "group",
+          "label": "Тип bridgeFunc",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 33,
+            "end_line": 33
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/bridge_dom.go:bridgeHandlers:15520235",
+          "kind": "state",
+          "label": "Переменная bridgeHandlers",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 36,
+            "end_line": 81
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.bridgeHandlers",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:goBridgeDispatch:15522403",
+          "kind": "group",
+          "label": "Функция goBridgeDispatch",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 84,
+            "end_line": 105
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.goBridgeDispatch",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/js/bridge_dom.go:_Ctype_JSGlobalContextRef:15522948",
+              "kind": "call",
+              "label": "Вызов _Ctype_JSGlobalContextRef",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 86,
+                "end_line": 86
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "→ github.com/starframe/abyss/internal/js._Ctype_JSGlobalContextRef",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15523116",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 90,
+                "end_line": 93
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "eID := jsToN",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15523287",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 95,
+                "end_line": 97
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15523335",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 96,
+                    "end_line": 96
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/bridge_dom.go:15524189",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 104,
+                "end_line": 104
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:getArgString:15524257",
+          "kind": "group",
+          "label": "Функция getArgString",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 108,
+            "end_line": 116
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getArgString",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/bridge_dom.go:15524763",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 111,
+                "end_line": 114
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "akeUndefin",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15524952",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 113,
+                    "end_line": 113
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/bridge_dom.go:15525031",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 115,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← addEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.closestJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← closestJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.createElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← createElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.createTextNodeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← createTextNodeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.dispatchEventJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← dispatchEventJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getAttributeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getAttributeJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementByIdJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementByIdJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementsByClassNameJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementsByClassNameJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementsByTagNameJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementsByTagNameJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentTextJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentTextJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.logJS",
+              "file": "internal/js/dom.go",
+              "label": "← logJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.matchesJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← matchesJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorAllJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorAllJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← removeEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setOuterHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setOuterHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setTextContentJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:jsToNodeID:15525109",
+          "kind": "group",
+          "label": "Функция jsToNodeID",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 119,
+            "end_line": 139
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.jsToNodeID",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/bridge_dom.go:15525209",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 120,
+                "end_line": 122
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "oNodeID(ctx, args[0])\n    if id < 0 {\n        return ctx.MakeUndefined()\n    }\n    position, _ := getArgString(ctx, args[1])\n    text, _ := getArgString(ctx, args[2])\n    insertAdjacentText(id, position, text)\n    SetDirty()\n    return ctx.MakeUndefined()\n}\n\nfunc i",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15525488",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 121,
+                    "end_line": 121
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15525794",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 124,
+                "end_line": 126
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "insertAd",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15525818",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 125,
+                    "end_line": 125
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15526618",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 131,
+                "end_line": 133
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15526658",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 132,
+                    "end_line": 132
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/bridge_dom.go:ToNumber:15526690",
+              "kind": "call",
+              "label": "Вызов ToNumber",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 134,
+                "end_line": 134
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.Context.ToNumber",
+              "summary": "→ github.com/starframe/abyss/internal/js.Context.ToNumber",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.Context.ToNumber",
+                  "file": "internal/js/js.go",
+                  "label": "→ ToNumber in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15526714",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 135,
+                "end_line": 137
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15526738",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 136,
+                    "end_line": 136
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/bridge_dom.go:15526758",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 138,
+                "end_line": 138
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← addEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← appendChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← appendChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.cloneNodeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← cloneNodeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.closestJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← closestJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.containsJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← containsJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.containsJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← containsJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.dispatchEventJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← dispatchEventJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.firstElementChildJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← firstElementChildJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getAttributeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getAttributeJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+              "file": "internal/js/dom.go",
+              "label": "← getBoundingClientRectJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getChildrenJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getChildrenJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyleJS",
+              "file": "internal/js/dom.go",
+              "label": "← getComputedStyleJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← getInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getParentNodeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getParentNodeJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← getTextContentJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentTextJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertBeforeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertBeforeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertBeforeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.lastElementChildJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← lastElementChildJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.matchesJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← matchesJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.nextElementSiblingJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← nextElementSiblingJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.outerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← outerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.previousElementSiblingJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← previousElementSiblingJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorAllJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorAllJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← removeChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← removeChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← removeEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← replaceChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← replaceChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← replaceChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setOuterHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setOuterHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setTextContentJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:nodeToJSValue:15526820",
+          "kind": "group",
+          "label": "Функция nodeToJSValue",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 142,
+            "end_line": 144
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.nodeToJSValue",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/bridge_dom.go:15526924",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 143,
+                "end_line": 143
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:RegisterBridgeFunctions:15527031",
+          "kind": "group",
+          "label": "Функция RegisterBridgeFunctions",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 147,
+            "end_line": 202
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/bridge_dom.go:15528253",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 194,
+                "end_line": 200
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/bridge_dom.go:15528560",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 197,
+                    "end_line": 199
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/bridge_dom.go:SetProperty:15528570",
+                      "kind": "call",
+                      "label": "Вызов SetProperty",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/bridge_dom.go",
+                        "start_line": 197,
+                        "end_line": 197
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.SetProperty",
+                      "summary": "→ github.com/starframe/abyss/internal/js.Context.SetProperty",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.SetProperty",
+                          "file": "internal/js/js.go",
+                          "label": "→ SetProperty in internal/js/js.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/js/bridge_dom.go:jsObjToVal:15528592",
+                      "kind": "call",
+                      "label": "Вызов jsObjToVal",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/bridge_dom.go",
+                        "start_line": 205,
+                        "end_line": 207
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.jsObjToVal",
+                      "summary": "→ github.com/starframe/abyss/internal/js.jsObjToVal",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.jsObjToVal",
+                          "file": "internal/js/bridge_dom.go",
+                          "label": "→ jsObjToVal in internal/js/bridge_dom.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "return:internal/js/bridge_dom.go:15528634",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/bridge_dom.go",
+                        "start_line": 198,
+                        "end_line": 198
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/bridge_dom.go:15528665",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 201,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser_page.go",
+              "label": "← loadPage in internal/browser/browser_page.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:jsObjToVal:15528731",
+          "kind": "group",
+          "label": "Функция jsObjToVal",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 205,
+            "end_line": 207
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.jsObjToVal",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/bridge_dom.go:15528863",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 206,
+                "end_line": 206
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+              "file": "internal/js/bridge_dom.go",
+              "label": "← RegisterBridgeFunctions in internal/js/bridge_dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.ProcessTimers",
+              "file": "internal/js/dom_script.go",
+              "label": "← ProcessTimers in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListener",
+              "file": "internal/js/dom_script.go",
+              "label": "← addEventListener in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.clearTimer",
+              "file": "internal/js/dom_script.go",
+              "label": "← clearTimer in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+              "file": "internal/js/dom.go",
+              "label": "← getBoundingClientRectJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+              "file": "internal/js/js.go",
+              "label": "← getComputedStyle in internal/js/js.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.nodeToJS",
+              "file": "internal/js/dom_style.go",
+              "label": "← nodeToJS in internal/js/dom_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListener",
+              "file": "internal/js/dom_script.go",
+              "label": "← removeEventListener in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInterval",
+              "file": "internal/js/dom_script.go",
+              "label": "← setInterval in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTimeout",
+              "file": "internal/js/dom_script.go",
+              "label": "← setTimeout in internal/js/dom_script.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

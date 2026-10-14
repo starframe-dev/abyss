@@ -1,0 +1,1125 @@
+{
+  "title": "internal/framebuffer/framebuffer.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/framebuffer/framebuffer.go",
+      "kind": "group",
+      "label": "framebuffer.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/framebuffer/framebuffer.go",
+        "start_line": 1,
+        "end_line": 118
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/framebuffer/framebuffer.go:Framebuffer:12151897",
+          "kind": "group",
+          "label": "Тип Framebuffer",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 11,
+            "end_line": 15
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:New:12152034",
+          "kind": "group",
+          "label": "Создать Framebuffer",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 18,
+            "end_line": 24
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.New",
+          "summary": "Инициализировать новый буфер кадра",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/framebuffer/framebuffer.go:12152081",
+              "kind": "output",
+              "label": "Вернуть созданный буфер",
+              "layer": "data",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 19,
+                "end_line": 23
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/render.Render",
+              "file": "internal/render/render.go",
+              "label": "← Render in internal/render/render.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/render.Render",
+              "file": "internal/render/render.go",
+              "label": "← Render in internal/render/render.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:Set:12152238",
+          "kind": "group",
+          "label": "Установить пиксель",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 27,
+            "end_line": 32
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+          "summary": "Установить цвет пикселя по координатам",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12152294",
+              "kind": "decision",
+              "label": "Проверка границ",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 28,
+                "end_line": 30
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "x < 0 || x >= fb.Width || y < 0 || y >= fb.Height",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/framebuffer/framebuffer.go:12152357",
+                  "kind": "output",
+                  "label": "Вернуть ошибку",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 29,
+                    "end_line": 29
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← FillRect in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← clipCorner in internal/framebuffer/framebuffer.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:Get:12152436",
+          "kind": "group",
+          "label": "Получить пиксель",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 35,
+            "end_line": 40
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+          "summary": "Получить цвет пикселя по координатам",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12152489",
+              "kind": "decision",
+              "label": "Проверка границ",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 36,
+                "end_line": 38
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "x < 0 || x >= fb.Width || y < 0 || y >= fb.Height",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/framebuffer/framebuffer.go:12152552",
+                  "kind": "output",
+                  "label": "Вернуть ошибку",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 37,
+                    "end_line": 37
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/framebuffer/framebuffer.go:12152587",
+              "kind": "output",
+              "label": "Вернуть цвет пикселя",
+              "layer": "data",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 39,
+                "end_line": 39
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+              "file": "internal/ascii/ascii.go",
+              "label": "← makeGrid in internal/ascii/ascii.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+              "file": "internal/ascii/ascii.go",
+              "label": "← makeGrid in internal/ascii/ascii.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:Clear:12152673",
+          "kind": "group",
+          "label": "Очистить буфер",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 43,
+            "end_line": 47
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Clear",
+          "summary": "Очистить весь буфер в прозрачный цвет",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/framebuffer/framebuffer.go:12152721",
+              "kind": "loop",
+              "label": "Повторять по всем пикселям",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 44,
+                "end_line": 46
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/render.Render",
+              "file": "internal/render/render.go",
+              "label": "← Render in internal/render/render.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:FillRect:12152826",
+          "kind": "group",
+          "label": "Заполнить прямоугольник",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 50,
+            "end_line": 60
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+          "summary": "Заполнить прямоугольную область цветом",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/framebuffer/framebuffer.go:12153019",
+              "kind": "loop",
+              "label": "Повторять по строкам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 55,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/framebuffer/framebuffer.go:12153057",
+                  "kind": "loop",
+                  "label": "Повторять по столбцам",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 56,
+                    "end_line": 58
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/framebuffer/framebuffer.go:Set:12153099",
+                      "kind": "call",
+                      "label": "Вызвать Set",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/framebuffer/framebuffer.go",
+                        "start_line": 27,
+                        "end_line": 32
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+                      "summary": "Установить цвет текущего пикселя",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+                          "file": "internal/framebuffer/framebuffer.go",
+                          "label": "→ Set in internal/framebuffer/framebuffer.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawRoundedRect in internal/framebuffer/framebuffer.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:DrawBorder:12153182",
+          "kind": "group",
+          "label": "Нарисовать рамку",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 63,
+            "end_line": 80
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+          "summary": "Нарисовать рамку вокруг прямоугольника",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12153330",
+              "kind": "decision",
+              "label": "Проверка верхней границы",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 65,
+                "end_line": 67
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "topW > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:FillRect:12153352",
+                  "kind": "call",
+                  "label": "Вызвать FillRect",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 50,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                  "summary": "Заполнить верхнюю границу",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ FillRect in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12153415",
+              "kind": "decision",
+              "label": "Проверка правой границы",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 69,
+                "end_line": 71
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rightW > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:FillRect:12153439",
+                  "kind": "call",
+                  "label": "Вызвать FillRect",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 50,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                  "summary": "Заполнить правую границу",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ FillRect in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12153516",
+              "kind": "decision",
+              "label": "Проверка нижней границы",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 73,
+                "end_line": 75
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "bottomW > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:FillRect:12153541",
+                  "kind": "call",
+                  "label": "Вызвать FillRect",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 50,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                  "summary": "Заполнить нижнюю границу",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ FillRect in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12153619",
+              "kind": "decision",
+              "label": "Проверка левой границы",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 77,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "leftW > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:FillRect:12153642",
+                  "kind": "call",
+                  "label": "Вызвать FillRect",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 50,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                  "summary": "Заполнить левую границу",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ FillRect in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/render.drawBox",
+              "file": "internal/render/render.go",
+              "label": "← drawBox in internal/render/render.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:DrawRoundedRect:12153745",
+          "kind": "group",
+          "label": "Нарисовать скругленный прямоугольник",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 83,
+            "end_line": 99
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+          "summary": "Нарисовать прямоугольник со скругленными углами",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/framebuffer/framebuffer.go:FillRect:12153851",
+              "kind": "call",
+              "label": "Вызвать FillRect",
+              "layer": "calls",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 50,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+              "summary": "Заполнить основной прямоугольник",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "→ FillRect in internal/framebuffer/framebuffer.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12153903",
+              "kind": "decision",
+              "label": "Проверка правого верхнего угла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 87,
+                "end_line": 89
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rtl > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:clipCorner:12153924",
+                  "kind": "call",
+                  "label": "Вызвать clipCorner",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 103,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                  "summary": "Обработать правый верхний угол",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ clipCorner in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12153962",
+              "kind": "decision",
+              "label": "Проверка правого нижнего угла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 90,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rtr > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:clipCorner:12153983",
+                  "kind": "call",
+                  "label": "Вызвать clipCorner",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 103,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                  "summary": "Обработать правый нижний угол",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ clipCorner in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12154027",
+              "kind": "decision",
+              "label": "Проверка левого нижнего угла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 93,
+                "end_line": 95
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rbr > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:clipCorner:12154048",
+                  "kind": "call",
+                  "label": "Вызвать clipCorner",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 103,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                  "summary": "Обработать левый нижний угол",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ clipCorner in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/framebuffer/framebuffer.go:12154098",
+              "kind": "decision",
+              "label": "Проверка левого верхнего угла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 96,
+                "end_line": 98
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rbl > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/framebuffer/framebuffer.go:clipCorner:12154119",
+                  "kind": "call",
+                  "label": "Вызвать clipCorner",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 103,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                  "summary": "Обработать левый верхний угол",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                      "file": "internal/framebuffer/framebuffer.go",
+                      "label": "→ clipCorner in internal/framebuffer/framebuffer.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/render.drawBox",
+              "file": "internal/render/render.go",
+              "label": "← drawBox in internal/render/render.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/framebuffer/framebuffer.go:clipCorner:12154279",
+          "kind": "group",
+          "label": "Обработать угол",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 103,
+            "end_line": 118
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+          "summary": "Обработать скругленный угол",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/framebuffer/framebuffer.go:12154479",
+              "kind": "loop",
+              "label": "Повторять по углам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 109,
+                "end_line": 117
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/framebuffer/framebuffer.go:12154517",
+                  "kind": "loop",
+                  "label": "Повторять по пикселям угла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/framebuffer/framebuffer.go",
+                    "start_line": 110,
+                    "end_line": 116
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/framebuffer/framebuffer.go:12154629",
+                      "kind": "decision",
+                      "label": "Проверка круга",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/framebuffer/framebuffer.go",
+                        "start_line": 113,
+                        "end_line": 115
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "dx*dx+dy*dy > r*r",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/framebuffer/framebuffer.go:Set:12154668",
+                          "kind": "call",
+                          "label": "Вызвать Set",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/framebuffer/framebuffer.go",
+                            "start_line": 27,
+                            "end_line": 32
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+                          "summary": "Установить цвет пикселя",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+                              "file": "internal/framebuffer/framebuffer.go",
+                              "label": "→ Set in internal/framebuffer/framebuffer.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "call:internal/framebuffer/framebuffer.go:Transparent:12154683",
+                          "kind": "call",
+                          "label": "Вызвать Transparent",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/framebuffer/framebuffer.go",
+                            "start_line": 114,
+                            "end_line": 114
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.Transparent",
+                          "summary": "Установить прозрачный цвет",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.Transparent",
+                              "file": "internal/css/types.go",
+                              "label": "→ Transparent in internal/css/types.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawRoundedRect in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawRoundedRect in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawRoundedRect in internal/framebuffer/framebuffer.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "file": "internal/framebuffer/framebuffer.go",
+              "label": "← DrawRoundedRect in internal/framebuffer/framebuffer.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

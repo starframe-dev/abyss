@@ -1,0 +1,4161 @@
+{
+  "title": "internal/dom/selector.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/dom/selector.go",
+      "kind": "group",
+      "label": "selector.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/selector.go",
+        "start_line": 1,
+        "end_line": 439
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/dom/selector.go:SelectorGroup:11053128",
+          "kind": "group",
+          "label": "Тип SelectorGroup",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 9,
+            "end_line": 11
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.SelectorGroup",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/dom/selector.go:ComplexSelector:11053278",
+          "kind": "group",
+          "label": "Тип ComplexSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 14,
+            "end_line": 16
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.ComplexSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/dom/selector.go:SelectorPart:11053427",
+          "kind": "group",
+          "label": "Тип SelectorPart",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 19,
+            "end_line": 26
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.SelectorPart",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/dom/selector.go:AttrSelector:11053729",
+          "kind": "group",
+          "label": "Тип AttrSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 29,
+            "end_line": 33
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.AttrSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/dom/selector.go:PseudoSelector:11053896",
+          "kind": "group",
+          "label": "Тип PseudoSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 36,
+            "end_line": 39
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.PseudoSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/dom/selector.go:ParseSelectorGroup:11054025",
+          "kind": "group",
+          "label": "Функция ParseSelectorGroup",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 42,
+            "end_line": 61
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector.go:11054118",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 44,
+                "end_line": 46
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "s == \"\"",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11054139",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 45,
+                    "end_line": 45
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector.go:11054215",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 49,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector.go:11054301",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 51,
+                    "end_line": 53
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "part == \"\"",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/dom/selector.go:parseComplexSelector:11054368",
+                  "kind": "call",
+                  "label": "Вызов parseComplexSelector",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 151,
+                    "end_line": 212
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.parseComplexSelector",
+                  "summary": "→ github.com/starframe/abyss/internal/dom.parseComplexSelector",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.parseComplexSelector",
+                      "file": "internal/dom/selector.go",
+                      "label": "→ parseComplexSelector in internal/dom/selector.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11054403",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 55,
+                    "end_line": 57
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "err != nil",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector.go:11054431",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 56,
+                        "end_line": 56
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11054510",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 60,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.MatchesSelector",
+              "file": "internal/dom/selector.go",
+              "label": "← MatchesSelector in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+              "file": "internal/dom/selector.go",
+              "label": "← QueryAllSelector in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:MatchesSelector:11054633",
+          "kind": "group",
+          "label": "Функция MatchesSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 64,
+            "end_line": 78
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.MatchesSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector.go:11054691",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 65,
+                "end_line": 67
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "n == nil || n.Type != ElementNode",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11054738",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 66,
+                    "end_line": 66
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/dom/selector.go:ParseSelectorGroup:11054775",
+              "kind": "call",
+              "label": "Вызов ParseSelectorGroup",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 42,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "summary": "→ github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ ParseSelectorGroup in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/dom/selector.go:11054808",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 69,
+                "end_line": 71
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11054832",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 70,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector.go:11054855",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 72,
+                "end_line": 76
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector.go:11054901",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 73,
+                    "end_line": 75
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "matchesComplex(n, sel)",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector.go:11054941",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 74,
+                        "end_line": 74
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11054973",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 77,
+                "end_line": 77
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.Matches",
+              "file": "internal/dom/dom.go",
+              "label": "← Matches in internal/dom/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:QueryAllSelector:11055064",
+          "kind": "group",
+          "label": "Функция QueryAllSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 81,
+            "end_line": 89
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/dom/selector.go:ParseSelectorGroup:11055143",
+              "kind": "call",
+              "label": "Вызов ParseSelectorGroup",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 42,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "summary": "→ github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ ParseSelectorGroup in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/dom/selector.go:11055176",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 83,
+                "end_line": 85
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11055200",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 84,
+                    "end_line": 84
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/dom/selector.go:queryAllSelectorRecursive:11055245",
+              "kind": "call",
+              "label": "Вызов queryAllSelectorRecursive",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 100,
+                "end_line": 113
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+              "summary": "→ github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ queryAllSelectorRecursive in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "return:internal/dom/selector.go:11055298",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 88,
+                "end_line": 88
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.QueryAll",
+              "file": "internal/dom/dom.go",
+              "label": "← QueryAll in internal/dom/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.QuerySelectorSelector",
+              "file": "internal/dom/selector.go",
+              "label": "← QuerySelectorSelector in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:QuerySelectorSelector:11055401",
+          "kind": "group",
+          "label": "Функция QuerySelectorSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 92,
+            "end_line": 98
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.QuerySelectorSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/dom/selector.go:QueryAllSelector:11055476",
+              "kind": "call",
+              "label": "Вызов QueryAllSelector",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 81,
+                "end_line": 89
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+              "summary": "→ github.com/starframe/abyss/internal/dom.QueryAllSelector",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ QueryAllSelector in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/dom/selector.go:11055513",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 94,
+                "end_line": 96
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(all) == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11055540",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 95,
+                    "end_line": 95
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11055561",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 97,
+                "end_line": 97
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.QuerySelector",
+              "file": "internal/dom/dom.go",
+              "label": "← QuerySelector in internal/dom/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:queryAllSelectorRecursive:11055578",
+          "kind": "group",
+          "label": "Функция queryAllSelectorRecursive",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 100,
+            "end_line": 113
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/dom/selector.go:11055664",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 101,
+                "end_line": 112
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector.go:11055707",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 102,
+                    "end_line": 104
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "child.Type != ElementNode",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/dom/selector.go:11055777",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 105,
+                    "end_line": 110
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/dom/selector.go:11055827",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 106,
+                        "end_line": 109
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "matchesComplex(child, sel)",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/dom/selector.go:queryAllSelectorRecursive:11055964",
+                  "kind": "call",
+                  "label": "Вызов queryAllSelectorRecursive",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 100,
+                    "end_line": 113
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+                  "summary": "→ github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+                      "file": "internal/dom/selector.go",
+                      "label": "→ queryAllSelectorRecursive in internal/dom/selector.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+              "file": "internal/dom/selector.go",
+              "label": "← QueryAllSelector in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.queryAllSelectorRecursive",
+              "file": "internal/dom/selector.go",
+              "label": "← queryAllSelectorRecursive in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:splitByComma:11056022",
+          "kind": "group",
+          "label": "Функция splitByComma",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 115,
+            "end_line": 149
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.splitByComma",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/dom/selector.go:11056142",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 120,
+                "end_line": 146
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector.go:11056172",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 121,
+                    "end_line": 126
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "inQuote != 0",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/dom/selector.go:11056202",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 122,
+                        "end_line": 124
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "r == inQuote",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11056301",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 127,
+                    "end_line": 130
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "r == '\"' || r == '\\''",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "switch:internal/dom/selector.go:11056391",
+                  "kind": "action",
+                  "label": "switch",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 142,
+                    "end_line": 142
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "case:internal/dom/selector.go:11056410",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 132,
+                        "end_line": 133
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11056448",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 134,
+                        "end_line": 135
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11056486",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 136,
+                        "end_line": 137
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11056524",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 142,
+                        "end_line": 142
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11056562",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 142,
+                        "end_line": 142
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11056584",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 141,
+                            "end_line": 144
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "depth == 0",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11056751",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 148,
+                "end_line": 148
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "file": "internal/dom/selector.go",
+              "label": "← ParseSelectorGroup in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parseComplexSelector:11056767",
+          "kind": "group",
+          "label": "Функция parseComplexSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 151,
+            "end_line": 212
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseComplexSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/dom/selector.go:11056906",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 156,
+                "end_line": 158
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector.go:11056977",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 160,
+                "end_line": 209
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/dom/selector.go:parseSimpleSelectorSequence:11057025",
+                  "kind": "call",
+                  "label": "Вызов parseSimpleSelectorSequence",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 214,
+                    "end_line": 276
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+                  "summary": "→ github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+                      "file": "internal/dom/selector.go",
+                      "label": "→ parseSimpleSelectorSequence in internal/dom/selector.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11057068",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 162,
+                    "end_line": 164
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "err != nil",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector.go:11057096",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 163,
+                        "end_line": 163
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11057144",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 165,
+                    "end_line": 167
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "consumed == 0",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/dom/selector.go:11057337",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 173,
+                    "end_line": 176
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11057448",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 178,
+                    "end_line": 180
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "i >= len(s)",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11057553",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 184,
+                    "end_line": 193
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "s[i] == '>' || s[i] == '+' || s[i] == '~'",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "loop:internal/dom/selector.go:11057717",
+                      "kind": "loop",
+                      "label": "Цикл",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 188,
+                        "end_line": 190
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "else:internal/dom/selector.go:11057814",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 191,
+                        "end_line": 193
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11057814",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 191,
+                            "end_line": 193
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "hasSpace",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11057870",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 195,
+                    "end_line": 197
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "i >= len(s)",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11057997",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 200,
+                    "end_line": 208
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "comb != \"\"",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/dom/selector.go:parseSimpleSelectorSequence:11058056",
+                      "kind": "call",
+                      "label": "Вызов parseSimpleSelectorSequence",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 214,
+                        "end_line": 276
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+                      "summary": "→ github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+                          "file": "internal/dom/selector.go",
+                          "label": "→ parseSimpleSelectorSequence in internal/dom/selector.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "if:internal/dom/selector.go:11058103",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 202,
+                        "end_line": 204
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "err != nil",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "return:internal/dom/selector.go:11058135",
+                          "kind": "output",
+                          "label": "Вернуть",
+                          "layer": "data",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 203,
+                            "end_line": 203
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11058313",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 211,
+                "end_line": 211
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "file": "internal/dom/selector.go",
+              "label": "← ParseSelectorGroup in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parseSimpleSelectorSequence:11058358",
+          "kind": "group",
+          "label": "Функция parseSimpleSelectorSequence",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 214,
+            "end_line": 276
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/dom/selector.go:11058489",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 218,
+                "end_line": 274
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector.go:11058577",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 220,
+                    "end_line": 222
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "unicode.IsSpace(rune(s[i]))",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "switch:internal/dom/selector.go:11058647",
+                  "kind": "action",
+                  "label": "switch",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 248,
+                    "end_line": 248
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "case:internal/dom/selector.go:11058669",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 225,
+                        "end_line": 232
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11058691",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 226,
+                            "end_line": 232
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "first",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/dom/selector.go:11058802",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 230,
+                                "end_line": 232
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11058820",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 231,
+                                    "end_line": 231
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11058862",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 234,
+                        "end_line": 234
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/dom/selector.go:parseHash:11058893",
+                          "kind": "call",
+                          "label": "Вызов parseHash",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 278,
+                            "end_line": 284
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/dom.parseHash",
+                          "summary": "→ github.com/starframe/abyss/internal/dom.parseHash",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/dom.parseHash",
+                              "file": "internal/dom/selector.go",
+                              "label": "→ parseHash in internal/dom/selector.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11058988",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 240,
+                        "end_line": 240
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/dom/selector.go:parseClass:11059022",
+                          "kind": "call",
+                          "label": "Вызов parseClass",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 286,
+                            "end_line": 292
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/dom.parseClass",
+                          "summary": "→ github.com/starframe/abyss/internal/dom.parseClass",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/dom.parseClass",
+                              "file": "internal/dom/selector.go",
+                              "label": "→ parseClass in internal/dom/selector.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11059148",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 244,
+                        "end_line": 244
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/dom/selector.go:parseAttribute:11059186",
+                          "kind": "call",
+                          "label": "Вызов parseAttribute",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 307,
+                            "end_line": 397
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/dom.parseAttribute",
+                          "summary": "→ github.com/starframe/abyss/internal/dom.parseAttribute",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/dom.parseAttribute",
+                              "file": "internal/dom/selector.go",
+                              "label": "→ parseAttribute in internal/dom/selector.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "if:internal/dom/selector.go:11059220",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 245,
+                            "end_line": 247
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "err != nil",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "return:internal/dom/selector.go:11059252",
+                              "kind": "output",
+                              "label": "Вернуть",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 246,
+                                "end_line": 246
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11059399",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 252,
+                        "end_line": 252
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/dom/selector.go:parsePseudo:11059439",
+                          "kind": "call",
+                          "label": "Вызов parsePseudo",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 399,
+                            "end_line": 439
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/dom.parsePseudo",
+                          "summary": "→ github.com/starframe/abyss/internal/dom.parsePseudo",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/dom.parsePseudo",
+                              "file": "internal/dom/selector.go",
+                              "label": "→ parsePseudo in internal/dom/selector.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "if:internal/dom/selector.go:11059470",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 253,
+                            "end_line": 255
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "err != nil",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "return:internal/dom/selector.go:11059502",
+                              "kind": "output",
+                              "label": "Вернуть",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 254,
+                                "end_line": 254
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11059645",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 256,
+                        "end_line": 256
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "return:internal/dom/selector.go:11059682",
+                          "kind": "output",
+                          "label": "Вернуть",
+                          "layer": "data",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 260,
+                            "end_line": 260
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11059710",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 263,
+                        "end_line": 263
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11059731",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 262,
+                            "end_line": 272
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "first",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/dom/selector.go:parseIdent:11059768",
+                              "kind": "call",
+                              "label": "Вызов parseIdent",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 294,
+                                "end_line": 305
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+                              "summary": "→ github.com/starframe/abyss/internal/dom.parseIdent",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/dom.parseIdent",
+                                  "file": "internal/dom/selector.go",
+                                  "label": "→ parseIdent in internal/dom/selector.go"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "if:internal/dom/selector.go:11059802",
+                              "kind": "decision",
+                              "label": "Условие",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 264,
+                                "end_line": 266
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "n == 0",
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11059834",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 265,
+                                    "end_line": 265
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            },
+                            {
+                              "id": "else:internal/dom/selector.go:11059975",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 270,
+                                "end_line": 272
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11059993",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 271,
+                                    "end_line": 271
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11060047",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 275,
+                "end_line": 275
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseComplexSelector",
+              "file": "internal/dom/selector.go",
+              "label": "← parseComplexSelector in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseComplexSelector",
+              "file": "internal/dom/selector.go",
+              "label": "← parseComplexSelector in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parseHash:11060070",
+          "kind": "group",
+          "label": "Функция parseHash",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 278,
+            "end_line": 284
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseHash",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector.go:11060115",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 279,
+                "end_line": 281
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(s) == 0 || s[0] != '#'",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11060155",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 280,
+                    "end_line": 280
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/dom/selector.go:parseIdent:11060190",
+              "kind": "call",
+              "label": "Вызов parseIdent",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 294,
+                "end_line": 305
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+              "summary": "→ github.com/starframe/abyss/internal/dom.parseIdent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.parseIdent",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ parseIdent in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "return:internal/dom/selector.go:11060212",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 283,
+                "end_line": 283
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+              "file": "internal/dom/selector.go",
+              "label": "← parseSimpleSelectorSequence in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parseClass:11060235",
+          "kind": "group",
+          "label": "Функция parseClass",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 286,
+            "end_line": 292
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseClass",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector.go:11060281",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 287,
+                "end_line": 289
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(s) == 0 || s[0] != '.'",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11060321",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 288,
+                    "end_line": 288
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/dom/selector.go:parseIdent:11060356",
+              "kind": "call",
+              "label": "Вызов parseIdent",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 294,
+                "end_line": 305
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+              "summary": "→ github.com/starframe/abyss/internal/dom.parseIdent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.parseIdent",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ parseIdent in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "return:internal/dom/selector.go:11060378",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 291,
+                "end_line": 291
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+              "file": "internal/dom/selector.go",
+              "label": "← parseSimpleSelectorSequence in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parseIdent:11060401",
+          "kind": "group",
+          "label": "Функция parseIdent",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 294,
+            "end_line": 305
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/dom/selector.go:11060458",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 296,
+                "end_line": 303
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector.go:11060507",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 298,
+                    "end_line": 302
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "unicode.IsLetter(r) || unicode.IsDigit(r) || r == '-' || r == '_'",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/dom/selector.go:11060609",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 300,
+                        "end_line": 302
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11060649",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 304,
+                "end_line": 304
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseAttribute",
+              "file": "internal/dom/selector.go",
+              "label": "← parseAttribute in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseAttribute",
+              "file": "internal/dom/selector.go",
+              "label": "← parseAttribute in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseClass",
+              "file": "internal/dom/selector.go",
+              "label": "← parseClass in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseHash",
+              "file": "internal/dom/selector.go",
+              "label": "← parseHash in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parsePseudo",
+              "file": "internal/dom/selector.go",
+              "label": "← parsePseudo in internal/dom/selector.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+              "file": "internal/dom/selector.go",
+              "label": "← parseSimpleSelectorSequence in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parseAttribute:11060668",
+          "kind": "group",
+          "label": "Функция parseAttribute",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 307,
+            "end_line": 397
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseAttribute",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector.go:11060757",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 309,
+                "end_line": 311
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(s) == 0 || s[0] != '['",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11060797",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 310,
+                    "end_line": 310
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector.go:11060861",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 314,
+                "end_line": 316
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/dom/selector.go:parseIdent:11060942",
+              "kind": "call",
+              "label": "Вызов parseIdent",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 294,
+                "end_line": 305
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+              "summary": "→ github.com/starframe/abyss/internal/dom.parseIdent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.parseIdent",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ parseIdent in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/dom/selector.go:11060964",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 318,
+                "end_line": 320
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "n == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11060984",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 319,
+                    "end_line": 319
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector.go:11061086",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 324,
+                "end_line": 326
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector.go:11061157",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 328,
+                "end_line": 387
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "i < len(s)",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "switch:internal/dom/selector.go:11061181",
+                  "kind": "action",
+                  "label": "switch",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 348,
+                    "end_line": 348
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "case:internal/dom/selector.go:11061203",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 328,
+                        "end_line": 328
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11061263",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 334,
+                        "end_line": 334
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11061285",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 334,
+                            "end_line": 339
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "i+1 < len(s) && s[i+1] == '='",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/dom/selector.go:11061393",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 337,
+                                "end_line": 339
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11061411",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 338,
+                                    "end_line": 338
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11061453",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 341,
+                        "end_line": 341
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11061475",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 341,
+                            "end_line": 346
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "i+1 < len(s) && s[i+1] == '='",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/dom/selector.go:11061583",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 344,
+                                "end_line": 346
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11061601",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 345,
+                                    "end_line": 345
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11061643",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 348,
+                        "end_line": 348
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11061665",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 348,
+                            "end_line": 353
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "i+1 < len(s) && s[i+1] == '='",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/dom/selector.go:11061773",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 351,
+                                "end_line": 353
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11061791",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 352,
+                                    "end_line": 352
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11061833",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 355,
+                        "end_line": 355
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/dom/selector.go:11061855",
+                          "kind": "decision",
+                          "label": "Условие",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 355,
+                            "end_line": 360
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "i+1 < len(s) && s[i+1] == '='",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/dom/selector.go:11061963",
+                              "kind": "decision",
+                              "label": "Иначе",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/dom/selector.go",
+                                "start_line": 358,
+                                "end_line": 360
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "return:internal/dom/selector.go:11061981",
+                                  "kind": "output",
+                                  "label": "Вернуть",
+                                  "layer": "data",
+                                  "source": {
+                                    "file": "internal/dom/selector.go",
+                                    "start_line": 359,
+                                    "end_line": 359
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": null,
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11062023",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 361,
+                        "end_line": 363
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "case:internal/dom/selector.go:11062084",
+                      "kind": "action",
+                      "label": "case",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 368,
+                        "end_line": 368
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "return:internal/dom/selector.go:11062105",
+                          "kind": "output",
+                          "label": "Вернуть",
+                          "layer": "data",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 365,
+                            "end_line": 365
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:internal/dom/selector.go:11062170",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 368,
+                    "end_line": 370
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11062252",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 371,
+                    "end_line": 386
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "i < len(s) && (s[i] == '\"' || s[i] == '\\'')",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "loop:internal/dom/selector.go:11062378",
+                      "kind": "loop",
+                      "label": "Цикл",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 375,
+                        "end_line": 377
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/dom/selector.go:11062494",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 379,
+                        "end_line": 381
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "i < len(s)",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "else:internal/dom/selector.go:11062559",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 382,
+                        "end_line": 386
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/dom/selector.go:parseIdent:11062583",
+                          "kind": "call",
+                          "label": "Вызов parseIdent",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 294,
+                            "end_line": 305
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+                          "summary": "→ github.com/starframe/abyss/internal/dom.parseIdent",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/dom.parseIdent",
+                              "file": "internal/dom/selector.go",
+                              "label": "→ parseIdent in internal/dom/selector.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector.go:11062706",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 390,
+                "end_line": 392
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector.go:11062776",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 393,
+                "end_line": 395
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "i < len(s) && s[i] == ']'",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11062829",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 396,
+                "end_line": 396
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+              "file": "internal/dom/selector.go",
+              "label": "← parseSimpleSelectorSequence in internal/dom/selector.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector.go:parsePseudo:11062852",
+          "kind": "group",
+          "label": "Функция parsePseudo",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 399,
+            "end_line": 439
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parsePseudo",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector.go:11062944",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 401,
+                "end_line": 403
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(s) == 0 || s[0] != ':'",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11062984",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 402,
+                    "end_line": 402
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector.go:11063090",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 406,
+                "end_line": 408
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "i < len(s) && s[i] == ':'",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/dom/selector.go:parseIdent:11063154",
+              "kind": "call",
+              "label": "Вызов parseIdent",
+              "layer": "calls",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 294,
+                "end_line": 305
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.parseIdent",
+              "summary": "→ github.com/starframe/abyss/internal/dom.parseIdent",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.parseIdent",
+                  "file": "internal/dom/selector.go",
+                  "label": "→ parseIdent in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/dom/selector.go:11063176",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 410,
+                "end_line": 412
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "n == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector.go:11063196",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 411,
+                    "end_line": 411
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector.go:11063263",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 416,
+                "end_line": 437
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "i < len(s) && s[i] == '('",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/dom/selector.go:11063362",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 420,
+                    "end_line": 432
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "switch:internal/dom/selector.go:11063404",
+                      "kind": "action",
+                      "label": "switch",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 420,
+                        "end_line": 420
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "case:internal/dom/selector.go:11063430",
+                          "kind": "action",
+                          "label": "case",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 420,
+                            "end_line": 420
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "case:internal/dom/selector.go:11063476",
+                          "kind": "action",
+                          "label": "case",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 420,
+                            "end_line": 420
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/dom/selector.go:11063536",
+                      "kind": "decision",
+                      "label": "Условие",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector.go",
+                        "start_line": 427,
+                        "end_line": 431
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "depth > 0",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "else:internal/dom/selector.go:11063590",
+                          "kind": "decision",
+                          "label": "Иначе",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/dom/selector.go",
+                            "start_line": 429,
+                            "end_line": 431
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": null,
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector.go:11063678",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector.go",
+                    "start_line": 434,
+                    "end_line": 436
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "i < len(s) && s[i] == ')'",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector.go:11063745",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 438,
+                "end_line": 438
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.parseSimpleSelectorSequence",
+              "file": "internal/dom/selector.go",
+              "label": "← parseSimpleSelectorSequence in internal/dom/selector.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,1599 @@
+{
+  "title": "internal/js/bridge_dom.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/bridge_dom.go",
+      "kind": "group",
+      "label": "Файл пакета js с мостами Go-JavaScriptCore",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/bridge_dom.go",
+        "start_line": 1,
+        "end_line": 207
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Этот файл содержит пакет js с импортами C и Go, объявляя функции-обертки для работы с DOM через JavaScriptCore",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/js/bridge_dom.go:LogWriter:15548188",
+          "kind": "state",
+          "label": "Закрытый блок кода функции",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 30,
+            "end_line": 30
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.LogWriter",
+          "summary": "Этот блок завершает определение функции createElementJS и возвращает значение undefined при недостаточном количестве аргументов",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/bridge_dom.go:bridgeHandlers:15548484",
+          "kind": "state",
+          "label": "Возврат JS-значения узла",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 36,
+            "end_line": 81
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.bridgeHandlers",
+          "summary": "Эта строка возвращает преобразованный в JS-значение DOM-элемент после его создания",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:goBridgeDispatch:15550652",
+          "kind": "group",
+          "label": "Функция setTextContentJS для работы с текстом",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 84,
+            "end_line": 105
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.goBridgeDispatch",
+          "summary": "Эта функция принимает контекст и аргументы, проверяет количество аргументов и извлекает идентификатор узла из первого аргумента",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/bridge_dom.go:15551087",
+              "kind": "action",
+              "label": "Объявление функции setTextContentJS",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 86,
+                "end_line": 86
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это объявление функции setTextContentJS, которая устанавливает текстовое содержимое элемента DOM",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15551087",
+                "statement:internal/js/bridge_dom.go:15551159"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/bridge_dom.go:_Ctype_JSGlobalContextRef:15551197",
+                  "kind": "call",
+                  "label": "Проверка количества аргументов",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 86,
+                    "end_line": 86
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это условие проверяет, что передано не менее двух аргументов для установки текстового содержимого",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15551250",
+              "kind": "action",
+              "label": "Закрытие условия проверки аргументов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 88,
+                "end_line": 88
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это закрывающая скобка условия проверки количества аргументов",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15551250",
+                "statement:internal/js/bridge_dom.go:15551285"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15551365",
+              "kind": "decision",
+              "label": "Проверка валидности идентификатора узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 90,
+                "end_line": 97
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что идентификатор узла не отрицательный (валиден)",
+              "coverage_ids": [
+                "if:internal/js/bridge_dom.go:15551365",
+                "if:internal/js/bridge_dom.go:15551536"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/bridge_dom.go:15551391",
+                  "kind": "action",
+                  "label": "Возврат undefined при ошибке",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 92,
+                    "end_line": 92
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает undefined, если идентификатор узла невалиден",
+                  "coverage_ids": [
+                    "statement:internal/js/bridge_dom.go:15551391",
+                    "statement:internal/js/bridge_dom.go:15551504"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/bridge_dom.go:15551539",
+                  "kind": "action",
+                  "label": "Маркировка изменения данных",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 96,
+                    "end_line": 96
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка вызывает SetDirty для маркировки изменения данных после установки текстового содержимого",
+                  "coverage_ids": [
+                    "statement:internal/js/bridge_dom.go:15551539",
+                    "return:internal/js/bridge_dom.go:15551584"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15551617",
+              "kind": "action",
+              "label": "Объявление функции createTextNodeJS",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 99,
+                "end_line": 99
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это объявление функции createTextNodeJS для создания текстового узла DOM",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15551617",
+                "statement:internal/js/bridge_dom.go:15551723"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15551887",
+              "kind": "action",
+              "label": "Возврат undefined при ошибке",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 100,
+                "end_line": 100
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка возвращает undefined, если передано меньше одного аргумента",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15551887",
+                "statement:internal/js/bridge_dom.go:15551984"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15552145",
+              "kind": "action",
+              "label": "Извлечение текста из аргумента",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 103,
+                "end_line": 103
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка извлекает текстовое значение из первого аргумента через getArgString",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15552145",
+                "return:internal/js/bridge_dom.go:15552438"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:getArgString:15552506",
+          "kind": "group",
+          "label": "Функция getInnerHTMLJS для получения HTML",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 108,
+            "end_line": 116
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getArgString",
+          "summary": "Эта функция принимает контекст и аргументы, проверяет количество аргументов и извлекает идентификатор узла",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/bridge_dom.go:15552617",
+              "kind": "action",
+              "label": "Создание фрагмента документа",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 110,
+                "end_line": 110
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка создаёт новый фрагмент документа через createDocumentFragment",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15552617",
+                "statement:internal/js/bridge_dom.go:15552687"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15553012",
+              "kind": "decision",
+              "label": "Проверка количества аргументов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 111,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что передан хотя бы один аргумент для получения HTML-контента",
+              "coverage_ids": [
+                "if:internal/js/bridge_dom.go:15553012",
+                "return:internal/js/bridge_dom.go:15553280"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/bridge_dom.go:15553036",
+                  "kind": "action",
+                  "label": "Закрытие условия проверки аргументов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 112,
+                    "end_line": 112
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Это закрывающая скобка условия проверки количества аргументов для getInnerHTMLJS",
+                  "coverage_ids": [
+                    "statement:internal/js/bridge_dom.go:15553036",
+                    "return:internal/js/bridge_dom.go:15553201"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← addEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.closestJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← closestJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.createElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← createElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.createTextNodeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← createTextNodeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.dispatchEventJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← dispatchEventJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getAttributeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getAttributeJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementByIdJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementByIdJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementsByClassNameJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementsByClassNameJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementsByTagNameJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementsByTagNameJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentTextJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentTextJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.logJS",
+              "file": "internal/js/dom.go",
+              "label": "← logJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.matchesJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← matchesJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorAllJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorAllJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← removeEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setOuterHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setOuterHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setTextContentJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:jsToNodeID:15553358",
+          "kind": "group",
+          "label": "Функция getTextContentJS для получения текста",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 119,
+            "end_line": 139
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.jsToNodeID",
+          "summary": "Эта функция принимает контекст и аргументы, проверяет количество аргументов и извлекает идентификатор узла",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/bridge_dom.go:15553458",
+              "kind": "decision",
+              "label": "Проверка валидности идентификатора",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 120,
+                "end_line": 123
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что идентификатор узла не отрицательный (валиден)",
+              "coverage_ids": [
+                "if:internal/js/bridge_dom.go:15553458",
+                "statement:internal/js/bridge_dom.go:15553757"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15553737",
+                  "kind": "output",
+                  "label": "Возврат HTML-контента",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 121,
+                    "end_line": 121
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает HTML-контент элемента через getInnerHTML",
+                  "coverage_ids": [
+                    "return:internal/js/bridge_dom.go:15553737"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15554043",
+              "kind": "decision",
+              "label": "Проверка количества аргументов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 124,
+                "end_line": 127
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это условие проверяет, что передан хотя бы один аргумент для получения текстового контента",
+              "coverage_ids": [
+                "if:internal/js/bridge_dom.go:15554043",
+                "statement:internal/js/bridge_dom.go:15554087"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15554067",
+                  "kind": "output",
+                  "label": "Возврат пустой строки",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 125,
+                    "end_line": 125
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Эта строка возвращает пустую строку, если передано меньше одного аргумента",
+                  "coverage_ids": [
+                    "return:internal/js/bridge_dom.go:15554067"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15554239",
+              "kind": "action",
+              "label": "Закрытие условия проверки идентификатора",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 128,
+                "end_line": 128
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Это закрывающая скобка условия проверки валидности идентификатора узла",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15554239"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15554400",
+              "kind": "action",
+              "label": "Преобразование первого аргумента в идентификатор узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 128,
+                "end_line": 128
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Преобразует первый аргумент функции в идентификатор узла DOM с использованием вспомогательной функции jsToNodeID.",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15554400"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15554464",
+              "kind": "action",
+              "label": "Проверка валидности идентификатора узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 130,
+                "end_line": 130
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, является ли полученный идентификатор узла отрицательным, что указывает на ошибку или недопустимый узел.",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15554464"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15554867",
+              "kind": "decision",
+              "label": "Условный блок обработки пустого содержимого",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 131,
+                "end_line": 133
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет, нужно ли вернуть пустую строку при отрицательном идентификаторе, или извлечь содержимое узла.",
+              "coverage_ids": [
+                "if:internal/js/bridge_dom.go:15554867"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15554907",
+                  "kind": "output",
+                  "label": "Возврат пустой строки при ошибке",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 132,
+                    "end_line": 132
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает пустую строку в контексте JavaScript при обнаружении недопустимого идентификатора узла.",
+                  "coverage_ids": [
+                    "return:internal/js/bridge_dom.go:15554907"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/bridge_dom.go:15554927",
+              "kind": "action",
+              "label": "Возврат содержимого узла как строки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 134,
+                "end_line": 134
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает содержимое узла DOM, преобразованное в строковое значение JavaScript через MakeString.",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15554927"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/bridge_dom.go:ToNumber:15554939",
+                  "kind": "call",
+                  "label": "Вызов функции преобразования в число",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 134,
+                    "end_line": 134
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.Context.ToNumber",
+                  "summary": "Вызывает вспомогательную функцию ToNumber для преобразования содержимого узла в числовое значение.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.Context.ToNumber",
+                      "file": "internal/js/js.go",
+                      "label": "→ ToNumber in internal/js/js.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/bridge_dom.go:15554963",
+              "kind": "decision",
+              "label": "Проверка количества аргументов функции removeChildJS",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 135,
+                "end_line": 137
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, содержит ли вызов функции removeChildJS достаточное количество аргументов для выполнения операции удаления.",
+              "coverage_ids": [
+                "if:internal/js/bridge_dom.go:15554963"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/bridge_dom.go:15554987",
+                  "kind": "output",
+                  "label": "Возврат undefined при недостатке аргументов",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 136,
+                    "end_line": 136
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает undefined в контексте JavaScript, когда функция removeChildJS вызвана с недостаточным количеством аргументов.",
+                  "coverage_ids": [
+                    "return:internal/js/bridge_dom.go:15554987"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/bridge_dom.go:15555007",
+              "kind": "output",
+              "label": "Возврат undefined при недостатке аргументов",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 138,
+                "end_line": 138
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает undefined в контексте JavaScript, когда функция removeChildJS вызвана с недостаточным количеством аргументов.",
+              "coverage_ids": [
+                "return:internal/js/bridge_dom.go:15555007"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← addEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← appendChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← appendChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.cloneNodeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← cloneNodeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.closestJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← closestJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.containsJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← containsJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.containsJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← containsJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.dispatchEventJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← dispatchEventJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.firstElementChildJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← firstElementChildJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getAttributeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getAttributeJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+              "file": "internal/js/dom.go",
+              "label": "← getBoundingClientRectJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getChildrenJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getChildrenJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyleJS",
+              "file": "internal/js/dom.go",
+              "label": "← getComputedStyleJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← getInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getParentNodeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getParentNodeJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← getTextContentJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentElementJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertAdjacentTextJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertBeforeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertBeforeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← insertBeforeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.lastElementChildJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← lastElementChildJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.matchesJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← matchesJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.nextElementSiblingJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← nextElementSiblingJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.outerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← outerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.previousElementSiblingJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← previousElementSiblingJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorAllJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorAllJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.querySelectorJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← querySelectorJS in internal/js/bridge_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← removeChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← removeChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListenerJS",
+              "file": "internal/js/bridge_query.go",
+              "label": "← removeEventListenerJS in internal/js/bridge_query.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← replaceChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← replaceChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← replaceChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setOuterHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setOuterHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setTextContentJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:nodeToJSValue:15555069",
+          "kind": "group",
+          "label": "Группа преобразования узла в значение JavaScript",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 142,
+            "end_line": 144
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.nodeToJSValue",
+          "summary": "Группирует операции преобразования идентификаторов узлов DOM в значения JavaScript для функции removeChildJS.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/bridge_dom.go:15555173",
+              "kind": "output",
+              "label": "Возврат undefined при ошибке валидации",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 143,
+                "end_line": 143
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает undefined в контексте JavaScript, когда идентификаторы родителя или ребенка являются недопустимыми.",
+              "coverage_ids": [
+                "return:internal/js/bridge_dom.go:15555173"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:RegisterBridgeFunctions:15555280",
+          "kind": "group",
+          "label": "Регистрация функций моста DOM",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 147,
+            "end_line": 202
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+          "summary": "Группирует и регистрирует функции моста JavaScript для работы с DOM-узлами, включая удаление и вставку элементов.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/bridge_dom.go:15555336",
+              "kind": "action",
+              "label": "Обработка аргументов функции cloneNodeJS",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 148,
+                "end_line": 193
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Обрабатывает дополнительные аргументы функции cloneNodeJS для определения режима глубокого клонирования узла.",
+              "coverage_ids": [
+                "statement:internal/js/bridge_dom.go:15555336"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/bridge_dom.go:15556502",
+              "kind": "loop",
+              "label": "Цикл обработки клонирования узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 194,
+                "end_line": 200
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняет цикл обработки клонирования узла DOM с проверкой на nil и преобразованием результата в значение JavaScript.",
+              "coverage_ids": [
+                "loop:internal/js/bridge_dom.go:15556502"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/bridge_dom.go:15556545",
+                  "kind": "action",
+                  "label": "Проверка на nil после клонирования",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 195,
+                    "end_line": 195
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, не равен ли клонированный узел nil, что указывает на ошибку клонирования.",
+                  "coverage_ids": [
+                    "statement:internal/js/bridge_dom.go:15556545"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/bridge_dom.go:15556776",
+                  "kind": "action",
+                  "label": "Возврат null при ошибке клонирования",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 195,
+                    "end_line": 195
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает null в контексте JavaScript, когда клонирование узла завершилось неудачей и узел равен nil.",
+                  "coverage_ids": [
+                    "statement:internal/js/bridge_dom.go:15556776"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/js/bridge_dom.go:15556809",
+                  "kind": "decision",
+                  "label": "Условный блок возврата клонированного узла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/bridge_dom.go",
+                    "start_line": 197,
+                    "end_line": 199
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Определяет, нужно ли возвращать клонированный узел или обработать ошибку при клонировании.",
+                  "coverage_ids": [
+                    "if:internal/js/bridge_dom.go:15556809"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/js/bridge_dom.go:15556812",
+                      "kind": "action",
+                      "label": "Подготовка к возврату клонированного узла",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/bridge_dom.go",
+                        "start_line": 197,
+                        "end_line": 197
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Подготавливает код для возврата клонированного узла DOM в виде значения JavaScript после успешного клонирования.",
+                      "coverage_ids": [
+                        "statement:internal/js/bridge_dom.go:15556812"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/js/bridge_dom.go:SetProperty:15556819",
+                          "kind": "call",
+                          "label": "Установка свойства объекта JavaScript",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/js/bridge_dom.go",
+                            "start_line": 197,
+                            "end_line": 197
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/js.Context.SetProperty",
+                          "summary": "Вызывает функцию SetProperty для установки свойства на объект JavaScript после успешного клонирования узла.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/js.Context.SetProperty",
+                              "file": "internal/js/js.go",
+                              "label": "→ SetProperty in internal/js/js.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "call:internal/js/bridge_dom.go:jsObjToVal:15556841",
+                          "kind": "call",
+                          "label": "Преобразование объекта в значение JavaScript",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/js/bridge_dom.go",
+                            "start_line": 205,
+                            "end_line": 207
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/js.jsObjToVal",
+                          "summary": "Вызывает функцию jsObjToVal для преобразования клонированного узла DOM в значение JavaScript.",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/js.jsObjToVal",
+                              "file": "internal/js/bridge_dom.go",
+                              "label": "→ jsObjToVal in internal/js/bridge_dom.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "return:internal/js/bridge_dom.go:15556883",
+                      "kind": "output",
+                      "label": "Возврат клонированного узла как значения",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/bridge_dom.go",
+                        "start_line": 198,
+                        "end_line": 198
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает клонированный узел DOM, преобразованный в значение JavaScript через функцию nodeToJS.",
+                      "coverage_ids": [
+                        "return:internal/js/bridge_dom.go:15556883"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/bridge_dom.go:15556914",
+              "kind": "output",
+              "label": "Возврат false при недостатке аргументов",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 201,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает false в контексте JavaScript, когда функция containsJS вызвана с недостаточным количеством аргументов.",
+              "coverage_ids": [
+                "return:internal/js/bridge_dom.go:15556914"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/bridge_dom.go:jsObjToVal:15556980",
+          "kind": "group",
+          "label": "Группа преобразования для containsJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/bridge_dom.go",
+            "start_line": 205,
+            "end_line": 207
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.jsObjToVal",
+          "summary": "Группирует операции преобразования идентификаторов узлов для проверки вложенности узла в функции containsJS.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/bridge_dom.go:15557112",
+              "kind": "output",
+              "label": "Возврат результата проверки вложенности",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/bridge_dom.go",
+                "start_line": 206,
+                "end_line": 206
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает результат проверки, является ли узел потомком другого узла, преобразованный в значение JavaScript.",
+              "coverage_ids": [
+                "return:internal/js/bridge_dom.go:15557112"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+              "file": "internal/js/bridge_dom.go",
+              "label": "← RegisterBridgeFunctions in internal/js/bridge_dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.ProcessTimers",
+              "file": "internal/js/dom_script.go",
+              "label": "← ProcessTimers in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListener",
+              "file": "internal/js/dom_script.go",
+              "label": "← addEventListener in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.clearTimer",
+              "file": "internal/js/dom_script.go",
+              "label": "← clearTimer in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+              "file": "internal/js/dom.go",
+              "label": "← getBoundingClientRectJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+              "file": "internal/js/js.go",
+              "label": "← getComputedStyle in internal/js/js.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.nodeToJS",
+              "file": "internal/js/dom_style.go",
+              "label": "← nodeToJS in internal/js/dom_style.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListener",
+              "file": "internal/js/dom_script.go",
+              "label": "← removeEventListener in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInterval",
+              "file": "internal/js/dom_script.go",
+              "label": "← setInterval in internal/js/dom_script.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTimeout",
+              "file": "internal/js/dom_script.go",
+              "label": "← setTimeout in internal/js/dom_script.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

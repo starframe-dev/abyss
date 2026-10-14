@@ -1,0 +1,4487 @@
+{
+  "title": "internal/js/dom_events.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/dom_events.go",
+      "kind": "group",
+      "label": "Файл событий DOM",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom_events.go",
+        "start_line": 1,
+        "end_line": 415
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Корневой пакет содержащий все определения типов, переменных и функций для системы событий DOM",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/js/dom_events.go:NodeID:15464725",
+          "kind": "group",
+          "label": "Тип NodeID",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 17,
+            "end_line": 22
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "Тип идентификатора узла DOM для работы с элементами документа",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:nodeMu:15464834",
+          "kind": "state",
+          "label": "nodeMu",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 25,
+            "end_line": 25
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.nodeMu",
+          "summary": "Мьютекс для синхронизации доступа к узлам DOM",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:nodes:15464876",
+          "kind": "state",
+          "label": "nodes",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 27,
+            "end_line": 27
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.nodes",
+          "summary": "Карта узлов DOM по их идентификаторам",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:computedStyles:15464984",
+          "kind": "state",
+          "label": "computedStyles",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 31,
+            "end_line": 31
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.computedStyles",
+          "summary": "Вычисленные стили для элементов DOM",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:layoutBoxes:15465114",
+          "kind": "state",
+          "label": "layoutBoxes",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 35,
+            "end_line": 35
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.layoutBoxes",
+          "summary": "Карты layout-боксов для верстки элементов",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:eventMu:15465229",
+          "kind": "state",
+          "label": "eventMu",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 39,
+            "end_line": 39
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.eventMu",
+          "summary": "Мьютекс для синхронизации доступа к системе событий",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:eventCtx:15465351",
+          "kind": "state",
+          "label": "eventCtx",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 41,
+            "end_line": 41
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.eventCtx",
+          "summary": "Контекст JavaScriptCore для выполнения JS кода событий",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:currentCtx:15465505",
+          "kind": "state",
+          "label": "currentCtx",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 45,
+            "end_line": 45
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.currentCtx",
+          "summary": "Текущий активный контекст выполнения",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:dirtyMu:15465617",
+          "kind": "state",
+          "label": "dirtyMu",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 49,
+            "end_line": 49
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.dirtyMu",
+          "summary": "Мьютекс для синхронизации доступа к состоянию загрязнения",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:timerMu:15465690",
+          "kind": "state",
+          "label": "timerMu",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 53,
+            "end_line": 53
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.timerMu",
+          "summary": "Мьютекс для синхронизации доступа к таймерам",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/js/dom_events.go:nextTimerID:15465735",
+          "kind": "state",
+          "label": "nextTimerID",
+          "layer": "state",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 55,
+            "end_line": 55
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.nextTimerID",
+          "summary": "Следующий идентификатор таймера для уникальности",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/js/dom_events.go:timer:15465801",
+          "kind": "group",
+          "label": "Тип timer",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 59,
+            "end_line": 65
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.timer",
+          "summary": "Структура таймера с callback, дедлайном и настройками повтора",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom_events.go:SetCurrentContext:15466035",
+          "kind": "group",
+          "label": "SetCurrentContext",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 68,
+            "end_line": 76
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.SetCurrentContext",
+          "summary": "Устанавливает текущий контекст выполнения для событий",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15466087",
+              "kind": "action",
+              "label": "Строка 69",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 69,
+                "end_line": 69
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Начало функции dispatchEvent для отправки событий",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466087",
+                "statement:internal/js/dom_events.go:15466108"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15466137",
+              "kind": "decision",
+              "label": "Условие 71-73",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 71,
+                "end_line": 74
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка наличия слушателей для типа события",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15466137",
+                "statement:internal/js/dom_events.go:15466206"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15466183",
+                  "kind": "action",
+                  "label": "Строка 72",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 72,
+                    "end_line": 72
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполнение закрытия при отсутствии слушателей события",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15466183"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_events.go:Close:15466183",
+                      "kind": "call",
+                      "label": "Вызов Close",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 72,
+                        "end_line": 72
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.Close",
+                      "summary": "Вызов функции закрытия при отсутствии слушателей",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.Close",
+                          "file": "internal/js/js.go",
+                          "label": "→ Close in internal/js/js.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15466224",
+              "kind": "action",
+              "label": "Строка 75",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 72,
+                "end_line": 72
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершение условия проверки слушателей",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466224"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15466352",
+              "kind": "action",
+              "label": "Строка 80",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 80,
+                "end_line": 80
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершение условия копирования callback-ов",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466352",
+                "statement:internal/js/dom_events.go:15466373"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15466402",
+              "kind": "output",
+              "label": "Возврат 82",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 82,
+                "end_line": 82
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создание массива callback-ов для безопасного вызова",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15466402"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom_events.go:CloseCurrentContext:15466489",
+          "kind": "group",
+          "label": "CloseCurrentContext",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 86,
+            "end_line": 94
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+          "summary": "Закрывает текущий контекст выполнения при завершении",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15466519",
+              "kind": "action",
+              "label": "Строка 87",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 87,
+                "end_line": 87
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создание объекта события через makeEventObject",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466519",
+                "statement:internal/js/dom_events.go:15466540"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15466569",
+              "kind": "decision",
+              "label": "Условие 93",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 89,
+                "end_line": 93
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка остановки распространения события",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15466569"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15466594",
+                  "kind": "action",
+                  "label": "Строка 90",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 90,
+                    "end_line": 90
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Объявление переменного для хранения исключения JS",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15466594",
+                    "statement:internal/js/dom_events.go:15466615"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_events.go:Close:15466594",
+                      "kind": "call",
+                      "label": "Вызов Close 90",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 90,
+                        "end_line": 90
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.Close",
+                      "summary": "Объявление переменного для хранения исключения",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.Close",
+                          "file": "internal/js/js.go",
+                          "label": "→ Close in internal/js/js.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/dom_events.go:15466634",
+                  "kind": "action",
+                  "label": "Строка 92",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 90,
+                    "end_line": 90
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Пустая строка между вызовом callback и проверкой",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15466634"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15466743",
+              "kind": "action",
+              "label": "Строка 98",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 98,
+                "end_line": 98
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Прерывание цикла при остановке распространения",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466743",
+                "statement:internal/js/dom_events.go:15466759"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15466773",
+              "kind": "action",
+              "label": "Строка 100",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 100,
+                "end_line": 100
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершение цикла по callback-ам события",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466773"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom_events.go:IsDirty:15466869",
+          "kind": "group",
+          "label": "IsDirty",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 104,
+            "end_line": 108
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.IsDirty",
+          "summary": "Проверяет флаг загрязнения системы для перерисовки",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15466892",
+              "kind": "action",
+              "label": "Строка 105",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 105,
+                "end_line": 105
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Начало функции создания объекта события JS",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15466892",
+                "statement:internal/js/dom_events.go:15466908"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15466932",
+              "kind": "output",
+              "label": "Возврат 107",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 107,
+                "end_line": 107
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Пустая строка перед созданием JS кода события",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15466932"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467019",
+              "kind": "action",
+              "label": "Строка 112",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 112,
+                "end_line": 112
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "JS код для метода preventDefault в объекте события",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467019",
+                "statement:internal/js/dom_events.go:15467035"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467050",
+              "kind": "action",
+              "label": "Строка 114",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 114,
+                "end_line": 114
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение JS функции создания объекта события",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467050"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom_events.go:InitDOM:15467131",
+          "kind": "group",
+          "label": "InitDOM",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 118,
+            "end_line": 128
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+          "summary": "Инициализирует систему DOM с контекстом и слушателями",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15467162",
+              "kind": "action",
+              "label": "Строка 119",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 119,
+                "end_line": 119
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Объявление переменного для хранения исключения JS",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467162",
+                "statement:internal/js/dom_events.go:15467177"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467201",
+              "kind": "action",
+              "label": "Строка 122",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 120,
+                "end_line": 120
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возврат null при ошибке выполнения JS кода",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467201",
+                "statement:internal/js/dom_events.go:15467233"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467249",
+              "kind": "action",
+              "label": "Строка 124",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 127,
+                "end_line": 127
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возврат результата выполнения JS кода события",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467249"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467293",
+              "kind": "action",
+              "label": "Строка 127",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 127,
+                "end_line": 127
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Комментарий о функции setTimeout для таймеров",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467293"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom_events.go:assignIDs:15467293",
+                  "kind": "call",
+                  "label": "Вызов assignIDs",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 131,
+                    "end_line": 138
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.assignIDs",
+                  "summary": "Комментарий о функции setTimeout для регистрации таймера",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.assignIDs",
+                      "file": "internal/js/dom_events.go",
+                      "label": "→ assignIDs in internal/js/dom_events.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:assignIDs:15467362",
+          "kind": "group",
+          "label": "Функция назначения идентификаторов таймерам",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 131,
+            "end_line": 138
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.assignIDs",
+          "summary": "Группа кода, содержащая логику создания и регистрации таймеров с уникальными идентификаторами",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15467393",
+              "kind": "action",
+              "label": "Увеличение счётчика идентификаторов таймеров",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 136,
+                "end_line": 136
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инкремент переменной nextTimerID для генерации нового уникального идентификатора таймера",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467393",
+                "statement:internal/js/dom_events.go:15467411"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467425",
+              "kind": "action",
+              "label": "Защита значения коллбэка от сборки мусора",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 136,
+                "end_line": 136
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вызов функции защиты значения JavaScript-объекта коллбэка от сборки мусора",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467425",
+                "loop:internal/js/dom_events.go:15467440"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15467477",
+                  "kind": "action",
+                  "label": "Присвоение идентификатора таймеру",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 136,
+                    "end_line": 136
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Установка значения идентификатора в поле структуры таймера",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15467477"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_events.go:assignIDs:15467477",
+                      "kind": "call",
+                      "label": "Установка поля ID в структуре таймера",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 131,
+                        "end_line": 138
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.assignIDs",
+                      "summary": "Присвоение идентификатора таймера в поле ID структуры",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.assignIDs",
+                          "file": "internal/js/dom_events.go",
+                          "label": "→ assignIDs in internal/js/dom_events.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.InitDOM",
+              "file": "internal/js/dom_events.go",
+              "label": "← InitDOM in internal/js/dom_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.assignIDs",
+              "file": "internal/js/dom_events.go",
+              "label": "← assignIDs in internal/js/dom_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:createElement:15467545",
+          "kind": "group",
+          "label": "Функция создания DOM-элемента",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 141,
+            "end_line": 157
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.createElement",
+          "summary": "Группа кода, содержащая логику создания DOM-элементов и текстовых узлов",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15467593",
+              "kind": "action",
+              "label": "Возврат идентификатора созданного таймера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 142,
+                "end_line": 142
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращение сгенерированного идентификатора таймера вызывающему коду",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467593",
+                "statement:internal/js/dom_events.go:15467608"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467632",
+              "kind": "action",
+              "label": "Начало функции setInterval для периодических таймеров",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 147,
+                "end_line": 147
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Декларация функции setInterval для регистрации коллбэка, вызываемого каждые delayMs миллисекунд",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467632",
+                "statement:internal/js/dom_events.go:15467788"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467806",
+              "kind": "action",
+              "label": "Добавление нового таймера в список",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 153,
+                "end_line": 154
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Добавление структуры таймера в слайс таймеров с параметрами ID, Callback, Deadline, Interval",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467806",
+                "statement:internal/js/dom_events.go:15467820"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15467836",
+              "kind": "output",
+              "label": "Завершение установки срока действия таймера",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 156,
+                "end_line": 156
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершение инициализации поля Deadline структуры таймера с расчётным временем",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15467836"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467937",
+              "kind": "action",
+              "label": "Завершение функции создания текстового узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 161,
+                "end_line": 161
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Закрытие функции createTextNode после создания текстового узла",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467937",
+                "statement:internal/js/dom_events.go:15467952"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15467976",
+              "kind": "action",
+              "label": "Начало функции clearTimer для удаления таймера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 162,
+                "end_line": 162
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Декларация функции clearTimer для удаления таймера по его идентификатору",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15467976",
+                "statement:internal/js/dom_events.go:15468033"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15468051",
+              "kind": "action",
+              "label": "Снятие защиты значения коллбэка таймера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 170,
+                "end_line": 171
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вызов функции снятия защиты значения JavaScript-объекта коллбэка таймера перед удалением",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15468051",
+                "statement:internal/js/dom_events.go:15468065"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15468081",
+              "kind": "output",
+              "label": "Завершение функции удаления таймера",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 173,
+                "end_line": 173
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Ранний возврат из функции clearTimer после успешного удаления таймера",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15468081"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.createElementJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← createElementJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:createDocumentFragment:15468157",
+          "kind": "group",
+          "label": "Функция создания фрагмента документа",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 177,
+            "end_line": 193
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.createDocumentFragment",
+          "summary": "Группа кода, содержащая логику создания фрагментов документа DOM",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15468200",
+              "kind": "action",
+              "label": "Начало функции ProcessTimers для обработки таймеров",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 178,
+                "end_line": 178
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Декларация функции ProcessTimers для выполнения всех готовых таймеров",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15468200",
+                "statement:internal/js/dom_events.go:15468215"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15468239",
+              "kind": "action",
+              "label": "Инициализация списков готовых и оставшихся таймеров",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 179,
+                "end_line": 179
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создание пустых слайсов для хранения готовых и оставшихся таймеров",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15468239",
+                "statement:internal/js/dom_events.go:15468400"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15468418",
+              "kind": "action",
+              "label": "Завершение цикла обработки таймеров",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 189,
+                "end_line": 190
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершение цикла перебора таймеров после разделения на списки",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15468418",
+                "statement:internal/js/dom_events.go:15468432"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15468448",
+              "kind": "output",
+              "label": "Завершение обработки таймеров",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 192,
+                "end_line": 192
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Ранний возврат из функции ProcessTimers если нет готовых таймеров",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15468448"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.createDocumentFragmentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← createDocumentFragmentJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:removeNodeFromParentLocked:15468558",
+          "kind": "group",
+          "label": "Функция удаления узла из родителя",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 197,
+            "end_line": 208
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.removeNodeFromParentLocked",
+          "summary": "Группа кода, содержащая логику удаления DOM-узла из родительского контейнера",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_events.go:15468610",
+              "kind": "decision",
+              "label": "Проверка условия для выполнения коллбэка",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 198,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условие проверки для выполнения коллбэка таймера при повторном запуске",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15468610",
+                "statement:internal/js/dom_events.go:15468648"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15468637",
+                  "kind": "output",
+                  "label": "Завершение инициализации переменной для коллбэка",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 199,
+                    "end_line": 199
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Инициализация переменной exc для хранения результата вызова коллбэка",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15468637"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15468675",
+              "kind": "loop",
+              "label": "Цикл обработки готовых таймеров",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 202,
+                "end_line": 207
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебора всех готовых таймеров для выполнения их коллбэков",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15468675"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_events.go:15468716",
+                  "kind": "decision",
+                  "label": "Проверка флага повторного выполнения таймера",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 203,
+                    "end_line": 206
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Условие проверки флага Repeat для определения необходимости повторного запуска таймера",
+                  "coverage_ids": [
+                    "if:internal/js/dom_events.go:15468716"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/js/dom_events.go:15468735",
+                      "kind": "action",
+                      "label": "Блокировка мьютекса при повторном таймере",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 204,
+                        "end_line": 204
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Блокировка мьютекса timerMu перед добавлением таймера обратно в список",
+                      "coverage_ids": [
+                        "statement:internal/js/dom_events.go:15468735",
+                        "statement:internal/js/dom_events.go:15468819"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15468974",
+              "kind": "action",
+              "label": "Начало функции перемещения детей",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 213,
+                "end_line": 213
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Начало реализации функции moveAllChildren для перемещения дочерних узлов",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15468974",
+                "statement:internal/js/dom_events.go:15469027"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15469060",
+              "kind": "loop",
+              "label": "Цикл обработки дочерних узлов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 215,
+                "end_line": 220
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебора дочерних узлов для их перемещения в новый контейнер",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15469060",
+                "statement:internal/js/dom_events.go:15469193"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15469095",
+                  "kind": "action",
+                  "label": "Действие внутри цикла перемещения",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 214,
+                    "end_line": 214
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Действие внутри цикла обработки дочерних узлов DOM",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15469095",
+                    "statement:internal/js/dom_events.go:15469116"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/dom_events.go:15469140",
+                  "kind": "action",
+                  "label": "Действие внутри цикла перемещения",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 218,
+                    "end_line": 218
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Действие внутри цикла обработки дочерних узлов DOM",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15469140"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChild",
+              "file": "internal/js/dom_events.go",
+              "label": "← appendChild in internal/js/dom_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:appendChild:15469298",
+          "kind": "group",
+          "label": "Функция добавления узла как потомка",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 224,
+            "end_line": 245
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.appendChild",
+          "summary": "Группа кода, содержащая логику добавления DOM-узла как потомка другого узла",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15469344",
+              "kind": "action",
+              "label": "Начало функции добавления потомка",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 225,
+                "end_line": 225
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Начало реализации функции appendChild для добавления узла как потомка",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469344",
+                "statement:internal/js/dom_events.go:15469359"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469383",
+              "kind": "action",
+              "label": "Действие внутри функции добавления",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 226,
+                "end_line": 226
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Действие внутри реализации функции appendChild",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469383",
+                "if:internal/js/dom_events.go:15469414"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15469425",
+                  "kind": "output",
+                  "label": "Возврат при возврате узла",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 230,
+                    "end_line": 230
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний возврат из функции appendChild при возврате узла",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15469425"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469436",
+              "kind": "action",
+              "label": "Действие после возврата узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 238,
+                "end_line": 238
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Действие после раннего возврата из функции appendChild",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469436",
+                "if:internal/js/dom_events.go:15469465"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15469476",
+                  "kind": "output",
+                  "label": "Возврат при возврате узла",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 234,
+                    "end_line": 234
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний возврат из функции appendChild при возврате узла",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15469476"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15469488",
+              "kind": "decision",
+              "label": "Проверка условия для перемещения детей",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 237,
+                "end_line": 242
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условие проверки для вызова функции перемещения дочерних узлов",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15469488",
+                "statement:internal/js/dom_events.go:15469579"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15469534",
+                  "kind": "action",
+                  "label": "Действие после вызова перемещения",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 238,
+                    "end_line": 238
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Действие после вызова функции moveAllChildren",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15469534",
+                    "return:internal/js/dom_events.go:15469567"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_events.go:moveAllChildren:15469534",
+                      "kind": "call",
+                      "label": "Вызов функции перемещения детей",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 212,
+                        "end_line": 221
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.moveAllChildren",
+                      "summary": "Вызов функции moveAllChildren для перемещения дочерних узлов",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.moveAllChildren",
+                          "file": "internal/js/dom_events.go",
+                          "label": "→ moveAllChildren in internal/js/dom_events.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "call:internal/js/dom_events.go:removeNodeFromParentLocked:15469579",
+                  "kind": "call",
+                  "label": "Вызов функции удаления узла из родителя",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 197,
+                    "end_line": 208
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.removeNodeFromParentLocked",
+                  "summary": "Вызов функции removeNodeFromParentLocked для удаления узла из родителя",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.removeNodeFromParentLocked",
+                      "file": "internal/js/dom_events.go",
+                      "label": "→ removeNodeFromParentLocked in internal/js/dom_events.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469614",
+              "kind": "action",
+              "label": "Действие после удаления узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 242,
+                "end_line": 242
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Действие после удаления узла из родительского контейнера",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469614",
+                "statement:internal/js/dom_events.go:15469637"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469781",
+              "kind": "action",
+              "label": "Начало функции установки HTML",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 249,
+                "end_line": 249
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Начало реализации функции setInnerHTML для установки HTML-содержимого",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469781",
+                "statement:internal/js/dom_events.go:15469796"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469820",
+              "kind": "action",
+              "label": "Действие внутри установки HTML",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 250,
+                "end_line": 250
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Действие внутри реализации функции setInnerHTML",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469820",
+                "if:internal/js/dom_events.go:15469843"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15469854",
+                  "kind": "output",
+                  "label": "Возврат при возврате узла",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 254,
+                    "end_line": 254
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний возврат из функции setInnerHTML при возврате узла",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15469854"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469885",
+              "kind": "action",
+              "label": "Действие после парсинга HTML",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 258,
+                "end_line": 258
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Действие после вызова функции Parse для установки HTML-содержимого",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469885"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom_events.go:Parse:15469892",
+                  "kind": "call",
+                  "label": "Вызов функции парсинга HTML",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 258,
+                    "end_line": 258
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+                  "summary": "Вызов функции Parse для парсинга HTML-строки в DOM-дерево",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.Parse",
+                      "file": "internal/dom/dom.go",
+                      "label": "→ Parse in internal/dom/dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15469909",
+              "kind": "action",
+              "label": "Установка значения переменной",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 258,
+                "end_line": 258
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Эта строка устанавливает значение переменной в текущей области видимости.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15469909"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15469964",
+              "kind": "loop",
+              "label": "Цикл по элементам DOM",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 262,
+                "end_line": 264
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебирает элементы DOM-дерева для обработки каждого узла.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15469964"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15470004",
+                  "kind": "action",
+                  "label": "Действие внутри цикла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 258,
+                    "end_line": 258
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет конкретное действие для текущего элемента в цикле.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470004"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15470027",
+              "kind": "action",
+              "label": "Обработка следующего элемента",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 270,
+                "end_line": 270
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переходит к обработке следующего элемента в коллекции.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470027"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15470070",
+              "kind": "loop",
+              "label": "Вложенный цикл обработки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 268,
+                "end_line": 271
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вложенный цикл обрабатывает дочерние элементы текущего узла.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15470070"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15470105",
+                  "kind": "action",
+                  "label": "Действие в первом цикле",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 270,
+                    "end_line": 270
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие для первого элемента в цикле обработки.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470105"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/dom_events.go:15470127",
+                  "kind": "action",
+                  "label": "Действие во втором цикле",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 270,
+                    "end_line": 270
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие для второго элемента в цикле обработки.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470127"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15470205",
+              "kind": "action",
+              "label": "Выполнение вызова функции",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 274,
+                "end_line": 274
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняет вызов функции присвоения идентификаторов новым элементам.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470205"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom_events.go:assignIDsToNew:15470205",
+                  "kind": "call",
+                  "label": "Вызов функции присвоения ID",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 278,
+                    "end_line": 296
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.assignIDsToNew",
+                  "summary": "Вызывает функцию для присвоения идентификаторов новым элементам.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.assignIDsToNew",
+                      "file": "internal/js/dom_events.go",
+                      "label": "→ assignIDsToNew in internal/js/dom_events.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← appendChildJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:assignIDsToNew:15470292",
+          "kind": "group",
+          "label": "Функция присвоения ID новым элементам",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 278,
+            "end_line": 296
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.assignIDsToNew",
+          "summary": "Функция присваивает уникальные идентификаторы новым DOM-элементам.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15470369",
+              "kind": "action",
+              "label": "Инициализация внутри функции",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 280,
+                "end_line": 280
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализирует переменные внутри функции присвоения идентификаторов.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470369"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15470385",
+              "kind": "loop",
+              "label": "Цикл по новым элементам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 281,
+                "end_line": 286
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебирает новые элементы для присвоения им идентификаторов.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15470385"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_events.go:15470420",
+                  "kind": "decision",
+                  "label": "Условие проверки элемента",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 282,
+                    "end_line": 285
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет условие для текущего элемента в цикле присвоения ID.",
+                  "coverage_ids": [
+                    "if:internal/js/dom_events.go:15470420"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/js/dom_events.go:15470442",
+                      "kind": "action",
+                      "label": "Действие при истинном условии",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 283,
+                        "end_line": 283
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Выполняет действие при истинном значении условия проверки.",
+                      "coverage_ids": [
+                        "statement:internal/js/dom_events.go:15470442"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/js/dom_events.go:15470458",
+                      "kind": "action",
+                      "label": "Действие при ложном условии",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 284,
+                        "end_line": 284
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Выполняет действие при ложном значении условия проверки.",
+                      "coverage_ids": [
+                        "statement:internal/js/dom_events.go:15470458"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15470472",
+              "kind": "decision",
+              "label": "Второе условие проверки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 287,
+                "end_line": 291
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет дополнительное условие для обработки элемента.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15470472"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15470486",
+                  "kind": "action",
+                  "label": "Действие по первому условию",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 288,
+                    "end_line": 288
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие при выполнении первого условия проверки.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470486"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/dom_events.go:15470505",
+                  "kind": "action",
+                  "label": "Действие по второму условию",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 294,
+                    "end_line": 294
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие при выполнении второго условия проверки.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470505"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/js/dom_events.go:15470520",
+                  "kind": "action",
+                  "label": "Действие по третьему условию",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 294,
+                    "end_line": 294
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие при выполнении третьего условия проверки.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470520"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15470539",
+              "kind": "loop",
+              "label": "Завершающий цикл обработки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 293,
+                "end_line": 295
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершающий цикл обрабатывает оставшиеся элементы после проверок.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15470539"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15470576",
+                  "kind": "action",
+                  "label": "Выполнение второго вызова",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 294,
+                    "end_line": 294
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет второй вызов функции присвоения идентификаторов.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470576"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom_events.go:assignIDsToNew:15470576",
+                      "kind": "call",
+                      "label": "Второй вызов функции присвоения ID",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 278,
+                        "end_line": 296
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.assignIDsToNew",
+                      "summary": "Второй вызов функции для присвоения идентификаторов элементам.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.assignIDsToNew",
+                          "file": "internal/js/dom_events.go",
+                          "label": "→ assignIDsToNew in internal/js/dom_events.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.assignIDsToNew",
+              "file": "internal/js/dom_events.go",
+              "label": "← assignIDsToNew in internal/js/dom_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInnerHTML",
+              "file": "internal/js/dom_events.go",
+              "label": "← setInnerHTML in internal/js/dom_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:setAttribute:15470649",
+          "kind": "group",
+          "label": "Функция установки атрибута",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 299,
+            "end_line": 311
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.setAttribute",
+          "summary": "Функция устанавливает атрибут на DOM-элемент по имени и значению.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15470701",
+              "kind": "action",
+              "label": "Проверка имени атрибута",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 300,
+                "end_line": 300
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет имя атрибута перед установкой его значения.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470701"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15470716",
+              "kind": "action",
+              "label": "Проверка значения атрибута",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 301,
+                "end_line": 301
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет значение атрибута перед установкой.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470716"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15470740",
+              "kind": "action",
+              "label": "Установка значения атрибута",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 301,
+                "end_line": 301
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает значение атрибута на DOM-элемент.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470740"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15470763",
+              "kind": "decision",
+              "label": "Условие возврата из функции",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 304,
+                "end_line": 306
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет условие для возврата из функции установки атрибута.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15470763"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15470774",
+                  "kind": "output",
+                  "label": "Возврат из функции",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 305,
+                    "end_line": 305
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает управление из функции установки атрибута.",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15470774"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15470785",
+              "kind": "decision",
+              "label": "Дополнительное условие проверки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 307,
+                "end_line": 309
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет дополнительное условие для обработки атрибута.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15470785"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15470815",
+                  "kind": "action",
+                  "label": "Действие по дополнительному условию",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 310,
+                    "end_line": 310
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие при выполнении дополнительного условия.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15470815"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15470857",
+              "kind": "action",
+              "label": "Завершение обработки атрибута",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 310,
+                "end_line": 310
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает обработку атрибута и возвращает управление.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15470857"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:setTextContent:15470958",
+          "kind": "group",
+          "label": "Функция установки текста",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 314,
+            "end_line": 340
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.setTextContent",
+          "summary": "Функция устанавливает текстовое содержимое DOM-элемента.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15471005",
+              "kind": "action",
+              "label": "Проверка типа элемента",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 315,
+                "end_line": 315
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет тип элемента перед установкой текста.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471005"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471020",
+              "kind": "action",
+              "label": "Проверка содержимого",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 316,
+                "end_line": 316
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет содержимое элемента перед установкой текста.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471020"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471044",
+              "kind": "action",
+              "label": "Подготовка текста для установки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 316,
+                "end_line": 316
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Подготавливает текст для установки в элемент.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471044"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15471067",
+              "kind": "decision",
+              "label": "Условие возврата из setTextContent",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 319,
+                "end_line": 321
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет условие для возврата из функции установки текста.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15471067"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15471078",
+                  "kind": "output",
+                  "label": "Возврат из setTextContent",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 320,
+                    "end_line": 320
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает управление из функции установки текста.",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15471078"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15471118",
+              "kind": "loop",
+              "label": "Цикл обработки текста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 324,
+                "end_line": 326
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл обрабатывает символы текста для установки в элемент.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15471118"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom_events.go:15471158",
+                  "kind": "action",
+                  "label": "Действие в цикле текста",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 325,
+                    "end_line": 325
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполняет действие для каждого символа в цикле обработки текста.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom_events.go:15471158"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471181",
+              "kind": "action",
+              "label": "Обработка следующего символа",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 327,
+                "end_line": 327
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переходит к обработке следующего символа текста.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471181"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471226",
+              "kind": "action",
+              "label": "Завершение цикла текста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 335,
+                "end_line": 335
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает цикл обработки текста элемента.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471226"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471303",
+              "kind": "action",
+              "label": "Дополнительная обработка текста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 335,
+                "end_line": 335
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняет дополнительную обработку текста элемента.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471303"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471347",
+              "kind": "action",
+              "label": "Финальная обработка текста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 335,
+                "end_line": 335
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполняет финальную обработку текста элемента.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471347"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471367",
+              "kind": "action",
+              "label": "Завершение установки текста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 335,
+                "end_line": 335
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает установку текста в элемент.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471367"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15471381",
+              "kind": "action",
+              "label": "Завершение функции setTextContent",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 335,
+                "end_line": 335
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает выполнение функции установки текста.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15471381"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTextContentJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setTextContentJS in internal/js/bridge_events.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:getBody:15471454",
+          "kind": "group",
+          "label": "Функция получения body",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 343,
+            "end_line": 357
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getBody",
+          "summary": "Функция получает элемент body из текущего документа.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_events.go:15471482",
+              "kind": "decision",
+              "label": "Условие проверки body",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 344,
+                "end_line": 346
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет наличие элемента body в документе.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15471482"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15471504",
+                  "kind": "output",
+                  "label": "Возврат элемента body",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 345,
+                    "end_line": 345
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает элемент body при его наличии в документе.",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15471504"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15471519",
+              "kind": "loop",
+              "label": "Цикл поиска body",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 347,
+                "end_line": 355
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебирает элементы для поиска элемента body.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15471519"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_events.go:15471562",
+                  "kind": "decision",
+                  "label": "Условие поиска body",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 348,
+                    "end_line": 354
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет условие для нахождения элемента body.",
+                  "coverage_ids": [
+                    "if:internal/js/dom_events.go:15471562"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "loop:internal/js/dom_events.go:15471627",
+                      "kind": "loop",
+                      "label": "Вложенный цикл поиска",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 349,
+                        "end_line": 353
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Вложенный цикл продолжает поиск элемента body.",
+                      "coverage_ids": [
+                        "loop:internal/js/dom_events.go:15471627"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/js/dom_events.go:15471667",
+                          "kind": "decision",
+                          "label": "Условие завершения поиска",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/js/dom_events.go",
+                            "start_line": 350,
+                            "end_line": 352
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Проверяет условие завершения поиска элемента body.",
+                          "coverage_ids": [
+                            "if:internal/js/dom_events.go:15471667"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "return:internal/js/dom_events.go:15471728",
+                              "kind": "output",
+                              "label": "Возврат при найденном body",
+                              "layer": "data",
+                              "source": {
+                                "file": "internal/js/dom_events.go",
+                                "start_line": 351,
+                                "end_line": 351
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Возвращает элемент body при успешном завершении поиска.",
+                              "coverage_ids": [
+                                "return:internal/js/dom_events.go:15471728"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15471757",
+              "kind": "output",
+              "label": "Возврат null",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 356,
+                "end_line": 356
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает null если элемент body не найден.",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15471757"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getBodyJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getBodyJS in internal/js/bridge_style.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:getNodeID:15471810",
+          "kind": "group",
+          "label": "Функция получения ID узла",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 360,
+            "end_line": 367
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getNodeID",
+          "summary": "Функция получает уникальный идентификатор DOM-узла.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/dom_events.go:15471848",
+              "kind": "loop",
+              "label": "Цикл поиска узла по ID",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 361,
+                "end_line": 365
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебирает узлы для поиска по заданному ID.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15471848"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_events.go:15471880",
+                  "kind": "decision",
+                  "label": "Условие совпадения ID",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 362,
+                    "end_line": 364
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет совпадение ID текущего узла с искомым.",
+                  "coverage_ids": [
+                    "if:internal/js/dom_events.go:15471880"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_events.go:15471898",
+                      "kind": "output",
+                      "label": "Возврат найденного узла",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 363,
+                        "end_line": 363
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает найденный узел при совпадении ID.",
+                      "coverage_ids": [
+                        "return:internal/js/dom_events.go:15471898"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15471916",
+              "kind": "output",
+              "label": "Возврат null",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 366,
+                "end_line": 366
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает null если узел с таким ID не найден.",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15471916"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.nodeToJS",
+              "file": "internal/js/dom_style.go",
+              "label": "← nodeToJS in internal/js/dom_style.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:getElementByID:15471987",
+          "kind": "group",
+          "label": "Функция получения элемента по ID",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 370,
+            "end_line": 380
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getElementByID",
+          "summary": "Функция получает DOM-элемент по его уникальному идентификатору.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15472031",
+              "kind": "action",
+              "label": "Инициализация поиска",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 371,
+                "end_line": 371
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализирует переменные для поиска элемента по ID.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472031"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15472046",
+              "kind": "action",
+              "label": "Подготовка к поиску",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 372,
+                "end_line": 372
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Подготавливает переменные перед началом поиска элемента.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472046"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15472070",
+              "kind": "loop",
+              "label": "Цикл поиска элемента",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 374,
+                "end_line": 378
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл перебирает элементы для поиска по ID.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15472070"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_events.go:15472098",
+                  "kind": "decision",
+                  "label": "Условие найденного элемента",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 375,
+                    "end_line": 377
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет условие нахождения элемента по ID.",
+                  "coverage_ids": [
+                    "if:internal/js/dom_events.go:15472098"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_events.go:15472157",
+                      "kind": "output",
+                      "label": "Возврат найденного элемента",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 376,
+                        "end_line": 376
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает найденный элемент при совпадении ID.",
+                      "coverage_ids": [
+                        "return:internal/js/dom_events.go:15472157"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15472174",
+              "kind": "output",
+              "label": "Возврат null",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 379,
+                "end_line": 379
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает null если элемент с таким ID не найден.",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15472174"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getElementByIdJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getElementByIdJS in internal/js/bridge_style.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:getAttribute:15472244",
+          "kind": "group",
+          "label": "Функция получения атрибута",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 383,
+            "end_line": 392
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getAttribute",
+          "summary": "Функция получает значение атрибута из DOM-элемента.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15472296",
+              "kind": "action",
+              "label": "Проверка имени атрибута",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 384,
+                "end_line": 384
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет имя атрибута перед получением его значения.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472296"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15472311",
+              "kind": "action",
+              "label": "Завершение получения атрибута",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 385,
+                "end_line": 385
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает процесс получения значения атрибута.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472311"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15472335",
+              "kind": "action",
+              "label": "Начало функции удаления дочернего узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 385,
+                "end_line": 385
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализация выполнения функции для удаления заданного дочернего узла из родительского элемента DOM.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472335"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15472355",
+              "kind": "decision",
+              "label": "Проверка существования узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 388,
+                "end_line": 390
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условная проверка того, существует ли указанный узел в текущем контексте выполнения.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15472355"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15472366",
+                  "kind": "output",
+                  "label": "Возврат при отсутствии узла",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 389,
+                    "end_line": 389
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход из функции с возвратом nil, если узел не найден в DOM-дереве.",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15472366"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_events.go:15472380",
+              "kind": "output",
+              "label": "Возврат результата удаления",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 391,
+                "end_line": 391
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возврат значения, указывающего на успешное завершение операции удаления узла.",
+              "coverage_ids": [
+                "return:internal/js/dom_events.go:15472380"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getAttributeJS",
+              "file": "internal/js/bridge_style.go",
+              "label": "← getAttributeJS in internal/js/bridge_style.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_events.go:removeChild:15472457",
+          "kind": "group",
+          "label": "Функция удаления дочернего узла",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_events.go",
+            "start_line": 395,
+            "end_line": 415
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.removeChild",
+          "summary": "Основная функция для удаления указанного дочернего узла из родительского элемента DOM-дерева.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom_events.go:15472503",
+              "kind": "action",
+              "label": "Получение родительского узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 396,
+                "end_line": 396
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Извлечение родительского узла из переданного элемента для последующей операции удаления.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472503"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15472518",
+              "kind": "action",
+              "label": "Получение узла для удаления",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 397,
+                "end_line": 397
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Извлечение узла, который необходимо удалить из родительского элемента DOM.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472518"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15472542",
+              "kind": "action",
+              "label": "Проверка валидности узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 397,
+                "end_line": 397
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка того, что узел для удаления является действительным и существует в дереве.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472542"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15472573",
+              "kind": "decision",
+              "label": "Проверка на пустой родительский узел",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 400,
+                "end_line": 402
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условная проверка того, является ли родительский узел пустым или невалидным.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15472573"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15472584",
+                  "kind": "output",
+                  "label": "Возврат при ошибке",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 401,
+                    "end_line": 401
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход из функции с ошибкой, если родительский узел пуст или невалиден.",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15472584"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom_events.go:15472595",
+              "kind": "action",
+              "label": "Удаление узла из списка",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 403,
+                "end_line": 403
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции удаления узла из списка дочерних элементов родительского узла.",
+              "coverage_ids": [
+                "statement:internal/js/dom_events.go:15472595"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_events.go:15472624",
+              "kind": "decision",
+              "label": "Проверка на последний узел",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 404,
+                "end_line": 406
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Условная проверка того, является ли удаляемый узел последним в списке дочерних элементов.",
+              "coverage_ids": [
+                "if:internal/js/dom_events.go:15472624"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_events.go:15472635",
+                  "kind": "output",
+                  "label": "Возврат результата",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 405,
+                    "end_line": 405
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат значения, указывающего на успешное завершение операции удаления.",
+                  "coverage_ids": [
+                    "return:internal/js/dom_events.go:15472635"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_events.go:15472647",
+              "kind": "loop",
+              "label": "Итерация по дочерним узлам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_events.go",
+                "start_line": 408,
+                "end_line": 414
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Циклическая итерация по всем дочерним узлам для корректного обновления структуры DOM.",
+              "coverage_ids": [
+                "loop:internal/js/dom_events.go:15472647"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_events.go:15472685",
+                  "kind": "decision",
+                  "label": "Проверка завершения цикла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_events.go",
+                    "start_line": 409,
+                    "end_line": 413
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Условная проверка условия завершения цикла итерации по дочерним узлам.",
+                  "coverage_ids": [
+                    "if:internal/js/dom_events.go:15472685"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/js/dom_events.go:15472704",
+                      "kind": "action",
+                      "label": "Обновление структуры после удаления",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 410,
+                        "end_line": 410
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Обновление внутренней структуры DOM после успешного удаления дочернего узла.",
+                      "coverage_ids": [
+                        "statement:internal/js/dom_events.go:15472704"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/js/dom_events.go:15472779",
+                      "kind": "action",
+                      "label": "Очистка временных данных",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 410,
+                        "end_line": 410
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Очистка временных данных и освобождение ресурсов после завершения операции удаления.",
+                      "coverage_ids": [
+                        "statement:internal/js/dom_events.go:15472779"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "return:internal/js/dom_events.go:15472801",
+                      "kind": "output",
+                      "label": "Завершение функции",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_events.go",
+                        "start_line": 412,
+                        "end_line": 412
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Финальный выход из функции removeChild с возвращением результата операции удаления.",
+                      "coverage_ids": [
+                        "return:internal/js/dom_events.go:15472801"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← removeChildJS in internal/js/bridge_events.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

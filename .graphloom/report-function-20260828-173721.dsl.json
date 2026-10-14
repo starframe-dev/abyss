@@ -1,0 +1,137 @@
+{
+  "title": "internal/browser/browser_layout.go — buildLayoutBoxRecursive",
+  "level": "function",
+  "nodes": [
+    {
+      "id": "func:internal/browser/browser_layout.go:buildLayoutBoxRecursive:15616267",
+      "kind": "group",
+      "label": "Функция buildLayoutBoxRecursive",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser_layout.go",
+        "start_line": 16,
+        "end_line": 28
+      },
+      "element_type": null,
+      "symbol": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "if:internal/browser/browser_layout.go:15616381",
+          "kind": "decision",
+          "label": "if box == nil || box.Node == nil",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_layout.go",
+            "start_line": 17,
+            "end_line": 19
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "box == nil || box.Node == nil",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser_layout.go:15616424",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 18,
+                "end_line": 18
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "loop:internal/browser/browser_layout.go:15616618",
+          "kind": "loop",
+          "label": "range box.Children",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_layout.go",
+            "start_line": 25,
+            "end_line": 27
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "box.Children",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/browser/browser_layout.go:buildLayoutBoxRecursive:15616663",
+              "kind": "call",
+              "label": "Вызов buildLayoutBoxRecursive",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser_layout.go",
+                "start_line": 16,
+                "end_line": 28
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+              "summary": "→ github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+                  "file": "internal/browser/browser_layout.go",
+                  "label": "→ buildLayoutBoxRecursive in internal/browser/browser_layout.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": [
+        {
+          "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxMap",
+          "file": "internal/browser/browser_layout.go",
+          "label": "← buildLayoutBoxMap in internal/browser/browser_layout.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/browser.buildLayoutBoxRecursive",
+          "file": "internal/browser/browser_layout.go",
+          "label": "← buildLayoutBoxRecursive in internal/browser/browser_layout.go"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

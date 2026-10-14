@@ -1,0 +1,148 @@
+{
+  "title": "internal/browser/browser.go — loadSession",
+  "level": "function",
+  "nodes": [
+    {
+      "id": "func:internal/browser/browser.go:loadSession:15615618",
+      "kind": "group",
+      "label": "Функция loadSession",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 107,
+        "end_line": 117
+      },
+      "element_type": null,
+      "symbol": "github.com/starframe/abyss/internal/browser.loadSession",
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "if:internal/browser/browser.go:15615685",
+          "kind": "decision",
+          "label": "Условие",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 109,
+            "end_line": 111
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "err != nil",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser.go:15615703",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 110,
+                "end_line": 110
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "if:internal/browser/browser.go:15615740",
+          "kind": "decision",
+          "label": "Условие",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 113,
+            "end_line": 115
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "err != nil",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser.go:15615791",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 114,
+                "end_line": 114
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "return:internal/browser/browser.go:15615806",
+          "kind": "output",
+          "label": "Вернуть",
+          "layer": "data",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 116,
+            "end_line": 116
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": [
+        {
+          "id": "github.com/starframe/abyss/internal/browser.New",
+          "file": "internal/browser/browser.go",
+          "label": "← New in internal/browser/browser.go"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

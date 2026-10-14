@@ -1,0 +1,990 @@
+{
+  "title": "cmd/test_real/main.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:cmd/test_real/main.go",
+      "kind": "group",
+      "label": "Файл cmd/test_real/main.go",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 1,
+        "end_line": 71
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основной файл пакета, содержащий импорты и функцию main для запуска программы",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:cmd/test_real/main.go:main:15592133",
+          "kind": "group",
+          "label": "Функция main",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/test_real/main.go",
+            "start_line": 17,
+            "end_line": 71
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/test_real.main",
+          "summary": "Точка входа в программу, которая обрабатывает несколько URL и выводит ASCII-рендеринг",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:cmd/test_real/main.go:15592148",
+              "kind": "action",
+              "label": "Объявление списка URL",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/test_real/main.go",
+                "start_line": 44,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создание массива строк с адресами Wikipedia и Hacker News для обработки",
+              "coverage_ids": [
+                "statement:cmd/test_real/main.go:15592148",
+                "loop:cmd/test_real/main.go:15592250"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/test_real/main.go:15592279",
+                  "kind": "action",
+                  "label": "Запись начального времени",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 24,
+                    "end_line": 24
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Фиксация момента начала обработки текущего URL для измерения времени выполнения",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592279",
+                    "statement:cmd/test_real/main.go:15592301"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:Fetch:15592314",
+                      "kind": "call",
+                      "label": "Вызов Fetch",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 25,
+                        "end_line": 25
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/fetcher.Fetch",
+                      "summary": "Запрос HTML-контента по указанному URL с использованием fetcher",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/fetcher.Fetch",
+                          "file": "internal/fetcher/fetcher.go",
+                          "label": "→ Fetch in internal/fetcher/fetcher.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:cmd/test_real/main.go:15592335",
+                  "kind": "decision",
+                  "label": "Проверка ошибки Fetch",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 26,
+                    "end_line": 30
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Условное ветвление для обработки случаев неудачного получения контента",
+                  "coverage_ids": [
+                    "if:cmd/test_real/main.go:15592335",
+                    "statement:cmd/test_real/main.go:15592419"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:cmd/test_real/main.go:15592354",
+                      "kind": "action",
+                      "label": "Вывод ошибки Fetch",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 27,
+                        "end_line": 27
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Печать сообщения об ошибке получения контента и переход к следующему URL",
+                      "coverage_ids": [
+                        "statement:cmd/test_real/main.go:15592354",
+                        "statement:cmd/test_real/main.go:15592404"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592453",
+                  "kind": "action",
+                  "label": "Присваивание результата Parse",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 32,
+                    "end_line": 32
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Сохранение парсингрованного DOM-дерева в переменную doc",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592453",
+                    "statement:cmd/test_real/main.go:15592478"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:Parse:15592460",
+                      "kind": "call",
+                      "label": "Вызов Parse",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 32,
+                        "end_line": 32
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+                      "summary": "Парсинг полученного HTML-документа в DOM-дерево",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/dom.Parse",
+                          "file": "internal/dom/dom.go",
+                          "label": "→ Parse in internal/dom/dom.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592512",
+                  "kind": "action",
+                  "label": "Присваивание JS контекста",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 35,
+                    "end_line": 35
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Сохранение созданного JS-контекста в переменную jsc",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592512",
+                    "statement:cmd/test_real/main.go:15592537"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:NewContext:15592519",
+                      "kind": "call",
+                      "label": "Создание JS контекста",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 35,
+                        "end_line": 35
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.NewContext",
+                      "summary": "Инициализация нового JavaScript контекста для выполнения скриптов",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.NewContext",
+                          "file": "internal/js/js.go",
+                          "label": "→ NewContext in internal/js/js.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:cmd/test_real/main.go:InitDOM:15592537",
+                      "kind": "call",
+                      "label": "Вызов InitDOM",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 36,
+                        "end_line": 36
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+                      "summary": "Инициализация DOM-дерева в JS-контексте для выполнения скриптов",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.InitDOM",
+                          "file": "internal/js/dom_events.go",
+                          "label": "→ InitDOM in internal/js/dom_events.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592555",
+                  "kind": "action",
+                  "label": "Выполнение RegisterBridgeFunctions",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 37,
+                    "end_line": 37
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции регистрации мостовых функций в JS-контексте",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592555",
+                    "statement:cmd/test_real/main.go:15592587"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:RegisterBridgeFunctions:15592555",
+                      "kind": "call",
+                      "label": "Вызов RegisterBridgeFunctions",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 37,
+                        "end_line": 37
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                      "summary": "Регистрация мостовых функций для взаимодействия JS с DOM",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                          "file": "internal/js/bridge_dom.go",
+                          "label": "→ RegisterBridgeFunctions in internal/js/bridge_dom.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:cmd/test_real/main.go:DOMAPIScript:15592600",
+                      "kind": "call",
+                      "label": "Вызов DOMAPIScript",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 38,
+                        "end_line": 38
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                      "summary": "Получение скрипта DOM API для выполнения в JS-контексте",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                          "file": "internal/js/domapi.go",
+                          "label": "→ DOMAPIScript in internal/js/domapi.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592621",
+                  "kind": "action",
+                  "label": "Выполнение ExecuteScripts",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 39,
+                    "end_line": 39
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполнение скриптов из HTML-документа в JS-контексте",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592621",
+                    "statement:cmd/test_real/main.go:15592656"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:ExecuteScripts:15592621",
+                      "kind": "call",
+                      "label": "Вызов ExecuteScripts",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 39,
+                        "end_line": 39
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                      "summary": "Выполнение пользовательских скриптов из документа в JS-контексте",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                          "file": "internal/js/dom_style.go",
+                          "label": "→ ExecuteScripts in internal/js/dom_style.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:cmd/test_real/main.go:Close:15592656",
+                      "kind": "call",
+                      "label": "Вызов Close",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 40,
+                        "end_line": 40
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.Close",
+                      "summary": "Закрытие JS-контекста после выполнения всех скриптов",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.Close",
+                          "file": "internal/js/js.go",
+                          "label": "→ Close in internal/js/js.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592671",
+                  "kind": "action",
+                  "label": "Присваивание финального DOM",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 42,
+                    "end_line": 42
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Сохранение финального DOM-дерева для дальнейшей обработки",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592671",
+                    "statement:cmd/test_real/main.go:15592702"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:GetFinalDOM:15592683",
+                      "kind": "call",
+                      "label": "Вызов GetFinalDOM",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 42,
+                        "end_line": 42
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                      "summary": "Получение финального DOM-дерева после выполнения всех скриптов",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                          "file": "internal/js/dom_style.go",
+                          "label": "→ GetFinalDOM in internal/js/dom_style.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:cmd/test_real/main.go:Compute:15592712",
+                      "kind": "call",
+                      "label": "Вызов Compute",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 43,
+                        "end_line": 43
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.Compute",
+                      "summary": "Вычисление CSS-стилей для финального DOM-дерева",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.Compute",
+                          "file": "internal/css/computed.go",
+                          "label": "→ Compute in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592736",
+                  "kind": "action",
+                  "label": "Присваивание макета",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 44,
+                    "end_line": 44
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Сохранение построенного макета в переменную box",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592736",
+                    "statement:cmd/test_real/main.go:15592781"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:Build:15592743",
+                      "kind": "call",
+                      "label": "Вызов Build",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 44,
+                        "end_line": 44
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/layout.Build",
+                      "summary": "Построение макета из DOM-дерева и стилей с заданной шириной",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/layout.Build",
+                          "file": "internal/layout/layout.go",
+                          "label": "→ Build in internal/layout/layout.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:cmd/test_real/main.go:Render:15592787",
+                      "kind": "call",
+                      "label": "Вызов Render",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 45,
+                        "end_line": 45
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/render.Render",
+                      "summary": "Рендеринг макета в форматированный буфер для ASCII-вывода",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/render.Render",
+                          "file": "internal/render/render.go",
+                          "label": "→ Render in internal/render/render.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592813",
+                  "kind": "action",
+                  "label": "Присваивание строк ASCII",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 46,
+                    "end_line": 46
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Сохранение ASCII-строк в переменную lines для вывода",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592813",
+                    "statement:cmd/test_real/main.go:15592851"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/test_real/main.go:Render:15592822",
+                      "kind": "call",
+                      "label": "Вызов Render ASCII",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 46,
+                        "end_line": 46
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+                      "summary": "Конвертация рендеренного буфера в строки ASCII-арта",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/ascii.Render",
+                          "file": "internal/ascii/ascii.go",
+                          "label": "→ Render in internal/ascii/ascii.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592885",
+                  "kind": "action",
+                  "label": "Инициализация счетчика строк",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 51,
+                    "end_line": 51
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Создание счетчика для подсчета непустых строк ASCII-арта",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592885",
+                    "loop:cmd/test_real/main.go:15592901"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:cmd/test_real/main.go:15592933",
+                      "kind": "decision",
+                      "label": "Проверка непустой строки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 51,
+                        "end_line": 53
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Условие для фильтрации пустых строк при подсчете",
+                      "coverage_ids": [
+                        "if:cmd/test_real/main.go:15592933"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:cmd/test_real/main.go:15592972",
+                          "kind": "action",
+                          "label": "Увеличение счетчика строк",
+                          "layer": "flow",
+                          "source": {
+                            "file": "cmd/test_real/main.go",
+                            "start_line": 51,
+                            "end_line": 51
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Инкремент счетчика непустых строк ASCII-арта",
+                          "coverage_ids": [
+                            "statement:cmd/test_real/main.go:15592972"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15592995",
+                  "kind": "action",
+                  "label": "Вывод заголовка URL",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 56,
+                    "end_line": 56
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Печать заголовка с адресом текущего обрабатываемого сайта",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15592995",
+                    "statement:cmd/test_real/main.go:15593029"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15593080",
+                  "kind": "action",
+                  "label": "Вывод времени выполнения",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 58,
+                    "end_line": 58
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Печать времени Fetch, Parse и общего времени выполнения",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15593080",
+                    "statement:cmd/test_real/main.go:15593167"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/test_real/main.go:15593239",
+                  "kind": "action",
+                  "label": "Вывод заголовка preview",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 60,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Печать заголовка для отображения первых 20 непустых строк",
+                  "coverage_ids": [
+                    "statement:cmd/test_real/main.go:15593239",
+                    "statement:cmd/test_real/main.go:15593285"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:cmd/test_real/main.go:15593298",
+                  "kind": "loop",
+                  "label": "Цикл вывода preview",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/test_real/main.go",
+                    "start_line": 62,
+                    "end_line": 69
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерация по строкам для вывода первых 20 непустых строк ASCII",
+                  "coverage_ids": [
+                    "loop:cmd/test_real/main.go:15593298",
+                    "statement:cmd/test_real/main.go:15593482"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:cmd/test_real/main.go:15593302",
+                      "kind": "action",
+                      "label": "Цикл preview",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 62,
+                        "end_line": 62
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Итерация по строкам для вывода первых 20 непустых",
+                      "coverage_ids": [
+                        "statement:cmd/test_real/main.go:15593302",
+                        "statement:cmd/test_real/main.go:15593340"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:cmd/test_real/main.go:15593349",
+                      "kind": "action",
+                      "label": "Очистка строки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/test_real/main.go",
+                        "start_line": 65,
+                        "end_line": 65
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Удаление правых пробелов из строки для форматирования вывода",
+                      "coverage_ids": [
+                        "statement:cmd/test_real/main.go:15593349",
+                        "if:cmd/test_real/main.go:15593396"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:cmd/test_real/main.go:15593419",
+                          "kind": "action",
+                          "label": "Вывод строки preview",
+                          "layer": "flow",
+                          "source": {
+                            "file": "cmd/test_real/main.go",
+                            "start_line": 65,
+                            "end_line": 65
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Печать отформатированной строки ASCII-арта с индексом",
+                          "coverage_ids": [
+                            "statement:cmd/test_real/main.go:15593419",
+                            "statement:cmd/test_real/main.go:15593463"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

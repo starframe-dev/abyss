@@ -1,0 +1,1640 @@
+{
+  "title": "internal/js/js.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/js.go",
+      "kind": "group",
+      "label": "js.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/js.go",
+        "start_line": 1,
+        "end_line": 202
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/js.go:SetComputedStyles:15472415",
+          "kind": "group",
+          "label": "Функция SetComputedStyles",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/js.go",
+            "start_line": 20,
+            "end_line": 24
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.SetComputedStyles",
+          "summary": "Устанавливает вычисляемые стили",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser.go",
+              "label": "← loadPage in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+              "file": "internal/browser/browser.go",
+              "label": "← reRenderCmd in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "type:internal/js/js.go:Rect:15472626",
+          "kind": "group",
+          "label": "Тип Rect",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/js.go",
+            "start_line": 27,
+            "end_line": 29
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.Rect",
+          "summary": "Структура прямоугольника",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/js.go:SetLayoutBoxes:15472744",
+          "kind": "group",
+          "label": "Функция SetLayoutBoxes",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/js.go",
+            "start_line": 32,
+            "end_line": 36
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.SetLayoutBoxes",
+          "summary": "Устанавливает layout-боксы",
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser.go",
+              "label": "← loadPage in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+              "file": "internal/browser/browser.go",
+              "label": "← reRenderCmd in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/js.go:getBoundingClientRect:15472939",
+          "kind": "group",
+          "label": "Функция getBoundingClientRect",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/js.go",
+            "start_line": 39,
+            "end_line": 59
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getBoundingClientRect",
+          "summary": "Получает границы элемента",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/js.go:15473051",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 43,
+                "end_line": 45
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка tx",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/js.go:15473083",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 44,
+                    "end_line": 44
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/js.go:15473173",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 50,
+                "end_line": 52
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка контекста",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/js.go:15473202",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 51,
+                    "end_line": 51
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/js.go:15473258",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 55,
+                "end_line": 57
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка lyi",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/js.go:15473275",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 56,
+                    "end_line": 56
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/js.go:15473299",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 58,
+                "end_line": 58
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+              "file": "internal/js/dom.go",
+              "label": "← getBoundingClientRectJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/js.go:getComputedStyle:15473395",
+          "kind": "group",
+          "label": "Функция getComputedStyle",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/js.go",
+            "start_line": 62,
+            "end_line": 199
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getComputedStyle",
+          "summary": "Получает вычисленные стили",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/js.go:15473553",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 66,
+                "end_line": 68
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка Pointer(cScript)",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/js.go:15473588",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 67,
+                    "end_line": 67
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/js.go:15473818",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 73,
+                "end_line": 75
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка ион",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/js.go:15473847",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 74,
+                    "end_line": 74
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/js.go:15474047",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 78,
+                "end_line": 80
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка r",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/js.go:15474064",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 79,
+                    "end_line": 79
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/js/js.go:15476731",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 101,
+                "end_line": 110
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переключение по свойству",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/js/js.go:15476758",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 102,
+                    "end_line": 103
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15476816",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 104,
+                    "end_line": 105
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15476870",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 111,
+                    "end_line": 111
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15476924",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 111,
+                    "end_line": 111
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15476984",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 111,
+                "end_line": 111
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/js/js.go:15477062",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 121,
+                "end_line": 121
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переключение по свойству",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/js/js.go:15477090",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 111,
+                    "end_line": 111
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15477149",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 121,
+                    "end_line": 121
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15477214",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 121,
+                "end_line": 121
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/js.go:15477295",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 125,
+                "end_line": 127
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка str != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15477378",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 128,
+                "end_line": 128
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477439",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 131,
+                "end_line": 131
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:String:15477495",
+              "kind": "call",
+              "label": "Вызов String",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 132,
+                "end_line": 132
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.String",
+              "summary": "Преобразование в строку",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.String",
+                  "file": "internal/css/types.go",
+                  "label": "→ String in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15477475",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 132,
+                "end_line": 132
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477521",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 133,
+                "end_line": 133
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:String:15477580",
+              "kind": "call",
+              "label": "Вызов String",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 134,
+                "end_line": 134
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.String",
+              "summary": "Преобразование в строку",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Length.String",
+                  "file": "internal/css/types.go",
+                  "label": "→ String in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15477559",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 134,
+                "end_line": 134
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:String:15477642",
+              "kind": "call",
+              "label": "Вызов String",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 137,
+                "end_line": 137
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Color.String",
+              "summary": "Преобразование в строку",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Color.String",
+                  "file": "internal/css/types.go",
+                  "label": "→ String in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15477626",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 137,
+                "end_line": 137
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:String:15477694",
+              "kind": "call",
+              "label": "Вызов String",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 138,
+                "end_line": 138
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Color.String",
+              "summary": "Преобразование в строку",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Color.String",
+                  "file": "internal/css/types.go",
+                  "label": "→ String in internal/css/types.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15477668",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 138,
+                "end_line": 138
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477750",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 141,
+                "end_line": 141
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477795",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 142,
+                "end_line": 142
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477844",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 143,
+                "end_line": 143
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477895",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 144,
+                "end_line": 144
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15477963",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 147,
+                "end_line": 147
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478010",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 148,
+                "end_line": 148
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478061",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 149,
+                "end_line": 149
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478114",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 150,
+                "end_line": 150
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478183",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 153,
+                "end_line": 153
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478235",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 154,
+                "end_line": 154
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478291",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 155,
+                "end_line": 155
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15478349",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 156,
+                "end_line": 156
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/js.go:15478439",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 160,
+                "end_line": 162
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на null",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15478526",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 163,
+                "end_line": 163
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/js/js.go:15478588",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 166,
+                "end_line": 175
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переключение по свойству",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/js/js.go:15478622",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 163,
+                    "end_line": 163
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15478675",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 169,
+                    "end_line": 170
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15478731",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 176,
+                    "end_line": 176
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15478797",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 176,
+                    "end_line": 176
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15478867",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 176,
+                "end_line": 176
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/js/js.go:15478927",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 187,
+                "end_line": 187
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Переключение по свойству",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/js/js.go:15478957",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 176,
+                    "end_line": 176
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15479015",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 187,
+                    "end_line": 187
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/js/js.go:15479066",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/js.go",
+                    "start_line": 187,
+                    "end_line": 187
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setStr:15479126",
+              "kind": "call",
+              "label": "Вызов setStr",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 187,
+                "end_line": 187
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает строковое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15479159",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 189,
+                "end_line": 189
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15479198",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 190,
+                "end_line": 190
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15479261",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 193,
+                "end_line": 193
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/js.go:setNum:15479321",
+              "kind": "call",
+              "label": "Вызов setNum",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 196,
+                "end_line": 196
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает числовое значение",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/js.go:15479354",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 198,
+                "end_line": 198
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.getComputedStyleJS",
+              "file": "internal/js/dom.go",
+              "label": "← getComputedStyleJS in internal/js/dom.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

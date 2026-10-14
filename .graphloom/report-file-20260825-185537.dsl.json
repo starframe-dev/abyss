@@ -1,0 +1,662 @@
+{
+  "title": "Browser TUI Implementation",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "browser-package",
+      "kind": "group",
+      "label": "Browser TUI Package",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 1,
+        "end_line": 689
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "mode-enum",
+      "kind": "state",
+      "label": "Режимы работы",
+      "layer": "state",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 33,
+        "end_line": 36
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "tab-struct",
+      "kind": "state",
+      "label": "Структура вкладки",
+      "layer": "state",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 40,
+        "end_line": 48
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "model-struct",
+      "kind": "state",
+      "label": "Модель браузера",
+      "layer": "state",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 51,
+        "end_line": 61
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "session-data",
+      "kind": "storage",
+      "label": "Сохранение сессии",
+      "layer": "data",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 89,
+        "end_line": 91
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "new-browser",
+      "kind": "action",
+      "label": "Создать браузер",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 133,
+        "end_line": 160
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "init-browser",
+      "kind": "action",
+      "label": "Инициализация",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 163,
+        "end_line": 165
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "update-browser",
+      "kind": "action",
+      "label": "Обработка событий",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 238,
+        "end_line": 394
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "view-browser",
+      "kind": "action",
+      "label": "Отрисовка интерфейса",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 397,
+        "end_line": 506
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "save-session",
+      "kind": "action",
+      "label": "Сохранить сессию",
+      "layer": "effects",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 94,
+        "end_line": 117
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "load-session",
+      "kind": "action",
+      "label": "Загрузить сессию",
+      "layer": "effects",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 120,
+        "end_line": 130
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "load-page",
+      "kind": "action",
+      "label": "Загрузить страницу",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 508,
+        "end_line": 563
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "re-render",
+      "kind": "action",
+      "label": "Перерисовать страницу",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 566,
+        "end_line": 594
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "fetch-css",
+      "kind": "action",
+      "label": "Загрузить внешние стили",
+      "layer": "effects",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 613,
+        "end_line": 655
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "resolve-url",
+      "kind": "action",
+      "label": "Разрешить URL",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 657,
+        "end_line": 668
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "build-layout",
+      "kind": "action",
+      "label": "Построить макет",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 671,
+        "end_line": 689
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "center-text",
+      "kind": "action",
+      "label": "Центрировать текст",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 596,
+        "end_line": 602
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "max-helper",
+      "kind": "action",
+      "label": "Максимум двух значений",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 604,
+        "end_line": 609
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "tick-cmd",
+      "kind": "async",
+      "label": "Периодический тик",
+      "layer": "effects",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 79,
+        "end_line": 83
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "page-loaded-msg",
+      "kind": "input",
+      "label": "Сообщение о загрузке",
+      "layer": "data",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 64,
+        "end_line": 68
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "page-error-msg",
+      "kind": "input",
+      "label": "Сообщение об ошибке",
+      "layer": "data",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 71,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "tick-msg",
+      "kind": "input",
+      "label": "Сообщение о тике",
+      "layer": "data",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 76,
+        "end_line": 76
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "browser-package",
+      "to": "mode-enum",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "tab-struct",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "model-struct",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "session-data",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "page-loaded-msg",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "page-error-msg",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "tick-msg",
+      "label": "определяет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "new-browser",
+      "label": "создаёт",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "init-browser",
+      "label": "инициализирует",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "update-browser",
+      "label": "обновляет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "view-browser",
+      "label": "отрисовывает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "save-session",
+      "label": "сохраняет",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "load-session",
+      "label": "загружает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "load-page",
+      "label": "загружает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "re-render",
+      "label": "перерисовывает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "fetch-css",
+      "label": "загружает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "resolve-url",
+      "label": "разрешает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "build-layout",
+      "label": "строит",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "center-text",
+      "label": "помогает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "max-helper",
+      "label": "помогает",
+      "status": "inferred"
+    },
+    {
+      "from": "browser-package",
+      "to": "tick-cmd",
+      "label": "запускает",
+      "status": "inferred"
+    },
+    {
+      "from": "new-browser",
+      "to": "load-session",
+      "label": "восстанавливает",
+      "status": "inferred"
+    },
+    {
+      "from": "update-browser",
+      "to": "save-session",
+      "label": "сохраняет",
+      "status": "inferred"
+    },
+    {
+      "from": "update-browser",
+      "to": "load-page",
+      "label": "загружает",
+      "status": "inferred"
+    },
+    {
+      "from": "update-browser",
+      "to": "re-render",
+      "label": "перерисовывает",
+      "status": "inferred"
+    },
+    {
+      "from": "update-browser",
+      "to": "tick-cmd",
+      "label": "запускает",
+      "status": "inferred"
+    },
+    {
+      "from": "load-page",
+      "to": "fetch-css",
+      "label": "загружает",
+      "status": "inferred"
+    },
+    {
+      "from": "fetch-css",
+      "to": "resolve-url",
+      "label": "использует",
+      "status": "inferred"
+    },
+    {
+      "from": "load-page",
+      "to": "build-layout",
+      "label": "строит",
+      "status": "inferred"
+    },
+    {
+      "from": "re-render",
+      "to": "build-layout",
+      "label": "использует",
+      "status": "inferred"
+    },
+    {
+      "from": "save-session",
+      "to": "session-data",
+      "label": "записывает",
+      "status": "inferred"
+    },
+    {
+      "from": "load-session",
+      "to": "session-data",
+      "label": "читает",
+      "status": "inferred"
+    }
+  ]
+}

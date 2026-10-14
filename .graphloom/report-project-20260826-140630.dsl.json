@@ -1,0 +1,4752 @@
+{
+  "title": "Project map",
+  "level": "project",
+  "nodes": [
+    {
+      "id": "github.com/starframe/abyss/internal/ascii",
+      "kind": "group",
+      "label": "ascii",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/ascii/ascii.go",
+          "kind": "group",
+          "label": "ascii.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/ascii/ascii.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.Cell",
+              "kind": "group",
+              "label": "Cell",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 13,
+                "end_line": 17
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/ascii.Cell",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.Render",
+              "kind": "group",
+              "label": "Render",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 19,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.RenderPlain",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← RenderPlain in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.RenderANSI",
+              "kind": "group",
+              "label": "RenderANSI",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 39,
+                "end_line": 54
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/ascii.RenderANSI",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/ascii.RenderPlain",
+              "kind": "group",
+              "label": "RenderPlain",
+              "layer": "flow",
+              "source": {
+                "file": "internal/ascii/ascii.go",
+                "start_line": 71,
+                "end_line": 73
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/ascii.RenderPlain",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/browser",
+      "kind": "group",
+      "label": "browser",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/browser/browser.go",
+          "kind": "group",
+          "label": "browser.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.ModeAddress",
+              "kind": "action",
+              "label": "ModeAddress",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 33,
+                "end_line": 33
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.ModeAddress",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.ModeError",
+              "kind": "action",
+              "label": "ModeError",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 36,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.ModeError",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.ModeLoading",
+              "kind": "action",
+              "label": "ModeLoading",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 34,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.ModeLoading",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.ModeView",
+              "kind": "action",
+              "label": "ModeView",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 35,
+                "end_line": 35
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.ModeView",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model",
+              "kind": "group",
+              "label": "Model",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 51,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+              "kind": "group",
+              "label": "ANSILines",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 202,
+                "end_line": 207
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.View",
+                  "file": "internal/browser/browser.go",
+                  "label": "← View in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                  "file": "internal/browser/browser.go",
+                  "label": "← saveActiveTab in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+              "kind": "group",
+              "label": "ASCIILines",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 209,
+                "end_line": 214
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                  "file": "internal/browser/browser.go",
+                  "label": "← saveActiveTab in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Err",
+              "kind": "group",
+              "label": "Err",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 230,
+                "end_line": 235
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.Err",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.View",
+                  "file": "internal/browser/browser.go",
+                  "label": "← View in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Init",
+              "kind": "group",
+              "label": "Init",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 163,
+                "end_line": 165
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.Init",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+              "kind": "group",
+              "label": "OffsetX",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 223,
+                "end_line": 228
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.View",
+                  "file": "internal/browser/browser.go",
+                  "label": "← View in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                  "file": "internal/browser/browser.go",
+                  "label": "← saveActiveTab in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "kind": "group",
+              "label": "Update",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 238,
+                "end_line": 394
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "kind": "group",
+              "label": "View",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 397,
+                "end_line": 506
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.View",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+              "kind": "group",
+              "label": "ZoomFactor",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 216,
+                "end_line": 221
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.View",
+                  "file": "internal/browser/browser.go",
+                  "label": "← View in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.View",
+                  "file": "internal/browser/browser.go",
+                  "label": "← View in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+                  "file": "internal/browser/browser.go",
+                  "label": "← saveActiveTab in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.New",
+              "kind": "group",
+              "label": "New",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 133,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.New",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss.main",
+                  "file": "main.go",
+                  "label": "← main in main.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Tab",
+              "kind": "group",
+              "label": "Tab",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 40,
+                "end_line": 48
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Tab",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/css",
+      "kind": "group",
+      "label": "css",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/css/computed.go",
+          "kind": "group",
+          "label": "computed.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Compute",
+              "kind": "group",
+              "label": "Compute",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 21,
+                "end_line": 23
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Compute",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.ComputeWithExternal",
+              "kind": "group",
+              "label": "ComputeWithExternal",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 26,
+                "end_line": 28
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.ComputeWithExternal",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.InvalidateCache",
+              "kind": "group",
+              "label": "InvalidateCache",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 67,
+                "end_line": 72
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.InvalidateCache",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← appendChildJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentElement",
+                  "file": "internal/js/js.go",
+                  "label": "← insertAdjacentElement in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTML",
+                  "file": "internal/js/js.go",
+                  "label": "← insertAdjacentHTML in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertBefore",
+                  "file": "internal/js/js.go",
+                  "label": "← insertBefore in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertBefore",
+                  "file": "internal/js/js.go",
+                  "label": "← insertBefore in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← removeChildJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.replaceChild",
+                  "file": "internal/js/js.go",
+                  "label": "← replaceChild in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.replaceChild",
+                  "file": "internal/js/js.go",
+                  "label": "← replaceChild in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← setAttributeJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← setInnerHTMLJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setOuterHTML",
+                  "file": "internal/js/js.go",
+                  "label": "← setOuterHTML in internal/js/js.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "file:internal/css/parser.go",
+          "kind": "group",
+          "label": "parser.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/parser.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Declaration",
+              "kind": "group",
+              "label": "Declaration",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 10,
+                "end_line": 13
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Declaration",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.ParseInline",
+              "kind": "group",
+              "label": "ParseInline",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 22,
+                "end_line": 39
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.ParseInline",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeNode",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeNode in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+              "kind": "group",
+              "label": "ParseStyleSheet",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 42,
+                "end_line": 75
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeWithExtra in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeWithExtra in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Rule",
+              "kind": "group",
+              "label": "Rule",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 16,
+                "end_line": 19
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Rule",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Specificity",
+              "kind": "group",
+              "label": "Specificity",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/parser.go",
+                "start_line": 155,
+                "end_line": 199
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Specificity",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeNode",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeNode in internal/css/computed.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "file:internal/css/types.go",
+          "kind": "group",
+          "label": "types.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/types.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.AlignCenter",
+              "kind": "action",
+              "label": "AlignCenter",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 62,
+                "end_line": 62
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.AlignCenter",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.AlignFlexEnd",
+              "kind": "action",
+              "label": "AlignFlexEnd",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 63,
+                "end_line": 63
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.AlignFlexEnd",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.AlignFlexStart",
+              "kind": "action",
+              "label": "AlignFlexStart",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 61,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.AlignFlexStart",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.AlignStretch",
+              "kind": "action",
+              "label": "AlignStretch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 64,
+                "end_line": 64
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.AlignStretch",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Auto",
+              "kind": "group",
+              "label": "Auto",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 76,
+                "end_line": 76
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Auto",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Default",
+                  "file": "internal/css/types.go",
+                  "label": "← Default in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Default",
+                  "file": "internal/css/types.go",
+                  "label": "← Default in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Border",
+              "kind": "group",
+              "label": "Border",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 148,
+                "end_line": 152
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Border",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.BorderNone",
+              "kind": "action",
+              "label": "BorderNone",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 143,
+                "end_line": 143
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.BorderNone",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.BorderSolid",
+              "kind": "action",
+              "label": "BorderSolid",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 144,
+                "end_line": 144
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.BorderSolid",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.BoxModel",
+              "kind": "group",
+              "label": "BoxModel",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 155,
+                "end_line": 157
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.BoxModel",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.BoxModel.IsZero",
+              "kind": "group",
+              "label": "IsZero",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 160,
+                "end_line": 164
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.BoxModel.IsZero",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Color",
+              "kind": "group",
+              "label": "Color",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 106,
+                "end_line": 109
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Color",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Color.String",
+              "kind": "group",
+              "label": "String",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 132,
+                "end_line": 137
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Color.String",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+                  "file": "internal/js/js.go",
+                  "label": "← getComputedStyle in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+                  "file": "internal/js/js.go",
+                  "label": "← getComputedStyle in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.ComputedStyle",
+              "kind": "group",
+              "label": "ComputedStyle",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 167,
+                "end_line": 209
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.ComputedStyle",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Default",
+              "kind": "group",
+              "label": "Default",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 212,
+                "end_line": 228
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Default",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeNode",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeNode in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.buildNode",
+                  "file": "internal/layout/layout.go",
+                  "label": "← buildNode in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.DisplayBlock",
+              "kind": "action",
+              "label": "DisplayBlock",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 14,
+                "end_line": 14
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.DisplayBlock",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.DisplayFlex",
+              "kind": "action",
+              "label": "DisplayFlex",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 16,
+                "end_line": 16
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.DisplayFlex",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.DisplayGrid",
+              "kind": "action",
+              "label": "DisplayGrid",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 17,
+                "end_line": 17
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.DisplayGrid",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.DisplayInline",
+              "kind": "action",
+              "label": "DisplayInline",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 15,
+                "end_line": 15
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.DisplayInline",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.DisplayNone",
+              "kind": "action",
+              "label": "DisplayNone",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 18,
+                "end_line": 18
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.DisplayNone",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.FlexDirectionColumn",
+              "kind": "action",
+              "label": "FlexDirectionColumn",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 43,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.FlexDirectionColumn",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.FlexDirectionRow",
+              "kind": "action",
+              "label": "FlexDirectionRow",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 42,
+                "end_line": 42
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.FlexDirectionRow",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Hex",
+              "kind": "group",
+              "label": "Hex",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 118,
+                "end_line": 130
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Hex",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.JustifyCenter",
+              "kind": "action",
+              "label": "JustifyCenter",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 51,
+                "end_line": 51
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.JustifyCenter",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.JustifyFlexEnd",
+              "kind": "action",
+              "label": "JustifyFlexEnd",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 52,
+                "end_line": 52
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.JustifyFlexEnd",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.JustifyFlexStart",
+              "kind": "action",
+              "label": "JustifyFlexStart",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 50,
+                "end_line": 50
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.JustifyFlexStart",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.JustifySpaceAround",
+              "kind": "action",
+              "label": "JustifySpaceAround",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 54,
+                "end_line": 54
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.JustifySpaceAround",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.JustifySpaceBetween",
+              "kind": "action",
+              "label": "JustifySpaceBetween",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 53,
+                "end_line": 53
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.JustifySpaceBetween",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Length",
+              "kind": "group",
+              "label": "Length",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 68,
+                "end_line": 73
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "kind": "group",
+              "label": "Resolve",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 85,
+                "end_line": 93
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.Resolve",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutBox",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutBox in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutFlex in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutFlex in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutFlex in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutGrid in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutGrid in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutGrid in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.resolveHeight",
+                  "file": "internal/layout/layout.go",
+                  "label": "← resolveHeight in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+                  "file": "internal/layout/layout.go",
+                  "label": "← resolveWidth in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+                  "file": "internal/layout/layout.go",
+                  "label": "← resolveWidth in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.resolveWidth",
+                  "file": "internal/layout/layout.go",
+                  "label": "← resolveWidth in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/render.drawBox",
+                  "file": "internal/render/render.go",
+                  "label": "← drawBox in internal/render/render.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/render.drawBox",
+                  "file": "internal/render/render.go",
+                  "label": "← drawBox in internal/render/render.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/render.drawBox",
+                  "file": "internal/render/render.go",
+                  "label": "← drawBox in internal/render/render.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/render.drawBox",
+                  "file": "internal/render/render.go",
+                  "label": "← drawBox in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Length.String",
+              "kind": "group",
+              "label": "String",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 95,
+                "end_line": 103
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Length.String",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+                  "file": "internal/js/js.go",
+                  "label": "← getComputedStyle in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getComputedStyle",
+                  "file": "internal/js/js.go",
+                  "label": "← getComputedStyle in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.OverflowHidden",
+              "kind": "action",
+              "label": "OverflowHidden",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 35,
+                "end_line": 35
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.OverflowHidden",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.OverflowVisible",
+              "kind": "action",
+              "label": "OverflowVisible",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 34,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.OverflowVisible",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Percent",
+              "kind": "group",
+              "label": "Percent",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 82,
+                "end_line": 82
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Percent",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.PositionAbsolute",
+              "kind": "action",
+              "label": "PositionAbsolute",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 27,
+                "end_line": 27
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.PositionAbsolute",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.PositionRelative",
+              "kind": "action",
+              "label": "PositionRelative",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.PositionRelative",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.PositionStatic",
+              "kind": "action",
+              "label": "PositionStatic",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 25,
+                "end_line": 25
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.PositionStatic",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Px",
+              "kind": "group",
+              "label": "Px",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 79,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Px",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Default",
+                  "file": "internal/css/types.go",
+                  "label": "← Default in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseLength",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseLength in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutFlex",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutFlex in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutGrid in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutGrid in internal/layout/layout.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.layoutGrid",
+                  "file": "internal/layout/layout.go",
+                  "label": "← layoutGrid in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.RGB",
+              "kind": "group",
+              "label": "RGB",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 115,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.RGB",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.overlayText",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← overlayText in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Default",
+                  "file": "internal/css/types.go",
+                  "label": "← Default in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Hex",
+                  "file": "internal/css/types.go",
+                  "label": "← Hex in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/render.Render",
+                  "file": "internal/render/render.go",
+                  "label": "← Render in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.Transparent",
+              "kind": "group",
+              "label": "Transparent",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/types.go",
+                "start_line": 112,
+                "end_line": 112
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Transparent",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← chooseChar in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← chooseChar in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.chooseChar",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← chooseChar in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.renderANSI",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← renderANSI in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.renderANSI",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← renderANSI in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Default",
+                  "file": "internal/css/types.go",
+                  "label": "← Default in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Hex",
+                  "file": "internal/css/types.go",
+                  "label": "← Hex in internal/css/types.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.parseColor",
+                  "file": "internal/css/computed.go",
+                  "label": "← parseColor in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← Get in internal/framebuffer/framebuffer.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← clipCorner in internal/framebuffer/framebuffer.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/dom",
+      "kind": "group",
+      "label": "dom",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/dom/dom.go",
+          "kind": "group",
+          "label": "dom.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/dom.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.CommentNode",
+              "kind": "action",
+              "label": "CommentNode",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 16,
+                "end_line": 16
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.CommentNode",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.DocumentFragmentNode",
+              "kind": "action",
+              "label": "DocumentFragmentNode",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 18,
+                "end_line": 18
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.DocumentFragmentNode",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.DocumentNode",
+              "kind": "action",
+              "label": "DocumentNode",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 17,
+                "end_line": 17
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.DocumentNode",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.ElementNode",
+              "kind": "action",
+              "label": "ElementNode",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 14,
+                "end_line": 14
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.ElementNode",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node",
+              "kind": "group",
+              "label": "Node",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 22,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.AppendChild",
+              "kind": "group",
+              "label": "AppendChild",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 180,
+                "end_line": 183
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.AppendChild",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.Clone",
+              "kind": "group",
+              "label": "Clone",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 186,
+                "end_line": 204
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.Clone",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.Clone",
+                  "file": "internal/dom/dom.go",
+                  "label": "← Clone in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.cloneNode",
+                  "file": "internal/js/js.go",
+                  "label": "← cloneNode in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.Closest",
+              "kind": "group",
+              "label": "Closest",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 138,
+                "end_line": 148
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.Closest",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.closest",
+                  "file": "internal/js/js.go",
+                  "label": "← closest in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.FindLinkStylesheets",
+              "kind": "group",
+              "label": "FindLinkStylesheets",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 274,
+                "end_line": 276
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.FindLinkStylesheets",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.fetchExternalCSS",
+                  "file": "internal/browser/browser.go",
+                  "label": "← fetchExternalCSS in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.FindStyleTags",
+              "kind": "group",
+              "label": "FindStyleTags",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 269,
+                "end_line": 271
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.FindStyleTags",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeWithExtra in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+              "kind": "group",
+              "label": "GetAttr",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 161,
+                "end_line": 166
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.fetchExternalCSS",
+                  "file": "internal/browser/browser.go",
+                  "label": "← fetchExternalCSS in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeNode",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeNode in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.matchesPseudo",
+                  "file": "internal/dom/selector.go",
+                  "label": "← matchesPseudo in internal/dom/selector.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.matchesPseudo",
+                  "file": "internal/dom/selector.go",
+                  "label": "← matchesPseudo in internal/dom/selector.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.matchesPseudo",
+                  "file": "internal/dom/selector.go",
+                  "label": "← matchesPseudo in internal/dom/selector.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.matchesPseudo",
+                  "file": "internal/dom/selector.go",
+                  "label": "← matchesPseudo in internal/dom/selector.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                  "file": "internal/js/js.go",
+                  "label": "← ExecuteScripts in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getAttribute",
+                  "file": "internal/js/js.go",
+                  "label": "← getAttribute in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getElementByID",
+                  "file": "internal/js/js.go",
+                  "label": "← getElementByID in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.getElementsByClassName",
+                  "file": "internal/js/js.go",
+                  "label": "← getElementsByClassName in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.Matches",
+              "kind": "group",
+              "label": "Matches",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 133,
+                "end_line": 135
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.Matches",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.nodeMatchesSelector",
+                  "file": "internal/css/computed.go",
+                  "label": "← nodeMatchesSelector in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.nodeMatchesSelector",
+                  "file": "internal/css/computed.go",
+                  "label": "← nodeMatchesSelector in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.nodeMatchesSelector",
+                  "file": "internal/css/computed.go",
+                  "label": "← nodeMatchesSelector in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.nodeMatchesSelector",
+                  "file": "internal/css/computed.go",
+                  "label": "← nodeMatchesSelector in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.Closest",
+                  "file": "internal/dom/dom.go",
+                  "label": "← Closest in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.matches",
+                  "file": "internal/js/js.go",
+                  "label": "← matches in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.OuterHTML",
+              "kind": "group",
+              "label": "OuterHTML",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 207,
+                "end_line": 249
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.OuterHTML",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.OuterHTML",
+                  "file": "internal/dom/dom.go",
+                  "label": "← OuterHTML in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.OuterHTML",
+                  "file": "internal/dom/dom.go",
+                  "label": "← OuterHTML in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.outerHTMLString",
+                  "file": "internal/js/js.go",
+                  "label": "← outerHTMLString in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.QueryAll",
+              "kind": "group",
+              "label": "QueryAll",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 123,
+                "end_line": 125
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.QueryAll",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.FindLinkStylesheets",
+                  "file": "internal/dom/dom.go",
+                  "label": "← FindLinkStylesheets in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.FindStyleTags",
+                  "file": "internal/dom/dom.go",
+                  "label": "← FindStyleTags in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                  "file": "internal/js/js.go",
+                  "label": "← ExecuteScripts in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.querySelectorAll",
+                  "file": "internal/js/js.go",
+                  "label": "← querySelectorAll in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.QuerySelector",
+              "kind": "group",
+              "label": "QuerySelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 128,
+                "end_line": 130
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.QuerySelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.querySelector",
+                  "file": "internal/js/js.go",
+                  "label": "← querySelector in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.RemoveChild",
+              "kind": "group",
+              "label": "RemoveChild",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 169,
+                "end_line": 177
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.RemoveChild",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentElement",
+                  "file": "internal/js/js.go",
+                  "label": "← insertAdjacentElement in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertBefore",
+                  "file": "internal/js/js.go",
+                  "label": "← insertBefore in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.replaceChild",
+                  "file": "internal/js/js.go",
+                  "label": "← replaceChild in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+              "kind": "group",
+              "label": "TextContent",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 279,
+                "end_line": 288
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+                  "file": "internal/css/computed.go",
+                  "label": "← computeWithExtra in internal/css/computed.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+                  "file": "internal/dom/dom.go",
+                  "label": "← TextContent in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                  "file": "internal/js/js.go",
+                  "label": "← ExecuteScripts in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.Parse",
+              "kind": "group",
+              "label": "Parse",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 53,
+                "end_line": 120
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTML",
+                  "file": "internal/js/js.go",
+                  "label": "← insertAdjacentHTML in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setInnerHTML",
+                  "file": "internal/js/js.go",
+                  "label": "← setInnerHTML in internal/js/js.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setOuterHTML",
+                  "file": "internal/js/js.go",
+                  "label": "← setOuterHTML in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.TextNode",
+              "kind": "action",
+              "label": "TextNode",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 15,
+                "end_line": 15
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.TextNode",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "file:internal/dom/selector.go",
+          "kind": "group",
+          "label": "selector.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.AttrSelector",
+              "kind": "group",
+              "label": "AttrSelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 30,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.AttrSelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.ComplexSelector",
+              "kind": "group",
+              "label": "ComplexSelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 15,
+                "end_line": 17
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.ComplexSelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.MatchesSelector",
+              "kind": "group",
+              "label": "MatchesSelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 65,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.MatchesSelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.Matches",
+                  "file": "internal/dom/dom.go",
+                  "label": "← Matches in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.matchesPseudo",
+                  "file": "internal/dom/selector.go",
+                  "label": "← matchesPseudo in internal/dom/selector.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.matchesPseudo",
+                  "file": "internal/dom/selector.go",
+                  "label": "← matchesPseudo in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "kind": "group",
+              "label": "ParseSelectorGroup",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 43,
+                "end_line": 62
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.ParseSelectorGroup",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.MatchesSelector",
+                  "file": "internal/dom/selector.go",
+                  "label": "← MatchesSelector in internal/dom/selector.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+                  "file": "internal/dom/selector.go",
+                  "label": "← QueryAllSelector in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.PseudoSelector",
+              "kind": "group",
+              "label": "PseudoSelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 37,
+                "end_line": 40
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.PseudoSelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+              "kind": "group",
+              "label": "QueryAllSelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 82,
+                "end_line": 90
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.QueryAllSelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.QueryAll",
+                  "file": "internal/dom/dom.go",
+                  "label": "← QueryAll in internal/dom/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.QuerySelectorSelector",
+                  "file": "internal/dom/selector.go",
+                  "label": "← QuerySelectorSelector in internal/dom/selector.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.QuerySelectorSelector",
+              "kind": "group",
+              "label": "QuerySelectorSelector",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 93,
+                "end_line": 99
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.QuerySelectorSelector",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Node.QuerySelector",
+                  "file": "internal/dom/dom.go",
+                  "label": "← QuerySelector in internal/dom/dom.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.SelectorGroup",
+              "kind": "group",
+              "label": "SelectorGroup",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 10,
+                "end_line": 12
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.SelectorGroup",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.SelectorPart",
+              "kind": "group",
+              "label": "SelectorPart",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector.go",
+                "start_line": 20,
+                "end_line": 27
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.SelectorPart",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/fetcher",
+      "kind": "group",
+      "label": "fetcher",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/fetcher/fetcher.go",
+          "kind": "group",
+          "label": "fetcher.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/fetcher/fetcher.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/fetcher.DefaultClient",
+              "kind": "action",
+              "label": "DefaultClient",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 12,
+                "end_line": 14
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/fetcher.DefaultClient",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/fetcher.Fetch",
+              "kind": "group",
+              "label": "Fetch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/fetcher/fetcher.go",
+                "start_line": 17,
+                "end_line": 42
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/fetcher.Fetch",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+                  "file": "cmd/analyze_habr/main.go",
+                  "label": "← main in cmd/analyze_habr/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/framebuffer",
+      "kind": "group",
+      "label": "framebuffer",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/framebuffer/framebuffer.go",
+          "kind": "group",
+          "label": "framebuffer.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/framebuffer/framebuffer.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer",
+              "kind": "group",
+              "label": "Framebuffer",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 11,
+                "end_line": 15
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Clear",
+              "kind": "group",
+              "label": "Clear",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 43,
+                "end_line": 47
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Clear",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/render.Render",
+                  "file": "internal/render/render.go",
+                  "label": "← Render in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+              "kind": "group",
+              "label": "DrawBorder",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 63,
+                "end_line": 80
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/render.drawBox",
+                  "file": "internal/render/render.go",
+                  "label": "← drawBox in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "kind": "group",
+              "label": "DrawRoundedRect",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 83,
+                "end_line": 99
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/render.drawBox",
+                  "file": "internal/render/render.go",
+                  "label": "← drawBox in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+              "kind": "group",
+              "label": "FillRect",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 50,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawBorder",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← DrawBorder in internal/framebuffer/framebuffer.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.DrawRoundedRect",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← DrawRoundedRect in internal/framebuffer/framebuffer.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+              "kind": "group",
+              "label": "Get",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 35,
+                "end_line": 40
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Get",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← makeGrid in internal/ascii/ascii.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.makeGrid",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "← makeGrid in internal/ascii/ascii.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+              "kind": "group",
+              "label": "Set",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 27,
+                "end_line": 32
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.Set",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.FillRect",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← FillRect in internal/framebuffer/framebuffer.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/framebuffer.Framebuffer.clipCorner",
+                  "file": "internal/framebuffer/framebuffer.go",
+                  "label": "← clipCorner in internal/framebuffer/framebuffer.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/framebuffer.New",
+              "kind": "group",
+              "label": "New",
+              "layer": "flow",
+              "source": {
+                "file": "internal/framebuffer/framebuffer.go",
+                "start_line": 18,
+                "end_line": 24
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/framebuffer.New",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/render.Render",
+                  "file": "internal/render/render.go",
+                  "label": "← Render in internal/render/render.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/render.Render",
+                  "file": "internal/render/render.go",
+                  "label": "← Render in internal/render/render.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/js",
+      "kind": "group",
+      "label": "js",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/js/dom.go",
+          "kind": "group",
+          "label": "dom.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+              "kind": "group",
+              "label": "RegisterBridgeFunctions",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 836,
+                "end_line": 891
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.LogWriter",
+              "kind": "action",
+              "label": "LogWriter",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 32,
+                "end_line": 32
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.LogWriter",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "file:internal/js/domapi.go",
+          "kind": "group",
+          "label": "domapi.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/domapi.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+              "kind": "group",
+              "label": "DOMAPIScript",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/domapi.go",
+                "start_line": 5,
+                "end_line": 7
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "file:internal/js/js.go",
+          "kind": "group",
+          "label": "js.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/js.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+              "kind": "group",
+              "label": "CloseCurrentContext",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 94,
+                "end_line": 102
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.CloseCurrentContext",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+              "kind": "group",
+              "label": "ExecuteScripts",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 1612,
+                "end_line": 1640
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.GetCurrentContext",
+              "kind": "group",
+              "label": "GetCurrentContext",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 87,
+                "end_line": 91
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.GetCurrentContext",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+              "kind": "group",
+              "label": "GetFinalDOM",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 1607,
+                "end_line": 1609
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.InitDOM",
+              "kind": "group",
+              "label": "InitDOM",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 126,
+                "end_line": 136
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.InitEventSystem",
+              "kind": "group",
+              "label": "InitEventSystem",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 608,
+                "end_line": 620
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.InitEventSystem",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.IsDirty",
+              "kind": "group",
+              "label": "IsDirty",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 112,
+                "end_line": 116
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.IsDirty",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.MarkClean",
+              "kind": "group",
+              "label": "MarkClean",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 119,
+                "end_line": 123
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.MarkClean",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.InitEventSystem",
+                  "file": "internal/js/js.go",
+                  "label": "← InitEventSystem in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.ProcessTimers",
+              "kind": "group",
+              "label": "ProcessTimers",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 944,
+                "end_line": 978
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.ProcessTimers",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+                  "file": "internal/browser/browser.go",
+                  "label": "← Update in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.Rect",
+              "kind": "group",
+              "label": "Rect",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 1384,
+                "end_line": 1386
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.Rect",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.SetComputedStyles",
+              "kind": "group",
+              "label": "SetComputedStyles",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 716,
+                "end_line": 720
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.SetComputedStyles",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.SetCurrentContext",
+              "kind": "group",
+              "label": "SetCurrentContext",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 76,
+                "end_line": 84
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.SetCurrentContext",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.SetDirty",
+              "kind": "group",
+              "label": "SetDirty",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 105,
+                "end_line": 109
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.SetDirty",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← appendChildJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentElementJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← insertAdjacentElementJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTMLJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← insertAdjacentHTMLJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertAdjacentTextJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← insertAdjacentTextJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.insertBeforeJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← insertBeforeJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← removeChildJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.replaceChildJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← replaceChildJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← setAttributeJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← setInnerHTMLJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setOuterHTMLJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← setOuterHTMLJS in internal/js/dom.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/js.setTextContentJS",
+                  "file": "internal/js/dom.go",
+                  "label": "← setTextContentJS in internal/js/dom.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.SetLayoutBoxes",
+              "kind": "group",
+              "label": "SetLayoutBoxes",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/js.go",
+                "start_line": 1389,
+                "end_line": 1393
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.SetLayoutBoxes",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/layout",
+      "kind": "group",
+      "label": "layout",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/layout/layout.go",
+          "kind": "group",
+          "label": "layout.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/layout/layout.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/layout.Build",
+              "kind": "group",
+              "label": "Build",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 39,
+                "end_line": 45
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.Build",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.Layout",
+              "kind": "group",
+              "label": "Layout",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 88,
+                "end_line": 90
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.Layout",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.Build",
+                  "file": "internal/layout/layout.go",
+                  "label": "← Build in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.LayoutBox",
+              "kind": "group",
+              "label": "LayoutBox",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 26,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.LayoutBox",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.Rect",
+              "kind": "group",
+              "label": "Rect",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 15,
+                "end_line": 17
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.Rect",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.TextLine",
+              "kind": "group",
+              "label": "TextLine",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 20,
+                "end_line": 23
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.TextLine",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/layout.ViewportWidth",
+              "kind": "action",
+              "label": "ViewportWidth",
+              "layer": "flow",
+              "source": {
+                "file": "internal/layout/layout.go",
+                "start_line": 12,
+                "end_line": 12
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.ViewportWidth",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    },
+    {
+      "id": "github.com/starframe/abyss/internal/render",
+      "kind": "group",
+      "label": "render",
+      "layer": "flow",
+      "source": null,
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "file:internal/render/render.go",
+          "kind": "group",
+          "label": "render.go",
+          "layer": "flow",
+          "source": {
+            "file": "internal/render/render.go",
+            "start_line": 1,
+            "end_line": 1
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "github.com/starframe/abyss/internal/render.Render",
+              "kind": "group",
+              "label": "Render",
+              "layer": "flow",
+              "source": {
+                "file": "internal/render/render.go",
+                "start_line": 13,
+                "end_line": 51
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/render.Render",
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/cmd/debug_render.main",
+                  "file": "cmd/debug_render/main.go",
+                  "label": "← main in cmd/debug_render/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/external_test.main",
+                  "file": "cmd/external_test/main.go",
+                  "label": "← main in cmd/external_test/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/manual.main",
+                  "file": "cmd/manual/main.go",
+                  "label": "← main in cmd/manual/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/cmd/test_real.main",
+                  "file": "cmd/test_real/main.go",
+                  "label": "← main in cmd/test_real/main.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadPage",
+                  "file": "internal/browser/browser.go",
+                  "label": "← loadPage in internal/browser/browser.go"
+                },
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.reRenderCmd",
+                  "file": "internal/browser/browser.go",
+                  "label": "← reRenderCmd in internal/browser/browser.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

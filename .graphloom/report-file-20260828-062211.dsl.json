@@ -1,0 +1,2161 @@
+{
+  "title": "internal/browser/browser.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/browser/browser.go",
+      "kind": "group",
+      "label": "browser.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser.go",
+        "start_line": 1,
+        "end_line": 222
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "type:internal/browser/browser.go:Mode:15616121",
+          "kind": "group",
+          "label": "Тип Mode",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 17,
+            "end_line": 17
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeAddress:15616140",
+          "kind": "state",
+          "label": "Переменная ModeAddress",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 20,
+            "end_line": 20
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeAddress",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeLoading:15616165",
+          "kind": "state",
+          "label": "Переменная ModeLoading",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 21,
+            "end_line": 21
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeLoading",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeView:15616178",
+          "kind": "state",
+          "label": "Переменная ModeView",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 22,
+            "end_line": 22
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeView",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:internal/browser/browser.go:ModeError:15616188",
+          "kind": "state",
+          "label": "Переменная ModeError",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 23,
+            "end_line": 23
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.ModeError",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:Tab:15616255",
+          "kind": "group",
+          "label": "Тип Tab",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 27,
+            "end_line": 35
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Tab",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:Model:15616463",
+          "kind": "group",
+          "label": "Тип Model",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 38,
+            "end_line": 48
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:pageLoadedMsg:15616699",
+          "kind": "group",
+          "label": "Тип pageLoadedMsg",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 51,
+            "end_line": 55
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.pageLoadedMsg",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:pageErrorMsg:15616820",
+          "kind": "group",
+          "label": "Тип pageErrorMsg",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 58,
+            "end_line": 60
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.pageErrorMsg",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:tickMsg:15616931",
+          "kind": "group",
+          "label": "Тип tickMsg",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 63,
+            "end_line": 63
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.tickMsg",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:tickCmd:15617008",
+          "kind": "group",
+          "label": "Функция tickCmd",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 66,
+            "end_line": 70
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.tickCmd",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser.go:15617034",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 67,
+                "end_line": 69
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Init",
+              "file": "internal/browser/browser.go",
+              "label": "← Init in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            }
+          ]
+        },
+        {
+          "id": "variable:internal/browser/browser.go:sessionFile:15617196",
+          "kind": "state",
+          "label": "Переменная sessionFile",
+          "layer": "state",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 73,
+            "end_line": 73
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.sessionFile",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "type:internal/browser/browser.go:sessionData:15617323",
+          "kind": "group",
+          "label": "Тип sessionData",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 76,
+            "end_line": 78
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.sessionData",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:saveSession:15617440",
+          "kind": "group",
+          "label": "Функция saveSession",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 81,
+            "end_line": 104
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.saveSession",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15617472",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 82,
+                "end_line": 84
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(tabs) == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15617494",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 83,
+                    "end_line": 83
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/browser/browser.go:15617524",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 86,
+                "end_line": 90
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/browser/browser.go:15617551",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 87,
+                    "end_line": 89
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "t.URL != \"\"",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15617606",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 91,
+                "end_line": 93
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(urls) == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15617628",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 92,
+                    "end_line": 92
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15617706",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 96,
+                "end_line": 98
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15617755",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 97,
+                    "end_line": 97
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15617796",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 100,
+                "end_line": 102
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15617814",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 101,
+                    "end_line": 101
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:loadSession:15617929",
+          "kind": "group",
+          "label": "Функция loadSession",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 107,
+            "end_line": 117
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.loadSession",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15617996",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 109,
+                "end_line": 111
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15618014",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 110,
+                    "end_line": 110
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser.go:15618051",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 113,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15618102",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 114,
+                    "end_line": 114
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15618117",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 116,
+                "end_line": 116
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.New",
+              "file": "internal/browser/browser.go",
+              "label": "← New in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:New:15618173",
+          "kind": "group",
+          "label": "Функция New",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 120,
+            "end_line": 147
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.New",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/browser/browser.go:loadSession:15618520",
+              "kind": "call",
+              "label": "Вызов loadSession",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 107,
+                "end_line": 117
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.loadSession",
+              "summary": "→ github.com/starframe/abyss/internal/browser.loadSession",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.loadSession",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ loadSession in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/browser/browser.go:15618535",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 138,
+                "end_line": 144
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(urls) > 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/browser/browser.go:15618571",
+                  "kind": "loop",
+                  "label": "Цикл",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 140,
+                    "end_line": 142
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15618696",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 146,
+                "end_line": 146
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss.main",
+              "file": "main.go",
+              "label": "← main in main.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:Init:15618738",
+          "kind": "group",
+          "label": "Функция Init",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 150,
+            "end_line": 152
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.Init",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/browser/browser.go:15618771",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 151,
+                "end_line": 151
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser.go:active:15618874",
+          "kind": "group",
+          "label": "Функция active",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 155,
+            "end_line": 160
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15618907",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 156,
+                "end_line": 158
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "m.ActiveTab < 0 || m.ActiveTab >= len(m.Tabs)",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15618960",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 157,
+                    "end_line": 157
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15618975",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 159,
+                "end_line": 159
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+              "file": "internal/browser/browser.go",
+              "label": "← ANSILines in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+              "file": "internal/browser/browser.go",
+              "label": "← ASCIILines in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Err",
+              "file": "internal/browser/browser.go",
+              "label": "← Err in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+              "file": "internal/browser/browser.go",
+              "label": "← OffsetX in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+              "file": "internal/browser/browser.go",
+              "label": "← ZoomFactor in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← restoreActiveTab in internal/browser/browser.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:saveActiveTab:15619074",
+          "kind": "group",
+          "label": "Функция saveActiveTab",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 163,
+            "end_line": 174
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/browser/browser.go:active:15619114",
+              "kind": "call",
+              "label": "Вызов active",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 155,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+              "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ active in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/browser/browser.go:15619126",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 165,
+                "end_line": 167
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t == nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15619142",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 166,
+                    "end_line": 166
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/browser/browser.go:ANSILines:15619211",
+              "kind": "call",
+              "label": "Вызов ANSILines",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 189,
+                "end_line": 194
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+              "summary": "→ github.com/starframe/abyss/internal/browser.Model.ANSILines",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ ANSILines in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/browser/browser.go:ASCIILines:15619241",
+              "kind": "call",
+              "label": "Вызов ASCIILines",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 196,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+              "summary": "→ github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ ASCIILines in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/browser/browser.go:ZoomFactor:15619272",
+              "kind": "call",
+              "label": "Вызов ZoomFactor",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 203,
+                "end_line": 208
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+              "summary": "→ github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ ZoomFactor in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "call:internal/browser/browser.go:OffsetX:15619300",
+              "kind": "call",
+              "label": "Вызов OffsetX",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 210,
+                "end_line": 215
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+              "summary": "→ github.com/starframe/abyss/internal/browser.Model.OffsetX",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ OffsetX in internal/browser/browser.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:restoreActiveTab:15619376",
+          "kind": "group",
+          "label": "Функция restoreActiveTab",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 177,
+            "end_line": 186
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.restoreActiveTab",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/browser/browser.go:active:15619419",
+              "kind": "call",
+              "label": "Вызов active",
+              "layer": "calls",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 155,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+              "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "file": "internal/browser/browser.go",
+                  "label": "→ active in internal/browser/browser.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/browser/browser.go:15619431",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 179,
+                "end_line": 181
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t == nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser.go:15619447",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 180,
+                    "end_line": 180
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:ANSILines:15619645",
+          "kind": "group",
+          "label": "Функция ANSILines",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 189,
+            "end_line": 194
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15619684",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 190,
+                "end_line": 192
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15619692",
+                  "kind": "call",
+                  "label": "Вызов active",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 155,
+                    "end_line": 160
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15619717",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 191,
+                    "end_line": 191
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15619740",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 193,
+                "end_line": 193
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:ASCIILines:15619754",
+          "kind": "group",
+          "label": "Функция ASCIILines",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 196,
+            "end_line": 201
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.ASCIILines",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15619794",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 197,
+                "end_line": 199
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15619802",
+                  "kind": "call",
+                  "label": "Вызов active",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 155,
+                    "end_line": 160
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15619827",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 198,
+                    "end_line": 198
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15619851",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 200,
+                "end_line": 200
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:ZoomFactor:15619865",
+          "kind": "group",
+          "label": "Функция ZoomFactor",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 203,
+            "end_line": 208
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15619904",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 204,
+                "end_line": 206
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15619912",
+                  "kind": "call",
+                  "label": "Вызов active",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 155,
+                    "end_line": 160
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15619937",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 205,
+                    "end_line": 205
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15619961",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 207,
+                "end_line": 207
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:OffsetX:15619975",
+          "kind": "group",
+          "label": "Функция OffsetX",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 210,
+            "end_line": 215
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15620007",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 211,
+                "end_line": 213
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15620015",
+                  "kind": "call",
+                  "label": "Вызов active",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 155,
+                    "end_line": 160
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15620040",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 212,
+                    "end_line": 212
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15620061",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 214,
+                "end_line": 214
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser_update.go",
+              "label": "← Update in internal/browser/browser_update.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.saveActiveTab",
+              "file": "internal/browser/browser.go",
+              "label": "← saveActiveTab in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/browser/browser.go:Err:15620073",
+          "kind": "group",
+          "label": "Функция Err",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser.go",
+            "start_line": 217,
+            "end_line": 222
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.Err",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser.go:15620103",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 218,
+                "end_line": 220
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "t != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/browser/browser.go:active:15620111",
+                  "kind": "call",
+                  "label": "Вызов active",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 155,
+                    "end_line": 160
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/browser.Model.active",
+                  "summary": "→ github.com/starframe/abyss/internal/browser.Model.active",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/browser.Model.active",
+                      "file": "internal/browser/browser.go",
+                      "label": "→ active in internal/browser/browser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "return:internal/browser/browser.go:15620136",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser.go",
+                    "start_line": 219,
+                    "end_line": 219
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser.go:15620153",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser.go",
+                "start_line": 221,
+                "end_line": 221
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

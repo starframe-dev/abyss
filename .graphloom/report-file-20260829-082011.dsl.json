@@ -1,0 +1,2177 @@
+{
+  "title": "internal/dom/selector_nth.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/dom/selector_nth.go",
+      "kind": "group",
+      "label": "Файл пакета dom",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/selector_nth.go",
+        "start_line": 1,
+        "end_line": 138
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Этот файл содержит функции для работы с селекторами nth-child в DOM-дереве.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/dom/selector_nth.go:childIndex:12139685",
+          "kind": "group",
+          "label": "Функция childIndex",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector_nth.go",
+            "start_line": 10,
+            "end_line": 27
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.childIndex",
+          "summary": "Возвращает 1-индекс узла n среди дочерних элементов родителя, с учётом фильтрации по типу.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector_nth.go:12139730",
+              "kind": "decision",
+              "label": "Проверка на nil узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 11,
+                "end_line": 13
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли узел или родитель nil, и возвращает 0 в случае ошибки.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12139730"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12139765",
+                  "kind": "output",
+                  "label": "Возврат 0 при ошибке",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 12,
+                    "end_line": 12
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает значение 0, если узел или родитель не определены.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12139765"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/dom/selector_nth.go:12139778",
+              "kind": "action",
+              "label": "Инициализация индекса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 19,
+                "end_line": 19
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализирует переменную idx значением 0 для подсчёта дочерних элементов.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12139778"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector_nth.go:12139788",
+              "kind": "loop",
+              "label": "Цикл по дочерним элементам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 15,
+                "end_line": 25
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерируется по всем дочерним элементам родителя для поиска целевого узла.",
+              "coverage_ids": [
+                "loop:internal/dom/selector_nth.go:12139788"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/dom/selector_nth.go:12139832",
+                  "kind": "decision",
+                  "label": "Фильтрация по типу узла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 16,
+                    "end_line": 18
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Пропускает элементы, которые не являются ElementNode типом.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12139832"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12139866",
+                      "kind": "action",
+                      "label": "Пропуск неэлементов",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 19,
+                        "end_line": 19
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Продолжает цикл, если текущий узел не является элементом.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12139866"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector_nth.go:12139881",
+                  "kind": "decision",
+                  "label": "Проверка совпадения типа",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 19,
+                    "end_line": 21
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, нужно ли учитывать только элементы одинакового тега.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12139881"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12139944",
+                      "kind": "action",
+                      "label": "Увеличение счётчика",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 19,
+                        "end_line": 19
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Увеличивает индекс idx при совпадении условий фильтрации.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12139944"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector_nth.go:12139956",
+                  "kind": "decision",
+                  "label": "Проверка нацеленного узла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 22,
+                    "end_line": 24
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, является ли текущий дочерний элемент целевым узлом n.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12139956"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector_nth.go:12139975",
+                      "kind": "output",
+                      "label": "Возврат найденного индекса",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 23,
+                        "end_line": 23
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает текущий индекс idx, когда найден целевой узел.",
+                      "coverage_ids": [
+                        "return:internal/dom/selector_nth.go:12139975"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector_nth.go:12139994",
+              "kind": "output",
+              "label": "Возврат 0 по завершении",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает 0, если целевой узел не найден после обхода всех детей.",
+              "coverage_ids": [
+                "return:internal/dom/selector_nth.go:12139994"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector_nth.go:lastChildIndex:12140093",
+          "kind": "group",
+          "label": "Функция lastChildIndex",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector_nth.go",
+            "start_line": 30,
+            "end_line": 48
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.lastChildIndex",
+          "summary": "Возвращает 1-индекс узла n, считая от последнего дочернего элемента родителя.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/dom/selector_nth.go:12140142",
+              "kind": "decision",
+              "label": "Проверка на nil узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 31,
+                "end_line": 33
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли узел или родитель nil, и возвращает 0 в случае ошибки.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12140142"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12140177",
+                  "kind": "output",
+                  "label": "Возврат 0 при ошибке",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 32,
+                    "end_line": 32
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает значение 0, если узел или родитель не определены.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12140177"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/dom/selector_nth.go:12140190",
+              "kind": "action",
+              "label": "Инициализация индекса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 35,
+                "end_line": 35
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализирует переменную idx значением 0 для подсчёта дочерних элементов.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12140190"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/dom/selector_nth.go:12140200",
+              "kind": "loop",
+              "label": "Цикл по дочерним элементам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 35,
+                "end_line": 46
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерируется по всем дочерним элементам родителя в обратном порядке.",
+              "coverage_ids": [
+                "loop:internal/dom/selector_nth.go:12140200"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/dom/selector_nth.go:12140204",
+                  "kind": "action",
+                  "label": "Цикл по дочерним элементам",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 35,
+                    "end_line": 35
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерируется по дочерним элементам в обратном порядке от конца к началу.",
+                  "coverage_ids": [
+                    "statement:internal/dom/selector_nth.go:12140204"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/dom/selector_nth.go:12140245",
+                  "kind": "action",
+                  "label": "Цикл по дочерним элементам",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 35,
+                    "end_line": 35
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерируется по дочерним элементам в обратном порядке от конца к началу.",
+                  "coverage_ids": [
+                    "statement:internal/dom/selector_nth.go:12140245"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:internal/dom/selector_nth.go:12140253",
+                  "kind": "action",
+                  "label": "Получение дочернего элемента",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 35,
+                    "end_line": 35
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Извлекает дочерний элемент по текущему индексу i из списка Children.",
+                  "coverage_ids": [
+                    "statement:internal/dom/selector_nth.go:12140253"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector_nth.go:12140285",
+                  "kind": "decision",
+                  "label": "Фильтрация по типу узла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 37,
+                    "end_line": 39
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Пропускает элементы, которые не являются ElementNode типом.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12140285"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12140319",
+                      "kind": "action",
+                      "label": "Пропуск неэлементов",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 40,
+                        "end_line": 40
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Продолжает цикл, если текущий узел не является элементом.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12140319"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector_nth.go:12140334",
+                  "kind": "decision",
+                  "label": "Проверка совпадения типа",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 40,
+                    "end_line": 42
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, нужно ли учитывать только элементы одинакового тега.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12140334"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12140397",
+                      "kind": "action",
+                      "label": "Увеличение счётчика",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 40,
+                        "end_line": 40
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Увеличивает индекс idx при совпадении условий фильтрации.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12140397"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector_nth.go:12140409",
+                  "kind": "decision",
+                  "label": "Проверка нацеленного узла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 43,
+                    "end_line": 45
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, является ли текущий дочерний элемент целевым узлом n.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12140409"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector_nth.go:12140428",
+                      "kind": "output",
+                      "label": "Возврат найденного индекса",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 44,
+                        "end_line": 44
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает текущий индекс idx, когда найден целевой узел.",
+                      "coverage_ids": [
+                        "return:internal/dom/selector_nth.go:12140428"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector_nth.go:12140447",
+              "kind": "output",
+              "label": "Возврат 0 по завершении",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 47,
+                "end_line": 47
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает 0, если целевой узел не найден после обхода всех детей.",
+              "coverage_ids": [
+                "return:internal/dom/selector_nth.go:12140447"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector_nth.go:matchNth:12140459",
+          "kind": "group",
+          "label": "Функция matchNth",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector_nth.go",
+            "start_line": 50,
+            "end_line": 90
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.matchNth",
+          "summary": "Проверяет, соответствует ли индекс idx заданному выражению nth-селектора.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/dom/selector_nth.go:12140502",
+              "kind": "action",
+              "label": "Нормализация аргумента",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 51,
+                "end_line": 51
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Убирает пробелы и переводит аргумент в нижний регистр.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12140502"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12140549",
+              "kind": "decision",
+              "label": "Проверка на пустую строку",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 52,
+                "end_line": 54
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли аргумент пустой строке после нормализации.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12140549"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12140566",
+                  "kind": "output",
+                  "label": "Возврат false при пустоте",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 53,
+                    "end_line": 53
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает false, если аргумент пуст после обработки.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12140566"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12140650",
+              "kind": "decision",
+              "label": "Специальный случай \"0\"",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 57,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли аргумент \"0\", который соответствует только первому элементу.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12140650"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12140668",
+                  "kind": "output",
+                  "label": "Возврат проверки индекса",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 58,
+                    "end_line": 58
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает true, если idx равен 0 для специального случая \"0\".",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12140668"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/dom/selector_nth.go:12140709",
+              "kind": "action",
+              "label": "Переключатель по ключевым словам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 62,
+                "end_line": 67
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Обрабатывает ключевые слова \"even\" и \"odd\" для проверки чётности/нечётности.",
+              "coverage_ids": [
+                "switch:internal/dom/selector_nth.go:12140709"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/dom/selector_nth.go:12140723",
+                  "kind": "action",
+                  "label": "Случай \"even\"",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 63,
+                    "end_line": 64
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, является ли индекс чётным числом.",
+                  "coverage_ids": [
+                    "case:internal/dom/selector_nth.go:12140723"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector_nth.go:12140738",
+                      "kind": "output",
+                      "label": "Возврат для чётных",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 64,
+                        "end_line": 64
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает true, если индекс делится на 2 без остатка.",
+                      "coverage_ids": [
+                        "return:internal/dom/selector_nth.go:12140738"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/dom/selector_nth.go:12140757",
+                  "kind": "action",
+                  "label": "Случай \"odd\"",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 70,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, является ли индекс нечётным числом.",
+                  "coverage_ids": [
+                    "case:internal/dom/selector_nth.go:12140757"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector_nth.go:12140771",
+                      "kind": "output",
+                      "label": "Возврат для нечётных",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 66,
+                        "end_line": 66
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает true, если индекс при делении на 2 даёт остаток 1.",
+                      "coverage_ids": [
+                        "return:internal/dom/selector_nth.go:12140771"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/dom/selector_nth.go:12140816",
+              "kind": "action",
+              "label": "Вызов функции parseNth",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 70,
+                "end_line": 70
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вызывает функцию parseNth для разбора выражения nth-селектора.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12140816"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/dom/selector_nth.go:parseNth:12140828",
+                  "kind": "call",
+                  "label": "Вызов parseNth",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 93,
+                    "end_line": 138
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.parseNth",
+                  "summary": "Вызывает функцию parseNth для разбора выражения формата an+b.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.parseNth",
+                      "file": "internal/dom/selector_nth.go",
+                      "label": "→ parseNth in internal/dom/selector_nth.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12140843",
+              "kind": "decision",
+              "label": "Проверка результата разбора",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 71,
+                "end_line": 78
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, успешно ли был разобран аргумент функцией parseNth.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12140843"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/dom/selector_nth.go:12140876",
+                  "kind": "action",
+                  "label": "Парсинг числа",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 73,
+                    "end_line": 73
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Пытается преобразовать аргумент в число, если разбор не удался.",
+                  "coverage_ids": [
+                    "statement:internal/dom/selector_nth.go:12140876"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/dom/selector_nth.go:12140906",
+                  "kind": "decision",
+                  "label": "Проверка ошибки преобразования",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 74,
+                    "end_line": 76
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, содержит ли преобразование ошибку.",
+                  "coverage_ids": [
+                    "if:internal/dom/selector_nth.go:12140906"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/dom/selector_nth.go:12140925",
+                      "kind": "output",
+                      "label": "Возврат false при ошибке",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 75,
+                        "end_line": 75
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Возвращает false, если преобразование в число не удалось.",
+                      "coverage_ids": [
+                        "return:internal/dom/selector_nth.go:12140925"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/dom/selector_nth.go:12140944",
+                  "kind": "output",
+                  "label": "Возврат проверки индекса",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 77,
+                    "end_line": 77
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает true, если преобразованный индекс совпадает с idx.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12140944"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12140965",
+              "kind": "decision",
+              "label": "Проверка a == 0",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 80,
+                "end_line": 82
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли коэффициент a нулю в выражении.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12140965"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12140979",
+                  "kind": "output",
+                  "label": "Возврат проверки индекса",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 81,
+                    "end_line": 81
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает true, если idx равен b при a == 0.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12140979"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12140999",
+              "kind": "decision",
+              "label": "Проверка границ",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 83,
+                "end_line": 85
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, находится ли idx за пределами допустимого диапазона.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12140999"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12141023",
+                  "kind": "output",
+                  "label": "Возврат false за границей",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 84,
+                    "end_line": 84
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает false, если idx выходит за пределы допустимого диапазона.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12141023"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12141040",
+              "kind": "decision",
+              "label": "Проверка границ",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 86,
+                "end_line": 88
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, находится ли idx за пределами допустимого диапазона.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12141040"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12141064",
+                  "kind": "output",
+                  "label": "Возврат false за границей",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 87,
+                    "end_line": 87
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает false, если idx выходит за пределы допустимого диапазона.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12141064"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector_nth.go:12141081",
+              "kind": "output",
+              "label": "Возврат проверки по модулю",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 89,
+                "end_line": 89
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает результат проверки (idx-b) % a == 0.",
+              "coverage_ids": [
+                "return:internal/dom/selector_nth.go:12141081"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+              "file": "internal/dom/selector_match.go",
+              "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/dom/selector_nth.go:parseNth:12141170",
+          "kind": "group",
+          "label": "Функция parseNth",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/selector_nth.go",
+            "start_line": 93,
+            "end_line": 138
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/dom.parseNth",
+          "summary": "Разбирает строковое выражение формата an+b на коэффициенты a и b.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/dom/selector_nth.go:12141217",
+              "kind": "action",
+              "label": "Удаление пробелов",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 94,
+                "end_line": 94
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Удаляет все пробелы из входной строки.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12141217"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12141253",
+              "kind": "decision",
+              "label": "Проверка на пустую строку",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 95,
+                "end_line": 97
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли обработанный аргумент пустой строке.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12141253"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12141268",
+                  "kind": "output",
+                  "label": "Возврат при пустоте",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 96,
+                    "end_line": 96
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает 0, 0, false, если строка пуста после удаления пробелов.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12141268"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12141354",
+              "kind": "decision",
+              "label": "Специальный случай \"0\"",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 100,
+                "end_line": 102
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли аргумент \"0\", который является валидным выражением.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12141354"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12141370",
+                  "kind": "output",
+                  "label": "Возврат для \"0\"",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 101,
+                    "end_line": 101
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает 0, 0, true для специального случая \"0\".",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12141370"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/dom/selector_nth.go:12141442",
+              "kind": "action",
+              "label": "Поиск позиции n",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 105,
+                "end_line": 105
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Находит позицию символа 'n' в строке для разделения коэффициентов.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12141442"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12141473",
+              "kind": "decision",
+              "label": "Проверка на отсутствие n",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 106,
+                "end_line": 108
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, найден ли символ 'n' в строке.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12141473"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/dom/selector_nth.go:12141489",
+                  "kind": "output",
+                  "label": "Возврат при отсутствии n",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 107,
+                    "end_line": 107
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает 0, 0, false, если символ 'n' не найден.",
+                  "coverage_ids": [
+                    "return:internal/dom/selector_nth.go:12141489"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/dom/selector_nth.go:12141525",
+              "kind": "action",
+              "label": "Извлечение части a",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 111,
+                "end_line": 111
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Извлекает подстроку до символа 'n' для парсинга коэффициента a.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12141525"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/dom/selector_nth.go:12141543",
+              "kind": "action",
+              "label": "Переключатель по aStr",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 118,
+                "end_line": 118
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Обрабатывает разные случаи для коэффициента a: пустая строка, минус или число.",
+              "coverage_ids": [
+                "switch:internal/dom/selector_nth.go:12141543"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/dom/selector_nth.go:12141558",
+                  "kind": "action",
+                  "label": "Случай пустой строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 118,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Устанавливает a = 1, если подстрока до 'n' пуста.",
+                  "coverage_ids": [
+                    "case:internal/dom/selector_nth.go:12141558"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12141569",
+                      "kind": "action",
+                      "label": "Установка a = 1",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 118,
+                        "end_line": 118
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает коэффициент a значение 1 для случая пустой подстроки.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12141569"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/dom/selector_nth.go:12141576",
+                  "kind": "action",
+                  "label": "Случай минуса",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 118,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Устанавливает a = -1, если подстрока до 'n' содержит только минус.",
+                  "coverage_ids": [
+                    "case:internal/dom/selector_nth.go:12141576"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12141588",
+                      "kind": "action",
+                      "label": "Установка a = -1",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 118,
+                        "end_line": 118
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает коэффициент a значение -1 для случая минуса.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12141588"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/dom/selector_nth.go:12141596",
+                  "kind": "action",
+                  "label": "Случай числа",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 118,
+                    "end_line": 118
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Парсит числовое значение для коэффициента a в общем случае.",
+                  "coverage_ids": [
+                    "case:internal/dom/selector_nth.go:12141596"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12141607",
+                      "kind": "action",
+                      "label": "Парсинг числа a",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 118,
+                        "end_line": 118
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Преобразует подстроку в целое число для коэффициента a.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12141607"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/dom/selector_nth.go:12141638",
+                      "kind": "decision",
+                      "label": "Проверка ошибки преобразования",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 119,
+                        "end_line": 121
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, содержит ли преобразование ошибки.",
+                      "coverage_ids": [
+                        "if:internal/dom/selector_nth.go:12141638"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "return:internal/dom/selector_nth.go:12141657",
+                          "kind": "output",
+                          "label": "Возврат при ошибке",
+                          "layer": "data",
+                          "source": {
+                            "file": "internal/dom/selector_nth.go",
+                            "start_line": 120,
+                            "end_line": 120
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Возвращает 0, 0, false, если преобразование числа не удалось.",
+                          "coverage_ids": [
+                            "return:internal/dom/selector_nth.go:12141657"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12141682",
+                      "kind": "action",
+                      "label": "Установка a = v",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 118,
+                        "end_line": 118
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает коэффициент a преобразованное числовое значение.",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12141682"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/dom/selector_nth.go:12141705",
+              "kind": "action",
+              "label": "Извлечение части b",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 130,
+                "end_line": 130
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Извлекает подстроку после символа 'n' для парсинга коэффициента b.",
+              "coverage_ids": [
+                "statement:internal/dom/selector_nth.go:12141705"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/dom/selector_nth.go:12141725",
+              "kind": "decision",
+              "label": "Проверка на пустую строку",
+              "layer": "flow",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 127,
+                "end_line": 135
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, равен ли подстрока после 'n' пустой строке.",
+              "coverage_ids": [
+                "if:internal/dom/selector_nth.go:12141725"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/dom/selector_nth.go:12141743",
+                  "kind": "action",
+                  "label": "Установка b = 0",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 130,
+                    "end_line": 130
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Присваивает коэффициент b значение 0, если подстрока пуста.",
+                  "coverage_ids": [
+                    "statement:internal/dom/selector_nth.go:12141743"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "else:internal/dom/selector_nth.go:12141757",
+                  "kind": "decision",
+                  "label": "Блок else",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/dom/selector_nth.go",
+                    "start_line": 129,
+                    "end_line": 135
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Альтернативный ветвь выполнения, обрабатывающая случай после проверки условия",
+                  "coverage_ids": [
+                    "else:internal/dom/selector_nth.go:12141757"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12141761",
+                      "kind": "action",
+                      "label": "Преобразование строки в число",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 130,
+                        "end_line": 130
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Преобразует строковое значение bStr в целое число с использованием strconv.Atoi",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12141761"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/dom/selector_nth.go:12141792",
+                      "kind": "decision",
+                      "label": "Проверка ошибки преобразования",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 131,
+                        "end_line": 133
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет наличие ошибки при попытке преобразовать строку в числовое значение",
+                      "coverage_ids": [
+                        "if:internal/dom/selector_nth.go:12141792"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "return:internal/dom/selector_nth.go:12141811",
+                          "kind": "output",
+                          "label": "Возврат при ошибке",
+                          "layer": "data",
+                          "source": {
+                            "file": "internal/dom/selector_nth.go",
+                            "start_line": 132,
+                            "end_line": 132
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Возвращает нулевые значения и false в случае неудачного преобразования строки",
+                          "coverage_ids": [
+                            "return:internal/dom/selector_nth.go:12141811"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/dom/selector_nth.go:12141836",
+                      "kind": "action",
+                      "label": "Присваивание числового значения",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/dom/selector_nth.go",
+                        "start_line": 130,
+                        "end_line": 130
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает преобразованное целочисленное значение переменной b",
+                      "coverage_ids": [
+                        "statement:internal/dom/selector_nth.go:12141836"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/dom/selector_nth.go:12141847",
+              "kind": "output",
+              "label": "Возврат успешного результата",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/selector_nth.go",
+                "start_line": 137,
+                "end_line": 137
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает исходное значение a, преобразованное значение b и true об успешном завершении",
+              "coverage_ids": [
+                "return:internal/dom/selector_nth.go:12141847"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/dom.matchNth",
+              "file": "internal/dom/selector_nth.go",
+              "label": "← matchNth in internal/dom/selector_nth.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

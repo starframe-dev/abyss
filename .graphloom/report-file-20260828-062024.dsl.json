@@ -1,0 +1,590 @@
+{
+  "title": "cmd/external_test/main.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:cmd/external_test/main.go",
+      "kind": "group",
+      "label": "main.go",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 1,
+        "end_line": 74
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:cmd/external_test/main.go:viewportWidth:15600683",
+          "kind": "state",
+          "label": "Переменная viewportWidth",
+          "layer": "state",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 19,
+            "end_line": 19
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.viewportWidth",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:cmd/external_test/main.go:defaultClientTimeout:15600711",
+          "kind": "state",
+          "label": "Переменная defaultClientTimeout",
+          "layer": "state",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 20,
+            "end_line": 20
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.defaultClientTimeout",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "variable:cmd/external_test/main.go:defaultClient:15600758",
+          "kind": "state",
+          "label": "Переменная defaultClient",
+          "layer": "state",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 23,
+            "end_line": 23
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.defaultClient",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:cmd/external_test/main.go:main:15600819",
+          "kind": "group",
+          "label": "Функция main",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/external_test/main.go",
+            "start_line": 25,
+            "end_line": 74
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/external_test.main",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:cmd/external_test/main.go:15600926",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 29,
+                "end_line": 32
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15601072",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 36,
+                "end_line": 39
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:cmd/external_test/main.go:Parse:15601163",
+              "kind": "call",
+              "label": "Вызов Parse",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 41,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+              "summary": "→ github.com/starframe/abyss/internal/dom.Parse",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Parse",
+                  "file": "internal/dom/dom.go",
+                  "label": "→ Parse in internal/dom/dom.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/external_test/main.go:NewContext:15601196",
+              "kind": "call",
+              "label": "Вызов NewContext",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 43,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.NewContext",
+              "summary": "→ github.com/starframe/abyss/internal/js.NewContext",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.NewContext",
+                  "file": "internal/js/js.go",
+                  "label": "→ NewContext in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15601233",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 46,
+                "end_line": 49
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:RegisterBridgeFunctions:15601243",
+                  "kind": "call",
+                  "label": "Вызов RegisterBridgeFunctions",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 46,
+                    "end_line": 46
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                  "summary": "→ github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                      "file": "internal/js/bridge_dom.go",
+                      "label": "→ RegisterBridgeFunctions in internal/js/bridge_dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:cmd/external_test/main.go:InitDOM:15601362",
+              "kind": "call",
+              "label": "Вызов InitDOM",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 51,
+                "end_line": 51
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+              "summary": "→ github.com/starframe/abyss/internal/js.InitDOM",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.InitDOM",
+                  "file": "internal/js/dom_events.go",
+                  "label": "→ InitDOM in internal/js/dom_events.go"
+                }
+              ]
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15601406",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 54,
+                "end_line": 57
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:DOMAPIScript:15601432",
+                  "kind": "call",
+                  "label": "Вызов DOMAPIScript",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 54,
+                    "end_line": 54
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                  "summary": "→ github.com/starframe/abyss/internal/js.DOMAPIScript",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                      "file": "internal/js/domapi.go",
+                      "label": "→ DOMAPIScript in internal/js/domapi.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "call:cmd/external_test/main.go:Evaluate:15601419",
+                  "kind": "call",
+                  "label": "Вызов Evaluate",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 54,
+                    "end_line": 54
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.Context.Evaluate",
+                  "summary": "→ github.com/starframe/abyss/internal/js.Context.Evaluate",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.Context.Evaluate",
+                      "file": "internal/js/js.go",
+                      "label": "→ Evaluate in internal/js/js.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/external_test/main.go:15601536",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 59,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "err != nil",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/external_test/main.go:ExecuteScripts:15601546",
+                  "kind": "call",
+                  "label": "Вызов ExecuteScripts",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/external_test/main.go",
+                    "start_line": 59,
+                    "end_line": 59
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                  "summary": "→ github.com/starframe/abyss/internal/js.ExecuteScripts",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                      "file": "internal/js/dom_style.go",
+                      "label": "→ ExecuteScripts in internal/js/dom_style.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:cmd/external_test/main.go:GetFinalDOM:15601667",
+              "kind": "call",
+              "label": "Вызов GetFinalDOM",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 63,
+                "end_line": 63
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+              "summary": "→ github.com/starframe/abyss/internal/js.GetFinalDOM",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                  "file": "internal/js/dom_style.go",
+                  "label": "→ GetFinalDOM in internal/js/dom_style.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/external_test/main.go:Compute:15601696",
+              "kind": "call",
+              "label": "Вызов Compute",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 65,
+                "end_line": 65
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Compute",
+              "summary": "→ github.com/starframe/abyss/internal/css.Compute",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Compute",
+                  "file": "internal/css/computed.go",
+                  "label": "→ Compute in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/external_test/main.go:Build:15601726",
+              "kind": "call",
+              "label": "Вызов Build",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 66,
+                "end_line": 66
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.Build",
+              "summary": "→ github.com/starframe/abyss/internal/layout.Build",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.Build",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ Build in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/external_test/main.go:Render:15601779",
+              "kind": "call",
+              "label": "Вызов Render",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 67,
+                "end_line": 67
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/render.Render",
+              "summary": "→ github.com/starframe/abyss/internal/render.Render",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/render.Render",
+                  "file": "internal/render/render.go",
+                  "label": "→ Render in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/external_test/main.go:Render:15601823",
+              "kind": "call",
+              "label": "Вызов Render",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 68,
+                "end_line": 68
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+              "summary": "→ github.com/starframe/abyss/internal/ascii.Render",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.Render",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "→ Render in internal/ascii/ascii.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:cmd/external_test/main.go:15601862",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/external_test/main.go",
+                "start_line": 70,
+                "end_line": 72
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

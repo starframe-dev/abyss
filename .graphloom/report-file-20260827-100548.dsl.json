@@ -1,0 +1,229 @@
+{
+  "title": "cmd/cuetty_full_test/main.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:cmd/cuetty_full_test/main.go",
+      "kind": "group",
+      "label": "Использовать файл main.go",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/cuetty_full_test/main.go",
+        "start_line": 1,
+        "end_line": 119
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:cmd/cuetty_full_test/main.go:main:12603225",
+          "kind": "group",
+          "label": "Выполнить функцию main",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/cuetty_full_test/main.go",
+            "start_line": 11,
+            "end_line": 119
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/cuetty_full_test.main",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12603510",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 19,
+                "end_line": 22
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12603793",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 31,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12604008",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 37,
+                "end_line": 40
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12604558",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 53,
+                "end_line": 56
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12605133",
+              "kind": "decision",
+              "label": "Проверить состояние",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 72,
+                "end_line": 75
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка равенства before и after",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12605559",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 86,
+                "end_line": 89
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12606087",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 101,
+                "end_line": 104
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/cuetty_full_test/main.go:12606424",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/cuetty_full_test/main.go",
+                "start_line": 112,
+                "end_line": 115
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на наличие ошибки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

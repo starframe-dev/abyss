@@ -1,0 +1,790 @@
+{
+  "title": "cmd/debug_render/main.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:cmd/debug_render/main.go",
+      "kind": "group",
+      "label": "Файл main.go",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_render/main.go",
+        "start_line": 1,
+        "end_line": 96
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основной файл отладочного рендеринга",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:cmd/debug_render/main.go:main:15614460",
+          "kind": "group",
+          "label": "Функция main",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/debug_render/main.go",
+            "start_line": 17,
+            "end_line": 82
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/debug_render.main",
+          "summary": "Точка входа в программу отладочного рендеринга",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:cmd/debug_render/main.go:Fetch:15614524",
+              "kind": "call",
+              "label": "Загрузить данные",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 19,
+                "end_line": 19
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/fetcher.Fetch",
+              "summary": "Загрузить HTML-контент для рендеринга",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/fetcher.Fetch",
+                  "file": "internal/fetcher/fetcher.go",
+                  "label": "→ Fetch in internal/fetcher/fetcher.go"
+                }
+              ]
+            },
+            {
+              "id": "if:cmd/debug_render/main.go:15614547",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 20,
+                "end_line": 23
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку загрузки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:Parse:15614657",
+              "kind": "call",
+              "label": "Парсить DOM",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 25,
+                "end_line": 25
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+              "summary": "Парсить HTML-документ в DOM-дерево",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/dom.Parse",
+                  "file": "internal/dom/dom.go",
+                  "label": "→ Parse in internal/dom/dom.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:NewContext:15614685",
+              "kind": "call",
+              "label": "Создать контекст",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 27,
+                "end_line": 27
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.NewContext",
+              "summary": "Инициализировать JS-контекст",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.NewContext",
+                  "file": "internal/js/js.go",
+                  "label": "→ NewContext in internal/js/js.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:InitDOM:15614727",
+              "kind": "call",
+              "label": "Инициализировать DOM",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 29,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+              "summary": "Подготовить DOM-структуру для рендеринга",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.InitDOM",
+                  "file": "internal/js/dom_events.go",
+                  "label": "→ InitDOM in internal/js/dom_events.go"
+                }
+              ]
+            },
+            {
+              "id": "if:cmd/debug_render/main.go:15614747",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 30,
+                "end_line": 33
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку инициализации",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/debug_render/main.go:RegisterBridgeFunctions:15614757",
+                  "kind": "call",
+                  "label": "Зарегистрировать функции моста",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 30,
+                    "end_line": 30
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                  "summary": "Подключить JS-функции для взаимодействия с DOM",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                      "file": "internal/js/dom.go",
+                      "label": "→ RegisterBridgeFunctions in internal/js/dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/debug_render/main.go:15614888",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 34,
+                "end_line": 37
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку после регистрации функций",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/debug_render/main.go:DOMAPIScript:15614914",
+                  "kind": "call",
+                  "label": "Выполнить скрипт DOM API",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 34,
+                    "end_line": 34
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                  "summary": "Загрузить скрипт DOM API",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                      "file": "internal/js/domapi.go",
+                      "label": "→ DOMAPIScript in internal/js/domapi.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "call:cmd/debug_render/main.go:Evaluate:15614901",
+                  "kind": "call",
+                  "label": "Выполнить оценку",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 34,
+                    "end_line": 34
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.Context.Evaluate",
+                  "summary": "Выполнить JS-выражение в контексте",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.Context.Evaluate",
+                      "file": "internal/js/js.go",
+                      "label": "→ Evaluate in internal/js/js.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/debug_render/main.go:15615035",
+              "kind": "decision",
+              "label": "Проверить ошибку",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 38,
+                "end_line": 40
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка на ошибку выполнения скриптов",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/debug_render/main.go:ExecuteScripts:15615045",
+                  "kind": "call",
+                  "label": "Выполнить скрипты",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 38,
+                    "end_line": 38
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                  "summary": "Выполнить пользовательские скрипты",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                      "file": "internal/js/dom_style.go",
+                      "label": "→ ExecuteScripts in internal/js/dom_style.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:GetFinalDOM:15615166",
+              "kind": "call",
+              "label": "Получить итоговый DOM",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 42,
+                "end_line": 42
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+              "summary": "Извлечь итоговое DOM-дерево",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                  "file": "internal/js/dom_style.go",
+                  "label": "→ GetFinalDOM in internal/js/dom_style.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:Compute:15615197",
+              "kind": "call",
+              "label": "Вычислить стили",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 43,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Compute",
+              "summary": "Вычислить CSS-стили для элементов",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Compute",
+                  "file": "internal/css/computed.go",
+                  "label": "→ Compute in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:Build:15615230",
+              "kind": "call",
+              "label": "Собрать макет",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 44,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/layout.Build",
+              "summary": "Построить макет страницы",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/layout.Build",
+                  "file": "internal/layout/layout.go",
+                  "label": "→ Build in internal/layout/layout.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:Render:15615276",
+              "kind": "call",
+              "label": "Отрендерить",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 45,
+                "end_line": 45
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/render.Render",
+              "summary": "Отрендерить DOM в визуальное представление",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/render.Render",
+                  "file": "internal/render/render.go",
+                  "label": "→ Render in internal/render/render.go"
+                }
+              ]
+            },
+            {
+              "id": "call:cmd/debug_render/main.go:Render:15615313",
+              "kind": "call",
+              "label": "Отрендерить в ASCII",
+              "layer": "calls",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 46,
+                "end_line": 46
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+              "summary": "Отрендерить DOM в ASCII-формате",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/ascii.Render",
+                  "file": "internal/ascii/ascii.go",
+                  "label": "→ Render in internal/ascii/ascii.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:cmd/debug_render/main.go:15615548",
+              "kind": "loop",
+              "label": "Повторять для каждой строки",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 53,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Обработка строк вывода с очисткой ANSI",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/debug_render/main.go:stripANSI:15615594",
+                  "kind": "call",
+                  "label": "Удалить ANSI-коды",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 84,
+                    "end_line": 96
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/cmd/debug_render.stripANSI",
+                  "summary": "Очистить строку от ANSI-управляющих последовательностей",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/cmd/debug_render.stripANSI",
+                      "file": "cmd/debug_render/main.go",
+                      "label": "→ stripANSI in cmd/debug_render/main.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "if:cmd/debug_render/main.go:15615668",
+                  "kind": "decision",
+                  "label": "Проверить длину строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 56,
+                    "end_line": 58
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на обрезку длинных строк",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:cmd/debug_render/main.go:15616137",
+              "kind": "loop",
+              "label": "Повторять для каждой строки вывода",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 69,
+                "end_line": 73
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Обработка строк финального вывода",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:cmd/debug_render/main.go:15616179",
+                  "kind": "decision",
+                  "label": "Проверить пустую строку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 70,
+                    "end_line": 72
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на пустые строки в выводе",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:cmd/debug_render/main.go:15616372",
+              "kind": "loop",
+              "label": "Повторять для каждой строки вывода",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 77,
+                "end_line": 81
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Финальная обработка строк вывода",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:cmd/debug_render/main.go:15616414",
+                  "kind": "decision",
+                  "label": "Проверить пустую строку",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 78,
+                    "end_line": 80
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка на пустые строки в финальном выводе",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:cmd/debug_render/main.go:stripANSI:15616516",
+          "kind": "group",
+          "label": "Функция stripANSI",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/debug_render/main.go",
+            "start_line": 84,
+            "end_line": 96
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/debug_render.stripANSI",
+          "summary": "Удаление ANSI-управляющих последовательностей из строки",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:cmd/debug_render/main.go:15616585",
+              "kind": "loop",
+              "label": "Повторять по символам строки",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 86,
+                "end_line": 94
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерация по символам для поиска ANSI-кодов",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:cmd/debug_render/main.go:15616623",
+                  "kind": "decision",
+                  "label": "Проверить ANSI-код",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/debug_render/main.go",
+                    "start_line": 87,
+                    "end_line": 92
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Детект начала ANSI-управляющей последовательности",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "loop:cmd/debug_render/main.go:15616655",
+                      "kind": "loop",
+                      "label": "Пропускать ANSI-последовательность",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/debug_render/main.go",
+                        "start_line": 88,
+                        "end_line": 90
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Пропуск символов внутри ANSI-кода",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:cmd/debug_render/main.go:15616793",
+              "kind": "output",
+              "label": "Вернуть результат",
+              "layer": "data",
+              "source": {
+                "file": "cmd/debug_render/main.go",
+                "start_line": 95,
+                "end_line": 95
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершение функции stripANSI",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

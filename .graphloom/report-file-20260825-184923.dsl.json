@@ -1,0 +1,650 @@
+{
+  "title": "cmd/external_test/main.go - Внешний тест JS",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main_entry",
+      "kind": "action",
+      "label": "Главная функция",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 16,
+        "end_line": 58
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основная функция запускает внешний тест с загрузкой HTML и рендерингом",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "fetch_html",
+      "kind": "call",
+      "label": "Загрузить HTML",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 20,
+        "end_line": 24
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Запрос HTML документа по URL",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "url"
+      ],
+      "data_out": [
+        "html",
+        "err"
+      ],
+      "effects": []
+    },
+    {
+      "id": "parse_dom",
+      "kind": "call",
+      "label": "Парсинг HTML",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 26,
+        "end_line": 26
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Парсинг HTML в DOM документ",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "html"
+      ],
+      "data_out": [
+        "doc"
+      ],
+      "effects": []
+    },
+    {
+      "id": "create_js_context",
+      "kind": "call",
+      "label": "Создать JS контекст",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 28,
+        "end_line": 30
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Инициализация JS контекста с defer закрытием",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [
+        "jsc"
+      ],
+      "effects": []
+    },
+    {
+      "id": "init_dom",
+      "kind": "call",
+      "label": "Инициализация DOM",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 33,
+        "end_line": 33
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Подготовка DOM для JS выполнения",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "doc"
+      ],
+      "data_out": [
+        "doc"
+      ],
+      "effects": []
+    },
+    {
+      "id": "register_bridge",
+      "kind": "call",
+      "label": "Регистрация мостов",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 35,
+        "end_line": 39
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Регистрация функций моста между JS и Go",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "jsc"
+      ],
+      "data_out": [
+        "jsc"
+      ],
+      "effects": []
+    },
+    {
+      "id": "evaluate_dom_api",
+      "kind": "call",
+      "label": "Выполнение DOM API",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 41,
+        "end_line": 45
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Выполнение скрипта DOM API",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "jsc",
+        "js.DOMAPIScript()"
+      ],
+      "data_out": [
+        "jsc"
+      ],
+      "effects": []
+    },
+    {
+      "id": "execute_scripts",
+      "kind": "call",
+      "label": "Выполнение скриптов",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 47,
+        "end_line": 50
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Выполнение внешних JS скриптов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "jsc",
+        "doc",
+        "url"
+      ],
+      "data_out": [
+        "jsc"
+      ],
+      "effects": []
+    },
+    {
+      "id": "get_final_dom",
+      "kind": "call",
+      "label": "Получить итоговый DOM",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 52,
+        "end_line": 52
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Извлечение финального DOM после выполнения скриптов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "jsc"
+      ],
+      "data_out": [
+        "finalDOM"
+      ],
+      "effects": []
+    },
+    {
+      "id": "compute_styles",
+      "kind": "call",
+      "label": "Вычисление стилей",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 54,
+        "end_line": 54
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Вычисление CSS стилей для DOM",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "finalDOM"
+      ],
+      "data_out": [
+        "styles"
+      ],
+      "effects": []
+    },
+    {
+      "id": "build_layout",
+      "kind": "call",
+      "label": "Построение макета",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 55,
+        "end_line": 55
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Построение макета с шириной 800px",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "finalDOM",
+        "styles"
+      ],
+      "data_out": [
+        "box"
+      ],
+      "effects": []
+    },
+    {
+      "id": "render",
+      "kind": "call",
+      "label": "Рендеринг",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 56,
+        "end_line": 56
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Рендеринг макета в формат буфера",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "box"
+      ],
+      "data_out": [
+        "fb"
+      ],
+      "effects": []
+    },
+    {
+      "id": "ascii_render",
+      "kind": "call",
+      "label": "ASCII рендеринг",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 57,
+        "end_line": 57
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Конвертация буфера в ASCII строки",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "fb",
+        "box"
+      ],
+      "data_out": [
+        "lines"
+      ],
+      "effects": []
+    },
+    {
+      "id": "print_output",
+      "kind": "call",
+      "label": "Вывод результата",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 59,
+        "end_line": 62
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Печать ASCII строк на stdout",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [
+        "lines"
+      ],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error_fetch",
+      "kind": "error",
+      "label": "Ошибка загрузки",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 23,
+        "end_line": 24
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Обработка ошибки при загрузке HTML",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error_bridge",
+      "kind": "error",
+      "label": "Ошибка инициализации моста",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 38,
+        "end_line": 39
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Обработка ошибки регистрации мостов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error_dom_api",
+      "kind": "error",
+      "label": "Ошибка DOM API",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 44,
+        "end_line": 45
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Обработка ошибки выполнения DOM API",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "error_scripts",
+      "kind": "error",
+      "label": "Ошибка выполнения скриптов",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 49,
+        "end_line": 50
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Обработка ошибки выполнения JS скриптов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "exit_1",
+      "kind": "action",
+      "label": "Выход с кодом 1",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 24,
+        "end_line": 24
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Завершение программы с ошибкой",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "exit_2",
+      "kind": "action",
+      "label": "Выход с кодом 1",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 39,
+        "end_line": 39
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Завершение программы с ошибкой",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "exit_3",
+      "kind": "action",
+      "label": "Выход с кодом 1",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 45,
+        "end_line": 45
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Завершение программы с ошибкой",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "exit_4",
+      "kind": "action",
+      "label": "Выход с кодом 1",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/external_test/main.go",
+        "start_line": 50,
+        "end_line": 50
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Завершение программы с ошибкой",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main_entry",
+      "to": "fetch_html",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "fetch_html",
+      "to": "parse_dom",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "parse_dom",
+      "to": "create_js_context",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "create_js_context",
+      "to": "init_dom",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "init_dom",
+      "to": "register_bridge",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "register_bridge",
+      "to": "evaluate_dom_api",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "evaluate_dom_api",
+      "to": "execute_scripts",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "execute_scripts",
+      "to": "get_final_dom",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "get_final_dom",
+      "to": "compute_styles",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "compute_styles",
+      "to": "build_layout",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "build_layout",
+      "to": "render",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "render",
+      "to": "ascii_render",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "ascii_render",
+      "to": "print_output",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "fetch_html",
+      "to": "error_fetch",
+      "label": "if err != nil",
+      "status": "inferred"
+    },
+    {
+      "from": "error_fetch",
+      "to": "exit_1",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "register_bridge",
+      "to": "error_bridge",
+      "label": "if err != nil",
+      "status": "inferred"
+    },
+    {
+      "from": "error_bridge",
+      "to": "exit_2",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "evaluate_dom_api",
+      "to": "error_dom_api",
+      "label": "if err != nil",
+      "status": "inferred"
+    },
+    {
+      "from": "error_dom_api",
+      "to": "exit_3",
+      "label": null,
+      "status": "inferred"
+    },
+    {
+      "from": "execute_scripts",
+      "to": "error_scripts",
+      "label": "if err != nil",
+      "status": "inferred"
+    },
+    {
+      "from": "error_scripts",
+      "to": "exit_4",
+      "label": null,
+      "status": "inferred"
+    }
+  ]
+}

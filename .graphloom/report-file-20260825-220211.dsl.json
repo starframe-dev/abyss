@@ -1,0 +1,272 @@
+{
+  "title": "Обработка URL с рендерингом ASCII",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main_entry",
+      "kind": "action",
+      "label": "Запуск обработки",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 17,
+        "end_line": 71
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основная функция обработки нескольких URL",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "fetch_html",
+      "kind": "call",
+      "label": "Запрос HTML",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 26,
+        "end_line": 28
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Получение HTML документа по URL",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "parse_dom",
+      "kind": "call",
+      "label": "Парсинг HTML",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 31,
+        "end_line": 32
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Конвертация HTML в DOM-дерево",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "init_js_context",
+      "kind": "call",
+      "label": "Инициализация JS контекста",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 34,
+        "end_line": 39
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Создание и настройка JavaScript окружения",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "execute_scripts",
+      "kind": "call",
+      "label": "Выполнение скриптов",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 38,
+        "end_line": 38
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Выполнение JavaScript кода страницы",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "compute_styles",
+      "kind": "call",
+      "label": "Вычисление стилей",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 41,
+        "end_line": 41
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Расчёт CSS для DOM-дерева",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "build_layout",
+      "kind": "call",
+      "label": "Построение макета",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 42,
+        "end_line": 42
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Генерация layout-структуры",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_fb",
+      "kind": "call",
+      "label": "Рендеринг",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 43,
+        "end_line": 43
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Конвертация макета в framebuffer",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "ascii_render",
+      "kind": "call",
+      "label": "Конвертация в ASCII",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 44,
+        "end_line": 44
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Преобразование framebuffer в ASCII-текст",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "output_results",
+      "kind": "call",
+      "label": "Вывод результатов",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/test_real/main.go",
+        "start_line": 49,
+        "end_line": 67
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Отображение статистики и контента",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main_entry",
+      "to": "fetch_html",
+      "label": "URL список",
+      "status": "inferred"
+    },
+    {
+      "from": "fetch_html",
+      "to": "parse_dom",
+      "label": "HTML документ",
+      "status": "inferred"
+    },
+    {
+      "from": "parse_dom",
+      "to": "init_js_context",
+      "label": "DOM дерево",
+      "status": "inferred"
+    },
+    {
+      "from": "init_js_context",
+      "to": "execute_scripts",
+      "label": "JS контекст",
+      "status": "inferred"
+    },
+    {
+      "from": "execute_scripts",
+      "to": "compute_styles",
+      "label": "Final DOM",
+      "status": "inferred"
+    },
+    {
+      "from": "compute_styles",
+      "to": "build_layout",
+      "label": "Styles",
+      "status": "inferred"
+    },
+    {
+      "from": "build_layout",
+      "to": "render_fb",
+      "label": "Box",
+      "status": "inferred"
+    },
+    {
+      "from": "render_fb",
+      "to": "ascii_render",
+      "label": "Framebuffer",
+      "status": "inferred"
+    },
+    {
+      "from": "ascii_render",
+      "to": "output_results",
+      "label": "ASCII строки",
+      "status": "inferred"
+    }
+  ]
+}

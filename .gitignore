@@ -1,0 +1,13 @@
+/bin/
+*.exe
+*.test
+.DS_Store
+
+# local state and artifacts
+.abyss/
+cuetty-artifacts/
+coverage.out
+integration-coverage.out
+
+# secrets
+.lore/**/.env

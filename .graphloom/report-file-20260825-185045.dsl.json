@@ -1,0 +1,380 @@
+{
+  "title": "cmd/manual/main.go - Рендеринг тестовой HTML-страницы",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "main_func",
+      "kind": "action",
+      "label": "Основная функция main",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 158,
+        "end_line": 241
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Функция main управляет полным циклом рендеринга тестовой страницы",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "testPage_const",
+      "kind": "state",
+      "label": "HTML шаблон testPage",
+      "layer": "data",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 19,
+        "end_line": 156
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Константа с HTML-шаблоном, содержащим встроенный JavaScript",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "file_write",
+      "kind": "external",
+      "label": "Запись HTML файла",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 160,
+        "end_line": 160
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Сохранение HTML-страницы в временный файл",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "file_remove",
+      "kind": "external",
+      "label": "Удаление временного файла",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 163,
+        "end_line": 163
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Очистка временного файла после завершения",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "dom_parse",
+      "kind": "action",
+      "label": "Парсинг HTML документа",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 173,
+        "end_line": 175
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Разбор HTML-строки на DOM-дерево",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "js_context",
+      "kind": "action",
+      "label": "Инициализация JS контекста",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 177,
+        "end_line": 178
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Создание контекста для выполнения JavaScript",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "bridge_init",
+      "kind": "action",
+      "label": "Регистрация мостов JS",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 184,
+        "end_line": 188
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Подключение функций-мостов между Go и JavaScript",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "dom_api_init",
+      "kind": "action",
+      "label": "Инициализация DOM API",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 190,
+        "end_line": 192
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Подготовка DOM API для использования в JS",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "scripts_exec",
+      "kind": "action",
+      "label": "Выполнение скриптов",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 194,
+        "end_line": 196
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Запуск встроенных JavaScript-скриптов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "css_compute",
+      "kind": "action",
+      "label": "Вычисление стилей CSS",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 222,
+        "end_line": 223
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Расчёт CSS-стилей для рендеринга",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout_build",
+      "kind": "action",
+      "label": "Построение макета",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 224,
+        "end_line": 225
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Создание структуры макета страницы",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_fb",
+      "kind": "action",
+      "label": "Рендеринг в framebuffer",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 225,
+        "end_line": 226
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Конвертация макета в framebuffer",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "ascii_render",
+      "kind": "action",
+      "label": "Рендеринг в ASCII",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 226,
+        "end_line": 227
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Преобразование framebuffer в ASCII-строки",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "output_print",
+      "kind": "output",
+      "label": "Вывод результата",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 229,
+        "end_line": 241
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Печать отрендеренных строк на консоль",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "main_func",
+      "to": "testPage_const",
+      "label": "использует",
+      "status": "inferred"
+    },
+    {
+      "from": "main_func",
+      "to": "file_write",
+      "label": "вызывает",
+      "status": "inferred"
+    },
+    {
+      "from": "file_write",
+      "to": "dom_parse",
+      "label": "после записи",
+      "status": "inferred"
+    },
+    {
+      "from": "dom_parse",
+      "to": "js_context",
+      "label": "после парсинга",
+      "status": "inferred"
+    },
+    {
+      "from": "js_context",
+      "to": "bridge_init",
+      "label": "после инициализации",
+      "status": "inferred"
+    },
+    {
+      "from": "bridge_init",
+      "to": "dom_api_init",
+      "label": "после регистрации",
+      "status": "inferred"
+    },
+    {
+      "from": "dom_api_init",
+      "to": "scripts_exec",
+      "label": "после подготовки",
+      "status": "inferred"
+    },
+    {
+      "from": "scripts_exec",
+      "to": "css_compute",
+      "label": "после выполнения",
+      "status": "inferred"
+    },
+    {
+      "from": "css_compute",
+      "to": "layout_build",
+      "label": "после вычисления",
+      "status": "inferred"
+    },
+    {
+      "from": "layout_build",
+      "to": "render_fb",
+      "label": "после построения",
+      "status": "inferred"
+    },
+    {
+      "from": "render_fb",
+      "to": "ascii_render",
+      "label": "после рендеринга",
+      "status": "inferred"
+    },
+    {
+      "from": "ascii_render",
+      "to": "output_print",
+      "label": "после ASCII",
+      "status": "inferred"
+    },
+    {
+      "from": "main_func",
+      "to": "file_remove",
+      "label": "после завершения",
+      "status": "inferred"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "title": "internal/dom/dom.go — GetAttr",
+  "level": "function",
+  "nodes": [
+    {
+      "id": "func:internal/dom/dom.go:GetAttr:11870907",
+      "kind": "group",
+      "label": "Функция GetAttr",
+      "layer": "flow",
+      "source": {
+        "file": "internal/dom/dom.go",
+        "start_line": 168,
+        "end_line": 173
+      },
+      "element_type": null,
+      "symbol": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "if:internal/dom/dom.go:11870956",
+          "kind": "decision",
+          "label": "Условие",
+          "layer": "flow",
+          "source": {
+            "file": "internal/dom/dom.go",
+            "start_line": 169,
+            "end_line": 171
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": "n.Attributes == nil",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/dom/dom.go:11870989",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/dom/dom.go",
+                "start_line": 170,
+                "end_line": 170
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "return:internal/dom/dom.go:11871009",
+          "kind": "output",
+          "label": "Вернуть",
+          "layer": "data",
+          "source": {
+            "file": "internal/dom/dom.go",
+            "start_line": 172,
+            "end_line": 172
+          },
+          "element_type": null,
+          "symbol": null,
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": [
+        {
+          "id": "github.com/starframe/abyss/cmd/analyze_habr.main",
+          "file": "cmd/analyze_habr/main.go",
+          "label": "← main in cmd/analyze_habr/main.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/browser.fetchExternalCSS",
+          "file": "internal/browser/browser_page.go",
+          "label": "← fetchExternalCSS in internal/browser/browser_page.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/css.computeNode",
+          "file": "internal/css/computed.go",
+          "label": "← computeNode in internal/css/computed.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+          "file": "internal/dom/selector_match.go",
+          "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+          "file": "internal/dom/selector_match.go",
+          "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+          "file": "internal/dom/selector_match.go",
+          "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/dom.buildPseudoMatchers",
+          "file": "internal/dom/selector_match.go",
+          "label": "← buildPseudoMatchers in internal/dom/selector_match.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+          "file": "internal/js/dom_style.go",
+          "label": "← ExecuteScripts in internal/js/dom_style.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/js.getAttribute",
+          "file": "internal/js/dom_events.go",
+          "label": "← getAttribute in internal/js/dom_events.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/js.getElementByID",
+          "file": "internal/js/dom_events.go",
+          "label": "← getElementByID in internal/js/dom_events.go"
+        },
+        {
+          "id": "github.com/starframe/abyss/internal/js.getElementsByClassName",
+          "file": "internal/js/dom_query.go",
+          "label": "← getElementsByClassName in internal/js/dom_query.go"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

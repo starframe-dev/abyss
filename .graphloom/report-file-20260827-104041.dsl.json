@@ -1,0 +1,1026 @@
+{
+  "title": "internal/js/dom_script.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/dom_script.go",
+      "kind": "group",
+      "label": "Файл dom_script.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom_script.go",
+        "start_line": 1,
+        "end_line": 212
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Скрипт для работы с DOM событиями",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/dom_script.go:InitEventSystem:15571899",
+          "kind": "group",
+          "label": "Функция InitEventSystem",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 20,
+            "end_line": 32
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.InitEventSystem",
+          "summary": "Инициализировать систему событий",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/js/dom_script.go:MarkClean:15572231",
+              "kind": "call",
+              "label": "Вызов MarkClean",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 31,
+                "end_line": 31
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.MarkClean",
+              "summary": "Очистить метки",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.MarkClean",
+                  "file": "internal/js/dom_events.go",
+                  "label": "→ MarkClean in internal/js/dom_events.go"
+                }
+              ]
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser.go",
+              "label": "← loadPage in internal/browser/browser.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:addEventListener:15572311",
+          "kind": "group",
+          "label": "Функция addEventListener",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 35,
+            "end_line": 44
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.addEventListener",
+          "summary": "Добавить обработчик события",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_script.go:15572480",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 39,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить наличие свойства",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.addEventListenerJS",
+              "file": "internal/js/dom.go",
+              "label": "← addEventListenerJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:removeEventListener:15572989",
+          "kind": "group",
+          "label": "Функция removeEventListener",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 47,
+            "end_line": 66
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.removeEventListener",
+          "summary": "Удалить обработчик события",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_script.go:15573202",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 52,
+                "end_line": 54
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить тип обработчика",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_script.go:15573219",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 53,
+                    "end_line": 53
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход из функции",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_script.go:15573275",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 56,
+                "end_line": 58
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить тип события",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_script.go:15573292",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 57,
+                    "end_line": 57
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход из функции",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_script.go:15573309",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 59,
+                "end_line": 65
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по обработчикам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_script.go:15573348",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 60,
+                    "end_line": 64
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить тип обработчика в цикле",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeEventListenerJS",
+              "file": "internal/js/dom.go",
+              "label": "← removeEventListenerJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:dispatchEvent:15573768",
+          "kind": "group",
+          "label": "Функция dispatchEvent",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 69,
+            "end_line": 101
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.dispatchEvent",
+          "summary": "Вызвать событие",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_script.go:15573886",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 72,
+                "end_line": 75
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить целевой элемент",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_script.go:15573928",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 74,
+                    "end_line": 74
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход при null target",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_script.go:15573984",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 77,
+                "end_line": 80
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить выполнение скриптов",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_script.go:15574049",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 79,
+                    "end_line": 79
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход при отключенном выполнении",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/js/dom_script.go:makeEventObject:15574298",
+              "kind": "call",
+              "label": "Вызов makeEventObject",
+              "layer": "calls",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 105,
+                "end_line": 125
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/js.makeEventObject",
+              "summary": "Создать объект события",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/js.makeEventObject",
+                  "file": "internal/js/dom_script.go",
+                  "label": "→ makeEventObject in internal/js/dom_script.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:internal/js/dom_script.go:15574330",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 89,
+                "end_line": 100
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по слушателям события",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_script.go:15575937",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 97,
+                    "end_line": 99
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить тип слушателя в цикле",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.dispatchEventJS",
+              "file": "internal/js/dom.go",
+              "label": "← dispatchEventJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:makeEventObject:15576347",
+          "kind": "group",
+          "label": "Функция makeEventObject",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 105,
+            "end_line": 125
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.makeEventObject",
+          "summary": "Создать объект события",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom_script.go:15577485",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 121,
+                "end_line": 123
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить тип события",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_script.go:15577512",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 122,
+                    "end_line": 122
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход при невалидном типе",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_script.go:15577673",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 124,
+                "end_line": 124
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить создание объекта",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.dispatchEvent",
+              "file": "internal/js/dom_script.go",
+              "label": "← dispatchEvent in internal/js/dom_script.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:setTimeout:15577766",
+          "kind": "group",
+          "label": "Функция setTimeout",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 128,
+            "end_line": 143
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.setTimeout",
+          "summary": "Установить таймаут",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/dom_script.go:15578421",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 142,
+                "end_line": 142
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вернуть ID таймера",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.setTimeoutJS",
+              "file": "internal/js/dom.go",
+              "label": "← setTimeoutJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:setInterval:15578511",
+          "kind": "group",
+          "label": "Функция setInterval",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 146,
+            "end_line": 161
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.setInterval",
+          "summary": "Установить интервал",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/dom_script.go:15579166",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 160,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Вернуть ID интервала",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.setIntervalJS",
+              "file": "internal/js/dom.go",
+              "label": "← setIntervalJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:clearTimer:15579216",
+          "kind": "group",
+          "label": "Функция clearTimer",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 164,
+            "end_line": 175
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.clearTimer",
+          "summary": "Очистить таймеры",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/dom_script.go:15579293",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 168,
+                "end_line": 174
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по таймерам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_script.go:15579328",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 169,
+                    "end_line": 173
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить существование таймера",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/js/dom_script.go:15579636",
+                      "kind": "output",
+                      "label": "Вернуть",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/js/dom_script.go",
+                        "start_line": 172,
+                        "end_line": 172
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Ранний выход при очистке таймера",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.clearIntervalJS",
+              "file": "internal/js/dom.go",
+              "label": "← clearIntervalJS in internal/js/dom.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.clearTimeoutJS",
+              "file": "internal/js/dom.go",
+              "label": "← clearTimeoutJS in internal/js/dom.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/js/dom_script.go:ProcessTimers:15579750",
+          "kind": "group",
+          "label": "Функция ProcessTimers",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom_script.go",
+            "start_line": 178,
+            "end_line": 212
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.ProcessTimers",
+          "summary": "Обработать таймеры",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/js/dom_script.go:15579871",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 183,
+                "end_line": 189
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по таймерам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_script.go:15579906",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 184,
+                    "end_line": 188
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить состояние таймера",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/js/dom_script.go:15580010",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_script.go",
+                        "start_line": 186,
+                        "end_line": 188
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Альтернативная ветка обработки",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom_script.go:15580122",
+              "kind": "decision",
+              "label": "Условие",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 193,
+                "end_line": 195
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверить условие возврата",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom_script.go:15580151",
+                  "kind": "output",
+                  "label": "Вернуть",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 194,
+                    "end_line": 194
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Ранний выход из функции",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom_script.go:15580197",
+              "kind": "loop",
+              "label": "Цикл",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 198,
+                "end_line": 210
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерировать по таймерам",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/js/dom_script.go:15580833",
+                  "kind": "decision",
+                  "label": "Условие",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom_script.go",
+                    "start_line": 202,
+                    "end_line": 209
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверить состояние таймера",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/js/dom_script.go:15581002",
+                      "kind": "decision",
+                      "label": "Иначе",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom_script.go",
+                        "start_line": 207,
+                        "end_line": 209
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Альтернативная ветка обработки",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom_script.go:15581247",
+              "kind": "output",
+              "label": "Вернуть",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom_script.go",
+                "start_line": 211,
+                "end_line": 211
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершить обработку таймеров",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.Update",
+              "file": "internal/browser/browser.go",
+              "label": "← Update in internal/browser/browser.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

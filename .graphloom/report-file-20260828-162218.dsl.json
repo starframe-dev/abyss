@@ -1,0 +1,4301 @@
+{
+  "title": "internal/css/computed.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/css/computed.go",
+      "kind": "group",
+      "label": "computed.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/css/computed.go",
+        "start_line": 1,
+        "end_line": 327
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:internal/css/computed.go:cached:12117709",
+          "kind": "state",
+          "label": "Переменная cached",
+          "layer": "state",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 12,
+            "end_line": 16
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.cached",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/computed.go:Compute:12117926",
+          "kind": "group",
+          "label": "Функция Compute",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 20,
+            "end_line": 22
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.Compute",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/computed.go:12117985",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 21,
+                "end_line": 21
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:ComputeWithExternal:12118099",
+          "kind": "group",
+          "label": "Функция ComputeWithExternal",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 25,
+            "end_line": 27
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.ComputeWithExternal",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/css/computed.go:12118192",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 26,
+                "end_line": 26
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/css/computed.go:computeWithExtra:12118237",
+          "kind": "group",
+          "label": "Функция computeWithExtra",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 29,
+            "end_line": 62
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.computeWithExtra",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/computed.go:12118435",
+              "kind": "decision",
+              "label": "if cached.doc == doc && cached.styles != nil && len(externalCSS) == 0",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 34,
+                "end_line": 36
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "cached.doc == doc && cached.styles != nil && len(externalCSS) == 0",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/computed.go:12118509",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 35,
+                    "end_line": 35
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/css/computed.go:12118642",
+              "kind": "loop",
+              "label": "range doc.FindStyleTags()",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 42,
+                "end_line": 46
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "doc.FindStyleTags()",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/css/computed.go:TextContent:12118703",
+                  "kind": "call",
+                  "label": "Вызов TextContent",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 43,
+                    "end_line": 43
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+                  "summary": "→ github.com/starframe/abyss/internal/dom.Node.TextContent",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+                      "file": "internal/dom/dom.go",
+                      "label": "→ TextContent in internal/dom/dom.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "call:internal/css/computed.go:ParseStyleSheet:12118738",
+                  "kind": "call",
+                  "label": "Вызов ParseStyleSheet",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 44,
+                    "end_line": 44
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+                  "summary": "→ github.com/starframe/abyss/internal/css.ParseStyleSheet",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+                      "file": "internal/css/parser.go",
+                      "label": "→ ParseStyleSheet in internal/css/parser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/css/computed.go:12118840",
+              "kind": "loop",
+              "label": "range externalCSS",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 49,
+                "end_line": 52
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "externalCSS",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/css/computed.go:ParseStyleSheet:12118889",
+                  "kind": "call",
+                  "label": "Вызов ParseStyleSheet",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 50,
+                    "end_line": 50
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+                  "summary": "→ github.com/starframe/abyss/internal/css.ParseStyleSheet",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.ParseStyleSheet",
+                      "file": "internal/css/parser.go",
+                      "label": "→ ParseStyleSheet in internal/css/parser.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/css/computed.go:computeNode:12118990",
+              "kind": "call",
+              "label": "Вызов computeNode",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 73,
+                "end_line": 124
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.computeNode",
+              "summary": "→ github.com/starframe/abyss/internal/css.computeNode",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.computeNode",
+                  "file": "internal/css/computed.go",
+                  "label": "→ computeNode in internal/css/computed.go"
+                }
+              ]
+            },
+            {
+              "id": "return:internal/css/computed.go:12119094",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 61,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.Compute",
+              "file": "internal/css/computed.go",
+              "label": "← Compute in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.ComputeWithExternal",
+              "file": "internal/css/computed.go",
+              "label": "← ComputeWithExternal in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:InvalidateCache:12119212",
+          "kind": "group",
+          "label": "Функция InvalidateCache",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 66,
+            "end_line": 71
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.InvalidateCache",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/js.appendChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← appendChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentElement",
+              "file": "internal/js/dom_insert.go",
+              "label": "← insertAdjacentElement in internal/js/dom_insert.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertAdjacentHTML",
+              "file": "internal/js/dom_insert.go",
+              "label": "← insertAdjacentHTML in internal/js/dom_insert.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBefore",
+              "file": "internal/js/dom_insert.go",
+              "label": "← insertBefore in internal/js/dom_insert.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.insertBefore",
+              "file": "internal/js/dom_insert.go",
+              "label": "← insertBefore in internal/js/dom_insert.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.removeChildJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← removeChildJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChild",
+              "file": "internal/js/dom_insert.go",
+              "label": "← replaceChild in internal/js/dom_insert.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.replaceChild",
+              "file": "internal/js/dom_insert.go",
+              "label": "← replaceChild in internal/js/dom_insert.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setAttributeJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setAttributeJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setInnerHTMLJS",
+              "file": "internal/js/bridge_events.go",
+              "label": "← setInnerHTMLJS in internal/js/bridge_events.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/js.setOuterHTML",
+              "file": "internal/js/dom_serialize.go",
+              "label": "← setOuterHTML in internal/js/dom_serialize.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:computeNode:12119317",
+          "kind": "group",
+          "label": "Функция computeNode",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 73,
+            "end_line": 124
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.computeNode",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "call:internal/css/computed.go:Default:12119412",
+              "kind": "call",
+              "label": "Вызов Default",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 74,
+                "end_line": 74
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.Default",
+              "summary": "→ github.com/starframe/abyss/internal/css.Default",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.Default",
+                  "file": "internal/css/computed_values.go",
+                  "label": "→ Default in internal/css/computed_values.go"
+                }
+              ]
+            },
+            {
+              "id": "loop:internal/css/computed.go:12119581",
+              "kind": "loop",
+              "label": "range rules",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 83,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "rules",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/css/computed.go:12119612",
+                  "kind": "loop",
+                  "label": "range rule.Selectors",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 84,
+                    "end_line": 91
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "rule.Selectors",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/computed.go:12119652",
+                      "kind": "decision",
+                      "label": "if nodeMatchesSelector(node, sel)",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 85,
+                        "end_line": 90
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "nodeMatchesSelector(node, sel)",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/css/computed.go:Specificity:12119780",
+                          "kind": "call",
+                          "label": "Вызов Specificity",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/css/computed.go",
+                            "start_line": 88,
+                            "end_line": 88
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/css.Specificity",
+                          "summary": "→ github.com/starframe/abyss/internal/css.Specificity",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/css.Specificity",
+                              "file": "internal/css/parser.go",
+                              "label": "→ Specificity in internal/css/parser.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/css/computed.go:12119877",
+              "kind": "loop",
+              "label": "for i < len(matches)-1",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 95,
+                "end_line": 101
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "i < len(matches)-1",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/css/computed.go:12119917",
+                  "kind": "loop",
+                  "label": "for j < len(matches)",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 96,
+                    "end_line": 100
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "j < len(matches)",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/css/computed.go:12119960",
+                      "kind": "decision",
+                      "label": "if matches[i].specificity > matches[j].specificity",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 97,
+                        "end_line": 99
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "matches[i].specificity > matches[j].specificity",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/css/computed.go:12120106",
+              "kind": "loop",
+              "label": "range matches",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 104,
+                "end_line": 108
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "matches",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "loop:internal/css/computed.go:12120136",
+                  "kind": "loop",
+                  "label": "range m.decls",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 105,
+                    "end_line": 107
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "m.decls",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyDeclaration:12120170",
+                      "kind": "call",
+                      "label": "Вызов applyDeclaration",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 161,
+                        "end_line": 181
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyDeclaration",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyDeclaration",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyDeclaration in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/computed.go:12120277",
+              "kind": "decision",
+              "label": "if inline != \"\"",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 111,
+                "end_line": 116
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "inline != \"\"",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/css/computed.go:GetAttr:12120290",
+                  "kind": "call",
+                  "label": "Вызов GetAttr",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 111,
+                    "end_line": 111
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+                  "summary": "→ github.com/starframe/abyss/internal/dom.Node.GetAttr",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.Node.GetAttr",
+                      "file": "internal/dom/dom.go",
+                      "label": "→ GetAttr in internal/dom/dom.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "call:internal/css/computed.go:ParseInline:12120339",
+                  "kind": "call",
+                  "label": "Вызов ParseInline",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 112,
+                    "end_line": 112
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.ParseInline",
+                  "summary": "→ github.com/starframe/abyss/internal/css.ParseInline",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.ParseInline",
+                      "file": "internal/css/parser.go",
+                      "label": "→ ParseInline in internal/css/parser.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "loop:internal/css/computed.go:12120361",
+                  "kind": "loop",
+                  "label": "range decls",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 113,
+                    "end_line": 115
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "decls",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyDeclaration:12120393",
+                      "kind": "call",
+                      "label": "Вызов applyDeclaration",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 161,
+                        "end_line": 181
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyDeclaration",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyDeclaration",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyDeclaration in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/css/computed.go:12120501",
+              "kind": "loop",
+              "label": "range node.Children",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 121,
+                "end_line": 123
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "node.Children",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/css/computed.go:computeNode:12120541",
+                  "kind": "call",
+                  "label": "Вызов computeNode",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 73,
+                    "end_line": 124
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.computeNode",
+                  "summary": "→ github.com/starframe/abyss/internal/css.computeNode",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.computeNode",
+                      "file": "internal/css/computed.go",
+                      "label": "→ computeNode in internal/css/computed.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeWithExtra",
+              "file": "internal/css/computed.go",
+              "label": "← computeWithExtra in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:nodeMatchesSelector:12120581",
+          "kind": "group",
+          "label": "Функция nodeMatchesSelector",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 126,
+            "end_line": 159
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.nodeMatchesSelector",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/css/computed.go:12120647",
+              "kind": "decision",
+              "label": "if node.Type != dom.ElementNode",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 127,
+                "end_line": 129
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "node.Type != dom.ElementNode",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/computed.go:12120683",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 128,
+                    "end_line": 128
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/computed.go:12120749",
+              "kind": "decision",
+              "label": "if strings.Contains(selector, \">\")",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 132,
+                "end_line": 140
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "strings.Contains(selector, \">\")",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/css/computed.go:12120917",
+                  "kind": "decision",
+                  "label": "if node.Parent == nil || !node.Parent.Matches(parentSel)",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 136,
+                    "end_line": 138
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "node.Parent == nil || !node.Parent.Matches(parentSel)",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "return:internal/css/computed.go:12120979",
+                      "kind": "output",
+                      "label": "return",
+                      "layer": "data",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 137,
+                        "end_line": 137
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "return:internal/css/computed.go:12120998",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 139,
+                    "end_line": 139
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/computed.go:12121078",
+              "kind": "decision",
+              "label": "if strings.TrimSpace(selector) == \"\"",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 143,
+                "end_line": 145
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "strings.TrimSpace(selector) == \"\"",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/computed.go:12121119",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 144,
+                    "end_line": 144
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "call:internal/css/computed.go:tokenizeSelector:12121146",
+              "kind": "call",
+              "label": "Вызов tokenizeSelector",
+              "layer": "calls",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 147,
+                "end_line": 147
+              },
+              "element_type": null,
+              "symbol": "github.com/starframe/abyss/internal/css.tokenizeSelector",
+              "summary": "→ github.com/starframe/abyss/internal/css.tokenizeSelector",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": [
+                {
+                  "id": "github.com/starframe/abyss/internal/css.tokenizeSelector",
+                  "file": "internal/css/parser.go",
+                  "label": "→ tokenizeSelector in internal/css/parser.go"
+                }
+              ]
+            },
+            {
+              "id": "if:internal/css/computed.go:12121174",
+              "kind": "decision",
+              "label": "if len(tokens) == 1",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 148,
+                "end_line": 150
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(tokens) == 1",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/computed.go:12121198",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 149,
+                    "end_line": 149
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/css/computed.go:12121388",
+              "kind": "decision",
+              "label": "if lastToken == \">\" || lastToken == \"+\" || lastToken == \"~\"",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 155,
+                "end_line": 157
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "lastToken == \">\" || lastToken == \"+\" || lastToken == \"~\"",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/css/computed.go:12121452",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 156,
+                    "end_line": 156
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/css/computed.go:12121469",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 158,
+                "end_line": 158
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyDeclaration:12121503",
+          "kind": "group",
+          "label": "Функция applyDeclaration",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 161,
+            "end_line": 181
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyDeclaration",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12121648",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 173,
+                "end_line": 173
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12121658",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 167,
+                    "end_line": 167
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyBoxModel:12121781",
+                      "kind": "call",
+                      "label": "Вызов applyBoxModel",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 184,
+                        "end_line": 207
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyBoxModel",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyBoxModel",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyBoxModel",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyBoxModel in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12121814",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 169,
+                    "end_line": 169
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyBorder:12121877",
+                      "kind": "call",
+                      "label": "Вызов applyBorder",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 210,
+                        "end_line": 259
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyBorder",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyBorder",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyBorder",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyBorder in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12121908",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 173,
+                    "end_line": 173
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyDimensions:12122072",
+                      "kind": "call",
+                      "label": "Вызов applyDimensions",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 262,
+                        "end_line": 279
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyDimensions",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyDimensions",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyDimensions",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyDimensions in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122107",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 173,
+                    "end_line": 173
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyOffset:12122180",
+                      "kind": "call",
+                      "label": "Вызов applyOffset",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 282,
+                        "end_line": 293
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyOffset",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyOffset",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyOffset",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyOffset in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122211",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 175,
+                    "end_line": 175
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyColor:12122265",
+                      "kind": "call",
+                      "label": "Вызов applyColor",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 296,
+                        "end_line": 303
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyColor",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyColor",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyColor",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyColor in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122295",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 177,
+                    "end_line": 177
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:applyLayout:12122306",
+                      "kind": "call",
+                      "label": "Вызов applyLayout",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 306,
+                        "end_line": 327
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.applyLayout",
+                      "summary": "→ github.com/starframe/abyss/internal/css.applyLayout",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.applyLayout",
+                          "file": "internal/css/computed.go",
+                          "label": "→ applyLayout in internal/css/computed.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/css.computeNode",
+              "file": "internal/css/computed.go",
+              "label": "← computeNode in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyBoxModel:12122395",
+          "kind": "group",
+          "label": "Функция applyBoxModel",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 184,
+            "end_line": 207
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyBoxModel",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12122457",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 195,
+                "end_line": 195
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12122472",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 187,
+                    "end_line": 187
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBoxModel:12122504",
+                      "kind": "call",
+                      "label": "Вызов parseBoxModel",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 187,
+                        "end_line": 187
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBoxModel",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBoxModel",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBoxModel",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBoxModel in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122524",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 187,
+                    "end_line": 187
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122564",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 189,
+                        "end_line": 189
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122582",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 189,
+                    "end_line": 189
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122626",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 191,
+                        "end_line": 191
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122644",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 191,
+                    "end_line": 191
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122690",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 193,
+                        "end_line": 193
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122708",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 193,
+                    "end_line": 193
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122750",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 195,
+                        "end_line": 195
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122768",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 195,
+                    "end_line": 195
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBoxModel:12122802",
+                      "kind": "call",
+                      "label": "Вызов parseBoxModel",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 197,
+                        "end_line": 197
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBoxModel",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBoxModel",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBoxModel",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBoxModel in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122822",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 197,
+                    "end_line": 197
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122864",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 199,
+                        "end_line": 199
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122882",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 199,
+                    "end_line": 199
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122928",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 201,
+                        "end_line": 201
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12122946",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 201,
+                    "end_line": 201
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12122994",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 203,
+                        "end_line": 203
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123012",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 203,
+                    "end_line": 203
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12123056",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 205,
+                        "end_line": 205
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+              "file": "internal/css/computed.go",
+              "label": "← applyDeclaration in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyBorder:12123155",
+          "kind": "group",
+          "label": "Функция applyBorder",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 210,
+            "end_line": 259
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyBorder",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12123215",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 233,
+                "end_line": 233
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12123230",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 213,
+                    "end_line": 213
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorder:12123252",
+                      "kind": "call",
+                      "label": "Вызов parseBorder",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 213,
+                        "end_line": 213
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorder",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorder",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorder",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorder in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123364",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 219,
+                    "end_line": 219
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorder:12123403",
+                      "kind": "call",
+                      "label": "Вызов parseBorder",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 219,
+                        "end_line": 219
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorder",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorder",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorder",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorder in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123421",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 219,
+                    "end_line": 219
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorder:12123464",
+                      "kind": "call",
+                      "label": "Вызов parseBorder",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 221,
+                        "end_line": 221
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorder",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorder",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorder",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorder in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123482",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 221,
+                    "end_line": 221
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorder:12123527",
+                      "kind": "call",
+                      "label": "Вызов parseBorder",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 223,
+                        "end_line": 223
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorder",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorder",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorder",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorder in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123545",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 223,
+                    "end_line": 223
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorder:12123586",
+                      "kind": "call",
+                      "label": "Вызов parseBorder",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 225,
+                        "end_line": 225
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorder",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorder",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorder",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorder in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123604",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 227,
+                    "end_line": 227
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorderWidth:12123632",
+                      "kind": "call",
+                      "label": "Вызов parseBorderWidth",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 227,
+                        "end_line": 227
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorderWidth",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorderWidth",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorderWidth",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorderWidth in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123773",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 233,
+                    "end_line": 233
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseColor:12123801",
+                      "kind": "call",
+                      "label": "Вызов parseColor",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 233,
+                        "end_line": 233
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseColor",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseColor",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseColor",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseColor in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12123936",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 239,
+                    "end_line": 239
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseBorderStyle:12123964",
+                      "kind": "call",
+                      "label": "Вызов parseBorderStyle",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 239,
+                        "end_line": 239
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseBorderStyle",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseBorderStyle",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseBorderStyle",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseBorderStyle in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124105",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 245,
+                    "end_line": 245
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124134",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 245,
+                        "end_line": 245
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124288",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 251,
+                    "end_line": 251
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124349",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 251,
+                        "end_line": 251
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124367",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 251,
+                    "end_line": 251
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124430",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 253,
+                        "end_line": 253
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124448",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 253,
+                    "end_line": 253
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124517",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 255,
+                        "end_line": 255
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124535",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 255,
+                    "end_line": 255
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124602",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 257,
+                        "end_line": 257
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+              "file": "internal/css/computed.go",
+              "label": "← applyDeclaration in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyDimensions:12124696",
+          "kind": "group",
+          "label": "Функция applyDimensions",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 262,
+            "end_line": 279
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyDimensions",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12124760",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 269,
+                "end_line": 269
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12124775",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 265,
+                    "end_line": 265
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124805",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 265,
+                        "end_line": 265
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124823",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 265,
+                    "end_line": 265
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124855",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 267,
+                        "end_line": 267
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124873",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 267,
+                    "end_line": 267
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124910",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 269,
+                        "end_line": 269
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124928",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 269,
+                    "end_line": 269
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12124965",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 271,
+                        "end_line": 271
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12124983",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 271,
+                    "end_line": 271
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12125009",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 273,
+                        "end_line": 273
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125027",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 273,
+                    "end_line": 273
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLengthList:12125087",
+                      "kind": "call",
+                      "label": "Вызов parseLengthList",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 275,
+                        "end_line": 275
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLengthList",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLengthList",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLengthList",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLengthList in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125109",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 275,
+                    "end_line": 275
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLengthList:12125163",
+                      "kind": "call",
+                      "label": "Вызов parseLengthList",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 277,
+                        "end_line": 277
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLengthList",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLengthList",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLengthList",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLengthList in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+              "file": "internal/css/computed.go",
+              "label": "← applyDeclaration in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyOffset:12125255",
+          "kind": "group",
+          "label": "Функция applyOffset",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 282,
+            "end_line": 293
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyOffset",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12125315",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 287,
+                "end_line": 287
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12125330",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 285,
+                    "end_line": 285
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12125356",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 285,
+                        "end_line": 285
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125374",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 285,
+                    "end_line": 285
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12125402",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 287,
+                        "end_line": 287
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125420",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 287,
+                    "end_line": 287
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12125450",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 289,
+                        "end_line": 289
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125468",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 289,
+                    "end_line": 289
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseLength:12125500",
+                      "kind": "call",
+                      "label": "Вызов parseLength",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 291,
+                        "end_line": 291
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseLength",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseLength",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseLength",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseLength in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+              "file": "internal/css/computed.go",
+              "label": "← applyDeclaration in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyColor:12125576",
+          "kind": "group",
+          "label": "Функция applyColor",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 296,
+            "end_line": 303
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyColor",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12125635",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 299,
+                "end_line": 299
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12125650",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 299,
+                    "end_line": 299
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseColor:12125680",
+                      "kind": "call",
+                      "label": "Вызов parseColor",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 299,
+                        "end_line": 299
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseColor",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseColor",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseColor",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseColor in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125697",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 299,
+                    "end_line": 299
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseColor:12125748",
+                      "kind": "call",
+                      "label": "Вызов parseColor",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 301,
+                        "end_line": 301
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseColor",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseColor",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseColor",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseColor in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+              "file": "internal/css/computed.go",
+              "label": "← applyDeclaration in internal/css/computed.go"
+            }
+          ]
+        },
+        {
+          "id": "func:internal/css/computed.go:applyLayout:12125823",
+          "kind": "group",
+          "label": "Функция applyLayout",
+          "layer": "flow",
+          "source": {
+            "file": "internal/css/computed.go",
+            "start_line": 306,
+            "end_line": 327
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/css.applyLayout",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "switch:internal/css/computed.go:12125883",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/css/computed.go",
+                "start_line": 315,
+                "end_line": 315
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/css/computed.go:12125898",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 309,
+                    "end_line": 309
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseDisplay:12125932",
+                      "kind": "call",
+                      "label": "Вызов parseDisplay",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 309,
+                        "end_line": 309
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseDisplay",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseDisplay",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseDisplay",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseDisplay in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12125951",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 309,
+                    "end_line": 309
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parsePosition:12125987",
+                      "kind": "call",
+                      "label": "Вызов parsePosition",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 311,
+                        "end_line": 311
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parsePosition",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parsePosition",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parsePosition",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parsePosition in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126007",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 311,
+                    "end_line": 311
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseOverflow:12126043",
+                      "kind": "call",
+                      "label": "Вызов parseOverflow",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 313,
+                        "end_line": 313
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseOverflow",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseOverflow",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseOverflow",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseOverflow in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126063",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 313,
+                    "end_line": 313
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseInt:12126096",
+                      "kind": "call",
+                      "label": "Вызов parseInt",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 315,
+                        "end_line": 315
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseInt",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseInt",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseInt",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseInt in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126111",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 315,
+                    "end_line": 315
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseFlexDirection:12126158",
+                      "kind": "call",
+                      "label": "Вызов parseFlexDirection",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 317,
+                        "end_line": 317
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseFlexDirection",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseFlexDirection",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseFlexDirection",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseFlexDirection in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126183",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 317,
+                    "end_line": 317
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseJustifyContent:12126232",
+                      "kind": "call",
+                      "label": "Вызов parseJustifyContent",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 319,
+                        "end_line": 319
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseJustifyContent",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseJustifyContent",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseJustifyContent",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseJustifyContent in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126258",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 319,
+                    "end_line": 319
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseAlignItems:12126299",
+                      "kind": "call",
+                      "label": "Вызов parseAlignItems",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 321,
+                        "end_line": 321
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseAlignItems",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseAlignItems",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseAlignItems",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseAlignItems in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126321",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 321,
+                    "end_line": 321
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseFloat:12126358",
+                      "kind": "call",
+                      "label": "Вызов parseFloat",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 323,
+                        "end_line": 323
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseFloat",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseFloat",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseFloat",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseFloat in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/css/computed.go:12126375",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/css/computed.go",
+                    "start_line": 323,
+                    "end_line": 323
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/css/computed.go:parseFloat:12126416",
+                      "kind": "call",
+                      "label": "Вызов parseFloat",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/css/computed.go",
+                        "start_line": 325,
+                        "end_line": 325
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/css.parseFloat",
+                      "summary": "→ github.com/starframe/abyss/internal/css.parseFloat",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/css.parseFloat",
+                          "file": "internal/css/computed_values.go",
+                          "label": "→ parseFloat in internal/css/computed_values.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/css.applyDeclaration",
+              "file": "internal/css/computed.go",
+              "label": "← applyDeclaration in internal/css/computed.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

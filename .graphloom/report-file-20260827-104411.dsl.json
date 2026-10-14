@@ -1,0 +1,101 @@
+{
+  "title": "internal/js/domapi.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/domapi.go",
+      "kind": "group",
+      "label": "Использовать файл domapi.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/domapi.go",
+        "start_line": 1,
+        "end_line": 7
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основной файл модуля для работы с DOM API.",
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/domapi.go:DOMAPIScript:15466623",
+          "kind": "group",
+          "label": "Выполнить функцию DOMAPIScript",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/domapi.go",
+            "start_line": 5,
+            "end_line": 7
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+          "summary": "Обработка скриптов для DOM API.",
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "return:internal/js/domapi.go:15466656",
+              "kind": "output",
+              "label": "Вернуть результат",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/domapi.go",
+                "start_line": 6,
+                "end_line": 6
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Завершает выполнение функции.",
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/debug_render.main",
+              "file": "cmd/debug_render/main.go",
+              "label": "← main in cmd/debug_render/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/external_test.main",
+              "file": "cmd/external_test/main.go",
+              "label": "← main in cmd/external_test/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/cmd/test_real.main",
+              "file": "cmd/test_real/main.go",
+              "label": "← main in cmd/test_real/main.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.loadPage",
+              "file": "internal/browser/browser.go",
+              "label": "← loadPage in internal/browser/browser.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Graphloom</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #09090b; color: #e4e4e7; font: 14px/1.5 system-ui, sans-serif; overflow: hidden; }
+  #bar { position: fixed; top: 0; left: 0; right: 0; min-height: 42px; padding: 6px 12px; background: rgba(9,9,11,.94);
+         border-bottom: 1px solid #27272a; display: flex; gap: 8px; align-items: center; z-index: 5; }
+  #bar h1 { font-size: 14px; font-weight: 600; white-space: nowrap; }
+  #bar .crumb { min-width: 0; flex: 1; font-size: 12px; color: #a1a1aa; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #layers { display: flex; flex: 0 0 auto; gap: 7px; align-items: center; }
+  .lchk { font-size: 11px; color: #a1a1aa; display: flex; gap: 3px; align-items: center; cursor: pointer; white-space: nowrap; }
+  #search { flex: 0 0 150px; background: #18181b; border: 1px solid #3f3f46; border-radius: 6px; color: #e4e4e7;
+            padding: 4px 8px; font-size: 12px; width: 150px; }
+  .nav { background: #27272a; border: none; color: #e4e4e7; border-radius: 6px; padding: 4px 9px;
+         cursor: pointer; font-size: 12px; }
+  .nav:disabled { opacity: .4; cursor: default; }
+  #stage { position: fixed; inset: 0; top: 42px; overflow: auto; padding: 24px 0 40px; }
+  svg { display: block; }
+  .node { cursor: pointer; }
+  .node rect, .node polygon { transition: filter .15s; }
+  .node:hover rect, .node:hover polygon { filter: brightness(1.25); }
+  .node.dim, .edge.dim { opacity: .12; }
+  .edge { stroke: #52525b; stroke-width: 1.5; fill: none; }
+  .edge.inferred { stroke-dasharray: 5 4; }
+  .elabel-bg { fill: #09090b; stroke: #27272a; stroke-width: 1; }
+  .elabel { font-size: 10px; fill: #a1a1aa; }
+  .nlabel { font-size: 12px; fill: #f4f4f5; font-weight: 500; }
+  .nsummary { font-size: 10px; fill: #71717a; }
+  .nkind { font-size: 11px; }
+  .hit { stroke: #facc15; stroke-width: 2.5; }
+  .step { fill: #27272a; stroke: #3f3f46; stroke-width: 1; }
+  .step-num { fill: #a1a1aa; font-size: 10px; font-weight: 600; }
+  #sidebar { position: fixed; top: 42px; right: 0; bottom: 0; width: 380px; background: #18181b;
+             border-left: 1px solid #27272a; padding: 16px; overflow: auto; display: none; z-index: 6; }
+  #sidebar h2 { font-size: 16px; margin-bottom: 2px; padding-right: 20px; }
+  #sidebar .meta { font-size: 12px; color: #a1a1aa; margin-bottom: 10px; }
+  #close { position: absolute; top: 10px; right: 12px; cursor: pointer; color: #71717a;
+           background: none; border: none; font-size: 16px; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; margin-right: 4px; }
+  .chip.on { background: #064e3b; color: #6ee7b7; }
+  .chip.off { background: #27272a; color: #71717a; }
+  pre.code { margin-top: 12px; background: #09090b; border: 1px solid #27272a; border-radius: 8px;
+             padding: 10px; font: 11px/1.6 ui-monospace, monospace; overflow: auto; }
+  pre.code .ln { color: #52525b; display: inline-block; width: 34px; user-select: none; }
+  pre.code .hl { background: #27272a; display: block; }
+  .expand { margin-top: 10px; background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+            padding: 5px 12px; cursor: pointer; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <h1>Graphloom</h1>
+  <button class="nav" id="back">←</button>
+  <button class="nav" id="fwd">→</button>
+  <span class="crumb" id="crumb"></span>
+  <span id="layers"></span>
+  <input id="search" placeholder="Поиск…" />
+</div>
+<div id="stage"><svg id="svg"></svg></div>
+<div id="sidebar">
+  <button id="close" aria-label="Закрыть">×</button>
+  <h2 id="s-title"></h2>
+  <div class="meta" id="s-meta"></div>
+  <div id="s-tests"></div>
+  <p id="s-summary" style="margin-top:8px;font-size:13px"></p>
+  <div id="s-extra"></div>
+  <pre class="code" id="s-code" style="display:none"></pre>
+</div>
+<script>
+const viz = {"title":"CSS Selector Parser and Matcher","level":"file","nodes":[{"id":"types","kind":"group","label":"Типы данных","layer":"state","source":{"file":"internal/dom/selector.go","start_line":10,"end_line":40},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"SelectorGroup","kind":"state","label":"SelectorGroup","layer":"state","source":{"file":"internal/dom/selector.go","start_line":10,"end_line":12},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"ComplexSelector","kind":"state","label":"ComplexSelector","layer":"state","source":{"file":"internal/dom/selector.go","start_line":15,"end_line":17},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"SelectorPart","kind":"state","label":"SelectorPart","layer":"state","source":{"file":"internal/dom/selector.go","start_line":20,"end_line":27},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"AttrSelector","kind":"state","label":"AttrSelector","layer":"state","source":{"file":"internal/dom/selector.go","start_line":30,"end_line":34},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"PseudoSelector","kind":"state","label":"PseudoSelector","layer":"state","source":{"file":"internal/dom/selector.go","start_line":37,"end_line":40},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"ParseSelectorGroup","kind":"action","label":"Разбор группы селекторов","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":43,"end_line":62},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"MatchesSelector","kind":"action","label":"Проверить соответствие селектору","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":65,"end_line":79},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"QueryAllSelector","kind":"action","label":"Найти все элементы по селектору","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":82,"end_line":90},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"QuerySelectorSelector","kind":"action","label":"Найти первый элемент по селектору","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":93,"end_line":99},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"queryAllSelectorRecursive","kind":"action","label":"Рекурсивный поиск элементов","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":101,"end_line":114},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"matchesComplex","kind":"action","label":"Проверить соответствие сложному селектору","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":116,"end_line":121},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"matchPart","kind":"action","label":"Проверить соответствие части селектора","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":124,"end_line":158},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"previousElementSibling","kind":"action","label":"Найти предыдущего элемент-брат","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":160,"end_line":176},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"matchesSimple","kind":"action","label":"Проверить соответствие простому селектору","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":178,"end_line":218},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"matchesAttr","kind":"action","label":"Проверить атрибут","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":220,"end_line":244},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"matchesPseudo","kind":"action","label":"Проверить псевдокласс","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":246,"end_line":298},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"childIndex","kind":"action","label":"Получить индекс элемента среди детей","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":302,"end_line":319},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"lastChildIndex","kind":"action","label":"Получить индекс элемента с конца","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":322,"end_line":340},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"matchNth","kind":"action","label":"Проверить nth-выборку","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":342,"end_line":377},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseNth","kind":"action","label":"Разобрать выражение nth","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":380,"end_line":420},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"splitByComma","kind":"action","label":"Разделить по запятым","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":422,"end_line":456},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseComplexSelector","kind":"action","label":"Разбор сложного селектора","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":458,"end_line":519},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseSimpleSelectorSequence","kind":"action","label":"Разбор последовательности простых селекторов","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":521,"end_line":583},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseHash","kind":"action","label":"Разобрать ID селектор","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":585,"end_line":591},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseClass","kind":"action","label":"Разобрать класс селектор","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":593,"end_line":599},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseIdent","kind":"action","label":"Разобрать идентификатор","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":601,"end_line":612},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parseAttribute","kind":"action","label":"Разобрать атрибутный селектор","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":614,"end_line":676},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]},{"id":"parsePseudo","kind":"action","label":"Разобрать псевдокласс","layer":"flow","source":{"file":"internal/dom/selector.go","start_line":678,"end_line":718},"element_type":null,"symbol":null,"summary":null,"tests":null,"confidence":null,"children":[],"branches":[],"data_in":[],"data_out":[],"effects":[]}],"edges":[{"from":"ParseSelectorGroup","to":"splitByComma","label":"разделение по запятым","status":"inferred"},{"from":"ParseSelectorGroup","to":"parseComplexSelector","label":"разбор каждого селектора","status":"inferred"},{"from":"MatchesSelector","to":"ParseSelectorGroup","label":"парсинг группы","status":"inferred"},{"from":"MatchesSelector","to":"matchesComplex","label":"проверка соответствия","status":"inferred"},{"from":"QueryAllSelector","to":"ParseSelectorGroup","label":"парсинг группы","status":"inferred"},{"from":"QueryAllSelector","to":"queryAllSelectorRecursive","label":"рекурсивный поиск","status":"inferred"},{"from":"QuerySelectorSelector","to":"QueryAllSelector","label":"получение первого результата","status":"inferred"},{"from":"queryAllSelectorRecursive","to":"matchesComplex","label":"проверка каждого селектора","status":"inferred"},{"from":"matchesComplex","to":"matchPart","label":"проверка частей","status":"inferred"},{"from":"matchPart","to":"matchesSimple","label":"проверка простого селектора","status":"inferred"},{"from":"matchPart","to":"previousElementSibling","label":"проверка комбинаторов","status":"inferred"},{"from":"matchesSimple","to":"matchesAttr","label":"проверка атрибутов","status":"inferred"},{"from":"matchesSimple","to":"matchesPseudo","label":"проверка псевдоклассов","status":"inferred"},{"from":"matchesPseudo","to":"childIndex","label":"расчёт индекса","status":"inferred"},{"from":"matchesPseudo","to":"lastChildIndex","label":"расчёт индекса с конца","status":"inferred"},{"from":"matchesPseudo","to":"matchNth","label":"nth-выборка","status":"inferred"},{"from":"matchNth","to":"parseNth","label":"парсинг выражения","status":"inferred"},{"from":"parseComplexSelector","to":"parseSimpleSelectorSequence","label":"разбор последовательности","status":"inferred"},{"from":"parseSimpleSelectorSequence","to":"parseHash","label":"ID селектор","status":"inferred"},{"from":"parseSimpleSelectorSequence","to":"parseClass","label":"класс селектор","status":"inferred"},{"from":"parseSimpleSelectorSequence","to":"parseAttribute","label":"атрибутный селектор","status":"inferred"},{"from":"parseSimpleSelectorSequence","to":"parsePseudo","label":"псевдокласс","status":"inferred"},{"from":"parseSimpleSelectorSequence","to":"parseIdent","label":"идентификатор тега","status":"inferred"},{"from":"parseHash","to":"parseIdent","label":"парсинг имени","status":"inferred"},{"from":"parseClass","to":"parseIdent","label":"парсинг имени","status":"inferred"},{"from":"parseAttribute","to":"parseIdent","label":"парсинг имени атрибута","status":"inferred"},{"from":"parsePseudo","to":"parseIdent","label":"парсинг имени псевдокласса","status":"inferred"}]};
+const palette = [{"type":"service","label":"Сервис","color":"#3b82f6","icon":"Settings2","description":"Самостоятельный сервис или приложение"},{"type":"database","label":"База данных","color":"#10b981","icon":"Database","description":"Хранилище данных, слой доступа к БД"},{"type":"module","label":"Модуль","color":"#a78bfa","icon":"Box","description":"Внутренний модуль или пакет"},{"type":"library","label":"Библиотека","color":"#f59e0b","icon":"Library","description":"Переиспользуемая библиотека"},{"type":"entrypoint","label":"Точка входа","color":"#ef4444","icon":"Rocket","description":"main / CLI / server entrypoint"}];
+const sources = {"internal/dom/selector.go":"package dom\n\nimport (\n\t\"strconv\"\n\t\"strings\"\n\t\"unicode\"\n)\n\n// SelectorGroup represents a comma-separated list of selectors.\ntype SelectorGroup struct {\n\tSelectors []ComplexSelector\n}\n\n// ComplexSelector represents a sequence of simple selectors connected by combinators.\ntype ComplexSelector struct {\n\tParts []SelectorPart\n}\n\n// SelectorPart is a simple selector plus the combinator that precedes it (for parts[1:]).\ntype SelectorPart struct {\n\tTag        string // empty means any tag; \"*\" means universal\n\tID         string\n\tClasses    []string\n\tAttributes []AttrSelector\n\tPseudos    []PseudoSelector\n\tCombinator string // \"\", \" \", \">\", \"+\", \"~\"\n}\n\n// AttrSelector represents an attribute selector.\ntype AttrSelector struct {\n\tName  string\n\tOp    string // \"\", \"=\", \"~=\", \"|=\", \"^=\", \"$=\", \"*=\"\n\tValue string\n}\n\n// PseudoSelector represents a pseudo-class.\ntype PseudoSelector struct {\n\tName string\n\tArg  string\n}\n\n// ParseSelectorGroup parses a selector string into a selector group.\nfunc ParseSelectorGroup(s string) (*SelectorGroup, error) {\n\ts = strings.TrimSpace(s)\n\tif s == \"\" {\n\t\treturn &SelectorGroup{}, nil\n\t}\n\n\tvar selectors []ComplexSelector\n\tfor _, part := range splitByComma(s) {\n\t\tpart = strings.TrimSpace(part)\n\t\tif part == \"\" {\n\t\t\tcontinue\n\t\t}\n\t\tsel, err := parseComplexSelector(part)\n\t\tif err != nil {\n\t\t\treturn nil, err\n\t\t}\n\t\tselectors = append(selectors, sel)\n\t}\n\treturn &SelectorGroup{Selectors: selectors}, nil\n}\n\n// MatchesSelector checks if a node matches the given selector string.\nfunc MatchesSelector(n *Node, selector string) bool {\n\tif n == nil || n.Type != ElementNode {\n\t\treturn false\n\t}\n\tgroup, err := ParseSelectorGroup(selector)\n\tif err != nil {\n\t\treturn false\n\t}\n\tfor _, sel := range group.Selectors {\n\t\tif matchesComplex(n, sel) {\n\t\t\treturn true\n\t\t}\n\t}\n\treturn false\n}\n\n// QueryAllSelector returns all descendant elements matching the selector.\nfunc QueryAllSelector(root *Node, selector string) []*Node {\n\tgroup, err := ParseSelectorGroup(selector)\n\tif err != nil {\n\t\treturn nil\n\t}\n\tvar results []*Node\n\tqueryAllSelectorRecursive(root, group, &results)\n\treturn results\n}\n\n// QuerySelectorSelector returns the first descendant element matching the selector.\nfunc QuerySelectorSelector(root *Node, selector string) *Node {\n\tall := QueryAllSelector(root, selector)\n\tif len(all) == 0 {\n\t\treturn nil\n\t}\n\treturn all[0]\n}\n\nfunc queryAllSelectorRecursive(n *Node, group *SelectorGroup, results *[]*Node) {\n\tfor _, child := range n.Children {\n\t\tif child.Type != ElementNode {\n\t\t\tcontinue\n\t\t}\n\t\tfor _, sel := range group.Selectors {\n\t\t\tif matchesComplex(child, sel) {\n\t\t\t\t*results = append(*results, child)\n\t\t\t\tbreak\n\t\t\t}\n\t\t}\n\t\tqueryAllSelectorRecursive(child, group, results)\n\t}\n}\n\nfunc matchesComplex(n *Node, sel ComplexSelector) bool {\n\tif len(sel.Parts) == 0 {\n\t\treturn false\n\t}\n\treturn matchPart(n, sel.Parts, len(sel.Parts)-1)\n}\n\n// matchPart checks if n matches sel.Parts[idx] and the combinator chain before it.\nfunc matchPart(n *Node, parts []SelectorPart, idx int) bool {\n\tif !matchesSimple(n, parts[idx]) {\n\t\treturn false\n\t}\n\tif idx == 0 {\n\t\treturn true\n\t}\n\n\tcomb := parts[idx].Combinator\n\tswitch comb {\n\tcase \" \", \"\":\n\t\t// descendant\n\t\tfor anc := n.Parent; anc != nil; anc = anc.Parent {\n\t\t\tif matchPart(anc, parts, idx-1) {\n\t\t\t\treturn true\n\t\t\t}\n\t\t}\n\tcase \">\":\n\t\tif n.Parent != nil && matchPart(n.Parent, parts, idx-1) {\n\t\t\treturn true\n\t\t}\n\tcase \"+\":\n\t\tprev := previousElementSibling(n)\n\t\tif prev != nil && matchPart(prev, parts, idx-1) {\n\t\t\treturn true\n\t\t}\n\tcase \"~\":\n\t\tfor prev := previousElementSibling(n); prev != nil; prev = previousElementSibling(prev) {\n\t\t\tif matchPart(prev, parts, idx-1) {\n\t\t\t\treturn true\n\t\t\t}\n\t\t}\n\t}\n\treturn false\n}\n\nfunc previousElementSibling(n *Node) *Node {\n\tif n == nil || n.Parent == nil {\n\t\treturn nil\n\t}\n\tfound := false\n\tfor i := len(n.Parent.Children) - 1; i >= 0; i-- {\n\t\tchild := n.Parent.Children[i]\n\t\tif child == n {\n\t\t\tfound = true\n\t\t\tcontinue\n\t\t}\n\t\tif found && child.Type == ElementNode {\n\t\t\treturn child\n\t\t}\n\t}\n\treturn nil\n}\n\nfunc matchesSimple(n *Node, part SelectorPart) bool {\n\tif n == nil || n.Type != ElementNode {\n\t\treturn false\n\t}\n\n\t// Tag check\n\tif part.Tag != \"\" && part.Tag != \"*\" {\n\t\tif !strings.EqualFold(n.TagName, part.Tag) {\n\t\t\treturn false\n\t\t}\n\t}\n\n\t// ID check\n\tif part.ID != \"\" && n.Attributes[\"id\"] != part.ID {\n\t\treturn false\n\t}\n\n\t// Class check\n\tclassAttr := n.Attributes[\"class\"]\n\tfor _, c := range part.Classes {\n\t\tif !hasClass(classAttr, c) {\n\t\t\treturn false\n\t\t}\n\t}\n\n\t// Attribute check\n\tfor _, attr := range part.Attributes {\n\t\tif !matchesAttr(n, attr) {\n\t\t\treturn false\n\t\t}\n\t}\n\n\t// Pseudo-class check\n\tfor _, pseudo := range part.Pseudos {\n\t\tif !matchesPseudo(n, pseudo) {\n\t\t\treturn false\n\t\t}\n\t}\n\n\treturn true\n}\n\nfunc matchesAttr(n *Node, attr AttrSelector) bool {\n\tval, exists := n.Attributes[attr.Name]\n\tswitch attr.Op {\n\tcase \"\":\n\t\treturn exists\n\tcase \"=\":\n\t\treturn val == attr.Value\n\tcase \"~=\":\n\t\tfor _, f := range strings.Fields(val) {\n\t\t\tif f == attr.Value {\n\t\t\t\treturn true\n\t\t\t}\n\t\t}\n\t\treturn false\n\tcase \"|=\":\n\t\treturn val == attr.Value || strings.HasPrefix(val, attr.Value+\"-\")\n\tcase \"^=\":\n\t\treturn strings.HasPrefix(val, attr.Value)\n\tcase \"$=\":\n\t\treturn strings.HasSuffix(val, attr.Value)\n\tcase \"*=\":\n\t\treturn strings.Contains(val, attr.Value)\n\t}\n\treturn false\n}\n\nfunc matchesPseudo(n *Node, pseudo PseudoSelector) bool {\n\tswitch strings.ToLower(pseudo.Name) {\n\tcase \"first-child\":\n\t\treturn childIndex(n, false) == 1\n\tcase \"last-child\":\n\t\treturn lastChildIndex(n, false) == 1\n\tcase \"only-child\":\n\t\treturn childIndex(n, false) == 1 && lastChildIndex(n, false) == 1\n\tcase \"first-of-type\":\n\t\treturn childIndex(n, true) == 1\n\tcase \"last-of-type\":\n\t\treturn lastChildIndex(n, true) == 1\n\tcase \"only-of-type\":\n\t\treturn childIndex(n, true) == 1 && lastChildIndex(n, true) == 1\n\tcase \"nth-child\":\n\t\tidx := childIndex(n, false)\n\t\treturn matchNth(pseudo.Arg, idx)\n\tcase \"nth-of-type\":\n\t\tidx := childIndex(n, true)\n\t\treturn matchNth(pseudo.Arg, idx)\n\tcase \"nth-last-child\":\n\t\tidx := lastChildIndex(n, false)\n\t\treturn matchNth(pseudo.Arg, idx)\n\tcase \"nth-last-of-type\":\n\t\tidx := lastChildIndex(n, true)\n\t\treturn matchNth(pseudo.Arg, idx)\n\tcase \"not\":\n\t\treturn !MatchesSelector(n, pseudo.Arg)\n\tcase \"is\", \"where\":\n\t\treturn MatchesSelector(n, pseudo.Arg)\n\tcase \"empty\":\n\t\tfor _, c := range n.Children {\n\t\t\tif c.Type == ElementNode || c.Type == TextNode && strings.TrimSpace(c.Text) != \"\" {\n\t\t\t\treturn false\n\t\t\t}\n\t\t}\n\t\treturn true\n\tcase \"checked\":\n\t\treturn n.GetAttr(\"checked\") != \"\"\n\tcase \"disabled\":\n\t\treturn n.GetAttr(\"disabled\") != \"\"\n\tcase \"enabled\":\n\t\treturn n.GetAttr(\"disabled\") == \"\"\n\tcase \"selected\":\n\t\treturn n.GetAttr(\"selected\") != \"\"\n\tcase \"focus\":\n\t\t// Abyss has no focus management\n\t\treturn false\n\tcase \"root\":\n\t\treturn n.Type == DocumentNode\n\t}\n\treturn false\n}\n\n// childIndex returns the 1-based index of n among its parent's element children.\n// If ofType is true, only counts children with the same tag.\nfunc childIndex(n *Node, ofType bool) int {\n\tif n == nil || n.Parent == nil {\n\t\treturn 0\n\t}\n\tidx := 0\n\tfor _, child := range n.Parent.Children {\n\t\tif child.Type != ElementNode {\n\t\t\tcontinue\n\t\t}\n\t\tif !ofType || strings.EqualFold(child.TagName, n.TagName) {\n\t\t\tidx++\n\t\t}\n\t\tif child == n {\n\t\t\treturn idx\n\t\t}\n\t}\n\treturn 0\n}\n\n// lastChildIndex returns the 1-based index of n counting from the last element child.\nfunc lastChildIndex(n *Node, ofType bool) int {\n\tif n == nil || n.Parent == nil {\n\t\treturn 0\n\t}\n\tidx := 0\n\tfor i := len(n.Parent.Children) - 1; i >= 0; i-- {\n\t\tchild := n.Parent.Children[i]\n\t\tif child.Type != ElementNode {\n\t\t\tcontinue\n\t\t}\n\t\tif !ofType || strings.EqualFold(child.TagName, n.TagName) {\n\t\t\tidx++\n\t\t}\n\t\tif child == n {\n\t\t\treturn idx\n\t\t}\n\t}\n\treturn 0\n}\n\nfunc matchNth(arg string, idx int) bool {\n\targ = strings.TrimSpace(strings.ToLower(arg))\n\tif arg == \"\" {\n\t\treturn false\n\t}\n\n\t// Handle keywords\n\tswitch arg {\n\tcase \"even\":\n\t\treturn idx%2 == 0\n\tcase \"odd\":\n\t\treturn idx%2 == 1\n\t}\n\n\t// Parse an+b format\n\ta, b, ok := parseNth(arg)\n\tif !ok {\n\t\t// Try plain number\n\t\tn, err := strconv.Atoi(arg)\n\t\tif err != nil {\n\t\t\treturn false\n\t\t}\n\t\treturn idx == n\n\t}\n\n\tif a == 0 {\n\t\treturn idx == b\n\t}\n\tif idx < b && a > 0 {\n\t\treturn false\n\t}\n\tif idx > b && a < 0 {\n\t\treturn false\n\t}\n\treturn (idx-b)%a == 0\n}\n\n// parseNth parses strings like \"2n+1\", \"3n\", \"-n+3\", \"n\", \"0\".\nfunc parseNth(s string) (a, b int, ok bool) {\n\ts = strings.ReplaceAll(s, \" \", \"\")\n\tif s == \"\" {\n\t\treturn 0, 0, false\n\t}\n\n\t// Find the position of 'n' (the variable part)\n\tnIdx := strings.Index(s, \"n\")\n\tif nIdx < 0 {\n\t\treturn 0, 0, false\n\t}\n\n\t// Parse a\n\taStr := s[:nIdx]\n\tswitch aStr {\n\tcase \"\":\n\t\ta = 1\n\tcase \"-\":\n\t\ta = -1\n\tdefault:\n\t\tv, err := strconv.Atoi(aStr)\n\t\tif err != nil {\n\t\t\treturn 0, 0, false\n\t\t}\n\t\ta = v\n\t}\n\n\t// Parse b\n\tbStr := s[nIdx+1:]\n\tif bStr == \"\" {\n\t\tb = 0\n\t} else {\n\t\tv, err := strconv.Atoi(bStr)\n\t\tif err != nil {\n\t\t\treturn 0, 0, false\n\t\t}\n\t\tb = v\n\t}\n\n\treturn a, b, true\n}\n\nfunc splitByComma(s string) []string {\n\tvar parts []string\n\tvar depth int\n\tvar inQuote rune\n\tstart := 0\n\tfor i, r := range s {\n\t\tif inQuote != 0 {\n\t\t\tif r == inQuote {\n\t\t\t\tinQuote = 0\n\t\t\t}\n\t\t\tcontinue\n\t\t}\n\t\tif r == '\"' || r == '\\'' {\n\t\t\tinQuote = r\n\t\t\tcontinue\n\t\t}\n\t\tswitch r {\n\t\tcase '[':\n\t\t\tdepth++\n\t\tcase ']':\n\t\t\tdepth--\n\t\tcase '(':\n\t\t\tdepth++\n\t\tcase ')':\n\t\t\tdepth--\n\t\tcase ',':\n\t\t\tif depth == 0 {\n\t\t\t\tparts = append(parts, s[start:i])\n\t\t\t\tstart = i + 1\n\t\t\t}\n\t\t}\n\t}\n\tparts = append(parts, s[start:])\n\treturn parts\n}\n\nfunc parseComplexSelector(s string) (ComplexSelector, error) {\n\tvar parts []SelectorPart\n\ti := 0\n\n\t// skip initial whitespace\n\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\ti++\n\t}\n\n\tfor i < len(s) {\n\t\tpart, consumed, err := parseSimpleSelectorSequence(s[i:])\n\t\tif err != nil {\n\t\t\treturn ComplexSelector{}, err\n\t\t}\n\t\tif consumed == 0 {\n\t\t\tbreak\n\t\t}\n\t\tparts = append(parts, part)\n\t\ti += consumed\n\n\t\t// skip whitespace after the simple selector\n\t\thasSpace := false\n\t\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\t\thasSpace = true\n\t\t\ti++\n\t\t}\n\n\t\tif i >= len(s) {\n\t\t\tbreak\n\t\t}\n\n\t\t// determine combinator\n\t\tcomb := \"\"\n\t\tif s[i] == '>' || s[i] == '+' || s[i] == '~' {\n\t\t\tcomb = string(s[i])\n\t\t\ti++\n\t\t\t// skip whitespace after explicit combinator\n\t\t\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\t\t\ti++\n\t\t\t}\n\t\t} else if hasSpace {\n\t\t\tcomb = \" \"\n\t\t}\n\n\t\tif i >= len(s) {\n\t\t\tbreak\n\t\t}\n\n\t\t// if we set a combinator, store it on the next part we'll parse\n\t\tif comb != \"\" {\n\t\t\tnextPart, nextConsumed, err := parseSimpleSelectorSequence(s[i:])\n\t\t\tif err != nil {\n\t\t\t\treturn ComplexSelector{}, err\n\t\t\t}\n\t\t\tnextPart.Combinator = comb\n\t\t\tparts = append(parts, nextPart)\n\t\t\ti += nextConsumed\n\t\t}\n\t}\n\n\treturn ComplexSelector{Parts: parts}, nil\n}\n\nfunc parseSimpleSelectorSequence(s string) (SelectorPart, int, error) {\n\tvar part SelectorPart\n\ti := 0\n\tfirst := true\n\tfor i < len(s) {\n\t\t// Skip whitespace only between sequences (not within)\n\t\tif unicode.IsSpace(rune(s[i])) {\n\t\t\tbreak\n\t\t}\n\n\t\tswitch s[i] {\n\t\tcase '*':\n\t\t\tif first {\n\t\t\t\tpart.Tag = \"*\"\n\t\t\t\ti++\n\t\t\t\tfirst = false\n\t\t\t} else {\n\t\t\t\treturn part, i, nil\n\t\t\t}\n\t\tcase '#':\n\t\t\tid, n := parseHash(s[i:])\n\t\t\tpart.ID = id\n\t\t\ti += n\n\t\t\tfirst = false\n\t\tcase '.':\n\t\t\tclass, n := parseClass(s[i:])\n\t\t\tpart.Classes = append(part.Classes, class)\n\t\t\ti += n\n\t\t\tfirst = false\n\t\tcase '[':\n\t\t\tattr, n, err := parseAttribute(s[i:])\n\t\t\tif err != nil {\n\t\t\t\treturn part, i, err\n\t\t\t}\n\t\t\tpart.Attributes = append(part.Attributes, attr)\n\t\t\ti += n\n\t\t\tfirst = false\n\t\tcase ':':\n\t\t\tpseudo, n, err := parsePseudo(s[i:])\n\t\t\tif err != nil {\n\t\t\t\treturn part, i, err\n\t\t\t}\n\t\t\tpart.Pseudos = append(part.Pseudos, pseudo)\n\t\t\ti += n\n\t\t\tfirst = false\n\t\tcase '>', '+', '~', ',':\n\t\t\treturn part, i, nil\n\t\tdefault:\n\t\t\tif first {\n\t\t\t\ttag, n := parseIdent(s[i:])\n\t\t\t\tif n == 0 {\n\t\t\t\t\treturn part, i, nil\n\t\t\t\t}\n\t\t\t\tpart.Tag = tag\n\t\t\t\ti += n\n\t\t\t\tfirst = false\n\t\t\t} else {\n\t\t\t\treturn part, i, nil\n\t\t\t}\n\t\t}\n\t}\n\treturn part, i, nil\n}\n\nfunc parseHash(s string) (string, int) {\n\tif len(s) == 0 || s[0] != '#' {\n\t\treturn \"\", 0\n\t}\n\tident, n := parseIdent(s[1:])\n\treturn ident, n + 1\n}\n\nfunc parseClass(s string) (string, int) {\n\tif len(s) == 0 || s[0] != '.' {\n\t\treturn \"\", 0\n\t}\n\tident, n := parseIdent(s[1:])\n\treturn ident, n + 1\n}\n\nfunc parseIdent(s string) (string, int) {\n\ti := 0\n\tfor i < len(s) {\n\t\tr := rune(s[i])\n\t\tif unicode.IsLetter(r) || unicode.IsDigit(r) || r == '-' || r == '_' {\n\t\t\ti++\n\t\t} else {\n\t\t\tbreak\n\t\t}\n\t}\n\treturn s[:i], i\n}\n\nfunc parseAttribute(s string) (AttrSelector, int, error) {\n\tvar attr AttrSelector\n\tif len(s) == 0 || s[0] != '[' {\n\t\treturn attr, 0, nil\n\t}\n\ti := 1\n\t// Skip whitespace\n\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\ti++\n\t}\n\tname, n := parseIdent(s[i:])\n\tif n == 0 {\n\t\treturn attr, 0, nil\n\t}\n\tattr.Name = strings.ToLower(name)\n\ti += n\n\t// Skip whitespace\n\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\ti++\n\t}\n\n\tif i < len(s) && (s[i] == '=' || s[i] == '~' || s[i] == '|' || s[i] == '^' || s[i] == '$' || s[i] == '*') {\n\t\t// operator\n\t\tif i+1 < len(s) && s[i+1] == '=' {\n\t\t\tattr.Op = s[i : i+2]\n\t\t\ti += 2\n\t\t} else if s[i] == '=' {\n\t\t\tattr.Op = \"=\"\n\t\t\ti++\n\t\t} else {\n\t\t\treturn attr, i, nil\n\t\t}\n\t\t// Skip whitespace\n\t\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\t\ti++\n\t\t}\n\t\tif i < len(s) && (s[i] == '\"' || s[i] == '\\'') {\n\t\t\tquote := s[i]\n\t\t\ti++\n\t\t\tstart := i\n\t\t\tfor i < len(s) && s[i] != quote {\n\t\t\t\ti++\n\t\t\t}\n\t\t\tattr.Value = s[start:i]\n\t\t\tif i < len(s) {\n\t\t\t\ti++\n\t\t\t}\n\t\t} else {\n\t\t\tval, n := parseIdent(s[i:])\n\t\t\tattr.Value = val\n\t\t\ti += n\n\t\t}\n\t}\n\n\t// Skip whitespace and expect ]\n\tfor i < len(s) && unicode.IsSpace(rune(s[i])) {\n\t\ti++\n\t}\n\tif i < len(s) && s[i] == ']' {\n\t\ti++\n\t}\n\treturn attr, i, nil\n}\n\nfunc parsePseudo(s string) (PseudoSelector, int, error) {\n\tvar pseudo PseudoSelector\n\tif len(s) == 0 || s[0] != ':' {\n\t\treturn pseudo, 0, nil\n\t}\n\ti := 1\n\t// handle :: pseudo-elements as single colons for matching\n\tif i < len(s) && s[i] == ':' {\n\t\ti++\n\t}\n\tname, n := parseIdent(s[i:])\n\tif n == 0 {\n\t\treturn pseudo, i, nil\n\t}\n\tpseudo.Name = name\n\ti += n\n\n\tif i < len(s) && s[i] == '(' {\n\t\ti++ // skip (\n\t\tstart := i\n\t\tdepth := 1\n\t\tfor i < len(s) && depth > 0 {\n\t\t\tswitch s[i] {\n\t\t\tcase '(':\n\t\t\t\tdepth++\n\t\t\tcase ')':\n\t\t\t\tdepth--\n\t\t\t}\n\t\t\tif depth > 0 {\n\t\t\t\ti++\n\t\t\t} else {\n\t\t\t\tbreak\n\t\t\t}\n\t\t}\n\t\tpseudo.Arg = s[start:i]\n\t\tif i < len(s) && s[i] == ')' {\n\t\t\ti++\n\t\t}\n\t}\n\treturn pseudo, i, nil\n}\n"};
+
+const KIND_STYLE = {
+  action:   { color: "#3b82f6", icon: "Play" },
+  decision: { color: "#f59e0b", icon: "GitBranch" },
+  call:     { color: "#8b5cf6", icon: "Code2" },
+  input:    { color: "#06b6d4", icon: "ArrowDownToLine" },
+  output:   { color: "#10b981", icon: "ArrowUpFromLine" },
+  state:    { color: "#eab308", icon: "CircleDot" },
+  storage:  { color: "#14b8a6", icon: "Database" },
+  external: { color: "#f97316", icon: "Globe" },
+  loop:     { color: "#84cc16", icon: "RefreshCw" },
+  error:    { color: "#ef4444", icon: "CircleAlert" },
+  async:    { color: "#ec4899", icon: "Zap" },
+  group:    { color: "#71717a", icon: "Layers3" }
+};
+const ICON_PATHS = {
+  Settings2: '<path d="M20 7h-9M14 17H4M17 3v8M7 13v8M20 17h-3M7 7H4"/><circle cx="14" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+  Database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>',
+  Box: '<path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',
+  Library: '<path d="m16 6 4 2v12l-4-2V6ZM4 4l4-1v13l-4 1V4ZM12 3l4 3v12l-4-3V3Z"/>',
+  Rocket: '<path d="M4.5 16.5c-1.5 1.3-2 3.5-2 3.5s2.2-.5 3.5-2c.7-.7.9-1.7.3-2.3s-1.1-.5-1.8.2Z"/><path d="m9 15-3-3 8-8c2-2 5-2 6-1-1 1-1 4-3 6l-8 8Z"/><path d="M14 6 8 4 4 8l6 2M18 10l2 6-4 4-2-6"/>',
+  Play: '<path d="m6 3 14 9-14 9V3Z"/>',
+  GitBranch: '<circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3M6 9a6 6 0 0 1 6-6h3"/>',
+  Code2: '<path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>',
+  ArrowDownToLine: '<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
+  ArrowUpFromLine: '<path d="M12 17V5M7 10l5-5 5 5M5 21h14"/>',
+  CircleDot: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>',
+  Globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',
+  RefreshCw: '<path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/>',
+  CircleAlert: '<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>',
+  Zap: '<path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/>',
+  Layers3: '<path d="m12 2 8 4-8 4-8-4 8-4Z"/><path d="m4 12 8 4 8-4M4 18l8 4 8-4"/>'
+};
+const paletteStyle = {};
+palette.forEach(p => { paletteStyle[p.type] = p; });
+const styleOf = n => (n.element_type && paletteStyle[n.element_type])
+  ? { color: paletteStyle[n.element_type].color, icon: paletteStyle[n.element_type].icon }
+  : KIND_STYLE[n.kind] || KIND_STYLE.action;
+
+const LAYERS = ["flow", "calls", "data", "state", "effects"];
+const activeLayers = new Set(LAYERS);
+const layersBox = document.getElementById("layers");
+LAYERS.forEach(l => {
+  const label = document.createElement("label");
+  label.className = "lchk";
+  const cb = document.createElement("input");
+  cb.type = "checkbox"; cb.checked = true;
+  cb.addEventListener("change", () => {
+    cb.checked ? activeLayers.add(l) : activeLayers.delete(l);
+    render();
+  });
+  label.appendChild(cb);
+  label.appendChild(document.createTextNode(l));
+  layersBox.appendChild(label);
+});
+
+let views = [{ title: viz.title, nodes: viz.nodes, edges: viz.edges }];
+let cursor = 0;
+const current = () => views[cursor];
+
+document.getElementById("back").addEventListener("click", () => { if (cursor > 0) { cursor--; render(); } });
+document.getElementById("fwd").addEventListener("click", () => { if (cursor < views.length - 1) { cursor++; render(); } });
+
+function openView(title, nodes, edges) {
+  views = views.slice(0, cursor + 1);
+  views.push({ title, nodes, edges });
+  cursor++;
+  render();
+}
+
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+function textWidth(text, font) {
+  ctx.font = font;
+  return ctx.measureText(text).width;
+}
+
+function wrapText(text, maxW, font) {
+  const words = (text || "").split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = "";
+  words.forEach(w => {
+    const test = line ? line + " " + w : w;
+    if (textWidth(test, font) <= maxW) {
+      line = test;
+    } else {
+      if (line) lines.push(line);
+      line = w;
+    }
+  });
+  if (line) lines.push(line);
+  return lines.length ? lines : [text || ""];
+}
+
+function nodeMetrics(n) {
+  const s = styleOf(n);
+  const isDecision = n.kind === "decision";
+  const labelFont = "500 12px system-ui, sans-serif";
+  const summaryFont = "10px system-ui, sans-serif";
+  const maxTextW = isDecision ? 200 : 240;
+  const labelLines = wrapText(n.label, maxTextW, labelFont);
+  const summaryLines = n.summary && !isDecision ? wrapText(n.summary, maxTextW, summaryFont) : [];
+  const labelW = Math.max(...labelLines.map(l => textWidth(l, labelFont)), 0);
+  const summaryW = Math.max(...summaryLines.map(l => textWidth(l, summaryFont)), 0);
+  const hasIcon = !isDecision;
+  const innerW = Math.max(labelW, summaryW) + (hasIcon ? 40 : 0);
+  const minW = isDecision ? 180 : 160;
+  const maxW = isDecision ? 260 : 320;
+  const width = Math.max(minW, Math.min(maxW, innerW + 32));
+  const lineH = 14;
+  const labelH = 12 + (labelLines.length - 1) * lineH;
+  const summaryH = summaryLines.length ? 6 + summaryLines.length * lineH : 0;
+  const height = 28 + labelH + summaryH;
+  return { width, height, labelLines, summaryLines, labelH, summaryH, isDecision, hasIcon, color: s.color, icon: s.icon };
+}
+
+function sequentialize(arcs, visible, level) {
+  if (level !== "file" && level !== "function") return arcs;
+  const lineOf = id => {
+    const n = visible.find(x => x.id === id);
+    return n && n.source ? n.source.start_line : 0;
+  };
+  const out = {};
+  arcs.forEach(a => {
+    (out[a.from] = out[a.from] || []).push(a);
+  });
+  const keep = new Set();
+  const add = [];
+  Object.keys(out).forEach(src => {
+    const srcNode = visible.find(x => x.id === src);
+    if (!srcNode || srcNode.kind === "decision") return;
+    const outs = out[src]
+      .filter(a => visible.find(x => x.id === a.to))
+      .slice()
+      .sort((a, b) => lineOf(a.to) - lineOf(b.to));
+    if (outs.length < 2) return;
+    keep.add(`${outs[0].from}→${outs[0].to}`);
+    for (let i = 1; i < outs.length; i++) {
+      add.push({ from: outs[i - 1].to, to: outs[i].to, label: outs[i].label });
+    }
+  });
+  return arcs.filter(a => {
+    const srcNode = visible.find(x => x.id === a.from);
+    if (srcNode && srcNode.kind === "decision") return true;
+    if (!out[a.from] || out[a.from].length < 2) return true;
+    return keep.has(`${a.from}→${a.to}`);
+  }).concat(add);
+}
+
+function layout(viewNodes, viewEdges) {
+  const visible = viewNodes.filter(n => activeLayers.has(n.layer));
+  const ids = new Set(visible.map(n => n.id));
+  let arcs = viewEdges.filter(e => ids.has(e.from) && ids.has(e.to)).map(e => ({ ...e }));
+  visible.forEach(n => {
+    if (n.kind === "decision" && n.branches) {
+      n.branches.forEach(b => {
+        if (ids.has(b.target)) arcs.push({ from: n.id, to: b.target, label: b.condition });
+      });
+    }
+  });
+  arcs = sequentialize(arcs, visible, viz.level);
+
+  const layer = {};
+  visible.forEach(n => layer[n.id] = 0);
+  for (let i = 0; i < visible.length; i++) {
+    arcs.forEach(a => { if (layer[a.to] <= layer[a.from]) layer[a.to] = layer[a.from] + 1; });
+  }
+
+  const metrics = {};
+  visible.forEach(n => metrics[n.id] = nodeMetrics(n));
+
+  const groups = new Map();
+  visible.forEach(n => {
+    const l = layer[n.id];
+    if (!groups.has(l)) groups.set(l, []);
+    groups.get(l).push(n);
+  });
+
+  const preds = {};
+  arcs.forEach(a => { (preds[a.to] = preds[a.to] || []).push(a.from); });
+
+  const sortedLayers = [...groups.keys()].sort((a, b) => a - b);
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    group.forEach(n => {
+      const ps = (preds[n.id] || []).filter(p => metrics[p]._pos);
+      n._bary = ps.length ? ps.reduce((s, p) => s + metrics[p]._pos.x + metrics[p].width / 2, 0) / ps.length : Infinity;
+    });
+    group.sort((a, b) => (a._bary - b._bary) || a.id.localeCompare(b.id));
+    let x = 40;
+    group.forEach(n => {
+      metrics[n.id]._pos = { x, y: 0 };
+      x += metrics[n.id].width + 40;
+    });
+  });
+
+  let maxLayerWidth = 0;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const last = group[group.length - 1];
+    const w = metrics[last.id]._pos.x + metrics[last.id].width;
+    if (w > maxLayerWidth) maxLayerWidth = w;
+  });
+
+  let y = 40;
+  sortedLayers.forEach(l => {
+    const group = groups.get(l);
+    const maxH = Math.max(...group.map(n => metrics[n.id].height));
+    group.forEach(n => { metrics[n.id]._pos.y = y + (maxH - metrics[n.id].height) / 2; });
+    const layerW = Math.max(...group.map(n => metrics[n.id]._pos.x + metrics[n.id].width));
+    const offset = (maxLayerWidth - layerW) / 2;
+    group.forEach(n => { metrics[n.id]._pos.x += Math.max(0, offset); });
+    y += maxH + 70;
+  });
+
+  visible.forEach(n => { n._shape = "process"; });
+
+  let step = 1;
+  sortedLayers.forEach(l => groups.get(l).forEach(n => { n._step = step++; }));
+
+  return { visible, arcs, metrics };
+}
+
+const NS = "http://www.w3.org/2000/svg";
+let query = "";
+
+function render() {
+  const view = current();
+  document.getElementById("crumb").textContent = view.title;
+  document.getElementById("back").disabled = cursor === 0;
+  document.getElementById("fwd").disabled = cursor === views.length - 1;
+
+  const { visible, arcs, metrics } = layout(view.nodes, view.edges);
+  const svg = document.getElementById("svg");
+  svg.innerHTML = "";
+  const stage = document.getElementById("stage");
+  let maxX = 0, maxY = 0;
+  visible.forEach(n => {
+    const m = metrics[n.id];
+    maxX = Math.max(maxX, m._pos.x + m.width + 40);
+    maxY = Math.max(maxY, m._pos.y + m.height + 40);
+  });
+  svg.setAttribute("width", Math.max(maxX, stage.clientWidth));
+  svg.setAttribute("height", Math.max(maxY, stage.clientHeight));
+
+  const defs = document.createElementNS(NS, "defs");
+  defs.innerHTML = '<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#52525b"/></marker>';
+  svg.appendChild(defs);
+
+  const matches = q => n => q && (n.label.toLowerCase().includes(q) || n.id.toLowerCase().includes(q));
+  const isHit = matches(query);
+
+  arcs.forEach(a => {
+    const m1 = metrics[a.from], m2 = metrics[a.to];
+    const p1 = m1._pos, p2 = m2._pos;
+    const sx = p1.x + m1.width / 2;
+    const sy = p1.y + m1.height;
+    const tx = p2.x + m2.width / 2;
+    const ty = p2.y;
+    const dy = Math.max(ty - sy, 30);
+    const c1y = sy + dy * 0.45;
+    const c2y = ty - dy * 0.45;
+    const d = `M ${sx} ${sy} C ${sx} ${c1y}, ${tx} ${c2y}, ${tx} ${ty}`;
+
+    const line = document.createElementNS(NS, "path");
+    line.setAttribute("d", d);
+    const status = view.edges.find(e => e.from === a.from && e.to === a.to);
+    line.setAttribute("class", "edge" + (status && status.status === "inferred" ? " inferred" : ""));
+    line.setAttribute("marker-end", "url(#arr)");
+    if (query && !(isHit(visible.find(n => n.id === a.from)) && isHit(visible.find(n => n.id === a.to)))) line.classList.add("dim");
+    svg.appendChild(line);
+
+    if (a.label) {
+      const len = line.getTotalLength();
+      const pt = line.getPointAtLength(len / 2);
+      const lw = textWidth(a.label, "10px system-ui, sans-serif") + 12;
+      const bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("class", "elabel-bg");
+      bg.setAttribute("x", pt.x - lw / 2);
+      bg.setAttribute("y", pt.y - 10);
+      bg.setAttribute("width", lw);
+      bg.setAttribute("height", 20);
+      bg.setAttribute("rx", 6);
+      svg.appendChild(bg);
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "elabel");
+      t.setAttribute("x", pt.x);
+      t.setAttribute("y", pt.y + 3);
+      t.setAttribute("text-anchor", "middle");
+      t.textContent = a.label;
+      svg.appendChild(t);
+    }
+  });
+
+  visible.forEach(n => {
+    const p = metrics[n.id]._pos;
+    const m = metrics[n.id];
+    const s = styleOf(n);
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", "node" + (query && !isHit(n) ? " dim" : ""));
+    let shape;
+    shape = document.createElementNS(NS, "rect");
+    shape.setAttribute("x", p.x); shape.setAttribute("y", p.y);
+    shape.setAttribute("width", m.width); shape.setAttribute("height", m.height);
+    shape.setAttribute("rx", 12);
+    shape.setAttribute("fill", "#18181b");
+    shape.setAttribute("stroke", s.color);
+    shape.setAttribute("stroke-width", 2);
+    if (query && isHit(n)) shape.setAttribute("class", "hit");
+    g.appendChild(shape);
+
+    const badge = document.createElementNS(NS, "circle");
+    badge.setAttribute("class", "step");
+    badge.setAttribute("cx", p.x + 12); badge.setAttribute("cy", p.y + 12); badge.setAttribute("r", 8);
+    g.appendChild(badge);
+    const bnum = document.createElementNS(NS, "text");
+    bnum.setAttribute("class", "step-num");
+    bnum.setAttribute("x", p.x + 12); bnum.setAttribute("y", p.y + 15);
+    bnum.setAttribute("text-anchor", "middle");
+    bnum.textContent = n._step;
+    g.appendChild(bnum);
+
+    if (m.hasIcon) {
+      const icon = document.createElementNS(NS, "g");
+      icon.setAttribute("transform", `translate(${p.x + 22} ${p.y + m.height/2 - 8}) scale(.6)`);
+      icon.setAttribute("fill", "none");
+      icon.setAttribute("stroke", s.color);
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("stroke-linecap", "round");
+      icon.setAttribute("stroke-linejoin", "round");
+      icon.innerHTML = ICON_PATHS[s.icon] || ICON_PATHS.Box;
+      g.appendChild(icon);
+    }
+
+    const textX = m.hasIcon ? p.x + 46 : p.x + 16;
+    const labelMaxW = m.width - (m.hasIcon ? 56 : 26);
+    const labelLines = wrapText(n.label, labelMaxW, "500 12px system-ui, sans-serif");
+    labelLines.forEach((ln, i) => {
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("class", "nlabel");
+      t.setAttribute("x", textX);
+      t.setAttribute("y", p.y + 22 + i * 14);
+      t.textContent = ln;
+      g.appendChild(t);
+    });
+
+    if (n.summary) {
+      const summaryLines = wrapText(n.summary, labelMaxW, "10px system-ui, sans-serif");
+      summaryLines.forEach((ln, i) => {
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("class", "nsummary");
+        t.setAttribute("x", textX);
+        t.setAttribute("y", p.y + 24 + labelLines.length * 14 + 6 + i * 14);
+        t.textContent = ln;
+        g.appendChild(t);
+      });
+    }
+
+    if (n.tests) {
+      ["unit", "integration", "e2e"].forEach((k, i) => {
+        const dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", p.x + m.width - 14 - i * 12); dot.setAttribute("cy", p.y + 14);
+        dot.setAttribute("r", 3.5);
+        dot.setAttribute("fill", n.tests[k] ? ["#34d399", "#60a5fa", "#f472b6"][i] : "#3f3f46");
+        g.appendChild(dot);
+      });
+    }
+
+    g.addEventListener("click", () => showSidebar(n));
+    svg.appendChild(g);
+  });
+}
+
+function showSidebar(n) {
+  const s = styleOf(n);
+  document.getElementById("s-title").textContent = n.label;
+  document.getElementById("s-meta").textContent =
+    s.icon + " " + n.kind + (n.element_type ? " · " + n.element_type : "") +
+    (n.confidence != null ? " · confidence " + n.confidence.toFixed(2) : "");
+  document.getElementById("s-tests").innerHTML = n.tests
+    ? ["unit", "integration", "e2e"].map(k =>
+        '<span class="chip ' + (n.tests[k] ? "on" : "off") + '">' + k + "</span>").join("")
+    : "";
+  document.getElementById("s-summary").textContent = n.summary || "";
+
+  const extra = document.getElementById("s-extra");
+  extra.innerHTML = "";
+  if (n.kind === "call" && n.children && n.children.length) {
+    const btn = document.createElement("button");
+    btn.className = "expand";
+    btn.textContent = "Раскрыть flow";
+    btn.addEventListener("click", () => {
+      document.getElementById("sidebar").style.display = "none";
+      openView(n.label, n.children, []);
+    });
+    extra.appendChild(btn);
+  }
+
+  const code = document.getElementById("s-code");
+  if (n.source && sources[n.source.file]) {
+    const lines = sources[n.source.file].split("\n");
+    const from = Math.max(1, n.source.start_line - 2);
+    const to = Math.min(lines.length, n.source.end_line + 2);
+    let html = "";
+    for (let i = from; i <= to; i++) {
+      const esc = lines[i - 1].replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      const body = '<span class="ln">' + i + "</span>" + esc;
+      html += i >= n.source.start_line && i <= n.source.end_line
+        ? '<span class="hl">' + body + "</span>" : body + "\n";
+    }
+    code.innerHTML = html;
+    code.style.display = "block";
+  } else {
+    code.style.display = "none";
+  }
+  document.getElementById("sidebar").style.display = "block";
+}
+
+document.getElementById("close").addEventListener("click", () => {
+  document.getElementById("sidebar").style.display = "none";
+});
+document.getElementById("search").addEventListener("input", ev => {
+  query = ev.target.value.trim().toLowerCase();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1492 @@
+{
+  "title": "cmd/manual/main.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:cmd/manual/main.go",
+      "kind": "group",
+      "label": "Основной файл пакета manual",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/manual/main.go",
+        "start_line": 1,
+        "end_line": 249
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Этот файл содержит главный пакет для тестирования рендеринга HTML-страницы с встроенным JavaScript, включая функции для парсинга DOM, выполнения скриптов и рендеринга в ASCII-формат.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "variable:cmd/manual/main.go:testPage:15601526",
+          "kind": "state",
+          "label": "HTML-шаблон testPage",
+          "layer": "state",
+          "source": {
+            "file": "cmd/manual/main.go",
+            "start_line": 19,
+            "end_line": 156
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/manual.testPage",
+          "summary": "Это самодостаточная HTML-страница со встроенными стилями, JavaScript-скриптами для тестирования DOM-операций и цветными блоками для визуального отображения.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:cmd/manual/main.go:main:15606604",
+          "kind": "group",
+          "label": "Функция main",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/manual/main.go",
+            "start_line": 158,
+            "end_line": 218
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/manual.main",
+          "summary": "Главная функция программы, выполняющая полный цикл обработки HTML-страницы с JavaScript",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:cmd/manual/main.go:15606622",
+              "kind": "action",
+              "label": "Создание временного файла",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 160,
+                "end_line": 160
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Формирует путь к временному файлу для тестовой HTML-страницы",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15606622",
+                "if:cmd/manual/main.go:15606690"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/manual/main.go:15606693",
+                  "kind": "action",
+                  "label": "Запись файла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 160,
+                    "end_line": 160
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Записывает содержимое тестовой страницы в файл с правами 0644",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15606693",
+                    "statement:cmd/manual/main.go:15606769"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15606790",
+              "kind": "action",
+              "label": "Удаление файла после работы",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 163,
+                "end_line": 163
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Записывает отложенное удаление временного файла при завершении программы",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15606790",
+                "statement:cmd/manual/main.go:15606821"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15606883",
+              "kind": "action",
+              "label": "Вывод пути к файлу",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 166,
+                "end_line": 166
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выводит путь к сохранённому файлу на экран с разделителями",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15606883",
+                "statement:cmd/manual/main.go:15606952"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:Parse:15606959",
+                  "kind": "call",
+                  "label": "Парсинг HTML",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 169,
+                    "end_line": 169
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/dom.Parse",
+                  "summary": "Вызывает функцию парсинга HTML-страницы в DOM-дерево",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/dom.Parse",
+                      "file": "internal/dom/dom.go",
+                      "label": "→ Parse in internal/dom/dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15606983",
+              "kind": "action",
+              "label": "Вывод статистики DOM",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 170,
+                "end_line": 170
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выводит количество дочерних элементов корня HTML-документа",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15606983",
+                "statement:cmd/manual/main.go:15607084"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:NewContext:15607091",
+                  "kind": "call",
+                  "label": "Создание контекста JS",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 173,
+                    "end_line": 173
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.NewContext",
+                  "summary": "Создаёт новый контекст выполнения JavaScript-кода",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.NewContext",
+                      "file": "internal/js/js.go",
+                      "label": "→ NewContext in internal/js/js.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15607111",
+              "kind": "action",
+              "label": "Закрытие контекста",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 174,
+                "end_line": 174
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Записывает отложенное закрытие JS-контекста при завершении работы",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15607111",
+                "statement:cmd/manual/main.go:15607134"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:InitDOM:15607134",
+                  "kind": "call",
+                  "label": "Инициализация DOM",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 176,
+                    "end_line": 176
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.InitDOM",
+                  "summary": "Инициализирует DOM-объект внутри JS-контекста для работы с элементами",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.InitDOM",
+                      "file": "internal/js/dom_events.go",
+                      "label": "→ InitDOM in internal/js/dom_events.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15607154",
+              "kind": "action",
+              "label": "Настройка логгера",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 179,
+                "end_line": 179
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Устанавливает стандартный вывод ошибок JS-контекста в stderr",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15607154",
+                "if:cmd/manual/main.go:15607184"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/manual/main.go:15607187",
+                  "kind": "action",
+                  "label": "Проверка регистрации мостов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 179,
+                    "end_line": 179
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет результат регистрации функций-мостов на ошибки",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15607187",
+                    "statement:cmd/manual/main.go:15607246"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/manual/main.go:RegisterBridgeFunctions:15607194",
+                      "kind": "call",
+                      "label": "Регистрация мостов",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 179,
+                        "end_line": 179
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                      "summary": "Регистрирует функции-мосты для взаимодействия между JS и Go",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.Context.RegisterBridgeFunctions",
+                          "file": "internal/js/bridge_dom.go",
+                          "label": "→ RegisterBridgeFunctions in internal/js/bridge_dom.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/manual/main.go:15607297",
+                  "kind": "action",
+                  "label": "Выход при ошибке",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 181,
+                    "end_line": 181
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает программу с кодом ошибки при неудачной инициализации мостов",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15607297"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:cmd/manual/main.go:15607319",
+              "kind": "decision",
+              "label": "Обработка ошибки DOM API",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 184,
+                "end_line": 191
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Обрабатывает случай неудачного выполнения скрипта DOM API",
+              "coverage_ids": [
+                "if:cmd/manual/main.go:15607319",
+                "if:cmd/manual/main.go:15607462"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/manual/main.go:15607322",
+                  "kind": "action",
+                  "label": "Проверка выполнения DOM API",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 184,
+                    "end_line": 184
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет результат выполнения скрипта DOM API на ошибки",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15607322",
+                    "statement:cmd/manual/main.go:15607386"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/manual/main.go:DOMAPIScript:15607345",
+                      "kind": "call",
+                      "label": "Получение скрипта DOM API",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 184,
+                        "end_line": 184
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                      "summary": "Получает скрипт инициализации DOM API для выполнения в JS-контексте",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.DOMAPIScript",
+                          "file": "internal/js/domapi.go",
+                          "label": "→ DOMAPIScript in internal/js/domapi.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/manual/main.go:15607440",
+                  "kind": "action",
+                  "label": "Выход при ошибке DOM API",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 186,
+                    "end_line": 186
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Завершает программу с кодом ошибки при неудачном выполнении DOM API",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15607440"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "statement:cmd/manual/main.go:15607465",
+                  "kind": "action",
+                  "label": "Проверка выполнения скриптов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 189,
+                    "end_line": 189
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет результат выполнения JavaScript-скриптов на ошибки",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15607465",
+                    "statement:cmd/manual/main.go:15607526"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/manual/main.go:ExecuteScripts:15607472",
+                      "kind": "call",
+                      "label": "Выполнение скриптов",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 189,
+                        "end_line": 189
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                      "summary": "Выполняет встроенные JavaScript-скрипты в контексте с DOM",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.ExecuteScripts",
+                          "file": "internal/js/dom_style.go",
+                          "label": "→ ExecuteScripts in internal/js/dom_style.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15607579",
+              "kind": "action",
+              "label": "Присваивание финального DOM",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 196,
+                "end_line": 196
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Присваивает результат получения финального DOM в переменную",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15607579",
+                "if:cmd/manual/main.go:15607613"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:GetFinalDOM:15607591",
+                  "kind": "call",
+                  "label": "Получение финального DOM",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 193,
+                    "end_line": 193
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                  "summary": "Получает обработанный DOM после выполнения всех скриптов",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.GetFinalDOM",
+                      "file": "internal/js/dom_style.go",
+                      "label": "→ GetFinalDOM in internal/js/dom_style.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "statement:cmd/manual/main.go:15607642",
+                  "kind": "action",
+                  "label": "Вывод статистики финального DOM",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 196,
+                    "end_line": 196
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит количество дочерних элементов корня финального DOM",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15607642",
+                    "statement:cmd/manual/main.go:15607718"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:cmd/manual/main.go:printDOMTree:15607718",
+                      "kind": "call",
+                      "label": "Печать дерева DOM",
+                      "layer": "calls",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 220,
+                        "end_line": 229
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/cmd/manual.printDOMTree",
+                      "summary": "Вызывает функцию для отладочного вывода структуры DOM-дерева",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/cmd/manual.printDOMTree",
+                          "file": "cmd/manual/main.go",
+                          "label": "→ printDOMTree in cmd/manual/main.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15607775",
+              "kind": "action",
+              "label": "Заголовок рендеринга",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 201,
+                "end_line": 201
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выводит заголовок о начале этапа рендеринга с CSS/Layout/Render",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15607775",
+                "statement:cmd/manual/main.go:15607837"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:Compute:15607847",
+                  "kind": "call",
+                  "label": "Вычисление стилей",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 202,
+                    "end_line": 202
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/css.Compute",
+                  "summary": "Вычисляет CSS-стили для элементов финального DOM-дерева",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/css.Compute",
+                      "file": "internal/css/computed.go",
+                      "label": "→ Compute in internal/css/computed.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15607873",
+              "kind": "action",
+              "label": "Присваивание макета",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 203,
+                "end_line": 203
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Присваивает построенный layout в переменную box",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15607873",
+                "statement:cmd/manual/main.go:15607920"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:Build:15607880",
+                  "kind": "call",
+                  "label": "Построение макета",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 203,
+                    "end_line": 203
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/layout.Build",
+                  "summary": "Строит layout-структуру на основе DOM и вычисленных стилей",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/layout.Build",
+                      "file": "internal/layout/layout.go",
+                      "label": "→ Build in internal/layout/layout.go"
+                    }
+                  ]
+                },
+                {
+                  "id": "call:cmd/manual/main.go:Render:15607926",
+                  "kind": "call",
+                  "label": "Рендеринг framebuffer",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 204,
+                    "end_line": 204
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/render.Render",
+                  "summary": "Рендерит framebuffer на основе layout-структуры с шириной 800",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/render.Render",
+                      "file": "internal/render/render.go",
+                      "label": "→ Render in internal/render/render.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15607954",
+              "kind": "action",
+              "label": "Присваивание строк",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 205,
+                "end_line": 205
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Присваивает результат ASCII-рендеринга в переменную lines",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15607954",
+                "statement:cmd/manual/main.go:15607995"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:cmd/manual/main.go:Render:15607963",
+                  "kind": "call",
+                  "label": "Рендеринг ASCII",
+                  "layer": "calls",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 205,
+                    "end_line": 205
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/ascii.Render",
+                  "summary": "Преобразует framebuffer в ASCII-представление с шириной 800",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/ascii.Render",
+                      "file": "internal/ascii/ascii.go",
+                      "label": "→ Render in internal/ascii/ascii.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15608055",
+              "kind": "action",
+              "label": "Вывод количества строк",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 208,
+                "end_line": 208
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выводит количество ANSI-строк в сгенерированном выводе",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15608055",
+                "statement:cmd/manual/main.go:15608105"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:cmd/manual/main.go:15608139",
+              "kind": "loop",
+              "label": "Цикл вывода строк",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 211,
+                "end_line": 214
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерируется по строкам ASCII-рендера для последовательного вывода",
+              "coverage_ids": [
+                "loop:cmd/manual/main.go:15608139",
+                "statement:cmd/manual/main.go:15608204"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:cmd/manual/main.go:15608176",
+                  "kind": "action",
+                  "label": "Печать строки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 212,
+                    "end_line": 212
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выводит текущую строку ASCII-рендера на экран",
+                  "coverage_ids": [
+                    "statement:cmd/manual/main.go:15608176"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:cmd/manual/main.go:15608260",
+              "kind": "action",
+              "label": "Пауза для наблюдения",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 217,
+                "end_line": 217
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Задерживает выполнение программы на 2 секунды для наблюдения вывода",
+              "coverage_ids": [
+                "statement:cmd/manual/main.go:15608260"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:cmd/manual/main.go:printDOMTree:15608291",
+          "kind": "group",
+          "label": "Функция печати дерева DOM",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/manual/main.go",
+            "start_line": 220,
+            "end_line": 229
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/manual.printDOMTree",
+          "summary": "Рекурсивная функция для отладочного вывода структуры DOM-дерева",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:cmd/manual/main.go:15608331",
+              "kind": "loop",
+              "label": "Цикл по дочерним элементам",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 221,
+                "end_line": 228
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерируется по дочерним элементам корня DOM-дерева",
+              "coverage_ids": [
+                "loop:cmd/manual/main.go:15608331"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:cmd/manual/main.go:15608373",
+                  "kind": "decision",
+                  "label": "Проверка типа узла",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 222,
+                    "end_line": 227
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, является ли текущий узел элементом DOM",
+                  "coverage_ids": [
+                    "if:cmd/manual/main.go:15608373"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:cmd/manual/main.go:15608416",
+                      "kind": "action",
+                      "label": "Вывод элемента",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 223,
+                        "end_line": 223
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Выводит информацию об элементе DOM с именем тега и количеством детей",
+                      "coverage_ids": [
+                        "statement:cmd/manual/main.go:15608416",
+                        "if:cmd/manual/main.go:15608493"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:cmd/manual/main.go:15608534",
+                          "kind": "action",
+                          "label": "Вызов функции печати body",
+                          "layer": "flow",
+                          "source": {
+                            "file": "cmd/manual/main.go",
+                            "start_line": 225,
+                            "end_line": 225
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Выполняет вызов функции для печати содержимого body-элемента",
+                          "coverage_ids": [
+                            "statement:cmd/manual/main.go:15608534"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:cmd/manual/main.go:printHTMLBody:15608534",
+                              "kind": "call",
+                              "label": "Вызов печати body",
+                              "layer": "calls",
+                              "source": {
+                                "file": "cmd/manual/main.go",
+                                "start_line": 231,
+                                "end_line": 249
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/cmd/manual.printHTMLBody",
+                              "summary": "Вызывает функцию для отладочного вывода содержимого body-элемента",
+                              "coverage_ids": [],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/cmd/manual.printHTMLBody",
+                                  "file": "cmd/manual/main.go",
+                                  "label": "→ printHTMLBody in cmd/manual/main.go"
+                                }
+                              ]
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.main",
+              "file": "cmd/manual/main.go",
+              "label": "← main in cmd/manual/main.go"
+            }
+          ]
+        },
+        {
+          "id": "func:cmd/manual/main.go:printHTMLBody:15608584",
+          "kind": "group",
+          "label": "Функция печати body",
+          "layer": "flow",
+          "source": {
+            "file": "cmd/manual/main.go",
+            "start_line": 231,
+            "end_line": 249
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/cmd/manual.printHTMLBody",
+          "summary": "Функция для отладочного вывода содержимого body-элемента DOM",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:cmd/manual/main.go:15608627",
+              "kind": "loop",
+              "label": "Цикл по детям body",
+              "layer": "flow",
+              "source": {
+                "file": "cmd/manual/main.go",
+                "start_line": 232,
+                "end_line": 248
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Итерируется по дочерним элементам body-элемента",
+              "coverage_ids": [
+                "loop:cmd/manual/main.go:15608627"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:cmd/manual/main.go:15608674",
+                  "kind": "decision",
+                  "label": "Фильтрация узлов",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 233,
+                    "end_line": 236
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет тип и имя тега узла, пропускает неподходящие элементы",
+                  "coverage_ids": [
+                    "if:cmd/manual/main.go:15608674",
+                    "statement:cmd/manual/main.go:15608773"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:cmd/manual/main.go:15608746",
+                      "kind": "action",
+                      "label": "Пропуск элемента",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 236,
+                        "end_line": 236
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Пропускает текущую итерацию цикла для неподходящих узлов",
+                      "coverage_ids": [
+                        "statement:cmd/manual/main.go:15608746"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "loop:cmd/manual/main.go:15608843",
+                  "kind": "loop",
+                  "label": "Цикл по элементам body",
+                  "layer": "flow",
+                  "source": {
+                    "file": "cmd/manual/main.go",
+                    "start_line": 237,
+                    "end_line": 247
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Итерируется по дочерним элементам body для их отладочного вывода",
+                  "coverage_ids": [
+                    "loop:cmd/manual/main.go:15608843"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:cmd/manual/main.go:15608890",
+                      "kind": "decision",
+                      "label": "Проверка типа узла",
+                      "layer": "flow",
+                      "source": {
+                        "file": "cmd/manual/main.go",
+                        "start_line": 238,
+                        "end_line": 246
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, является ли текущий узел элементом DOM",
+                      "coverage_ids": [
+                        "if:cmd/manual/main.go:15608890"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:cmd/manual/main.go:15608938",
+                          "kind": "action",
+                          "label": "Вывод элемента",
+                          "layer": "flow",
+                          "source": {
+                            "file": "cmd/manual/main.go",
+                            "start_line": 242,
+                            "end_line": 242
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Выводит информацию об элементе с именем тега, классом и текстом",
+                          "coverage_ids": [
+                            "statement:cmd/manual/main.go:15608938",
+                            "else:cmd/manual/main.go:15609057"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:cmd/manual/main.go:TextContent:15609020",
+                              "kind": "call",
+                              "label": "Получение текстового содержимого",
+                              "layer": "calls",
+                              "source": {
+                                "file": "cmd/manual/main.go",
+                                "start_line": 239,
+                                "end_line": 239
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+                              "summary": "Вызывает метод для получения текстового содержимого элемента DOM",
+                              "coverage_ids": [],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/dom.Node.TextContent",
+                                  "file": "internal/dom/dom.go",
+                                  "label": "→ TextContent in internal/dom/dom.go"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "if:cmd/manual/main.go:15609057",
+                              "kind": "decision",
+                              "label": "Проверка текстового узла",
+                              "layer": "flow",
+                              "source": {
+                                "file": "cmd/manual/main.go",
+                                "start_line": 240,
+                                "end_line": 246
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Проверяет, является ли текущий узел текстовым узлом DOM",
+                              "coverage_ids": [
+                                "if:cmd/manual/main.go:15609057"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "statement:cmd/manual/main.go:15609102",
+                                  "kind": "action",
+                                  "label": "Очистка текста",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "cmd/manual/main.go",
+                                    "start_line": 242,
+                                    "end_line": 242
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "Убирает пробелы из текстового содержимого узла",
+                                  "coverage_ids": [
+                                    "statement:cmd/manual/main.go:15609102",
+                                    "if:cmd/manual/main.go:15609153"
+                                  ],
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "statement:cmd/manual/main.go:15609193",
+                                      "kind": "action",
+                                      "label": "Обрезка текста",
+                                      "layer": "flow",
+                                      "source": {
+                                        "file": "cmd/manual/main.go",
+                                        "start_line": 242,
+                                        "end_line": 242
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": "Обрезает текст до 40 символов с добавлением троеточия",
+                                      "coverage_ids": [
+                                        "statement:cmd/manual/main.go:15609193"
+                                      ],
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "statement:cmd/manual/main.go:15609252",
+                                  "kind": "action",
+                                  "label": "Вывод текста",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "cmd/manual/main.go",
+                                    "start_line": 245,
+                                    "end_line": 245
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "Выводит текстовое содержимое узла в отладочном формате",
+                                  "coverage_ids": [
+                                    "statement:cmd/manual/main.go:15609252"
+                                  ],
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/cmd/manual.printDOMTree",
+              "file": "cmd/manual/main.go",
+              "label": "← printDOMTree in cmd/manual/main.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

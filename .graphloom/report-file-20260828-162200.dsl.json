@@ -1,0 +1,954 @@
+{
+  "title": "internal/browser/browser_view.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/browser/browser_view.go",
+      "kind": "group",
+      "label": "browser_view.go",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser_view.go",
+        "start_line": 1,
+        "end_line": 130
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/browser/browser_view.go:View:15593626",
+          "kind": "group",
+          "label": "Функция View",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_view.go",
+            "start_line": 11,
+            "end_line": 122
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.View",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "loop:internal/browser/browser_view.go:15594037",
+              "kind": "loop",
+              "label": "range m.Tabs",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 26,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "m.Tabs",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "if:internal/browser/browser_view.go:15594095",
+                  "kind": "decision",
+                  "label": "if label == \"\"",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 28,
+                    "end_line": 37
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "label == \"\"",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/browser/browser_view.go:15594157",
+                      "kind": "decision",
+                      "label": "else",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 30,
+                        "end_line": 37
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/browser/browser_view.go:15594325",
+                          "kind": "decision",
+                          "label": "if len(label) > 20",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 34,
+                            "end_line": 36
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "len(label) > 20",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/browser/browser_view.go:15594421",
+                  "kind": "decision",
+                  "label": "if i == m.ActiveTab",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 38,
+                    "end_line": 42
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "i == m.ActiveTab",
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "else:internal/browser/browser_view.go:15594514",
+                      "kind": "decision",
+                      "label": "else",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 40,
+                        "end_line": 42
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": null,
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser_view.go:15594786",
+              "kind": "decision",
+              "label": "if m.Mode == ModeAddress",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 52,
+                "end_line": 64
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "m.Mode == ModeAddress",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "else:internal/browser/browser_view.go:15594895",
+                  "kind": "decision",
+                  "label": "else",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 54,
+                    "end_line": 64
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "if:internal/browser/browser_view.go:15594939",
+                      "kind": "decision",
+                      "label": "if addr == \"\"",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 56,
+                        "end_line": 58
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "addr == \"\"",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15595037",
+                      "kind": "decision",
+                      "label": "if m.ZoomFactor() != 1.0",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 60,
+                        "end_line": 62
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "m.ZoomFactor() != 1.0",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:ZoomFactor:15595116",
+                          "kind": "call",
+                          "label": "Вызов ZoomFactor",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 61,
+                            "end_line": 61
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                          "summary": "→ github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                              "file": "internal/browser/browser.go",
+                              "label": "→ ZoomFactor in internal/browser/browser.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/browser/browser_view.go:15595249",
+              "kind": "action",
+              "label": "switch",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 92,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/browser/browser_view.go:15595269",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 70,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser_view.go:center:15595316",
+                      "kind": "call",
+                      "label": "Вызов center",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 124,
+                        "end_line": 130
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.center",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.center",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.center",
+                          "file": "internal/browser/browser_view.go",
+                          "label": "→ center in internal/browser/browser_view.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_view.go:15595351",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 72,
+                    "end_line": 72
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser_view.go:Err:15595410",
+                      "kind": "call",
+                      "label": "Вызов Err",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 72,
+                        "end_line": 72
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.Err",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.Err",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.Err",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ Err in internal/browser/browser.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/browser/browser_view.go:center:15595448",
+                      "kind": "call",
+                      "label": "Вызов center",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 124,
+                        "end_line": 130
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.center",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.center",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.center",
+                          "file": "internal/browser/browser_view.go",
+                          "label": "→ center in internal/browser/browser_view.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "call:internal/browser/browser_view.go:center:15595502",
+                      "kind": "call",
+                      "label": "Вызов center",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 124,
+                        "end_line": 130
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.center",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.center",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.center",
+                          "file": "internal/browser/browser_view.go",
+                          "label": "→ center in internal/browser/browser_view.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_view.go:15595564",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 74,
+                    "end_line": 74
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser_view.go:center:15595611",
+                      "kind": "call",
+                      "label": "Вызов center",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 124,
+                        "end_line": 130
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.center",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.center",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.center",
+                          "file": "internal/browser/browser_view.go",
+                          "label": "→ center in internal/browser/browser_view.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_view.go:15595651",
+                  "kind": "action",
+                  "label": "case",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 101,
+                    "end_line": 101
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/browser/browser_view.go:ANSILines:15595683",
+                      "kind": "call",
+                      "label": "Вызов ANSILines",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 78,
+                        "end_line": 78
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ ANSILines in internal/browser/browser.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15595771",
+                      "kind": "decision",
+                      "label": "if h <= 0",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 81,
+                        "end_line": 83
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "h <= 0",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15595820",
+                      "kind": "decision",
+                      "label": "if yoff >= len(lines)",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 84,
+                        "end_line": 89
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "yoff >= len(lines)",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/browser/browser_view.go:15595890",
+                          "kind": "decision",
+                          "label": "if yoff < 0",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 86,
+                            "end_line": 88
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "yoff < 0",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15595985",
+                      "kind": "decision",
+                      "label": "if end > len(lines)",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 91,
+                        "end_line": 93
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "end > len(lines)",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15596173",
+                      "kind": "decision",
+                      "label": "if w <= 0",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 98,
+                        "end_line": 100
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "w <= 0",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "call:internal/browser/browser_view.go:OffsetX:15596233",
+                      "kind": "call",
+                      "label": "Вызов OffsetX",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 101,
+                        "end_line": 101
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                      "summary": "→ github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                          "file": "internal/browser/browser.go",
+                          "label": "→ OffsetX in internal/browser/browser.go"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "loop:internal/browser/browser_view.go:15596253",
+                      "kind": "loop",
+                      "label": "range visible",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 102,
+                        "end_line": 116
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "visible",
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "if:internal/browser/browser_view.go:15596359",
+                          "kind": "decision",
+                          "label": "if start >= len(runes)",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 105,
+                            "end_line": 113
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "start >= len(runes)",
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "else:internal/browser/browser_view.go:15596435",
+                              "kind": "decision",
+                              "label": "else",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_view.go",
+                                "start_line": 107,
+                                "end_line": 113
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": null,
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "if:internal/browser/browser_view.go:15596486",
+                                  "kind": "decision",
+                                  "label": "if end > len(runes)",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_view.go",
+                                    "start_line": 109,
+                                    "end_line": 111
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "end > len(runes)",
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser_view.go:15596850",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 121,
+                "end_line": 121
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser_view.go:center:15596871",
+          "kind": "group",
+          "label": "Функция center",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_view.go",
+            "start_line": 124,
+            "end_line": 130
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.center",
+          "summary": null,
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser_view.go:15596920",
+              "kind": "decision",
+              "label": "if len(text) >= width",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 125,
+                "end_line": 127
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "len(text) >= width",
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser_view.go:15596952",
+                  "kind": "output",
+                  "label": "return",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 126,
+                    "end_line": 126
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": null,
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser_view.go:15597009",
+              "kind": "output",
+              "label": "return",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 129,
+                "end_line": 129
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": null,
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

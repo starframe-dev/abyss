@@ -1,0 +1,488 @@
+{
+  "title": "DOM API Implementation",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "package-js",
+      "kind": "group",
+      "label": "Пакет и импорты",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 1,
+        "end_line": 30
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "global-state",
+      "kind": "state",
+      "label": "Глобальное состояние DOM",
+      "layer": "state",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 32,
+        "end_line": 68
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "context-mgmt",
+      "kind": "action",
+      "label": "Управление контекстом JSC",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 70,
+        "end_line": 100
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "dirty-flag",
+      "kind": "state",
+      "label": "Флаг изменения DOM",
+      "layer": "state",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 102,
+        "end_line": 118
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "dom-init",
+      "kind": "action",
+      "label": "Инициализация DOM",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 120,
+        "end_line": 143
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node-creation",
+      "kind": "action",
+      "label": "Создание узлов DOM",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 145,
+        "end_line": 270
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node-manipulation",
+      "kind": "action",
+      "label": "Манипуляции узлами DOM",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 272,
+        "end_line": 460
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "content-ops",
+      "kind": "action",
+      "label": "Работа с содержимым узлов",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 462,
+        "end_line": 500
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "query-ops",
+      "kind": "action",
+      "label": "Поиск элементов DOM",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 502,
+        "end_line": 574
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "event-system",
+      "kind": "action",
+      "label": "Система событий",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 576,
+        "end_line": 658
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "css-bridge",
+      "kind": "action",
+      "label": "Мост для CSS-стилей",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 660,
+        "end_line": 700
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "layout-bridge",
+      "kind": "action",
+      "label": "Мост для layout-информации",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 702,
+        "end_line": 730
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "insert-ops",
+      "kind": "action",
+      "label": "Вставка элементов DOM",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 732,
+        "end_line": 820
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "clone-node",
+      "kind": "action",
+      "label": "Клонирование узлов",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 822,
+        "end_line": 840
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "timer-system",
+      "kind": "action",
+      "label": "Система таймеров",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 842,
+        "end_line": 920
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "serialization",
+      "kind": "action",
+      "label": "Сериализация DOM в HTML",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 922,
+        "end_line": 980
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "js-bridge",
+      "kind": "action",
+      "label": "Мост для JS-объектов",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 982,
+        "end_line": 1050
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "script-execution",
+      "kind": "action",
+      "label": "Выполнение скриптов",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 1052,
+        "end_line": 1120
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "package-js",
+      "to": "global-state",
+      "label": "Инициализация",
+      "status": "inferred"
+    },
+    {
+      "from": "global-state",
+      "to": "context-mgmt",
+      "label": "Управление контекстом",
+      "status": "inferred"
+    },
+    {
+      "from": "context-mgmt",
+      "to": "dirty-flag",
+      "label": "Отслеживание изменений",
+      "status": "inferred"
+    },
+    {
+      "from": "dirty-flag",
+      "to": "dom-init",
+      "label": "Инициализация",
+      "status": "inferred"
+    },
+    {
+      "from": "dom-init",
+      "to": "node-creation",
+      "label": "Создание узлов",
+      "status": "inferred"
+    },
+    {
+      "from": "node-creation",
+      "to": "node-manipulation",
+      "label": "Манипуляции",
+      "status": "inferred"
+    },
+    {
+      "from": "node-manipulation",
+      "to": "content-ops",
+      "label": "Работа с контентом",
+      "status": "inferred"
+    },
+    {
+      "from": "content-ops",
+      "to": "query-ops",
+      "label": "Поиск элементов",
+      "status": "inferred"
+    },
+    {
+      "from": "query-ops",
+      "to": "event-system",
+      "label": "События",
+      "status": "inferred"
+    },
+    {
+      "from": "event-system",
+      "to": "css-bridge",
+      "label": "CSS-стилизация",
+      "status": "inferred"
+    },
+    {
+      "from": "css-bridge",
+      "to": "layout-bridge",
+      "label": "Layout-информация",
+      "status": "inferred"
+    },
+    {
+      "from": "layout-bridge",
+      "to": "insert-ops",
+      "label": "Вставка элементов",
+      "status": "inferred"
+    },
+    {
+      "from": "insert-ops",
+      "to": "clone-node",
+      "label": "Клонирование",
+      "status": "inferred"
+    },
+    {
+      "from": "clone-node",
+      "to": "timer-system",
+      "label": "Таймеры",
+      "status": "inferred"
+    },
+    {
+      "from": "timer-system",
+      "to": "serialization",
+      "label": "Сериализация",
+      "status": "inferred"
+    },
+    {
+      "from": "serialization",
+      "to": "js-bridge",
+      "label": "JS-объекты",
+      "status": "inferred"
+    },
+    {
+      "from": "js-bridge",
+      "to": "script-execution",
+      "label": "Выполнение скриптов",
+      "status": "inferred"
+    }
+  ]
+}

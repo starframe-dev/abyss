@@ -1,0 +1,293 @@
+{
+  "title": "ASCII-рендеринг framebuffer в ANSI-арт",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "render_entry",
+      "kind": "action",
+      "label": "Входная точка рендеринга",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 19,
+        "end_line": 36
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Основная функция рендеринга с проверкой входных данных",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_ansi",
+      "kind": "action",
+      "label": "Рендеринг с ANSI-кодами",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 39,
+        "end_line": 54
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Генерация ANSI-кодов для цветного вывода",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_plain",
+      "kind": "action",
+      "label": "Рендеринг без ANSI-кодов",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 71,
+        "end_line": 73
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Простой текстовый вывод для E2E тестов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "make_grid",
+      "kind": "action",
+      "label": "Создание сетки",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 56,
+        "end_line": 68
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Преобразование framebuffer в двумерную сетку ячеек",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "choose_char",
+      "kind": "action",
+      "label": "Выбор символа и цвета",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 75,
+        "end_line": 86
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Определение символа и цветов для ячейки",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_ansi_lines",
+      "kind": "action",
+      "label": "Рендеринг строк ANSI",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 92,
+        "end_line": 135
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Генерация строк с ANSI-кодами цвета",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "render_plain_lines",
+      "kind": "action",
+      "label": "Рендеринг строк plain",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 137,
+        "end_line": 157
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Генерация строк без ANSI-кодов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "ansi_color",
+      "kind": "action",
+      "label": "Генерация ANSI-кодов цвета",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 159,
+        "end_line": 176
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Формирование ANSI-последовательностей для цветов",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "overlay_text",
+      "kind": "action",
+      "label": "Наложение текста",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 192,
+        "end_line": 227
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Применение текстового оверлея на сетку",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "collect_text",
+      "kind": "action",
+      "label": "Сбор строк текста",
+      "layer": "flow",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 229,
+        "end_line": 237
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Рекурсивный сбор текстовых строк из layout",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "cell_type",
+      "kind": "state",
+      "label": "Структура ячейки",
+      "layer": "state",
+      "source": {
+        "file": "internal/ascii/ascii.go",
+        "start_line": 13,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Определение типа Cell с символом и цветами",
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "render_entry",
+      "to": "make_grid",
+      "label": "Создание сетки",
+      "status": "inferred"
+    },
+    {
+      "from": "make_grid",
+      "to": "choose_char",
+      "label": "Выбор символов",
+      "status": "inferred"
+    },
+    {
+      "from": "render_entry",
+      "to": "overlay_text",
+      "label": "Наложение текста",
+      "status": "inferred"
+    },
+    {
+      "from": "overlay_text",
+      "to": "collect_text",
+      "label": "Сбор текста",
+      "status": "inferred"
+    },
+    {
+      "from": "render_entry",
+      "to": "render_ansi",
+      "label": "ANSI-рендеринг",
+      "status": "inferred"
+    },
+    {
+      "from": "render_ansi",
+      "to": "render_ansi_lines",
+      "label": "Рендер строк",
+      "status": "inferred"
+    },
+    {
+      "from": "render_ansi_lines",
+      "to": "ansi_color",
+      "label": "Генерация цветов",
+      "status": "inferred"
+    },
+    {
+      "from": "render_entry",
+      "to": "render_plain",
+      "label": "Plain-рендеринг",
+      "status": "inferred"
+    },
+    {
+      "from": "render_plain",
+      "to": "render_plain_lines",
+      "label": "Рендер строк",
+      "status": "inferred"
+    }
+  ]
+}

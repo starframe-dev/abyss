@@ -1,0 +1,893 @@
+{
+  "title": "cmd/debug_ansi/main.go - Анализ утилиты отладки",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "group_main",
+      "kind": "group",
+      "label": "Основная функция main",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 19,
+        "end_line": 80
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_launch_app",
+      "kind": "action",
+      "label": "Запустить приложение cue-tty",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 23,
+        "end_line": 30
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_get_page",
+      "kind": "action",
+      "label": "Получить страницу и ждать стабильности",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 32,
+        "end_line": 35
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_check_initial",
+      "kind": "action",
+      "label": "Проверить начальный экран",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 37,
+        "end_line": 41
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_get_raw_log",
+      "kind": "action",
+      "label": "Получить сырой лог приложения",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 43,
+        "end_line": 43
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_strip_ansi",
+      "kind": "action",
+      "label": "Очистить ANSI-коды из лога",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 44,
+        "end_line": 44
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_check_abyss",
+      "kind": "decision",
+      "label": "Проверить наличие 'Abyss' в логе",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 46,
+        "end_line": 52
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_check_enter_url",
+      "kind": "decision",
+      "label": "Проверить наличие 'Enter URL' в логе",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 54,
+        "end_line": 60
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_type_url",
+      "kind": "action",
+      "label": "Ввести URL example.com",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 62,
+        "end_line": 63
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_wait_domain",
+      "kind": "loop",
+      "label": "Ждать появления 'Example Domain' с таймаутом",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 65,
+        "end_line": 78
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_press_q",
+      "kind": "action",
+      "label": "Нажать q для выхода",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 80,
+        "end_line": 81
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_strip_ansi_func",
+      "kind": "action",
+      "label": "Функция очистки ANSI-кодов",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 15,
+        "end_line": 17
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_min_func",
+      "kind": "action",
+      "label": "Помощническая функция min",
+      "layer": "flow",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 82,
+        "end_line": 87
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_ansi_regexp",
+      "kind": "storage",
+      "label": "Регулярное выражение для ANSI",
+      "layer": "data",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 13,
+        "end_line": 13
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_launch",
+      "kind": "call",
+      "label": "Вызов cue.Launch",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 23,
+        "end_line": 23
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_close",
+      "kind": "call",
+      "label": "Закрытие приложения cue.App.Close",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 30,
+        "end_line": 30
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_page",
+      "kind": "call",
+      "label": "Получение страницы cue.App.Page",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 32,
+        "end_line": 32
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_text",
+      "kind": "call",
+      "label": "Получение текста страницы cue.Page.Text",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 38,
+        "end_line": 38
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_rawlog",
+      "kind": "call",
+      "label": "Получение сырого лога cue.App.RawLog",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 43,
+        "end_line": 43
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_type",
+      "kind": "call",
+      "label": "Ввод текста cue.Page.Type",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 62,
+        "end_line": 62
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_press",
+      "kind": "call",
+      "label": "Нажатие клавиши cue.Page.Press",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 64,
+        "end_line": 64
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_cue_waitstable",
+      "kind": "call",
+      "label": "Ожидание стабильности cue.Page.WaitStable",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 34,
+        "end_line": 34
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_fmt_fprintf",
+      "kind": "call",
+      "label": "Вывод ошибки fmt.Fprintf",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 27,
+        "end_line": 27
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_fmt_printf",
+      "kind": "call",
+      "label": "Вывод отладочной информации fmt.Printf",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 40,
+        "end_line": 40
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_fmt_println",
+      "kind": "call",
+      "label": "Вывод результата fmt.Println",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 49,
+        "end_line": 49
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_os_exit",
+      "kind": "call",
+      "label": "Завершение программы os.Exit",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 28,
+        "end_line": 28
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_bytes_contains",
+      "kind": "call",
+      "label": "Проверка содержимого bytes.Contains",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 46,
+        "end_line": 46
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_time_now",
+      "kind": "call",
+      "label": "Текущее время time.Now",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 65,
+        "end_line": 65
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_time_add",
+      "kind": "call",
+      "label": "Добавление времени time.Time.Add",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 65,
+        "end_line": 65
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_time_sleep",
+      "kind": "call",
+      "label": "Задержка времени time.Sleep",
+      "layer": "effects",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 76,
+        "end_line": 76
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_builtin_string",
+      "kind": "call",
+      "label": "Преобразование строки builtin.string",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 44,
+        "end_line": 44
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_len",
+      "kind": "call",
+      "label": "Вычисление длины len",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 40,
+        "end_line": 40
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    },
+    {
+      "id": "node_regexp_replace",
+      "kind": "call",
+      "label": "Замена по регулярному выражению regexp.Regexp.ReplaceAllString",
+      "layer": "calls",
+      "source": {
+        "file": "cmd/debug_ansi/main.go",
+        "start_line": 16,
+        "end_line": 16
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": null,
+      "tests": null,
+      "confidence": null,
+      "children": [],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "group_main",
+      "to": "node_launch_app",
+      "label": "Начало выполнения",
+      "status": "inferred"
+    },
+    {
+      "from": "node_launch_app",
+      "to": "node_get_page",
+      "label": "Получение страницы",
+      "status": "inferred"
+    },
+    {
+      "from": "node_get_page",
+      "to": "node_check_initial",
+      "label": "Проверка начального экрана",
+      "status": "inferred"
+    },
+    {
+      "from": "node_check_initial",
+      "to": "node_get_raw_log",
+      "label": "Получение лога",
+      "status": "inferred"
+    },
+    {
+      "from": "node_get_raw_log",
+      "to": "node_strip_ansi",
+      "label": "Очистка ANSI",
+      "status": "inferred"
+    },
+    {
+      "from": "node_strip_ansi",
+      "to": "node_check_abyss",
+      "label": "Проверка Abyss",
+      "status": "inferred"
+    },
+    {
+      "from": "node_check_abyss",
+      "to": "node_check_enter_url",
+      "label": "Проверка Enter URL",
+      "status": "inferred"
+    },
+    {
+      "from": "node_check_enter_url",
+      "to": "node_type_url",
+      "label": "Ввод URL",
+      "status": "inferred"
+    },
+    {
+      "from": "node_type_url",
+      "to": "node_wait_domain",
+      "label": "Ожидание домена",
+      "status": "inferred"
+    },
+    {
+      "from": "node_wait_domain",
+      "to": "node_press_q",
+      "label": "Завершение",
+      "status": "inferred"
+    },
+    {
+      "from": "node_strip_ansi_func",
+      "to": "node_strip_ansi",
+      "label": "Использование функции",
+      "status": "inferred"
+    },
+    {
+      "from": "node_min_func",
+      "to": "node_len",
+      "label": "Использование min",
+      "status": "inferred"
+    },
+    {
+      "from": "node_ansi_regexp",
+      "to": "node_strip_ansi_func",
+      "label": "Использование регулярки",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_launch",
+      "to": "node_launch_app",
+      "label": "Вызов метода",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_close",
+      "to": "node_launch_app",
+      "label": "Закрытие приложения",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_page",
+      "to": "node_get_page",
+      "label": "Получение страницы",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_text",
+      "to": "node_check_initial",
+      "label": "Получение текста",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_rawlog",
+      "to": "node_get_raw_log",
+      "label": "Получение лога",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_type",
+      "to": "node_type_url",
+      "label": "Ввод текста",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_press",
+      "to": "node_wait_domain",
+      "label": "Нажатие клавиш",
+      "status": "inferred"
+    },
+    {
+      "from": "node_cue_waitstable",
+      "to": "node_get_page",
+      "label": "Ожидание стабильности",
+      "status": "inferred"
+    },
+    {
+      "from": "node_fmt_fprintf",
+      "to": "node_launch_app",
+      "label": "Вывод ошибки",
+      "status": "inferred"
+    },
+    {
+      "from": "node_fmt_printf",
+      "to": "node_check_initial",
+      "label": "Вывод информации",
+      "status": "inferred"
+    },
+    {
+      "from": "node_fmt_println",
+      "to": "node_check_abyss",
+      "label": "Вывод результата",
+      "status": "inferred"
+    },
+    {
+      "from": "node_os_exit",
+      "to": "node_launch_app",
+      "label": "Завершение",
+      "status": "inferred"
+    },
+    {
+      "from": "node_bytes_contains",
+      "to": "node_check_abyss",
+      "label": "Проверка содержимого",
+      "status": "inferred"
+    },
+    {
+      "from": "node_time_now",
+      "to": "node_wait_domain",
+      "label": "Проверка времени",
+      "status": "inferred"
+    },
+    {
+      "from": "node_time_add",
+      "to": "node_wait_domain",
+      "label": "Установка дедлайна",
+      "status": "inferred"
+    },
+    {
+      "from": "node_time_sleep",
+      "to": "node_wait_domain",
+      "label": "Задержка",
+      "status": "inferred"
+    },
+    {
+      "from": "node_builtin_string",
+      "to": "node_strip_ansi",
+      "label": "Преобразование строки",
+      "status": "inferred"
+    },
+    {
+      "from": "node_len",
+      "to": "node_check_initial",
+      "label": "Вычисление длины",
+      "status": "inferred"
+    },
+    {
+      "from": "node_regexp_replace",
+      "to": "node_strip_ansi_func",
+      "label": "Замена по регулярке",
+      "status": "inferred"
+    }
+  ]
+}

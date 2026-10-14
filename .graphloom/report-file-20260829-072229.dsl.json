@@ -1,0 +1,1706 @@
+{
+  "title": "internal/browser/browser_view.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/browser/browser_view.go",
+      "kind": "group",
+      "label": "Файл пакета браузера",
+      "layer": "flow",
+      "source": {
+        "file": "internal/browser/browser_view.go",
+        "start_line": 1,
+        "end_line": 130
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Определяет пакет браузера и содержит реализацию модели представления",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/browser/browser_view.go:View:15593626",
+          "kind": "group",
+          "label": "Метод View модели",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_view.go",
+            "start_line": 11,
+            "end_line": 122
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.Model.View",
+          "summary": "Реализует метод View для отрисовки пользовательского интерфейса браузера",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/browser/browser_view.go:15593661",
+              "kind": "action",
+              "label": "Инициализация строкового буфера",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 15,
+                "end_line": 15
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Создаёт новый строковый конструктор для последующей сборки вывода интерфейса",
+              "coverage_ids": [
+                "statement:internal/browser/browser_view.go:15593661"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_view.go:15593703",
+              "kind": "action",
+              "label": "Стилизация вкладок",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 18,
+                "end_line": 18
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет стиль для неактивных вкладок с серым фоном и белым текстом",
+              "coverage_ids": [
+                "statement:internal/browser/browser_view.go:15593703",
+                "statement:internal/browser/browser_view.go:15593857"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/browser/browser_view.go:15594037",
+              "kind": "loop",
+              "label": "Итерация по вкладкам",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 26,
+                "end_line": 43
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Перебирает все вкладки для отображения их меток в строке табуляции",
+              "coverage_ids": [
+                "loop:internal/browser/browser_view.go:15594037"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser_view.go:15594072",
+                  "kind": "action",
+                  "label": "Получение URL вкладки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 23,
+                    "end_line": 23
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Извлекает URL-адрес из текущей вкладки для отображения",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser_view.go:15594072"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/browser/browser_view.go:15594095",
+                  "kind": "decision",
+                  "label": "Проверка пустого URL",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 28,
+                    "end_line": 37
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверяет, является ли URL пустым, и если да, устанавливает текст New Tab",
+                  "coverage_ids": [
+                    "if:internal/browser/browser_view.go:15594095"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15594124",
+                      "kind": "action",
+                      "label": "Установка текста New Tab",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 33,
+                        "end_line": 33
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает метке вкладки текст New Tab для новых вкладок без URL",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15594124",
+                        "else:internal/browser/browser_view.go:15594157"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15594210",
+                          "kind": "action",
+                          "label": "Удаление префикса https",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 32,
+                            "end_line": 32
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Убирает префикс https:// из URL для более компактного отображения",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15594210",
+                            "statement:internal/browser/browser_view.go:15594268"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "if:internal/browser/browser_view.go:15594325",
+                          "kind": "decision",
+                          "label": "Проверка длины URL",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 34,
+                            "end_line": 36
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Проверяет, превышает ли длина URL 20 символов для сокращения",
+                          "coverage_ids": [
+                            "if:internal/browser/browser_view.go:15594325"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "statement:internal/browser/browser_view.go:15594362",
+                              "kind": "action",
+                              "label": "Сокращение URL",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_view.go",
+                                "start_line": 34,
+                                "end_line": 34
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Обрезает URL до 20 символов и добавляет многоточие для отображения",
+                              "coverage_ids": [
+                                "statement:internal/browser/browser_view.go:15594362"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/browser/browser_view.go:15594421",
+                  "kind": "decision",
+                  "label": "Проверка активной вкладки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 38,
+                    "end_line": 42
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Определяет, является ли текущая вкладка активной для применения соответствующего стиля",
+                  "coverage_ids": [
+                    "if:internal/browser/browser_view.go:15594421"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15594455",
+                      "kind": "action",
+                      "label": "Отрисовка активной вкладки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 39,
+                        "end_line": 39
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Отображает метку активной вкладки с выделенным стилем",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15594455",
+                        "else:internal/browser/browser_view.go:15594514"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15594528",
+                          "kind": "action",
+                          "label": "Добавление неактивной вкладки",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 41,
+                            "end_line": 41
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Добавляет отформатированную метку неактивной вкладки в строковый буфер",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15594528"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_view.go:15594586",
+              "kind": "action",
+              "label": "Добавление переноса строки",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 44,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Добавляет символ переноса строки после табуляции для разделения секций",
+              "coverage_ids": [
+                "statement:internal/browser/browser_view.go:15594586"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_view.go:15594629",
+              "kind": "action",
+              "label": "Стилизация заголовка",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 48,
+                "end_line": 48
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Определяет стиль для строки заголовка с тёмным фоном и белым текстом",
+              "coverage_ids": [
+                "statement:internal/browser/browser_view.go:15594629"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/browser/browser_view.go:15594786",
+              "kind": "decision",
+              "label": "Проверка режима адреса",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 52,
+                "end_line": 64
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, находится ли браузер в режиме отображения адреса",
+              "coverage_ids": [
+                "if:internal/browser/browser_view.go:15594786"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/browser/browser_view.go:15594821",
+                  "kind": "action",
+                  "label": "Отрисовка заголовка в режиме адреса",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 60,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Отображает название Abyss и адрес в строке заголовка",
+                  "coverage_ids": [
+                    "statement:internal/browser/browser_view.go:15594821",
+                    "else:internal/browser/browser_view.go:15594895"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15594905",
+                      "kind": "action",
+                      "label": "Получение адреса",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 55,
+                        "end_line": 55
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Извлекает текущий адрес из модели браузера для отображения",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15594905",
+                        "if:internal/browser/browser_view.go:15594939"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15594967",
+                          "kind": "action",
+                          "label": "Установка текста Abyss",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 55,
+                            "end_line": 55
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Присваивает адресу текст Abyss для отображения по умолчанию",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15594967"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15595037",
+                      "kind": "decision",
+                      "label": "Проверка уровня зума",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 60,
+                        "end_line": 63
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, отличается ли коэффициент зума от единицы для отображения процента",
+                      "coverage_ids": [
+                        "if:internal/browser/browser_view.go:15595037",
+                        "statement:internal/browser/browser_view.go:15595154"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15595076",
+                          "kind": "action",
+                          "label": "Форматирование адреса с зумом",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 61,
+                            "end_line": 61
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Добавляет процент зума в адрес для отображения в заголовке",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15595076"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "call:internal/browser/browser_view.go:ZoomFactor:15595116",
+                              "kind": "call",
+                              "label": "Вызов метода ZoomFactor",
+                              "layer": "calls",
+                              "source": {
+                                "file": "internal/browser/browser_view.go",
+                                "start_line": 61,
+                                "end_line": 61
+                              },
+                              "element_type": null,
+                              "symbol": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                              "summary": "Вызывает метод для получения текущего коэффициента зума",
+                              "coverage_ids": [],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": [
+                                {
+                                  "id": "github.com/starframe/abyss/internal/browser.Model.ZoomFactor",
+                                  "file": "internal/browser/browser.go",
+                                  "label": "→ ZoomFactor in internal/browser/browser.go"
+                                }
+                              ]
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/browser/browser_view.go:15595204",
+              "kind": "action",
+              "label": "Добавление переноса после заголовка",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 65,
+                "end_line": 65
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Добавляет символ переноса строки после строки заголовка",
+              "coverage_ids": [
+                "statement:internal/browser/browser_view.go:15595204"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "switch:internal/browser/browser_view.go:15595249",
+              "kind": "action",
+              "label": "Переключение режима контента",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 92,
+                "end_line": 92
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выбирает режим отображения контента на основе текущего состояния модели",
+              "coverage_ids": [
+                "switch:internal/browser/browser_view.go:15595249"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "case:internal/browser/browser_view.go:15595269",
+                  "kind": "action",
+                  "label": "Режим загрузки",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 70,
+                    "end_line": 70
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Отображает сообщение о загрузке в центре экрана",
+                  "coverage_ids": [
+                    "case:internal/browser/browser_view.go:15595269",
+                    "case:internal/browser/browser_view.go:15595351"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595295",
+                      "kind": "action",
+                      "label": "Добавление сообщения загрузки",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 70,
+                        "end_line": 70
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Добавляет отцентрированное сообщение о загрузке в строковый буфер",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595295"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:center:15595316",
+                          "kind": "call",
+                          "label": "Центрирование текста загрузки",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 124,
+                            "end_line": 130
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.center",
+                          "summary": "Вызывает функцию для центрирования текста загрузки по ширине экрана",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.center",
+                              "file": "internal/browser/browser_view.go",
+                              "label": "→ center in internal/browser/browser_view.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595375",
+                      "kind": "action",
+                      "label": "Форматирование сообщения об ошибке",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 72,
+                        "end_line": 72
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Создаёт строку с префиксом Error и сообщением об ошибке",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595375",
+                        "statement:internal/browser/browser_view.go:15595427"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:Err:15595410",
+                          "kind": "call",
+                          "label": "Получение ошибки",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 72,
+                            "end_line": 72
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.Model.Err",
+                          "summary": "Вызывает метод для получения последней ошибки модели",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.Model.Err",
+                              "file": "internal/browser/browser.go",
+                              "label": "→ Err in internal/browser/browser.go"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "call:internal/browser/browser_view.go:center:15595448",
+                          "kind": "call",
+                          "label": "Центрирование сообщения об ошибке",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 124,
+                            "end_line": 130
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.center",
+                          "summary": "Вызывает функцию для центрирования сообщения об ошибке по ширине",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.center",
+                              "file": "internal/browser/browser_view.go",
+                              "label": "→ center in internal/browser/browser_view.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595481",
+                      "kind": "action",
+                      "label": "Добавление подсказки управления",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 74,
+                        "end_line": 74
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Добавляет отцентрированную подсказку о клавишах Ctrl+L и Q в буфер",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595481"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:center:15595502",
+                          "kind": "call",
+                          "label": "Центрирование подсказки",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 124,
+                            "end_line": 130
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.center",
+                          "summary": "Вызывает функцию для центрирования подсказки о клавишах управления",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.center",
+                              "file": "internal/browser/browser_view.go",
+                              "label": "→ center in internal/browser/browser_view.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "case:internal/browser/browser_view.go:15595564",
+                  "kind": "action",
+                  "label": "Режим адреса",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 92,
+                    "end_line": 92
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Отображает адрес в центре экрана в режиме просмотра адреса",
+                  "coverage_ids": [
+                    "case:internal/browser/browser_view.go:15595564",
+                    "case:internal/browser/browser_view.go:15595651"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595590",
+                      "kind": "action",
+                      "label": "Добавление адреса в буфер",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 76,
+                        "end_line": 76
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Добавляет отцентрированный адрес в строковый буфер вывода",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595590"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:center:15595611",
+                          "kind": "call",
+                          "label": "Центрирование адреса",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 124,
+                            "end_line": 130
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.center",
+                          "summary": "Вызывает функцию для центрирования адреса по ширине экрана",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.center",
+                              "file": "internal/browser/browser_view.go",
+                              "label": "→ center in internal/browser/browser_view.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595674",
+                      "kind": "action",
+                      "label": "Сохранение строк контента",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 78,
+                        "end_line": 78
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает полученный массив строк переменной для дальнейшей обработки",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595674",
+                        "statement:internal/browser/browser_view.go:15595705"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:ANSILines:15595683",
+                          "kind": "call",
+                          "label": "Получение строк ANSI",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 78,
+                            "end_line": 78
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                          "summary": "Вызывает метод для получения строк контента в формате ANSI",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.Model.ANSILines",
+                              "file": "internal/browser/browser.go",
+                              "label": "→ ANSILines in internal/browser/browser.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595740",
+                      "kind": "action",
+                      "label": "Получение высоты просмотра",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 78,
+                        "end_line": 78
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Извлекает высоту области просмотра из модели браузера",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595740"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "if:internal/browser/browser_view.go:15595771",
+                      "kind": "decision",
+                      "label": "Проверка высоты просмотра",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 81,
+                        "end_line": 89
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Проверяет, не отрицательна ли высота просмотра и корректирует её",
+                      "coverage_ids": [
+                        "if:internal/browser/browser_view.go:15595771",
+                        "if:internal/browser/browser_view.go:15595820"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15595795",
+                          "kind": "action",
+                          "label": "Установка высоты по умолчанию",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 84,
+                            "end_line": 84
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Присваивает высоте просмотра значение 24 при отрицательном значении",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15595795"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15595856",
+                          "kind": "action",
+                          "label": "Корректировка смещения Y",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 85,
+                            "end_line": 85
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Устанавливает смещение Y так, чтобы оно не выходило за пределы контента",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15595856",
+                            "if:internal/browser/browser_view.go:15595890"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "statement:internal/browser/browser_view.go:15595920",
+                              "kind": "action",
+                              "label": "Установка смещения в ноль",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_view.go",
+                                "start_line": 85,
+                                "end_line": 85
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Присваивает смещению Y значение 0 при отрицательном значении",
+                              "coverage_ids": [
+                                "statement:internal/browser/browser_view.go:15595920"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15595961",
+                      "kind": "action",
+                      "label": "Расчёт конца видимой области",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 91,
+                        "end_line": 91
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Вычисляет индекс конца видимой области как сумму смещения и высоты",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15595961",
+                        "if:internal/browser/browser_view.go:15595985"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15596019",
+                          "kind": "action",
+                          "label": "Корректировка конца области",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 92,
+                            "end_line": 92
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Устанавливает конец видимой области равным количеству строк при превышении",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15596019"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15596054",
+                      "kind": "action",
+                      "label": "Извлечение видимых строк",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 92,
+                        "end_line": 92
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Создаёт срез массива строк для отображения видимой области просмотра",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15596054"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15596152",
+                      "kind": "action",
+                      "label": "Получение ширины экрана",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 101,
+                        "end_line": 101
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Извлекает ширину экрана из модели для расчёта горизонтальной прокрутки",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15596152",
+                        "if:internal/browser/browser_view.go:15596173"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15596197",
+                          "kind": "action",
+                          "label": "Установка ширины по умолчанию",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 101,
+                            "end_line": 101
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Присваивает ширине экрана значение 80 при отрицательном значении",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15596197"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15596222",
+                      "kind": "action",
+                      "label": "Сохранение смещения X",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 101,
+                        "end_line": 101
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Присваивает смещению по X значение из модели для обработки прокрутки",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15596222"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "call:internal/browser/browser_view.go:OffsetX:15596233",
+                          "kind": "call",
+                          "label": "Получение смещения по X",
+                          "layer": "calls",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 101,
+                            "end_line": 101
+                          },
+                          "element_type": null,
+                          "symbol": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                          "summary": "Вызывает метод для получения текущего горизонтального смещения прокрутки",
+                          "coverage_ids": [],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": [
+                            {
+                              "id": "github.com/starframe/abyss/internal/browser.Model.OffsetX",
+                              "file": "internal/browser/browser.go",
+                              "label": "→ OffsetX in internal/browser/browser.go"
+                            }
+                          ]
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "loop:internal/browser/browser_view.go:15596253",
+                      "kind": "loop",
+                      "label": "Итерация по видимым строкам",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 102,
+                        "end_line": 116
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Перебирает видимые строки для применения горизонтальной прокрутки",
+                      "coverage_ids": [
+                        "loop:internal/browser/browser_view.go:15596253"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15596296",
+                          "kind": "action",
+                          "label": "Преобразование строки в рунес",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 101,
+                            "end_line": 101
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Конвертирует строку в массив рун для корректной обработки символов",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15596296",
+                            "statement:internal/browser/browser_view.go:15596330"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "if:internal/browser/browser_view.go:15596359",
+                          "kind": "decision",
+                          "label": "Проверка позиции начала",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 105,
+                            "end_line": 113
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Проверяет, не превышает ли начальная позиция длину строки",
+                          "coverage_ids": [
+                            "if:internal/browser/browser_view.go:15596359"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [
+                            {
+                              "id": "statement:internal/browser/browser_view.go:15596400",
+                              "kind": "action",
+                              "label": "Установка пустой строки",
+                              "layer": "flow",
+                              "source": {
+                                "file": "internal/browser/browser_view.go",
+                                "start_line": 109,
+                                "end_line": 109
+                              },
+                              "element_type": null,
+                              "symbol": null,
+                              "summary": "Присваивает строке пустое значение если смещение выходит за границы",
+                              "coverage_ids": [
+                                "statement:internal/browser/browser_view.go:15596400",
+                                "else:internal/browser/browser_view.go:15596435"
+                              ],
+                              "tests": null,
+                              "confidence": null,
+                              "children": [
+                                {
+                                  "id": "statement:internal/browser/browser_view.go:15596453",
+                                  "kind": "action",
+                                  "label": "Расчёт конца обрезки",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_view.go",
+                                    "start_line": 109,
+                                    "end_line": 109
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "Вычисляет индекс конца видимой части строки как сумму смещения и ширины",
+                                  "coverage_ids": [
+                                    "statement:internal/browser/browser_view.go:15596453",
+                                    "if:internal/browser/browser_view.go:15596486"
+                                  ],
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [
+                                    {
+                                      "id": "statement:internal/browser/browser_view.go:15596528",
+                                      "kind": "action",
+                                      "label": "Корректировка конца обрезки",
+                                      "layer": "flow",
+                                      "source": {
+                                        "file": "internal/browser/browser_view.go",
+                                        "start_line": 110,
+                                        "end_line": 110
+                                      },
+                                      "element_type": null,
+                                      "symbol": null,
+                                      "summary": "Устанавливает конец обрезки равным длине строки при превышении границ",
+                                      "coverage_ids": [
+                                        "statement:internal/browser/browser_view.go:15596528"
+                                      ],
+                                      "tests": null,
+                                      "confidence": null,
+                                      "children": [],
+                                      "branches": [],
+                                      "data_in": [],
+                                      "data_out": [],
+                                      "effects": [],
+                                      "cross_refs": []
+                                    }
+                                  ],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                },
+                                {
+                                  "id": "statement:internal/browser/browser_view.go:15596579",
+                                  "kind": "action",
+                                  "label": "Извлечение видимого сегмента",
+                                  "layer": "flow",
+                                  "source": {
+                                    "file": "internal/browser/browser_view.go",
+                                    "start_line": 112,
+                                    "end_line": 112
+                                  },
+                                  "element_type": null,
+                                  "symbol": null,
+                                  "summary": "Создаёт строку из видимого сегмента между началом и концом обрезки",
+                                  "coverage_ids": [
+                                    "statement:internal/browser/browser_view.go:15596579"
+                                  ],
+                                  "tests": null,
+                                  "confidence": null,
+                                  "children": [],
+                                  "branches": [],
+                                  "data_in": [],
+                                  "data_out": [],
+                                  "effects": [],
+                                  "cross_refs": []
+                                }
+                              ],
+                              "branches": [],
+                              "data_in": [],
+                              "data_out": [],
+                              "effects": [],
+                              "cross_refs": []
+                            }
+                          ],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        },
+                        {
+                          "id": "statement:internal/browser/browser_view.go:15596705",
+                          "kind": "action",
+                          "label": "Удаление пробелов справа",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/browser/browser_view.go",
+                            "start_line": 115,
+                            "end_line": 115
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Убирает лишние пробелы справа от строки для совместимости с cue-tty",
+                          "coverage_ids": [
+                            "statement:internal/browser/browser_view.go:15596705"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "statement:internal/browser/browser_view.go:15596771",
+                      "kind": "action",
+                      "label": "Объединение видимых строк",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/browser/browser_view.go",
+                        "start_line": 117,
+                        "end_line": 117
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Соединяет обработанные строки в одну строку с переносами",
+                      "coverage_ids": [
+                        "statement:internal/browser/browser_view.go:15596771",
+                        "statement:internal/browser/browser_view.go:15596817"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser_view.go:15596850",
+              "kind": "output",
+              "label": "Возврат строки вывода",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 121,
+                "end_line": 121
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возвращает содержимое строкового буфера как строку для отображения",
+              "coverage_ids": [
+                "return:internal/browser/browser_view.go:15596850"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/browser/browser_view.go:center:15596871",
+          "kind": "group",
+          "label": "Функция центрирования текста",
+          "layer": "flow",
+          "source": {
+            "file": "internal/browser/browser_view.go",
+            "start_line": 124,
+            "end_line": 130
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/browser.center",
+          "summary": "Центрирует текст по заданной ширине, добавляя пробелы слева и справа",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/browser/browser_view.go:15596920",
+              "kind": "decision",
+              "label": "Проверка длины текста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 125,
+                "end_line": 128
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверяет, не превышает ли длина текста заданную ширину",
+              "coverage_ids": [
+                "if:internal/browser/browser_view.go:15596920",
+                "statement:internal/browser/browser_view.go:15596974"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/browser/browser_view.go:15596952",
+                  "kind": "output",
+                  "label": "Возврат текста без центрирования",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/browser/browser_view.go",
+                    "start_line": 126,
+                    "end_line": 126
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возвращает текст без изменений если он уже занимает всю ширину",
+                  "coverage_ids": [
+                    "return:internal/browser/browser_view.go:15596952"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/browser/browser_view.go:15597009",
+              "kind": "output",
+              "label": "Возвращение отформатированного текста",
+              "layer": "data",
+              "source": {
+                "file": "internal/browser/browser_view.go",
+                "start_line": 129,
+                "end_line": 129
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Функция возвращает строку, состоящую из повторяющихся пробелов заданной длины и исходного текста, формируя отступ для выравнивания.",
+              "coverage_ids": [
+                "return:internal/browser/browser_view.go:15597009"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": [
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            },
+            {
+              "id": "github.com/starframe/abyss/internal/browser.Model.View",
+              "file": "internal/browser/browser_view.go",
+              "label": "← View in internal/browser/browser_view.go"
+            }
+          ]
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}

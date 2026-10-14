@@ -1,0 +1,1297 @@
+{
+  "title": "internal/js/dom.go",
+  "level": "file",
+  "nodes": [
+    {
+      "id": "file:internal/js/dom.go",
+      "kind": "group",
+      "label": "Файл пакета js",
+      "layer": "flow",
+      "source": {
+        "file": "internal/js/dom.go",
+        "start_line": 1,
+        "end_line": 84
+      },
+      "element_type": null,
+      "symbol": null,
+      "summary": "Это пакетный файл, содержащий реализацию моста между JavaScript и Go для работы с DOM-деревом.",
+      "coverage_ids": [],
+      "tests": null,
+      "confidence": null,
+      "children": [
+        {
+          "id": "func:internal/js/dom.go:getComputedStyleJS:15563495",
+          "kind": "group",
+          "label": "Функция getComputedStyleJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 26,
+            "end_line": 35
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getComputedStyleJS",
+          "summary": "Функция для получения вычисленных CSS-стилей элемента через мост JavaScriptCore.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom.go:15563644",
+              "kind": "decision",
+              "label": "Условие проверки узла",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 27,
+                "end_line": 29
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка существования узла в карте перед получением его стилей.",
+              "coverage_ids": [
+                "if:internal/js/dom.go:15563644"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15563665",
+                  "kind": "output",
+                  "label": "Возврат узла документа",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 28,
+                    "end_line": 28
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат корневой документации DOM при отсутствии узла.",
+                  "coverage_ids": [
+                    "return:internal/js/dom.go:15563665"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15563691",
+              "kind": "action",
+              "label": "Действие с узлом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 30,
+                "end_line": 30
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции с узлом DOM после его идентификации.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15563691"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:jsToNodeID:15563697",
+                  "kind": "call",
+                  "label": "Конвертация в NodeID",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 30,
+                    "end_line": 30
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.jsToNodeID",
+                  "summary": "Вызов функции для преобразования JavaScript объекта в идентификатор узла.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.jsToNodeID",
+                      "file": "internal/js/bridge_dom.go",
+                      "label": "→ jsToNodeID in internal/js/bridge_dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom.go:15563723",
+              "kind": "decision",
+              "label": "Условие блокировки стилей",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 31,
+                "end_line": 33
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка блокировки мьютекса перед доступом к вычисленным стилям.",
+              "coverage_ids": [
+                "if:internal/js/dom.go:15563723"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15563737",
+                  "kind": "output",
+                  "label": "Возврат стилей",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 32,
+                    "end_line": 32
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат вычисленных CSS-стилей для указанного узла.",
+                  "coverage_ids": [
+                    "return:internal/js/dom.go:15563737"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom.go:15563763",
+              "kind": "output",
+              "label": "Возврат прямоугольника",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 34,
+                "end_line": 34
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возврат вычисленных координат и размеров элемента.",
+              "coverage_ids": [
+                "return:internal/js/dom.go:15563763"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom.go:getBoundingClientRectJS:15563794",
+          "kind": "group",
+          "label": "Функция getBoundingClientRectJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 37,
+            "end_line": 66
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.getBoundingClientRectJS",
+          "summary": "Функция для получения границ элемента через мост JavaScriptCore.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "if:internal/js/dom.go:15563948",
+              "kind": "decision",
+              "label": "Условие проверки границ",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 38,
+                "end_line": 40
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка существования узла перед получением его границ.",
+              "coverage_ids": [
+                "if:internal/js/dom.go:15563948"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15563969",
+                  "kind": "output",
+                  "label": "Возврат границ",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 39,
+                    "end_line": 39
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат прямоугольника границ при отсутствии узла.",
+                  "coverage_ids": [
+                    "return:internal/js/dom.go:15563969"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15563995",
+              "kind": "action",
+              "label": "Действие с конвертацией",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 41,
+                "end_line": 41
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции конвертации узла после преобразования.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15563995"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:jsToNodeID:15564001",
+                  "kind": "call",
+                  "label": "Конвертация узла",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 41,
+                    "end_line": 41
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.jsToNodeID",
+                  "summary": "Преобразование JavaScript объекта в идентификатор узла DOM.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.jsToNodeID",
+                      "file": "internal/js/bridge_dom.go",
+                      "label": "→ jsToNodeID in internal/js/bridge_dom.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "if:internal/js/dom.go:15564027",
+              "kind": "decision",
+              "label": "Условие блокировки контекста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 42,
+                "end_line": 44
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Проверка блокировки мьютекса перед доступом к текущему контексту.",
+              "coverage_ids": [
+                "if:internal/js/dom.go:15564027"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "return:internal/js/dom.go:15564041",
+                  "kind": "output",
+                  "label": "Возврат контекста",
+                  "layer": "data",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 43,
+                    "end_line": 43
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Возврат текущего контекста JavaScriptCore и URL.",
+                  "coverage_ids": [
+                    "return:internal/js/dom.go:15564041"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15564067",
+              "kind": "action",
+              "label": "Действие с контекстом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 45,
+                "end_line": 45
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции с текущим контекстом JavaScriptCore.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15564067"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:getBoundingClientRect:15564075",
+                  "kind": "call",
+                  "label": "Получение границ",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 45,
+                    "end_line": 45
+                  },
+                  "element_type": null,
+                  "symbol": "github.com/starframe/abyss/internal/js.getBoundingClientRect",
+                  "summary": "Вызов функции для получения границ вычисленного прямоугольника.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": [
+                    {
+                      "id": "github.com/starframe/abyss/internal/js.getBoundingClientRect",
+                      "file": "internal/js/js.go",
+                      "label": "→ getBoundingClientRect in internal/js/js.go"
+                    }
+                  ]
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15564175",
+              "kind": "action",
+              "label": "Действие с флагом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 48,
+                "end_line": 48
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Установка флага состояния для отслеживания изменений DOM.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15564175"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15564455",
+              "kind": "action",
+              "label": "Действие с таймерами",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 52,
+                "end_line": 52
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Инициализация структуры для управления таймерами.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15564455"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565485",
+              "kind": "action",
+              "label": "Действие с числом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 56,
+                "end_line": 56
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции установки числового значения.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565485"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565485",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 56,
+                    "end_line": 56
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки числового значения.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565506",
+              "kind": "action",
+              "label": "Действие с числом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 57,
+                "end_line": 57
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции установки следующего числового значения.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565506"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565506",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 57,
+                    "end_line": 57
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки следующего числового значения.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565527",
+              "kind": "action",
+              "label": "Действие с таймером",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 58,
+                "end_line": 58
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции инициализации таймера.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565527"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565527",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 58,
+                    "end_line": 58
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки значения таймера.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565556",
+              "kind": "action",
+              "label": "Действие с таймером",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 59,
+                "end_line": 59
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции создания структуры таймера.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565556"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565556",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 59,
+                    "end_line": 59
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки структуры таймера.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565587",
+              "kind": "action",
+              "label": "Действие с идентификатором",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 60,
+                "end_line": 60
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции установки идентификатора таймера.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565587"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565587",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 60,
+                    "end_line": 60
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки идентификатора таймера.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565610",
+              "kind": "action",
+              "label": "Действие с вызовом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 61,
+                "end_line": 61
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции установки обратного вызова таймера.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565610"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565610",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 61,
+                    "end_line": 61
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки обратного вызова таймера.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565634",
+              "kind": "action",
+              "label": "Действие со сроком",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 62,
+                "end_line": 62
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции установки срока таймера.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565634"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565634",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 62,
+                    "end_line": 62
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки срока таймера.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15565672",
+              "kind": "action",
+              "label": "Действие с интервалом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 63,
+                "end_line": 63
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции установки интервала таймера.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565672"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "call:internal/js/dom.go:setNum:15565672",
+                  "kind": "call",
+                  "label": "Вызов setNum",
+                  "layer": "calls",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 63,
+                    "end_line": 63
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Вызов функции для установки интервала таймера.",
+                  "coverage_ids": [],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom.go:15565709",
+              "kind": "output",
+              "label": "Возврат таймера",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 65,
+                "end_line": 65
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возврат созданного таймера после инициализации всех полей.",
+              "coverage_ids": [
+                "return:internal/js/dom.go:15565709"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        },
+        {
+          "id": "func:internal/js/dom.go:logJS:15565735",
+          "kind": "group",
+          "label": "Функция logJS",
+          "layer": "flow",
+          "source": {
+            "file": "internal/js/dom.go",
+            "start_line": 68,
+            "end_line": 84
+          },
+          "element_type": null,
+          "symbol": "github.com/starframe/abyss/internal/js.logJS",
+          "summary": "Функция для логирования сообщений через мост JavaScriptCore.",
+          "coverage_ids": [],
+          "tests": null,
+          "confidence": null,
+          "children": [
+            {
+              "id": "statement:internal/js/dom.go:15565927",
+              "kind": "action",
+              "label": "Действие с блокировкой",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 72,
+                "end_line": 72
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции блокировки мьютекса контекста.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15565927"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "loop:internal/js/dom.go:15565947",
+              "kind": "loop",
+              "label": "Цикл обработки контекста",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 71,
+                "end_line": 78
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Цикл для обработки условий блокировки и разблокировки контекста.",
+              "coverage_ids": [
+                "loop:internal/js/dom.go:15565947"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [
+                {
+                  "id": "statement:internal/js/dom.go:15565976",
+                  "kind": "action",
+                  "label": "Действие с аргументом",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 72,
+                    "end_line": 72
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Выполнение операции обработки строкового аргумента.",
+                  "coverage_ids": [
+                    "statement:internal/js/dom.go:15565976"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "call:internal/js/dom.go:getArgString:15565986",
+                      "kind": "call",
+                      "label": "Получение строкового аргумента",
+                      "layer": "calls",
+                      "source": {
+                        "file": "internal/js/dom.go",
+                        "start_line": 72,
+                        "end_line": 72
+                      },
+                      "element_type": null,
+                      "symbol": "github.com/starframe/abyss/internal/js.getArgString",
+                      "summary": "Вызов функции для получения строкового аргумента из контекста.",
+                      "coverage_ids": [],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": [
+                        {
+                          "id": "github.com/starframe/abyss/internal/js.getArgString",
+                          "file": "internal/js/bridge_dom.go",
+                          "label": "→ getArgString in internal/js/bridge_dom.go"
+                        }
+                      ]
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                },
+                {
+                  "id": "if:internal/js/dom.go:15566011",
+                  "kind": "decision",
+                  "label": "Условие проверки контекста",
+                  "layer": "flow",
+                  "source": {
+                    "file": "internal/js/dom.go",
+                    "start_line": 73,
+                    "end_line": 77
+                  },
+                  "element_type": null,
+                  "symbol": null,
+                  "summary": "Проверка условия для закрытия текущего контекста.",
+                  "coverage_ids": [
+                    "if:internal/js/dom.go:15566011"
+                  ],
+                  "tests": null,
+                  "confidence": null,
+                  "children": [
+                    {
+                      "id": "statement:internal/js/dom.go:15566030",
+                      "kind": "action",
+                      "label": "Действие с контекстом",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom.go",
+                        "start_line": 74,
+                        "end_line": 74
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Выполнение операции установки нового контекста.",
+                      "coverage_ids": [
+                        "statement:internal/js/dom.go:15566030"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    },
+                    {
+                      "id": "else:internal/js/dom.go:15566072",
+                      "kind": "decision",
+                      "label": "Альтернативная ветка",
+                      "layer": "flow",
+                      "source": {
+                        "file": "internal/js/dom.go",
+                        "start_line": 75,
+                        "end_line": 77
+                      },
+                      "element_type": null,
+                      "symbol": null,
+                      "summary": "Альтернативная ветка для установки URL контекста.",
+                      "coverage_ids": [
+                        "else:internal/js/dom.go:15566072"
+                      ],
+                      "tests": null,
+                      "confidence": null,
+                      "children": [
+                        {
+                          "id": "statement:internal/js/dom.go:15566077",
+                          "kind": "action",
+                          "label": "Действие с URL",
+                          "layer": "flow",
+                          "source": {
+                            "file": "internal/js/dom.go",
+                            "start_line": 76,
+                            "end_line": 76
+                          },
+                          "element_type": null,
+                          "symbol": null,
+                          "summary": "Выполнение операции установки URL текущего контекста.",
+                          "coverage_ids": [
+                            "statement:internal/js/dom.go:15566077"
+                          ],
+                          "tests": null,
+                          "confidence": null,
+                          "children": [],
+                          "branches": [],
+                          "data_in": [],
+                          "data_out": [],
+                          "effects": [],
+                          "cross_refs": []
+                        }
+                      ],
+                      "branches": [],
+                      "data_in": [],
+                      "data_out": [],
+                      "effects": [],
+                      "cross_refs": []
+                    }
+                  ],
+                  "branches": [],
+                  "data_in": [],
+                  "data_out": [],
+                  "effects": [],
+                  "cross_refs": []
+                }
+              ],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15566110",
+              "kind": "action",
+              "label": "Действие с функцией",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 79,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции объявления функции получения контекста.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15566110"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15566160",
+              "kind": "action",
+              "label": "Действие с блокировкой",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 79,
+                "end_line": 79
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции блокировки мьютекса для получения контекста.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15566160"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15566223",
+              "kind": "action",
+              "label": "Действие с разблокировкой",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 81,
+                "end_line": 81
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции разблокировки мьютекса после получения контекста.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15566223"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "statement:internal/js/dom.go:15566380",
+              "kind": "action",
+              "label": "Действие с возвратом",
+              "layer": "flow",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 81,
+                "end_line": 81
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Выполнение операции возврата контекста и URL.",
+              "coverage_ids": [
+                "statement:internal/js/dom.go:15566380"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            },
+            {
+              "id": "return:internal/js/dom.go:15566443",
+              "kind": "output",
+              "label": "Возврат из функции",
+              "layer": "data",
+              "source": {
+                "file": "internal/js/dom.go",
+                "start_line": 83,
+                "end_line": 83
+              },
+              "element_type": null,
+              "symbol": null,
+              "summary": "Возврат из функции GetCurrentContext после выполнения всех операций.",
+              "coverage_ids": [
+                "return:internal/js/dom.go:15566443"
+              ],
+              "tests": null,
+              "confidence": null,
+              "children": [],
+              "branches": [],
+              "data_in": [],
+              "data_out": [],
+              "effects": [],
+              "cross_refs": []
+            }
+          ],
+          "branches": [],
+          "data_in": [],
+          "data_out": [],
+          "effects": [],
+          "cross_refs": []
+        }
+      ],
+      "branches": [],
+      "data_in": [],
+      "data_out": [],
+      "effects": [],
+      "cross_refs": []
+    }
+  ],
+  "edges": []
+}
