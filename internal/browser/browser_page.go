@@ -160,6 +160,11 @@ func fetchImagesContext(ctx context.Context, doc *dom.Node, baseURL string) {
 		if abs == "" {
 			continue
 		}
+		// The renderer looks images up by the element's src attribute, while the
+		// cache is keyed by absolute URL. Rewrite the attribute so both match.
+		if node.Attributes != nil {
+			node.Attributes["src"] = abs
+		}
 		if _, dup := seen[abs]; dup {
 			continue
 		}
