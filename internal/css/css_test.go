@@ -16,6 +16,19 @@ func TestCSSParseInline(t *testing.T) {
 	assert.Equal(t, "red", decls[1].Value)
 }
 
+func TestCSSParseStyleSheetIgnoresBracesInsideStrings(t *testing.T) {
+	rules := ParseStyleSheet(`.first { content: "escaped \" }"; color: red; } .second { color: blue; }`)
+	if len(rules) != 2 {
+		t.Fatalf("parsed rules = %d, want 2", len(rules))
+	}
+	if len(rules[0].Declarations) != 2 || rules[0].Declarations[1] != (Declaration{Property: "color", Value: "red"}) {
+		t.Fatalf("first rule declarations = %#v", rules[0].Declarations)
+	}
+	if len(rules[1].Declarations) != 1 || rules[1].Declarations[0].Value != "blue" {
+		t.Fatalf("second rule declarations = %#v", rules[1].Declarations)
+	}
+}
+
 func TestCSSParseStyleSheet(t *testing.T) {
 	css := `
         body { color: red; }

@@ -125,10 +125,31 @@ func stripComments(css string) string {
 
 func findClosingBrace(s string, start int) int {
 	depth := 0
+	var quote byte
+	escaped := false
 	for i := start; i < len(s); i++ {
-		if s[i] == '{' {
+		ch := s[i]
+		if escaped {
+			escaped = false
+			continue
+		}
+		if ch == '\\' {
+			escaped = true
+			continue
+		}
+		if quote != 0 {
+			if ch == quote {
+				quote = 0
+			}
+			continue
+		}
+		if ch == '\'' || ch == '"' {
+			quote = ch
+			continue
+		}
+		if ch == '{' {
 			depth++
-		} else if s[i] == '}' {
+		} else if ch == '}' {
 			depth--
 			if depth == 0 {
 				return i
