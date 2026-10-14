@@ -132,8 +132,10 @@ func drawBox(fb *framebuffer.Framebuffer, box *layout.LayoutBox) {
 	} else if box.Node != nil && box.Node.TagName == "img" {
 		if cells := quantizeImageBox(box); cells != nil {
 			drawAsciiCells(fb, box, cells)
-		} else {
+		} else if box.Style.Position != css.PositionAbsolute {
 			// Terminal fallback for raster images: reserve a visible neutral panel.
+			// Absolutely positioned icons are skipped so they cannot cover content
+			// underneath them (e.g. the search field on google.com).
 			placeholder := css.RGB(226, 232, 240)
 			fb.DrawRoundedRect(
 				box.Border.X, box.Border.Y,
