@@ -300,6 +300,11 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 			return 0
 		}
 		textParts = []string{inputLabel(box.Node)}
+		if textParts[0] == "" {
+			// An empty field still occupies one line so it stays visible.
+			box.Content.Height = 2
+			return 2
+		}
 	}
 	if len(textParts) == 0 {
 		return 0
