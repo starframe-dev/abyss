@@ -298,9 +298,9 @@ func setInnerHTML(id NodeID, html string) {
 		return
 	}
 
-	// Parse the HTML
-	doc := dom.Parse(html)
-	children := doc.Children
+	// Parse innerHTML as an unwrapped fragment so direct children are inserted.
+	fragment := dom.ParseFragment(html)
+	children := fragment.Children
 
 	// Clear existing children
 	for _, child := range node.Children {
@@ -312,10 +312,8 @@ func setInnerHTML(id NodeID, html string) {
 	for _, child := range children {
 		child.Parent = node
 		node.Children = append(node.Children, child)
+		assignIDsToNew(child)
 	}
-
-	// Assign IDs to new nodes
-	assignIDsToNew(doc)
 }
 
 // assignIDsToNew assigns IDs to nodes that don't have one yet.
@@ -404,12 +402,22 @@ func getElementByID(id string) *dom.Node {
 	nodeMu.Lock()
 	defer nodeMu.Unlock()
 
-	for _, n := range nodes {
-		if n.Type == dom.ElementNode && n.GetAttr("id") == id {
-			return n
+	var find func(*dom.Node) *dom.Node
+	find = func(node *dom.Node) *dom.Node {
+		if node == nil {
+			return nil
 		}
+		if node.Type == dom.ElementNode && node.GetAttr("id") == id {
+			return node
+		}
+		for _, child := range node.Children {
+			if match := find(child); match != nil {
+				return match
+			}
+		}
+		return nil
 	}
-	return nil
+	return find(rootDoc)
 }
 
 // getAttribute returns an attribute value from a node.

@@ -18,6 +18,22 @@ func TestParseClosingTagMatchesOpenAncestor(t *testing.T) {
 	}
 }
 
+func TestParseFragmentReturnsDirectFragmentChildren(t *testing.T) {
+	fragment := ParseFragment(`before <em>inside</em> after`)
+	if fragment.Type != DocumentFragmentNode {
+		t.Fatalf("root type = %v, want DocumentFragmentNode", fragment.Type)
+	}
+	if len(fragment.Children) != 3 {
+		t.Fatalf("fragment child count = %d, want text/element/text", len(fragment.Children))
+	}
+	if fragment.Children[1].TagName != "em" || fragment.Children[1].Parent != fragment {
+		t.Fatalf("middle child = %#v, want direct <em> child", fragment.Children[1])
+	}
+	if fragment.TextContent() != "before inside after" {
+		t.Fatalf("fragment text content = %q", fragment.TextContent())
+	}
+}
+
 func TestParseEnforcesNodeAndDepthLimits(t *testing.T) {
 	deep := strings.Repeat("<x>", MaxDOMDepth+20) + "tail"
 	if got := Parse(deep); countTreeNodes(got) > MaxDOMDepth+1 {

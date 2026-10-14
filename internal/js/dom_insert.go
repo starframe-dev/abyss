@@ -180,25 +180,22 @@ func InsertAdjacentHTML(nodeID NodeID, position, html string) {
 		return
 	}
 
-	// Parse the HTML
-	fragment := dom.Parse("<fragment>" + html + "</fragment>")
+	// Parse the HTML as an unwrapped fragment so the insertion does not add a
+	// synthetic <fragment> node and preserves top-level text nodes.
+	fragment := dom.ParseFragment(html)
 	if fragment == nil {
 		return
 	}
-
-	// Get the children of the fragment wrapper
-	var newNodes []*dom.Node
-	for _, child := range fragment.Children {
-		if child.Type == dom.ElementNode {
-			newNodes = append(newNodes, child)
-		}
-	}
+	newNodes := fragment.Children
 	if len(newNodes) == 0 {
 		return
 	}
 
 	nodeMu.Lock()
 	defer nodeMu.Unlock()
+	for _, newNode := range newNodes {
+		assignIDsToNew(newNode)
+	}
 
 	switch position {
 	case "beforebegin":

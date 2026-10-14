@@ -392,7 +392,16 @@ func TestRemoveChild(t *testing.T) {
 	parentID := getNodeID(parent)
 	kidID := getNodeID(kid)
 	removeChild(parentID, kidID)
-	// removeChild may be implemented as a no-op stub; we only verify no panic.
+	if got := getElementByID("kid"); got != nil {
+		t.Fatal("getElementByID returned a detached node")
+	}
+	if nodes[kidID] != kid {
+		t.Fatal("detached node should remain addressable by its NodeID")
+	}
+	appendChild(parentID, kidID)
+	if got := getElementByID("kid"); got != kid {
+		t.Fatal("reinserted node was not found in the document tree")
+	}
 }
 
 // TestAppendChild covers appendChild + removeNodeFromParentLocked helpers.
@@ -420,7 +429,70 @@ func TestSetInnerHTML(t *testing.T) {
 		t.Fatal("x missing")
 	}
 	id := getNodeID(x)
-	setInnerHTML(id, `<span>hi</span>`)
+	setInnerHTML(id, `before <span id="new">hi</span> after`)
+	if len(x.Children) != 3 || x.Children[1].TagName != "span" {
+		t.Fatalf("innerHTML children = %#v, want direct text/span/text children", x.Children)
+	}
+	if x.TextContent() != "before hi after" {
+		t.Fatalf("innerHTML text content = %q", x.TextContent())
+	}
+	if getElementByID("new") == nil {
+		t.Fatal("innerHTML did not register the inserted element")
+	}
+}
+
+func TestSetOuterHTMLParsesUnwrappedFragment(t *testing.T) {
+	InitDOM(dom.Parse(`<html><body><div id="parent"><i id="old"></i></div></body></html>`))
+	parent := getElementByID("parent")
+	old := getElementByID("old")
+	if parent == nil || old == nil {
+		t.Fatal("setup failed")
+	}
+	setOuterHTML(getNodeID(old), `<span id="replacement">new</span>tail`)
+	if len(parent.Children) != 2 || parent.Children[0].TagName != "span" {
+		t.Fatalf("outerHTML children = %#v, want direct span/text siblings", parent.Children)
+	}
+	if parent.Children[0].Parent != parent || getElementByID("replacement") != parent.Children[0] {
+		t.Fatal("outerHTML replacement has an incorrect parent or missing node ID")
+	}
+	if parent.QuerySelector("fragment") != nil {
+		t.Fatal("synthetic fragment wrapper leaked into DOM")
+	}
+}
+
+func TestSetOuterHTMLEmptyRemovesNode(t *testing.T) {
+	InitDOM(dom.Parse(`<html><body><div id="parent"><i id="old"></i></div></body></html>`))
+	parent := getElementByID("parent")
+	old := getElementByID("old")
+	if parent == nil || old == nil {
+		t.Fatal("setup failed")
+	}
+	setOuterHTML(getNodeID(old), "")
+	if len(parent.Children) != 0 || old.Parent != nil {
+		t.Fatal("empty outerHTML did not remove the element")
+	}
+	if getElementByID("old") != nil {
+		t.Fatal("removed element remained in document ID lookup")
+	}
+}
+
+func TestInsertAdjacentHTMLParsesUnwrappedTextAndElements(t *testing.T) {
+	InitDOM(dom.Parse(`<html><body><div id="root"><i id="anchor"></i></div></body></html>`))
+	root := getElementByID("root")
+	anchor := getElementByID("anchor")
+	if root == nil || anchor == nil {
+		t.Fatal("setup failed")
+	}
+	InsertAdjacentHTML(getNodeID(anchor), "beforebegin", `before <em id="inserted">inside</em> after`)
+	if len(root.Children) != 4 || root.Children[1].TagName != "em" {
+		t.Fatalf("inserted children = %#v, want direct text/em/text before anchor", root.Children)
+	}
+	if root.Children[1].Parent != root || getElementByID("inserted") != root.Children[1] {
+		t.Fatal("inserted element has an incorrect parent or missing node ID")
+	}
+	if root.QuerySelector("fragment") != nil {
+		t.Fatal("synthetic fragment wrapper leaked into DOM")
+	}
 }
 
 // TestMoveAllChildren covers moveAllChildren helper.

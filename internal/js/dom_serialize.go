@@ -123,20 +123,11 @@ func setOuterHTML(nodeID NodeID, html string) {
 	}
 
 	parent := n.Parent
-	fragment := dom.Parse("<fragment>" + html + "</fragment>")
+	fragment := dom.ParseFragment(html)
 	if fragment == nil {
 		return
 	}
-
-	var newNodes []*dom.Node
-	for _, child := range fragment.Children {
-		if child.Type == dom.ElementNode {
-			newNodes = append(newNodes, child)
-		}
-	}
-	if len(newNodes) == 0 {
-		return
-	}
+	newNodes := fragment.Children
 
 	nodeMu.Lock()
 	defer nodeMu.Unlock()
@@ -160,6 +151,7 @@ func setOuterHTML(nodeID NodeID, html string) {
 	// Insert new nodes at idx
 	for _, newNode := range newNodes {
 		newNode.Parent = parent
+		assignIDsToNew(newNode)
 	}
 	before := parent.Children[:idx]
 	after := parent.Children[idx:]

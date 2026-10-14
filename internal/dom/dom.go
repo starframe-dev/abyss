@@ -58,22 +58,33 @@ const (
 // Parse parses bounded HTML and returns the document root. Parsing stops when
 // the node or depth limit is reached, preserving the safely built prefix.
 func Parse(htmlStr string) *Node {
-	doc := &Node{Type: DocumentNode, Attributes: map[string]string{}, Children: []*Node{}}
+	root := &Node{Type: DocumentNode, Attributes: map[string]string{}, Children: []*Node{}}
+	return parseIntoRoot(htmlStr, root)
+}
+
+// ParseFragment parses an HTML fragment without adding an element wrapper.
+// It applies the same node, depth, and token-size limits as Parse.
+func ParseFragment(htmlStr string) *Node {
+	root := &Node{Type: DocumentFragmentNode, Attributes: map[string]string{}, Children: []*Node{}}
+	return parseIntoRoot(htmlStr, root)
+}
+
+func parseIntoRoot(htmlStr string, root *Node) *Node {
 	tokenizer := html.NewTokenizer(strings.NewReader(htmlStr))
 	tokenizer.SetMaxBuf(maxHTMLTokenBytes)
 
-	stack := []*Node{doc}
+	stack := []*Node{root}
 	nodeCount := 1
 
 	for {
 		tt := tokenizer.Next()
 		switch tt {
 		case html.ErrorToken:
-			return doc
+			return root
 
 		case html.TextToken:
 			if nodeCount >= MaxDOMNodes {
-				return doc
+				return root
 			}
 			before := len(stack[len(stack)-1].Children)
 			handleTextToken(stack, tokenizer)
@@ -83,7 +94,7 @@ func Parse(htmlStr string) *Node {
 
 		case html.StartTagToken, html.SelfClosingTagToken:
 			if nodeCount >= MaxDOMNodes || len(stack) >= MaxDOMDepth {
-				return doc
+				return root
 			}
 			stack = handleStartTag(stack, tokenizer, tt)
 			nodeCount++
