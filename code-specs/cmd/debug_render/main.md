@@ -6,13 +6,13 @@
 
 ## Входящие зависимости
 
-- `github.com/starframe/abyss/internal/ascii` — модуль рендеринга ASCII-графики
-- `github.com/starframe/abyss/internal/css` — модуль вычисления CSS-стилей
-- `github.com/starframe/abyss/internal/dom` — модуль парсинга DOM
-- `github.com/starframe/abyss/internal/fetcher` — модуль загрузки HTML-контента
-- `github.com/starframe/abyss/internal/js` — модуль выполнения JavaScript
-- `github.com/starframe/abyss/internal/layout` — модуль построения макета
-- `github.com/starframe/abyss/internal/render` — модуль текстового рендеринга
+- `github.com/starframe-dev/abyss/internal/ascii` — модуль рендеринга ASCII-графики
+- `github.com/starframe-dev/abyss/internal/css` — модуль вычисления CSS-стилей
+- `github.com/starframe-dev/abyss/internal/dom` — модуль парсинга DOM
+- `github.com/starframe-dev/abyss/internal/fetcher` — модуль загрузки HTML-контента
+- `github.com/starframe-dev/abyss/internal/js` — модуль выполнения JavaScript
+- `github.com/starframe-dev/abyss/internal/layout` — модуль построения макета
+- `github.com/starframe-dev/abyss/internal/render` — модуль текстового рендеринга
 
 ## Публичный API
 

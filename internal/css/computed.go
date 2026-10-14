@@ -3,6 +3,7 @@ package css
 
 import (
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -12,27 +13,38 @@ import (
 // cached is a global cache of computed styles keyed by document.
 var cached struct {
 	sync.Mutex
-	doc    *dom.Node
-	styles map[*dom.Node]ComputedStyle
+	doc           *dom.Node
+	styles        map[*dom.Node]ComputedStyle
+	viewportWidth float64
 }
 
 // Compute computes computed styles for all nodes in the document.
 // Results are cached and reused if the document hasn't changed.
 func Compute(doc *dom.Node) map[*dom.Node]ComputedStyle {
-	return computeWithExtra(doc, nil)
+	return ComputeAtWidth(doc, 0)
+}
+
+// ComputeAtWidth computes styles for a viewport of the given CSS-pixel width.
+func ComputeAtWidth(doc *dom.Node, viewportWidth float64) map[*dom.Node]ComputedStyle {
+	return computeWithExtra(doc, nil, viewportWidth)
 }
 
 // ComputeWithExternal computes styles with additional external CSS strings.
 func ComputeWithExternal(doc *dom.Node, externalCSS []string) map[*dom.Node]ComputedStyle {
-	return computeWithExtra(doc, externalCSS)
+	return ComputeWithExternalAtWidth(doc, externalCSS, 0)
 }
 
-func computeWithExtra(doc *dom.Node, externalCSS []string) map[*dom.Node]ComputedStyle {
+// ComputeWithExternalAtWidth computes styles using external CSS and viewport width.
+func ComputeWithExternalAtWidth(doc *dom.Node, externalCSS []string, viewportWidth float64) map[*dom.Node]ComputedStyle {
+	return computeWithExtra(doc, externalCSS, viewportWidth)
+}
+
+func computeWithExtra(doc *dom.Node, externalCSS []string, viewportWidth float64) map[*dom.Node]ComputedStyle {
 	cached.Lock()
 	defer cached.Unlock()
 
 	// Return cached result if document is the same and no external CSS
-	if cached.doc == doc && cached.styles != nil && len(externalCSS) == 0 {
+	if cached.doc == doc && cached.styles != nil && len(externalCSS) == 0 && cached.viewportWidth == viewportWidth {
 		return cached.styles
 	}
 
@@ -42,6 +54,9 @@ func computeWithExtra(doc *dom.Node, externalCSS []string) map[*dom.Node]Compute
 	var allRules []Rule
 	for _, styleNode := range doc.FindStyleTags() {
 		cssText := styleNode.TextContent()
+		if media := strings.TrimSpace(styleNode.GetAttr("media")); media != "" {
+			cssText = "@media " + media + " {\n" + cssText + "\n}"
+		}
 		rules := ParseStyleSheet(cssText)
 		allRules = append(allRules, rules...)
 	}
@@ -53,11 +68,12 @@ func computeWithExtra(doc *dom.Node, externalCSS []string) map[*dom.Node]Compute
 	}
 
 	// Compute styles recursively
-	computeNode(doc, allRules, styles, nil)
+	computeNode(doc, allRules, styles, nil, viewportWidth)
 
 	// Cache for next call
 	cached.doc = doc
 	cached.styles = styles
+	cached.viewportWidth = viewportWidth
 
 	return styles
 }
@@ -71,7 +87,7 @@ func InvalidateCache() {
 	cached.styles = nil
 }
 
-func computeNode(node *dom.Node, rules []Rule, styles map[*dom.Node]ComputedStyle, inheritedVars map[string]string) {
+func computeNode(node *dom.Node, rules []Rule, styles map[*dom.Node]ComputedStyle, inheritedVars map[string]string, viewportWidth float64) {
 	style := Default()
 	if node.Parent != nil {
 		if parentStyle, ok := styles[node.Parent]; ok {
@@ -87,6 +103,9 @@ func computeNode(node *dom.Node, rules []Rule, styles map[*dom.Node]ComputedStyl
 	}
 	var declarations []matchedDeclaration
 	for _, rule := range rules {
+		if !mediaQueryMatches(rule.MediaQuery, viewportWidth) || !supportsQueryMatches(rule.SupportsQuery) {
+			continue
+		}
 		for _, selector := range rule.Selectors {
 			if !nodeMatchesSelector(node, selector) {
 				continue
@@ -137,7 +156,119 @@ func computeNode(node *dom.Node, rules []Rule, styles map[*dom.Node]ComputedStyl
 
 	// Recurse to children
 	for _, child := range node.Children {
-		computeNode(child, rules, styles, variables)
+		computeNode(child, rules, styles, variables, viewportWidth)
+	}
+}
+
+func mediaQueryMatches(query string, viewportWidth float64) bool {
+	if len(query) > 256 {
+		return false
+	}
+	query = strings.TrimSpace(strings.ToLower(query))
+	if query == "" {
+		return true
+	}
+	for _, alternative := range strings.Split(query, ",") {
+		if mediaAlternativeMatches(strings.TrimSpace(alternative), viewportWidth) {
+			return true
+		}
+	}
+	return false
+}
+
+func mediaAlternativeMatches(query string, viewportWidth float64) bool {
+	query = strings.TrimSpace(strings.TrimPrefix(query, "only "))
+	if query == "all" || query == "screen" {
+		return true
+	}
+	if strings.HasPrefix(query, "screen and ") {
+		query = strings.TrimSpace(strings.TrimPrefix(query, "screen and "))
+	} else if strings.HasPrefix(query, "all and ") {
+		query = strings.TrimSpace(strings.TrimPrefix(query, "all and "))
+	} else if query == "print" || strings.HasPrefix(query, "print and ") || strings.HasPrefix(query, "not ") {
+		return false
+	}
+	if query == "" {
+		return true
+	}
+	for len(query) > 0 {
+		query = strings.TrimSpace(strings.TrimPrefix(query, "and "))
+		if len(query) < 2 || query[0] != '(' {
+			return false
+		}
+		end := strings.IndexByte(query, ')')
+		if end < 0 {
+			return false
+		}
+		feature := strings.TrimSpace(query[1:end])
+		name, rawValue, ok := strings.Cut(feature, ":")
+		if !ok || !strings.HasSuffix(strings.TrimSpace(rawValue), "px") {
+			return false
+		}
+		value, err := strconv.ParseFloat(strings.TrimSpace(strings.TrimSuffix(strings.TrimSpace(rawValue), "px")), 64)
+		if err != nil {
+			return false
+		}
+		switch strings.TrimSpace(name) {
+		case "min-width":
+			if viewportWidth < value {
+				return false
+			}
+		case "max-width":
+			if viewportWidth > value {
+				return false
+			}
+		default:
+			return false
+		}
+		query = strings.TrimSpace(query[end+1:])
+	}
+	return true
+}
+
+func supportsQueryMatches(query string) bool {
+	if len(query) > 256 {
+		return false
+	}
+	query = strings.TrimSpace(strings.ToLower(query))
+	if query == "" {
+		return true
+	}
+	if parts := strings.Split(query, " or "); len(parts) > 1 {
+		for _, part := range parts {
+			if supportsQueryMatches(part) {
+				return true
+			}
+		}
+		return false
+	}
+	if parts := strings.Split(query, " and "); len(parts) > 1 {
+		for _, part := range parts {
+			if !supportsQueryMatches(part) {
+				return false
+			}
+		}
+		return true
+	}
+	if strings.HasPrefix(query, "not ") {
+		return !supportsQueryMatches(strings.TrimSpace(strings.TrimPrefix(query, "not ")))
+	}
+	if strings.HasPrefix(query, "(") && strings.HasSuffix(query, ")") {
+		query = strings.TrimSpace(query[1 : len(query)-1])
+	}
+	property, value, ok := strings.Cut(query, ":")
+	if !ok {
+		return false
+	}
+	property = strings.TrimSpace(property)
+	value = strings.TrimSpace(value)
+	switch property {
+	case "display":
+		return value == "block" || value == "inline" || value == "flex" || value == "grid" || value == "none"
+	case "position":
+		return value == "static" || value == "relative" || value == "absolute"
+	default:
+		return false
 	}
 }
 

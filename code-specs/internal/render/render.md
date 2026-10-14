@@ -186,6 +186,6 @@ func drawBox(fb *framebuffer.Framebuffer, box *layout.LayoutBox)
 
 ## Зависимости
 
-- `github.com/starframe/abyss/internal/css` — для работы со стилями (цвета, z-index, границы).
-- `github.com/starframe/abyss/internal/framebuffer` — буфер кадров и методы отрисовки.
-- `github.com/starframe/abyss/internal/layout` — тип `LayoutBox` и связанных структур.
+- `github.com/starframe-dev/abyss/internal/css` — для работы со стилями (цвета, z-index, границы).
+- `github.com/starframe-dev/abyss/internal/framebuffer` — буфер кадров и методы отрисовки.
+- `github.com/starframe-dev/abyss/internal/layout` — тип `LayoutBox` и связанных структур.

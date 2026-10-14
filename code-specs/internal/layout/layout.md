@@ -340,8 +340,8 @@ func estimateTextWidth(text string) float64
 
 ## Зависимости
 
-- `github.com/starframe/abyss/internal/css` — вычисленные стили, margin/padding/border resolution
-- `github.com/starframe/abyss/internal/dom` — типы DOM, узлы, текст
+- `github.com/starframe-dev/abyss/internal/css` — вычисленные стили, margin/padding/border resolution
+- `github.com/starframe-dev/abyss/internal/dom` — типы DOM, узлы, текст
 
 ## Важные примечания
 

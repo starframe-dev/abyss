@@ -45,13 +45,13 @@
 
 ### Импорт
 
-- `github.com/starframe/abyss/internal/ascii` — модуль для рендеринга ASCII-графики.
-- `github.com/starframe/abyss/internal/css` — модуль для вычисления CSS-стилей.
-- `github.com/starframe/abyss/internal/dom` — модуль для парсинга и манипуляций с DOM.
-- `github.com/starframe/abyss/internal/fetcher` — модуль для загрузки HTTP-контента.
-- `github.com/starframe/abyss/internal/js` — модуль для выполнения JavaScript-кода.
-- `github.com/starframe/abyss/internal/layout` — модуль для построения макетов.
-- `github.com/starframe/abyss/internal/render` — модуль для рендеринга SVG/изображений.
+- `github.com/starframe-dev/abyss/internal/ascii` — модуль для рендеринга ASCII-графики.
+- `github.com/starframe-dev/abyss/internal/css` — модуль для вычисления CSS-стилей.
+- `github.com/starframe-dev/abyss/internal/dom` — модуль для парсинга и манипуляций с DOM.
+- `github.com/starframe-dev/abyss/internal/fetcher` — модуль для загрузки HTTP-контента.
+- `github.com/starframe-dev/abyss/internal/js` — модуль для выполнения JavaScript-кода.
+- `github.com/starframe-dev/abyss/internal/layout` — модуль для построения макетов.
+- `github.com/starframe-dev/abyss/internal/render` — модуль для рендеринга SVG/изображений.
 
 ## Поток выполнения
 

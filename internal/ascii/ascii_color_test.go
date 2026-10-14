@@ -1,21 +1,39 @@
 package ascii
 
 import (
-    "regexp"
-    "sort"
-    "strings"
-    "testing"
+	"regexp"
+	"sort"
+	"strings"
+	"testing"
 
-    "github.com/starframe/abyss/internal/css"
-    "github.com/starframe/abyss/internal/dom"
-    "github.com/starframe/abyss/internal/layout"
-    "github.com/starframe/abyss/internal/render"
+	"github.com/starframe-dev/abyss/internal/css"
+	"github.com/starframe-dev/abyss/internal/dom"
+	"github.com/starframe-dev/abyss/internal/layout"
+	"github.com/starframe-dev/abyss/internal/render"
 )
+
+func TestWriteANSIColorFormatsChannelsAndCombinedColors(t *testing.T) {
+	var b strings.Builder
+	fg, bg := css.RGB(9, 10, 255), css.RGB(99, 100, 0)
+	if !writeANSIColor(&b, fg, bg, css.Transparent(), css.Transparent()) {
+		t.Fatal("expected a color transition")
+	}
+	want := "\x1b[0m\x1b[38;2;9;10;255;48;2;99;100;0m"
+	if got := b.String(); got != want {
+		t.Fatalf("color sequence = %q, want %q", got, want)
+	}
+	if writeANSIColor(&b, fg, bg, fg, bg) {
+		t.Fatal("unchanged colors should not emit a sequence")
+	}
+	if got := b.String(); got != want {
+		t.Fatalf("unchanged colors modified output: %q", got)
+	}
+}
 
 // TestColors_RichPage verifies that Abyss's render pipeline produces diverse
 // colors when the source HTML contains colorful CSS styles.
 func TestColors_RichPage(t *testing.T) {
-    html := `
+	html := `
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,94 +105,94 @@ a {
 </body>
 </html>`
 
-    doc := dom.Parse(html)
-    styles := css.Compute(doc)
-    box := layout.Build(doc, styles, 320)
-    fb := render.Render(box, 320)
-    lines := Render(fb, box, 320)
-    ansiLines := RenderANSI(fb, box, 320)
+	doc := dom.Parse(html)
+	styles := css.Compute(doc)
+	box := layout.Build(doc, styles, 320)
+	fb := render.Render(box, 320)
+	lines := Render(fb, box, 320)
+	ansiLines := RenderANSI(fb, box, 320)
 
-    if len(ansiLines) == 0 {
-        t.Fatal("no ANSI lines generated")
-    }
-    if len(lines) == 0 {
-        t.Fatal("no plain lines generated")
-    }
+	if len(ansiLines) == 0 {
+		t.Fatal("no ANSI lines generated")
+	}
+	if len(lines) == 0 {
+		t.Fatal("no plain lines generated")
+	}
 
-    // Collect all unique true-color codes used in render output
-    ansiRe := regexp.MustCompile(`\x1b\[(?:38|48);2;\d+;\d+;\d+`)
-    colors := map[string]bool{}
-    for _, line := range ansiLines {
-        for _, m := range ansiRe.FindAllString(line, -1) {
-            colors[m] = true
-        }
-    }
+	// Collect all unique true-color codes used in render output
+	ansiRe := regexp.MustCompile(`\x1b\[(?:38|48);2;\d+;\d+;\d+`)
+	colors := map[string]bool{}
+	for _, line := range ansiLines {
+		for _, m := range ansiRe.FindAllString(line, -1) {
+			colors[m] = true
+		}
+	}
 
-    if len(colors) < 5 {
-        t.Logf("Found only %d unique true-color codes:", len(colors))
-        sorted := sortKeys(colors)
-        for _, c := range sorted {
-            t.Logf("  %s\n", c)
-        }
-        t.Logf("Rendered ANSI (first 8 lines):\n%s", joinRender(ansiLines, 8))
-        t.Fatalf("expected at least 5 unique true-color codes, got %d", len(colors))
-    }
+	if len(colors) < 5 {
+		t.Logf("Found only %d unique true-color codes:", len(colors))
+		sorted := sortKeys(colors)
+		for _, c := range sorted {
+			t.Logf("  %s\n", c)
+		}
+		t.Logf("Rendered ANSI (first 8 lines):\n%s", joinRender(ansiLines, 8))
+		t.Fatalf("expected at least 5 unique true-color codes, got %d", len(colors))
+	}
 
-    t.Logf("✅ Found %d unique true-color codes:", len(colors))
-    sorted := sortKeys(colors)
-    for _, c := range sorted {
-        t.Logf("  %s", c)
-    }
+	t.Logf("✅ Found %d unique true-color codes:", len(colors))
+	sorted := sortKeys(colors)
+	for _, c := range sorted {
+		t.Logf("  %s", c)
+	}
 
-    // Also verify specific colors are present (proves styles are applied).
-    mustContain := []string{
-        `38;2;251;191;36`,               // h1 color #fbbf24 (yellow)
-        `48;2;30;41;59`,                 // h1 background #1e293b (dark blue)
-        `38;2;251;191;36;48;2;30;41;59`, // heading text must sit on its own background
-        `38;2;96;165;250`,               // a link color #60a5fa (light blue)
-        `48;2;239;68;68`,                // red-box bg #ef4444
-        `48;2;59;130;246`,               // blue-box bg #3b82f6
-        `48;2;16;185;129`,               // green-box bg #10b981
-        `48;2;245;158;11`,               // yellow-box bg #f59e0b
-        `48;2;147;51;234`,               // purple bg #9333ea
-    }
-    rendered := strings.Join(ansiLines, "")
-    for _, want := range mustContain {
-        if !strings.Contains(rendered, want) {
-            t.Errorf("missing color code %s — CSS color may not be flowing through pipeline", want)
-        }
-    }
+	// Also verify specific colors are present (proves styles are applied).
+	mustContain := []string{
+		`38;2;251;191;36`,               // h1 color #fbbf24 (yellow)
+		`48;2;30;41;59`,                 // h1 background #1e293b (dark blue)
+		`38;2;251;191;36;48;2;30;41;59`, // heading text must sit on its own background
+		`38;2;96;165;250`,               // a link color #60a5fa (light blue)
+		`48;2;239;68;68`,                // red-box bg #ef4444
+		`48;2;59;130;246`,               // blue-box bg #3b82f6
+		`48;2;16;185;129`,               // green-box bg #10b981
+		`48;2;245;158;11`,               // yellow-box bg #f59e0b
+		`48;2;147;51;234`,               // purple bg #9333ea
+	}
+	rendered := strings.Join(ansiLines, "")
+	for _, want := range mustContain {
+		if !strings.Contains(rendered, want) {
+			t.Errorf("missing color code %s — CSS color may not be flowing through pipeline", want)
+		}
+	}
 }
 
 func TestRender_ImagePlaceholder(t *testing.T) {
-    doc := dom.Parse(`<div><img alt="Article preview" src="https://example.com/image.png"></div>`)
-    styles := css.Compute(doc)
-    box := layout.Build(doc, styles, 80)
-    fb := render.Render(box, 80)
+	doc := dom.Parse(`<div><img alt="Article preview" src="https://example.com/image.png"></div>`)
+	styles := css.Compute(doc)
+	box := layout.Build(doc, styles, 80)
+	fb := render.Render(box, 80)
 
-    rendered := strings.Join(Render(fb, box, 80), "\n")
-    if !strings.Contains(rendered, "[image] Article preview") {
-        t.Fatalf("image placeholder is missing from render: %q", rendered)
-    }
+	rendered := strings.Join(Render(fb, box, 80), "\n")
+	if !strings.Contains(rendered, "[image] Article preview") {
+		t.Fatalf("image placeholder is missing from render: %q", rendered)
+	}
 }
 
 func sortKeys(m map[string]bool) []string {
-    keys := make([]string, 0, len(m))
-    for k := range m {
-        keys = append(keys, k)
-    }
-    sort.Strings(keys)
-    return keys
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
 }
 
 func joinRender(lines []string, max int) string {
-    if len(lines) < max {
-        max = len(lines)
-    }
-    var b strings.Builder
-    for i := 0; i < max; i++ {
-        b.WriteString(lines[i])
-        b.WriteString("\n")
-    }
-    return b.String()
+	if len(lines) < max {
+		max = len(lines)
+	}
+	var b strings.Builder
+	for i := 0; i < max; i++ {
+		b.WriteString(lines[i])
+		b.WriteString("\n")
+	}
+	return b.String()
 }

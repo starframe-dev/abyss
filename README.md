@@ -55,12 +55,15 @@ go run . --headless-dump /tmp/page.ansi --url https://example.com --width 120
 - **Position**: `static`, `relative`, `absolute`
 - **Box Model**: `width`, `height`, `margin`, `padding`, `border`
 - **Visual**: `background-color`, inherited `color`, `border-radius`, `z-index`, `overflow`
+- **Cascade**: specificity, inline declarations, `!important`, and CSS custom properties
+- **Conditions**: screen `min-width` / `max-width` queries in CSS pixels (including stylesheet `media` attributes); simple `@supports` checks for `display` and `position`
 - **Flexbox**: basic row/column direction, grow/shrink, and justify-content distribution
 - **Grid**: bounded `px`, percentage, `fr`, and repeat tracks; basic gaps
 
-This is intentionally a subset; Grid `fr` row distribution needs a definite container
-height, while auto-height rows use content sizes. Intrinsic sizing, browser-default styles
-and complex CSS are not fully implemented.
+This is intentionally a subset; unsupported `@supports` declarations, other nested at-rules
+(such as `@container` and `@layer`), and unimplemented media features are ignored. Grid `fr` row distribution needs a definite container height, while auto-height
+rows use content sizes. Intrinsic sizing, browser-default styles and complex CSS are not
+fully implemented.
 
 ## Project Structure
 

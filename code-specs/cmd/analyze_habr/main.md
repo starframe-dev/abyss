@@ -30,8 +30,8 @@
 Пакет `main` — исполняемый файл CLI-утилиты.
 
 **Зависимости:**
-- `github.com/starframe/abyss/internal/dom` — парсинг HTML
-- `github.com/starframe/abyss/internal/fetcher` — сетевой fetch
+- `github.com/starframe-dev/abyss/internal/dom` — парсинг HTML
+- `github.com/starframe-dev/abyss/internal/fetcher` — сетевой fetch
 
 **State:** Приложение не использует глобальное состояние. Все данные локальны к `main()`.
 
@@ -164,8 +164,8 @@ if err != nil {
 
 ## Dependencies
 
-- `github.com/starframe/abyss/internal/dom`
-- `github.com/starframe/abyss/internal/fetcher`
+- `github.com/starframe-dev/abyss/internal/dom`
+- `github.com/starframe-dev/abyss/internal/fetcher`
 
 ## Version
 

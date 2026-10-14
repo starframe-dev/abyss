@@ -1,39 +1,26 @@
 package js
 
 import (
-    "os"
-    "path/filepath"
-    "runtime"
-    "strings"
+	"embed"
+	"strings"
 )
 
-var domapiJSSource string
+//go:embed domapi/*.js
+var domapiFiles embed.FS
 
-// domapiFragments lists the thematic DOM API fragments in load order. They are
-// concatenated inside a single IIFE, preserving the shared closure scope.
-var domapiFragments = []string{
-    "style",
-    "element",
-    "global",
-}
+var domapiJSSource = loadDOMAPI()
 
-func init() {
-    // Resolve the domapi directory relative to this source file
-    _, filename, _, _ := runtime.Caller(0)
-    dir := filepath.Join(filepath.Dir(filename), "domapi")
-    if _, err := os.Stat(dir); err != nil {
-        // Fallback: try relative to the working directory (test binaries)
-        dir = "internal/js/domapi"
-    }
+// domapiFragments lists the API fragments in load order; they share an IIFE scope.
+var domapiFragments = []string{"style", "element", "global"}
 
-    var parts []string
-    for _, name := range domapiFragments {
-        data, err := os.ReadFile(filepath.Join(dir, name+".js"))
-        if err != nil {
-            panic("cannot read domapi fragment " + name + ".js: " + err.Error())
-        }
-        parts = append(parts, string(data))
-    }
-
-    domapiJSSource = "(function() {\n" + strings.Join(parts, "\n") + "\n})()\n"
+func loadDOMAPI() string {
+	parts := make([]string, 0, len(domapiFragments))
+	for _, name := range domapiFragments {
+		data, err := domapiFiles.ReadFile("domapi/" + name + ".js")
+		if err != nil {
+			panic("cannot load embedded domapi fragment " + name + ".js: " + err.Error())
+		}
+		parts = append(parts, string(data))
+	}
+	return "(function() {\n" + strings.Join(parts, "\n") + "\n})()\n"
 }

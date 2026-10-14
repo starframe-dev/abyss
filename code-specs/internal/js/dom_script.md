@@ -133,7 +133,7 @@
 
 ### dom.Node
 
-Тип узла DOM из пакета `github.com/starframe/abyss/internal/dom`.
+Тип узла DOM из пакета `github.com/starframe-dev/abyss/internal/dom`.
 
 #### Атрибуты
 
@@ -178,7 +178,7 @@ extern JSValueRef _evaluate(JSContextRef ctx, const char* script, const char* so
 - `"net/url"` — парсинг URL
 - `"strings"` — работа со строками
 - `"time"` — таймауты
-- `"github.com/starframe/abyss/internal/dom"` — тип DOM
+- `"github.com/starframe-dev/abyss/internal/dom"` — тип DOM
 
 ## Имплементационные детали
 

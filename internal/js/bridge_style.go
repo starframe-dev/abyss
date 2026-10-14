@@ -19,66 +19,74 @@ extern JSValueRef _makeBoolean(JSContextRef ctx, bool value);
 */
 import "C"
 import (
-    "strings"
-    "unsafe"
+	"strings"
+	"unicode"
+	"unsafe"
 )
 
 func getComputedStyleJS(ctx *Context, args []C.JSValueRef) C.JSValueRef {
-    if len(args) < 1 {
-        return ctx.MakeNull()
-    }
-    id := jsToNodeID(ctx, args[0])
-    if id < 0 {
-        return ctx.MakeNull()
-    }
-    return getComputedStyle(id)
+	if len(args) < 1 {
+		return ctx.MakeNull()
+	}
+	id := jsToNodeID(ctx, args[0])
+	if id < 0 {
+		return ctx.MakeNull()
+	}
+	return getComputedStyle(id)
 }
 
 func getBoundingClientRectJS(ctx *Context, args []C.JSValueRef) C.JSValueRef {
-    if len(args) < 1 {
-        return ctx.MakeNull()
-    }
-    id := jsToNodeID(ctx, args[0])
-    if id < 0 {
-        return ctx.MakeNull()
-    }
-    rect := getBoundingClientRect(id)
+	if len(args) < 1 {
+		return ctx.MakeNull()
+	}
+	id := jsToNodeID(ctx, args[0])
+	if id < 0 {
+		return ctx.MakeNull()
+	}
+	rect := getBoundingClientRect(id)
 
-    // Create JS object with x, y, width, height, top, left, bottom, right
-    obj := C.JSObjectMake(ctx.ctx, nil, nil)
+	// Create JS object with x, y, width, height, top, left, bottom, right.
+	obj := C.JSObjectMake(ctx.ctx, nil, nil)
+	setNum := func(name string, val float64) {
+		cname := C.CString(name)
+		defer C.free(unsafe.Pointer(cname))
+		pn := C.JSStringCreateWithUTF8CString(cname)
+		defer C.JSStringRelease(pn)
+		C.JSObjectSetProperty(ctx.ctx, obj, pn, C.JSValueMakeNumber(ctx.ctx, C.double(val)), C.kJSPropertyAttributeNone, nil)
+	}
+	setNum("x", rect.X)
+	setNum("y", rect.Y)
+	setNum("width", rect.Width)
+	setNum("height", rect.Height)
+	setNum("top", rect.Y)
+	setNum("left", rect.X)
+	setNum("bottom", rect.Y+rect.Height)
+	setNum("right", rect.X+rect.Width)
 
-    setNum := func(name string, val float64) {
-        pn := C.JSStringCreateWithUTF8CString(C.CString(name))
-        defer C.JSStringRelease(pn)
-        C.JSObjectSetProperty(ctx.ctx, obj, pn, C.JSValueMakeNumber(ctx.ctx, C.double(val)), C.kJSPropertyAttributeNone, nil)
-    }
-
-    setNum("x", rect.X)
-    setNum("y", rect.Y)
-    setNum("width", rect.Width)
-    setNum("height", rect.Height)
-    setNum("top", rect.Y)
-    setNum("left", rect.X)
-    setNum("bottom", rect.Y+rect.Height)
-    setNum("right", rect.X+rect.Width)
-
-    return jsObjToVal(obj)
+	return jsObjToVal(obj)
 }
 
 func logJS(ctx *Context, args []C.JSValueRef) C.JSValueRef {
-    // Concatenate all args as strings and print to stderr
-    var parts []string
-    for _, arg := range args {
-        s, err := getArgString(ctx, arg)
-        if err != nil {
-            parts = append(parts, "<error>")
-        } else {
-            parts = append(parts, s)
-        }
-    }
-    msg := "[JS] " + strings.Join(parts, " ") + "\n"
-    cMsg := C.CString(msg)
-    defer C.free(unsafe.Pointer(cMsg))
-    C._fprintf_stderr(cMsg)
-    return ctx.MakeUndefined()
+	// Convert each argument and strip terminal controls before writing to stderr.
+	var parts []string
+	for _, arg := range args {
+		s, err := getArgString(ctx, arg)
+		if err != nil {
+			parts = append(parts, "<error>")
+		} else {
+			parts = append(parts, s)
+		}
+	}
+	var safe strings.Builder
+	for _, r := range "[JS] " + strings.Join(parts, " ") + "\n" {
+		if r == '\n' || r == '\t' || (!unicode.IsControl(r) && r != 0x7f) {
+			safe.WriteRune(r)
+		} else {
+			safe.WriteRune('�')
+		}
+	}
+	msg := C.CString(safe.String())
+	defer C.free(unsafe.Pointer(msg))
+	C._fprintf_stderr(msg)
+	return ctx.MakeUndefined()
 }

@@ -1,332 +1,530 @@
 package browser
 
 import (
-    "encoding/base64"
-    "fmt"
-    "image"
-    "io"
-    "net/http"
-    "net/url"
-    "os"
-    "strings"
-    "sync"
-    "time"
+	"context"
+	"encoding/base64"
+	"errors"
+	"fmt"
+	"image"
+	"net/url"
+	"os"
+	"strings"
+	"sync"
 
-    tea "github.com/charmbracelet/bubbletea"
-    "github.com/starframe/abyss/internal/ascii"
-    "github.com/starframe/abyss/internal/asciirender"
-    "github.com/starframe/abyss/internal/css"
-    "github.com/starframe/abyss/internal/dom"
-    "github.com/starframe/abyss/internal/fetcher"
-    "github.com/starframe/abyss/internal/js"
-    "github.com/starframe/abyss/internal/layout"
-    "github.com/starframe/abyss/internal/render"
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/starframe-dev/abyss/internal/ascii"
+	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/css"
+	"github.com/starframe-dev/abyss/internal/dom"
+	"github.com/starframe-dev/abyss/internal/fetcher"
+	"github.com/starframe-dev/abyss/internal/js"
+	"github.com/starframe-dev/abyss/internal/layout"
+	"github.com/starframe-dev/abyss/internal/render"
 )
 
-// imageCache stores decoded raster images keyed by absolute URL so a single
-// page load fetches each image only once.
+const (
+	maxDataURLBytes       = 16 << 20
+	maxImageCacheBytes    = 64 << 20
+	maxExternalImages     = 64
+	maxExternalImageBytes = 64 << 20
+)
+
 var (
-    imageCacheMu sync.RWMutex
-    imageCache   = make(map[string]image.Image)
+	jsLifecycleMu   sync.Mutex
+	jsRuntimeTabID  uint64
+	imageCacheMu    sync.RWMutex
+	imageCache      = make(map[string]image.Image)
+	imageCacheOrder []string
+	imageCacheBytes int64
 )
 
-func cachedImage(src string) image.Image {
-    imageCacheMu.RLock()
-    img, ok := imageCache[src]
-    imageCacheMu.RUnlock()
-    if ok {
-        return img
-    }
-    if img := decodeDataImage(src); img != nil {
-        storeImage(src, img)
-        return img
-    }
-    return nil
+func imageMemory(img image.Image) int64 {
+	b := img.Bounds()
+	if b.Dx() <= 0 || b.Dy() <= 0 || b.Dx() > asciirender.MaxImagePixels/b.Dy() {
+		return 0
+	}
+	// RGBA64 decoders can require eight bytes per pixel; use that conservative
+	// estimate so the cache budget cannot be exceeded by under-accounting.
+	return int64(b.Dx()) * int64(b.Dy()) * 8
 }
 
-// decodeDataImage parses a data: URL such as
-// "data:image/png;base64,iVBORw0..." and decodes its body into an image.
-// Returns nil if the URL is not a data: URL or decoding fails.
+func cachedImage(src string) image.Image {
+	imageCacheMu.RLock()
+	img, ok := imageCache[src]
+	imageCacheMu.RUnlock()
+	if ok {
+		return img
+	}
+	if img := decodeDataImage(src); img != nil {
+		storeImage(src, img)
+		return img
+	}
+	return nil
+}
+
 func decodeDataImage(src string) image.Image {
-    const prefix = "data:"
-    if !strings.HasPrefix(src, prefix) {
-        return nil
-    }
-    comma := strings.IndexByte(src, ',')
-    if comma < 0 {
-        return nil
-    }
-    meta := src[len(prefix):comma]
-    body := src[comma+1:]
-    if !strings.Contains(meta, "base64") {
-        return nil
-    }
-    raw, err := base64.StdEncoding.DecodeString(body)
-    if err != nil {
-        return nil
-    }
-    img, err := asciirender.Decode(raw)
-    if err != nil {
-        return nil
-    }
-    return img
+	const prefix = "data:"
+	if !strings.HasPrefix(src, prefix) {
+		return nil
+	}
+	comma := strings.IndexByte(src, ',')
+	if comma < 0 || len(src) > maxDataURLBytes {
+		return nil
+	}
+	meta, body := src[len(prefix):comma], src[comma+1:]
+	if !strings.Contains(meta, "base64") || len(body) > base64.StdEncoding.EncodedLen(maxDataURLBytes) {
+		return nil
+	}
+	raw, err := base64.StdEncoding.DecodeString(body)
+	if err != nil {
+		return nil
+	}
+	img, err := asciirender.Decode(raw)
+	if err != nil {
+		return nil
+	}
+	return img
 }
 
 func storeImage(src string, img image.Image) {
-    if img == nil {
-        return
-    }
-    imageCacheMu.Lock()
-    imageCache[src] = img
-    imageCacheMu.Unlock()
+	size := imageMemory(img)
+	if size <= 0 || size > maxImageCacheBytes {
+		return
+	}
+	imageCacheMu.Lock()
+	defer imageCacheMu.Unlock()
+	if old, ok := imageCache[src]; ok {
+		imageCacheBytes -= imageMemory(old)
+		delete(imageCache, src)
+		imageCacheOrder = removeImageCacheKey(imageCacheOrder, src)
+	}
+	for imageCacheBytes+size > maxImageCacheBytes && len(imageCacheOrder) > 0 {
+		key := imageCacheOrder[0]
+		imageCacheOrder[0] = ""
+		imageCacheOrder = imageCacheOrder[1:]
+		if old, ok := imageCache[key]; ok {
+			imageCacheBytes -= imageMemory(old)
+			delete(imageCache, key)
+		}
+	}
+	imageCache[src] = img
+	imageCacheOrder = append(imageCacheOrder, src)
+	imageCacheBytes += size
+}
+
+func resetImageCache() {
+	imageCacheMu.Lock()
+	imageCache = make(map[string]image.Image)
+	imageCacheOrder = nil
+	imageCacheBytes = 0
+	imageCacheMu.Unlock()
+}
+
+func removeImageCacheKey(keys []string, target string) []string {
+	for i, key := range keys {
+		if key == target {
+			copy(keys[i:], keys[i+1:])
+			keys[len(keys)-1] = ""
+			return keys[:len(keys)-1]
+		}
+	}
+	return keys
 }
 
 func imgOrNil(img image.Image, ok bool) image.Image {
-    if !ok {
-        return nil
-    }
-    return img
+	if !ok {
+		return nil
+	}
+	return img
 }
 
-func init() {
-    render.ImageProvider = cachedImage
-}
+func init() { render.ImageProvider = cachedImage }
 
-// fetchImages walks the document looking for <img src> elements, fetches
-// each URL in parallel, decodes the body as an image, and stores the
-// decoded image in the package cache.
 func fetchImages(doc *dom.Node, baseURL string) {
-    imgs := doc.QueryAll("img")
-    if len(imgs) == 0 {
-        return
-    }
+	fetchImagesContext(context.Background(), doc, baseURL)
+}
 
-    seen := make(map[string]struct{}, len(imgs))
-    var sources []string
-    for _, node := range imgs {
-        src := strings.TrimSpace(node.GetAttr("src"))
-        if src == "" || strings.HasPrefix(src, "data:") {
-            continue
-        }
-        abs := ResolveURL(baseURL, src)
-        if abs == "" {
-            continue
-        }
-        if _, dup := seen[abs]; dup {
-            continue
-        }
-        seen[abs] = struct{}{}
-        sources = append(sources, abs)
-    }
-    if len(sources) == 0 {
-        return
-    }
+func fetchImagesContext(ctx context.Context, doc *dom.Node, baseURL string) {
+	imgs := doc.QueryAll("img")
+	seen := make(map[string]struct{}, min(len(imgs), maxExternalImages))
+	sources := make([]string, 0, min(len(imgs), maxExternalImages))
+	imageCacheMu.RLock()
+	for _, node := range imgs {
+		src := strings.TrimSpace(node.GetAttr("src"))
+		if src == "" || strings.HasPrefix(src, "data:") {
+			continue
+		}
+		abs := ResolveURL(baseURL, src)
+		if abs == "" {
+			continue
+		}
+		if _, dup := seen[abs]; dup {
+			continue
+		}
+		seen[abs] = struct{}{}
+		if _, cached := imageCache[abs]; !cached {
+			sources = append(sources, abs)
+		}
+		if len(seen) >= maxExternalImages {
+			break
+		}
+	}
+	imageCacheMu.RUnlock()
+	if len(sources) == 0 {
+		return
+	}
 
-    semaphore := make(chan struct{}, 4)
-    var wg sync.WaitGroup
-    for _, src := range sources {
-        wg.Add(1)
-        go func(resource string) {
-            defer wg.Done()
-            semaphore <- struct{}{}
-            defer func() { <-semaphore }()
+	type imageJob struct {
+		index int
+		url   string
+	}
+	type imageResult struct {
+		index     int
+		url       string
+		bodyBytes int64
+		img       image.Image
+	}
+	workerCount := min(2, len(sources))
+	jobs := make(chan imageJob)
+	fetched := make(chan imageResult, workerCount)
+	var wg sync.WaitGroup
+	for i := 0; i < workerCount; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for job := range jobs {
+				body, _, err := fetcher.FetchBytesContext(ctx, job.url)
+				item := imageResult{index: job.index, url: job.url, bodyBytes: int64(len(body))}
+				if errors.Is(err, fetcher.ErrResponseTooLarge) {
+					item.bodyBytes = fetcher.MaxImageBytes
+				}
+				var readErr *fetcher.ResponseReadError
+				if errors.As(err, &readErr) {
+					item.bodyBytes = readErr.BytesRead
+				}
+				if err == nil && len(body) > 0 {
+					item.img, _ = asciirender.Decode(body)
+				}
+				fetched <- item
+			}
+		}()
+	}
+	launched, next, budgetUsed := 0, 0, int64(0)
+	launch := func() {
+		if launched >= len(sources) || budgetUsed >= maxExternalImageBytes || ctx.Err() != nil {
+			return
+		}
+		jobs <- imageJob{index: launched, url: sources[launched]}
+		launched++
+	}
+	for i := 0; i < workerCount && ctx.Err() == nil; i++ {
+		launch()
+	}
+	pending := make(map[int]imageResult, workerCount)
+	for next < launched {
+		item := <-fetched
+		pending[item.index] = item
+		for {
+			current, ok := pending[next]
+			if !ok {
+				break
+			}
+			delete(pending, next)
+			if current.bodyBytes > 0 {
+				if current.bodyBytes <= maxExternalImageBytes-budgetUsed {
+					budgetUsed += current.bodyBytes
+					if current.img != nil {
+						storeImage(current.url, current.img)
+					}
+				} else {
+					budgetUsed = maxExternalImageBytes
+				}
+			}
+			next++
+			launch()
+		}
+	}
+	close(jobs)
+	wg.Wait()
+}
 
-            imageCacheMu.RLock()
-            _, cached := imageCache[resource]
-            imageCacheMu.RUnlock()
-            if cached {
-                return
-            }
+func closeJSCContext() {
+	jsLifecycleMu.Lock()
+	defer jsLifecycleMu.Unlock()
+	js.CloseCurrentContext()
+	jsRuntimeTabID = 0
+}
 
-            body, _, err := fetcher.FetchBytes(resource)
-            if err != nil || len(body) == 0 {
-                return
-            }
-            img, err := asciirender.Decode(body)
-            if err != nil {
-                return
-            }
-            storeImage(resource, img)
-        }(src)
-    }
-    wg.Wait()
+func closeJSCContextForTab(tabID uint64) {
+	jsLifecycleMu.Lock()
+	defer jsLifecycleMu.Unlock()
+	if tabID == 0 || jsRuntimeTabID != tabID {
+		return
+	}
+	js.CloseCurrentContext()
+	jsRuntimeTabID = 0
+}
+
+func processJSTimers(expectedTabID uint64, expectedURL string) (dirty bool) {
+	jsLifecycleMu.Lock()
+	defer jsLifecycleMu.Unlock()
+	if context, currentURL := js.GetCurrentContext(); context != nil && jsRuntimeTabID == expectedTabID && currentURL == expectedURL {
+		js.ProcessTimers()
+		dirty = js.IsDirty()
+	}
+	return dirty
 }
 
 func loadPage(pageURL string, viewportWidth int) tea.Cmd {
-    return func() tea.Msg {
-        html, err := fetcher.Fetch(pageURL)
-        if err != nil {
-            return PageErrorMsg{Err: err}
-        }
-        doc := dom.Parse(html)
-
-        js.CloseCurrentContext()
-
-        context := js.NewContext()
-        js.SetCurrentContext(context, pageURL)
-        js.InitDOM(doc)
-
-        if err := context.RegisterBridgeFunctions(); err != nil {
-            return PageErrorMsg{Err: fmt.Errorf("js bridge init: %w", err)}
-        }
-
-        js.InitEventSystem(context.GetContextRef())
-
-        if _, err := context.Evaluate(js.DOMAPIScript()); err != nil {
-            return PageErrorMsg{Err: fmt.Errorf("js dom api error: %w", err)}
-        }
-
-        safeURL := strings.ReplaceAll(pageURL, "\\", "\\\\")
-        safeURL = strings.ReplaceAll(safeURL, "'", "\\'")
-        safeURL = strings.ReplaceAll(safeURL, "\n", "\\n")
-        _, _ = context.Evaluate(fmt.Sprintf("document._url='%s';", safeURL))
-        _, _ = context.Evaluate(`window.getComputedStyle=function(el){if(!el||el.__go_id===undefined)return null;return __go_getComputedStyle(el);};`)
-
-        _ = js.ExecuteScripts(context, doc, pageURL)
-        _, _ = context.Evaluate(`if(document.dispatchEvent){var ev={type:'DOMContentLoaded',defaultPrevented:false,_propagationStopped:false,preventDefault:function(){this.defaultPrevented=true;},stopPropagation:function(){this._propagationStopped=true;}};document.dispatchEvent(ev);}`)
-
-        finalDOM := js.GetFinalDOM()
-        externalCSS := fetchExternalCSS(finalDOM, pageURL)
-        fetchImages(finalDOM, pageURL)
-        styles := css.ComputeWithExternal(finalDOM, externalCSS)
-        js.SetComputedStyles(styles)
-        box := layout.Build(finalDOM, styles, float64(viewportWidth))
-        js.SetLayoutBoxes(buildLayoutBoxMap(box))
-        framebuffer := render.Render(box, viewportWidth)
-        lines := ascii.Render(framebuffer, box, viewportWidth)
-        ansiLines := ascii.RenderANSI(framebuffer, box, viewportWidth)
-        if path := os.Getenv("ABYSS_DUMP_ANSI"); path != "" {
-            dump := strings.Join(ansiLines, "\n")
-            _ = os.WriteFile(path, []byte(dump), 0o644)
-            fmt.Fprintf(os.Stderr, "abyss: dumped %d bytes to %s\n", len(dump), path)
-        }
-        return PageLoadedMsg{Lines: lines, ANSI: ansiLines, URL: pageURL}
-    }
+	return loadPageContext(context.Background(), pageURL, viewportWidth)
 }
 
-func reRenderCmd(viewportWidth int, zoomFactor float64) tea.Cmd {
-    return func() tea.Msg {
-        context, _ := js.GetCurrentContext()
-        if context == nil {
-            return nil
-        }
-        js.MarkClean()
-
-        finalDOM := js.GetFinalDOM()
-        if finalDOM == nil {
-            return nil
-        }
-
-        scaledWidth := int(float64(viewportWidth) * zoomFactor)
-        if scaledWidth < 10 {
-            scaledWidth = 10
-        }
-
-        styles := css.Compute(finalDOM)
-        js.SetComputedStyles(styles)
-        box := layout.Build(finalDOM, styles, float64(scaledWidth))
-        js.SetLayoutBoxes(buildLayoutBoxMap(box))
-        framebuffer := render.Render(box, scaledWidth)
-        lines := ascii.Render(framebuffer, box, scaledWidth)
-        ansiLines := ascii.RenderANSI(framebuffer, box, scaledWidth)
-        return PageLoadedMsg{Lines: lines, ANSI: ansiLines}
-    }
+func loadTabPage(ctx context.Context, pageURL string, viewportWidth int, tabID, requestID uint64) tea.Cmd {
+	load := loadPageForTab(ctx, pageURL, viewportWidth, tabID)
+	return func() tea.Msg {
+		msg := load()
+		switch result := msg.(type) {
+		case PageLoadedMsg:
+			result.TabID, result.RequestID = tabID, requestID
+			return result
+		case PageErrorMsg:
+			result.TabID, result.RequestID = tabID, requestID
+			return result
+		default:
+			return msg
+		}
+	}
 }
 
-// fetchExternalCSS finds <link rel="stylesheet"> tags and fetches their CSS content.
+func loadPageContext(ctx context.Context, pageURL string, viewportWidth int) tea.Cmd {
+	return loadPageForTab(ctx, pageURL, viewportWidth, 0)
+}
+
+func loadPageForTab(ctx context.Context, pageURL string, viewportWidth int, tabID uint64) tea.Cmd {
+	return func() tea.Msg {
+		html, err := fetcher.FetchContext(ctx, pageURL)
+		if err != nil {
+			return PageErrorMsg{Err: err}
+		}
+		if err := ctx.Err(); err != nil {
+			return PageErrorMsg{Err: err}
+		}
+		doc := dom.Parse(html)
+		if err := ctx.Err(); err != nil {
+			return PageErrorMsg{Err: err}
+		}
+		jsLifecycleMu.Lock()
+		if err := ctx.Err(); err != nil {
+			jsLifecycleMu.Unlock()
+			return PageErrorMsg{Err: err}
+		}
+		js.CloseCurrentContext()
+		jsRuntimeTabID = tabID
+		context := js.NewContext()
+		js.SetCurrentContext(context, pageURL)
+		js.InitDOM(doc)
+		if err := context.RegisterBridgeFunctions(); err != nil {
+			js.CloseCurrentContext()
+			jsRuntimeTabID = 0
+			jsLifecycleMu.Unlock()
+			return PageErrorMsg{Err: fmt.Errorf("js bridge init: %w", err)}
+		}
+		js.InitEventSystem(context.GetContextRef())
+		if _, err := context.Evaluate(js.DOMAPIScript()); err != nil {
+			js.CloseCurrentContext()
+			jsRuntimeTabID = 0
+			jsLifecycleMu.Unlock()
+			return PageErrorMsg{Err: fmt.Errorf("js dom api error: %w", err)}
+		}
+		safeURL := strings.ReplaceAll(pageURL, "\\", "\\\\")
+		safeURL = strings.ReplaceAll(safeURL, "'", "\\'")
+		safeURL = strings.ReplaceAll(safeURL, "\n", "\\n")
+		_, _ = context.Evaluate(fmt.Sprintf("document._url='%s';", safeURL))
+		_, _ = context.Evaluate(`window.getComputedStyle=function(el){if(!el||el.__go_id===undefined)return null;return __go_getComputedStyle(el);};`)
+		_ = js.ExecuteScriptsContext(ctx, context, doc, pageURL)
+		_, _ = context.Evaluate(`if(document.dispatchEvent){var ev={type:'DOMContentLoaded',defaultPrevented:false,_propagationStopped:false,preventDefault:function(){this.defaultPrevented=true;},stopPropagation:function(){this._propagationStopped=true;}};document.dispatchEvent(ev);}`)
+		finalDOM := js.GetFinalDOM()
+		jsLifecycleMu.Unlock()
+		if err := ctx.Err(); err != nil {
+			jsLifecycleMu.Lock()
+			current, _ := js.GetCurrentContext()
+			if current == context {
+				js.CloseCurrentContext()
+				jsRuntimeTabID = 0
+			}
+			jsLifecycleMu.Unlock()
+			return PageErrorMsg{Err: err}
+		}
+		externalCSS := fetchExternalCSSContext(ctx, finalDOM, pageURL)
+		fetchImagesContext(ctx, finalDOM, pageURL)
+		if err := ctx.Err(); err != nil {
+			return PageErrorMsg{Err: err}
+		}
+		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(viewportWidth))
+		box := layout.Build(finalDOM, styles, float64(viewportWidth))
+		jsLifecycleMu.Lock()
+		current, currentURL := js.GetCurrentContext()
+		if current == context && jsRuntimeTabID == tabID && currentURL == pageURL {
+			js.SetComputedStyles(styles)
+			js.SetLayoutBoxes(buildLayoutBoxMap(box))
+		}
+		jsLifecycleMu.Unlock()
+		fb := render.Render(box, viewportWidth)
+		lines, ansiLines := ascii.Render(fb, box, viewportWidth), ascii.RenderANSI(fb, box, viewportWidth)
+		if path := os.Getenv("ABYSS_DUMP_ANSI"); path != "" {
+			dump := strings.Join(ansiLines, "\n")
+			_ = os.WriteFile(path, []byte(dump), 0o644)
+			fmt.Fprintf(os.Stderr, "abyss: dumped %d bytes to %s\n", len(dump), path)
+		}
+		return PageLoadedMsg{Lines: lines, ANSI: ansiLines, URL: pageURL, ExternalCSS: externalCSS}
+	}
+}
+
+func reRenderCmd(viewportWidth int, zoomFactor float64, tabID, requestID uint64, pageURL string, externalCSS []string) tea.Cmd {
+	return func() tea.Msg {
+		jsLifecycleMu.Lock()
+		defer jsLifecycleMu.Unlock()
+		context, currentURL := js.GetCurrentContext()
+		if context == nil || jsRuntimeTabID != tabID || currentURL != pageURL {
+			return nil
+		}
+		js.MarkClean()
+		finalDOM := js.GetFinalDOM()
+		if finalDOM == nil {
+			return nil
+		}
+		scaledWidth := int(float64(viewportWidth) * zoomFactor)
+		if scaledWidth < 10 {
+			scaledWidth = 10
+		}
+		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(scaledWidth))
+		js.SetComputedStyles(styles)
+		box := layout.Build(finalDOM, styles, float64(scaledWidth))
+		js.SetLayoutBoxes(buildLayoutBoxMap(box))
+		fb := render.Render(box, scaledWidth)
+		lines, ansiLines := ascii.Render(fb, box, scaledWidth), ascii.RenderANSI(fb, box, scaledWidth)
+		return PageRenderedMsg{TabID: tabID, RequestID: requestID, Lines: lines, ANSI: ansiLines}
+	}
+}
+
 const (
-    maxExternalStylesheets = 64
-    stylesheetWorkers      = 8
+	maxExternalStylesheets     = 64
+	maxExternalCSSBytes        = 4 << 20
+	maxExternalMediaQueryBytes = 256
+	stylesheetWorkers          = 4
 )
 
 func fetchExternalCSS(doc *dom.Node, baseURL string) []string {
-    links := doc.FindLinkStylesheets()
-    if len(links) == 0 {
-        return nil
-    }
-
-    urls := make([]string, 0, len(links))
-    seen := make(map[string]struct{}, len(links))
-    for _, link := range links {
-        href := link.GetAttr("href")
-        if href == "" {
-            continue
-        }
-        cssURL := ResolveURL(baseURL, href)
-        if cssURL == "" {
-            continue
-        }
-        if _, ok := seen[cssURL]; ok {
-            continue
-        }
-        if len(urls) >= maxExternalStylesheets {
-            break
-        }
-        seen[cssURL] = struct{}{}
-        urls = append(urls, cssURL)
-    }
-
-    if len(urls) == 0 {
-        return nil
-    }
-
-    results := make([]string, len(urls))
-    client := &http.Client{Timeout: 2 * time.Second}
-    semaphore := make(chan struct{}, stylesheetWorkers)
-    var wg sync.WaitGroup
-    for i, cssURL := range urls {
-        wg.Add(1)
-        go func(index int, resourceURL string) {
-            defer wg.Done()
-            semaphore <- struct{}{}
-            defer func() { <-semaphore }()
-
-            req, err := http.NewRequest(http.MethodGet, resourceURL, nil)
-            if err != nil {
-                return
-            }
-            req.Header.Set("User-Agent", "Mozilla/5.0")
-            resp, err := client.Do(req)
-            if err != nil {
-                return
-            }
-            defer func() { _ = resp.Body.Close() }()
-            cssBytes, err := io.ReadAll(resp.Body)
-            if err == nil {
-                results[index] = string(cssBytes)
-            }
-        }(i, cssURL)
-    }
-    wg.Wait()
-
-    result := make([]string, 0, len(results))
-    for _, cssText := range results {
-        if cssText != "" {
-            result = append(result, cssText)
-        }
-    }
-    return result
+	return fetchExternalCSSContext(context.Background(), doc, baseURL)
 }
 
-// ResolveURL returns the absolute URL by combining the base URL with a relative reference.
+func fetchExternalCSSContext(ctx context.Context, doc *dom.Node, baseURL string) []string {
+	type stylesheetRef struct {
+		url   string
+		media string
+	}
+	links := doc.FindLinkStylesheets()
+	urls := make([]stylesheetRef, 0, min(len(links), maxExternalStylesheets))
+	seen := make(map[string]struct{}, len(links))
+	for _, link := range links {
+		href := link.GetAttr("href")
+		if href == "" {
+			continue
+		}
+		cssURL := ResolveURL(baseURL, href)
+		if cssURL == "" {
+			continue
+		}
+		media := strings.TrimSpace(link.GetAttr("media"))
+		if len(media) > maxExternalMediaQueryBytes {
+			continue
+		}
+		key := cssURL + "\x00" + media
+		if _, ok := seen[key]; ok {
+			continue
+		}
+		if len(urls) >= maxExternalStylesheets {
+			break
+		}
+		seen[key] = struct{}{}
+		urls = append(urls, stylesheetRef{url: cssURL, media: media})
+	}
+	type cssJob struct {
+		index int
+		url   string
+	}
+	type cssResult struct {
+		index int
+		body  string
+	}
+	workerCount := min(stylesheetWorkers, len(urls))
+	jobs := make(chan cssJob)
+	fetched := make(chan cssResult, workerCount)
+	var wg sync.WaitGroup
+	for i := 0; i < workerCount; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			for job := range jobs {
+				body, err := fetcher.FetchCSS(ctx, job.url)
+				if err != nil {
+					body = ""
+				}
+				fetched <- cssResult{index: job.index, body: body}
+			}
+		}()
+	}
+	launched := 0
+	for launched < workerCount {
+		jobs <- cssJob{index: launched, url: urls[launched].url}
+		launched++
+	}
+
+	pending := make(map[int]string, workerCount)
+	result := make([]string, 0, len(urls))
+	budgetUsed, next := 0, 0
+	for next < len(urls) {
+		item := <-fetched
+		pending[item.index] = item.body
+		for {
+			body, ok := pending[next]
+			if !ok {
+				break
+			}
+			delete(pending, next)
+			media := urls[next].media
+			if media != "" {
+				body = "@media " + media + " {\n" + body + "\n}"
+			}
+			if body != "" && len(body) <= maxExternalCSSBytes-budgetUsed {
+				result = append(result, body)
+				budgetUsed += len(body)
+			}
+			next++
+			if launched < len(urls) {
+				jobs <- cssJob{index: launched, url: urls[launched].url}
+				launched++
+			}
+		}
+	}
+	close(jobs)
+	wg.Wait()
+	return result
+}
+
 func ResolveURL(base, rel string) string {
-    baseURL, err := url.Parse(base)
-    if err != nil {
-        return rel
-    }
-    relURL, err := url.Parse(rel)
-    if err != nil {
-        return ""
-    }
-    return baseURL.ResolveReference(relURL).String()
+	baseURL, err := url.Parse(base)
+	if err != nil {
+		return rel
+	}
+	relURL, err := url.Parse(rel)
+	if err != nil {
+		return ""
+	}
+	return baseURL.ResolveReference(relURL).String()
 }
 
-// ResolveURLForTest exposes ResolveURL for tests and external callers.
-func ResolveURLForTest(base, rel string) string {
-    return ResolveURL(base, rel)
-}
-
-// FetchExternalCSSForTest exposes fetchExternalCSS for tests and external callers.
+func ResolveURLForTest(base, rel string) string { return ResolveURL(base, rel) }
 func FetchExternalCSSForTest(doc *dom.Node, baseURL string) []string {
-    return fetchExternalCSS(doc, baseURL)
+	return fetchExternalCSS(doc, baseURL)
 }

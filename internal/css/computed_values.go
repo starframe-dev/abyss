@@ -29,17 +29,25 @@ var namedColors = map[string]Color{
 
 // Hex parses a #RGB or #RRGGBB color.
 func Hex(s string) Color {
-	var r, g, b uint8
-	if len(s) == 4 {
-		r = uint8(hexToInt(string(s[1])) * 17)
-		g = uint8(hexToInt(string(s[2])) * 17)
-		b = uint8(hexToInt(string(s[3])) * 17)
-	} else if len(s) == 7 {
-		r = uint8(hexToInt(s[1:3]))
-		g = uint8(hexToInt(s[3:5]))
-		b = uint8(hexToInt(s[5:7]))
+	if len(s) != 4 && len(s) != 7 || !strings.HasPrefix(s, "#") {
+		return Transparent()
 	}
-	return Color{R: r, G: g, B: b, IsSet: true}
+	if len(s) == 4 {
+		r, errR := strconv.ParseUint(s[1:2], 16, 8)
+		g, errG := strconv.ParseUint(s[2:3], 16, 8)
+		b, errB := strconv.ParseUint(s[3:4], 16, 8)
+		if errR != nil || errG != nil || errB != nil {
+			return Transparent()
+		}
+		return RGB(uint8(r*17), uint8(g*17), uint8(b*17))
+	}
+	r, errR := strconv.ParseUint(s[1:3], 16, 8)
+	g, errG := strconv.ParseUint(s[3:5], 16, 8)
+	b, errB := strconv.ParseUint(s[5:7], 16, 8)
+	if errR != nil || errG != nil || errB != nil {
+		return Transparent()
+	}
+	return RGB(uint8(r), uint8(g), uint8(b))
 }
 
 // parseDisplay парсит значение свойства display в тип DisplayType.
@@ -366,19 +374,4 @@ func parseLengthList(val string) []Length {
 func isNumber(s string) bool {
 	_, err := strconv.ParseFloat(s, 64)
 	return err == nil
-}
-
-// hexToInt парсит HEX-строку в целое число.
-func hexToInt(s string) int {
-	i := 0
-	for _, c := range s {
-		if c >= '0' && c <= '9' {
-			i = i*16 + int(c-'0')
-		} else if c >= 'a' && c <= 'f' {
-			i = i*16 + int(c-'a'+10)
-		} else if c >= 'A' && c <= 'F' {
-			i = i*16 + int(c-'A'+10)
-		}
-	}
-	return i
 }

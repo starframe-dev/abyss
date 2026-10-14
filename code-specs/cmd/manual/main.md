@@ -95,12 +95,12 @@
 
 ### Внешние зависимости
 
-- `github.com/starframe/abyss/internal/ascii` — рендеринг framebuffer в ASCII.
-- `github.com/starframe/abyss/internal/css` — вычисление стилей из DOM.
-- `github.com/starframe/abyss/internal/dom` — парсинг и представление DOM.
-- `github.com/starframe/abyss/internal/js` — контекст выполнения JavaScript, мостовые функции.
-- `github.com/starframe/abyss/internal/layout` — вычисление box-model верстки.
-- `github.com/starframe/abyss/internal/render` — рендеринг framebuffer из layout.
+- `github.com/starframe-dev/abyss/internal/ascii` — рендеринг framebuffer в ASCII.
+- `github.com/starframe-dev/abyss/internal/css` — вычисление стилей из DOM.
+- `github.com/starframe-dev/abyss/internal/dom` — парсинг и представление DOM.
+- `github.com/starframe-dev/abyss/internal/js` — контекст выполнения JavaScript, мостовые функции.
+- `github.com/starframe-dev/abyss/internal/layout` — вычисление box-model верстки.
+- `github.com/starframe-dev/abyss/internal/render` — рендеринг framebuffer из layout.
 
 ## Алгоритм
 

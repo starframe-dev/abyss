@@ -6,7 +6,7 @@ Graphloom не может построить UCM для Abyss. Пакет `inter
 
 ## Цель
 
-Восстановить компиляцию `github.com/starframe/abyss/internal/js`, сохранив экспортируемый API, используемый integration tests, и не дублируя каноническую DOM-логику.
+Восстановить компиляцию `github.com/starframe-dev/abyss/internal/js`, сохранив экспортируемый API, используемый integration tests, и не дублируя каноническую DOM-логику.
 
 ## Что изменится
 

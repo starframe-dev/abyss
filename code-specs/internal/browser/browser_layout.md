@@ -46,7 +46,7 @@
 
 ### `layout.LayoutBox`
 
-Структура layout box (импортируется из `github.com/starframe/abyss/internal/layout`):
+Структура layout box (импортируется из `github.com/starframe-dev/abyss/internal/layout`):
 
 - Содержит поле `Node` — ссылка на DOM узел.
 - Содержит поле `Content` — прямоугольник контента с полями `X`, `Y`, `Width`, `Height`.
@@ -54,11 +54,11 @@
 
 ### `dom.Node`
 
-Структура DOM узла (импортируется из `github.com/starframe/abyss/internal/dom`).
+Структура DOM узла (импортируется из `github.com/starframe-dev/abyss/internal/dom`).
 
 ### `js.Rect`
 
-Структура прямоугольника (импортируется из `github.com/starframe/abyss/internal/js`):
+Структура прямоугольника (импортируется из `github.com/starframe-dev/abyss/internal/js`):
 
 - `X float64` — координата по X.
 - `Y float64` — координата по Y.
@@ -69,9 +69,9 @@
 
 ### Экспортные зависимости
 
-- `github.com/starframe/abyss/internal/dom` — тип `Node`
-- `github.com/starframe/abyss/internal/js` — тип `Rect`
-- `github.com/starframe/abyss/internal/layout` — тип `LayoutBox`
+- `github.com/starframe-dev/abyss/internal/dom` — тип `Node`
+- `github.com/starframe-dev/abyss/internal/js` — тип `Rect`
+- `github.com/starframe-dev/abyss/internal/layout` — тип `LayoutBox`
 
 ### Импортные зависимости
 

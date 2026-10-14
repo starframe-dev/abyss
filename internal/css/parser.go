@@ -15,8 +15,10 @@ type Declaration struct {
 
 // Rule is a CSS rule with selectors and declarations.
 type Rule struct {
-	Selectors    []string
-	Declarations []Declaration
+	Selectors     []string
+	Declarations  []Declaration
+	MediaQuery    string
+	SupportsQuery string
 }
 
 // ParseInline parses an inline style attribute string.
@@ -44,7 +46,16 @@ func ParseStyleSheet(css string) []Rule {
 	return parseRules(stripComments(css))
 }
 
+const maxNestedAtRuleDepth = 32
+
 func parseRules(css string) []Rule {
+	return parseRulesInMedia(css, "", "", 0)
+}
+
+func parseRulesInMedia(css, mediaQuery, supportsQuery string, depth int) []Rule {
+	if depth >= maxNestedAtRuleDepth {
+		return nil
+	}
 	var rules []Rule
 	for len(css) > 0 {
 		brace := strings.Index(css, "{")
@@ -58,9 +69,24 @@ func parseRules(css string) []Rule {
 		}
 
 		prelude := strings.TrimSpace(css[:brace])
+		if prelude == "" {
+			css = css[endBrace+1:]
+			continue
+		}
 		if strings.HasPrefix(prelude, "@") {
-			if isNestedRuleAtRule(prelude) {
-				rules = append(rules, parseRules(css[brace+1:endBrace])...)
+			lowerPrelude := strings.ToLower(prelude)
+			if strings.HasPrefix(lowerPrelude, "@media ") || strings.HasPrefix(lowerPrelude, "@media(") {
+				query := strings.TrimSpace(prelude[len("@media"):])
+				if mediaQuery != "" {
+					query = mediaQuery + " and " + query
+				}
+				rules = append(rules, parseRulesInMedia(css[brace+1:endBrace], query, supportsQuery, depth+1)...)
+			} else if strings.HasPrefix(lowerPrelude, "@supports ") {
+				query := strings.TrimSpace(prelude[len("@supports"):])
+				if supportsQuery != "" {
+					query = supportsQuery + " and " + query
+				}
+				rules = append(rules, parseRulesInMedia(css[brace+1:endBrace], mediaQuery, query, depth+1)...)
 			}
 		} else {
 			selectors := strings.Split(prelude, ",")
@@ -68,24 +94,16 @@ func parseRules(css string) []Rule {
 				selectors[i] = strings.TrimSpace(selectors[i])
 			}
 			rules = append(rules, Rule{
-				Selectors:    selectors,
-				Declarations: parseDeclarations(css[brace+1 : endBrace]),
+				Selectors:     selectors,
+				Declarations:  parseDeclarations(css[brace+1 : endBrace]),
+				MediaQuery:    mediaQuery,
+				SupportsQuery: supportsQuery,
 			})
 		}
 
 		css = css[endBrace+1:]
 	}
 	return rules
-}
-
-func isNestedRuleAtRule(prelude string) bool {
-	name := strings.ToLower(strings.TrimSpace(strings.SplitN(prelude, " ", 2)[0]))
-	switch name {
-	case "@media", "@supports", "@container", "@layer", "@document":
-		return true
-	default:
-		return false
-	}
 }
 
 func stripComments(css string) string {
@@ -191,8 +209,13 @@ func Specificity(selector string) int {
 		b += strings.Count(tok, ".")
 		// Count pseudo-classes (not pseudo-elements)
 		for i := 0; i < len(tok); i++ {
-			if tok[i] == ':' && i+1 < len(tok) && tok[i+1] != ':' {
-				b++
+			if tok[i] == ':' && i+1 < len(tok) {
+				if tok[i+1] == ':' {
+					c++
+					i++
+				} else {
+					b++
+				}
 			}
 			if tok[i] == '[' {
 				b++
@@ -212,7 +235,11 @@ func Specificity(selector string) int {
 			if strings.HasPrefix(part, ":") {
 				continue
 			}
-			if isValidTypeSelector(part) {
+			typeName := part
+			if index := strings.IndexAny(typeName, ":["); index >= 0 {
+				typeName = typeName[:index]
+			}
+			if isValidTypeSelector(typeName) {
 				c++
 			}
 		}

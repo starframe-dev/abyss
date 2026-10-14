@@ -2,6 +2,7 @@ package css
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/starframe-dev/abyss/internal/dom"
@@ -104,6 +105,33 @@ func TestComputeWithExternal_EmptyExternalCSS(t *testing.T) {
 	InvalidateCache()
 }
 
+func TestSpecificityCountsTypeSelectorsWithPseudoAndAttributeSelectors(t *testing.T) {
+	for selector, want := range map[string]int{
+		"div:hover":   11,
+		"div[attr]":   11,
+		"div::before": 2,
+		".a.b":        20,
+		"#id .a":      110,
+	} {
+		if got := Specificity(selector); got != want {
+			t.Errorf("Specificity(%q) = %d, want %d", selector, got, want)
+		}
+	}
+}
+
+func TestParseStyleSheetBoundsNestedAtRuleDepth(t *testing.T) {
+	input := strings.Repeat("@media screen {", maxNestedAtRuleDepth+8) + `.card { color: red; }` + strings.Repeat("}", maxNestedAtRuleDepth+8)
+	if rules := ParseStyleSheet(input); len(rules) != 0 {
+		t.Fatalf("over-depth nested rules = %d, want none", len(rules))
+	}
+}
+
+func TestParseStyleSheetIgnoresEmptyRule(t *testing.T) {
+	if rules := ParseStyleSheet(`{}`); len(rules) != 0 {
+		t.Fatalf("empty rule produced %d parsed rules", len(rules))
+	}
+}
+
 func TestParseStyleSheet_NestedAtRule(t *testing.T) {
 	rules := ParseStyleSheet("@media (min-width: 1px) { .card { display: grid; } }")
 
@@ -112,6 +140,9 @@ func TestParseStyleSheet_NestedAtRule(t *testing.T) {
 	}
 	if rules[0].Selectors[0] != ".card" {
 		t.Fatalf("selector = %q, want .card", rules[0].Selectors[0])
+	}
+	if rules[0].MediaQuery != "(min-width: 1px)" {
+		t.Fatalf("media query = %q, want (min-width: 1px)", rules[0].MediaQuery)
 	}
 }
 
@@ -133,6 +164,28 @@ func TestComputeWithExternal_CSSVariables(t *testing.T) {
 	InvalidateCache()
 }
 
+func TestMediaQueriesMatchViewportWidthAndCacheByWidth(t *testing.T) {
+	doc := dom.Parse(`<style>@media (min-width: 600px) { .card { color: red; } } @media screen and (max-width: 599px) { .card { color: blue; } } @supports (display: grid) { .card { display: grid; } } @supports (display: masonry) { .card { background-color: red; } }</style><style media="screen and (min-width: 600px)">.card { width: 123px; }</style><p class="card">text</p>`)
+	card := doc.QuerySelector(".card")
+	if got, want := ComputeAtWidth(doc, 400)[card].Color, RGB(0, 0, 255); got != want {
+		t.Fatalf("narrow media color = %#v, want %#v", got, want)
+	}
+	wide := ComputeAtWidth(doc, 800)[card]
+	if got, want := wide.Color, RGB(255, 0, 0); got != want {
+		t.Fatalf("wide media color = %#v, want %#v", got, want)
+	}
+	if wide.Display != DisplayGrid {
+		t.Fatalf("supported @supports rule was ignored: display=%v", wide.Display)
+	}
+	if wide.Width != Px(123) {
+		t.Fatalf("style[media] width = %v, want 123px", wide.Width)
+	}
+	if wide.BackgroundColor.IsSet {
+		t.Fatalf("unsupported @supports rule was applied: background=%v", wide.BackgroundColor)
+	}
+	InvalidateCache()
+}
+
 func TestCSSImportantOverridesSpecificityAndInlineNormal(t *testing.T) {
 	doc := dom.Parse(`<p id="one" class="card" style="color:purple"></p><p id="two" class="card" style="color:#00ff00!important"></p>`)
 	styles := ComputeWithExternal(doc, []string{
@@ -145,6 +198,27 @@ func TestCSSImportantOverridesSpecificityAndInlineNormal(t *testing.T) {
 		t.Fatalf("important inline color = %#v, want %#v", got, want)
 	}
 	InvalidateCache()
+}
+
+func TestInvalidHexColorIsNotBlack(t *testing.T) {
+	for _, value := range []string{"#12345", "#ggg", "123456"} {
+		if color := Hex(value); color.IsSet {
+			t.Errorf("Hex(%q) returned set color %#v", value, color)
+		}
+	}
+}
+
+func TestBoxModelIsZeroRejectsNonPixelZeroLengths(t *testing.T) {
+	zero := BoxModel{Top: Px(0), Right: Px(0), Bottom: Px(0), Left: Px(0)}
+	if !zero.IsZero() {
+		t.Fatal("zero-pixel box model reported nonzero")
+	}
+	for _, length := range []Length{Auto(), Percent(0), Fr(0), Px(1)} {
+		box := BoxModel{Top: length}
+		if box.IsZero() {
+			t.Errorf("box model with top=%v reported zero", length)
+		}
+	}
 }
 
 func TestCSSVariableCyclesAreBoundedAndUseFallback(t *testing.T) {

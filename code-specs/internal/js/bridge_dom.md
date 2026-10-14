@@ -440,7 +440,7 @@ func <FunctionName>JS(ctx *Context, args []C.JSValueRef) C.JSValueRef
 ```go
 import (
     "unsafe"
-    "github.com/starframe/abyss/internal/css"
+    "github.com/starframe-dev/abyss/internal/css"
 )
 ```
 

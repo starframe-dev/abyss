@@ -62,13 +62,13 @@
 
 | Тип | Пакет | Описание |
 |-----|-------|----------|
-| `ascii.Cell` | `github.com/starframe/abyss/internal/ascii` | Ячейка терминала с символом и цветами |
-| `dom.Node` | `github.com/starframe/abyss/internal/dom` | Узел DOM-дерева |
-| `css.Color` | `github.com/starframe/abyss/internal/css` | Цвет в формате RGB |
-| `css.ComputedStyle` | `github.com/starframe/abyss/internal/css` | Итоговый CSS-стиль узла |
-| `layout.LayoutBox` | `github.com/starframe/abyss/internal/layout` | Узел макета с геометрией |
-| `framebuffer.Framebuffer` | `github.com/starframe/abyss/internal/framebuffer` | Буфер пикселей RGB |
-| `js.Context` | `github.com/starframe/abyss/internal/js` | Контекст исполнения JavaScript |
+| `ascii.Cell` | `github.com/starframe-dev/abyss/internal/ascii` | Ячейка терминала с символом и цветами |
+| `dom.Node` | `github.com/starframe-dev/abyss/internal/dom` | Узел DOM-дерева |
+| `css.Color` | `github.com/starframe-dev/abyss/internal/css` | Цвет в формате RGB |
+| `css.ComputedStyle` | `github.com/starframe-dev/abyss/internal/css` | Итоговый CSS-стиль узла |
+| `layout.LayoutBox` | `github.com/starframe-dev/abyss/internal/layout` | Узел макета с геометрией |
+| `framebuffer.Framebuffer` | `github.com/starframe-dev/abyss/internal/framebuffer` | Буфер пикселей RGB |
+| `js.Context` | `github.com/starframe-dev/abyss/internal/js` | Контекст исполнения JavaScript |
 
 ### Константы и значения
 
@@ -84,14 +84,14 @@
 
 ### Внутренние
 
-- `github.com/starframe/abyss/internal/ascii` — ASCII-рендеринг
-- `github.com/starframe/abyss/internal/css` — вычисление CSS-стилей
-- `github.com/starframe/abyss/internal/dom` — DOM-дерево
-- `github.com/starframe/abyss/internal/fetcher` — загрузка HTTP
-- `github.com/starframe/abyss/internal/js` — JavaScript-контекст и мосты
-- `github.com/starframe/abyss/internal/layout` — макетирование
-- `github.com/starframe/abyss/internal/render` — рендеринг в буфер
-- `github.com/starframe/abyss/internal/framebuffer` — тип буфера кадров, возвращаемого `render.Render`
+- `github.com/starframe-dev/abyss/internal/ascii` — ASCII-рендеринг
+- `github.com/starframe-dev/abyss/internal/css` — вычисление CSS-стилей
+- `github.com/starframe-dev/abyss/internal/dom` — DOM-дерево
+- `github.com/starframe-dev/abyss/internal/fetcher` — загрузка HTTP
+- `github.com/starframe-dev/abyss/internal/js` — JavaScript-контекст и мосты
+- `github.com/starframe-dev/abyss/internal/layout` — макетирование
+- `github.com/starframe-dev/abyss/internal/render` — рендеринг в буфер
+- `github.com/starframe-dev/abyss/internal/framebuffer` — тип буфера кадров, возвращаемого `render.Render`
 
 ## Поток данных
 

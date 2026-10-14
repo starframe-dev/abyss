@@ -197,8 +197,8 @@ var voidElements = map[string]bool{
 
 - `sort` — сортировка ключей атрибутов
 - `strings` — работа со строками (Builder, ReplaceAll)
-- `github.com/starframe/abyss/internal/css` — инвалидация CSS-кэша
-- `github.com/starframe/abyss/internal/dom` — работа с DOM-узлами
+- `github.com/starframe-dev/abyss/internal/css` — инвалидация CSS-кэша
+- `github.com/starframe-dev/abyss/internal/dom` — работа с DOM-узлами
 
 ---
 

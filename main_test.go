@@ -1,15 +1,15 @@
 package main
 
 import (
-    "testing"
+	"testing"
 
-    tea "github.com/charmbracelet/bubbletea"
-    "github.com/starframe/abyss/internal/browser"
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/starframe-dev/abyss/internal/browser"
 )
 
 func TestBrowserModelImplementsTeaModel(t *testing.T) {
-    model := browser.New()
-    var _ tea.Model = &model
+	model := browser.New()
+	var _ tea.Model = &model
 }
 
 // TestMainEntryPoint verifies that the package compiles and main can be
@@ -17,7 +17,7 @@ func TestBrowserModelImplementsTeaModel(t *testing.T) {
 // not safe to invoke from tests, so we only check that the entry point is
 // callable by reference (used by the go runtime).
 func TestMainEntryPoint(t *testing.T) {
-    // Just verify main.go compiles; we don't invoke main directly.
-    // If we got here, the binary links correctly.
-    _ = browser.New
+	// Just verify main.go compiles; we don't invoke main directly.
+	// If we got here, the binary links correctly.
+	_ = browser.New
 }

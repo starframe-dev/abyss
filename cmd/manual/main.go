@@ -1,18 +1,18 @@
 package main
 
 import (
-    "fmt"
-    "os"
-    "path/filepath"
-    "strings"
-    "time"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
 
-    "github.com/starframe/abyss/internal/ascii"
-    "github.com/starframe/abyss/internal/css"
-    "github.com/starframe/abyss/internal/dom"
-    "github.com/starframe/abyss/internal/js"
-    "github.com/starframe/abyss/internal/layout"
-    "github.com/starframe/abyss/internal/render"
+	"github.com/starframe-dev/abyss/internal/ascii"
+	"github.com/starframe-dev/abyss/internal/css"
+	"github.com/starframe-dev/abyss/internal/dom"
+	"github.com/starframe-dev/abyss/internal/js"
+	"github.com/starframe-dev/abyss/internal/layout"
+	"github.com/starframe-dev/abyss/internal/render"
 )
 
 // testPage is a self-contained HTML with inline JS, flex/grid layout and colored blocks.
@@ -156,94 +156,94 @@ const testPage = `<!DOCTYPE html>
 </html>`
 
 func main() {
-    filePath := filepath.Join(os.TempDir(), "abyss_test_page.html")
-    if err := os.WriteFile(filePath, []byte(testPage), 0644); err != nil {
-        panic(err)
-    }
-    defer os.Remove(filePath)
+	filePath := filepath.Join(os.TempDir(), "abyss_test_page.html")
+	if err := os.WriteFile(filePath, []byte(testPage), 0644); err != nil {
+		panic(err)
+	}
+	defer os.Remove(filePath)
 
-    fmt.Println("=== Rendering test page with inline JS ===")
-    fmt.Printf("Page saved to: %s\n\n", filePath)
+	fmt.Println("=== Rendering test page with inline JS ===")
+	fmt.Printf("Page saved to: %s\n\n", filePath)
 
-    // Parse HTML
-    doc := dom.Parse(testPage)
-    fmt.Printf("DOM parsed: %d children under html\n", len(doc.Children))
+	// Parse HTML
+	doc := dom.Parse(testPage)
+	fmt.Printf("DOM parsed: %d children under html\n", len(doc.Children))
 
-    // Execute JavaScript
-    jsc := js.NewContext()
-    defer jsc.Close()
+	// Execute JavaScript
+	jsc := js.NewContext()
+	defer jsc.Close()
 
-    js.InitDOM(doc)
-    js.LogWriter = os.Stderr
+	js.InitDOM(doc)
+	js.LogWriter = os.Stderr
 
-    if err := jsc.RegisterBridgeFunctions(); err != nil {
-        fmt.Printf("Bridge init error: %v\n", err)
-        os.Exit(1)
-    }
+	if err := jsc.RegisterBridgeFunctions(); err != nil {
+		fmt.Printf("Bridge init error: %v\n", err)
+		os.Exit(1)
+	}
 
-    if _, err := jsc.Evaluate(js.DOMAPIScript()); err != nil {
-        fmt.Printf("DOM API script error: %v\n", err)
-        os.Exit(1)
-    }
+	if _, err := jsc.Evaluate(js.DOMAPIScript()); err != nil {
+		fmt.Printf("DOM API script error: %v\n", err)
+		os.Exit(1)
+	}
 
-    if err := js.ExecuteScripts(jsc, doc, ""); err != nil {
-        fmt.Printf("Script execution: %v\n", err)
-    }
+	if err := js.ExecuteScripts(jsc, doc, ""); err != nil {
+		fmt.Printf("Script execution: %v\n", err)
+	}
 
-    finalDOM := js.GetFinalDOM()
+	finalDOM := js.GetFinalDOM()
 
-    if finalDOM != nil {
-        fmt.Printf("Final DOM root children: %d\n", len(finalDOM.Children))
-        printDOMTree(finalDOM)
-    }
+	if finalDOM != nil {
+		fmt.Printf("Final DOM root children: %d\n", len(finalDOM.Children))
+		printDOMTree(finalDOM)
+	}
 
-    // Render pipeline
-    fmt.Println("\n=== Rendering with CSS/Layout/Render ===")
-    styles := css.Compute(finalDOM)
-    box := layout.Build(finalDOM, styles, 800)
-    fb := render.Render(box, 800)
-    lines := ascii.Render(fb, box, 800)
+	// Render pipeline
+	fmt.Println("\n=== Rendering with CSS/Layout/Render ===")
+	styles := css.Compute(finalDOM)
+	box := layout.Build(finalDOM, styles, 800)
+	fb := render.Render(box, 800)
+	lines := ascii.Render(fb, box, 800)
 
-    fmt.Printf("Framebuffer: %dx%d\n", fb.Width, fb.Height)
-    fmt.Printf("ANSI lines: %d\n\n", len(lines))
+	fmt.Printf("Framebuffer: %dx%d\n", fb.Width, fb.Height)
+	fmt.Printf("ANSI lines: %d\n\n", len(lines))
 
-    fmt.Println("=== OUTPUT ===")
-    for _, line := range lines {
-        fmt.Println(line)
-    }
-    fmt.Println("=== END ===")
+	fmt.Println("=== OUTPUT ===")
+	for _, line := range lines {
+		fmt.Println(line)
+	}
+	fmt.Println("=== END ===")
 
-    // Let user observe
-    time.Sleep(2 * time.Second)
+	// Let user observe
+	time.Sleep(2 * time.Second)
 }
 
 func printDOMTree(root *dom.Node) {
-    for _, c := range root.Children {
-        if c.Type == dom.ElementNode {
-            fmt.Printf("  <%s> (%d children)\n", c.TagName, len(c.Children))
-            if c.TagName == "html" {
-                printHTMLBody(c)
-            }
-        }
-    }
+	for _, c := range root.Children {
+		if c.Type == dom.ElementNode {
+			fmt.Printf("  <%s> (%d children)\n", c.TagName, len(c.Children))
+			if c.TagName == "html" {
+				printHTMLBody(c)
+			}
+		}
+	}
 }
 
 func printHTMLBody(htmlEl *dom.Node) {
-    for _, body := range htmlEl.Children {
-        if body.Type != dom.ElementNode || body.TagName != "body" {
-            continue
-        }
-        fmt.Printf("    <body> (%d children):\n", len(body.Children))
-        for _, bc := range body.Children {
-            if bc.Type == dom.ElementNode {
-                fmt.Printf("      <%s> class=%s text='%s'\n", bc.TagName, bc.Attributes["class"], bc.TextContent())
-            } else if bc.Type == dom.TextNode {
-                text := strings.TrimSpace(bc.Text)
-                if len(text) > 40 {
-                    text = text[:40] + "..."
-                }
-                fmt.Printf("      text: '%s'\n", text)
-            }
-        }
-    }
+	for _, body := range htmlEl.Children {
+		if body.Type != dom.ElementNode || body.TagName != "body" {
+			continue
+		}
+		fmt.Printf("    <body> (%d children):\n", len(body.Children))
+		for _, bc := range body.Children {
+			if bc.Type == dom.ElementNode {
+				fmt.Printf("      <%s> class=%s text='%s'\n", bc.TagName, bc.Attributes["class"], bc.TextContent())
+			} else if bc.Type == dom.TextNode {
+				text := strings.TrimSpace(bc.Text)
+				if len(text) > 40 {
+					text = text[:40] + "..."
+				}
+				fmt.Printf("      text: '%s'\n", text)
+			}
+		}
+	}
 }

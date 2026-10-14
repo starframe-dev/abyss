@@ -458,11 +458,11 @@ p.Run()
 - `github.com/charmbracelet/bubbles/textinput` — поле ввода URL
 - `github.com/charmbracelet/bubbles/viewport` — прокручиваемая область контента
 - `github.com/charmbracelet/bubbletea` — модель событий
-- `github.com/starframe/abyss/internal/js` — JS-движок и DOM
-- `github.com/starframe/abyss/internal/dom` — парсер HTML
-- `github.com/starframe/abyss/internal/ascii` — рендеринг ASCII/ANSI
-- `github.com/starframe/abyss/internal/css` — вычисление стилей
-- `github.com/starframe/abyss/internal/layout` — построение верстки
-- `github.com/starframe/abyss/internal/render` — рендеринг
-- `github.com/starframe/abyss/internal/fetcher` — HTTP-запросы
-- `github.com/starframe/abyss/internal/dom` — парсинг DOM
+- `github.com/starframe-dev/abyss/internal/js` — JS-движок и DOM
+- `github.com/starframe-dev/abyss/internal/dom` — парсер HTML
+- `github.com/starframe-dev/abyss/internal/ascii` — рендеринг ASCII/ANSI
+- `github.com/starframe-dev/abyss/internal/css` — вычисление стилей
+- `github.com/starframe-dev/abyss/internal/layout` — построение верстки
+- `github.com/starframe-dev/abyss/internal/render` — рендеринг
+- `github.com/starframe-dev/abyss/internal/fetcher` — HTTP-запросы
+- `github.com/starframe-dev/abyss/internal/dom` — парсинг DOM

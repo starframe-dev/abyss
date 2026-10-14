@@ -183,7 +183,7 @@ var LogWriter io.Writer = io.Discard
 
 ## Внешние зависимости
 
-- `github.com/starframe/abyss/internal/dom` — пакет для работы с DOM-узлами
+- `github.com/starframe-dev/abyss/internal/dom` — пакет для работы с DOM-узлами
 - JavaScriptCore C-библиотека (включена через cgo)
 
 ## Ключевые ограничения

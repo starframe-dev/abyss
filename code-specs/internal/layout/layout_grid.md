@@ -181,7 +181,7 @@ return totalHeight
 
 ## Зависимости
 
-- `github.com/starframe/abyss/internal/css` — предоставляет типы `LayoutBox` и `css.Length`.
+- `github.com/starframe-dev/abyss/internal/css` — предоставляет типы `LayoutBox` и `css.Length`.
 
 ## Применимость
 

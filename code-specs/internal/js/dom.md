@@ -371,11 +371,11 @@ type timer struct {
 
 ## Внешние зависимости
 
-### `github.com/starframe/abyss/internal/css`
+### `github.com/starframe-dev/abyss/internal/css`
 
 Используется тип `css.ComputedStyle` для кэширования вычисленных стилей.
 
-### `github.com/starframe/abyss/internal/dom`
+### `github.com/starframe-dev/abyss/internal/dom`
 
 Используется тип `dom.Node` для представления узлов DOM. Предоставляет методы:
 - `.Type` — тип узла (`ElementNode`, `TextNode`, `DocumentFragmentNode`)

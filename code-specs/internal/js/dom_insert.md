@@ -14,8 +14,8 @@ package js
 
 ```go
 import (
-    "github.com/starframe/abyss/internal/css"
-    "github.com/starframe/abyss/internal/dom"
+    "github.com/starframe-dev/abyss/internal/css"
+    "github.com/starframe-dev/abyss/internal/dom"
 )
 ```
 

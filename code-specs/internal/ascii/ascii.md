@@ -203,6 +203,6 @@ lines := RenderPlain(fb, tree, 80)
 
 ## Зависимости
 
-- `github.com/starframe/abyss/internal/css` — типы цветов
-- `github.com/starframe/abyss/internal/framebuffer` — тип framebuffer
-- `github.com/starframe/abyss/internal/layout` — тип layout и текстовые строки
+- `github.com/starframe-dev/abyss/internal/css` — типы цветов
+- `github.com/starframe-dev/abyss/internal/framebuffer` — тип framebuffer
+- `github.com/starframe-dev/abyss/internal/layout` — тип layout и текстовые строки

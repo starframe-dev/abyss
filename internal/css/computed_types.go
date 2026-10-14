@@ -163,7 +163,11 @@ type BoxModel struct {
 
 // IsZero reports whether all sides are zero px.
 func (b BoxModel) IsZero() bool {
-	return b.Top.Px == 0 && b.Right.Px == 0 && b.Bottom.Px == 0 && b.Left.Px == 0
+	return isZeroLength(b.Top) && isZeroLength(b.Right) && isZeroLength(b.Bottom) && isZeroLength(b.Left)
+}
+
+func isZeroLength(length Length) bool {
+	return !length.IsAuto && !length.IsPercent && !length.IsFraction && length.Px == 0
 }
 
 // ComputedStyle holds all computed CSS properties for a node.

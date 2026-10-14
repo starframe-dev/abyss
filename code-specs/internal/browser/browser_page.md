@@ -162,13 +162,13 @@
 ### Внешние
 
 - `github.com/charmbracelet/bubbletea` - фреймворк для TUI приложений
-- `github.com/starframe/abyss/internal/ascii` - ASCII/ANSI рендеринг
-- `github.com/starframe/abyss/internal/css` - вычисление CSS-стилей
-- `github.com/starframe/abyss/internal/dom` - DOM-парсинг и манипуляции
-- `github.com/starframe/abyss/internal/fetcher` - загрузка контента из сети
-- `github.com/starframe/abyss/internal/js` - JavaScript-контекст и выполнение
-- `github.com/starframe/abyss/internal/layout` - построение макета
-- `github.com/starframe/abyss/internal/render` - рендеринг в framebuffer
+- `github.com/starframe-dev/abyss/internal/ascii` - ASCII/ANSI рендеринг
+- `github.com/starframe-dev/abyss/internal/css` - вычисление CSS-стилей
+- `github.com/starframe-dev/abyss/internal/dom` - DOM-парсинг и манипуляции
+- `github.com/starframe-dev/abyss/internal/fetcher` - загрузка контента из сети
+- `github.com/starframe-dev/abyss/internal/js` - JavaScript-контекст и выполнение
+- `github.com/starframe-dev/abyss/internal/layout` - построение макета
+- `github.com/starframe-dev/abyss/internal/render` - рендеринг в framebuffer
 
 ### Стандартная библиотека
 
