@@ -4,7 +4,7 @@ export default defineConfig({
   title: 'Abyss',
   description: 'TUI browser that renders web pages as ANSI color art',
   lang: 'en-US',
-  base: '/abyss/docs/',
+  base: '/abyss/',
 
   locales: {
     root: {

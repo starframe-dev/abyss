@@ -34,10 +34,10 @@ jobs:
       - name: Build VitePress
         run: pnpm vitepress build
 
-      - name: Prepare artifact for /abyss/docs/ path
+      - name: Prepare artifact for /abyss/ path
         run: |
-          mkdir -p _site/docs
-          cp -r .vitepress/dist/* _site/docs/
+          mkdir -p _site
+          cp -r .vitepress/dist/* _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
