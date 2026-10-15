@@ -2,7 +2,11 @@
 package layout
 
 import (
+	"strconv"
+	"strings"
+
 	"github.com/starframe-dev/abyss/internal/css"
+	"github.com/starframe-dev/abyss/internal/dom"
 )
 
 func layoutFlex(box *LayoutBox, contentWidth float64) float64 {
@@ -119,6 +123,41 @@ func flexTotals(box *LayoutBox, contentWidth float64) (basis, grow, shrink float
 	return
 }
 
+// flexMinContentWidth returns the widest default field (textarea cols or input
+// size, 20 columns when unset) nested inside box. It is the minimum content
+// width a flex item keeps while shrinking.
+func flexMinContentWidth(box *LayoutBox) float64 {
+	var widest float64
+	var walk func(b *LayoutBox)
+	walk = func(b *LayoutBox) {
+		if b.Node != nil && b.Node.Type == dom.ElementNode {
+			switch b.Node.TagName {
+			case "textarea":
+				widest = max(widest, fieldColumns(b.Node.GetAttr("cols")))
+			case "input":
+				if !strings.EqualFold(strings.TrimSpace(b.Node.GetAttr("type")), "hidden") {
+					widest = max(widest, fieldColumns(b.Node.GetAttr("size")))
+				}
+			}
+		}
+		for _, c := range b.Children {
+			walk(c)
+		}
+	}
+	walk(box)
+	return widest
+}
+
+const defaultFieldColumns = 20
+
+func fieldColumns(attr string) float64 {
+	n, err := strconv.Atoi(strings.TrimSpace(attr))
+	if err != nil || n <= 0 {
+		return defaultFieldColumns
+	}
+	return float64(n)
+}
+
 func flexRemaining(flexDir css.FlexDirection, availableSpace, totalBasis float64) float64 {
 	if flexDir == css.FlexDirectionRow {
 		return availableSpace - totalBasis
@@ -155,6 +194,9 @@ func layoutFlexChild(box, child *LayoutBox, flexDir css.FlexDirection, gap, cont
 	}
 
 	if flexDir == css.FlexDirectionRow {
+		// min-width:auto keeps a flex item at least as wide as its minimum
+		// content, so a shrunken row cannot squeeze a text field to nothing.
+		childWidth = max(childWidth, flexMinContentWidth(child))
 		origWidth := child.Style.Width
 		child.Style.Width = css.Px(childWidth)
 		layoutBox(child, childWidth, box.Content.X+pos, box.Content.Y, false)
