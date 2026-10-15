@@ -8,6 +8,7 @@ import (
 
 	"github.com/mattn/go-runewidth"
 	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/framebuffer"
@@ -15,7 +16,7 @@ import (
 )
 
 func TestRenderTextUsesTerminalCellWidth(t *testing.T) {
-	fb := framebuffer.New(7, 2)
+	fb := framebuffer.New(7*cellmetrics.WidthPx, 2*cellmetrics.HeightPx)
 	tree := &layout.LayoutBox{TextLines: []layout.TextLine{{Text: "A猫e\u03011️⃣", X: 0, Y: 0}}}
 	plain := Render(fb, tree, 7)[0]
 	if got := runewidth.StringWidth(plain); got != 7 {
@@ -28,7 +29,7 @@ func TestRenderTextUsesTerminalCellWidth(t *testing.T) {
 }
 
 func TestRenderTextDropsBidiControlsButKeepsEmojiJoiner(t *testing.T) {
-	fb := framebuffer.New(8, 2)
+	fb := framebuffer.New(8*cellmetrics.WidthPx, 2*cellmetrics.HeightPx)
 	emoji := "👩‍💻"
 	tree := &layout.LayoutBox{TextLines: []layout.TextLine{{Text: "a\u202eB" + emoji, X: 0, Y: 0}}}
 	plain := Render(fb, tree, 8)[0]
@@ -77,7 +78,7 @@ func TestOverlayAsciiCells_ImgBoxesPopulateGrid(t *testing.T) {
 	imgBox.AsciiCells = grid
 
 	fb := framebuffer.New(int(box.Content.Width)+10, int(box.Content.Height)+10)
-	cells := makeGrid(fb, 10)
+	cells := makeGrid(fb)
 	overlayAsciiCells(cells, box)
 
 	if cells == nil || len(cells) == 0 {

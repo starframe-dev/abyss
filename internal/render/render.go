@@ -6,6 +6,7 @@ import (
 	"sort"
 
 	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/framebuffer"
 	"github.com/starframe-dev/abyss/internal/layout"
@@ -181,13 +182,13 @@ func quantizeImageBox(box *layout.LayoutBox) [][]asciirender.Cell {
 		return nil
 	}
 
-	widthCells := int(box.Content.Width)
+	widthCells := int(box.Content.Width) / cellmetrics.WidthPx
 	if widthCells < 1 {
 		widthCells = 1
 	}
 	// Use the laid-out box height, not the alt-text placeholder: a one-line
 	// placeholder would squash the picture into a single terminal row.
-	heightCells := int(box.Content.Height) / 2
+	heightCells := int(box.Content.Height) / cellmetrics.HeightPx
 	if heightCells < 1 {
 		heightCells = 1
 	}
@@ -210,9 +211,8 @@ func quantizeImageBox(box *layout.LayoutBox) [][]asciirender.Cell {
 }
 
 // drawAsciiCells paints the pre-quantized ASCII grid into the framebuffer.
-// Each cell occupies one column and two pixel rows; both rows receive the
-// cell's foreground color so the ANSI renderer can pick the right hue from
-// either half when collapsing to terminal rows.
+// Each cell fills its slice of the box in pixels, so one cell spans one
+// terminal column and row once the framebuffer is sampled.
 func drawAsciiCells(fb *framebuffer.Framebuffer, box *layout.LayoutBox, grid [][]asciirender.Cell) {
 	if len(grid) == 0 {
 		return
@@ -238,15 +238,8 @@ func drawAsciiCells(fb *framebuffer.Framebuffer, box *layout.LayoutBox, grid [][
 			if w < 1 {
 				continue
 			}
-			topY := y0
-			botY := y0 + int(cellH/2)
-			for xx := x0; xx < x0+w && xx < fb.Width; xx++ {
-				if cell.FG.IsSet {
-					fb.Set(xx, topY, cell.FG)
-				}
-				if botY < fb.Height && cell.FG.IsSet {
-					fb.Set(xx, botY, cell.FG)
-				}
+			if cell.FG.IsSet {
+				fb.FillRect(float64(x0), float64(y0), float64(w), cellH, cell.FG)
 			}
 		}
 	}

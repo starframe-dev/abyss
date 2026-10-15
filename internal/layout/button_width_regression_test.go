@@ -4,6 +4,7 @@ import (
 	"testing"
 	"unicode/utf8"
 
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/stretchr/testify/require"
@@ -16,5 +17,5 @@ func TestSubmitButtonSizesToLabel(t *testing.T) {
 	box := Build(doc, css.Compute(doc), 200)
 	btn := findTag(box, "input")
 	require.NotNil(t, btn, "button box not found")
-	require.Equal(t, float64(utf8.RuneCountInString("Поиск")+2), btn.Border.Width, "button width = %v", btn.Border.Width)
+	require.Equal(t, float64(utf8.RuneCountInString("Поиск")+2)*cellmetrics.WidthPx, btn.Border.Width, "button width = %v", btn.Border.Width)
 }

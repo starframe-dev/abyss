@@ -5,6 +5,7 @@ import (
 	"image/color"
 	"testing"
 
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/layout"
@@ -24,7 +25,7 @@ func TestImageCellsUseLaidOutHeight(t *testing.T) {
 	ImageProvider = func(string) image.Image { return src }
 
 	doc := dom.Parse(`<body><img alt="Google" src="logo.png" width="272" height="92"></body>`)
-	box := layout.Build(doc, css.Compute(doc), 200)
+	box := layout.Build(doc, css.Compute(doc), 200*cellmetrics.WidthPx)
 	var img *layout.LayoutBox
 	var find func(b *layout.LayoutBox)
 	find = func(b *layout.LayoutBox) {
@@ -40,7 +41,8 @@ func TestImageCellsUseLaidOutHeight(t *testing.T) {
 		t.Fatal("img box not found")
 	}
 	cells := quantizeImageBox(img)
-	if len(cells) < 20 {
-		t.Fatalf("image rows = %d, want at least 20 (laid-out height %v px)", len(cells), img.Content.Height)
+	want := int(img.Content.Height) / cellmetrics.HeightPx
+	if len(cells) != want {
+		t.Fatalf("image rows = %d, want %d (laid-out height %v px)", len(cells), want, img.Content.Height)
 	}
 }

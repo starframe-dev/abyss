@@ -14,6 +14,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/starframe-dev/abyss/internal/ascii"
 	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/fetcher"
@@ -437,8 +438,8 @@ func loadPageForTab(ctx context.Context, pageURL string, viewportWidth int, tabI
 			jsLifecycleMu.Unlock()
 			return PageErrorMsg{Err: err}
 		}
-		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(viewportWidth))
-		box := layout.Build(finalDOM, styles, float64(viewportWidth))
+		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(viewportWidth*cellmetrics.WidthPx))
+		box := layout.Build(finalDOM, styles, float64(viewportWidth*cellmetrics.WidthPx))
 		jsLifecycleMu.Lock()
 		if activateJSCContextForTabLocked(tabID) {
 			current, currentURL := js.GetCurrentContext()
@@ -449,7 +450,7 @@ func loadPageForTab(ctx context.Context, pageURL string, viewportWidth int, tabI
 			captureActiveJSCContextForTabLocked(tabID)
 		}
 		jsLifecycleMu.Unlock()
-		fb := render.Render(box, viewportWidth)
+		fb := render.Render(box, viewportWidth*cellmetrics.WidthPx)
 		lines, ansiLines := ascii.Render(fb, box, viewportWidth), ascii.RenderANSI(fb, box, viewportWidth)
 		if path := os.Getenv("ABYSS_DUMP_ANSI"); path != "" {
 			dump := strings.Join(ansiLines, "\n")
@@ -481,11 +482,11 @@ func reRenderCmd(viewportWidth int, zoomFactor float64, tabID, requestID uint64,
 		if scaledWidth < 10 {
 			scaledWidth = 10
 		}
-		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(scaledWidth))
+		styles := css.ComputeWithExternalAtWidth(finalDOM, externalCSS, float64(scaledWidth*cellmetrics.WidthPx))
 		js.SetComputedStyles(styles)
-		box := layout.Build(finalDOM, styles, float64(scaledWidth))
+		box := layout.Build(finalDOM, styles, float64(scaledWidth*cellmetrics.WidthPx))
 		js.SetLayoutBoxes(buildLayoutBoxMap(box))
-		fb := render.Render(box, scaledWidth)
+		fb := render.Render(box, scaledWidth*cellmetrics.WidthPx)
 		lines, ansiLines := ascii.Render(fb, box, scaledWidth), ascii.RenderANSI(fb, box, scaledWidth)
 		return PageRenderedMsg{TabID: tabID, RequestID: requestID, Lines: lines, ANSI: ansiLines}
 	}

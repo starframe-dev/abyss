@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/starframe-dev/abyss/internal/ascii"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/fetcher"
@@ -28,9 +29,9 @@ func HeadlessDump(pageURL string, width int, outputPath string) {
 	doc := dom.Parse(html)
 	fetchImages(doc, pageURL)
 
-	styles := css.ComputeWithExternalAtWidth(doc, fetchExternalCSS(doc, pageURL), float64(width))
-	box := layout.Build(doc, styles, float64(width))
-	fb := render.Render(box, width)
+	styles := css.ComputeWithExternalAtWidth(doc, fetchExternalCSS(doc, pageURL), float64(width*cellmetrics.WidthPx))
+	box := layout.Build(doc, styles, float64(width*cellmetrics.WidthPx))
+	fb := render.Render(box, width*cellmetrics.WidthPx)
 	ansiLines := ascii.RenderANSI(fb, box, width)
 
 	dump := strings.Join(ansiLines, "\n")

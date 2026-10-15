@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/stretchr/testify/assert"
@@ -30,12 +31,12 @@ func TestGridFractionRowsUseIntrinsicHeightsWhenContainerAuto(t *testing.T) {
 
 func TestWordWrapUsesDisplayColumnsForCJK(t *testing.T) {
 	box := &LayoutBox{Content: Rect{X: 3, Y: 4}}
-	lines := wordWrap([]string{"猫", "a"}, box, 4)
+	lines := wordWrap([]string{"猫", "a"}, box, 4*cellmetrics.WidthPx)
 	if len(lines) != 1 || lines[0].Text != "猫 a" {
 		t.Fatalf("wrapped lines = %#v, want one line containing 猫 a", lines)
 	}
 
-	lines = wordWrap([]string{"ab", "cd", "ef"}, box, 5)
+	lines = wordWrap([]string{"ab", "cd", "ef"}, box, 5*cellmetrics.WidthPx)
 	if len(lines) != 2 || lines[0].Text != "ab cd" || lines[1].Text != "ef" {
 		t.Fatalf("ASCII wrapping = %#v", lines)
 	}
@@ -281,7 +282,7 @@ func TestLayout_InlineText(t *testing.T) {
 func TestLayout_ImagePlaceholder(t *testing.T) {
 	doc := dom.Parse(`<div><img alt="Article preview" src="https://example.com/image.png"></div>`)
 	styles := css.Compute(doc)
-	box := Build(doc, styles, 200)
+	box := Build(doc, styles, 200*cellmetrics.WidthPx)
 
 	image := findTag(box, "img")
 	assert.NotNil(t, image)

@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/layout"
@@ -167,8 +168,8 @@ a {
 func TestRender_ImagePlaceholder(t *testing.T) {
 	doc := dom.Parse(`<div><img alt="Article preview" src="https://example.com/image.png"></div>`)
 	styles := css.Compute(doc)
-	box := layout.Build(doc, styles, 80)
-	fb := render.Render(box, 80)
+	box := layout.Build(doc, styles, 80*cellmetrics.WidthPx)
+	fb := render.Render(box, 80*cellmetrics.WidthPx)
 
 	rendered := strings.Join(Render(fb, box, 80), "\n")
 	if !strings.Contains(rendered, "[image] Article preview") {

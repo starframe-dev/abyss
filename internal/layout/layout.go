@@ -6,6 +6,7 @@ import (
 
 	"github.com/mattn/go-runewidth"
 	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 )
@@ -271,7 +272,7 @@ func layoutImage(box *LayoutBox, contentWidth float64) float64 {
 	}
 	lines := wordWrap([]string{"[image]", label}, box, contentWidth)
 	box.TextLines = lines
-	height := float64(len(lines)) * 2.0
+	height := float64(len(lines)) * cellmetrics.HeightPx
 	if height < defaultImageHeight {
 		height = defaultImageHeight
 	}
@@ -308,14 +309,14 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 		textParts = []string{inputLabel(box.Node)}
 		if textParts[0] == "" {
 			// An empty field still occupies one line so it stays visible.
-			box.Content.Height = 2
-			return 2
+			box.Content.Height = cellmetrics.HeightPx
+			return cellmetrics.HeightPx
 		}
 	}
 	if box.Node.Type == dom.ElementNode && box.Node.TagName == "textarea" && strings.TrimSpace(strings.Join(textParts, "")) == "" {
 		// An empty textarea still occupies one line so it stays visible.
-		box.Content.Height = 2
-		return 2
+		box.Content.Height = cellmetrics.HeightPx
+		return cellmetrics.HeightPx
 	}
 	if len(textParts) == 0 {
 		return 0
@@ -330,7 +331,7 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 
 	lines := wordWrap(words, box, contentWidth)
 	box.TextLines = lines
-	return float64(len(lines)) * 2.0
+	return float64(len(lines)) * cellmetrics.HeightPx
 }
 
 // isButtonInput reports whether n is an input rendered as a push button.
@@ -347,7 +348,7 @@ func isButtonInput(n *dom.Node) bool {
 
 // buttonInputWidth is the label width plus one cell of padding on each side.
 func buttonInputWidth(n *dom.Node) float64 {
-	return float64(runewidth.StringWidth(inputLabel(n)) + 2)
+	return float64(runewidth.StringWidth(inputLabel(n))+2) * cellmetrics.WidthPx
 }
 
 // inputLabel returns the text shown for a form input: its value, falling back to placeholder or title.
@@ -393,7 +394,8 @@ func collectInlineText(n *dom.Node) []string {
 }
 
 func wordWrap(words []string, box *LayoutBox, contentWidth float64) []TextLine {
-	lineHeight := 2.0 // 1 terminal row = 2 CSS pixels (via █▄▀ block chars)
+	lineHeight := float64(cellmetrics.HeightPx)
+	contentCols := contentWidth / cellmetrics.WidthPx
 	var lines []TextLine
 	var currentLine string
 	var x float64
@@ -401,7 +403,7 @@ func wordWrap(words []string, box *LayoutBox, contentWidth float64) []TextLine {
 	for _, word := range words {
 		wordWidth := float64(runewidth.StringWidth(word))
 		if currentLine != "" {
-			if x+1+wordWidth > contentWidth {
+			if x+1+wordWidth > contentCols {
 				lines = append(lines, TextLine{Text: currentLine, X: box.Content.X, Y: box.Content.Y + float64(len(lines))*lineHeight})
 				currentLine = word
 				x = wordWidth
@@ -431,7 +433,7 @@ func findPositionedAncestor(box *LayoutBox) *LayoutBox {
 }
 
 func estimateTextWidth(text string) float64 {
-	return float64(runewidth.StringWidth(text))
+	return float64(runewidth.StringWidth(text)) * cellmetrics.WidthPx
 }
 
 // collectVisibleText returns text content skipping <script> and <style> descendants.

@@ -8,6 +8,7 @@ import (
 	"github.com/mattn/go-runewidth"
 	"github.com/rivo/uniseg"
 	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/framebuffer"
 	"github.com/starframe-dev/abyss/internal/layout"
@@ -31,12 +32,7 @@ func Render(fb *framebuffer.Framebuffer, tree *layout.LayoutBox, viewportWidth i
 		return []string{""}
 	}
 
-	numRows := fb.Height / 2
-	if fb.Height%2 != 0 {
-		numRows++
-	}
-
-	grid := makeGrid(fb, numRows)
+	grid := makeGrid(fb)
 
 	// Overlay text
 	overlayText(grid, tree)
@@ -52,26 +48,24 @@ func RenderANSI(fb *framebuffer.Framebuffer, tree *layout.LayoutBox, viewportWid
 		return []string{""}
 	}
 
-	numRows := fb.Height / 2
-	if fb.Height%2 != 0 {
-		numRows++
-	}
-
-	grid := makeGrid(fb, numRows)
+	grid := makeGrid(fb)
 
 	overlayText(grid, tree)
 
 	return renderANSI(grid, viewportWidth)
 }
 
-func makeGrid(fb *framebuffer.Framebuffer, numRows int) [][]Cell {
+func makeGrid(fb *framebuffer.Framebuffer) [][]Cell {
+	numRows := (fb.Height + cellmetrics.HeightPx - 1) / cellmetrics.HeightPx
+	numCols := fb.Width / cellmetrics.WidthPx
 	grid := make([][]Cell, numRows)
 	for row := 0; row < numRows; row++ {
-		grid[row] = make([]Cell, fb.Width)
-		for col := 0; col < fb.Width; col++ {
-			top := fb.Get(col, row*2)
-			bottom := fb.Get(col, row*2+1)
-			char, fg, bg := chooseChar(top, bottom)
+		grid[row] = make([]Cell, numCols)
+		for col := 0; col < numCols; col++ {
+			// One cell is sampled at its centre pixel.
+			x := col*cellmetrics.WidthPx + cellmetrics.WidthPx/2
+			y := row*cellmetrics.HeightPx + cellmetrics.HeightPx/2
+			char, fg, bg := chooseChar(fb.Get(x, y), css.Transparent())
 			grid[row][col] = Cell{Char: []rune(char)[0], FG: fg, BG: bg}
 		}
 	}
@@ -264,12 +258,12 @@ func overlayText(grid [][]Cell, tree *layout.LayoutBox) {
 			color = css.RGB(30, 30, 30)
 		}
 
-		row := int(tl.Y) / 2
+		row := int(tl.Y) / cellmetrics.HeightPx
 		if row < 0 || row >= len(grid) {
 			continue
 		}
 
-		col := int(tl.X)
+		col := int(tl.X) / cellmetrics.WidthPx
 		if col < 0 {
 			col = 0
 		}
@@ -310,8 +304,8 @@ func overlayAsciiCells(grid [][]Cell, tree *layout.LayoutBox) {
 	if len(tree.AsciiCells) == 0 {
 		return
 	}
-	startCol := int(tree.Border.X)
-	startRow := int(tree.Border.Y / 2)
+	startCol := int(tree.Border.X / cellmetrics.WidthPx)
+	startRow := int(tree.Border.Y / cellmetrics.HeightPx)
 	rows := tree.AsciiCells
 	cols := 0
 	if len(rows) > 0 {

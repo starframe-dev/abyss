@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/starframe-dev/abyss/internal/asciirender"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 	"github.com/starframe-dev/abyss/internal/layout"
@@ -249,8 +250,8 @@ func TestRender_ImgDimensionsMatchContent(t *testing.T) {
 
 	doc := dom.Parse(`<html><body><img src="` + src + `" alt="x"/></body></html>`)
 	styles := css.Compute(doc)
-	box := layout.Build(doc, styles, 120)
-	Render(box, 120)
+	box := layout.Build(doc, styles, 120*cellmetrics.WidthPx)
+	Render(box, 120*cellmetrics.WidthPx)
 
 	var imgBox *layout.LayoutBox
 	var walk func(*layout.LayoutBox)
@@ -271,7 +272,7 @@ func TestRender_ImgDimensionsMatchContent(t *testing.T) {
 		t.Fatal("AsciiCells empty")
 	}
 	cols := len(imgBox.AsciiCells[0])
-	expectedCols := int(imgBox.Content.Width)
+	expectedCols := int(imgBox.Content.Width) / cellmetrics.WidthPx
 	if expectedCols < 1 {
 		expectedCols = 1
 	}
