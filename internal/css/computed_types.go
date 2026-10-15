@@ -208,6 +208,8 @@ type ComputedStyle struct {
 	JustifyContent          JustifyContent
 	AlignItems              AlignItems
 	FlexGrow                float64
+	FlexWrap                bool
+	Order                   int
 	FlexShrink              float64
 	GridTemplateColumns     []Length
 	GridTemplateRows        []Length

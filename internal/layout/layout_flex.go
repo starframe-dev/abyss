@@ -2,6 +2,7 @@
 package layout
 
 import (
+	"sort"
 	"strconv"
 	"strings"
 
@@ -12,17 +13,83 @@ import (
 )
 
 func layoutFlex(box *LayoutBox, contentWidth float64) float64 {
+	if len(box.Children) == 0 {
+		return 0
+	}
+	if box.Style.FlexDirection == css.FlexDirectionColumn {
+		return layoutFlexColumn(box, contentWidth)
+	}
+	children := box.Children
+	box.Children = orderedFlexChildren(children)
+	defer func() { box.Children = children }()
+	if box.Style.FlexWrap {
+		return layoutFlexWrapped(box, contentWidth)
+	}
+	return layoutFlexRow(box, contentWidth)
+}
+
+// orderedFlexChildren sorts children by CSS order. Children with equal order keep
+// their DOM order, and the slice is returned unchanged when no child sets order.
+func orderedFlexChildren(children []*LayoutBox) []*LayoutBox {
+	for _, c := range children {
+		if c.Style.Order != 0 {
+			sorted := append([]*LayoutBox(nil), children...)
+			sort.SliceStable(sorted, func(i, j int) bool { return sorted[i].Style.Order < sorted[j].Style.Order })
+			return sorted
+		}
+	}
+	return children
+}
+
+// layoutFlexWrapped breaks a row into lines whose item basis fits contentWidth,
+// lays out each line, and stacks the lines vertically (flex-wrap: wrap).
+func layoutFlexWrapped(box *LayoutBox, contentWidth float64) float64 {
+	gap := box.Style.Gap.Resolve(contentWidth)
+	children := box.Children
+	top := box.Content.Y
+	var total float64
+	lines := 0
+	var line []*LayoutBox
+	var used float64
+	flush := func() {
+		if len(line) == 0 {
+			return
+		}
+		box.Children = line
+		box.Content.Y = top + total
+		h := layoutFlexRow(box, contentWidth)
+		if lines > 0 {
+			total += gap
+		}
+		total += h
+		lines++
+		line = nil
+		used = 0
+	}
+	for _, child := range children {
+		basis := flexBasis(child, contentWidth)
+		if len(line) > 0 && used+gap+basis > contentWidth {
+			flush()
+		}
+		if len(line) > 0 {
+			used += gap
+		}
+		line = append(line, child)
+		used += basis
+	}
+	flush()
+	box.Children = children
+	box.Content.Y = top
+	return total
+}
+
+// layoutFlexRow lays out box.Children on a single row.
+func layoutFlexRow(box *LayoutBox, contentWidth float64) float64 {
 	style := box.Style
 	flexDir := style.FlexDirection
 	gap := style.Gap.Resolve(contentWidth)
 
 	numChildren := len(box.Children)
-	if numChildren == 0 {
-		return 0
-	}
-	if flexDir == css.FlexDirectionColumn {
-		return layoutFlexColumn(box, contentWidth)
-	}
 	totalGap := gap * float64(numChildren-1)
 
 	availableSpace := flexAvailableSpace(flexDir, contentWidth, totalGap)

@@ -543,6 +543,10 @@ func applyLayout(style *ComputedStyle, prop, val string) {
 		style.JustifyContent = parseJustifyContent(val)
 	case "align-items":
 		style.AlignItems = parseAlignItems(val)
+	case "flex-wrap":
+		style.FlexWrap = strings.HasPrefix(strings.TrimSpace(val), "wrap")
+	case "order":
+		style.Order = parseInt(val)
 	case "flex-grow":
 		style.FlexGrow = max(0, parseFloat(val))
 	case "flex-shrink":
