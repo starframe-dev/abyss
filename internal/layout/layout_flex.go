@@ -5,6 +5,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/mattn/go-runewidth"
+	"github.com/starframe-dev/abyss/internal/cellmetrics"
 	"github.com/starframe-dev/abyss/internal/css"
 	"github.com/starframe-dev/abyss/internal/dom"
 )
@@ -110,12 +112,49 @@ func flexAvailableSpace(flexDir css.FlexDirection, contentWidth, totalGap float6
 	return 100000 // Large number for column height
 }
 
+// flexBasis returns the width a flex item starts from: its declared width, else
+// its content width when it holds only text and links, else a default of 100.
+func flexBasis(child *LayoutBox, contentWidth float64) float64 {
+	if b := child.Style.Width.Resolve(contentWidth); b != 0 {
+		return b
+	}
+	if w := inlineContentWidth(child); w > 0 {
+		return w
+	}
+	return 100
+}
+
+// inlineContentWidth measures an element whose children are only text or text
+// links, as a browser does for an auto-width flex item. Consecutive links are
+// separated by a gap of 2 cells. It returns 0 for any other content.
+func inlineContentWidth(child *LayoutBox) float64 {
+	if child.Node == nil || child.Node.Type != dom.ElementNode || len(child.Children) == 0 {
+		return 0
+	}
+	var width float64
+	prevLink := false
+	for _, c := range child.Children {
+		if c.Node == nil {
+			return 0
+		}
+		link := isTextLink(c.Node)
+		if c.Node.Type != dom.TextNode && !link {
+			return 0
+		}
+		if link && prevLink {
+			width += 2 * cellmetrics.WidthPx
+		}
+		if text := strings.Join(collectInlineText(c.Node), " "); strings.TrimSpace(text) != "" {
+			width += float64(runewidth.StringWidth(strings.Join(strings.Fields(text), " "))) * cellmetrics.WidthPx
+		}
+		prevLink = link
+	}
+	return width
+}
+
 func flexTotals(box *LayoutBox, contentWidth float64) (basis, grow, shrink float64) {
 	for _, child := range box.Children {
-		b := child.Style.Width.Resolve(contentWidth)
-		if b == 0 {
-			b = 100 // default basis
-		}
+		b := flexBasis(child, contentWidth)
 		basis += b
 		grow += child.Style.FlexGrow
 		shrink += child.Style.FlexShrink
@@ -168,10 +207,7 @@ func flexRemaining(flexDir css.FlexDirection, availableSpace, totalBasis float64
 func flexShrinkWeight(box *LayoutBox, contentWidth float64) float64 {
 	var total float64
 	for _, child := range box.Children {
-		basis := child.Style.Width.Resolve(contentWidth)
-		if basis == 0 {
-			basis = 100
-		}
+		basis := flexBasis(child, contentWidth)
 		if child.Style.FlexShrink > 0 {
 			total += basis * child.Style.FlexShrink
 		}
@@ -180,10 +216,7 @@ func flexShrinkWeight(box *LayoutBox, contentWidth float64) float64 {
 }
 
 func layoutFlexChild(box, child *LayoutBox, flexDir css.FlexDirection, gap, contentWidth, pos, remaining, totalGrow, totalShrinkWeight float64) float64 {
-	basis := child.Style.Width.Resolve(contentWidth)
-	if basis == 0 {
-		basis = 100
-	}
+	basis := flexBasis(child, contentWidth)
 
 	// Apply flex grow/shrink
 	childWidth := basis

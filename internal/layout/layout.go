@@ -297,11 +297,19 @@ func layoutBlockFlow(box *LayoutBox, contentWidth float64) float64 {
 	for len(children) > 0 {
 		// A run of consecutive buttons shares lines; other children stack as blocks.
 		if isRowItem(children[0]) {
+			// Blank text between items (the space in "<a>x</a> <a>y</a>") does not
+			// break the run; it draws nothing, so it is dropped from the row.
 			n := 1
-			for n < len(children) && isRowItem(children[n]) {
+			for n < len(children) && (isRowItem(children[n]) || isBlankText(children[n]) && nextIsRowItem(children, n)) {
 				n++
 			}
-			y += layoutButtonRow(box, children[:n], contentWidth, y)
+			var items []*LayoutBox
+			for _, c := range children[:n] {
+				if isRowItem(c) {
+					items = append(items, c)
+				}
+			}
+			y += layoutButtonRow(box, items, contentWidth, y)
 			children = children[n:]
 			continue
 		}
@@ -415,6 +423,22 @@ func isRowItem(child *LayoutBox) bool {
 		return strings.TrimSpace(child.Node.Text) != ""
 	}
 	return buttonOf(child) != nil || isTextLink(child.Node)
+}
+
+// isBlankText reports whether b is a whitespace-only text node.
+func isBlankText(b *LayoutBox) bool {
+	return b.Node != nil && b.Node.Type == dom.TextNode && strings.TrimSpace(b.Node.Text) == ""
+}
+
+// nextIsRowItem reports whether the first non-blank child after index i is a row item.
+func nextIsRowItem(children []*LayoutBox, i int) bool {
+	for _, c := range children[i+1:] {
+		if isBlankText(c) {
+			continue
+		}
+		return isRowItem(c)
+	}
+	return false
 }
 
 // isTextLink reports whether n is an <a> whose content is only text.
