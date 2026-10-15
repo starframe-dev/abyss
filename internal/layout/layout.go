@@ -367,10 +367,42 @@ func buttonOf(child *LayoutBox) *LayoutBox {
 	if isButtonInput(child.Node) {
 		return child
 	}
-	if child.Node.Type == dom.ElementNode && child.Node.TagName == "span" && len(child.Children) == 1 {
-		return buttonOf(child.Children[0])
+	if child.Node.Type == dom.ElementNode && child.Node.TagName == "span" {
+		// Only one child may draw anything; scripts, styles and hidden inputs draw nothing.
+		var only *LayoutBox
+		for _, c := range child.Children {
+			if !drawsNothing(c) {
+				if only != nil {
+					return nil
+				}
+				only = c
+			}
+		}
+		if only != nil {
+			return buttonOf(only)
+		}
 	}
 	return nil
+}
+
+// drawsNothing reports whether a box adds no visible content to its parent.
+func drawsNothing(b *LayoutBox) bool {
+	if b == nil || b.Node == nil {
+		return true
+	}
+	if b.Node.Type == dom.TextNode {
+		return strings.TrimSpace(b.Node.Text) == ""
+	}
+	if b.Node.Type != dom.ElementNode {
+		return false
+	}
+	switch b.Node.TagName {
+	case "script", "style":
+		return true
+	case "input":
+		return strings.EqualFold(strings.TrimSpace(b.Node.GetAttr("type")), "hidden")
+	}
+	return false
 }
 
 // layoutButtonRow places buttons left to right from yOrigin on one line while they
