@@ -174,7 +174,13 @@ func flexMinContentWidth(box *LayoutBox) float64 {
 			case "textarea":
 				widest = max(widest, fieldColumns(b.Node.GetAttr("cols")))
 			case "input":
-				if !strings.EqualFold(strings.TrimSpace(b.Node.GetAttr("type")), "hidden") {
+				if strings.EqualFold(strings.TrimSpace(b.Node.GetAttr("type")), "hidden") {
+					break
+				}
+				if w := b.Style.Width; !w.IsAuto && !w.IsPercent && w.Px > 0 {
+					// An explicit CSS width (google.com's .Ucigb, 458px) replaces the size default.
+					widest = max(widest, w.Px/cellmetrics.WidthPx)
+				} else {
 					widest = max(widest, fieldColumns(b.Node.GetAttr("size")))
 				}
 			}
