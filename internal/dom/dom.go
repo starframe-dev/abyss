@@ -117,8 +117,9 @@ func handleTextToken(stack []*Node, tokenizer *html.Tokenizer) {
 	}
 	parent := stack[len(stack)-1]
 	text := string(tokenizer.Text())
-	// Skip whitespace-only text nodes unless parent is a pre-like tag
-	if strings.TrimSpace(text) == "" && parent.TagName != "pre" {
+	// Skip whitespace-only text nodes unless parent is a pre-like tag or the
+	// whitespace separates two elements (it is the space between inline words).
+	if strings.TrimSpace(text) == "" && parent.TagName != "pre" && !afterElementChild(parent) {
 		return
 	}
 	parent.Children = append(parent.Children, &Node{
@@ -293,6 +294,15 @@ func (n *Node) Clone(deep bool) *Node {
 }
 
 // OuterHTML returns the HTML serialization of the node.
+// afterElementChild reports whether the last child of parent is an element.
+func afterElementChild(parent *Node) bool {
+	if len(parent.Children) == 0 {
+		return false
+	}
+	last := parent.Children[len(parent.Children)-1]
+	return last.Type == ElementNode
+}
+
 func (n *Node) OuterHTML() string {
 	if n == nil {
 		return ""
