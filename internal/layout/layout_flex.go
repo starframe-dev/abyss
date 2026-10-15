@@ -12,10 +12,6 @@ import (
 	"github.com/starframe-dev/abyss/internal/dom"
 )
 
-// flexFitted holds the fitted widths of the row being laid out; it is set only
-// for the duration of layoutFlexRow.
-var flexFitted map[*LayoutBox]float64
-
 func layoutFlex(box *LayoutBox, contentWidth float64) float64 {
 	if len(box.Children) == 0 {
 		return 0
@@ -103,8 +99,6 @@ func layoutFlexRow(box *LayoutBox, contentWidth float64) float64 {
 
 	pos, distributedGap := flexJustification(style.JustifyContent, remaining, numChildren, totalGrow)
 	gap += distributedGap
-	flexFitted = flexFittedWidths(box, contentWidth, gap)
-	defer func() { flexFitted = nil }()
 	for _, child := range box.Children {
 		pos = layoutFlexChild(box, child, flexDir, gap, contentWidth, pos, remaining, totalGrow, totalShrinkWeight)
 	}
@@ -156,48 +150,6 @@ func layoutFlexColumn(box *LayoutBox, contentWidth float64) float64 {
 		pos += heights[i] + gap
 	}
 	return contentHeight
-}
-
-// flexFittedWidths returns the width of each row item with its min-width applied,
-// scaled down so that the items together fit the row. Only items with min-width
-// are shrunk; the rest keep their width. It is empty when nothing needs shrinking.
-func flexFittedWidths(box *LayoutBox, contentWidth, gap float64) map[*LayoutBox]float64 {
-	available := contentWidth - gap*float64(len(box.Children)-1)
-	var total float64
-	var minSum float64
-	widths := make(map[*LayoutBox]float64, len(box.Children))
-	for _, child := range box.Children {
-		w := flexBasis(child, contentWidth)
-		if mw := child.Style.MinWidth; !mw.IsAuto {
-			w = max(w, mw.Resolve(contentWidth))
-			minSum += mw.Resolve(contentWidth)
-		}
-		widths[child] = w
-		total += w
-	}
-	if total <= available || minSum == 0 {
-		return nil
-	}
-	// Give back the excess from items with min-width, in proportion to their width.
-	excess := total - available
-	var shrinkable float64
-	for child, w := range widths {
-		if !child.Style.MinWidth.IsAuto {
-			shrinkable += w - min(w, child.Style.MinWidth.Resolve(contentWidth))
-		}
-	}
-	if shrinkable <= 0 {
-		return nil
-	}
-	for child, w := range widths {
-		if child.Style.MinWidth.IsAuto {
-			continue
-		}
-		floor := min(w, child.Style.MinWidth.Resolve(contentWidth))
-		share := (w - floor) / shrinkable
-		widths[child] = max(floor, w-excess*share)
-	}
-	return widths
 }
 
 func flexJustification(justify css.JustifyContent, remaining float64, children int, totalGrow float64) (offset, extraGap float64) {
@@ -351,12 +303,6 @@ func layoutFlexChild(box, child *LayoutBox, flexDir css.FlexDirection, gap, cont
 		// min-width:auto keeps a flex item at least as wide as its minimum
 		// content, so a shrunken row cannot squeeze a text field to nothing.
 		childWidth = max(childWidth, flexMinContentWidth(child))
-		if mw := child.Style.MinWidth; !mw.IsAuto {
-			childWidth = max(childWidth, mw.Resolve(contentWidth))
-		}
-		if fit, ok := flexFitted[child]; ok {
-			childWidth = fit
-		}
 		origWidth := child.Style.Width
 		child.Style.Width = css.Px(childWidth)
 		layoutBox(child, childWidth, box.Content.X+pos, box.Content.Y, false)
