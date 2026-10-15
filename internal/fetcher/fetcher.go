@@ -30,7 +30,7 @@ const (
 // UserAgent identifies the terminal browser. Google serves a page with the
 // logo (id="hplogo") to simple agents, while full Chrome/Safari agents get a
 // script-heavy variant without it.
-const UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+const UserAgent = "Abyss/1.0 (terminal browser)"
 
 // DefaultClient is the shared HTTP client with a reasonable timeout.
 var DefaultClient = &http.Client{Timeout: 10 * time.Second}
