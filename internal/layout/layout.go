@@ -291,6 +291,9 @@ func layoutImage(box *LayoutBox, contentWidth float64) float64 {
 }
 
 func layoutBlockFlow(box *LayoutBox, contentWidth float64) float64 {
+	if allButtonInputs(box.Children) {
+		return layoutButtonRow(box, contentWidth)
+	}
 	var y float64
 	for _, child := range box.Children {
 		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+y, false)
@@ -343,6 +346,38 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 	lines := wordWrap(words, box, contentWidth)
 	box.TextLines = lines
 	return float64(len(lines)) * cellmetrics.HeightPx
+}
+
+// allButtonInputs reports whether every child is a push-button input and there is at least one.
+func allButtonInputs(children []*LayoutBox) bool {
+	if len(children) == 0 {
+		return false
+	}
+	for _, child := range children {
+		if child.Node == nil || !isButtonInput(child.Node) {
+			return false
+		}
+	}
+	return true
+}
+
+// layoutButtonRow places sibling buttons left to right on one line while they fit
+// the container, then wraps to the next line. Google's search buttons sit in one row.
+func layoutButtonRow(box *LayoutBox, contentWidth float64) float64 {
+	var x, y, rowHeight float64
+	for _, child := range box.Children {
+		// Measure at the origin first, then place it where the row has room.
+		layoutBox(child, contentWidth, box.Content.X, box.Content.Y, false)
+		w := child.Margin.Width
+		if x > 0 && x+w > contentWidth {
+			y += rowHeight
+			x, rowHeight = 0, 0
+		}
+		layoutBox(child, contentWidth, box.Content.X+x, box.Content.Y+y, false)
+		x += w
+		rowHeight = max(rowHeight, child.Margin.Height)
+	}
+	return y + rowHeight
 }
 
 // isButtonInput reports whether n is an input rendered as a push button.
