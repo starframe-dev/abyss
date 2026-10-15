@@ -1,164 +1,61 @@
 package framebuffer
 
 import (
+	"math"
 	"testing"
 
 	"github.com/starframe-dev/abyss/internal/css"
 )
 
-func TestNewRejectsInvalidOrExcessiveDimensions(t *testing.T) {
-	for _, dims := range [][2]int{{-1, 3}, {0, 1}, {1, 0}, {MaxWidth + 1, 1}, {1, MaxHeight + 1}, {MaxPixels, MaxPixels}} {
-		fb := New(dims[0], dims[1])
-		if fb.Width != 0 || fb.Height != 0 || len(fb.Pixels) != 0 {
-			t.Errorf("New(%d, %d) allocated an invalid framebuffer: %+v", dims[0], dims[1], fb)
-		}
-	}
-}
+func color(r, g, b uint8) css.Color { return css.Color{R: r, G: g, B: b, IsSet: true} }
 
 func TestNew(t *testing.T) {
-	fb := New(10, 10)
-	if fb.Width != 10 {
-		t.Errorf("expected Width 10, got %d", fb.Width)
+	for _, d := range [][2]int{{1, 1}, {MaxWidth + 1, 1}, {1, MaxHeight + 1}, {MaxPixels, MaxPixels}, {0, 1}, {1, 0}, {-1, 2}} {
+		fb := New(d[0], d[1])
+		if d[0] == 1 && d[1] == 1 {
+			if fb.Width != 1 || fb.Height != 1 || len(fb.Pixels) != 1 { t.Fatalf("valid dimensions: %+v", fb) }
+		} else if fb.Width != 0 || fb.Height != 0 || len(fb.Pixels) != 0 { t.Errorf("invalid dimensions %v accepted", d) }
 	}
-	if fb.Height != 10 {
-		t.Errorf("expected Height 10, got %d", fb.Height)
-	}
-	if len(fb.Pixels) != 100 {
-		t.Errorf("expected 100 pixels, got %d", len(fb.Pixels))
-	}
+	if fb := New(MaxWidth, MaxHeight); fb.Width != 0 { t.Fatal("pixel limit should reject dimensions") }
 }
 
-func TestSet(t *testing.T) {
-	fb := New(10, 10)
-
-	c := css.Color{R: 255, G: 0, B: 0, IsSet: true}
-	fb.Set(5, 5, c)
-
-	if got, expected := fb.Get(5, 5), c; got != expected {
-		t.Errorf("Set(5, 5) got %v, expected %v", got, expected)
-	}
-
-	// Test boundary conditions
-	fb.Set(-1, 5, c)
-	if fb.Get(-1, 5) != css.Transparent() {
-		t.Errorf("Set(-1, 5) should not modify pixel")
-	}
-
-	fb.Set(10, 5, c)
-	if fb.Get(10, 5) != css.Transparent() {
-		t.Errorf("Set(10, 5) should not modify pixel")
-	}
-
-	fb.Set(5, -1, c)
-	if fb.Get(5, -1) != css.Transparent() {
-		t.Errorf("Set(5, -1) should not modify pixel")
-	}
-
-	fb.Set(5, 10, c)
-	if fb.Get(5, 10) != css.Transparent() {
-		t.Errorf("Set(5, 10) should not modify pixel")
-	}
+func TestSetGetAndClear(t *testing.T) {
+	c := color(1, 2, 3)
+	var nilFB *Framebuffer
+	nilFB.Set(0, 0, c)
+	if nilFB.Get(0, 0) != css.Transparent() { t.Fatal("nil Get should be transparent") }
+	fb := New(2, 2)
+	fb.Set(1, 1, c)
+	if fb.Get(1, 1) != c { t.Fatal("pixel not set") }
+	for _, p := range [][2]int{{-1, 0}, {2, 0}, {0, -1}, {0, 2}} { fb.Set(p[0], p[1], c); if fb.Get(p[0], p[1]) != css.Transparent() { t.Errorf("invalid coordinate %v", p) } }
+	fb.Clear(color(4, 5, 6))
+	for _, p := range fb.Pixels { if p != color(4, 5, 6) { t.Fatal("clear failed") } }
+	nilFB.Clear(c)
 }
 
-func TestGet(t *testing.T) {
-	fb := New(10, 10)
-
-	// Default should be transparent
-	if fb.Get(0, 0) != css.Transparent() {
-		t.Errorf("default pixel should be transparent")
-	}
-
-	c := css.Color{R: 255, G: 0, B: 0, IsSet: true}
-	fb.Set(5, 5, c)
-
-	if got, expected := fb.Get(5, 5), c; got != expected {
-		t.Errorf("Get(5, 5) got %v, expected %v", got, expected)
-	}
-}
-
-func TestClear(t *testing.T) {
-	fb := New(10, 10)
-
-	c := css.Color{R: 255, G: 0, B: 0, IsSet: true}
-	fb.Set(5, 5, c)
-
-	fb.Clear(css.Color{R: 0, G: 255, B: 0, IsSet: true})
-
-	for i := range fb.Pixels {
-		expected := css.Color{R: 0, G: 255, B: 0, IsSet: true}
-		if fb.Pixels[i] != expected {
-			t.Errorf("pixel %d should be cleared", i)
-		}
-	}
-}
-
-func TestFillRect(t *testing.T) {
-	fb := New(20, 20)
-
-	c := css.Color{R: 0, G: 255, B: 0, IsSet: true}
-	fb.FillRect(5, 5, 10, 10, c)
-
-	for py := 5; py < 15; py++ {
-		for px := 5; px < 15; px++ {
-			if fb.Get(px, py) != c {
-				t.Errorf("FillRect(5, 5, 10, 10) failed at (%d, %d)", px, py)
-			}
-		}
-	}
-
-	// Test out of bounds
-	fb.FillRect(-5, -5, 10, 10, c)
-	// FillRect should not panic or crash
+func TestFillRectClippingAndInvalid(t *testing.T) {
+	fb := New(4, 4); c := color(9, 8, 7)
+	fb.FillRect(-1.2, -1.2, 3, 3, c)
+	if fb.Get(0, 0) != c || fb.Get(1, 1) != c || fb.Get(2, 2) != css.Transparent() { t.Fatal("clipping/fractional fill incorrect") }
+	for _, v := range [][4]float64{{0,0,0,1}, {0,0,math.NaN(),1}, {math.Inf(1),0,1,1}, {math.MaxFloat64,0,math.MaxFloat64,1}} { fb.FillRect(v[0],v[1],v[2],v[3],c) }
+	var nilFB *Framebuffer
+	nilFB.FillRect(0,0,1,1,c)
 }
 
 func TestDrawBorder(t *testing.T) {
-	fb := New(20, 20)
-
-	topC := css.Color{R: 255, G: 0, B: 0, IsSet: true}
-	rightC := css.Color{R: 0, G: 255, B: 0, IsSet: true}
-	bottomC := css.Color{R: 0, G: 0, B: 255, IsSet: true}
-	leftC := css.Color{R: 255, G: 255, B: 255, IsSet: true}
-
-	fb.DrawBorder(5, 5, 10, 10, 1, 1, 1, 1, topC, rightC, bottomC, leftC)
-
-	// Side borders overwrite corner pixels, so check non-corner positions on each edge.
-	// Check top border (y=5, x from 7 to 12, avoiding corners at x=5 and x=14)
-	for px := 7; px < 13; px++ {
-		if fb.Get(px, 5) != topC {
-			t.Errorf("top border failed at (%d, 5)", px)
-		}
-	}
-	// Check right border (x=14, y from 7 to 12)
-	for py := 7; py < 13; py++ {
-		if fb.Get(14, py) != rightC {
-			t.Errorf("right border failed at (14, %d)", py)
-		}
-	}
-	// Check bottom border (y=14, x from 7 to 12)
-	for px := 7; px < 13; px++ {
-		if fb.Get(px, 14) != bottomC {
-			t.Errorf("bottom border failed at (%d, 14)", px)
-		}
-	}
-	// Check left border (x=5, y from 7 to 12)
-	for py := 7; py < 13; py++ {
-		if fb.Get(5, py) != leftC {
-			t.Errorf("left border failed at (5, %d)", py)
-		}
-	}
+	fb := New(5, 5); top,right,bottom,left := color(1,0,0),color(0,1,0),color(0,0,1),color(1,1,1)
+	fb.DrawBorder(1,1,3,3,1,1,1,1,top,right,bottom,left)
+	if fb.Get(2,1)!=top || fb.Get(3,2)!=right || fb.Get(2,3)!=bottom || fb.Get(1,2)!=left { t.Fatal("border side missing") }
+	fb.DrawBorder(0,0,1,1,0,0,0,0,top,right,bottom,left)
+	var nilFB *Framebuffer
+	nilFB.DrawBorder(0,0,1,1,1,1,1,1,top,right,bottom,left)
 }
 
 func TestDrawRoundedRect(t *testing.T) {
-	fb := New(20, 20)
-
-	c := css.Color{R: 255, G: 255, B: 255, IsSet: true}
-	fb.DrawRoundedRect(5, 5, 10, 10, 3, 3, 3, 3, c)
-
-	// Verify the rect is filled in its interior (a pixel near the center).
-	if got := fb.Get(10, 10); got != c {
-		t.Errorf("rect interior should be filled with color, got %v", got)
-	}
-	// Note: clipCorner has known limitations with small radii where
-	// no pixels actually fall outside the circle; that path is exercised
-	// even when no pixels get clipped, which is enough for coverage.
+	fb := New(8,8); c := color(255,255,255)
+	fb.DrawRoundedRect(1,1,6,6,3,3,3,3,c)
+	if fb.Get(3,3)!=c || fb.Get(1,1)!=css.Transparent() { t.Fatal("rounded rectangle fill or clipping incorrect") }
+	fb.DrawRoundedRect(0,0,2,2,0,0,0,0,c)
+	var nilFB *Framebuffer
+	nilFB.DrawRoundedRect(0,0,1,1,1,1,1,1,c)
 }

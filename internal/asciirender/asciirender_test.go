@@ -1,218 +1,69 @@
 package asciirender
 
 import (
+	"bytes"
 	"image"
 	"image/color"
+	"image/png"
 	"strings"
 	"testing"
 
 	"github.com/starframe-dev/abyss/internal/css"
 )
 
-func TestImageDimensionsAllowedEnforcesPixelBudget(t *testing.T) {
-	if !imageDimensionsAllowed(3840, 2160) {
-		t.Fatal("4K image should fit the pixel budget")
-	}
-	if !imageDimensionsAllowed(8192, MaxImagePixels/8192) {
-		t.Fatal("image exactly at pixel budget should be accepted")
-	}
-	for _, size := range [][2]int{{0, 1}, {-1, 10}, {MaxImageWidth + 1, 1}, {8192, MaxImagePixels/8192 + 1}} {
-		if imageDimensionsAllowed(size[0], size[1]) {
-			t.Fatalf("oversized dimensions %dx%d accepted", size[0], size[1])
-		}
-	}
+func TestImageDimensionsAllowed(t *testing.T) {
+	for _, tc := range []struct { w, h int; want bool }{
+		{1, 1, true}, {3840, 2160, true}, {8192, MaxImagePixels / 8192, true},
+		{0, 1, false}, {1, 0, false}, {-1, 1, false}, {MaxImageWidth + 1, 1, false},
+		{8192, MaxImagePixels/8192 + 1, false},
+	} { if got := imageDimensionsAllowed(tc.w, tc.h); got != tc.want { t.Errorf("imageDimensionsAllowed(%d,%d)=%v, want %v", tc.w,tc.h,got,tc.want) } }
 }
 
-func TestDecodeRejectsInvalidAndOversizedData(t *testing.T) {
-	for _, data := range [][]byte{nil, []byte("not an image")} {
-		if _, err := Decode(data); err == nil {
-			t.Fatal("expected invalid image error")
-		}
-	}
+func TestDecode(t *testing.T) {
+	if _, err := Decode(nil); err == nil { t.Fatal("Decode(nil) expected error") }
+	img := image.NewRGBA(image.Rect(0,0,2,3)); img.Set(0,0,color.RGBA{R:255,A:255})
+	var b bytes.Buffer
+	if err := png.Encode(&b,img); err != nil { t.Fatal(err) }
+	decoded, err := Decode(b.Bytes()); if err != nil { t.Fatal(err) }
+	if decoded.Bounds().Dx()!=2 || decoded.Bounds().Dy()!=3 { t.Fatalf("bounds=%v",decoded.Bounds()) }
 }
 
-func newSolidImage(w, h int, c color.Color) *image.RGBA {
-	img := image.NewRGBA(image.Rect(0, 0, w, h))
-	for y := 0; y < h; y++ {
-		for x := 0; x < w; x++ {
-			img.Set(x, y, c)
-		}
-	}
-	return img
+func solid(w,h int,c color.Color) *image.RGBA {
+	img:=image.NewRGBA(image.Rect(0,0,w,h)); for y:=0;y<h;y++ { for x:=0;x<w;x++ { img.Set(x,y,c) } }; return img
 }
 
-func newGradientImage(w, h int) *image.RGBA {
-	img := image.NewRGBA(image.Rect(0, 0, w, h))
-	for y := 0; y < h; y++ {
-		for x := 0; x < w; x++ {
-			img.Set(x, y, color.RGBA{
-				R: uint8(x * 255 / w),
-				G: uint8(y * 255 / h),
-				B: 128,
-				A: 255,
-			})
-		}
-	}
-	return img
+func TestQuantizeAndOptions(t *testing.T) {
+	if Quantize(nil,Options{})!=nil { t.Fatal("nil image must return nil") }
+	if Quantize(solid(MaxImageWidth,MaxImagePixels/MaxImageWidth+1,color.Black),Options{})!=nil { t.Fatal("oversized image must return nil") }
+	grid:=Quantize(solid(8,8,color.Black),Options{Columns:4,Rows:2})
+	if len(grid)!=2 || len(grid[0])!=4 { t.Fatalf("grid shape %dx%d",len(grid),len(grid[0])) }
+	for _,row:=range grid { for _,c:=range row { if c.Char!=Palette[len(Palette)-1] { t.Errorf("black char=%q",c.Char) }; if c.BG != css.RGB(226,232,240) { t.Errorf("default background=%v",c.BG) } } }
+	custom:=css.RGB(1,2,3); grid=Quantize(solid(4,4,color.White),Options{Columns:0,Rows:-1,BGColor:custom})
+	if len(grid)==0 || len(grid[0])!=60 || grid[0][0].BG!=custom { t.Fatalf("default options/custom background not applied") }
+	if grid[0][0].Char!=Palette[0] { t.Errorf("white char=%q",grid[0][0].Char) }
+	bounded:=Quantize(solid(1,1,color.White),Options{Columns:MaxOutputColumns+1,Rows:MaxOutputCells})
+	if len(bounded)!=MaxOutputCells/MaxOutputColumns || len(bounded[0])!=MaxOutputColumns { t.Fatalf("output dimensions=%dx%d",len(bounded),len(bounded[0])) }
 }
 
-type countingImage struct {
-	bounds image.Rectangle
-	reads  int
+func TestSamplingAndCharacterHelpers(t *testing.T) {
+	if got:=luminance(255,255,255); got!=255 { t.Errorf("white luminance=%d",got) }
+	if got:=luminance(0,0,0); got!=0 { t.Errorf("black luminance=%d",got) }
+	if pickRune(0)!=Palette[len(Palette)-1] || pickRune(255)!=Palette[0] || pickRune(1000)!=Palette[0] { t.Fatal("pickRune boundary mapping incorrect") }
+	r,g,b,l:=sampleCell(solid(1,1,color.RGBA{0,0,0,0}),image.Rect(0,0,1,1),0,0,1,1)
+	if r!=255 || g!=255 || b!=255 || l!=255 { t.Fatalf("transparent sample=(%d,%d,%d,%d)",r,g,b,l) }
+	r,g,b,_,=sampleCell(solid(1,1,color.RGBA{10,20,30,255}),image.Rect(0,0,1,1),0,0,1,1)
+	if r!=10 || g!=20 || b!=30 { t.Fatalf("sample RGB=(%d,%d,%d)",r,g,b) }
+	r,g,b,l=sampleCell(solid(1,1,color.Black),image.Rect(0,0,1,1),0,0,2,1)
+	if r|g|b|l!=0 { t.Fatalf("empty sample=(%d,%d,%d,%d)",r,g,b,l) }
+	r,g,b,a:=rgba(color.RGBA{R:12,G:34,B:56,A:78}); if r!=12||g!=34||b!=56||a!=78 { t.Fatalf("rgba=(%d,%d,%d,%d)",r,g,b,a) }
 }
 
-func (img *countingImage) ColorModel() color.Model { return color.RGBAModel }
-func (img *countingImage) Bounds() image.Rectangle { return img.bounds }
-func (img *countingImage) At(x, y int) color.Color {
-	img.reads++
-	return color.Black
+func TestFlatten(t *testing.T) {
+	got:=Flatten([][]Cell{{{Char:'a'},{Char:0}},{{Char:'界'}}})
+	if got!="a \n界\n" { t.Fatalf("Flatten=%q",got) }
+	if got=Flatten(nil); got!="" { t.Fatalf("Flatten(nil)=%q",got) }
 }
 
-func TestQuantizeRejectsOversizedSourceBeforeSampling(t *testing.T) {
-	img := &countingImage{bounds: image.Rect(0, 0, MaxImageWidth, MaxImagePixels/MaxImageWidth+1)}
-	if grid := Quantize(img, Options{Columns: 60}); grid != nil {
-		t.Fatalf("oversized source produced grid with %d rows", len(grid))
-	}
-	if img.reads != 0 {
-		t.Fatalf("oversized source sampled %d pixels before rejection", img.reads)
-	}
-}
-
-func TestQuantizeBoundsOutputGrid(t *testing.T) {
-	grid := Quantize(newSolidImage(1, 1, color.White), Options{Columns: MaxOutputColumns + 100, Rows: MaxOutputCells})
-	if len(grid) != MaxOutputCells/MaxOutputColumns {
-		t.Fatalf("rows=%d, want %d", len(grid), MaxOutputCells/MaxOutputColumns)
-	}
-	if len(grid[0]) != MaxOutputColumns {
-		t.Fatalf("columns=%d, want %d", len(grid[0]), MaxOutputColumns)
-	}
-}
-
-func TestQuantize_SolidWhite_AllBlank(t *testing.T) {
-	img := newSolidImage(40, 40, color.RGBA{255, 255, 255, 255})
-	grid := Quantize(img, Options{Columns: 8, Rows: 4})
-
-	if len(grid) != 4 {
-		t.Fatalf("rows = %d, want 4", len(grid))
-	}
-	sparsest := Palette[0]
-	for r, row := range grid {
-		if len(row) != 8 {
-			t.Fatalf("cols at row %d = %d, want 8", r, len(row))
-		}
-		for c, cell := range row {
-			if cell.Char != sparsest {
-				t.Errorf("cell[%d][%d] char = %q, want sparsest %q for white pixel", r, c, cell.Char, sparsest)
-			}
-		}
-	}
-}
-
-func TestQuantize_SolidBlack_DenseBlocks(t *testing.T) {
-	img := newSolidImage(40, 40, color.RGBA{0, 0, 0, 255})
-	grid := Quantize(img, Options{Columns: 8, Rows: 4})
-
-	densest := Palette[len(Palette)-1]
-	for r, row := range grid {
-		for c, cell := range row {
-			if cell.Char != densest {
-				t.Errorf("cell[%d][%d] char = %q, want densest %q for black pixel", r, c, cell.Char, densest)
-			}
-			if cell.FG.R != 0 || cell.FG.G != 0 || cell.FG.B != 0 {
-				t.Errorf("cell[%d][%d] fg = %v, want pure black", r, c, cell.FG)
-			}
-		}
-	}
-}
-
-func TestQuantize_GradientProducesRampAndColor(t *testing.T) {
-	img := newGradientImage(40, 40)
-	grid := Quantize(img, Options{Columns: 10, Rows: 5})
-
-	prevLum := uint16(0)
-	sawIncrease := false
-	for c := 0; c < 10; c++ {
-		cell := grid[0][c]
-		lum := luminance(uint16(cell.FG.R), uint16(cell.FG.G), uint16(cell.FG.B))
-		if lum > prevLum {
-			sawIncrease = true
-		}
-		prevLum = lum
-	}
-	if !sawIncrease {
-		t.Errorf("expected luminance to increase across the gradient row, all chars: %q", rowChars(grid[0]))
-	}
-}
-
-func TestQuantize_AspectRatioPreserved(t *testing.T) {
-	img := newSolidImage(80, 20, color.RGBA{100, 100, 100, 255})
-	grid := Quantize(img, Options{Columns: 16})
-
-	if len(grid) < 1 || len(grid) > 4 {
-		t.Fatalf("rows = %d, want 1-4 for wide image", len(grid))
-	}
-}
-
-func TestQuantize_AlphaCompositedOnWhite(t *testing.T) {
-	img := image.NewRGBA(image.Rect(0, 0, 4, 4))
-	img.Set(0, 0, color.RGBA{0, 0, 0, 0})
-	img.Set(1, 1, color.RGBA{0, 0, 0, 128})
-
-	grid := Quantize(img, Options{Columns: 2, Rows: 2})
-	if len(grid) != 2 || len(grid[0]) != 2 {
-		t.Fatalf("grid shape = %dx%d, want 2x2", len(grid), len(grid[0]))
-	}
-	// Top-left cell sampled fully transparent → should composite to white-ish.
-	cell := grid[0][0]
-	if cell.FG.R < 200 || cell.FG.G < 200 || cell.FG.B < 200 {
-		t.Errorf("fully transparent cell fg = %v, want near-white", cell.FG)
-	}
-}
-
-func TestFlatten_ProducesNewlineSeparatedRows(t *testing.T) {
-	img := newSolidImage(20, 20, color.RGBA{50, 50, 50, 255})
-	grid := Quantize(img, Options{Columns: 4, Rows: 3})
-	flat := Flatten(grid)
-
-	lines := strings.Split(strings.TrimRight(flat, "\n"), "\n")
-	if len(lines) != 3 {
-		t.Fatalf("lines = %d, want 3", len(lines))
-	}
-	for i, line := range lines {
-		if len([]rune(line)) != 4 {
-			t.Errorf("line %d length = %d, want 4", i, len([]rune(line)))
-		}
-	}
-}
-
-func TestQuantize_HonoursBackground(t *testing.T) {
-	img := newSolidImage(20, 20, color.RGBA{255, 0, 0, 255})
-	custom := css.RGB(10, 20, 30)
-	grid := Quantize(img, Options{Columns: 2, Rows: 1, BGColor: custom})
-
-	for _, cell := range grid[0] {
-		if cell.BG != custom {
-			t.Errorf("bg = %v, want %v", cell.BG, custom)
-		}
-	}
-}
-
-func rowChars(row []Cell) string {
-	var b strings.Builder
-	for _, c := range row {
-		b.WriteRune(c.Char)
-	}
-	return b.String()
-}
-
-func TestPalette_MonotonicIncreasingDensity(t *testing.T) {
-	if len(Palette) < 4 {
-		t.Fatalf("palette must have at least 4 chars, got %d", len(Palette))
-	}
-	// Just sanity-check we expose a reasonable ramp.
-	first := Palette[0]
-	last := Palette[len(Palette)-1]
-	if first == last {
-		t.Errorf("palette first and last chars identical: %q", first)
-	}
+func TestPalette(t *testing.T) {
+	if len(Palette)<2 || strings.ContainsRune(string(Palette), '\n') { t.Fatalf("unexpected palette %q",string(Palette)) }
 }

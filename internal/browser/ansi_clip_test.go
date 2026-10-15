@@ -30,12 +30,51 @@ func TestSplitANSI_SeparatesStyledRuns(t *testing.T) {
 	}
 }
 
-func TestClipANSI_KeepsEscapeSequencesIntact(t *testing.T) {
-	// A realistic truecolor cell: one visible column costs ~25 raw runes.
-	line := "\x1b[38;2;220;30;30mL" +
-		"\x1b[38;2;0;0;0m###" +
-		"\x1b[0m"
+func TestSplitANSI_RejectsUnsupportedAndInvalidSGR(t *testing.T) {
+	input := "a\x1b[31mb\x1b[38;2;256;0;0mc\x1b[48;2;1;2;3;4md\x1b[38;2;1;2;3;48;2;4;5;6me"
+	segs := splitANSI(input)
+	var text strings.Builder
+	for _, seg := range segs {
+		text.WriteString(seg.text)
+		if len(seg.style) != 0 {
+			t.Errorf("invalid SGR unexpectedly retained style: %v", seg.style)
+		}
+	}
+	if text.String() != "abcde" {
+		t.Fatalf("text = %q, want abcde", text.String())
+	}
+}
 
+func TestStripRawC1Controls(t *testing.T) {
+	for _, input := range []string{
+		"a\x9b31mb",
+		"a\x90payload\x9cb",
+		"a\x98payload\x1b\\b",
+		"a\x9dtitle\x07b",
+		"a\x9etext\x9cb",
+		"a\x9ftext\x9cb",
+	} {
+		if got := stripRawC1Controls(input); got != "ab" {
+			t.Errorf("stripRawC1Controls(%q) = %q, want ab", input, got)
+		}
+	}
+}
+
+func TestValidRendererSGR(t *testing.T) {
+	for _, params := range []string{"", "0", "38;2;0;128;255", "48;2;1;2;3", "38;2;1;2;3;48;2;4;5;6"} {
+		if !validRendererSGR(params) {
+			t.Errorf("validRendererSGR(%q) = false", params)
+		}
+	}
+	for _, params := range []string{"1", "31", "38;5;1", "38;2;256;0;0", "38;2;-1;0;0", "48;2;1;2", "38;2;1;x;3"} {
+		if validRendererSGR(params) {
+			t.Errorf("validRendererSGR(%q) = true", params)
+		}
+	}
+}
+
+func TestClipANSI_KeepsEscapeSequencesIntact(t *testing.T) {
+	line := "\x1b[38;2;220;30;30mL" + "\x1b[38;2;0;0;0m###" + "\x1b[0m"
 	got := clipANSI(line, 0, 2)
 	if !strings.Contains(got, "\x1b[38;2;220;30;30m") {
 		t.Errorf("foreground sequence was truncated: %q", got)
@@ -49,12 +88,8 @@ func TestClipANSI_KeepsEscapeSequencesIntact(t *testing.T) {
 }
 
 func TestClipANSI_NoDanglingEscape(t *testing.T) {
-	// Regression: rune slicing produced a half-written CSI whose leftover ESC
-	// was parsed as erase-to-end-of-line, hiding the rest of the image line.
-	// Abyss emits a reset before each cell, matching real renderer output.
 	line := strings.Repeat("\x1b[0m\x1b[38;2;220;30;30mL", 40)
 	out := clipANSI(line, 0, 10)
-
 	if visibleWidth(out) != 10 {
 		t.Errorf("visible width = %d, want 10", visibleWidth(out))
 	}
@@ -65,7 +100,7 @@ func TestClipANSI_NoDanglingEscape(t *testing.T) {
 		t.Errorf("escape fragments leaked as text: %q", out)
 	}
 	if got := strings.Count(out, "\x1b[38;2;220;30;30m"); got != 10 {
-		t.Errorf("expected one intact SGR sequence per visible cell (10), got %d in %q", got, out)
+		t.Errorf("expected 10 SGR sequences, got %d in %q", got, out)
 	}
 }
 
@@ -76,14 +111,21 @@ func TestClipANSI_HorizontalScroll(t *testing.T) {
 		t.Errorf("clip window width = %d, want 4 (%q)", visibleWidth(got), got)
 	}
 	if plain := stripSGR(got); plain != "DEFG" {
-		t.Errorf("clipped text = %q, want %q", plain, "DEFG")
+		t.Errorf("clipped text = %q, want DEFG", plain)
 	}
 }
 
-func TestClipANSI_PassThroughWhenNoOffset(t *testing.T) {
-	line := "\x1b[38;2;1;2;3mAB"
-	if got := clipANSI(line, 0, 80); stripSGR(got) != "AB" {
-		t.Errorf("unexpected clip result %q", got)
+func TestClipANSI_BoundariesAndNonpositiveWidth(t *testing.T) {
+	if got := clipANSI("abc", -2, 2); got != "ab" {
+		t.Errorf("negative start clip = %q, want ab", got)
+	}
+	for _, width := range []int{0, -1} {
+		if got := clipANSI("abc", 0, width); got != "" {
+			t.Errorf("width %d returned %q, want empty", width, got)
+		}
+	}
+	if got := clipANSI("abc", 9, 2); got != "" {
+		t.Errorf("out-of-range clip = %q, want empty", got)
 	}
 }
 
@@ -96,7 +138,7 @@ func TestANSIClipUsesTerminalColumnsForWideRunes(t *testing.T) {
 		t.Fatalf("whole wide glyph clip = %q", got)
 	}
 	if got := clipANSI(line, 2, 2); got != " B" {
-		t.Fatalf("partial wide glyph clip = %q, want a spacer and B", got)
+		t.Fatalf("partial wide glyph clip = %q, want spacer and B", got)
 	}
 	emoji := "👩‍💻"
 	if got := visibleWidth(emoji); got != 2 {

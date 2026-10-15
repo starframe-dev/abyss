@@ -2,8 +2,8 @@ package js
 
 import "github.com/starframe-dev/abyss/internal/dom"
 
-// Public Go DOM helpers used by integration tests. Thin wrappers over the
-// unexported bridge implementations in this package.
+// Public Go DOM helpers used by integration tests. These delegate to the
+// canonical bridge implementations in this package.
 
 // CreateElement creates a new element node.
 func CreateElement(tagName string) *dom.Node {

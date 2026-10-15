@@ -1,183 +1,41 @@
-# Specification: cmd/manual/main.go
+# Спецификация: cmd/manual/main.go
 
 ## Обзор
 
-Файл `cmd/manual/main.go` реализует CLI-утилиту для демонстрации pipeline рендеринга HTML-страницы с inline JavaScript в ASCII-выходе. Программа создаёт тестовую HTML-страницу, парсит её в DOM, исполняет JavaScript-код, применяет CSS-стилизацию, вычисляет верстку и рендерит результат в виде ASCII-картинки.
+Файл реализует демонстрационную CLI-программу: записывает встроенную HTML-страницу во временный файл, парсит HTML, выполняет inline JavaScript, строит CSS/layout/render pipeline и выводит результат в ASCII.
 
-## Вводные данные
+## Константа `testPage`
 
-- **Входные данные**: Константа `testPage` — строка с полным HTML-документом.
-- **Выходные данные**: ASCII-текст, выведенный через `fmt.Println` (стандартный выход `stdout`).
-- **Сторонние эффекты**:
-  - Создание временного файла в `os.TempDir()`.
-  - Удаление временного файла через `defer`.
-  - Вывод `fmt.Println` и `fmt.Printf` (stdout, stderr).
-  - Sleep на 2 секунды в конце.
+`testPage` — строка с HTML-документом. Включает CSS для flexbox, grid, цветных блоков и карточек, а также inline JavaScript, проверяющий `__go_log`, создание элементов и `appendChild`, `className`, `classList.add`, стили, атрибуты, свойства родителя и детей, `innerHTML`, `document.write`, поиск элементов по ID и тегу и `removeChild`. Тело содержит заголовок, описание, flex- и grid-контейнеры и две карточки.
 
-## Публичный API
+## Функция `main`
 
-### Функция `main()`
+1. Создаёт путь `filepath.Join(os.TempDir(), "abyss_test_page.html")`, записывает туда `testPage` с режимом `0644`; при ошибке вызывает `panic`. Удаление файла планируется через `defer os.Remove`.
+2. Печатает заголовок и путь, парсит `testPage` через `dom.Parse` и печатает число дочерних узлов документа.
+3. Создаёт JS-контекст и планирует `Close` через `defer`; передаёт DOM в `js.InitDOM` и устанавливает `js.LogWriter = os.Stderr`.
+4. Регистрирует bridge-функции и вычисляет DOM API script. При ошибке любого из этих шагов печатает сообщение и вызывает `os.Exit(1)`.
+5. Выполняет скрипты страницы через `js.ExecuteScripts(jsc, doc, "")`. Ошибка печатается, но выполнение продолжается.
+6. Получает DOM через `js.GetFinalDOM()`. Если он не nil, печатает число дочерних узлов и вызывает `printDOMTree`.
+7. Без проверки на nil вычисляет стили `css.Compute(finalDOM)`, строит layout с шириной 800, вызывает `render.Render(box, 800)` и `ascii.Render(fb, box, 800)`.
+8. Печатает размеры framebuffer и количество ASCII-строк, затем все строки между маркерами `=== OUTPUT ===` и `=== END ===`.
+9. Вызывает `time.Sleep(2 * time.Second)`.
 
-**Цель**: Точка входа в программу.
+## Внутренние функции
 
-**Последовательность действий**:
-1. Формирует путь к временному HTML-файлу (`filepath.Join(os.TempDir(), "abyss_test_page.html")`).
-2. Записывает содержимое `testPage` в файл через `os.WriteFile`.
-3. Планирует удаление файла через `defer os.Remove(filePath)`.
-4. Выводит заголовок и путь к файлу.
-5. Парсит HTML через `dom.Parse(testPage)`.
-6. Создаёт контекст JavaScript через `js.NewContext()`.
-7. Инициализирует DOM в контексте JS через `js.InitDOM(doc)`.
-8. Настраивает writer для логов JS на `os.Stderr`.
-9. Регистрирует мостовые функции через `jsc.RegisterBridgeFunctions()`.
-10. Инициализирует DOM API через `jsc.Evaluate(js.DOMAPIScript())`.
-11. Выполняет inline JS-скрипты через `js.ExecuteScripts(jsc, doc, "")`.
-12. Получает финальный DOM через `js.GetFinalDOM()`.
-13. Если финальный DOM не nil, выводит количество детей корня и вызывает `printDOMTree`.
-14. Вычисляет CSS-стили через `css.Compute(finalDOM)`.
-15. Строит layout через `layout.Build(finalDOM, styles, 800)`.
-16. Рендерит framebuffer через `render.Render(box, 800)`.
-17. Конвертирует framebuffer в ASCII-строки через `ascii.Render(fb, box, 800)`.
-18. Выводит размер framebuffer и количество строк.
-19. Выводит все ASCII-строки с префиксом `=== OUTPUT ===`.
-20. Спит 2 секунды для наблюдения пользователем.
+### `printDOMTree(root *dom.Node)`
 
-**Обработка ошибок**:
-- При записи файла — `panic(err)`.
-- При инициализации bridge — печать ошибки и `os.Exit(1)`.
-- При инициализации DOM API — печать ошибки и `os.Exit(1)`.
-- При выполнении JS — печать ошибки, но продолжение.
+Перебирает непосредственных детей узла. Для каждого элемента печатает тег и число детей; для элемента `html` вызывает `printHTMLBody`. Вложенное дерево рекурсивно не обходит.
 
-**Внутренние функции**:
+### `printHTMLBody(htmlEl *dom.Node)`
 
-#### `printDOMTree(root *dom.Node)`
+Находит дочерние элементы `body`, печатает их непосредственных детей: для элементов — тег, значение атрибута `class` и `TextContent()`; для текстовых узлов — текст после `strings.TrimSpace`, ограниченный 40 символами с добавлением `...` при превышении.
 
-**Цель**: Рекурсивно выводит дерево DOM-элементов.
+## Зависимости и эффекты
 
-**Логика**:
-- Проходит по дочерним узлам корня.
-- Для элементов (`dom.ElementNode`) выводит тег и количество детей.
-- Если тег `"html"`, вызывает `printHTMLBody`.
+Используются пакеты `internal/ascii`, `internal/css`, `internal/dom`, `internal/js`, `internal/layout`, `internal/render`, а также стандартные `fmt`, `os`, `path/filepath`, `strings`, `time`.
 
-#### `printHTMLBody(htmlEl *dom.Node)`
+Программа создаёт/удаляет файл `abyss_test_page.html` в системном временном каталоге, пишет сообщения в stdout и логи JS через `js.LogWriter` в stderr, закрывает JS-контекст при обычном завершении и ждёт две секунды. Поскольку критические ветви используют `os.Exit`, отложенные функции при таком выходе не выполняются.
 
-**Цель**: Выводит содержимое тега `<body>` и его детей.
+## Ограничения и обработка ошибок
 
-**Логика**:
-- Фильтрует только элементы `<body>`.
-- Для элементов выводит тег, атрибут `class` и `TextContent()`.
-- Для текстовых узлов выводит обрезанный текст (до 40 символов + "...").
-
-## Типы
-
-### Константа `testPage`
-
-**Тип**: `string`.
-
-**Описание**: Полная HTML-страница с inline JavaScript и CSS. Содержит:
-- `<style>` для flexbox, grid, цветовых блоков, карточек.
-- `<script>` с тестами на:
-  - `__go_log` (bridge-функция для вывода в stderr).
-  - `document.createElement`, `appendChild`.
-  - `className`, `classList.add`.
-  - `style` (backgroundColor, color, padding, borderRadius).
-  - `setAttribute`/`getAttribute`.
-  - `parentNode`, `children`, `firstChild`, `lastChild`.
-  - `innerHTML`.
-  - `document.write`.
-  - `getElementById`.
-  - `getElementsByTagName`.
-  - `removeChild`.
-- `<body>` с HTML-структурой:
-  - Flex-row с красным, зелёным, синими блоками.
-  - Grid-контейнер с фиолетовым и жёлтым блоками.
-  - Flex-row с карточками (red + green + текст).
-
-### Внешние зависимости
-
-- `github.com/starframe-dev/abyss/internal/ascii` — рендеринг framebuffer в ASCII.
-- `github.com/starframe-dev/abyss/internal/css` — вычисление стилей из DOM.
-- `github.com/starframe-dev/abyss/internal/dom` — парсинг и представление DOM.
-- `github.com/starframe-dev/abyss/internal/js` — контекст выполнения JavaScript, мостовые функции.
-- `github.com/starframe-dev/abyss/internal/layout` — вычисление box-model верстки.
-- `github.com/starframe-dev/abyss/internal/render` — рендеринг framebuffer из layout.
-
-## Алгоритм
-
-1. **Подготовка**:
-   - Создание временного HTML-файла.
-   - Вывод заголовка.
-
-2. **Парсинг**:
-   - `dom.Parse(testPage)` → `*dom.Node` (корневой элемент).
-   - Вывод количества детей корня.
-
-3. **Инициализация JS**:
-   - `js.NewContext()` → `*js.Context`.
-   - `js.InitDOM(doc)`.
-   - `jsc.RegisterBridgeFunctions()`.
-   - `jsc.Evaluate(js.DOMAPIScript())`.
-
-4. **Выполнение JS**:
-   - `js.ExecuteScripts(jsc, doc, "")`.
-   - Получение финального DOM через `js.GetFinalDOM()`.
-
-5. **Анализ DOM**:
-   - Если финальный DOM не nil:
-     - `len(finalDOM.Children)` → вывод количества.
-     - `printDOMTree(finalDOM)`.
-
-6. **Рендеринг pipeline**:
-   - `css.Compute(finalDOM)` → `[]css.Style`.
-   - `layout.Build(finalDOM, styles, 800)` → `layout.Box`.
-   - `render.Render(box, 800)` → `render.Framebuffer`.
-   - `ascii.Render(fb, box, 800)` → `[]string`.
-
-7. **Вывод**:
-   - `fb.Width`, `fb.Height`.
-   - `len(lines)`.
-   - Цикл по строкам с `fmt.Println`.
-
-8. **Завершение**:
-   - `time.Sleep(2 * time.Second)`.
-   - Конец программы.
-
-## Инварианты
-
-- Временный файл всегда удаляется через `defer`.
-- `os.Exit(1)` вызывается только при критических ошибках (bridge, DOM API).
-- Non-critical ошибки (JS execution) не останавливают программу.
-- Финальный DOM может быть nil (в этом случае вывод пропускается).
-
-## Побочные эффекты
-
-- Создание/удаление временного файла.
-- Вывод на `stdout` и `stderr`.
-- Sleep на 2 секунды.
-
-## Ограничения
-
-- Размер экрана фиксирован: 800px.
-- Временный файл хранится в `os.TempDir()`.
-- Нет проверки валидности `testPage` перед парсингом (полагается на корректность константы).
-
-## Сценарии использования
-
-- Демонстрация pipeline рендеринга HTML → DOM → JS → CSS → Layout → ASCII.
-- Тестирование inline JavaScript в контролируемой среде.
-- Визуализация DOM-дерева через ASCII.
-
-## Безопасность
-
-- Временный файл создаётся только с правами 0644.
-- Вывод на `stderr` через `js.LogWriter = os.Stderr` позволяет перехватить логи JS.
-- Нет использования внешних файлов (кроме временного HTML).
-
-## Поддерживаемые операции
-
-- Парсинг HTML.
-- Выполнение JavaScript с DOM API.
-- Применение CSS.
-- Вычисление layout.
-- Рендеринг в ASCII.
-- Вывод результата.
+Ширина layout и render фиксирована на 800. Ошибка записи приводит к panic; ошибки регистрации bridge и загрузки DOM API приводят к сообщению и завершению с кодом 1; ошибка исполнения скриптов только печатается. Если `finalDOM` равен nil, пропускается только диагностический вывод DOM: последующие вызовы CSS/layout/render всё равно выполняются с nil. Проверка валидности HTML отсутствует.

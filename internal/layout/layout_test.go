@@ -78,6 +78,20 @@ func findAllTags(box *LayoutBox, tag string) []*LayoutBox {
 	return result
 }
 
+func TestLayout_PublicEntryPoint(t *testing.T) {
+	doc := dom.Parse(`<div style="width: 40px; height: 12px"></div>`)
+	styles := css.Compute(doc)
+	box := Build(doc, styles, 40)
+	if box == nil {
+		t.Fatal("Build returned nil")
+	}
+	// Re-layout an existing box directly through the public API.
+	Layout(box, 80)
+	if box.Content.Width != 80 {
+		t.Fatalf("content width = %v, want 80", box.Content.Width)
+	}
+}
+
 func TestBuild_Basic(t *testing.T) {
 	html := `<div style="width: 200px; height: 100px;"></div>`
 	doc := dom.Parse(html)

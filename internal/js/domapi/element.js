@@ -17,15 +17,14 @@
                 return val !== null && val !== undefined && val !== ''
             },
 
-            toggleAttribute: function(name) {
-                var val = __go_getAttribute(this, String(name))
-                if (val !== null && val !== undefined && val !== '') {
-                    __go_setAttribute(this, String(name), '')
-                    return false
-                } else {
-                    __go_setAttribute(this, String(name), '')
-                    return true
+            toggleAttribute: function(name, force) {
+                name = String(name)
+                var present = this.hasAttribute(name)
+                var shouldAdd = arguments.length > 1 ? !!force : !present
+                if (shouldAdd !== present) {
+                    __go_setAttribute(this, name, '')
                 }
+                return shouldAdd
             },
 
             get className() {
@@ -98,76 +97,67 @@
         return {
             get parentNode() {
                 var raw = __go_getParentNode(this)
-                if (raw && raw.__go_id > 0) {
-                    return makeElement(raw)
-                }
-                return null
+                return raw && raw.__go_id > 0 ? makeElement(raw) : null
+            },
+
+            get parentElement() {
+                var parent = this.parentNode
+                return parent && parent.nodeType === 1 ? parent : null
             },
 
             get children() {
                 var raw = __go_getChildren(this)
                 var result = []
                 for (var i = 0; i < raw.length; i++) {
-                    var child = raw[i]
-                    if (child && child.__go_id > 0) {
-                        result.push(makeElement(child))
-                    }
+                    if (raw[i] && raw[i].__go_id > 0) result.push(makeElement(raw[i]))
                 }
                 return result
             },
 
+            get childNodes() {
+                return this.children
+            },
+
             get firstChild() {
                 var kids = this.children
-                return kids.length > 0 ? kids[0] : null
+                return kids.length ? kids[0] : null
             },
 
             get lastChild() {
                 var kids = this.children
-                return kids.length > 0 ? kids[kids.length - 1] : null
+                return kids.length ? kids[kids.length - 1] : null
             },
 
             get nextSibling() {
-                if (!this.parentNode) return null
-                var kids = this.parentNode.children
+                var parent = this.parentNode
+                if (!parent) return null
+                var kids = parent.children
                 for (var i = 0; i < kids.length; i++) {
-                    if (kids[i].__go_id === this.__go_id && i + 1 < kids.length) {
-                        return kids[i + 1]
-                    }
+                    if (kids[i].__go_id === this.__go_id) return i + 1 < kids.length ? kids[i + 1] : null
                 }
                 return null
             },
 
             get previousSibling() {
-                if (!this.parentNode) return null
-                var kids = this.parentNode.children
+                var parent = this.parentNode
+                if (!parent) return null
+                var kids = parent.children
                 for (var i = 0; i < kids.length; i++) {
-                    if (kids[i].__go_id === this.__go_id && i > 0) {
-                        return kids[i - 1]
-                    }
+                    if (kids[i].__go_id === this.__go_id) return i > 0 ? kids[i - 1] : null
                 }
                 return null
             },
 
-            get previousElementSibling() {
-                return __go_previousElementSibling(this)
-            },
-
-            get nextElementSibling() {
-                return __go_nextElementSibling(this)
-            },
-
-            get firstElementChild() {
-                return __go_firstElementChild(this)
-            },
-
-            get lastElementChild() {
-                return __go_lastElementChild(this)
-            },
+            get previousElementSibling() { return __go_previousElementSibling(this) },
+            get nextElementSibling() { return __go_nextElementSibling(this) },
+            get firstElementChild() { return __go_firstElementChild(this) },
+            get lastElementChild() { return __go_lastElementChild(this) },
 
             get childElementCount() {
                 var count = 0
-                for (var i = 0; i < this.children.length; i++) {
-                    if (this.children[i].nodeType === 1) count++
+                var children = this.children
+                for (var i = 0; i < children.length; i++) {
+                    if (children[i].nodeType === 1) count++
                 }
                 return count
             }
@@ -178,65 +168,36 @@
         return {
             querySelector: function(sel) {
                 var raw = __go_querySelector(this, String(sel))
-                if (raw && raw.__go_id >= 0) {
-                    return makeElement(raw)
-                }
-                return null
+                return raw && raw.__go_id >= 0 ? makeElement(raw) : null
             },
 
             querySelectorAll: function(sel) {
                 var raw = __go_querySelectorAll(this, String(sel))
                 var result = []
                 for (var i = 0; i < raw.length; i++) {
-                    if (raw[i] && raw[i].__go_id >= 0) {
-                        result.push(makeElement(raw[i]))
-                    }
+                    if (raw[i] && raw[i].__go_id >= 0) result.push(makeElement(raw[i]))
                 }
                 return result
             },
 
             addEventListener: function(type, handler) {
-                if (handler && typeof handler === 'function') {
-                    __go_addEventListener(this, String(type), handler)
-                }
+                if (typeof handler === 'function') __go_addEventListener(this, String(type), handler)
             },
+
             removeEventListener: function(type, handler) {
-                if (handler && typeof handler === 'function') {
-                    __go_removeEventListener(this, String(type), handler)
-                }
+                if (typeof handler === 'function') __go_removeEventListener(this, String(type), handler)
             },
 
-            getBoundingClientRect: function() {
-                return __go_getBoundingClientRect(this)
-            },
-
-            matches: function(sel) {
-                return __go_matches(this, String(sel))
-            },
-
-            closest: function(sel) {
-                return __go_closest(this, String(sel))
-            },
-
-            focus: function() {
-                // No-op: Abyss doesn't have focus management
-            },
-
-            blur: function() {
-                // No-op
-            },
-
-            scrollIntoView: function() {
-                // No-op: Abyss viewport is always at top
-            },
-
+            getBoundingClientRect: function() { return __go_getBoundingClientRect(this) },
+            matches: function(sel) { return __go_matches(this, String(sel)) },
+            closest: function(sel) { return __go_closest(this, String(sel)) },
+            focus: function() {},
+            blur: function() {},
+            scrollIntoView: function() {},
             click: function() {}
         }
     }
 
-    // mergeMethods copies property descriptors (including getters/setters)
-    // from source onto target, so getters keep `this` bound to target. This is
-    // required because Object.assign eagerly invokes source getters.
     function mergeMethods(target, source) {
         Object.keys(source).forEach(function(key) {
             Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key))
@@ -244,14 +205,10 @@
     }
 
     function makeElement(raw) {
-        var id = (raw && raw.__go_id !== undefined) ? raw.__go_id : (typeof raw === 'number' ? raw : -1)
-        var nodeType = (raw && raw.nodeType !== undefined) ? raw.nodeType : 1
-        var tagName = (raw && raw.tagName !== undefined) ? raw.tagName : ''
-        var el = {
-            __go_id: id,
-            nodeType: nodeType,
-            tagName: tagName
-        }
+        var id = raw && raw.__go_id !== undefined ? raw.__go_id : (typeof raw === 'number' ? raw : -1)
+        var nodeType = raw && raw.nodeType !== undefined ? raw.nodeType : 1
+        var tagName = raw && raw.tagName !== undefined ? raw.tagName : ''
+        var el = { __go_id: id, nodeType: nodeType, tagName: tagName }
         mergeMethods(el, makeChildMethods())
         mergeMethods(el, makeInsertionMethods())
         mergeMethods(el, makeAttrMethods())

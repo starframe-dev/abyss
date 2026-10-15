@@ -13,135 +13,61 @@ import (
 	"github.com/starframe-dev/abyss/internal/render"
 )
 
-func TestDefaultClientTimeout(t *testing.T) {
-	expectedTimeout := 10 * time.Second
-	if defaultClientTimeout != expectedTimeout {
-		t.Errorf("Expected default client timeout %v, got %v", expectedTimeout, defaultClientTimeout)
+func TestMainConfiguration(t *testing.T) {
+	if defaultClientTimeout != 10*time.Second {
+		t.Errorf("defaultClientTimeout = %v, want %v", defaultClientTimeout, 10*time.Second)
 	}
-}
-
-func TestDefaultClientCreation(t *testing.T) {
+	if viewportWidth != 800 {
+		t.Errorf("viewportWidth = %d, want 800", viewportWidth)
+	}
 	if defaultClient == nil {
-		t.Error("Expected defaultClient to be non-nil")
+		t.Error("defaultClient is nil")
 	}
 }
 
-func TestViewportWidth(t *testing.T) {
-	expectedWidth := 800
-	if viewportWidth != expectedWidth {
-		t.Errorf("Expected viewportWidth %v, got %v", expectedWidth, viewportWidth)
-	}
-}
-
-func TestFetchClientNewClient(t *testing.T) {
+func TestPipelineComponents(t *testing.T) {
 	client := &http.Client{}
 	if client == nil {
-		t.Error("Expected HTTP client to be non-nil")
+		t.Fatal("expected HTTP client")
 	}
-}
 
-func TestDomParse(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
+	doc := dom.Parse("<html><body><div>test</div></body></html>")
 	if doc == nil {
-		t.Error("Expected Parse to return non-nil document")
+		t.Fatal("dom.Parse returned nil")
 	}
-}
 
-func TestJsNewContext(t *testing.T) {
 	ctx := js.NewContext()
 	if ctx == nil {
-		t.Error("Expected NewContext to return non-nil context")
+		t.Fatal("js.NewContext returned nil")
 	}
-	defer ctx.Close()
-}
-
-func TestJsRegisterBridgeFunctions(t *testing.T) {
-	ctx := js.NewContext()
 	defer ctx.Close()
 	if err := ctx.RegisterBridgeFunctions(); err != nil {
-		t.Errorf("Expected RegisterBridgeFunctions to succeed, got error: %v", err)
+		t.Fatalf("RegisterBridgeFunctions: %v", err)
 	}
-}
-
-func TestJsInitDOM(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
 	js.InitDOM(doc)
-	// Verify DOM was initialized
 	if js.GetFinalDOM() == nil {
-		t.Error("Expected InitDOM to initialize final DOM")
+		t.Fatal("InitDOM did not initialize DOM")
 	}
-}
-
-func TestJsEvaluate(t *testing.T) {
-	ctx := js.NewContext()
-	defer ctx.Close()
-
 	if _, err := ctx.Evaluate(`"hello"`); err != nil {
-		t.Errorf("Expected Evaluate to succeed, got error: %v", err)
+		t.Fatalf("Evaluate: %v", err)
 	}
-}
-
-func TestJsExecuteScripts(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
-
-	// Create a mock context
-	ctx := js.NewContext()
-	defer ctx.Close()
-
-	if err := ctx.RegisterBridgeFunctions(); err != nil {
-		t.Fatalf("Failed to register bridge functions: %v", err)
-	}
-
-	js.InitDOM(doc)
-
-	// This should not panic or return a critical error
 	if err := js.ExecuteScripts(ctx, doc, "http://example.com"); err != nil {
-		// Non-critical errors may occur during script execution
-		t.Logf("Script execution error (may be expected): %v", err)
+		t.Fatalf("ExecuteScripts: %v", err)
 	}
-}
 
-func TestCssCompute(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
-
-	if styles := css.Compute(doc); styles == nil {
-		t.Error("Expected Compute to return non-nil styles")
-	}
-}
-
-func TestLayoutBuild(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
 	styles := css.Compute(doc)
-
-	if box := layout.Build(doc, styles, 800); box == nil {
-		t.Error("Expected Build to return non-nil box")
+	if styles == nil {
+		t.Fatal("css.Compute returned nil")
 	}
-}
-
-func TestRenderRender(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
-	styles := css.Compute(doc)
-	box := layout.Build(doc, styles, 800)
-
-	if fb := render.Render(box, 800); fb == nil {
-		t.Error("Expected Render to return non-nil framebuffer")
+	box := layout.Build(doc, styles, viewportWidth)
+	if box == nil {
+		t.Fatal("layout.Build returned nil")
 	}
-}
-
-func TestAsciiRender(t *testing.T) {
-	html := "<html><body><div>test</div></body></html>"
-	doc := dom.Parse(html)
-	styles := css.Compute(doc)
-	box := layout.Build(doc, styles, 800)
-
-	fb := render.Render(box, 800)
-	if lines := ascii.Render(fb, box, 800); len(lines) == 0 {
-		t.Error("Expected Render to return non-empty lines slice")
+	fb := render.Render(box, viewportWidth)
+	if fb == nil {
+		t.Fatal("render.Render returned nil")
+	}
+	if lines := ascii.Render(fb, box, viewportWidth); len(lines) == 0 {
+		t.Error("ascii.Render returned no lines")
 	}
 }

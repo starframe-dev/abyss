@@ -1,23 +1,30 @@
 package main
 
 import (
+	"os"
+	"os/exec"
+	"strings"
 	"testing"
-
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/starframe-dev/abyss/internal/browser"
 )
 
-func TestBrowserModelImplementsTeaModel(t *testing.T) {
-	model := browser.New()
-	var _ tea.Model = &model
-}
+func TestMainHeadlessDumpRequiresURL(t *testing.T) {
+	if os.Getenv("ABYSS_MAIN_HELPER") == "1" {
+		os.Args = []string{"abyss", "-headless-dump", "unused.ansi"}
+		main()
+		return
+	}
 
-// TestMainEntryPoint verifies that the package compiles and main can be
-// referenced without panicking. The actual main() reads from stdin and is
-// not safe to invoke from tests, so we only check that the entry point is
-// callable by reference (used by the go runtime).
-func TestMainEntryPoint(t *testing.T) {
-	// Just verify main.go compiles; we don't invoke main directly.
-	// If we got here, the binary links correctly.
-	_ = browser.New
+	cmd := exec.Command(os.Args[0], "-test.run=^TestMainHeadlessDumpRequiresURL$")
+	cmd.Env = append(os.Environ(), "ABYSS_MAIN_HELPER=1")
+	output, err := cmd.CombinedOutput()
+	if err == nil {
+		t.Fatal("expected main to exit with status 2 when --url is missing")
+	}
+	exitErr, ok := err.(*exec.ExitError)
+	if !ok || exitErr.ExitCode() != 2 {
+		t.Fatalf("expected exit code 2, got error %v; output: %s", err, output)
+	}
+	if !strings.Contains(string(output), "--headless-dump requires --url") {
+		t.Fatalf("expected missing URL message, got %q", output)
+	}
 }

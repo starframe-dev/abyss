@@ -2,98 +2,52 @@
 
 ## Обзор
 
-`fetcher` — пакет для загрузки содержимого веб-страниц через HTTP-запросы.
+`fetcher` загружает веб-ресурсы через HTTP GET с ограничением размера, таймаутом и поддержкой отмены контекста.
 
 ## Публичный API
 
-### `Fetch(url string)` → `(string, error)`
+### Константы и ошибки
 
-Глобальная функция загрузки содержимого по указанному URL.
+- `ErrResponseTooLarge` — sentinel-ошибка, возвращаемая, когда размер ответа превышает лимит.
+- `MaxHTMLBytes` — 8 MiB.
+- `MaxImageBytes` — 16 MiB.
+- `MaxCSSBytes` — 2 MiB.
+- `MaxJSBytes` — 4 MiB.
+- `UserAgent` — `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36`.
+- `DefaultClient` — изменяемый общий `*http.Client` с таймаутом 10 секунд.
 
-#### Параметры
+### `Fetch(url string) (string, error)`
+Загружает HTML с лимитом `MaxHTMLBytes`, используя `context.Background()`.
 
-| Параметр | Тип | Описание |
-|----------|-----|----------|
-| `url` | `string` | URL для загрузки |
+### `FetchContext(ctx context.Context, url string) (string, error)`
+Загружает HTML с тем же лимитом; запрос поддерживает отмену через контекст.
 
-#### Возвращаемые значения
+### `FetchBytes(url string) ([]byte, string, error)`
+Загружает бинарный ресурс с лимитом `MaxImageBytes` и возвращает тело и значение заголовка `Content-Type`. Использует `context.Background()`.
 
-| Значение | Тип | Описание |
-|----------|-----|----------|
-| `body` | `string` | Содержимое страницы как строка UTF-8 |
-| `err` | `error` | Ошибка, если запрос завершился неудачно |
+### `FetchBytesContext(ctx context.Context, url string) ([]byte, string, error)`
+То же, что `FetchBytes`, с поддержкой переданного контекста.
 
-#### Поведение
+### `FetchCSS(ctx context.Context, url string) (string, error)`
+Загружает CSS с лимитом `MaxCSSBytes`.
 
-1. Создаёт HTTP-запрос типа `GET`
-2. Устанавливает заголовки:
-   - `User-Agent`: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15
-   - `Accept`: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-   - `Accept-Language`: en-US,en;q=0.9
-3. Выполняет запрос с использованием общего клиента `DefaultClient`
-4. Проверяет статус-код — ожидает `200 OK`
-5. Читает тело ответа полностью
-6. Возвращает строковое представление содержимого
+### `FetchJS(ctx context.Context, url string) (string, error)`
+Загружает JavaScript с лимитом `MaxJSBytes`.
 
-#### Обработка ошибок
+### `ResponseReadError`
+Структура содержит `BytesRead int64` и исходную ошибку `Err error`. Оборачивает ошибку чтения тела; `Error()` возвращает текст вложенной ошибки, `Unwrap()` позволяет извлечь её.
 
-Возможные ошибки:
+## Поведение запросов
 
-- `fetch <url>: create request: <err>` — ошибка при создании запроса
-- `fetch <url>: <status>` — некорректный статус-код ответа (не 200)
-- `fetch <url>: read body: <err>` — ошибка при чтении тела ответа
+Для каждого запроса создаётся HTTP GET с переданным контекстом, заголовками `User-Agent` (значение `UserAgent`) и `Accept`. Значения `Accept`:
 
----
+- HTML: `text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8`
+- бинарный ресурс: `image/avif,image/webp,image/png,image/jpeg,image/*;q=0.8,*/*;q=0.5`
+- CSS: `text/css,*/*;q=0.1`
+- JavaScript: `application/javascript,text/javascript,*/*;q=0.1`
 
-### `DefaultClient`
+Используется `DefaultClient`. Принимается только статус `200 OK`. Если известный `Content-Length` больше лимита, загрузка сразу завершается ошибкой. Иначе тело читается не более чем до `limit+1` байта; превышение лимита возвращает ошибку, оборачивающую `ErrResponseTooLarge`. При успехе возвращаются данные и `Content-Type` (пустая строка, если заголовок отсутствует). Для функций, возвращающих строку, байты преобразуются напрямую в строку.
 
-Общий HTTP-клиент с настроенным таймаутом.
+## Ошибки
 
-#### Атрибуты
-
-| Атрибут | Тип | Значение | Описание |
-|---------|-----|----------|----------|
-| `Timeout` | `time.Duration` | `10 * time.Second` | Таймаут на запрос |
-
-#### Использование
-
-Используется внутри функции `Fetch()` для выполнения запросов.
-
----
-
-## Типы данных
-
-### `DefaultClient`
-
-Неявный тип `*http.Client` с настроенным таймаутом.
-
----
-
-## Детали реализации
-
-### Внутренние зависимости
-
-| Пакет | Использование |
-|-------|---------------|
-| `net/http` | HTTP-запросы и клиент |
-| `io` | Чтение тела ответа |
-| `fmt` | Форматирование ошибок |
-| `time` | Настройка таймаутов |
-
-### Границы пакета
-
-- Пакет экспортирует только `Fetch()` и `DefaultClient`
-- Не содержит скрытых глобальных состояний кроме `DefaultClient`
-- Все ошибки возвращаются явно в виде `error`
-
-### Ограничения
-
-- Таймаут на запрос: 10 секунд
-- Поддерживаются только GET-запросы
-- Статус-код должен быть `200 OK`
-- Тело ответа считывается полностью (не ограничено по размеру)
-
-### Инварианты
-
-- `Fetch()` никогда не возвращает `nil` на `error`, если запрос завершён успешно
-- При успешном выполнении `err` всегда `nil`, а `body` содержит содержимое страницы
+Ошибки создания запроса имеют вид `fetch <url>: create request: <err>`. Ошибки выполнения запроса — `fetch <url>: <err>`. Некорректный статус — `fetch <url>: <status>`. Ошибки чтения оборачиваются в `ResponseReadError` с сообщением `fetch <url>: read body: <err>` и количеством успешно считанных байт. Ошибки превышения размера оборачивают `ErrResponseTooLarge` и указывают URL и лимит.
