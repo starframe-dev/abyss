@@ -304,6 +304,11 @@ func overlayAsciiCells(grid [][]Cell, tree *layout.LayoutBox) {
 	if len(tree.AsciiCells) == 0 {
 		return
 	}
+	if tree.Style.Position == css.PositionAbsolute {
+		// Absolutely positioned icons (google.com's search box icons) would cover the
+		// field they sit on; the terminal draws its own icons instead.
+		return
+	}
 	startCol := int(tree.Border.X / cellmetrics.WidthPx)
 	startRow := int(tree.Border.Y / cellmetrics.HeightPx)
 	rows := tree.AsciiCells
