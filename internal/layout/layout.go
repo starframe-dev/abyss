@@ -2,6 +2,7 @@
 package layout
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/mattn/go-runewidth"
@@ -130,6 +131,12 @@ func layoutBox(box *LayoutBox, containerWidth, offsetX, offsetY float64, isRoot 
 
 	// Resolve width
 	width := resolveWidth(style, containerWidth)
+	if style.Width.IsAuto && box.Node.Type == dom.ElementNode && box.Node.TagName == "img" {
+		// An image without CSS width takes its width attribute (CSS px) instead of the full container.
+		if attr, err := strconv.ParseFloat(strings.TrimSpace(box.Node.GetAttr("width")), 64); err == nil && attr > 0 {
+			width = attr
+		}
+	}
 	if style.Width.IsAuto && isButtonInput(box.Node) {
 		// Buttons size to their label, not to the container.
 		width = buttonInputWidth(box.Node)
