@@ -280,6 +280,10 @@ func layoutImage(box *LayoutBox, contentWidth float64) float64 {
 	lines := wordWrap([]string{"[image]", label}, box, contentWidth)
 	box.TextLines = lines
 	height := float64(len(lines)) * cellmetrics.HeightPx
+	if h, err := strconv.ParseFloat(strings.TrimSpace(box.Node.GetAttr("height")), 64); err == nil && h > 0 {
+		// The height attribute (CSS px) sets the picture's real row count.
+		height = h
+	}
 	if height < defaultImageHeight {
 		height = defaultImageHeight
 	}
