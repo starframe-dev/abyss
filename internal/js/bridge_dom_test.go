@@ -10,12 +10,14 @@ import "testing"
 // exercise each exported-to-JS callback through valid and missing arguments.
 func TestDOMBridgeCallbacks(t *testing.T) {
 	ctx := NewContext()
-	if ctx == nil { t.Fatal("NewContext returned nil") }
+	if ctx == nil {
+		t.Fatal("NewContext returned nil")
+	}
 	defer ctx.Release()
 
 	callbacks := []struct {
 		name string
-		fn func(*Context, []C.JSValueRef) C.JSValueRef
+		fn   func(*Context, []C.JSValueRef) C.JSValueRef
 	}{
 		{"createElementJS", createElementJS}, {"appendChildJS", appendChildJS},
 		{"setInnerHTMLJS", setInnerHTMLJS}, {"setAttributeJS", setAttributeJS},
@@ -30,7 +32,9 @@ func TestDOMBridgeCallbacks(t *testing.T) {
 	}
 	for _, cb := range callbacks {
 		t.Run(cb.name, func(t *testing.T) {
-			if cb.fn(ctx, nil) == nil { t.Fatal("callback returned nil JS value") }
+			if cb.fn(ctx, nil) == nil {
+				t.Fatal("callback returned nil JS value")
+			}
 		})
 	}
 }

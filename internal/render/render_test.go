@@ -56,11 +56,17 @@ func TestRender_ImageQuantizationAndCache(t *testing.T) {
 	var imgBox *layout.LayoutBox
 	var find func(*layout.LayoutBox)
 	find = func(b *layout.LayoutBox) {
-		if b.Node != nil && b.Node.TagName == "img" { imgBox = b }
-		for _, child := range b.Children { find(child) }
+		if b.Node != nil && b.Node.TagName == "img" {
+			imgBox = b
+		}
+		for _, child := range b.Children {
+			find(child)
+		}
 	}
 	find(box)
-	if imgBox == nil { t.Fatal("image layout box not found") }
+	if imgBox == nil {
+		t.Fatal("image layout box not found")
+	}
 	imgBox.Content.Width, imgBox.Content.Height = 16, 16
 	imgBox.Border.Width, imgBox.Border.Height = 16, 16
 	imgBox.TextLines = []layout.TextLine{{}}

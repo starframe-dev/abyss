@@ -62,7 +62,7 @@ func TestFetchBytesVariants(t *testing.T) {
 func TestFetchCSSAndJS(t *testing.T) {
 	for _, tc := range []struct {
 		name, accept, want string
-		fetch func(context.Context, string) (string, error)
+		fetch              func(context.Context, string) (string, error)
 	}{{"css", "text/css", "body{}", FetchCSS}, {"js", "application/javascript", "return;", FetchJS}} {
 		t.Run(tc.name, func(t *testing.T) {
 			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -81,9 +81,9 @@ func TestGetErrorsAndLimits(t *testing.T) {
 	_, _, err := get(context.Background(), "://bad", 10, "*")
 	require.Error(t, err)
 	for _, tc := range []struct {
-		name string
+		name    string
 		handler http.HandlerFunc
-		want error
+		want    error
 	}{{"status", func(w http.ResponseWriter, _ *http.Request) { w.WriteHeader(http.StatusNotFound) }, nil},
 		{"oversize", func(w http.ResponseWriter, _ *http.Request) { _, _ = io.WriteString(w, strings.Repeat("x", 11)) }, ErrResponseTooLarge}} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -91,7 +91,11 @@ func TestGetErrorsAndLimits(t *testing.T) {
 			defer ts.Close()
 			_, _, err := get(context.Background(), ts.URL, 10, "*")
 			require.Error(t, err)
-			if tc.want != nil { assert.ErrorIs(t, err, tc.want) } else { assert.Contains(t, err.Error(), fmt.Sprint(http.StatusNotFound)) }
+			if tc.want != nil {
+				assert.ErrorIs(t, err, tc.want)
+			} else {
+				assert.Contains(t, err.Error(), fmt.Sprint(http.StatusNotFound))
+			}
 		})
 	}
 }

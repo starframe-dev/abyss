@@ -190,33 +190,33 @@ func (b BoxModel) IsZero() bool {
 
 // ComputedStyle contains computed CSS properties for a node.
 type ComputedStyle struct {
-	Display       DisplayType
-	Position      PositionType
-	Overflow      OverflowType
-	Width, Height Length
-	MinWidth      Length
-	MaxWidth      Length
-	Top           Length
-	Left          Length
-	Right         Length
-	Bottom        Length
-	Margin        BoxModel
-	Padding       BoxModel
-	BorderTop     Border
-	BorderRight   Border
-	BorderBottom  Border
-	BorderLeft    Border
-	BackgroundColor Color
-	Color           Color
-	ZIndex          int
-	FlexDirection   FlexDirection
-	JustifyContent  JustifyContent
-	AlignItems      AlignItems
-	FlexGrow        float64
-	FlexShrink      float64
-	GridTemplateColumns []Length
-	GridTemplateRows    []Length
-	Gap                 Length
+	Display                 DisplayType
+	Position                PositionType
+	Overflow                OverflowType
+	Width, Height           Length
+	MinWidth                Length
+	MaxWidth                Length
+	Top                     Length
+	Left                    Length
+	Right                   Length
+	Bottom                  Length
+	Margin                  BoxModel
+	Padding                 BoxModel
+	BorderTop               Border
+	BorderRight             Border
+	BorderBottom            Border
+	BorderLeft              Border
+	BackgroundColor         Color
+	Color                   Color
+	ZIndex                  int
+	FlexDirection           FlexDirection
+	JustifyContent          JustifyContent
+	AlignItems              AlignItems
+	FlexGrow                float64
+	FlexShrink              float64
+	GridTemplateColumns     []Length
+	GridTemplateRows        []Length
+	Gap                     Length
 	BorderRadiusTopLeft     Length
 	BorderRadiusTopRight    Length
 	BorderRadiusBottomRight Length
@@ -226,18 +226,18 @@ type ComputedStyle struct {
 // Default returns a computed style initialized with CSS defaults supported here.
 func Default() ComputedStyle {
 	return ComputedStyle{
-		Display:          DisplayBlock,
-		Position:         PositionStatic,
-		Overflow:         OverflowVisible,
-		Width:            Auto(),
-		Height:           Auto(),
-		BackgroundColor:  Transparent(),
-		Color:            RGB(30, 30, 30),
-		FlexDirection:    FlexDirectionRow,
-		JustifyContent:   JustifyFlexStart,
-		AlignItems:       AlignStretch,
-		FlexGrow:         0,
-		FlexShrink:       1,
-		Gap:              Px(0),
+		Display:         DisplayBlock,
+		Position:        PositionStatic,
+		Overflow:        OverflowVisible,
+		Width:           Auto(),
+		Height:          Auto(),
+		BackgroundColor: Transparent(),
+		Color:           RGB(30, 30, 30),
+		FlexDirection:   FlexDirectionRow,
+		JustifyContent:  JustifyFlexStart,
+		AlignItems:      AlignStretch,
+		FlexGrow:        0,
+		FlexShrink:      1,
+		Gap:             Px(0),
 	}
 }

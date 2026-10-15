@@ -39,16 +39,22 @@ func TestParseEnforcesNodeAndDepthLimits(t *testing.T) {
 }
 
 func countTreeNodes(n *Node) int {
-	if n == nil { return 0 }
+	if n == nil {
+		return 0
+	}
 	count := 1
-	for _, child := range n.Children { count += countTreeNodes(child) }
+	for _, child := range n.Children {
+		count += countTreeNodes(child)
+	}
 	return count
 }
 
 func TestParseRecoversImplicitClosuresAndAttributes(t *testing.T) {
 	doc := Parse(`<div><p>one<p>two</div><ul><li>a<li>b</ul><input disabled>`)
 	ps, lis := doc.QueryAll("p"), doc.QueryAll("li")
-	if len(ps) != 2 || ps[0].Parent != ps[1].Parent || len(lis) != 2 || lis[0].Parent != lis[1].Parent { t.Fatal("implicit closure failed") }
+	if len(ps) != 2 || ps[0].Parent != ps[1].Parent || len(lis) != 2 || lis[0].Parent != lis[1].Parent {
+		t.Fatal("implicit closure failed")
+	}
 	assert.Equal(t, "", doc.QuerySelector("input").GetAttr("missing"))
 }
 
@@ -89,7 +95,7 @@ func TestSelectorAndSerializationHelpers(t *testing.T) {
 	assert.Nil(t, (*Node)(nil).Closest("div"))
 	assert.Equal(t, "", (*Node)(nil).OuterHTML())
 	assert.Equal(t, `&lt;&amp;&gt;&quot;`, (&Node{Type: TextNode, Text: `<&>"`}).OuterHTML())
-	assert.Equal(t, `<div title="a&amp;b">x</div>`, (&Node{Type: ElementNode, TagName: "div", Attributes: map[string]string{"title":"a&b"}, Text:"x"}).OuterHTML())
+	assert.Equal(t, `<div title="a&amp;b">x</div>`, (&Node{Type: ElementNode, TagName: "div", Attributes: map[string]string{"title": "a&b"}, Text: "x"}).OuterHTML())
 	assert.Equal(t, "", (&Node{Type: CommentNode, Text: ""}).TextContent())
 }
 

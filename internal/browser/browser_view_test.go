@@ -10,16 +10,20 @@ import (
 
 func TestCenter(t *testing.T) {
 	for _, tt := range []struct {
-		text string
+		text  string
 		width int
-		want string
+		want  string
 	}{{"hello", 10, "  hello"}, {"exact", 5, "exact"}, {"long text", 2, "long text"}, {"", 4, "  "}, {"猫a", 7, "  猫a"}} {
 		assert.Equal(t, tt.want, center(tt.text, tt.width))
 	}
 }
 
 func TestTruncateTerminalText(t *testing.T) {
-	for _, tt := range []struct { text string; width int; want string }{
+	for _, tt := range []struct {
+		text  string
+		width int
+		want  string
+	}{
 		{"abcdef", 3, "abc"}, {"猫ab", 3, "猫a"}, {"👩‍💻x", 2, "👩‍💻"}, {"abc", 0, ""},
 	} {
 		assert.Equal(t, tt.want, truncateTerminalText(tt.text, tt.width))
