@@ -481,6 +481,11 @@ func placeRowItem(child *LayoutBox, width, contentWidth, x, y float64) {
 		layoutBox(child, contentWidth, x, y, false)
 		return
 	}
+	if child.Node != nil && child.Node.Type == dom.TextNode && child.Node.Text != strings.TrimLeft(child.Node.Text, " \t\r\n") {
+		// The leading space is the gap after the previous item: the text starts one cell later.
+		x += cellmetrics.WidthPx
+		width -= cellmetrics.WidthPx
+	}
 	width = min(width, contentWidth)
 	orig := child.Style.Width
 	child.Style.Width = css.Px(width)
