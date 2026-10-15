@@ -210,12 +210,14 @@ func layoutBox(box *LayoutBox, containerWidth, offsetX, offsetY float64, isRoot 
 	if box.Node.Type == dom.ElementNode && box.Node.TagName == "img" {
 		contentHeight = layoutImage(box, contentWidth)
 	} else {
-		switch style.Display {
-		case css.DisplayFlex:
+		switch {
+		case box.Node.Type == dom.ElementNode && box.Node.TagName == "table":
+			contentHeight = layoutTable(box, contentWidth)
+		case style.Display == css.DisplayFlex:
 			contentHeight = layoutFlex(box, contentWidth)
-		case css.DisplayGrid:
+		case style.Display == css.DisplayGrid:
 			contentHeight = layoutGrid(box, contentWidth)
-		case css.DisplayBlock:
+		case style.Display == css.DisplayBlock:
 			contentHeight = layoutBlockFlow(box, contentWidth)
 		default:
 			// Inline layout
