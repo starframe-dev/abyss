@@ -535,6 +535,8 @@ func applyLayout(style *ComputedStyle, prop, val string) {
 		style.Overflow = parseOverflow(val)
 	case "z-index":
 		style.ZIndex = parseInt(val)
+	case "text-align":
+		style.TextAlign = parseTextAlign(val)
 	case "flex-direction":
 		style.FlexDirection = parseFlexDirection(val)
 	case "justify-content":

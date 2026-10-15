@@ -23,6 +23,16 @@ const (
 	PositionAbsolute
 )
 
+// TextAlignType represents the text-align property. Only the block's own value
+// is used; inheritance is not modelled.
+type TextAlignType int
+
+const (
+	TextAlignLeft TextAlignType = iota
+	TextAlignCenter
+	TextAlignRight
+)
+
 // OverflowType represents the CSS overflow property.
 type OverflowType int
 
@@ -193,6 +203,7 @@ type ComputedStyle struct {
 	BackgroundColor         Color
 	Color                   Color
 	ZIndex                  int
+	TextAlign               TextAlignType
 	FlexDirection           FlexDirection
 	JustifyContent          JustifyContent
 	AlignItems              AlignItems

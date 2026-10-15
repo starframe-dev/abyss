@@ -296,9 +296,9 @@ func layoutBlockFlow(box *LayoutBox, contentWidth float64) float64 {
 	children := box.Children
 	for len(children) > 0 {
 		// A run of consecutive buttons shares lines; other children stack as blocks.
-		if buttonOf(children[0]) != nil {
+		if isRowItem(children[0]) {
 			n := 1
-			for n < len(children) && buttonOf(children[n]) != nil {
+			for n < len(children) && isRowItem(children[n]) {
 				n++
 			}
 			y += layoutButtonRow(box, children[:n], contentWidth, y)
@@ -405,24 +405,125 @@ func drawsNothing(b *LayoutBox) bool {
 	return false
 }
 
-// layoutButtonRow places buttons left to right from yOrigin on one line while they
-// fit the container, then wraps to the next line. It returns the height used.
-func layoutButtonRow(box *LayoutBox, buttons []*LayoutBox, contentWidth, yOrigin float64) float64 {
-	var x, y, rowHeight float64
-	for _, child := range buttons {
-		// Measure at the origin first, then place it where the row has room.
-		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+yOrigin, false)
-		// Width comes from the button: a wrapper span without a width spans the container.
-		w := buttonOf(child).Margin.Width
-		if x > 0 && x+w > contentWidth {
-			y += rowHeight
-			x, rowHeight = 0, 0
-		}
-		layoutBox(child, contentWidth, box.Content.X+x, box.Content.Y+yOrigin+y, false)
-		x += w
-		rowHeight = max(rowHeight, child.Margin.Height)
+// isRowItem reports whether a block child sits on a shared line with its siblings:
+// a push button (or a wrapper of one) or a text-only link, as in a browser.
+func isRowItem(child *LayoutBox) bool {
+	if child.Node == nil {
+		return false
 	}
-	return y + rowHeight
+	if child.Node.Type == dom.TextNode {
+		return strings.TrimSpace(child.Node.Text) != ""
+	}
+	return buttonOf(child) != nil || isTextLink(child.Node)
+}
+
+// isTextLink reports whether n is an <a> whose content is only text.
+func isTextLink(n *dom.Node) bool {
+	if n == nil || n.Type != dom.ElementNode || n.TagName != "a" {
+		return false
+	}
+	for _, c := range n.Children {
+		if c.Type != dom.TextNode {
+			return false
+		}
+	}
+	return true
+}
+
+// rowItemWidth returns the width a row item takes on its line.
+func rowItemWidth(child *LayoutBox, contentWidth float64) float64 {
+	if btn := buttonOf(child); btn != nil {
+		// Measure at the origin: a wrapper span without a width spans the container.
+		layoutBox(child, contentWidth, 0, 0, false)
+		return btn.Margin.Width
+	}
+	if child.Node.Type == dom.TextNode {
+		// Keep one cell for each edge space so text next to links keeps its gap.
+		width := float64(runewidth.StringWidth(strings.Join(strings.Fields(child.Node.Text), " ")))
+		if text := child.Node.Text; text != strings.TrimLeft(text, " \t\r\n") {
+			width++
+		}
+		if text := child.Node.Text; text != strings.TrimRight(text, " \t\r\n") {
+			width++
+		}
+		return width * cellmetrics.WidthPx
+	}
+	return float64(runewidth.StringWidth(strings.Join(collectInlineText(child.Node), ""))) * cellmetrics.WidthPx
+}
+
+// placeRowItem lays a row item out at x,y with the given width.
+func placeRowItem(child *LayoutBox, width, contentWidth, x, y float64) {
+	if buttonOf(child) != nil {
+		layoutBox(child, contentWidth, x, y, false)
+		return
+	}
+	width = min(width, contentWidth)
+	orig := child.Style.Width
+	child.Style.Width = css.Px(width)
+	layoutBox(child, contentWidth, x, y, false)
+	child.Style.Width = orig
+}
+
+// rowAlign returns how a row of items is aligned inside box: <center>, align="center"
+// on a cell or block, or the block's own text-align.
+func rowAlign(box *LayoutBox) css.TextAlignType {
+	if box.Node != nil && box.Node.Type == dom.ElementNode {
+		if box.Node.TagName == "center" || strings.EqualFold(strings.TrimSpace(box.Node.GetAttr("align")), "center") {
+			return css.TextAlignCenter
+		}
+	}
+	return box.Style.TextAlign
+}
+
+// layoutButtonRow places row items left to right from yOrigin, wrapping to the next
+// line when they run out of width. Each line is aligned by rowAlign. It returns the height used.
+func layoutButtonRow(box *LayoutBox, items []*LayoutBox, contentWidth, yOrigin float64) float64 {
+	widths := make([]float64, len(items))
+	gaps := make([]float64, len(items))
+	for i, child := range items {
+		widths[i] = rowItemWidth(child, contentWidth)
+		if i > 0 && isTextLink(items[i-1].Node) && isTextLink(child.Node) {
+			// Browsers space adjacent links apart; the footer links rely on it.
+			gaps[i] = 2 * cellmetrics.WidthPx
+		}
+	}
+	align := rowAlign(box)
+	var y float64
+	for start := 0; start < len(items); {
+		end := start
+		var lineWidth float64
+		for end < len(items) {
+			step := widths[end]
+			if end > start {
+				step += gaps[end]
+			}
+			if end > start && lineWidth+step > contentWidth {
+				break
+			}
+			lineWidth += step
+			end++
+		}
+		var offset float64
+		switch align {
+		case css.TextAlignCenter:
+			offset = (contentWidth - lineWidth) / 2
+		case css.TextAlignRight:
+			offset = contentWidth - lineWidth
+		}
+		offset = max(0, offset)
+		var x, rowHeight float64
+		for i := start; i < end; i++ {
+			if i > start {
+				x += gaps[i]
+			}
+			placeRowItem(items[i], widths[i], contentWidth, box.Content.X+offset+x, box.Content.Y+yOrigin+y)
+			x += widths[i]
+			rowHeight = max(rowHeight, items[i].Margin.Height)
+		}
+		y += rowHeight
+		start = end
+	}
+	return y
 }
 
 // isButtonInput reports whether n is an input rendered as a push button.

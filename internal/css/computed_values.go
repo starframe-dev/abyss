@@ -50,6 +50,17 @@ func Hex(s string) Color {
 	return RGB(uint8(r), uint8(g), uint8(b))
 }
 
+// parseTextAlign parses text-align. Unknown values keep the left default.
+func parseTextAlign(val string) TextAlignType {
+	switch strings.ToLower(strings.TrimSpace(val)) {
+	case "center":
+		return TextAlignCenter
+	case "right", "end":
+		return TextAlignRight
+	}
+	return TextAlignLeft
+}
+
 // parseDisplay парсит значение свойства display в тип DisplayType.
 func parseDisplay(val string) DisplayType {
 	switch val {
