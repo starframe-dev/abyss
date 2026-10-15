@@ -139,3 +139,13 @@
 - В ответе google.com в проверенной загрузке 8 `img`, ни один не `alt="Google"`. Блок логотипа в layout — пустой `div` 64×88 px, поэтому верх страницы белый.
 - Исправление минимальной правкой в `browser.go`/`browser_view.go` невозможно: нужна поддержка другого источника логотипа (inline SVG) или проверка, отдаёт ли Google `img` для другого региона/User-Agent.
 - Статус: открыто, ждёт решения владельца.
+
+## Геометрия терминала (10×20 px на ячейку)
+
+- Одна ячейка терминала = 10 px по ширине и 20 px по высоте: `internal/cellmetrics`.
+- Ширина viewport в колонках переводится в px перед `css`/`layout`/`render`: `internal/browser/browser_page.go`, `internal/browser/headless_dump.go`.
+- `layout`: текст переносится по колонкам (`wordWrap`), высота строки и пустых полей — `cellmetrics.HeightPx`, ширина кнопок/полей — колонки × `WidthPx` (`internal/layout/layout.go`).
+- `render`: ширина и высота изображения в ячейках делятся на 10 и 20; `drawAsciiCells` заполняет прямоугольник ячейки (`internal/render/render.go`).
+- `ascii`: сетка строится по центру ячейки 10×20; текст накладывается по `X/10`, `Y/20` (`internal/ascii/ascii.go`).
+- Квантование изображений не менялось.
+- Регрессия: `TestGoogleShapedPageShowsSearchOnFirstScreen` (`internal/browser/cell_geometry_regression_test.go`).
