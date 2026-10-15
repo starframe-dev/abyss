@@ -229,7 +229,8 @@ func layoutBox(box *LayoutBox, containerWidth, offsetX, offsetY float64, isRoot 
 			contentHeight = layoutFlex(box, contentWidth)
 		case style.Display == css.DisplayGrid:
 			contentHeight = layoutGrid(box, contentWidth)
-		case style.Display == css.DisplayBlock:
+		case style.Display == css.DisplayBlock || style.Display == css.DisplayInlineBlock:
+			// Inline-block boxes lay out their content as blocks; siblings share a row via layoutBlockFlow.
 			contentHeight = layoutBlockFlow(box, contentWidth)
 		default:
 			// Inline layout
@@ -371,9 +372,7 @@ func buttonOf(child *LayoutBox) *LayoutBox {
 		return child
 	}
 	if child.Node.Type == dom.ElementNode && child.Node.TagName == "span" && len(child.Children) == 1 {
-		if inner := child.Children[0]; inner.Node != nil && isButtonInput(inner.Node) {
-			return inner
-		}
+		return buttonOf(child.Children[0])
 	}
 	return nil
 }

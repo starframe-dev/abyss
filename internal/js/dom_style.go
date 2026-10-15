@@ -138,6 +138,8 @@ func displayString(d css.DisplayType) string {
 	switch d {
 	case css.DisplayInline:
 		return "inline"
+	case css.DisplayInlineBlock:
+		return "inline-block"
 	case css.DisplayFlex:
 		return "flex"
 	case css.DisplayGrid:

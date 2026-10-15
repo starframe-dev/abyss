@@ -57,6 +57,8 @@ func parseDisplay(val string) DisplayType {
 		return DisplayBlock
 	case "inline":
 		return DisplayInline
+	case "inline-block", "inline-box":
+		return DisplayInlineBlock
 	case "flex", "-webkit-flex", "-webkit-box":
 		return DisplayFlex
 	case "grid":

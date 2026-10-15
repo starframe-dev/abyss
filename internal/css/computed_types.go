@@ -8,6 +8,7 @@ type DisplayType int
 const (
 	DisplayBlock DisplayType = iota
 	DisplayInline
+	DisplayInlineBlock
 	DisplayFlex
 	DisplayGrid
 	DisplayNone
