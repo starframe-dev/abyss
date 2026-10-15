@@ -342,6 +342,9 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 		if textParts[0] == "" {
 			// An empty field still occupies one line so it stays visible.
 			box.Content.Height = cellmetrics.HeightPx
+			if isSearchField(box.Node) {
+				drawSearchIcons(box)
+			}
 			return cellmetrics.HeightPx
 		}
 	}
@@ -364,6 +367,25 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 	lines := wordWrap(words, box, contentWidth)
 	box.TextLines = lines
 	return float64(len(lines)) * cellmetrics.HeightPx
+}
+
+// isSearchField reports whether an input is a search box: type=search or the
+// query field name="q" that google.com uses.
+func isSearchField(n *dom.Node) bool {
+	if n == nil || n.Type != dom.ElementNode || n.TagName != "input" {
+		return false
+	}
+	return strings.EqualFold(strings.TrimSpace(n.GetAttr("type")), "search") || n.GetAttr("name") == "q"
+}
+
+// drawSearchIcons adds ASCII-art icons to an empty search field, as the browser
+// shows a magnifier on the left and keyboard, voice and lens icons on the right.
+func drawSearchIcons(box *LayoutBox) {
+	const leftIcon = "(o"
+	const rightIcons = "[|]"
+	left := TextLine{Text: leftIcon, X: box.Content.X + cellmetrics.WidthPx, Y: box.Content.Y}
+	right := TextLine{Text: rightIcons, X: box.Content.X + box.Content.Width - float64(runewidth.StringWidth(rightIcons))*cellmetrics.WidthPx - cellmetrics.WidthPx, Y: box.Content.Y}
+	box.TextLines = []TextLine{left, right}
 }
 
 // buttonOf returns the push button a child stands for: the child itself, or the

@@ -16,5 +16,7 @@ func TestEmptyInputTitleIsNotDrawnAsText(t *testing.T) {
 	box := Build(doc, css.Compute(doc), 200*cellmetrics.WidthPx)
 	field := findTag(box, "input")
 	require.NotNil(t, field)
-	require.Empty(t, field.TextLines, "title must not be drawn as the field text")
+	for _, line := range field.TextLines {
+		require.NotContains(t, line.Text, "Поиск", "title must not be drawn as the field text")
+	}
 }
