@@ -123,11 +123,13 @@ func drawBox(fb *framebuffer.Framebuffer, box *layout.LayoutBox) {
 		)
 	} else if box.Node != nil && (box.Node.TagName == "input" || box.Node.TagName == "textarea") && box.Border.Height > 0 {
 		// Text fields need a visible surface even when empty, otherwise the
-		// search box disappears from the page.
+		// search box disappears from the page. The corners are a half-height
+		// radius, so the field reads as a pill like the browser search box.
+		radius := box.Border.Height / 2
 		fb.DrawRoundedRect(
 			box.Border.X, box.Border.Y,
 			box.Border.Width, box.Border.Height,
-			2, 2, 2, 2,
+			radius, radius, radius, radius,
 			css.RGB(241, 243, 244),
 		)
 	} else if box.Node != nil && box.Node.TagName == "img" {

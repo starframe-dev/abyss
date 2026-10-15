@@ -121,10 +121,21 @@ func (fb *Framebuffer) DrawRoundedRect(x, y, w, h, rtl, rtr, rbr, rbl float64, c
 	}
 }
 
-// clipCorner clips a corner of the framebuffer.
+// clipCorner clears the pixels outside a rounded corner. (cx, cy) is the top-left
+// of the r-sized square that holds the corner; quadrant 0..3 is top-left,
+// top-right, bottom-right, bottom-left. The arc centre lies inside the box.
 func (fb *Framebuffer) clipCorner(cx, cy, r float64, quadrant int) {
 	if fb == nil || math.IsNaN(cx) || math.IsNaN(cy) || math.IsNaN(r) || math.IsInf(cx, 0) || math.IsInf(cy, 0) || math.IsInf(r, 0) || r <= 0 {
 		return
+	}
+	centerX, centerY := cx+r, cy+r
+	switch quadrant {
+	case 1:
+		centerX, centerY = cx, cy+r
+	case 2:
+		centerX, centerY = cx, cy
+	case 3:
+		centerX, centerY = cx+r, cy
 	}
 	x0, x1, okX := clippedRange(cx, r, fb.Width)
 	y0, y1, okY := clippedRange(cy, r, fb.Height)
@@ -133,8 +144,8 @@ func (fb *Framebuffer) clipCorner(cx, cy, r float64, quadrant int) {
 	}
 	for py := y0; py < y1; py++ {
 		for px := x0; px < x1; px++ {
-			dx := float64(px) - cx
-			dy := float64(py) - cy
+			dx := float64(px) + 0.5 - centerX
+			dy := float64(py) + 0.5 - centerY
 			if dx*dx+dy*dy > r*r {
 				fb.Set(px, py, css.Transparent())
 			}
