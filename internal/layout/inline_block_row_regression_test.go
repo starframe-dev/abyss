@@ -21,3 +21,16 @@ func TestInlineBlockButtonWrappersShareOneRow(t *testing.T) {
 	require.Len(t, buttons, 2)
 	require.Equal(t, buttons[0].Content.Y, buttons[1].Content.Y, "inline-block buttons must share one row")
 }
+
+// google.com keeps the buttons in a table cell next to a <br>. A run of
+// consecutive buttons must still share a row when other children are present.
+func TestButtonRunInTableCellWithBreakSharesRow(t *testing.T) {
+	doc := dom.Parse(`<body><table><tr><td align="center"><br>` +
+		`<span style="display:inline-block"><span style="display:block"><input type="submit" value="Поиск в Google"></span></span>` +
+		`<span style="display:inline-block"><span style="display:block"><input type="submit" value="Мне повезёт!"></span></span>` +
+		`</td></tr></table></body>`)
+	box := Build(doc, css.Compute(doc), 200*cellmetrics.WidthPx)
+	buttons := findAllTags(box, "input")
+	require.Len(t, buttons, 2)
+	require.Equal(t, buttons[0].Content.Y, buttons[1].Content.Y, "buttons in a table cell must share one row")
+}

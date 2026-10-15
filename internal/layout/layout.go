@@ -292,13 +292,22 @@ func layoutImage(box *LayoutBox, contentWidth float64) float64 {
 }
 
 func layoutBlockFlow(box *LayoutBox, contentWidth float64) float64 {
-	if allButtonInputs(box.Children) {
-		return layoutButtonRow(box, contentWidth)
-	}
 	var y float64
-	for _, child := range box.Children {
-		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+y, false)
-		y += child.Margin.Height
+	children := box.Children
+	for len(children) > 0 {
+		// A run of consecutive buttons shares lines; other children stack as blocks.
+		if buttonOf(children[0]) != nil {
+			n := 1
+			for n < len(children) && buttonOf(children[n]) != nil {
+				n++
+			}
+			y += layoutButtonRow(box, children[:n], contentWidth, y)
+			children = children[n:]
+			continue
+		}
+		layoutBox(children[0], contentWidth, box.Content.X, box.Content.Y+y, false)
+		y += children[0].Margin.Height
+		children = children[1:]
 	}
 	// If no block children, process inline content
 	if y == 0 {
@@ -349,19 +358,6 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 	return float64(len(lines)) * cellmetrics.HeightPx
 }
 
-// allButtonInputs reports whether every child is a push-button input and there is at least one.
-func allButtonInputs(children []*LayoutBox) bool {
-	if len(children) == 0 {
-		return false
-	}
-	for _, child := range children {
-		if buttonOf(child) == nil {
-			return false
-		}
-	}
-	return true
-}
-
 // buttonOf returns the push button a child stands for: the child itself, or the
 // only child of a plain wrapper such as <span>. It returns nil for anything else.
 func buttonOf(child *LayoutBox) *LayoutBox {
@@ -377,19 +373,20 @@ func buttonOf(child *LayoutBox) *LayoutBox {
 	return nil
 }
 
-// layoutButtonRow places sibling buttons left to right on one line while they fit
-// the container, then wraps to the next line. Google's search buttons sit in one row.
-func layoutButtonRow(box *LayoutBox, contentWidth float64) float64 {
+// layoutButtonRow places buttons left to right from yOrigin on one line while they
+// fit the container, then wraps to the next line. It returns the height used.
+func layoutButtonRow(box *LayoutBox, buttons []*LayoutBox, contentWidth, yOrigin float64) float64 {
 	var x, y, rowHeight float64
-	for _, child := range box.Children {
+	for _, child := range buttons {
 		// Measure at the origin first, then place it where the row has room.
-		layoutBox(child, contentWidth, box.Content.X, box.Content.Y, false)
+		layoutBox(child, contentWidth, box.Content.X, box.Content.Y+yOrigin, false)
+		// Width comes from the button: a wrapper span without a width spans the container.
 		w := buttonOf(child).Margin.Width
 		if x > 0 && x+w > contentWidth {
 			y += rowHeight
 			x, rowHeight = 0, 0
 		}
-		layoutBox(child, contentWidth, box.Content.X+x, box.Content.Y+y, false)
+		layoutBox(child, contentWidth, box.Content.X+x, box.Content.Y+yOrigin+y, false)
 		x += w
 		rowHeight = max(rowHeight, child.Margin.Height)
 	}
