@@ -27,6 +27,11 @@ const (
 	MaxJSBytes    int64 = 4 << 20
 )
 
+// UserAgent identifies the terminal browser. Google serves a page with the
+// logo (id="hplogo") to simple agents, while full Chrome/Safari agents get a
+// script-heavy variant without it.
+const UserAgent = "Abyss/1.0 (terminal browser)"
+
 // DefaultClient is the shared HTTP client with a reasonable timeout.
 var DefaultClient = &http.Client{Timeout: 10 * time.Second}
 
@@ -35,7 +40,7 @@ func get(ctx context.Context, resourceURL string, limit int64, accept string) ([
 	if err != nil {
 		return nil, "", fmt.Errorf("fetch %s: create request: %w", resourceURL, err)
 	}
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 Version/18.0 Safari/605.1.15")
+	req.Header.Set("User-Agent", UserAgent)
 	req.Header.Set("Accept", accept)
 	resp, err := DefaultClient.Do(req)
 	if err != nil {
