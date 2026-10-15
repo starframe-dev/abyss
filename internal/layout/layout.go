@@ -129,6 +129,10 @@ func layoutBox(box *LayoutBox, containerWidth, offsetX, offsetY float64, isRoot 
 
 	// Resolve width
 	width := resolveWidth(style, containerWidth)
+	if style.Width.IsAuto && isButtonInput(box.Node) {
+		// Buttons size to their label, not to the container.
+		width = buttonInputWidth(box.Node)
+	}
 
 	// Compute box model
 	marginLeft := style.Margin.Left.Resolve(containerWidth)
@@ -327,6 +331,23 @@ func layoutInlineFlow(box *LayoutBox, contentWidth float64) float64 {
 	lines := wordWrap(words, box, contentWidth)
 	box.TextLines = lines
 	return float64(len(lines)) * 2.0
+}
+
+// isButtonInput reports whether n is an input rendered as a push button.
+func isButtonInput(n *dom.Node) bool {
+	if n == nil || n.Type != dom.ElementNode || n.TagName != "input" {
+		return false
+	}
+	switch strings.ToLower(strings.TrimSpace(n.GetAttr("type"))) {
+	case "submit", "button", "reset":
+		return true
+	}
+	return false
+}
+
+// buttonInputWidth is the label width plus one cell of padding on each side.
+func buttonInputWidth(n *dom.Node) float64 {
+	return float64(runewidth.StringWidth(inputLabel(n)) + 2)
 }
 
 // inputLabel returns the text shown for a form input: its value, falling back to placeholder or title.
