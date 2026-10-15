@@ -137,10 +137,6 @@ func layoutBox(box *LayoutBox, containerWidth, offsetX, offsetY float64, isRoot 
 			width = attr
 		}
 	}
-	if style.Width.IsAuto && isButtonInput(box.Node) {
-		// Buttons size to their label, not to the container.
-		width = buttonInputWidth(box.Node)
-	}
 
 	// Compute box model
 	marginLeft := style.Margin.Left.Resolve(containerWidth)
@@ -149,6 +145,10 @@ func layoutBox(box *LayoutBox, containerWidth, offsetX, offsetY float64, isRoot 
 	marginBottom := style.Margin.Bottom.Resolve(containerWidth)
 	paddingLeft := style.Padding.Left.Resolve(containerWidth)
 	paddingRight := style.Padding.Right.Resolve(containerWidth)
+	if style.Width.IsAuto && isButtonInput(box.Node) {
+		// Buttons size to their label plus horizontal padding, not to the container.
+		width = buttonInputWidth(box.Node) + paddingLeft + paddingRight
+	}
 	paddingTop := style.Padding.Top.Resolve(containerWidth)
 	paddingBottom := style.Padding.Bottom.Resolve(containerWidth)
 	borderLeft := style.BorderLeft.Width
