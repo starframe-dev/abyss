@@ -354,11 +354,28 @@ func allButtonInputs(children []*LayoutBox) bool {
 		return false
 	}
 	for _, child := range children {
-		if child.Node == nil || !isButtonInput(child.Node) {
+		if buttonOf(child) == nil {
 			return false
 		}
 	}
 	return true
+}
+
+// buttonOf returns the push button a child stands for: the child itself, or the
+// only child of a plain wrapper such as <span>. It returns nil for anything else.
+func buttonOf(child *LayoutBox) *LayoutBox {
+	if child == nil || child.Node == nil {
+		return nil
+	}
+	if isButtonInput(child.Node) {
+		return child
+	}
+	if child.Node.Type == dom.ElementNode && child.Node.TagName == "span" && len(child.Children) == 1 {
+		if inner := child.Children[0]; inner.Node != nil && isButtonInput(inner.Node) {
+			return inner
+		}
+	}
+	return nil
 }
 
 // layoutButtonRow places sibling buttons left to right on one line while they fit
@@ -368,7 +385,7 @@ func layoutButtonRow(box *LayoutBox, contentWidth float64) float64 {
 	for _, child := range box.Children {
 		// Measure at the origin first, then place it where the row has room.
 		layoutBox(child, contentWidth, box.Content.X, box.Content.Y, false)
-		w := child.Margin.Width
+		w := buttonOf(child).Margin.Width
 		if x > 0 && x+w > contentWidth {
 			y += rowHeight
 			x, rowHeight = 0, 0
