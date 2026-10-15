@@ -442,9 +442,10 @@ func buttonInputWidth(n *dom.Node) float64 {
 	return float64(runewidth.StringWidth(inputLabel(n))+2) * cellmetrics.WidthPx
 }
 
-// inputLabel returns the text shown for a form input: its value, falling back to placeholder or title.
+// inputLabel returns the text shown for a form input: its value, falling back to placeholder.
+// title is a hover tooltip and is never drawn as text.
 func inputLabel(n *dom.Node) string {
-	for _, attr := range []string{"value", "placeholder", "title"} {
+	for _, attr := range []string{"value", "placeholder"} {
 		if v := strings.TrimSpace(n.GetAttr(attr)); v != "" {
 			return v
 		}
