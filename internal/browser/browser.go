@@ -4,7 +4,6 @@ package browser
 import (
 	"context"
 	"encoding/json"
-	"math"
 	"os"
 	"path/filepath"
 	"strings"
