@@ -75,3 +75,12 @@ func TestFetchImagesContextHonorsCanceledContext(t *testing.T) {
 	doc := dom.Parse(`<img src="http://127.0.0.1:1/image.png">`)
 	fetchImagesContext(ctx, doc, "http://example.test/")
 }
+
+// stringWriter adapts strings.Builder to io.Writer for the png encoder.
+type stringWriter struct {
+	b *strings.Builder
+}
+
+func (s stringWriter) Write(p []byte) (int, error) {
+	return s.b.Write(p)
+}

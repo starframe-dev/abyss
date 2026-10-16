@@ -24,6 +24,13 @@ func (m Model) ZoomFactor() float64 {
 	return 1.0
 }
 
+func (m Model) activeExternalCSS() []string {
+	if tab := m.active(); tab != nil {
+		return tab.ExternalCSS
+	}
+	return nil
+}
+
 func (m Model) OffsetX() int {
 	if t := m.active(); t != nil {
 		return t.OffsetX
