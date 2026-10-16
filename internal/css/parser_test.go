@@ -35,7 +35,7 @@ func TestParseStyleSheet(t *testing.T) {
 }
 
 func TestSpecificity(t *testing.T) {
-	tests := map[string]int{"div.class#id[attr]:hover": 112, "div::before": 10, "div > p": 2, "*": 0, "[x]": 10, "svg|a": 0}
+	tests := map[string]int{"div.class#id[attr]:hover": 131, "div::before": 2, "div > p": 2, "*": 0, "[x]": 10, "svg|a": 0}
 	for selector, want := range tests {
 		if got := Specificity(selector); got != want {
 			t.Errorf("Specificity(%q)=%d want %d", selector, got, want)
