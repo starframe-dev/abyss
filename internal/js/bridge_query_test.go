@@ -1,3 +1,5 @@
+//go:build jsc
+
 package js
 
 import (

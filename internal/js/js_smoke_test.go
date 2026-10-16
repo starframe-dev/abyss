@@ -624,7 +624,7 @@ func TestExecuteScripts(t *testing.T) {
 }
 
 // TestGetFinalDOM covers the global DOM accessor.
-func TestGetFinalDOM(t *testing.T) {
+func TestGetFinalDOMSmoke(t *testing.T) {
 	InitDOM(dom.Parse("<html><body></body></html>"))
 	final := GetFinalDOM()
 	if final == nil {
