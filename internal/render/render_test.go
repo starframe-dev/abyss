@@ -2,7 +2,6 @@ package render
 
 import (
 	"image"
-	"image/color"
 	"testing"
 
 	"github.com/starframe-dev/abyss/internal/asciirender"
@@ -36,7 +35,7 @@ func TestRender_Border(t *testing.T) {
 }
 
 func TestRender_NegativeCoordinates(t *testing.T) {
-	box := &layout.LayoutBox{Margin: layout.Box{X: -5, Y: -3, Width: 10, Height: 8}}
+	box := &layout.LayoutBox{Margin: layout.Rect{X: -5, Y: -3, Width: 10, Height: 8}}
 	fb := Render(box, 20)
 	assert.Equal(t, 8, fb.Height)
 	assert.Equal(t, 0.0, box.Margin.X)
@@ -49,7 +48,7 @@ func TestRender_ImageQuantizationAndCache(t *testing.T) {
 	calls := 0
 	ImageProvider = func(src string) image.Image {
 		calls++
-		return image.NewUniform(color.RGBA{R: 200, A: 255})
+		return image.NewRGBA(image.Rect(0, 0, 16, 16))
 	}
 	doc := dom.Parse(`<img src="fixture" alt="sample">`)
 	box := layout.Build(doc, css.Compute(doc), 80)
@@ -81,7 +80,7 @@ func TestRender_ImageProviderMissingAndDrawASCII(t *testing.T) {
 	old := ImageProvider
 	defer func() { ImageProvider = old }()
 	ImageProvider = nil
-	box := &layout.LayoutBox{Node: &dom.Node{TagName: "img"}, Border: layout.Box{Width: 2, Height: 2}}
+	box := &layout.LayoutBox{Node: &dom.Node{TagName: "img"}, Border: layout.Rect{Width: 2, Height: 2}}
 	assert.Nil(t, quantizeImageBox(box))
 	fb := framebuffer.New(4, 4)
 	drawAsciiCells(fb, box, [][]asciirender.Cell{{{FG: css.RGB(255, 0, 0)}}})
