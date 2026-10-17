@@ -20,7 +20,7 @@ func TestHeadlessDumpWritesANSIAtRequestedWidth(t *testing.T) {
 	defer server.Close()
 
 	outputPath := filepath.Join(t.TempDir(), "page.ansi")
-	cmd := exec.Command("go", "run", "../..", "--headless-dump", outputPath, "--url", server.URL, "--width", "64")
+	cmd := exec.Command("go", "run", ".", "--headless-dump", outputPath, "--url", server.URL, "--width", "64")
 	cmd.Dir = projectRoot(t)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
