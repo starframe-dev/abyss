@@ -28,7 +28,7 @@ func TestTableColumnWidths(t *testing.T) {
 		{Style: css.ComputedStyle{Width: css.Auto()}},
 	}
 	require.Equal(t, []float64{30, 35, 35}, tableColumnWidths(cells, 100))
-	require.Equal(t, []float64{30, 0, 0}, tableColumnWidths(cells, 20)[:1])
+	require.Equal(t, []float64{30, 0, 0}, tableColumnWidths(cells, 20))
 	auto := []*LayoutBox{{Style: css.ComputedStyle{Width: css.Auto()}}, {Style: css.ComputedStyle{Width: css.Auto()}}}
 	require.Equal(t, []float64{0, 0}, tableColumnWidths(auto, -5))
 }
@@ -42,6 +42,7 @@ func TestLayoutTableRows(t *testing.T) {
 	}}
 	table := &LayoutBox{Node: &dom.Node{Type: dom.ElementNode, TagName: "table"}, Style: css.Default(), Content: Rect{X: 5, Y: 7}, Children: []*LayoutBox{{Node: &dom.Node{Type: dom.ElementNode, TagName: "tbody"}, Children: []*LayoutBox{row}}}}
 	require.Equal(t, 0.0, layoutTable(table, 100))
-	require.Equal(t, 5.0, row.Children[1].Content.X)
+	// The first cell takes half of the 100px table, so the second starts at 5 + 50.
+	require.Equal(t, 55.0, row.Children[1].Content.X)
 	require.Equal(t, css.Auto(), row.Children[0].Style.Width)
 }
