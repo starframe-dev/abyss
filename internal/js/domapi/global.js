@@ -1,6 +1,6 @@
 'use strict'
 
-const document = {
+globalThis.document = {
     createElement(tagName) {
         if (typeof tagName !== 'string' || tagName.trim() === '') {
             throw new TypeError('tagName must be a non-empty string')
