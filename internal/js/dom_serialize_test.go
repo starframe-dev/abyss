@@ -67,6 +67,9 @@ func TestEscapeHTML(t *testing.T) {
 
 func TestOuterHTMLStringAndSetOuterHTML(t *testing.T) {
 	root := &dom.Node{Type: dom.ElementNode, TagName: "div", Children: []*dom.Node{{Type: dom.ElementNode, TagName: "p", Children: []*dom.Node{{Type: dom.TextNode, Text: "old"}}}, {Type: dom.ElementNode, TagName: "b"}}}
+	for _, c := range root.Children {
+		c.Parent = root
+	}
 	InitDOM(root)
 	defer resetDOMState()
 	old := root.Children[0]

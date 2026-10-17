@@ -7,8 +7,12 @@ import (
 
 func TestDOMAPIEmbedded(t *testing.T) {
 	for _, fragment := range domapiFragments {
-		if !strings.Contains(domapiJSSource, fragment) {
-			t.Errorf("embedded DOM API missing fragment %q", fragment)
+		data, err := domapiFiles.ReadFile("domapi/" + fragment + ".js")
+		if err != nil {
+			t.Fatalf("read fragment %q: %v", fragment, err)
+		}
+		if !strings.Contains(domapiJSSource, string(data)) {
+			t.Errorf("embedded DOM API missing content of fragment %q", fragment)
 		}
 	}
 	if !strings.HasPrefix(domapiJSSource, "(function()") {

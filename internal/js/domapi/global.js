@@ -6,7 +6,7 @@ const document = {
             throw new TypeError('tagName must be a non-empty string')
         }
 
-        return globalThis.document.createElement(tagName)
+        return __go_createElement(tagName)
     },
 
     getElementById(id) {
@@ -14,12 +14,8 @@ const document = {
             throw new TypeError('id must be a string')
         }
 
-        return globalThis.document.getElementById(id)
+        return __go_getElementById(id)
     },
 }
 
-const window = globalThis.window
 
-if (typeof window === 'undefined' || typeof globalThis.document === 'undefined') {
-    throw new Error('DOM API requires a browser environment')
-}

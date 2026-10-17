@@ -610,6 +610,8 @@ func TestExecuteScripts(t *testing.T) {
 
 	ctx := NewContext()
 	defer ctx.Close()
+	// The DOM API needs window and document, which production sets up via SetCurrentContext.
+	SetCurrentContext(ctx, "https://example.com/")
 	if err := ctx.RegisterBridgeFunctions(); err != nil {
 		t.Fatalf("RegisterBridgeFunctions: %v", err)
 	}

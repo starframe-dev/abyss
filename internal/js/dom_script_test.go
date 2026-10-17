@@ -55,8 +55,11 @@ func TestFetchScriptContext(t *testing.T) {
 func TestExecuteScriptsContextCanceled(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
-	doc := &dom.Node{Type: dom.DocumentNode}
-	if err := ExecuteScriptsContext(ctx, nil, doc, ""); err == nil {
+	// A script with src makes ExecuteScriptsContext attempt a fetch, which must observe the cancellation.
+	doc := dom.Parse(`<html><body><script src="http://127.0.0.1:1/app.js"></script></body></html>`)
+	jsCtx := NewContext()
+	defer jsCtx.Close()
+	if err := ExecuteScriptsContext(ctx, jsCtx, doc, ""); err == nil {
 		t.Fatal("ExecuteScriptsContext() expected canceled-context error")
 	}
 }

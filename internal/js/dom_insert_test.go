@@ -14,9 +14,15 @@ func insertTestSetup() {
 	nodeNextID = 1
 }
 
+// insertTestNode registers a node the way production does, so later inserts
+// allocate IDs that do not collide with it.
 func insertTestNode(id NodeID, typ dom.NodeType) *dom.Node {
 	n := &dom.Node{Type: typ}
 	nodes[id] = n
+	nodeIDs[n] = id
+	if id >= nodeNextID {
+		nodeNextID = id + 1
+	}
 	return n
 }
 
