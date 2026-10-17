@@ -170,6 +170,13 @@ func (m *Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				return m, cmd
 			}
 
+		case ModeLoading:
+			// A newer address supersedes the in-flight load when Enter is pressed.
+			if msg.String() == "ctrl+l" {
+				m.Mode = ModeAddress
+				m.Address.Focus()
+				return m, textinput.Blink
+			}
 		case ModeError:
 			switch msg.String() {
 			case "ctrl+l":
