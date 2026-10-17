@@ -15,9 +15,9 @@ import (
 func updateBrowser(t *testing.T, m *browser.Model, msg tea.Msg) tea.Cmd {
 	t.Helper()
 	next, cmd := m.Update(msg)
-	updated, ok := next.(browser.Model)
+	updated, ok := next.(*browser.Model)
 	require.True(t, ok)
-	*m = updated
+	*m = *updated
 	return cmd
 }
 

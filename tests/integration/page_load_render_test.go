@@ -60,7 +60,7 @@ func TestPageLoadFetchParseLayoutAndRender(t *testing.T) {
 	require.NotEmpty(t, html)
 	doc := dom.Parse(html)
 	require.NotNil(t, doc)
-	require.NotNil(t, doc.Query("h1"))
+	require.NotNil(t, doc.QuerySelector("h1"))
 
 	cssText, err := fetcher.FetchCSS(ctx, pageServer.URL+"/site.css")
 	require.NoError(t, err)

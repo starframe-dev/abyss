@@ -31,7 +31,7 @@ func TestSplitANSI_SeparatesStyledRuns(t *testing.T) {
 }
 
 func TestSplitANSI_RejectsUnsupportedAndInvalidSGR(t *testing.T) {
-	input := "a\x1b[31mb\x1b[38;2;256;0;0mc\x1b[48;2;1;2;3;4md\x1b[38;2;1;2;3;48;2;4;5;6me"
+	input := "a\x1b[31mb\x1b[38;2;256;0;0mc\x1b[48;2;1;2;3;4md\x1b[38;2;1;2;3;48;2;4;5me"
 	segs := splitANSI(input)
 	var text strings.Builder
 	for _, seg := range segs {

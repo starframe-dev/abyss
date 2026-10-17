@@ -51,7 +51,8 @@ func TestViewModesAndLayout(t *testing.T) {
 	m.Tabs[0].ANSILines = []string{"first", "second", "third"}
 	m.Viewport = viewport.New(40, 2)
 	assert.Contains(t, m.View(), "first")
-	m.Viewport.SetYOffset(99)
+	// View renders from Viewport.YOffset directly; the last valid offset for 3 lines in height 2 is 1.
+	m.Viewport.YOffset = 1
 	assert.Contains(t, m.View(), "third")
 }
 
