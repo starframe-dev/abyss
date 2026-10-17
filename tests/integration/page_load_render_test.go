@@ -3,6 +3,7 @@ package integration
 import (
 	"context"
 	"image"
+	"image/draw"
 	"image/color"
 	"image/png"
 	"net/http"
@@ -29,7 +30,10 @@ func TestPageLoadFetchParseLayoutAndRender(t *testing.T) {
 		requests[r.URL.Path]++
 		mu.Unlock()
 		w.Header().Set("Content-Type", "image/png")
-		require.NoError(t, png.Encode(w, image.NewUniform(color.RGBA{R: 220, G: 40, B: 30, A: 255})))
+		// image.NewUniform has infinite bounds, so encoding it never finishes; use a bounded image.
+		pixel := image.NewRGBA(image.Rect(0, 0, 4, 4))
+		draw.Draw(pixel, pixel.Bounds(), image.NewUniform(color.RGBA{R: 220, G: 40, B: 30, A: 255}), image.Point{}, draw.Src)
+		require.NoError(t, png.Encode(w, pixel))
 	}))
 	defer imageServer.Close()
 
