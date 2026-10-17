@@ -41,7 +41,7 @@ func TestLastChildIndex(t *testing.T) {
 		n      *Node
 		ofType bool
 		want   int
-	}{{nil, false, 0}, {a, false, 1}, {b, false, 2}, {c, false, 3}, {a, true, 2}, {c, true, 1}, {&Node{Parent: parent}, false, 0}, {&Node{Type: ElementNode}, false, 0}}
+	}{{nil, false, 0}, {a, false, 3}, {b, false, 2}, {c, false, 1}, {a, true, 2}, {c, true, 1}, {&Node{Parent: parent}, false, 0}, {&Node{Type: ElementNode}, false, 0}}
 	for _, tc := range cases {
 		if got := lastChildIndex(tc.n, tc.ofType); got != tc.want {
 			t.Errorf("lastChildIndex=%d, want %d", got, tc.want)
@@ -57,8 +57,8 @@ func TestMatchNth(t *testing.T) {
 	}{
 		{"", 1, false}, {"  ", 1, false}, {"0", 0, true}, {"0", 1, false}, {"EVEN", 4, true}, {"odd", 3, true},
 		{"2", 2, true}, {"bad", 2, false}, {"2n+1", 5, true}, {"2n+1", 4, false}, {"3n", 6, true},
-		{"-n+3", 4, true}, {"-n+3", 2, false}, {"0n+2", 2, true}, {"0n+2", 3, false},
-		{"n", -1, true}, {"2n+1", 0, false},
+		{"-n+3", 4, false}, {"-n+3", 2, true}, {"0n+2", 2, true}, {"0n+2", 3, false},
+		{"n", 1, true}, {"2n+1", 0, false},
 	}
 	for _, tc := range cases {
 		if got := matchNth(tc.arg, tc.idx); got != tc.want {
