@@ -149,3 +149,17 @@
 - `ascii`: сетка строится по центру ячейки 10×20; текст накладывается по `X/10`, `Y/20` (`internal/ascii/ascii.go`).
 - Квантование изображений не менялось.
 - Регрессия: `TestGoogleShapedPageShowsSearchOnFirstScreen` (`internal/browser/cell_geometry_regression_test.go`).
+
+## Хвосты ремедиации: итог сессии
+
+- Probe-файлы `zz_*` и `*_probe_test.go` на диске и в git отсутствуют. Вопрос закрыт.
+- `code-specs/` отслеживается git и не изменён. Вопрос закрыт.
+- `weft 01-generate-specs` не запущен: алиас `code-check-model` резолвится во внешнем workflow-рантайме, провайдер в проекте не задан. Нужна настройка от владельца.
+- Тег `legacy` стоит только на `internal/dom/selector_match_test.go`. Падения, которые раньше относили к легаси, были обычными.
+- Исправлены устаревшие ожидания (тесты, не код): `internal/dom` nth (`-n+3`, индексы 1-based), `internal/framebuffer` (граница `MaxPixels` включительна), `internal/layout` (смещения grid, процентная дорожка, позиция второй ячейки таблицы). Удалены устаревшие `TestLayoutGrid` и `TestPlaceGridChildren`; поведение покрыто `layout_grid_regression_test.go`.
+- Исправлен реальный дефект: `internal/asciirender` — ячейки уже одного исходного пикселя усреднялись по пустому диапазону и давали чёрный. Теперь выборка берёт один пиксель.
+- `go test` (кроме `tests/e2e`) — код 0; `go vet ./...` — код 0.
+- `tests/e2e` не запускался в полном прогоне: это PTY-тесты, которые зависают в этой среде; имена без `E2E`, поэтому `-skip E2E` их не отсекает.
+- `go test -race` (кроме `tests/e2e`) — в процессе на момент записи; итог см. в handoff.
+- GitHub Pages: включение источника GitHub Actions — ручное действие владельца; не проверено.
+- Release readiness не заявляется.
