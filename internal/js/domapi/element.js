@@ -184,6 +184,11 @@
                 if (typeof handler === 'function') __go_addEventListener(this, String(type), handler)
             },
 
+            dispatchEvent: function(event) {
+                __go_dispatchEvent(this, event && event.type !== undefined ? String(event.type) : '')
+                return true
+            },
+
             removeEventListener: function(type, handler) {
                 if (typeof handler === 'function') __go_removeEventListener(this, String(type), handler)
             },
@@ -194,7 +199,59 @@
             focus: function() {},
             blur: function() {},
             scrollIntoView: function() {},
-            click: function() {}
+            click: function() {
+                __go_dispatchEvent(this, 'click')
+            }
+        }
+    }
+
+    function makeChildMethods() {
+        return {
+            appendChild: function(child) {
+                __go_appendChild(this, child)
+                return child
+            },
+
+            removeChild: function(child) {
+                __go_removeChild(this, child)
+                return child
+            },
+
+            insertBefore: function(node, ref) {
+                __go_insertBefore(this, node, ref)
+                return node
+            },
+
+            replaceChild: function(node, old) {
+                __go_replaceChild(this, node, old)
+                return old
+            },
+
+            contains: function(other) {
+                return __go_contains(this, other)
+            },
+
+            cloneNode: function(deep) {
+                var copy = __go_cloneNode(this, !!deep)
+                return copy && copy.__go_id >= 0 ? makeElement(copy) : null
+            },
+        }
+    }
+
+    function makeInsertionMethods() {
+        return {
+            insertAdjacentHTML: function(position, html) {
+                __go_insertAdjacentHTML(this, String(position), String(html))
+            },
+
+            insertAdjacentText: function(position, text) {
+                __go_insertAdjacentText(this, String(position), String(text))
+            },
+
+            insertAdjacentElement: function(position, el) {
+                __go_insertAdjacentElement(this, String(position), el)
+                return el
+            },
         }
     }
 
