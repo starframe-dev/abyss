@@ -125,6 +125,14 @@ func sampleCell(img image.Image, bounds image.Rectangle, col, row, cols, rows in
 	y0 := bounds.Min.Y + row*bounds.Dy()/rows
 	x1 := bounds.Min.X + (col+1)*bounds.Dx()/cols
 	y1 := bounds.Min.Y + (row+1)*bounds.Dy()/rows
+	// A cell narrower than one source pixel still samples the pixel it maps to;
+	// otherwise it would average nothing and read as black.
+	if x1 <= x0 {
+		x1 = x0 + 1
+	}
+	if y1 <= y0 {
+		y1 = y0 + 1
+	}
 
 	var sumR, sumG, sumB uint64
 	var count uint64
