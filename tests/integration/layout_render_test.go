@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"regexp"
 	"strings"
 	"testing"
 
@@ -13,6 +14,9 @@ import (
 	"github.com/starframe-dev/abyss/internal/render"
 	"github.com/stretchr/testify/require"
 )
+
+// sgrPattern matches SGR escape sequences; they occupy no terminal cells.
+var sgrPattern = regexp.MustCompile(`\x1b\[[0-9;]*m`)
 
 func TestLayoutRenderRepresentativePagesAlignAndClip(t *testing.T) {
 	const columns = 24
@@ -51,8 +55,9 @@ func TestLayoutRenderRepresentativePagesAlignAndClip(t *testing.T) {
 			require.Equal(t, len(plain), len(ansi))
 			for row := range plain {
 				require.Equal(t, columns, runewidth.StringWidth(plain[row]), "plain row %d", row)
-				require.Equal(t, columns, runewidth.StringWidth(ansi[row]), "ANSI row %d", row)
-				for _, line := range []string{plain[row], ansi[row]} {
+				visibleANSI := sgrPattern.ReplaceAllString(ansi[row], "")
+				require.Equal(t, columns, runewidth.StringWidth(visibleANSI), "ANSI row %d", row)
+				for _, line := range []string{plain[row], visibleANSI} {
 					for _, marker := range page.want {
 						if strings.Contains(line, marker) {
 							// A complete marker must fit in the viewport; clipping never
