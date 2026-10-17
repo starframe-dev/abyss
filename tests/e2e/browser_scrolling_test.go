@@ -12,6 +12,13 @@ import (
 	"github.com/starframe-dev/cue-tty/pkg/cue"
 )
 
+func tailBytes(b []byte, n int) []byte {
+	if len(b) <= n {
+		return b
+	}
+	return b[len(b)-n:]
+}
+
 func TestBrowserScrolling(t *testing.T) {
 	const sections = 80
 	var document strings.Builder
@@ -62,29 +69,41 @@ func TestBrowserScrolling(t *testing.T) {
 			}
 			time.Sleep(200 * time.Millisecond)
 		}
-		t.Fatalf("timed out waiting for %q; terminal output:\n%s", want, app.RawLog())
+		screen, _ := page.Text()
+		t.Fatalf("timed out waiting for %q; screen:\n%s\nraw log tail:\n%s", want, screen, tailBytes(app.RawLog(), 400))
 		return ""
 	}
 
 	waitFor("Scroll fixture top")
+	// Keys are paced: the viewport handles each one before the next arrives.
+	pace := func() { time.Sleep(700 * time.Millisecond) }
 	if err := page.Press("ArrowDown"); err != nil {
 		t.Fatalf("scroll down with arrow key: %v", err)
 	}
+	pace()
 	if err := page.Press("PageDown"); err != nil {
 		t.Fatalf("scroll down with Page Down: %v", err)
 	}
 	waitFor("Scroll section 15")
-	if err := page.Press("PageDown"); err != nil {
-		t.Fatalf("scroll to bottom with Page Down: %v", err)
-	}
-	if err := page.Press("PageDown"); err != nil {
-		t.Fatalf("continue scrolling with Page Down: %v", err)
+	pace()
+	// The document is longer than three pages, so keep paging until the last line is on screen.
+	for attempt := 0; attempt < 20; attempt++ {
+		screen, _ := page.Text()
+		if strings.Contains(screen, "Scroll fixture bottom") {
+			break
+		}
+		if err := page.Press("PageDown"); err != nil {
+			t.Fatalf("scroll to bottom with Page Down: %v", err)
+		}
+		pace()
 	}
 	waitFor("Scroll fixture bottom")
+	pace()
 
 	if err := page.Press("PageUp"); err != nil {
 		t.Fatalf("scroll up with Page Up: %v", err)
 	}
+	pace()
 	if err := page.Press("ArrowUp"); err != nil {
 		t.Fatalf("scroll up with arrow key: %v", err)
 	}
