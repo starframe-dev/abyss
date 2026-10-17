@@ -20,8 +20,9 @@ func TestNew(t *testing.T) {
 			t.Errorf("invalid dimensions %v accepted", d)
 		}
 	}
-	if fb := New(MaxWidth, MaxHeight); fb.Width != 0 {
-		t.Fatal("pixel limit should reject dimensions")
+	// The limit is inclusive: the largest allowed frame is exactly MaxPixels.
+	if fb := New(MaxWidth, MaxHeight); fb.Width != MaxWidth || len(fb.Pixels) != MaxPixels {
+		t.Fatal("largest allowed frame should be accepted")
 	}
 }
 
