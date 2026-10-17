@@ -3,8 +3,8 @@ package integration
 import (
 	"context"
 	"image"
-	"image/draw"
 	"image/color"
+	"image/draw"
 	"image/png"
 	"net/http"
 	"net/http/httptest"
