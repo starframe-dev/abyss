@@ -6,7 +6,8 @@ globalThis.document = {
             throw new TypeError('tagName must be a non-empty string')
         }
 
-        return __go_createElement(tagName)
+        var created = __go_createElement(tagName)
+        return created && created.__go_id >= 0 ? makeElement(created) : null
     },
 
     getElementById(id) {
@@ -14,7 +15,13 @@ globalThis.document = {
             throw new TypeError('id must be a string')
         }
 
-        return __go_getElementById(id)
+        var found = __go_getElementById(id)
+        return found && found.__go_id >= 0 ? makeElement(found) : null
+    },
+
+    querySelector(selector) {
+        var found = __go_documentQuerySelector(String(selector))
+        return found && found.__go_id >= 0 ? makeElement(found) : null
     },
 }
 

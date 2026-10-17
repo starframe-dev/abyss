@@ -17,7 +17,7 @@ func TestBridgeHandlersRegistered(t *testing.T) {
 		"matches", "closest", "insertBefore", "replaceChild", "cloneNode", "contains",
 		"getBoundingClientRect", "previousElementSibling", "nextElementSibling",
 		"firstElementChild", "lastElementChild", "insertAdjacentHTML", "insertAdjacentText",
-		"insertAdjacentElement", "outerHTML", "setOuterHTML", "log",
+		"insertAdjacentElement", "outerHTML", "setOuterHTML", "log", "documentQuerySelector",
 	}
 	if len(bridgeHandlers) != len(want) {
 		t.Fatalf("bridge handler count = %d, want %d", len(bridgeHandlers), len(want))

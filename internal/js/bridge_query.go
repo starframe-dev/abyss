@@ -39,6 +39,26 @@ func getElementByIdJS(ctx *Context, args []C.JSValueRef) C.JSValueRef {
 	return nodeToJS(ctx, node)
 }
 
+// documentQuerySelectorJS implements document.querySelector, which searches from the document root.
+func documentQuerySelectorJS(ctx *Context, args []C.JSValueRef) C.JSValueRef {
+	if len(args) < 1 {
+		return ctx.MakeNull()
+	}
+	sel, _ := getArgString(ctx, args[0])
+	nodeMu.Lock()
+	root := rootDoc
+	nodeMu.Unlock()
+	rootID := getNodeID(root)
+	if rootID < 0 {
+		return ctx.MakeNull()
+	}
+	node := querySelector(rootID, sel)
+	if node == nil {
+		return ctx.MakeNull()
+	}
+	return nodeToJS(ctx, node)
+}
+
 func querySelectorJS(ctx *Context, args []C.JSValueRef) C.JSValueRef {
 	if len(args) < 2 {
 		return ctx.MakeNull()
