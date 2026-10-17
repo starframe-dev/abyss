@@ -29,8 +29,11 @@ func TestBridgeHandlersRegistered(t *testing.T) {
 	}
 }
 
+// A nil node has no bridge ID, so the wrapper must be JS null, not a Go nil.
 func TestNodeToJSValueNil(t *testing.T) {
-	if got := nodeToJSValue(nil, (*dom.Node)(nil)); got != nil {
-		t.Fatalf("nodeToJSValue(nil) = %v, want nil", got)
+	ctx := NewContext()
+	defer ctx.Close()
+	if got := ctx.GetType(nodeToJSValue(ctx, (*dom.Node)(nil))); got != "null" {
+		t.Fatalf("nodeToJSValue(nil node) type = %q, want null", got)
 	}
 }

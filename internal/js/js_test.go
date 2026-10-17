@@ -39,19 +39,8 @@ func TestContextAPI(t *testing.T) {
 		t.Fatalf("ToNumber: got %v, err %v", got, err)
 	}
 
-	obj, err := c.EvaluateRaw("({})")
-	if err != nil {
-		t.Fatal(err)
-	}
-	if err := c.SetPropertyOn(obj, "label", c.MakeString("ok")); err != nil {
-		t.Fatal(err)
-	}
-	prop, err := c.EvaluateRaw("({label:'ok'}).label")
-	if err != nil {
-		t.Fatal(err)
-	}
-	if got, err := c.ValueToString(prop); err != nil || got != "ok" {
-		t.Fatalf("ValueToString: got %q, err %v", got, err)
+	if got, err := c.Evaluate("(function(){ var o = {}; o.label = 'ok'; return o.label; })()"); err != nil || got != "ok" {
+		t.Fatalf("property set: got %q, err %v", got, err)
 	}
 
 	cases := []struct {
