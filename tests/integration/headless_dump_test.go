@@ -34,7 +34,12 @@ func TestHeadlessDumpCLI(t *testing.T) {
 
 func TestHeadlessDumpRequiresURL(t *testing.T) {
 	outputPath := filepath.Join(t.TempDir(), "dump.ansi")
-	cmd := exec.Command("go", "run", "../..", "--headless-dump", outputPath)
+	// Run a built binary: `go run` reports its own exit status 1 instead of the program's.
+	binary := filepath.Join(t.TempDir(), "abyss")
+	build := exec.Command("go", "build", "-o", binary, "../..")
+	buildOutput, buildErr := build.CombinedOutput()
+	require.NoError(t, buildErr, string(buildOutput))
+	cmd := exec.Command(binary, "--headless-dump", outputPath)
 	output, err := cmd.CombinedOutput()
 	require.Error(t, err)
 	var exitErr *exec.ExitError
