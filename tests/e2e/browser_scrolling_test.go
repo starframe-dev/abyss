@@ -77,7 +77,7 @@ func TestBrowserScrolling(t *testing.T) {
 	waitFor("Scroll fixture top")
 	// Keys are paced: the viewport handles each one before the next arrives.
 	pace := func() { time.Sleep(700 * time.Millisecond) }
-	if err := page.Press("ArrowDown"); err != nil {
+	if err := page.Press("Down"); err != nil {
 		t.Fatalf("scroll down with arrow key: %v", err)
 	}
 	pace()
@@ -104,7 +104,7 @@ func TestBrowserScrolling(t *testing.T) {
 		t.Fatalf("scroll up with Page Up: %v", err)
 	}
 	pace()
-	if err := page.Press("ArrowUp"); err != nil {
+	if err := page.Press("Up"); err != nil {
 		t.Fatalf("scroll up with arrow key: %v", err)
 	}
 	waitFor("Scroll section 60")

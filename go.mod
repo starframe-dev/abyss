@@ -1,6 +1,6 @@
 module github.com/starframe-dev/abyss
 
-go 1.26.2
+go 1.26.9
 
 require (
 	github.com/charmbracelet/bubbles v1.0.0
@@ -8,7 +8,7 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/mattn/go-runewidth v0.0.19
 	github.com/rivo/uniseg v0.4.7
-	github.com/starframe-dev/cue-tty v0.0.0-20260613195308-172eab8c3203
+	github.com/starframe-dev/cue-tty v0.1.0
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/net v0.60.0
 )
@@ -33,6 +33,7 @@ require (
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/muesli/termenv v0.16.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/starframe-dev/portalis v0.1.0 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/text v0.42.0 // indirect
